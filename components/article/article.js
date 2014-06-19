@@ -83,10 +83,14 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         $scope.postId = args.postId;
         $scope.authorId = args.authorId;
         console.log('args: ' + args.postId);
+        console.log('args type: ' + args.postType);
         switch (args.postType) {
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
+            //case "talkback":
+            //    $state.transitionTo('single-article', { postId: $scope.postId });
+            //    break;
             case "author":
                 $state.transitionTo('author-page', { authorId: $scope.authorId });
                 break;

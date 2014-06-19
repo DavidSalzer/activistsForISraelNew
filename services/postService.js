@@ -28,7 +28,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             //});
             queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy;
             console.log(queryString);
-            classAjax.getdata('get', queryString).then(function (data) {
+            classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data);
                 if (request.endTimestamp == '') {
                     posts = data.data;
