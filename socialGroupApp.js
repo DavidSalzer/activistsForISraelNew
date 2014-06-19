@@ -298,7 +298,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //                '<img data-ng-src="{{post.authorImage}}" alt="user-pic">'+
         //            '</figure>'+
         //            '<span class="author-name" data-author="{{post.author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post.author}}</span>'+
-        //            '<span class="author-date">{{post.timeStamp * 1000 | date : "dd.MM.yyyy"}}</span>'+
+        //            '<span class="author-date">{{post.timeStamp  | date : "dd.MM.yyyy"}}</span>'+
         //           '</div>',
         templateUrl: './authorHeader.html'//,
         //replace: true

@@ -8,16 +8,16 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $scope.active = index;
     }
 
-    $http.get(domain + 'profile/', {withCredentials: true,async:true})
+    $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
         console.log(data);
-        if(data.data.user!=undefined){
+        if (data.data.user != undefined) {
             generalParameters.setUser(data.data.user);
         }
-        else{
+        else {
             generalParameters.setUser({ firstName: 'התחבר', userImg: './img/user.png' });
         }
-        
+
     })
 
     $scope.$on('postClicked', function (event, args) {
@@ -46,18 +46,18 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureColor: "#993ca7"
         },
          {
-            featureUrl: 'article',
-            featureName: 'מאמרים',
-            featureLogo: "./img/article.png",
-            featureColor: "#006dbe"
-        },
+             featureUrl: 'article',
+             featureName: 'מאמרים',
+             featureLogo: "./img/article.png",
+             featureColor: "#006dbe"
+         },
         {
             featureUrl: 'channel',
             featureName: 'YOUTUBE',
             featureLogo: "./img/youtube.png",
             featureColor: "#fa0001"
         },
-       
+
         {
             featureUrl: 'facebookBennet/NaftaliBennett',
             featureName: 'פייסבוק נפתלי',
@@ -69,13 +69,19 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureName: 'פייסבוק פועלים',
             featureLogo: "./img/actionforisrael.png",
             featureColor: "#004a8e"
+        },
+        {
+            featureUrl: 'contact',
+            featureName: 'צור קשר',
+            featureLogo: "./img/contact.png",
+            featureColor: "#009933"
         }
-		//{
-		//    featureUrl: 'poll',
-		//    featureName: 'משאל עם',
-		//    featureLogo: "./img/poll.png",
-		//    featureColor: "#da4f00"
-		//}
+    //{
+    //    featureUrl: 'poll',
+    //    featureName: 'משאל עם',
+    //    featureLogo: "./img/poll.png",
+    //    featureColor: "#da4f00"
+    //}
 
     ];
 
@@ -89,7 +95,6 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         else {
             $rootScope.$broadcast('showLoginPopup', { showLogin: true });
             console.log('sign in');
-
         }
     };
 
@@ -127,16 +132,14 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showThankPage', { showThankPage: false });
         $scope.showInfo = false;
         generalParameters.setShowLogin(false);
-        //do shaer here....
-        //phonegap plugin...
-        //message, subject, image and link
-             //phonegap sharing plugin
+
+        //phonegap sharing plugin
         message = 'קראתי מאמר באפליקצית פועלים למען ישראל, כנסו לקרוא..';
         subject = 'קראתי מאמר באפליקצית פועלים למען ישראל, כנסו לקרוא..';
         img = 'http://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Naftali-Bennett.jpg/640px-Naftali-Bennett.jpg';
         link = 'https://www.facebook.com/NaftaliBennett';
-         window.plugins.socialsharing.share(message, subject, img, link);
- 
+        window.plugins.socialsharing.share(message, subject, img, link);
+
         // You can share text, a subject (in case the user selects the email application), (any type and location of) file (like an image), and a link.
         // However, what exactly gets shared, depends on the application the user chooses to complete the action. A few examples:
 
@@ -146,8 +149,6 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         //Flickr: message, image (an image is required for this option to show up).
         //Facebook iOS: message, image (other filetypes are not supported), link.
         //Facebook Android: sharing a message is not possible. You can share either a link or an image (not both), but a description can not be prefilled
-
-
     }
 
     $scope.closePopups = function () {
@@ -157,8 +158,6 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $scope.showInfo = false;
         generalParameters.setShowLogin(false);
     }
-
-
 
 } ]);
 
