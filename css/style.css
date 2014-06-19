@@ -302,11 +302,11 @@ span.respond-post, span.like-post {
     height: 18px;
     color: white;
 }
-span.is-liked{
 
-background-color:#31363d;
-
+span.is-liked {
+    background-color: #31363d;
 }
+
 .post-footer {
     position: relative;
 }
@@ -398,6 +398,10 @@ span.respond-count, span.like-count {
 
 .sidebar-left {
     background: #000;
+}
+
+.sidebar a.list-group-item {
+    border-bottom: 1px solid #565c63;
 }
 /**********************************comment css******************************************/
 .comment-container {
@@ -705,8 +709,7 @@ button {
     LINE-HEIGHT: 20px;
     background-color: '#ffffff';
     color: '#da4f00';
-    font-weight ': 'bold'; overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
-    -webkit-box-orient: vertical;
+    font-weight ': 'bold'; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical;
     -webkit-line-clamp: 2; /* number of lines to show */
 }
 
