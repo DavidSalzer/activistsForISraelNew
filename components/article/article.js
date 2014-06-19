@@ -5,9 +5,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.currentFilter = 'all';
     $scope.currentPost = null;
     $scope.showSpiner = false;
-    $scope.showPostTitle = true; 
-	
-	
+    $scope.showPostTitle = true;
+
+
     $scope.showArticleImg = false;
     $scope.showAuthorImg = true;
     $scope.currentPostType = 'article';
@@ -23,16 +23,21 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-	
-	$scope.user = generalParameters.getUser();
-	
-	
-	
-	
-	
-	
+
+    $scope.user = generalParameters.getUser();
+    request = {
+        startTimestamp: '',
+        endTimestamp: '',
+        offset: 0,
+        limit: 20,
+        orderBy: '-timestamp',
+        postType: 'article',
+        userID: $scope.user._id
+    };
+
+
     /*init controller data*/
-    PostService.getPostsBatch('articles.txt', $scope.currentFilter, 9, 0); //tell service to refresh posts
+    PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
 
     $scope.articleId = $stateParams.postId;
@@ -44,7 +49,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else {
-            $state.transitionTo('write-post', {postType: "article",postId:0});
+            $state.transitionTo('write-post', { postType: "article", postId: 0 });
         }
     };
 
@@ -65,18 +70,22 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         $scope.currentPost = args.postid;
         $scope.$apply();
         console.log(args)
-		var userId = $scope.user.userId
-		PostService.sendLike(args.postid,userId)
+        var userId = $scope.user.userId
+        PostService.sendLike(args.postid, userId)
     });
 
     $scope.$on('postClicked', function (event, args) {
         $scope.postId = args.postId;
         $scope.authorId = args.authorId;
         console.log('args: ' + args.postId);
+        console.log('args type: ' + args.postType);
         switch (args.postType) {
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
+            //case "talkback":  
+            //    $state.transitionTo('single-article', { postId: $scope.postId });  
+            //    break;  
             case "author":
                 $state.transitionTo('author-page', { authorId: $scope.authorId });
                 break;
@@ -96,7 +105,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     });
 
     $scope.getPosts = function () {
-        PostService.getPostsBatch('posts.txt', $scope.currentFilter, 9, 0);
+        PostService.getPostsBatch(request);
     }
 
     $scope.updatePosts = function () {
@@ -135,23 +144,31 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
     $scope.getPostsByAll = function () {
         $scope.currentFilter = 'all';
-        PostService.getPostsBatch('articles.txt', $scope.currentFilter, 9, 0);
+        request.postType = 'article';
+        request.endTimestamp = '';
+        PostService.getPostsBatch(request);
     }
 
     $scope.getPostsByAuthors = function () {
         $scope.currentFilter = 'authors';
-        PostService.getPostsBatch('posts.txt', $scope.currentFilter, 9, 0);
+        request.postType = 'author';
+        request.endTimestamp = '';
+        PostService.getPostsBatch(request);
     }
 
     $scope.getAuthors = function () {
         $scope.currentFilter = 'authors';
-        PostService.getPostsBatch('author.txt', $scope.currentFilter, 9, 0);
+        request.postType = 'author';
+        request.endTimestamp = '';
+        PostService.getPostsBatch(request);
     }
 
 
     $scope.getPostsByViews = function () {
         $scope.currentFilter = 'views';
-        PostService.getPostsBatch('articles.txt', $scope.currentFilter, 9, 0);
+        request.postType = 'article';
+        request.endTimestamp = '';
+        PostService.getPostsBatch(request);
     }
 
     $scope.sendComment = function () {
@@ -164,14 +181,15 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.loadMore = function () {
         $scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
-        PostService.getPostsBatch('posts.txt', $scope.currentFilter, 9, 1);
+        request.endTimestamp = '0';
+        PostService.getPostsBatch(request);
     }
-	
-	
-	 
-	
-   
-	
-	
+
+
+
+
+
+
+
 
 } ]);

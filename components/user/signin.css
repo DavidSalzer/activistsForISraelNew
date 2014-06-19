@@ -1,6 +1,6 @@
 .sign-in-popup {
     background-color: #565c63;
-    z-index: 4;
+    z-index: 11;
     top: 50px;
     width: 93%;
     margin: auto;
@@ -39,8 +39,8 @@
     background-position: center;
     background-size: 100% 100%;
     display: block;
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     line-height: 15px;
     text-align: center;
     border-radius: 10px;

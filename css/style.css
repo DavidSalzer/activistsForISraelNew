@@ -304,7 +304,7 @@ span.respond-post, span.like-post {
 }
 span.is-liked{
 
-background-color:red;
+background-color:#31363d;
 
 }
 .post-footer {
@@ -433,7 +433,7 @@ span.respond-count, span.like-count {
 }
 
 .comments {
-    padding-top: 15px;
+    padding-top: 8px;
     /* width: 100%; */
     /* max-height: 70%; */
     /* overflow: auto; */

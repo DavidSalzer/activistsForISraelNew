@@ -24,7 +24,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         offset: 0,
         limit: 20,
         orderBy: '-timestamp',
-        postType: 'article',
+        postType: 'talkback',
         userID: $scope.user._id 
         };
     PostService.getPostsBatch(request); //tell service to refresh posts
