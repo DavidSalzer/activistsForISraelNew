@@ -1,0 +1,54 @@
+<div class="sign-in-popup" data-ng-controller="signin" data-ng-show="showSignIn">
+    <div class="popup-wrapper sgin-wrapper">
+        <div class="sign-in-close-zone">
+            <div class="close-sign-in" data-ng-click="closeSignInPopup()"></div>
+        </div>
+        <input type="text" class="sign-in-field sign-in-first-name" data-ng-class="{loginErrorActive: showFnameError}" placeholder="שם פרטי" data-ng-model="fName">
+        <input type="text" class="sign-in-field sign-in-last-name" data-ng-class="{loginErrorActive: showLnameError}" placeholder="שם משפחה" data-ng-model="lName">
+        <input type="email" class="sign-in-field sign-in-mail" data-ng-class="{loginErrorActive: showEmailError}" placeholder="תיבת מייל" data-ng-model="mail">
+        <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="סיסמה" data-ng-model="pass">
+        <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="אימות סיסמה" data-ng-model="passAuthentication">
+        <input type="tel" class="sign-in-field sign-in-phone" data-ng-class="{loginErrorActive: showPhoneError}" placeholder="טלפון" data-ng-show="askPhoneAndAddress" data-ng-model="phone">
+        <input type="text" class="sign-in-field sign-in-address" data-ng-class="{loginErrorActive: showAddressError}" placeholder="ישוב" data-ng-show="askPhoneAndAddress" data-ng-model="address">
+        <div class="sign-in-upload-image-zone">
+            
+            <div class="sign-in-upload-image" data-ng-controller="uploadImg">
+                +
+                <input type="file" id="userImg">
+            </div>
+            <div class="sign-in-image-name">צרף תמונה</div>
+            <img ng-src="{{userImg}}" class="userImg" data-ng-show="userImg">
+        </div>
+        <div class="sign-in-picture"></div>
+        <div class="login-error" data-ng-show="showFnameError">* שדה שם פרטי לא הוזן כראוי</div>
+        <div class="login-error" data-ng-show="showLnameError">* שדה שם משפחה לא הוזן כראוי</div>
+        <div class="login-error" data-ng-show="showEmailError">* שדה תיבת מייל לא הוזן כראוי</div>
+        <div class="login-error" data-ng-show="showPassError">* שדה סיסמה לא הוזן כראוי</div>
+        <div class="login-error" data-ng-show="showPhoneError">* שדה טלפון לא הוזן כראוי</div>
+        <div class="login-error" data-ng-show="showAddressError">* שדה ישוב לא הוזן כראוי</div>
+        <input type="button" class="sign-in-btn" value="הצטרף" data-ng-click="sendSignIn()">
+        <div class="color-line color-line-bottom"></div>
+
+
+        <!-- edit img popup -->
+        <div data-ng-show="editImg" class="editImg">
+            <div class="sign-in-close-zone">
+                <div class="close-sign-in close" data-ng-click="closeSignInPopup()">x</div>
+            </div>
+            <div id="instruction-for-image">הזז, הדל והקטן למיקות התמונה</div>
+            <div id="cropDiv">
+                <img data-ng-src="{{userimg}}">
+            </div>
+            <div class="button-side-img">
+                <button id="button_ok" class="cat-Approve background-button-img">אשר</button>
+                </div>
+            <div class="button-side-img">
+                <button id="button_cancel" class="cat-cancel background-button-img" data-ng-click="editCancel()">בטל</button>
+            </div>
+            <canvas id="c"></canvas>
+            <div class="color-line color-line-button"></div>
+
+        </div>
+    </div>
+</div>
+

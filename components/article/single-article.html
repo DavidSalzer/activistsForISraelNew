@@ -1,0 +1,13 @@
+<link rel="stylesheet" type="text/css" href="./components/article/article.css" />
+
+<div class="scroll-main-window">
+
+
+    <author-header></author-header>
+
+    <post data-post-type="article" class="single-article"></post>
+
+    <section class="comments">
+        <post data-ng-repeat="post in comments" data-post-type="comment" data-ng-init="showCommentButton=false"></post>
+    </section>
+</div>

@@ -1,0 +1,30 @@
+<div class="post-tab" data-post="{{post.postId}}" data-post-type="{{post.postType}}">
+  <div class="post-details">
+    <div class="author-wrap" data-ng-show="showAuthorImg">
+        <figure class="author-image">
+            <img data-ng-src="{{post.authorImage}}" alt="user-pic">
+        </figure>
+         <span class="author-name"  data-author="{{post._author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post._author}}</span>
+  
+    </div>
+       <div class="post-title">{{post.title}}</div>
+       
+    <span class="author-date">{{post.timestamp * 1000 | date : 'dd.MM.yyyy'}}</span>
+  </div>
+    
+
+    <div class="post-main-text">
+        <img data-ng-src="{{post.image}}" alt="post-pic" data-ng-show="showArticleImg && post.image!=''">
+        {{post.content}}
+    </div>
+
+    <div class="post-footer">
+        <div class="post-feedback">
+            <comment data-postid="{{post.postId}}" data-ng-show="{{showCommentButton!=false}}"></comment>
+            
+            <like  data-ng-show="showLikeButton!=false"></like>
+            
+        </div>
+    </div>
+
+</div>

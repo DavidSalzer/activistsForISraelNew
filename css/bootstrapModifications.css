@@ -1,0 +1,192 @@
+.btn-default.active, .btn-default:active, .btn-default:focus, .btn-default:hover, .open .dropdown-toggle.btn-default {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.has-navbar-top .app-body {
+    padding-top: 0px;
+}
+
+
+/*nav bar*/
+
+header.navbar.navbar-app.navbar-absolute-top {
+    background-color: #000000;
+    border-bottom-width: 0px;
+}
+
+header i.fa {
+    color: #fff;
+    font-size: 24px;
+    line-height: 50px;
+}
+
+img.title-img {
+    width: 35px;
+    height: 35px;
+    position: relative;
+    top: -5px;
+}
+
+.navbar-brand-center { /*bootstrap bug fix*/
+    text-align: center;
+}
+
+header .btn.btn-navbar.info {
+    width: 35px;
+    border: 1px solid white;
+    margin-left: 15px;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    position: relative;
+    top: 8px;
+    line-height: 33px;
+}
+
+header i.fa.fa-info {
+    line-height: 38px;
+}
+
+div.btn.btn-navbar.sidebar-toggle {
+    margin: 0;
+}
+
+header ul.dropdown-menu {
+    min-width: 47px;
+    background-color: black;
+    padding: 0;
+    border-radius: 0px;
+    margin: 0px 0 0;
+}
+
+header .btn.btn-navbar {
+    padding-right: 0px;
+}
+
+
+.dropdown-menu .divider {
+    margin: 0px 0;
+}
+
+/*sidebar*/
+
+div#mainSidebar {
+    padding: 0 10px;
+}
+
+.sidebar-left {
+    width: 200px;
+}
+
+.sidebar-left-in .app {
+    -webkit-transform: translate3d(200px,0,0);
+    transform: translate3d(200px,0,0);
+}
+
+@media (min-width: 992px) {
+    .has-sidebar-left .app, .sidebar-left-in .app {
+        margin-left: 200px;
+        left: 0;
+        -webkit-transform: translate3d(0,0,0)!important;
+        -moz-transform: translate3d(0,0,0)!important;
+        transform: translate3d(0,0,0)!important;
+        position: relative;
+        -webkit-transition: -webkit-transform 0 ease;
+        -moz-transition: -moz-transform 0 ease;
+        transition: transform 0 ease;
+    }
+}
+
+
+a.list-group-item {
+    background-color: #000;
+    height: 50px;
+    line-height: 32px;
+}
+
+
+div.scrollable-content.overthrow {
+    background-color: #000;
+}
+
+div.list-group {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+img.user-thumbnail {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 100%;
+}
+
+.sidebar-logo {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 5px;
+}
+
+/*main menu*/
+
+.thumbnail .caption {
+    white-space: normal;
+    padding: 0;
+    padding-right: 5px;
+    color: gray;
+}
+
+.thumbnail {
+    border: 0;
+}
+
+/*----------------------------tabs css------------------------*/
+.nav.nav-tabs {
+    /*display: -webkit-flex;*/ /* NEW - Chrome */
+    /*display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    justify-content: space-between;*/
+    background-color: #565c63;
+    color: #000;
+    border-bottom: 1px solid #fff;
+}
+
+.nav-tabs > li {
+    margin-bottum: -1px;
+    padding: 0px;
+    float: right;
+    /*width: 100%;*/
+}
+
+.nav-tabs > li a {
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.nav-tabs > li > a:hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-bottom: 4px solid #fff;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    cursor: default;
+}
+
+.fa-spinner {
+    color: #fff;
+}
+
+input.ng-invalid {
+    border-color: red;
+}

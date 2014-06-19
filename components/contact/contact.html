@@ -1,0 +1,25 @@
+<link rel="stylesheet" type="text/css" href="./components/contact/contact.css" />
+
+
+
+<div class="sub-header">
+    <div data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">
+    צור קשר
+    </div>
+    <div class="color-line color-line-bottom "></div>
+</div>
+
+  <div class="contact-content-wrap main-content-wrap">
+        
+        <input type="text" class="sign-in-field " placeholder="שם ושם משפחה" data-ng-model="name">
+        <input type="mail" class="sign-in-field" placeholder="תיבת מייל" data-ng-model="mail">
+        <textarea class="contact-text" placeholder="כתוב טקסט..." data-ng-model="text"></textarea>
+          
+        <button data-ng-click="sendContact()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">שלח</button>    
+       <div class="contact-details">
+            <div>כתובתנו: אחד העם 12</div>
+            <input type="tel" value="טלפון: 02-83333333"/>
+            <div>פקס: 02-83335553</div>
+        </div>
+       
+ </div>

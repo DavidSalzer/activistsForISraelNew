@@ -1,0 +1,31 @@
+.facebook-wrap {
+    padding: 0;
+    top: -28px;
+    height: auto;
+}
+
+#face-wrap iframe{
+    width:310px !important;
+    height:900px !important;
+}
+
+#face-wrap span{
+    width:310px !important;
+    height:900px !important;
+   /* display: block;
+    margin: auto;*/
+}
+
+.fb_iframe_widget_fluid span{
+    margin: auto;
+display: block;
+}
+/*
+.facebook-wrap .fb_iframe_widget_fluid iframe{
+    height: 100% !important;
+    width: 100% !important;
+}
+.facebook-wrap .fb_iframe_widget_fluid span{
+     height: 100% !important;
+    width: 100% !important;
+}*/

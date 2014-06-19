@@ -1,0 +1,10 @@
+<div> <!-- {{numtab}}-{{tcolor}}-{{nametab}}-{{tfilter}} -->
+	<ul class="nav nav-tabs">
+			<li ng-repeat="nametab in tname" ng-class="{active : main.active.tab== {{nametab}} }">
+				<a ng-click="main.active.tab = '{{nametab}}'">{{nametab}}</a>
+			</li>
+	</ul>
+	<ul class="tab-contect">
+			
+	</ul>
+</div>

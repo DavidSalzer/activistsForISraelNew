@@ -1,0 +1,59 @@
+{
+    "type": "author",
+    "posts": [
+        {
+            "authorId": 0,
+            "postType": "author",
+            "_author": "רות הנדלר",
+            "authorImage": "./img/penguin-chick.jpg",
+            "timeStamp": 1401095945
+            
+           
+        },
+        {
+            "authorId": 1,
+            "postType": "author",
+            "_author": "ישראל ישראלי",
+            "authorImage": "./img/penguin-chick.jpg",
+            "timeStamp": 1401095945
+            
+           
+        },
+        {
+            "authorId": 2,
+            "postType": "author",
+            "_author": "נפתלי בנט",
+            "authorImage": "./img/penguin-chick.jpg",
+            "timeStamp": 1401095945
+            
+           
+        },
+       {
+            "authorId": 3,
+            "postType": "author",
+            "_author": "איילת שקד",
+            "authorImage": "./img/penguin-chick.jpg",
+            "timeStamp": 1401095945
+            
+           
+        },
+        {
+            "authorId": 4,
+            "postType": "author",
+            "_author": "דוד זלצר",
+            "authorImage": "./img/penguin-chick.jpg",
+            "timeStamp": 1401095945
+            
+           
+        },
+        {
+            "authorId": 5,
+            "postType": "author",
+            "_author": "shira mov",
+            "authorImage": "./img/penguin-chick.jpg",
+            "timeStamp": 1401095945
+            
+           
+        }
+    ]
+}

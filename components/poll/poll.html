@@ -1,0 +1,36 @@
+<div class="channel-title-zone sub-header">
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-click="SuggestPoll()">הצע סקר</div>
+    <div class="color-line"></div>
+	<ul class="nav nav-tabs" data-ng-style="{'background-color':featureDetails.featureTabColor}">
+		<li style="width: 50%"><a href="#Tab1" toggle="on" parent-active-class="active" data-ng-click="getActivePoll()">סקרים פתוחים</a></li>
+		<li style="width: 50%"><a href="#Tab2" toggle="on" parent-active-class="active" data-ng-click="getInActivePoll()">סקרים סגורים</a></li>
+	</ul>
+
+	<div class="tab-content"><!--ignore this section- do not delete-->
+		<div class="tab-pane" toggleable active-class="active" default="active" id="Tab1" exclusion-group="myTabs"></div>
+		<div class="tab-pane" toggleable active-class="active" id="Tab2" exclusion-group="myTabs"></div>
+	</div>
+</div>
+
+
+
+<div class="polls-layout channel-con" data-ng-init="getActivePoll()">
+    <div class="posts-list" scroller loading-method="loadMore()">
+        <div ng-repeat="list in polls()" class="list-tube">
+			<div class="polls-container" ng-click="userClicked($index);">
+				<div class="image-container" >
+					<div class="polls-image" style="background-image: url('{{list.image}}')"></div>
+				</div>		
+			</div>			
+            <div class="text-box player-text" ng-click="userClicked($index);">
+                <h1 class="padd" data-ng-style="{'color': '{{featureDetails.featureColor}}', 'font-weight': 'bold'}">{{list.title}}</h1>
+                <h1 class="ellipsis" data-ng-style="{'color': '#ffffff'}">{{list.content}} </h1>
+            </div>
+        </div>
+		
+        <div class="spiner-zone" data-ng-show="showSpiner">
+            <div class="fa fa-spinner fa-spin"></div>
+        </div>
+    </div>
+    <!--<button type="button" ng-click='getVideos()'> הצג עוד...</button >-->
+</div>

@@ -1,0 +1,26 @@
+<div class="channel-title-zone sub-header">
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">ערוץ יוטיוב</div>
+    <div class="color-line"></div>
+</div>
+<div class="channel-con" data-ng-init="getVideos()">
+    <div data-ng-show="loginYoutube">
+ This application requires access to your YouTube account.
+      Please <button id="login-link" data-ng-click="login()">authorize</button> to continue
+    </div>
+    <div class="channel-list" scroller loading-method="getVideos()">
+        <div ng-repeat="list in items" class="list-tube">
+            <div id="player{{$index}}" class="player-contener" data-ng-click="laodyoutube(list.id.videoId,$index);">
+                <img ng-src="{{list.snippet.thumbnails.high.url}}">
+                <!--<div class="channel-play-button"></div>-->
+            </div>
+            <div class="player-text" ng-click="alert();">
+                <h2>{{list.snippet.title}}</h2>
+                <p>{{list.statistics.viewCount}} צפיות</p>
+            </div>
+        </div>
+        <div class="spiner-zone" data-ng-show="showSpiner">
+            <div class="fa fa-spinner fa-spin"></div>
+        </div>
+    </div>
+    <!--<button type="button" ng-click='getVideos()'> הצג עוד...</button >-->
+</div>

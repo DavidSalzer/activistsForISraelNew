@@ -1,0 +1,53 @@
+<div class="sign-in-popup" data-ng-controller="login" data-ng-show="showLogin">
+    <div class="popup-wrapper log-in-wrapper">
+        <div class="sign-in-close-zone">
+            <div class="close-sign-in" data-ng-click="closeLoginPopup()"></div>
+        </div>
+        <input type="email" class="sign-in-field sign-in-mail" data-ng-class="{loginErrorActive: showEmailError}" placeholder="תיבת מייל" data-ng-model="mail">
+        <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="סיסמה" data-ng-model="pass">
+        <div class="login-error" data-ng-show="showEmailError">* שדה תיבת מייל לא הוזן כראוי</div>
+        <div class="login-error" data-ng-show="showPassError">* שדה סיסמה לא הוזן כראוי</div>
+        <input type="button" class="sign-in-btn" value="היכנס" data-ng-click="sendLogin()">
+        <div class="login-forget-pass">שכחת סיסמה?</div>
+        
+
+
+
+        <!--<div class="log-in-or">או</div>-->
+        <!--<button class="sign-in-field" data-ng-click="facebooklogin()">
+            <span>התחבר באמצעות</span>
+            <span class="fa fa-facebook-square"></span>
+        </button>
+        <div class="log-in-or">או</div>
+        <button class="sign-in-field">
+            <span>התחבר באמצעות</span>
+            <span class="fa fa-google-plus"></span>
+            <span id="signinButton">
+                <span class="g-signin" data-callback="signinCallback" data-clientid="634600880816-oosgcbaoahhg8h75t9rmqscjipup6jq4.apps.googleusercontent.com" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schemas.google.com/AddActivity" data-scope="https://www.googleapis.com/auth/plus.login">
+                </span>
+            </span>
+        </button>-->
+
+        <div class="sign-in-wrapper">
+            <div class="no-sign-in-yet">עדיין לא הצטרפת?</div>
+            <input type="button" class="sign-in-btn" value="להצטרפות" data-ng-click="openSigninPopup()">
+        </div>
+        <div class="color-line color-line-bottom"></div>
+    </div>
+</div>
+<!-- Place this asynchronous JavaScript just before your </body> tag -->
+<script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    
+    
+    function callback(r){
+        console.log(r);
+    }
+    
+    
+    
+</script>

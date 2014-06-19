@@ -1,0 +1,109 @@
+.thank-you-page {
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    position: relative;
+}
+
+.thank-you-header {
+    width: 100%;
+    height: 50px;
+    background-color: #ffd800;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+}
+
+.thank-you-external-background {
+    background-color: #2f343b;
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box;
+    padding: 40px 18px 90px 18px;
+    /*z-index: 2;
+    position: absolute;
+    top: 95px;*/
+    position: relative;
+}
+
+.thank-you-background {
+    background-color: white;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+.thank-you {
+    text-align: center;
+    font-size: 70px;
+    color: #2f343b;
+    margin-bottom: 15px;
+}
+
+.thank-you-details {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.thank-you-image {
+    margin: auto;
+    background-image: url('../../img/poalim-logo.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 80px;
+    height: 80px;
+}
+
+
+
+.thank-you-return-btn {
+    background-color: #42484e;
+    height: 50px;
+    width: 48%;
+    margin: auto;
+    border-radius: 10px;
+    display: block;
+    color: white;
+    border: 0;
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+
+.center-text-wrapper {
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    margin: auto;
+    -webkit-box-sizing: border-box;
+    width: 100%;
+}
+
+@media only screen and ( max-width: 479px ) {
+    .thank-you {
+        font-size: 50px;
+    }
+
+    .thank-you-details {
+        font-size: 15px;
+    }
+
+    .center-text-wrapper {
+        height: 270px;
+    }
+
+    .thank-you-return-btn {
+        height: 42px;
+        font-size: 16px;
+    }
+}

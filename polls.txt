@@ -1,0 +1,122 @@
+{
+    "type": "poll",
+    "polls": [
+        {
+            "pollId": 0,
+            "postType": "poll",
+            "timeStamp": 1401095945,
+            "title": "ksjhgkhgkgh",
+            "content": "בטקס הרמת כוסית לכבוד נשיא המדינה הנבחר ראובן (רובי) ריבלין שהסתיים לפני דקות אחדות נישאו נאומי יושב ראש האני רוצה לאחל להצלחה בהמשך הדרך ולברךברוך שחלק מכבודו לבשר ודם. הוכחת ",
+            "image": "./img/image/kneset.jpg",
+			"status": "active",
+			"optionsForVote":[
+                        {"name": "Starbucks", "image": "./img/image/kneset.jpg"},
+                        {"name": "Costa",  "image": "./img/image/kneset.jpg"},
+                        {"name": "Coffee Bean",  "image": "./img/image/kneset.jpg"},
+                        {"name": "Coffee Bean",  "image": "./img/image/kneset.jpg"}
+                    ],
+			"data": [
+                        {"name": "Starbucks", "votes": 36, "image": "./img/image/kneset.jpg"},
+                        {"name": "Costa", "votes": 34, "image": ""},
+                        {"name": "Coffee Bean", "votes": 30, "image": ""}
+                    ],
+			"chartType":"PieChart"	
+        },
+        {
+            "pollId": 1,
+            "postType": "poll",
+            "timeStamp": 1401095945,
+            "title": "בלה בלה",
+            "content": "תגמבךה בלה בלה בלה",
+            "image": "./img/image/kneset.jpg",
+			"status": "inactive",
+			"optionsForVote":[
+                        {"name": "Starbucks", "image": ""},
+                        {"name": "Costa",  "image": ""},
+                        {"name": "Coffee Bean",  "image": ""},
+                        {"name": "Coffee Bean",  "image": ""}
+                    ],
+			"data": [
+                        {"name": "Starbucks", "votes": 24, "image": ""},
+                        {"name": "Costa", "votes": 36, "image": "./img/image/kneset.jpg"},
+                        {"name": "Coffee Bean", "votes": 30, "image": ""},
+                        {"name": "Coffee Bean", "votes": 10, "image": ""}
+                    ],
+			"chartType":"ColumnChart"
+        },
+        {
+            "pollId": 2,
+            "postType": "poll",
+            "timeStamp": 1401095945,
+            "title": "עקירתעציזית",
+            "content": "  לחגךלחעגךלח חךל  חלעללע עלחעלע ללחעךלחע לחלעח ללח חע  לחל ע תגמחירתגמחירתגמחירתגמחירתגמחירתגמחיר",
+            "image": "./img/image/kneset.jpg",
+			"status": "inactive",
+			"optionsForVote":["Starbucks","Costa","Coffee Bean", "hgjh"],
+			"data": [
+                        {"name": "Starbucks", "votes": 36, "image": ""},
+                        {"name": "Costa", "votes": 34, "image": ""},
+                        {"name": "Coffee Bean", "votes": 30, "image": ""}
+                    ],
+			"chartType":"PieChart"
+        },
+        {
+            "pollId": 3,
+            "postType": "poll",
+            "timeStamp": 1401095945,
+            "title": "עקירתעציזית",
+            "content": "תגמחירתגמחירתגמחירתגמחירתגמחירתגמחיר",
+            "image": "./img/image/kneset.jpg",
+			"status": "active",
+			"optionsForVote":[
+                        {"name": "Starbucks", "image": ""},
+                        {"name": "Costa",  "image": ""},
+                        {"name": "Coffee Bean",  "image": ""},
+                        {"name": "Coffee Bean",  "image": ""}
+                    ],
+			"data": [
+                        {"name": "Starbucks", "votes": 36, "image": ""},
+                        {"name": "Costa", "votes": 34, "image": ""},
+                        {"name": "Coffee Bean", "votes": 30, "image": ""}
+                    ],
+			"chartType":"ColumnChart"
+        },
+        {
+            "pollId": 4,
+            "postType": "poll",
+            "timeStamp": 1401095945,
+            "title": "עקירתעציזית",
+            "content": "זדגכעכבעיחיחילחךלךהיעחחלחמלחמצל",
+            "image": "./img/image/kneset.jpg",
+			"status": "active",
+			"optionsForVote":[
+                        {"name": "Starbucks", "image": "./img/image/kneset.jpg"},
+                        {"name": "Costa",  "image": "./img/image/kneset.jpg"},
+                        {"name": "Coffee Bean",  "image": "./img/image/kneset.jpg"},
+                        {"name": "Coffee Bean",  "image": "./img/image/kneset.jpg"}
+                    ],
+			"data": [
+                        {"name": "Starbucks", "votes": 36, "image": ""},
+                        {"name": "Costa", "votes": 34, "image": ""},
+                        {"name": "Coffee Bean", "votes": 30, "image": "./img/image/kneset.jpg"}
+                    ],
+			"chartType":"PieChart"
+        },
+        {
+            "pollId": 5,
+            "postType": "poll",
+            "timeStamp": 1401095945,
+            "title": "עקירתעציזית",
+            "content": "תלתלתלתלתתלתלתלתתללתתלתלתתללתתלתל",
+            "image": "./img/image/kneset.jpg",
+			"status": "active",
+			"optionsForVote":["Starbucks","Costa","Coffee Bean", "hgjh"],
+			"data": [
+                        {"name": "Starbucks", "votes": 36, "image": ""},
+                        {"name": "Costa", "votes": 34, "image": ""},
+                        {"name": "Coffee Bean", "votes": 30, "image": ""}
+                    ],
+			"chartType":"PieChart"
+        }
+    ]
+}

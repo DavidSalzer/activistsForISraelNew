@@ -1,0 +1,18 @@
+
+<div class="post-tab" id="post-{{post.postId}}">
+    <figure>
+        <img data-ng-src={{post.authorImage}} alt="user-pic">
+    </figure>
+    <span class="author-name">{{post._author}}</span>
+    <span class="author-date">{{post.timeStamp * 1000 | date : 'dd.MM.yyyy'}}</span>
+    <div class="post-main-text">{{post.content}}</div>
+    <div class="post-footer">
+        <div class="post-feedback">  
+            <div>
+                <span class="like-post like">אהבתי</span>
+                <span class="like-count">12</span>
+            </div>
+        </div>
+    </div>
+
+</div>

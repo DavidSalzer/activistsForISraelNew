@@ -1,0 +1,94 @@
+<link rel="stylesheet" type="text/css" href="./components/article/article.css" />
+
+
+<!-- sub header: כתיבת טקסט,סקר -->
+	<div class="sub-header">
+		<div data-ng-style="{'background-color': '{{featureColor}}'}">
+			{{headerText}}
+		</div>
+		<div class="color-line color-line-bottom "></div>
+	</div>
+
+<div class="article-content-wrap main-content-wrap" >
+    
+	
+    <div class="article-content">
+		
+		<!-- article title-->
+        <input data-ng-show='parentPost.parentPostType=="article"' type="text" class="title-field" placeholder="כותרת" data-ng-model="postData.post.title" />
+        
+		<!-- article add text file-->
+		<div data-ng-show='parentPost.parentPostType=="article"' class="file-add-container">
+                <div class="file-instru">ניתן לצרף את המאמר מתוך קובץ:</div>
+            <div class="add-file"  data-ng-click="selectFile()">
+                <div class="plus">+</div>
+                <div class="add-file-text-back">
+                    <div class="add-file-text">צרף קובץ</div>
+                    <div class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{fileMax}}MB</div>
+                </div>
+            
+            </div>
+        </div>
+		
+		<!-- article instructions-->
+        <div data-ng-show='parentPost.parentPostType=="article"' class="file-instru">או כתבו את המאמר ישירות כאן:</div>
+		
+		<!-- post main text area-->
+		<div style="position:relative;height:100%;background-color: hsl(0, 100%, 100%);border-radius: 10px;">
+			
+			<textarea  data-ng-hide='parentPost.parentPostType=="article"' char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='height: 93%;border:none'>
+			</textarea >
+			<span style='color:#bcccce;position:absolute;bottom:4px;left:4px;background-color:hsl(0, 100%, 100%);border-radius:10px'>[{{postData.post.content.length}}/{{max}}]</span>
+			
+			<textarea  data-ng-show='parentPost.parentPostType=="article"' class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='height: 93%;border:none'>
+			</textarea >
+			<span data-ng-show='parentPost.parentPostType=="article"' style='color:#bcccce;position:absolute;bottom:4px;left:4px;background-color:hsl(0, 100%, 100%);border-radius:10px'>[{{postData.post.content.length}} תוים]
+			</span>
+			
+		</div>
+		
+		
+		<!-- post add img area-->
+        <div class="add-file"  >
+           <div class="plus" >+</div>
+            <div class="add-file-text-back" >
+                <input type="file" data-file='postImg' data-img='imgObj' class="add-file-text"  style='opacity:1;position:relative;'>
+				</input>
+				 <div class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div>
+            </div>
+        </div>
+		
+		<!-- post add img preview-->
+		<img ng-src="{{postImg}}" style='margin: 0px auto 20px auto;display: block'  >
+		
+		
+		<!-- post send button-->
+        <div class="button" data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">שלח
+		</div>
+   </div>
+        
+
+</div>
+
+
+
+
+
+
+<!-- <div style="position:relative;height:100%;background-color: hsl(0, 100%, 100%);border-radius: 10px;">
+			<textarea  char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='height: 93%;border:none'>
+			</textarea >
+			<span style='color:#bcccce;position:absolute;bottom:4px;left:4px;background-color:hsl(0, 100%, 100%);border-radius:10px'>[{{postData.post.content.length}}/{{max}}]</span>
+		</div> -->
+		
+      <!--   <div class="button" data-ng-click="sendPost()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}"> שלח</div>
+   
+ -->
+<!-- <div class="add-file" style='text-align: center;' data-ng-show='post.postType=="talkback"'>
+            <div class="plus" style='margin-left: 45px;'>+</div>
+            <div class="add-file-text-back">
+                <div class="add-file-text" style='color: hsl(208,100%,97%);text-align:center;background:none;'>צרף תמונה</div>
+			<div class="add-file-error" data-ng-show='toLargImage'>הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div>
+            </div>
+        </div> -->
+

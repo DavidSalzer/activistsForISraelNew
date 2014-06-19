@@ -1,0 +1,58 @@
+
+.contact-content-wrap button{
+    height: 38px;
+    width: 30%;
+    
+   
+}
+
+.contact-text{
+    background-color: #2f343b;
+display: block;
+border-radius: 10px;
+color: white;
+width: 90%;
+margin: 5px auto 10px auto;
+position: relative;
+text-indent: 10px;
+text-indent: 10px;
+height: 145px;
+border: none;
+}
+
+.contact-details{
+  width: 60%;
+margin: auto;
+margin-top: 31px;
+color: white;
+line-height: 25px;
+text-align: center;
+font-weight: bold;
+font-size: 15px;
+padding-bottom: 44px;
+}
+
+.contact-content-wrap
+{
+    background-color: #2f343b;
+    margin-top: 20px;
+}
+.contact-content-wrap input, .contact-content-wrap textarea{
+    color: black;
+    background-color: white;
+}
+
+.contact-content-wrap textarea
+{
+    padding-top: 9px;
+}
+
+.contact-content-wrap input[type="tel"]{
+    border: none;
+box-shadow: none;
+background-color: transparent;
+color: white;
+text-align: center;
+margin: auto;
+width: 100%;
+}

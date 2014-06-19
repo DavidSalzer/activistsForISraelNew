@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+  <head>
+    <title>My Uploads</title>
+    <link rel="stylesheet" type="text/css" href="my_uploads.css">
+  </head>
+  <body>
+    <div id="login-container" class="pre-auth">
+      This application requires access to your YouTube account.
+      Please <a href="#" id="login-link">authorize</a> to continue.
+    </div>
+    <div id="buttons">
+      <label> <input id="query" value='cats' type="text"/><button id="search-button" disabled onclick="search()">Search</button></label>
+    </div>
+     <div id="player0"></div>
+     <input type="button" value="play" id="play" onClick="play()">
+     <input type="button" value="pause" id="pause" onClick="pause()">
+     <input type="button" value="stop" id="stop" onClick="stopVideo()">
+     <input type="range" value="50" min="0" max="100" step="10" id="vol">
+     <div id="player1"></div>
+    <div id="search-container">
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
+    <script >
+    // The client ID is obtained from the Google Developers Console
+// at https://cloud.google.com/console.
+// If you run this code from a server other than http://localhost,
+// you need to register your own client ID.
+var OAUTH2_CLIENT_ID = '634600880816-mc68qbu77b9i4h65l0h7qtdjon9oqrud.apps.googleusercontent.com';
+var OAUTH2_SCOPES = [
+  'https://www.googleapis.com/auth/youtube'
+];
+
+// Upon loading, the Google APIs JS client automatically invokes this callback.
+googleApiClientReady = function() {
+  gapi.auth.init(function() {
+    window.setTimeout(checkAuth, 1);
+  });
+}
+
+// Attempt the immediate OAuth 2.0 client flow as soon as the page loads.
+// If the currently logged-in Google Account has previously authorized
+// the client specified as the OAUTH2_CLIENT_ID, then the authorization
+// succeeds with no user intervention. Otherwise, it fails and the
+// user interface that prompts for authorization needs to display.
+function checkAuth() {
+  gapi.auth.authorize({
+    client_id: OAUTH2_CLIENT_ID,
+    scope: OAUTH2_SCOPES,
+    immediate: true
+  }, handleAuthResult);
+}
+
+// Handle the result of a gapi.auth.authorize() call.
+function handleAuthResult(authResult) {
+  if (authResult) {
+    // Authorization was successful. Hide authorization prompts and show
+    // content that should be visible after authorization succeeds.
+    $('.pre-auth').hide();
+    $('.post-auth').show();
+    loadAPIClientInterfaces();
+  } else {
+    // Make the #login-link clickable. Attempt a non-immediate OAuth 2.0
+    // client flow. The current function is called when that flow completes.
+    $('#login-link').click(function() {
+      gapi.auth.authorize({
+        client_id: OAUTH2_CLIENT_ID,
+        scope: OAUTH2_SCOPES,
+        immediate: false
+        }, handleAuthResult);
+    });
+  }
+}
+
+// Load the client interfaces for the YouTube Analytics and Data APIs, which
+// are required to use the Google APIs JS client. More info is available at
+// http://code.google.com/p/google-api-javascript-client/wiki/GettingStarted#Loading_the_Client
+function loadAPIClientInterfaces() {
+  gapi.client.load('youtube', 'v3', function() {
+    handleAPILoaded();
+  });
+}
+    
+    </script>
+    <script>
+// After the API loads, call a function to enable the search box.
+function handleAPILoaded() {
+  $('#search-button').attr('disabled', false);
+}
+	var player = [];
+
+// Search for a specified string.
+function search() {
+  var q = $('#query').val();
+  var request = gapi.client.youtube.search.list({
+   // q: q,
+    part       : 'snippet',
+	channelId  : 'UC4x7LYSzgGH-TMKc9J8pwgQ',
+	maxResults : 2,
+	//pageToken  : 'CDIQAA',
+	order      : 'date'
+   });
+
+  request.execute(function(response) {
+	console.log(response);
+    var str = JSON.stringify(response.result);
+	var html='';
+	for(var i=0 ; i < response.items.length ;i++){
+    	html+='<p>' + response.items[i].snippet.title + '</p>';
+	
+		player[i] = new YT.Player('player'+i+'', {
+          height: '390',
+          width: '640',
+		  controls: 0 ,
+          videoId: response.items[i].id.videoId ,
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          },
+		 playerVars: {
+            controls: 0,
+            disablekb: 0
+        	},
+        });
+      	
+	}
+	$('#search-container').html(html);
+  });
+}
+    
+    </script>
+<!-- player api -->
+<script>
+var tag = document.createElement('script');
+	tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	   
+  /* var player;
+    function onYouTubeIframeAPIReady() {
+    	player = new YT.Player('player0', {
+          height: '390',
+          width: '640',
+          videoId: 'M7lc1UVf-VE',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }	   
+*/
+	function onPlayerReady(event) {
+       //event.target.playVideo();
+      }
+	  
+	function play() {
+       player[0].playVideo();
+     }
+	 function pause() {
+       player[0].pauseVideo();
+     }
+	
+	var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player[0].stopVideo();
+      }
+	  
+	  $('#vol').on('change',this,function(){
+		val=$(this).val();
+		player[0].setVolume(val);	 
+	  });
+	  
+</script>
+
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+  </body>
+</html>

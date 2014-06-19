@@ -1,0 +1,210 @@
+#main-menu h2 {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.current-feature {
+    height: 58%;
+    /*height: 282px;*/
+    width: 100%;
+    background-color: #2f343b;
+    padding-bottom: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 12px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+    border-bottom: 1px solid #565c63; /*this his here becuase there is a vorder in class .menu-item-feature of 1px */
+}
+
+.current-feature-components {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: #42484e;
+    padding: 2px;
+    position: relative;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+    -webkit-box-shadow: 0px 0px 35px 2px rgba(0,0,0,0.66); /* Safari/Chrome, other WebKit */
+    -moz-box-shadow: 0px 0px 35px 2px rgba(0,0,0,0.66); /* Firefox, other Gecko */
+    box-shadow: 0px 0px 35px 2px rgba(0,0,0,0.66); /* Opera/IE 8+ */
+}
+
+.current-feature-image {
+    height: 158px;
+    background-image: url('../img/image/kneset.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    margin: auto;
+    margin-bottom: 4px;
+}
+
+.current-feature-name {
+    height: 30px;
+    background-color: #565c63;
+    /*width: 100%;*/
+    color: #fff;
+    padding-right: 7px;
+    line-height: 23px;
+    position: relative;
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.53);
+    -moz-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.53);
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.53);
+}
+
+.current-feature-name h2 {
+    color: #fff;
+}
+
+.caption p {
+    font-size: 10px;
+    color: #bcccce;
+    padding-top: 5px;
+}
+
+.feature-logo {
+    direction: ltr;
+    background-image: url('../img/youtube_small.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 18px;
+    width: 18px;
+    display: inline-block;
+    left: 13px;
+    top: 6px;
+    position: absolute;
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.39);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.39);
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.39);
+    background-size: 100% 100%; /*need to ask tal to make the image fill all of the background to rite here background-size:100% 100% becuase the youtube image does not take all of its place*/
+}
+
+.current-feature-title {
+    color: #bcccce;
+    white-space: normal;
+    padding-right: 5px;
+    padding-top: 3px;
+}
+
+.current-feature-text {
+    color: #bcccce;
+    white-space: normal;
+    font-size: 9px;
+    padding-right: 7px;
+    margin-top: -2px;
+}
+
+.features-swipe {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    height: 42%;
+    /*height: 236px;*/
+    white-space: nowrap;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    /*padding-right: 15px;*/
+    margin: 0;
+}
+
+.menu-item-feature {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+    background-color: #2f343b;
+    padding: 10px;
+    width: 145px;
+    height: 100%;
+    display: inline-block;
+    border: 1px solid #565c63;
+}
+
+.feature-item-image {
+    background-image: url('../img/image/kneset.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    height: 88px;
+}
+
+.current-feature-components img {
+    position: absolute;
+    /* background-color: green; */
+    bottom: 2px;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: table-cell;
+    vertical-align: bottom;
+    width: 95%;
+    height: 85px;
+}
+
+.caption h3 {
+    font-size: 12px;
+    font-weight: bold;
+    color: #bcccce;
+    /* line-height: 14px; */
+    padding-top: 8px;
+}
+
+/*.btn.btn-navbar.pull-left.info{
+    display: none;
+}*/
+
+@media only screen and ( max-height: 480px ) {
+    .features-swipe {
+        height: 178px;
+    }
+
+    .current-feature-name {
+        height: 23px;
+    }
+
+    .feature-logo {
+        height: 15px;
+        width: 15px;
+        top: 4px;
+    }
+
+    #main-menu h2 {
+        line-height: 23px;
+    }
+
+    .current-feature-title {
+        padding-top: 1px;
+    }
+
+    .current-feature-text {
+        margin-top: 0px;
+    }
+
+    .current-feature {
+        height: 259px;
+    }
+
+    .caption h3 {
+        padding-top: 4px;
+    }
+
+    .menu-item-feature {
+        padding: 8px;
+    }
+
+    .caption p {
+        display: none;
+    }
+
+    .feature-logo {
+        left: 8px;
+    }
+}

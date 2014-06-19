@@ -1,0 +1,259 @@
+/*********************header***************/
+
+
+/*header {
+    width: 100%;
+    background-color: #000000;
+    height: 50px;
+    line-height: 40px;
+    color: #fff;
+    position: absolute;
+    z-index: 15;
+    line-height: 40px;
+    top: 0;
+    box-sizing: border-box;
+    padding: 10px;
+}*/
+
+/*#menu-button {*/
+/*margin-top: 4px;
+    margin-left: 4px;*/
+/*background-color: #fff;*/
+/*width: 32px;
+    height: 32px;
+    display: inline;
+    position: absolute;*/
+/*left: 0;*/
+/*background-image: url('../img/menu.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}*/
+
+/*#menu-button.active {
+    background-color: #ff4e00;
+    background-image: url('../img/3_lines_icon_white.png');
+}*/
+
+/*#header-title {
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    background-image: url('../img/poalim-logo.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#social-menu {
+    width: 32px;
+    height: 32px;
+    display: inline;
+    color: #000000;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    line-height: 32px;
+    background-image: url('../img/share.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#social-menu.focus {
+    background-color: #ff4800;
+}
+
+#social-menu span {
+    display: inline-block;
+    font-size: 15px;
+    font-family: 'almoni700';
+}
+
+#social-menu .shekel {
+    font-size: 15px;
+    font-family: almoni700;
+}
+
+#social-menu.active-shoping {
+    background-color: #d71921;
+}*/
+/*=======================popup style ==================*/
+.info-popup {
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 66px 13px 7px 13px;
+    background: #fff;
+    color: #868686;
+    font-size: 15px;
+    text-align: center;
+    z-index: 4;
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #fff;
+    position: absolute;
+    top: -20px;
+    left: 34px;
+}
+
+@media only screen and ( min-width: 992px ) {
+    .arrow-up {
+        left: 0px;
+    }
+}
+
+.info-close {
+    background-image: url(../../img/small_x_grey.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    /*color: #fff;
+    background-color: #000000;*/
+    display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 17px;
+    text-align: center;
+    border-radius: 20px;
+    font-weight: 100;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.info-img {
+    margin: 0 auto;
+    display: block;
+    clear: both;
+}
+
+.info-header {
+    height: 42px;
+    border-radius: 10px;
+    margin: 10px;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    line-height: 42px;
+}
+
+.info-popup .main-text {
+    width: 80%;
+    margin: 13px auto;
+}
+
+#whatsup-bottom {
+    position: absolute;
+    bottom: 0px;
+    padding: 20px 0px;
+    width: 100%;
+}
+
+#bottom-main-text {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+#whatsup-bottom p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+#whatsup-bottom p::before {
+    background-image: url(../../img/image/color_line.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 4px;
+    background-size: 100% 100%;
+    position: absolute;
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    right: 0px;
+}
+
+.join-button {
+    margin: 12px auto 0px auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #000000;
+    display: inline-block;
+    width: 146px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 11px;
+    cursor: pointer;
+    background-color: #993ca7;
+    color: #fff;
+}
+
+.devider-line {
+    background-image: url(../../img//image/color_line.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 4px;
+    background-size: 100% 100%;
+}
+
+.top-diveder {
+    margin: 10px 0;
+}
+
+.bottom-devider {
+    position: absolute;
+    bottom: 0px;
+}
+
+header .btn.btn-navbar.info {
+    background-image: url("../../img/info.png");
+    background-size: 100% 100%;
+}
+
+/********************side-bar*******************/
+
+span.sidbar-text.ng-binding {
+    display: inline-block;
+    width: 80%;
+    width: 144px;
+    position: relative;
+    right: -25px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 11px;
+}
+
+span.sidbar-text.ng-binding:hover {
+   /*  background-color: #565c63; */
+    color: white;
+}
+
+a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.active:hover {
+    background-color: none;
+}
+
+.popups-mask {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+}

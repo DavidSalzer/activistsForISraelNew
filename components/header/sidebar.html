@@ -1,0 +1,18 @@
+<h1 class="app-name" data-toggle="off" data-bubble data-target="mainSidebar" data-ng-click="goToUserProfile()">{{userProfile().firstName}} {{userProfile().lastName}} <img class="sidebar-logo user-thumbnail" ng-src='{{userProfile().userImg}}' alt="alt"></h1>
+
+
+
+            <div class="scrollable">
+                <div class="scrollable-content">
+                    <div class="list-group" data-toggle="off" data-bubble data-target="mainSidebar"  >
+                        <a data-ng-repeat="feature in featuresList" class="list-group-item" href="#/{{feature.featureUrl}}"  data-ng-click='select($index)'>
+                            <span class="sidbar-text"  data-ng-style='{"background-color":(active==$index?"{{feature.featureColor}}":null)}' >
+                                {{feature.featureName}}
+                            </span>
+                            <img class="sidebar-logo" ng-src='{{feature.featureLogo}}' alt="alt" >
+                        </a>
+                        <!-- ... -->
+                    </div>
+
+                </div>
+            </div>

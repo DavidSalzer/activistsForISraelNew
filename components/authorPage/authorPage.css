@@ -1,0 +1,35 @@
+.posts-list.specific-author {
+    background-color: #2d3238;
+}
+.post-title {
+padding-right: 0;
+}
+/*#author-header {
+    width: 100%;
+    height: 50px;
+    background-color: #565c63;
+    color: white;
+    box-sizing: border-box;
+    padding: 0px 20px;
+}
+
+
+#author-header figure.author-image {
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    border: solid 2px #ffffff;
+}
+
+#author-header .author-image img {
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+}
+
+#author-header .author-date,#author-header span.author-name {
+    line-height: normal;
+    position: relative;
+    top: 25px;
+}*/

@@ -1,0 +1,786 @@
+@import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+
+body {
+    direction: rtl;
+    height: 100%;
+    font-family: 'Open Sans Hebrew';
+}
+
+.app {
+    height: 100%;
+    padding-top: 43px;
+    box-sizing: border-box;
+}
+
+.app-body, .main-view, #main-menu {
+    height: 100%;
+    position: relative;
+    background-color: #2f343b;
+}
+
+
+/*testing nav bar*/
+.navbar, .navbar-app {
+    min-height: 0px;
+}
+
+header.navbar.navbar-app.navbar-absolute-top {
+    /*z-index: 0;*/
+    height: 43px;
+   
+}
+
+
+img.title-img {
+    top: -11px;
+}
+
+header .btn.btn-navbar.info {
+    top: 4px;
+}
+
+header i.fa {
+    position: relative;
+    top: -2px;
+}
+
+.scroll-main-window{
+    height: 100%;
+    overflow-y: scroll;
+}
+/*************************post template*******************/
+.posts-list {
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 160px;
+    box-sizing: border-box;
+    padding-top: 3px;
+    /*border-left: 12px solid #2d3238;
+    border-right: 12px solid #2d3238;*/
+}
+
+.post-buttons {
+    position: absolute;
+}
+
+.post-likes {
+    left: 0px;
+}
+
+.post-comment {
+    right: 0px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    color: #fff;
+    background-color: transparent;
+    border-bottom: 9px solid #fff;
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+    cursor: default;
+    margin: auto;
+}
+
+.nav.nav-tabs {
+    border-bottom: 4px solid #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0px 20px;
+    height: 42px;
+}
+
+
+.nav-tabs > li a {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+    height: 42px;
+    line-height: 16px;
+}
+
+
+
+.post-buttons {
+    position: absolute;
+}
+
+.post-likes {
+    left: 0px;
+}
+
+.post-comment {
+    right: 0px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    color: #fff;
+    background-color: transparent;
+    border-bottom: 9px solid #fff;
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+    cursor: default;
+    margin: auto;
+}
+
+.nav.nav-tabs {
+    border-bottom: 4px solid #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0px 20px;
+    height: 42px;
+}
+
+
+.nav-tabs > li a {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+    height: 42px;
+    line-height: 16px;
+}
+
+
+.post-tab {
+    background: #fff;
+    margin: 20px 7px 22px 7px;
+    position: relative;
+    box-shadow: #333 0px 1px 3px;
+    padding-right: 6px;
+    padding-left: 6px;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}
+
+.author-image img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50px;
+    
+    border-style: solid;
+border-width: 1px;
+}
+
+figure.author-image {
+    position: relative;
+    top: -17px;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: solid 1px #9E9C9C;
+    float: right;
+}
+
+span.author-name {
+    display: block;
+    margin-right: 10px;
+    font-weight: bold;
+    float: right;
+    line-height: 50px;
+    font-size: 13px;
+}
+
+span.author-date {
+    display: block;
+    float: left;
+    line-height: 50px;
+    font-size: 13px;
+}
+
+div.post-main-text {
+    clear: both;
+    /*height: 33px;*/
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: justify;
+}
+
+.post-main-text img {
+    width: 80%;
+    margin: 5px auto 10px auto;
+    display: block;
+}
+/* comment, like buttons*/
+.write-comment-zone {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 36px;
+    background-color: white;
+    line-height: 36px;
+}
+
+.post-feedback {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 18px;
+    margin-top: 13px;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.write-comment-btn {
+    position: absolute;
+    left: 10px;
+    top: 3px;
+    width: 70px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #42484e;
+    color: white;
+    line-height: 27px;
+}
+
+.write-comment-box {
+    padding-right: 10px;
+    height: 100%;
+    width: 70%;
+    border: 0;
+}
+
+.post-comment {
+}
+
+.respond-count {
+}
+
+.post-feedback .icon {
+    background-repeat: no-repeat;
+    background-size: 34px 15px;
+    background-position-x: -17px;
+    background-position-y: 1px;
+    height: 100%;
+    width: 17px;
+    display: inline-block;
+    float: right;
+    margin-right: 3px;
+}
+
+.like-post .icon {
+    background-image: url('./../img/heart_talkback.png');
+}
+
+.respond-post .icon {
+    background-image: url('./../img/pencil.png');
+    background-size: 17px 14px;
+    background-position-x: initial;
+    background-position-y: 2px;
+}
+
+.like-post.is-liked .icon {
+    background-position-x: -18px;
+}
+
+
+.like-post span:nth-child(2) {
+    display: inline-block;
+}
+
+.like-count {
+}
+
+span.respond-post, span.like-post {
+    width: 62px;
+    background-color: #565c63;
+    display: inline-block;
+    float: right;
+    margin-left: 1px;
+    text-align: center;
+    height: 18px;
+    color: white;
+}
+
+.post-footer {
+    position: relative;
+}
+
+span.respond-count, span.like-count {
+    display: inline-block;
+    width: 62px;
+    background-color: #bcccce;
+    color: black;
+    text-align: center;
+    height: 18px;
+}
+
+
+.comment-balloon {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    height: 112px;
+    background: rgba(40,40,40,1.00);
+    border-top: solid 3px rgba(130,128,128,1.00);
+    width: 100%;
+    display: none;
+}
+
+.text-balloon {
+    width: 80%;
+    outline: none;
+    top: 10px;
+    display: block;
+    resize: none;
+    height: 50%;
+    border-radius: 10px;
+    position: absolute;
+    right: 10%;
+    border: solid 1px #fff;
+}
+
+.balloon-handler {
+    width: 45px;
+    height: 15px;
+    background: #fff;
+    position: absolute;
+    top: 35px;
+    right: 4%;
+    border-radius: 0 0 100% 0;
+    -webkit-transform: rotateZ(11deg);
+    z-index: 0;
+}
+
+.plus {
+    width: 32px;
+    height: 32px;
+    background: #E4E4E4;
+    display: inline-block;
+    /*float: right;*/
+    margin-left: 5px;
+    color: #695B5B;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 2.3em;
+    cursor: pointer;
+    line-height: 30px;
+    position: relative;
+    top: 5px;
+}
+
+.comment-balloon p {
+    color: #E4E4E4;
+    position: absolute;
+    bottom: 10px;
+    width: 80px;
+    line-height: 30px;
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    font-size: 10px;
+    letter-spacing: 0.6px;
+}
+
+/**********************side-bar**************************8*/
+.sidebar .app-name {
+    background-color: #565c63;
+    height: 64px;
+    top: 3px;
+}
+
+.sidebar-left {
+    background: #000;
+}
+/**********************************comment css******************************************/
+.comment-container {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* width: 100%; */
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.comment-main-post {
+    position: relative;
+    background: #504E4E;
+    border-bottom: solid 1px #fff;
+    top: 3px;
+    padding-top: 5px;
+}
+
+.comments {
+    padding-top: 15px;
+    /* width: 100%; */
+    /* max-height: 70%; */
+    /* overflow: auto; */
+    /* -webkit-flex: 1 1 auto; */
+    /* overflow-y: auto; */
+    /* min-height: 0px; */
+}
+
+
+.color-line {
+    background-image: url('../img/image/color_line.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 100%;
+    right: 0px;
+    height: 4px;
+}
+
+.color-line.color-fixed-top {
+    position: relative;
+}
+
+.color-line.color-line-bottom {
+    position: absolute;
+    bottom: 0px;
+    height: 4px;
+}
+
+.spiner-zone {
+    text-align: center;
+}
+/*********** channel css *************************/
+
+.channel-title-zone {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+}
+
+
+.sub-header {
+    height: 42px;
+    position: relative;
+    color: white;
+    text-align: center;
+    line-height: 42px;
+    z-index: 1;
+}
+
+.main-content-wrap {
+    padding: 0px 26px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    padding-top: 46px;
+    box-sizing: border-box;
+}
+
+.channel-title {
+    text-align: center;
+    height: 42px;
+    width: 100%;
+    line-height: 42px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    /*z-index: 1;
+    position: absolute;*/
+}
+
+.channel-con {
+    background: #252525;
+    padding: 0px 14px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0px;
+    padding-top: 46px;
+    box-sizing: border-box;
+}
+
+.channel-list {
+    height: 100%;
+    overflow: auto;
+}
+
+.player-contener {
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+    background: #2d3238;
+}
+
+.player-contener img {
+    width: 100%;
+    /* padding: 5px 5px 0 5px; */
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+iframe.player-contener {
+    width: 100%;
+    /* padding: 5px 5px 0 5px; */
+    box-sizing: border-box;
+    position: relative;
+}
+
+.channel-play-button {
+    background-image: url('/img/play_button.png');
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    height: 30%;
+    width: 23%;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+}
+
+.player-text {
+    background-color: #565c63;
+    padding: 9px 5px;
+    height: 47px;
+}
+
+.player-text h2 {
+    padding: 0px 5px;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #bcccce;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 90%;
+    white-space: nowrap;
+}
+
+.player-text p {
+    padding: 0px 5px;
+    font-size: 10px;
+    color: #fff;
+}
+
+.list-tube {
+    background: #2d3238;
+    margin: 15px 0;
+    position: relative;
+}
+
+button {
+    border: none;
+    box-shadow: none;
+    border-radius: 6px;
+    color: white;
+    margin: auto;
+    display: block;
+}
+
+
+/*********** poll css *************************/
+
+.polls-layout {
+    padding-top: 93px;
+}
+
+.text-box {
+    height: 84px;
+	LINE-HEIGHT:13px;
+	padding-right: 14px;
+}
+
+.image-container{
+    cursor: pointer;
+    position: relative;
+    padding:2px;
+    background-color: #ffffff;
+	border-radius: 3px;
+}
+.polls-container{
+
+    cursor: pointer;
+    position: relative;
+    background-color: #31363d;
+	padding:7px;
+}
+.polls-image{
+    height: 172px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    margin: auto;
+}
+.padd{
+	padding-bottom: 6px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 17px;
+}
+
+.ellipsis {
+  overflow: hidden;
+  height: 47px;
+  font-size: 12px;
+  LINE-HEIGHT: 17px;
+  }
+
+.ellipsis:before {
+	content:"";
+	float: left;
+	width: 5px; height: 47px; }
+
+.ellipsis > *:first-child {
+	float: left;
+	width: 100%;
+	margin-right: -5px; }		
+
+.ellipsis:after {
+	content: "\02026"; 
+
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	position: relative;
+	float: left; 
+	top: 0px; 
+	left: 100%; 
+	width: 3em; 
+	margin-left: -3em;
+	
+	text-align: right;
+	@include background(linear-gradient(left, rgba(#fff, 0), #fff 50%, #fff));
+  }
+
+.pollView-text{
+	padding-bottom: 17px;
+	padding-left: 10px;
+	padding-right: 40px;
+	padding-top: 10px;
+	LINE-HEIGHT:20px;
+	background-color: '#ffffff';
+	color: '#000000';
+	
+}
+
+.pollView-image{
+    
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+	margin-right: 3px;
+    height: 150px;  
+    width: 229px;
+}
+.pollView-title{
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 40px;
+	LINE-HEIGHT:20px;
+	background-color: '#ffffff';
+	color: '#da4f00';
+	font-weight': 'bold';
+	overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2; /* number of lines to show */
+	
+}
+
+.imageView-container{
+
+    position: relative;
+    height: 156px;
+    width: 235px;
+	margin-right:56px;
+	margin-left:30px;
+	background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 3px;
+    background-color: #42484e;
+	border-radius: 3px;
+}
+.imageView-background{
+
+    position: relative;
+
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+    background-color: #ffffff;
+}
+
+.pollView-container{
+    overflow: auto;
+    height: 100%;
+	overflow: auto;
+	position: absolute;
+	width: 100%;
+	box-sizing: border-box;
+	padding-top: 40px;
+	top: 2px;
+	padding-bottom: 2px;
+	background-color: #31363d;
+}
+
+.gray-line {
+    background-color: #565c63;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 100%;
+    right: 0px;
+    height: 4px;
+}
+
+.legend-container{
+	width: 100%;
+	background-color: #31363d;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-right: 50px;
+}
+
+.legend-color{
+	width: 15px;
+    height: 15px;
+	display: inline-block;
+
+}
+
+.legend-content{
+	width: 50%;
+    height: 15px;
+	display: inline-block;
+	background-color: '#31363d';
+	color: '#ffffff';	
+	padding-right: 15px;
+
+}
+.legend-image{
+	height: 158px;
+	width: 235px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 75% 85%;
+	padding-top: 10px;
+}
+
+.optionToVote-container {
+	width: 263px;
+	height: 45px;
+	background-color: #ffffff;
+	color: #000000;
+	margin-top: 25px;
+	margin-bottom: 8px;
+	margin-right: 50px;
+	padding-right: 25px;
+	padding-top: 15px;
+}
+
+.button {
+border-radius: 7px;
+width: 35%;
+text-align: center;
+height: 36px;
+line-height: 36px;
+margin: auto;
+margin-top: 20px;
+margin-bottom: 20px;
+}
