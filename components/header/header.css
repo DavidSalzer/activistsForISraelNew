@@ -242,7 +242,7 @@ span.sidbar-text.ng-binding {
 }
 
 span.sidbar-text.ng-binding:hover {
-   /*  background-color: #565c63; */
+    /*  background-color: #565c63; */
     color: white;
 }
 
@@ -256,4 +256,13 @@ a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.acti
     height: 100%;
     width: 100%;
     z-index: 3;
+}
+
+#my-username {
+    box-sizing: border-box;
+    padding-left: 35px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    letter-spacing: 0.7px;
 }

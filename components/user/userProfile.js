@@ -6,9 +6,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
         featureLogo: "./img/user.png",
         //infoImg: './img/whatsup.png',
         featureColor: '#AB14E6',
-        infoHaeder: "פיצ'ר מה קורה",
-        infoMainText: "כתבו על כל נושא שמעניין אתכם. המשתמשים יוכלו לסמן 'אהבתי' או להגיב לדבריכם. מוגבל ל 140 תווים.",
-        infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
+       
     };
 
     generalParameters.setFeature($scope.featureDetails);

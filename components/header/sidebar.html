@@ -1,4 +1,7 @@
-<h1 class="app-name" data-toggle="off" data-bubble data-target="mainSidebar" data-ng-click="goToUserProfile()">{{userProfile().firstName}} {{userProfile().lastName}} <img class="sidebar-logo user-thumbnail" ng-src='{{userProfile().userImg}}' alt="alt"></h1>
+<h1 class="app-name" data-toggle="off" data-bubble data-target="mainSidebar" data-ng-click="goToUserProfile()">
+    <div id="my-username">{{userProfile().firstName}} {{userProfile().lastName}}</div>  
+    <img class="sidebar-logo user-thumbnail" ng-src='{{userProfile().userImg}}' alt="alt">
+</h1>
 
 
 

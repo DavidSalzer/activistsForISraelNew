@@ -381,6 +381,7 @@ span.respond-count, span.like-count {
     background-color: #565c63;
     height: 64px;
     top: 3px;
+    overflow: hidden;
 }
 
 .sidebar-left {

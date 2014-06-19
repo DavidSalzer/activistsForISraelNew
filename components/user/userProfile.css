@@ -7,7 +7,7 @@
     width: 100%;
     height: 40%;
     background-color: #2f343b;
-    padding-top: 30px;
+    position: relative;
 }
 
 .color-circle {
@@ -15,10 +15,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
-    margin: 0px auto 30px;
+    margin: auto;
     height: 153px;
     width: 153px;
-    position: relative;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
 }
 
 .user-profile-avatar {

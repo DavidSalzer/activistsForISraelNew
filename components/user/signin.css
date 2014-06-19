@@ -88,7 +88,7 @@
 
 .sign-in-upload-image-zone {
     margin: auto;
-    width: 264px;
+    width: 268px;
     min-height: 42px;
     position: relative;
 }
@@ -114,7 +114,7 @@ input#userImg {
 
 .sign-in-image-name {
     display: inline-block;
-    width: 226px;
+    width: 230px;
     height: 30px;
     background-color: #2f343b;
     border-radius: 10px;
@@ -130,12 +130,12 @@ input#userImg {
     background-color: #42484e;
     height: 42px;
     width: 155px;
-    font-size: 20px;
+    font-size: 19px;
     border-radius: 10px;
     display: block;
     color: white;
     border: 0;
-    margin: 5px auto 10px auto;
+    margin: 5px auto 15px auto;
 }
 
 input[type=file] {
