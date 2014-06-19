@@ -149,12 +149,12 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         PostService.getPostsBatch(request);
     }
 
-    $scope.getPostsByAuthors = function () {
-        $scope.currentFilter = 'authors';
-        request.postType = 'author';
-        request.endTimestamp = '';
-        PostService.getPostsBatch(request);
-    }
+    //$scope.getPostsByAuthors = function () {
+    //    $scope.currentFilter = 'authors';
+    //    request.postType = 'author';
+    //    request.endTimestamp = '';
+    //    PostService.getPostsBatch(request);
+    //}
 
     $scope.getAuthors = function () {
         $scope.currentFilter = 'authors';
