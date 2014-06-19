@@ -29,6 +29,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         thankText: 'שהצטרפת יש לאשר הצטרפות במייל סופי אשר נשלח אליך כעת.',
         btnText: 'חזרה לאפליקציה',
         headerText: 'הצטרפות',
+        hideheader: true,
         featureState: 'main-menu'
     };
 
