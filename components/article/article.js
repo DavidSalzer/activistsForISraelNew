@@ -5,9 +5,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.currentFilter = 'all';
     $scope.currentPost = null;
     $scope.showSpiner = false;
-    $scope.showPostTitle = true;
-
-    $scope.postImg = '';
+    $scope.showPostTitle = true; 
+	
+	
     $scope.showArticleImg = false;
     $scope.showAuthorImg = true;
     $scope.currentPostType = 'article';
@@ -34,21 +34,8 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         postType: 'article',
         userID: $scope.user._id
     };
-    $scope.articleData = {
-
-        type: "article",
-        user: { _id: $scope.user.userId },
-        author: $scope.user.userId,
-        post: { title: "", attachment: "", content: "" }
-
-        //postLocation:
-    };
-
-
-    $scope.min = 250;
-    $scope.imageMax = 2;
-    $scope.fileMax = 1;
-
+    
+	
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
@@ -62,7 +49,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else {
-            $state.transitionTo('write-post', { postType: "article" });
+            $state.transitionTo('write-post', {postType: "article",postId:0});
         }
     };
 
@@ -192,56 +179,12 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         console.log('load more');
         PostService.getPostsBatch(request);
     }
+	
+	
+	 
+	
+   
 
-    $scope.sendArticle = function () {
-
-        /* if($scope.articleData.post.content.length < $scope.min){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;} */
-        PostService.sendPost($scope.articleData, $scope.imgfile);
-        $state.transitionTo('article', {});
-    }
-
-    document.getElementById('userImg').addEventListener('change', function (e) {
-        $scope.fileEdit(e);
-    }, false);
-
-    $scope.input = '';
-    $scope.aler = function () {
-
-        alert('al');
-    }
-
-    $scope.fileEdit = function (e) {
-        console.log(e);
-        //file reader to show the img...
-        var file = e.target.files[0];
-        console.log(e.target.files);
-        console.log(file);
-        //file reader
-        var reader = new FileReader();
-
-        if (file.type.match('image/*')) {
-            var reader = new FileReader();
-            reader.onload = (function () {
-                return function (e) {
-                    console.log(e);
-                    console.log(e.target.result); //base64 img
-                    $scope.postImg = e.target.result;
-                    $scope.imgfile = file;
-                    //$scope.editImg = true;
-                    $scope.$apply();
-                    //$scope.croping();
-
-
-                };
-            })(file);
-            reader.readAsDataURL(file);
-        }
-    }
-
-    $scope.croping = function () {
-        imgCrop.crop('c', 'button_ok', 'cropDiv'); //canvasid  ,btn-approve, contener Id
-
-    }
 
 
 } ]);

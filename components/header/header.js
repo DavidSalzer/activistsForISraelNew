@@ -130,11 +130,22 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         //do shaer here....
         //phonegap plugin...
         //message, subject, image and link
-        message = 'my message';
-        subject = 'The subject';
-        img = 'https://www.google.nl/images/srpr/logo4w.png';
-        link = 'http://www.x-services.nl';
-        window.plugins.socialsharing.share(message, subject, img, link);
+             //phonegap sharing plugin
+        message = 'קראתי מאמר באפליקצית פועלים למען ישראל, כנסו לקרוא..';
+        subject = 'קראתי מאמר באפליקצית פועלים למען ישראל, כנסו לקרוא..';
+        img = 'http://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Naftali-Bennett.jpg/640px-Naftali-Bennett.jpg';
+        link = 'https://www.facebook.com/NaftaliBennett';
+         window.plugins.socialsharing.share(message, subject, img, link);
+ 
+        // You can share text, a subject (in case the user selects the email application), (any type and location of) file (like an image), and a link.
+        // However, what exactly gets shared, depends on the application the user chooses to complete the action. A few examples:
+
+        //Mail: message, subject, file.
+        //Twitter: message, image (other filetypes are not supported), link (which is automatically shortened).
+        //Google+ / Hangouts (Android only): message, subject, link
+        //Flickr: message, image (an image is required for this option to show up).
+        //Facebook iOS: message, image (other filetypes are not supported), link.
+        //Facebook Android: sharing a message is not possible. You can share either a link or an image (not both), but a description can not be prefilled
 
 
     }
