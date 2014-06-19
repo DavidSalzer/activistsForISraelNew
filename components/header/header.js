@@ -74,19 +74,18 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/actionforisrael.png",
             featureColor: "Fbactivists"
         },
+		{
+		    featureUrl: 'poll',
+		    featureName: 'משאל עם',
+		    featureLogo: "./img/poll.png",
+		    featureColor: "poll"
+		},
         {
             featureUrl: 'contact',
             featureName: 'צור קשר',
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
         }
-		//{
-		//    featureUrl: 'poll',
-		//    featureName: 'משאל עם',
-		//    featureLogo: "./img/poll.png",
-		//    featureColor: "poll"
-		//}
-
     ];
 
     $scope.userProfile = generalParameters.getUser;
