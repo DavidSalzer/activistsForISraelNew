@@ -167,6 +167,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'author':
                     URL = 'author.txt';
                     break;
+                case 'poll':
+                    URL = 'polls.txt';
+                    break;
             }
 
             $http({
@@ -265,25 +268,25 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 '<span class="like-count">{{post.likes.length+post.likes.likesCount+0}}</span></div>',
         link: function (scope, el, attrs) {
             el.on('click', function () {
-                
-				
+
+
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
-				scope.post.likes.isLiked = !scope.post.likes.isLiked;
-				
-				if(scope.post.likes.isLiked==true){
-					
-					scope.post.likes.likesCount++;
-					$rootScope.$broadcast('addLike', { postid: scope.post._id });
-					
-				}
-				else{
-					
-					scope.post.likes.likesCount--;
-					scope.$apply();
-					$rootScope.$broadcast('disLike', { postid: scope.post._id });
-					
-				}
+                scope.post.likes.isLiked = !scope.post.likes.isLiked;
+
+                if (scope.post.likes.isLiked == true) {
+
+                    scope.post.likes.likesCount++;
+                    $rootScope.$broadcast('addLike', { postid: scope.post._id });
+
+                }
+                else {
+
+                    scope.post.likes.likesCount--;
+                    scope.$apply();
+                    $rootScope.$broadcast('disLike', { postid: scope.post._id });
+
+                }
             });
         },
         replace: true

@@ -47,7 +47,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureLogo: './img/NaftaliBennett.png',
         featureImg: './img/image/pic4.png',
         title: 'ערוץ הפייסבוק של נפתלי בנט',
-        text: 'ערוץ הפייסבוק של נפתלי בנט',
+        text: 'הכנסו לקרוא',
         postId: 5
     }
     ,
@@ -58,7 +58,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureLogo: './img/NaftaliBennett.png',
         featureImg: './img/image/pic5.png',
         title: 'ערוץ הפייסבוק של פועלים למען ישראל',
-        text: 'ערוץ הפייסבוק של פועלים למען ישראל',
+        text: 'הכנסו לקרוא',
         postId: 5
     }
     

@@ -57,7 +57,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         },
         {
             featureUrl: 'channel',
-            featureName: 'YOUTUBE',
+            featureName: 'יוטיוב',
             featureLogo: "./img/youtube.png",
             featureColor: "channel"
         },
@@ -80,6 +80,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
         }
+        //,
 		//{
 		//    featureUrl: 'poll',
 		//    featureName: 'משאל עם',
