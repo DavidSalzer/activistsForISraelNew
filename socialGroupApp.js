@@ -78,16 +78,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
-
-        //.state('single-article', {
-        //    url: "/single-article/:postId",
-        //    views: {
-        //        "main": {
-        //            templateUrl: "./components/article/single-article.html",
-        //            controller: "comments"
-        //        }
-        //    }
-        //})
           
         .state('facebookBennet', {
           url: "/facebookBennet/:channelId",
@@ -111,15 +101,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-       /*  .state('write-article', {
-            url: "/write-article",
-            views: {
-                "main": {
-                    templateUrl: "./components/article/writeArticle.html",
-                    controller: "article"
-                }
-            }
-        }) */
 		.state('poll-view', {
             url: "/pollView/:pollIndex",
             views: {
@@ -157,17 +138,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                  }
              }
          })
-
-        
-        /* .state('single-article', {
-            url: "/single-article/:postId",
-            views: {
-                "main": {
-                    templateUrl: "./components/article/single-article.html",
-                    controller: "single-article"
-                }
-            }
-        }) */
 })
 
 /**** Ajax Service ****/
@@ -192,7 +162,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             return deferred.promise;
         }
     }
-} ])
+}])
 
 /**** directives ****/
 .directive('post', ['$rootScope', 'PostService', function ($rootScope, PostService) {
@@ -240,7 +210,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             //console.log(scope.showCommentButton);
         }
     };
-} ])
+}])
 
 .directive('comment', ['$rootScope', 'PostService','$state', function ($rootScope, PostService,$state) {
     return {
@@ -262,7 +232,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         }
 
     };
-} ])
+}])
 
 .directive('like', ['$rootScope', 'PostService', function ($rootScope, PostService) {
     return {
@@ -281,7 +251,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         },
         replace: true
     };
-} ])
+}])
 
 .directive('authorHeader', ['$rootScope', 'PostService', function ($rootScope, PostService) {
     return {
@@ -296,7 +266,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         templateUrl:'./authorHeader.html'//,
         //replace: true
     };
-} ])
+}])
 
 .directive('onLongPress', function ($timeout) {
     return {
@@ -444,11 +414,11 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 				});
 			}
     };
-}]);
+}])
 
 //in the Html DOM add the word 'scroller' in parent element of the list of the elements.
 //in the Html DOM add 'loadingMethod =' and set it to the function in the controller which will react to the scroll down.
-socialGroupApp.directive('scroller', function () {
+.directive('scroller', function () {
     return {
         restrict: 'A',
         scope: {
@@ -464,9 +434,9 @@ socialGroupApp.directive('scroller', function () {
             });
         }
     };
-});
+})
 
-socialGroupApp.directive('charLimit', function(){
+.directive('charLimit', function(){
   return {
     restrict: 'A',
     link: function($scope, $element, $attributes){
@@ -490,10 +460,10 @@ socialGroupApp.directive('charLimit', function(){
       });
     }
   };
-});
+})
 
 
-socialGroupApp.directive('file', function(){
+.directive('file', function(){
     return {
         scope: {
            
@@ -524,5 +494,5 @@ socialGroupApp.directive('file', function(){
 			})
 		}
 	}
-});
+})
 
