@@ -1,12 +1,9 @@
 socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$state', '$http', 'generalParameters', function ($rootScope, $scope, $location, $state, $http, generalParameters) {
 
     var current = $location.$$url;
-    $scope.active = -1;
+    //$scope.active = -1;
 
-    $scope.select = function (index) {
-
-        $scope.active = index;
-    }
+   
 
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
@@ -25,9 +22,16 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     });
 
     $scope.back = function () {
+		
         window.history.back();
+	
         generalParameters.setBackIcon(false);
     }
+	
+	/* $scope.select = function (index) {
+
+       // $scope.active = index;
+    } */
 
     $scope.featureDetails = generalParameters.getFeature;
     $scope.user = generalParameters.getUser;
@@ -37,38 +41,38 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureUrl: 'main-menu',
             featureName: 'דף הבית',
             featureLogo: "./img/poalim-logo.png",
-            featureColor: ""
+            featureColor: 'menu'
         },
         {
             featureUrl: 'talk-back',
             featureName: 'טוקבקים',
             featureLogo: "./img/whatsup.png",
-            featureColor: "#993ca7"
+            featureColor: "talkback"
         },
          {
-             featureUrl: 'article',
-             featureName: 'מאמרים',
-             featureLogo: "./img/article.png",
-             featureColor: "#006dbe"
-         },
+            featureUrl: 'article',
+            featureName: 'מאמרים',
+            featureLogo: "./img/article.png",
+            featureColor: "article"
+        },
         {
             featureUrl: 'channel',
             featureName: 'YOUTUBE',
             featureLogo: "./img/youtube.png",
-            featureColor: "#fa0001"
+            featureColor: "channel"
         },
 
         {
             featureUrl: 'facebookBennet/NaftaliBennett',
             featureName: 'פייסבוק נפתלי',
             featureLogo: "./img/NaftaliBennett.png",
-            featureColor: "#004a8e"
+            featureColor: "FBnaftaly"
         },
         {
             featureUrl: 'facebookPoalim/actionforisrael',
             featureName: 'פייסבוק פועלים',
             featureLogo: "./img/actionforisrael.png",
-            featureColor: "#004a8e"
+            featureColor: "Fbactivists"
         },
         {
             featureUrl: 'contact',
@@ -76,12 +80,12 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
         }
-    //{
-    //    featureUrl: 'poll',
-    //    featureName: 'משאל עם',
-    //    featureLogo: "./img/poll.png",
-    //    featureColor: "#da4f00"
-    //}
+		//{
+		//    featureUrl: 'poll',
+		//    featureName: 'משאל עם',
+		//    featureLogo: "./img/poll.png",
+		//    featureColor: "poll"
+		//}
 
     ];
 

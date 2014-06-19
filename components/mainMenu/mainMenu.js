@@ -45,9 +45,9 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureUrl: 'facebookBennet/NaftaliBennett',
         featureName: 'facebook',
         featureLogo: './img/NaftaliBennett.png',
-        featureImg: './img/image/pic3.png',
-        title: 'מאמרים בנושאים על סדר היום',
-        text: 'עמוד מאמרים',
+        featureImg: './img/image/pic4.png',
+        title: 'ערוץ הפייסבוק של נפתלי בנט',
+        text: 'ערוץ הפייסבוק של נפתלי בנט',
         postId: 5
     }
     ,
@@ -56,9 +56,9 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureUrl: 'facebookPoalim/actionforisrael',
         featureName: 'facebook-poalim',
         featureLogo: './img/NaftaliBennett.png',
-        featureImg: './img/image/pic3.png',
-        title: 'מאמרים בנושאים על סדר היום',
-        text: 'עמוד מאמרים',
+        featureImg: './img/image/pic5.png',
+        title: 'ערוץ הפייסבוק של פועלים למען ישראל',
+        text: 'ערוץ הפייסבוק של פועלים למען ישראל',
         postId: 5
     }
     
