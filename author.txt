@@ -1,6 +1,6 @@
 {
     "type": "author",
-    "posts": [
+    "data": [
         {
             "authorId": 0,
             "postType": "author",

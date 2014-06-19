@@ -5,9 +5,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.currentFilter = 'all';
     $scope.currentPost = null;
     $scope.showSpiner = false;
-    $scope.showPostTitle = true; 
-	
-	$scope.postImg = '';
+    $scope.showPostTitle = true;
+
+    $scope.postImg = '';
     $scope.showArticleImg = false;
     $scope.showAuthorImg = true;
     $scope.currentPostType = 'article';
@@ -23,26 +23,34 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-	
-	$scope.user = generalParameters.getUser();
-	
-	$scope.articleData={
-	
-		type:"article",
-		user:{_id:$scope.user.userId},
-		author:$scope.user.userId,
-		post:{title:"",attachment: "",content: ""}
-		
-		//postLocation:
-	};
-	
-	
-	$scope.min = 250;
-	$scope.imageMax = 2;
-	$scope.fileMax = 1;
-	
+
+    $scope.user = generalParameters.getUser();
+    request = {
+        startTimestamp: '',
+        endTimestamp: '',
+        offset: 0,
+        limit: 20,
+        orderBy: '-timestamp',
+        postType: 'article',
+        userID: $scope.user._id
+    };
+    $scope.articleData = {
+
+        type: "article",
+        user: { _id: $scope.user.userId },
+        author: $scope.user.userId,
+        post: { title: "", attachment: "", content: "" }
+
+        //postLocation:
+    };
+
+
+    $scope.min = 250;
+    $scope.imageMax = 2;
+    $scope.fileMax = 1;
+
     /*init controller data*/
-    PostService.getPostsBatch('articles.txt', $scope.currentFilter, 9, 0); //tell service to refresh posts
+    PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
 
     $scope.articleId = $stateParams.postId;
@@ -54,7 +62,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else {
-            $state.transitionTo('write-post', {postType: "article"});
+            $state.transitionTo('write-post', { postType: "article" });
         }
     };
 
@@ -75,8 +83,8 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         $scope.currentPost = args.postid;
         $scope.$apply();
         console.log(args)
-		var userId = $scope.user.userId
-		PostService.sendLike(args.postid,userId)
+        var userId = $scope.user.userId
+        PostService.sendLike(args.postid, userId)
     });
 
     $scope.$on('postClicked', function (event, args) {
@@ -88,9 +96,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
-            //case "talkback":
-            //    $state.transitionTo('single-article', { postId: $scope.postId });
-            //    break;
+            //case "talkback": 
+            //    $state.transitionTo('single-article', { postId: $scope.postId }); 
+            //    break; 
             case "author":
                 $state.transitionTo('author-page', { authorId: $scope.authorId });
                 break;
@@ -110,7 +118,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     });
 
     $scope.getPosts = function () {
-        PostService.getPostsBatch('posts.txt', $scope.currentFilter, 9, 0);
+        PostService.getPostsBatch(request);
     }
 
     $scope.updatePosts = function () {
@@ -149,23 +157,27 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
     $scope.getPostsByAll = function () {
         $scope.currentFilter = 'all';
-        PostService.getPostsBatch('articles.txt', $scope.currentFilter, 9, 0);
+        request.postType = 'article';
+        PostService.getPostsBatch(request);
     }
 
     $scope.getPostsByAuthors = function () {
         $scope.currentFilter = 'authors';
-        PostService.getPostsBatch('posts.txt', $scope.currentFilter, 9, 0);
+        request.postType = 'author';
+        PostService.getPostsBatch(request);
     }
 
     $scope.getAuthors = function () {
         $scope.currentFilter = 'authors';
-        PostService.getPostsBatch('author.txt', $scope.currentFilter, 9, 0);
+        request.postType = 'author';
+        PostService.getPostsBatch(request);
     }
 
 
     $scope.getPostsByViews = function () {
         $scope.currentFilter = 'views';
-        PostService.getPostsBatch('articles.txt', $scope.currentFilter, 9, 0);
+        request.postType = 'article';
+        PostService.getPostsBatch(request);
     }
 
     $scope.sendComment = function () {
@@ -178,28 +190,28 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.loadMore = function () {
         $scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
-        PostService.getPostsBatch('posts.txt', $scope.currentFilter, 9, 1);
+        PostService.getPostsBatch(request);
     }
-	
-	$scope.sendArticle = function () {
-        
-		/* if($scope.articleData.post.content.length < $scope.min){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;} */
-		PostService.sendPost($scope.articleData, $scope.imgfile);
-		$state.transitionTo('article', {});
+
+    $scope.sendArticle = function () {
+
+        /* if($scope.articleData.post.content.length < $scope.min){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;} */
+        PostService.sendPost($scope.articleData, $scope.imgfile);
+        $state.transitionTo('article', {});
     }
-	
-	 document.getElementById('userImg').addEventListener('change', function (e) {
+
+    document.getElementById('userImg').addEventListener('change', function (e) {
         $scope.fileEdit(e);
-    }, false);  
-	
-	$scope.input='';
-	$scope.aler = function () {
-        
-		alert('al');
+    }, false);
+
+    $scope.input = '';
+    $scope.aler = function () {
+
+        alert('al');
     }
-	
+
     $scope.fileEdit = function (e) {
-	 console.log(e);
+        console.log(e);
         //file reader to show the img...
         var file = e.target.files[0];
         console.log(e.target.files);
@@ -214,22 +226,22 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
                     console.log(e);
                     console.log(e.target.result); //base64 img
                     $scope.postImg = e.target.result;
-					 $scope.imgfile=file;
+                    $scope.imgfile = file;
                     //$scope.editImg = true;
                     $scope.$apply();
                     //$scope.croping();
-					
-					
+
+
                 };
             })(file);
             reader.readAsDataURL(file);
         }
     }
 
-	$scope.croping = function () {
+    $scope.croping = function () {
         imgCrop.crop('c', 'button_ok', 'cropDiv'); //canvasid  ,btn-approve, contener Id
 
     }
-	
+
 
 } ]);
