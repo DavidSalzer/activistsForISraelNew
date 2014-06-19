@@ -3,7 +3,7 @@
         <img data-ng-src="{{post.authorImage}}" alt="user-pic">
     </figure>
     <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post._author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post._author}}</span>
-    <span class="author-date" data-ng-show="showCommentDate!=false">{{post.timeStamp * 1000 | date : 'dd.MM.yyyy'}}</span>
+    <span class="author-date" data-ng-show="showCommentDate!=false">{{post.timestamp | date : 'dd.MM.yyyy'}}</span>
 
     <div class="post-title" data-ng-show="showCommentTitle==true">{{post.title}}</div>
 

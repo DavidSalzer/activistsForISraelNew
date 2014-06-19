@@ -73,7 +73,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureName: null,
         featureLogo: "./img/poalim-logo.png",
         //infoImg: './img/whatsup.png',
-        featureColor: '#AB14E6',
+        featureColor: '#AB14E6'
         
     };
 

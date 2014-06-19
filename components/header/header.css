@@ -239,11 +239,12 @@ span.sidbar-text.ng-binding {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding-right: 11px;
+    color: white;
 }
 
 span.sidbar-text.ng-binding:hover {
     /*  background-color: #565c63; */
-    color: white;
+    /*color: white;*/
 }
 
 a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.active:hover {
