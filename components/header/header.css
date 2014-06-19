@@ -267,6 +267,7 @@ a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.acti
     overflow: hidden;
     letter-spacing: 0.7px;
     font-size: 16px;
+    line-height: 65px;
 }
 
 a.list-group-item.talkback.active span, a.list-group-item.talkback.active:focus span , a.list-group-item.talkback.active:hover span {

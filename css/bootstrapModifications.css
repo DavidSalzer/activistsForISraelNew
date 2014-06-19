@@ -127,6 +127,7 @@ img.user-thumbnail {
     height: 35px;
     position: absolute;
     left: 5px;
+    top: 7px;
 }
 
 /*main menu*/
@@ -136,6 +137,7 @@ img.user-thumbnail {
     padding: 0;
     padding-right: 5px;
     color: gray;
+    margin: -1px;
 }
 
 .thumbnail {

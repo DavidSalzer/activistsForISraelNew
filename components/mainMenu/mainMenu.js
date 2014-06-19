@@ -7,7 +7,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureLogo: './img/whatsup.png',
         featureImg: './img/image/kneset.jpg',
         title: 'בוער לכם להגיד משהו? זה המקום',
-        text: 'עמוד מה בוער',
+        text: 'טוקבק (בעברית: תגובית) הוא מנגנון לתגובות הגולשים באינטרנט. מנגנון הטוקבק מופעל באתרי חדשות, באתרי בלוגים ובאתרים נוספים, והוא מאפשר לגולשים להגיב על הנאמר בדף מסוים, כך שהתגובות מופיעות בהמשכו של הדף. . ',
         postId: 5
     },
     {
@@ -20,16 +20,16 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         text: 'לצפייה מהנייד',
         postId: 5
     },
-    {
-        featureId: 2,
-        featureUrl: 'poll',
-        featureName: 'משאל עם',
-        featureLogo: './img/poll.png',
-        featureImg: './img/image/pic6.png',
-        title: 'בואו להצביע בעמוד הסקרים שלנו',
-        text: 'עמוד סקרים',
-        postId: 5
-    },
+    //{
+    //    featureId: 2,
+    //    featureUrl: 'poll',
+    //    featureName: 'משאל עם',
+    //    featureLogo: './img/poll.png',
+    //    featureImg: './img/image/pic6.png',
+    //    title: 'בואו להצביע בעמוד הסקרים שלנו',
+    //    text: 'עמוד סקרים',
+    //    postId: 5
+    //},
     {
         featureId: 3,
         featureUrl: 'article',
