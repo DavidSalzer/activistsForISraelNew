@@ -5,7 +5,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	$scope.parentPost={parentId:$stateParams.postId, parentPostType:$stateParams.postType};
 	
 	$scope.user = generalParameters.getUser();
-	alert($scope.user._id)
+	//alert($scope.user._id)
 	
 	$scope.postData={
 				
@@ -97,7 +97,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	$scope.sendPost = function () {
 		
 		/* if($scope.articleData.post.content.length < $scope.min){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;} */
-		alert($scope.imgObj);
+		//alert($scope.imgObj);
 		PostService.sendPost($scope.postData, $scope.imgObj);
 		$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 	};
