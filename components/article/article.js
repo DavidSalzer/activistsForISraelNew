@@ -83,10 +83,11 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
-            //case "talkback":  
-            //    $state.transitionTo('single-article', { postId: $scope.postId });  
-            //    break;  
+            //case "talkback":   
+            //    $state.transitionTo('single-article', { postId: $scope.postId });   
+            //    break;   
             case "author":
+                $scope.getPostsByAll();
                 $state.transitionTo('author-page', { authorId: $scope.authorId });
                 break;
         }
@@ -149,12 +150,12 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         PostService.getPostsBatch(request);
     }
 
-    //$scope.getPostsByAuthors = function () {
-    //    $scope.currentFilter = 'authors';
-    //    request.postType = 'author';
-    //    request.endTimestamp = '';
-    //    PostService.getPostsBatch(request);
-    //}
+    $scope.getPostsByAuthors = function () {
+        $scope.currentFilter = 'authors';
+        request.postType = 'author';
+        request.endTimestamp = '';
+        PostService.getPostsBatch(request);
+    }
 
     $scope.getAuthors = function () {
         $scope.currentFilter = 'authors';
