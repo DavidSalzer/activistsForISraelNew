@@ -13,7 +13,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		post:{attachment: "",content: ""}
 	};
 	
-	
+	$scope.toLargImage = false;
 	
 	switch ($stateParams.postType) {
             
@@ -23,6 +23,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			$scope.featureColor ='#006dbe';
 			$scope.headerText ='כתיבת טקסט';
 			$scope.imageMax = 2;
+			$scope.fileMax = 2;
 			
 			$scope.postData.post.postType='article';
 			$scope.postData.post.title='';
@@ -78,7 +79,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
         
 				featureColor: '#da4f00',
 				thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',
-				btnText: 'חזרה לעמוד המאמרים',
+				btnText: 'מוד המאמרים',
 				headerText: 'המאמר שלי',
 				featureState: 'poll'
     
@@ -89,44 +90,18 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		
     }
 		
-	$scope.toLargImage = false;
 	
-	console.log($scope.postData);//alert('3')
+	
+	console.log($scope.postData);
 	
 	
 	$scope.sendPost = function () {
 		
-		/* if($scope.articleData.post.content.length < $scope.min){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;} */
+		if($scope.articleData.post.content.length < $scope.min){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;} 
 		//alert($scope.imgObj);
 		PostService.sendPost($scope.postData, $scope.imgObj);
 		$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 	};
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	/* $scope.sendArticle = function () {
-        
-		/* if($scope.articleData.post.content.length < $scope.min){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;} */
-		/* alert($scope.imgObj)
-		PostService.sendPost($scope.articleData, $scope.imgObj);
-		$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
-    }  */
 	
 	
 	

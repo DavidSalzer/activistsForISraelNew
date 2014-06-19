@@ -290,7 +290,11 @@ span.respond-post, span.like-post {
     height: 18px;
     color: white;
 }
+span.is-liked{
 
+background-color:red;
+
+}
 .post-footer {
     position: relative;
 }

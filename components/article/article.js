@@ -44,7 +44,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else {
-            $state.transitionTo('write-post', {postType: "article"});
+            $state.transitionTo('write-post', {postType: "article",postId:0});
         }
     };
 
