@@ -1,7 +1,7 @@
 socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters', function ($scope,$rootScope, $stateParams, PostService, generalParameters) {
  
 	/*init variables*/
-	
+	generalParameters.setBackIcon(true);
 	$scope.parentPost={parentId:$stateParams.postId, parentPostType:$stateParams.postType};
 	
 	$scope.user = generalParameters.getUser();
