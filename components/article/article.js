@@ -5,9 +5,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.currentFilter = 'all';
     $scope.currentPost = null;
     $scope.showSpiner = false;
-    $scope.showPostTitle = true; 
-	
-	
+    $scope.showPostTitle = true;
+
+
     $scope.showArticleImg = false;
     $scope.showAuthorImg = true;
     $scope.currentPostType = 'article';
@@ -34,8 +34,8 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         postType: 'article',
         userID: $scope.user._id
     };
-    
-	
+
+
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
@@ -49,7 +49,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else {
-            $state.transitionTo('write-post', {postType: "article",postId:0});
+            $state.transitionTo('write-post', { postType: "article", postId: 0 });
         }
     };
 
@@ -83,9 +83,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
-            //case "talkback": 
-            //    $state.transitionTo('single-article', { postId: $scope.postId }); 
-            //    break; 
+            //case "talkback":  
+            //    $state.transitionTo('single-article', { postId: $scope.postId });  
+            //    break;  
             case "author":
                 $state.transitionTo('author-page', { authorId: $scope.authorId });
                 break;
@@ -145,18 +145,21 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.getPostsByAll = function () {
         $scope.currentFilter = 'all';
         request.postType = 'article';
+        request.endTimestamp = '';
         PostService.getPostsBatch(request);
     }
 
     $scope.getPostsByAuthors = function () {
         $scope.currentFilter = 'authors';
         request.postType = 'author';
+        request.endTimestamp = '';
         PostService.getPostsBatch(request);
     }
 
     $scope.getAuthors = function () {
         $scope.currentFilter = 'authors';
         request.postType = 'author';
+        request.endTimestamp = '';
         PostService.getPostsBatch(request);
     }
 
@@ -164,6 +167,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.getPostsByViews = function () {
         $scope.currentFilter = 'views';
         request.postType = 'article';
+        request.endTimestamp = '';
         PostService.getPostsBatch(request);
     }
 
@@ -177,13 +181,14 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.loadMore = function () {
         $scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
+        request.endTimestamp = '0';
         PostService.getPostsBatch(request);
     }
-	
-	
-	 
-	
-   
+
+
+
+
+
 
 
 
