@@ -49,6 +49,17 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
+        .state('single-article', {
+            url: "/single-article/:postId",
+            //url: "/lesson",
+            views: {
+                "main": {
+                    templateUrl: "./components/article/single-article.html",
+                    controller: "single-article"
+                }
+            }
+        })
+
         .state('channel', {
             url: "/channel",
             views: {
@@ -78,10 +89,10 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
-          
+
         .state('facebookBennet', {
-          url: "/facebookBennet/:channelId",
-             // url: "/facebookBennet",
+            url: "/facebookBennet/:channelId",
+            // url: "/facebookBennet",
             views: {
                 "main": {
                     templateUrl: "./components/facebook/facebookBennet.html",
@@ -91,7 +102,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         })
 
         .state('facebookPoalim', {
-           url: "/facebookPoalim/:channelId",
+            url: "/facebookPoalim/:channelId",
             //url: "/facebookPoalim",
             views: {
                 "main": {
@@ -102,23 +113,23 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         })
 
 		.state('poll-view', {
-            url: "/pollView/:pollIndex",
-            views: {
-                "main": {
-                    templateUrl: "./components/poll/pollView.html",
-                    controller: "pollView"
-                }
-            }
-        })
+		    url: "/pollView/:pollIndex",
+		    views: {
+		        "main": {
+		            templateUrl: "./components/poll/pollView.html",
+		            controller: "pollView"
+		        }
+		    }
+		})
 		.state('poll', {
-            url: "/poll",
-            views: {
-                "main": {
-                    templateUrl: "./components/poll/poll.html",
-                    controller: "poll"
-                }
-            }
-        })
+		    url: "/poll",
+		    views: {
+		        "main": {
+		            templateUrl: "./components/poll/poll.html",
+		            controller: "poll"
+		        }
+		    }
+		})
         .state('write-post', {
             url: "/write-post/:postType/:postId",
             views: {
@@ -146,9 +157,21 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         getdata: function (method, queryString, request) {
             var deferred = $q.defer();
 
+            switch (request.postType) {
+                case 'talkback':
+                    URL = 'posts.txt';
+                    break;
+                case 'article':
+                    URL = 'articles.txt';
+                    break;
+                case 'author':
+                    URL = 'author.txt';
+                    break;
+            }
+
             $http({
                 //url: domain + queryString,
-                url: 'posts.txt',
+                url: URL,
                 //method: method, // temp cancel for local json calls
                 data: request
             }).
@@ -162,7 +185,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             return deferred.promise;
         }
     }
-}])
+} ])
 
 /**** directives ****/
 .directive('post', ['$rootScope', 'PostService', function ($rootScope, PostService) {
@@ -178,18 +201,18 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var talkbackTemplate = 'postTemplate.html';
             var articleTemplate = 'articleTemplate.html';
             var authorsTemplate = 'authorsTemplate.html';
-             //var commentTemplate = 'commentTemplate.html';
+            //var commentTemplate = 'commentTemplate.html';
 
             var templateURL = '';
             switch (tAttrs.postType) {
                 case 'talkback':
                     template = talkbackTemplate;
                     break;
-    
+
                 case 'article':
                     template = articleTemplate;
                     break;
-                
+
                 case 'author':
                     template = authorsTemplate;
                     break;
@@ -203,16 +226,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function (e) {
-                $rootScope.$broadcast('postClicked', { postId: scope.post.postId , postType: scope.post.postType,authorId: scope.post.authorId}); //add post type to emit
+                $rootScope.$broadcast('postClicked', { postId: scope.post.postId, postType: scope.post.postType, authorId: scope.post.authorId }); //add post type to emit
             });
             //console.log(attrs.showCommentButton);
             //scope.showCommentButton = attrs.showCommentButton;
             //console.log(scope.showCommentButton);
         }
     };
-}])
+} ])
 
-.directive('comment', ['$rootScope', 'PostService','$state', function ($rootScope, PostService,$state) {
+.directive('comment', ['$rootScope', 'PostService', '$state', function ($rootScope, PostService, $state) {
     return {
         restrict: 'E',
         template: '<div class="post-comment post-buttons" data-ng-click="$event.stopPropagation();">' +
@@ -227,12 +250,12 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 // $scope.$emit('handleEmit', {showInput: false}); 
                 console.log(scope);
                 //$rootScope.$broadcast('addCommentClicked', { showInput: true, postid: scope.post.postId });
-				$state.transitionTo('write-post', { postId: scope.post.postId,postType:scope.post.postType});
+                $state.transitionTo('write-post', { postId: scope.post.postId, postType: scope.post.postType });
             });
         }
 
     };
-}])
+} ])
 
 .directive('like', ['$rootScope', 'PostService', function ($rootScope, PostService) {
     return {
@@ -265,7 +288,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         },
         replace: true
     };
-}])
+} ])
 
 .directive('authorHeader', ['$rootScope', 'PostService', function ($rootScope, PostService) {
     return {
@@ -275,12 +298,12 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //                '<img data-ng-src="{{post.authorImage}}" alt="user-pic">'+
         //            '</figure>'+
         //            '<span class="author-name" data-author="{{post.author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post.author}}</span>'+
-        //            '<span class="author-date">{{post.timeStamp * 1000 | date : "dd.MM.yyyy"}}</span>'+
+        //            '<span class="author-date">{{post.timeStamp  | date : "dd.MM.yyyy"}}</span>'+
         //           '</div>',
-        templateUrl:'./authorHeader.html'//,
+        templateUrl: './authorHeader.html'//,
         //replace: true
     };
-}])
+} ])
 
 .directive('onLongPress', function ($timeout) {
     return {
@@ -324,23 +347,23 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //  scope: {},
         template: "<div class=\"fb-like-box\" data-href=\"{{page}}\" data-width=\"{{width}}\" data-show-faces=\"{{faces}}\" data-height=\"{{height}}\" data-stream=\"{{stream}}\" data-header=\"{{header}}\"></div>",
         link: function ($scope, $element, $attrs) {
-  //          
-  //          try{
-  //     FB.XFBML.parse();
-  //}
-  //catch(e)
-  //{
-  //    
-  //}
+            //          
+            //          try{
+            //     FB.XFBML.parse();
+            //}
+            //catch(e)
+            //{
+            //    
+            //}
 
-            $scope.page = 'https://www.facebook.com/NaftaliBennett?fref=ts';//'https://www.facebook.com/' + $scope.currentChannel;
+            $scope.page = 'https://www.facebook.com/NaftaliBennett?fref=ts'; //'https://www.facebook.com/' + $scope.currentChannel;
             $scope.height = '550';
             $scope.faces = 'false';
             $scope.stream = 'true';
             $scope.header = 'false';
             $scope.width = '320';
 
-           // $scope.$apply();
+            // $scope.$apply();
             /* var working, _ref, _ref1;
 
             $scope.page = $attrs.fbLike;
@@ -365,70 +388,71 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             });*/
         }
     };
-  })
+})
 
-.directive('googleChart', ['$timeout', 'generalParameters', function($timeout, generalParameters) {
-	return {
-            restrict: 'A',
-            link: function ($scope, $elm, $attr) {
-                $scope.$watch($attr.data, function (value) {
-                    
- 
-                    console.log(generalParameters);
-                    var options;
-				 
-                    //render the desired chart based on the type attribute provided
-                    var chart;
-                    switch ($attr.type) {
-                        case('PieChart'):
-							options = generalParameters.getOptionsPieChart();
-							var data = new google.visualization.DataTable();
-								data.addColumn('string', 'name');
-								data.addColumn('number', 'votes');
-			 
-								angular.forEach(value, function (row) {
-									data.addRow([row.name, row.votes]);
-								});
-                            chart = new google.visualization.PieChart($elm[0]);
-							chart.draw(data, options);
-                            break;
-                        case('ColumnChart'):
-						
-							options = generalParameters.getOptionsColumnChart();
-								  
-							var data = new google.visualization.DataTable();
-								data.addColumn('string', 'name');
-								data.addColumn('number', 'votes');
-								data.addColumn({type: 'string', role: 'style'});
-								data.addColumn('string', 'percent');
-			 
-								angular.forEach(value, function (row) {
-									data.addRow([row.name, row.votes, row.color, row.percent]);
-								});
-								console.log(data);
-							var view = new google.visualization.DataView(data);
-							view.setColumns([0, 1,
+.directive('googleChart', ['$timeout', 'generalParameters', function ($timeout, generalParameters) {
+    return {
+        restrict: 'A',
+        link: function ($scope, $elm, $attr) {
+            $scope.$watch($attr.data, function (value) {
+
+
+                console.log(generalParameters);
+                var options;
+
+                //render the desired chart based on the type attribute provided
+                var chart;
+                switch ($attr.type) {
+                    case ('PieChart'):
+                        options = generalParameters.getOptionsPieChart();
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('string', 'name');
+                        data.addColumn('number', 'votes');
+
+                        angular.forEach(value, function (row) {
+                            data.addRow([row.name, row.votes]);
+                        });
+                        chart = new google.visualization.PieChart($elm[0]);
+                        chart.draw(data, options);
+                        break;
+                    case ('ColumnChart'):
+
+                        options = generalParameters.getOptionsColumnChart();
+
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('string', 'name');
+                        data.addColumn('number', 'votes');
+                        data.addColumn({ type: 'string', role: 'style' });
+                        data.addColumn('string', 'percent');
+
+                        angular.forEach(value, function (row) {
+                            data.addRow([row.name, row.votes, row.color, row.percent]);
+                        });
+                        console.log(data);
+                        var view = new google.visualization.DataView(data);
+                        view.setColumns([0, 1,
 											   { calc: "stringify",
-												 sourceColumn: 3,
-												 type: "string",
-												 role: "annotation" },
+											       sourceColumn: 3,
+											       type: "string",
+											       role: "annotation"
+											   },
 											   2]);
-                            chart = new google.visualization.ColumnChart($elm[0]);
-							chart.draw(view, options);
-                            break;
-                        case('BarChart'):
-                            chart = new google.visualization.BarChart($elm[0]);
-                            break;
-                        case('Table'):
-                            chart = new google.visualization.Table($elm[0]);
-                            break;
-                    }
-                    
-					
-				});
-			}
+                        chart = new google.visualization.ColumnChart($elm[0]);
+                        chart.draw(view, options);
+                        break;
+                    case ('BarChart'):
+                        chart = new google.visualization.BarChart($elm[0]);
+                        break;
+                    case ('Table'):
+                        chart = new google.visualization.Table($elm[0]);
+                        break;
+                }
+
+
+            });
+        }
     };
-}])
+} ])
 
 //in the Html DOM add the word 'scroller' in parent element of the list of the elements.
 //in the Html DOM add 'loadingMethod =' and set it to the function in the controller which will react to the scroll down.
@@ -450,63 +474,63 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     };
 })
 
-.directive('charLimit', function(){
-  return {
-    restrict: 'A',
-    link: function($scope, $element, $attributes){
-      
-	  var maxLine = $attributes.lineLimit;
-	  var maxchar = $attributes.charLimit;
-	
-      $element.bind('keypress', function(event){
-	 
-		var count = ($element.val()).match(/\n/g);//count the "/n", to know number of lines
-        // Once the limit has been met or exceeded, prevent all keypresses from working
-			if(count){console.log(count.length,maxLine)}
-			console.log($element.val().length,maxchar)
-		if (($element.val().length >= maxchar)||(maxLine&&count&&(count.length > maxLine))){
-          // Except backspace
-			
-			if (event.keyCode != 8){
-				event.preventDefault();
-          }
+.directive('charLimit', function () {
+    return {
+        restrict: 'A',
+        link: function ($scope, $element, $attributes) {
+
+            var maxLine = $attributes.lineLimit;
+            var maxchar = $attributes.charLimit;
+
+            $element.bind('keypress', function (event) {
+
+                var count = ($element.val()).match(/\n/g); //count the "/n", to know number of lines
+                // Once the limit has been met or exceeded, prevent all keypresses from working
+                if (count) { console.log(count.length, maxLine) }
+                console.log($element.val().length, maxchar)
+                if (($element.val().length >= maxchar) || (maxLine && count && (count.length > maxLine))) {
+                    // Except backspace
+
+                    if (event.keyCode != 8) {
+                        event.preventDefault();
+                    }
+                }
+            });
         }
-      });
-    }
-  };
+    };
 })
 
 
-.directive('file', function(){
+.directive('file', function () {
     return {
         scope: {
-           
-			file:'=',
-			img:'='
+
+            file: '=',
+            img: '='
         },
-        link: function(scope, el, attrs){
-            el.bind('change', function(event){
-				
+        link: function (scope, el, attrs) {
+            el.bind('change', function (event) {
+
                 var file = event.target.files[0];
-				console.log(file);
-				scope.img=file;
-				console.log(scope.img);
-				
-				var reader = new FileReader();
-				
-				reader.onload = (function(){
-					
-					return function (e) {
-					
-						console.log(e.target.result); //base64 img
-						scope.file = e.target.result;
-						scope.$apply();
-					};
-				})(file);
-				
-				reader.readAsDataURL(file);
-			})
-		}
-	}
+                console.log(file);
+                scope.img = file;
+                console.log(scope.img);
+
+                var reader = new FileReader();
+
+                reader.onload = (function () {
+
+                    return function (e) {
+
+                        console.log(e.target.result); //base64 img
+                        scope.file = e.target.result;
+                        scope.$apply();
+                    };
+                })(file);
+
+                reader.readAsDataURL(file);
+            })
+        }
+    }
 })
 

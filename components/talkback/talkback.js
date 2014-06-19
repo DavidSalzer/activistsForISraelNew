@@ -24,7 +24,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         offset: 0,
         limit: 20,
         orderBy: '-timestamp',
-        postType: 'article',
+        postType: 'talkback',
         userID: $scope.user._id 
         };
     PostService.getPostsBatch(request); //tell service to refresh posts
@@ -120,7 +120,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
             postId: 8,
             postType: 'talkback',
             author: 'shimon',
-            timeStamp: '25052014175555',
+            timestamp: '25052014175555',
             title: 'עקירת עצי זית',
             content: 'מה המה מה מה מה מה מה מה מה מה ',
             image: '',
@@ -135,7 +135,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
                         commentId: 0,
                         postType: 'talkback',
                         author: 'shimon',
-                        timeStamp: '25052014185555',
+                        timestamp: '25052014185555',
                         title: 'עקירת עצי זית',
                         content: 'תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר ',
                         image: '',
