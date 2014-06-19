@@ -134,17 +134,17 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $scope.userimg = '';
         imgCrop.destroy();
 
-        $scope.lesson = classAjax.getdata({ type: 'setUserImg', req: { imgData: d.data} });
-        //yishai stern added in line 125 to the bigining "$scope.lesson="  
-        $scope.lesson.then(
-    function (data) {
-        //lesson list
-        //console.log(data);
-    },
-    function (error) {
-        console.log(error);
-    }
-    )
+    //    $scope.lesson = classAjax.getdata({ type: 'setUserImg', req: { imgData: d.data} });
+    //    //yishai stern added in line 125 to the bigining "$scope.lesson="  
+    //    $scope.lesson.then(
+    //function (data) {
+    //    //lesson list
+    //    //console.log(data);
+    //},
+    //function (error) {
+    //    console.log(error);
+    //}
+    //)
 
     });
 
