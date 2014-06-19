@@ -69,13 +69,13 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureName: 'פייסבוק פועלים',
             featureLogo: "./img/actionforisrael.png",
             featureColor: "#004a8e"
-        },
-		{
-		    featureUrl: 'poll',
-		    featureName: 'משאל עם',
-		    featureLogo: "./img/poll.png",
-		    featureColor: "#da4f00"
-		}
+        }
+		//{
+		//    featureUrl: 'poll',
+		//    featureName: 'משאל עם',
+		//    featureLogo: "./img/poll.png",
+		//    featureColor: "#da4f00"
+		//}
 
     ];
 
