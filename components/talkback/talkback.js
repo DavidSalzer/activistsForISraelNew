@@ -47,7 +47,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         }
         else {
             generalParameters.setBackIcon(true);
-            $state.transitionTo('write-post', { postType: "talkback" });
+            $state.transitionTo('write-post', { postType: "talkback",postId:0 });
         }
     };
 
