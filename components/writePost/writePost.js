@@ -78,9 +78,9 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			$scope.thankDetails = {
         
 				featureColor: '#da4f00',
-				thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',
-				btnText: 'מוד המאמרים',
-				headerText: 'המאמר שלי',
+				thankText: 'ההצעה התקבלה ותתפרסם בהתאם לכללי האפליקציה',
+				btnText: 'עמוד הסקרים',
+				headerText: 'הסקר שלי',
 				featureState: 'poll'
     
 			};
@@ -97,7 +97,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	
 	$scope.sendPost = function () {
 		
-		if($scope.articleData.post.content.length < $scope.min){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;} 
+		/* if($scope.articleData.post.content.length < $scope.min){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;}  */
 		//alert($scope.imgObj);
 		PostService.sendPost($scope.postData, $scope.imgObj);
 		$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });

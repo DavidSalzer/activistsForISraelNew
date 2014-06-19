@@ -308,7 +308,11 @@ background-color:#31363d;
 
 }
 .post-footer {
-    position: relative;
+    
+	position: relative;
+	width:260px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 span.respond-count, span.like-count {
