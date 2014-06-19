@@ -2,7 +2,7 @@ socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', 'classAja
     var facebookWrap = document.getElementById('face-wrap');
     $scope.FaceItemWidth = "311";//Math.floor((facebookWrap.offsetWidth) * 90 / 100);
     $scope.FaceItemHeight = "901";//Math.floor((screen.height)*102/100);
-    $scope.currentChannel = 'https://www.facebook.com/' + $stateParams.channelId;
+    $scope.currentChannel = 'https://www.facebook.com/' + 'NaftaliBennett';
 
     facebookWrap.innerHTML = '<div class="fb-like-box" data-href="' + $scope.currentChannel + '" data-width="' + $scope.FaceItemWidth + '" data-height="' + $scope.FaceItemHeight + '" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>';
         // alert('$scope.FaceItemWidth: '+$scope.FaceItemWidth+' $scope.FaceItemHeight: '+$scope.FaceItemHeight)
@@ -43,7 +43,7 @@ socialGroupApp.controller('facebookPoalim', ['$scope', '$stateParams', 'classAja
    var facebookWrap = document.getElementById('face-wrap');
     $scope.FaceItemWidth = "311";//Math.floor((facebookWrap.offsetWidth) * 90 / 100);
     $scope.FaceItemHeight = "901";//Math.floor((screen.height)*102/100);
-    $scope.currentChannel = 'https://www.facebook.com/' + $stateParams.channelId;
+    $scope.currentChannel = 'https://www.facebook.com/' + 'actionforisrael';
 
     facebookWrap.innerHTML = '<div class="fb-like-box" href="'+ $scope.currentChannel+'" data-width="'+ $scope.FaceItemWidth+'" data-height="'+ $scope.FaceItemHeight+'" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>';
     
