@@ -13,13 +13,14 @@
     </div>
     
     <div class="row features-swipe">
+      <div style="position: relative;width: 730px;height: 100%;">
         <div class="col-sm-6 col-md-4 menu-item-feature" data-ng-repeat="feature in features" data-ng-click="goToFeature(feature.featureUrl, feature.postId)" data-ng-hide="$index==0">
             <div class="thumbnail current-feature-components">
                 <div class="caption current-feature-name">
                     <h2>{{feature.featureName}}</h2>
                     <div class="feature-logo" style="background-image: url('{{feature.featureLogo}}')"></div>
                 </div>
-                <div class="caption">
+                <div class="caption desc">
                     <h3>{{feature.title}}</h3>
                     <p>{{feature.text}}</p>
                 </div>
@@ -27,5 +28,6 @@
                 
             </div>
         </div>
+      </div>
     </div>
 </section>
