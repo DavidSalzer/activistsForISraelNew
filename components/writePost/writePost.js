@@ -52,15 +52,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			$scope.imageMax = 2;
 			
 			$scope.postData.post.postType='talkback';
-			$scope.thankDetails = {
-        
-				featureColor: '##993ca7',
-				thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',
-				btnText: 'חזרה לעמוד המאמרים',
-				headerText: 'המאמר שלי',
-				featureState: 'talkback'
-    
-			};
+			
 			break; 
 		}
 		   
@@ -98,9 +90,9 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	
 	$scope.sendPost = function () {
 		
-		if(($scope.min > 0)&&($scope.postData.post.content.length < $scope.min)){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;}  
+		/* if(($scope.min > 0)&&($scope.postData.post.content.length < $scope.min)){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;}   */
 		//alert($scope.imgObj);
-		PostService.sendPost($scope.postData, $scope.imgObj);
+		PostService.sendPost($scope.postData, $scope.imgObj, $scope.fileObj );
 		if($scope.postData.post.postType=='talkback'){
 		
 			 $state.transitionTo('talk-back'); arert();return;
