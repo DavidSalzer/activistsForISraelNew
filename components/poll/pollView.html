@@ -11,8 +11,8 @@
 		{{currentPollObj.title}}
 	</div>
 	<div class="imageView-background">
-		<div class="imageView-container">
-			<div class="pollView-image" style="background-image: url('{{currentPollObj.image}}')" data-ng-style="{'background-color': '#ffffff'}"></div>
+		<div class="legend-image" data-ng-style="{'margin-right': '56px'}">
+			<img src='{{currentPollObj.image}}' data-ng-style="{'background-color': '#42484e', 'padding':'3px'}">
 		</div>
 	</div>
 	<div class="pollView-text" data-ng-style="{'background-color': '#ffffff'}">
@@ -25,16 +25,19 @@
 	 <div ng-repeat="line in legend" class="legend-container" data-ng-hide = "pollIsActive()">
 		<div class="legend-color" data-ng-style="{'background-color': '{{line.color}}'}"></div>
 		<div class="legend-content" data-ng-style="{'color': '#ffffff'}">{{line.title}}</div>
-		<div class="legend-image" data-ng-show='{{line.image}}' >
-			<img src='{{line.image}}' data-ng-style="{'background-color': '#42484e', 'padding':'3px'}">
+		<div class="legend-image" data-ng-show='{{"line.image"}}'>
+			<img ng-src="{{line.image}}" data-ng-style="{'background-color': '#42484e', 'padding':'3px'}">
 		</div>
 	</div>
 	
-	 <div ng-repeat="line in optionsForVote" data-ng-show = "pollIsActive()"> 
-		<img data-ng-show = '{{line.image}}' src='{{line.image}}' data-ng-style="{'background-color': '#42484e', 'padding':'3px', 'width' :'70%', 'height' :'80%', 'margin-right' :'15%', 'margin-top' :'10%'}">
-		<div class="optionToVote-container" data-ng-show = "pollIsActive()" ng-click="addVote($index);"> {{line.name}} </div>
+	 <div ng-repeat="item in optionsForVote" data-ng-show = "pollIsActive()" data-ng-style="{'padding-top':'10px'}"> 
+		<div class="optionToVote-image" data-ng-show ='{{"item.image"}}'>
+			<img ng-src="{{item.image}}" >
+		</div>
+		<div class="optionToVote-container" data-ng-show = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#ffffff', 'background-color': '#565c63'}"> {{item.name}} </div>
+		<div class="optionToVote-container" data-ng-hide = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#000000', 'background-color': '#ffffff'}"> {{item.name}} </div>
 	</div>
-	<div class="button" data-ng-click="addVote()" data-ng-style="{'background-color': '#da4f00'}" style="background-color: rgb(218, 79, 0);"> הצבע</div>
+	<div data-ng-show = "pollIsActive()" class="button" data-ng-click="addVote()" data-ng-style="{'background-color': '#da4f00', 'color': '#ffffff'}" > הצבע</div>
 </div>			
 
 

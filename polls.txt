@@ -1,12 +1,12 @@
 {
     "type": "poll",
-    "polls": [
+    "data": [
         {
             "pollId": 0,
             "postType": "poll",
             "timeStamp": 1401095945,
             "title": "ksjhgkhgkgh",
-            "content": "בטקס הרמת כוסית לכבוד נשיא המדינה הנבחר ראובן (רובי) ריבלין שהסתיים לפני דקות אחדות נישאו נאומי יושב ראש האני רוצה לאחל להצלחה בהמשך הדרך ולברךברוך שחלק מכבודו לבשר ודם. הוכחת ",
+            "content": "בטקס הרמת כוסית לכבוד נשיא המדינה הנבחר ראובן (רובי) ריבלין שהסתיים לפני דקות אחדות נישאו נאומי יושב ראש האני רוצה לאחל להצלחה בהמשך הדרך ולברךברוך שחלק מכבודו לבשר ודם. הוכחת jhgjhghjgjkgjhjhgjkg jk jh gkjg ",
             "image": "./img/image/kneset.jpg",
 			"status": "active",
 			"optionsForVote":[
@@ -20,13 +20,14 @@
                         {"name": "Costa", "votes": 34, "image": ""},
                         {"name": "Coffee Bean", "votes": 30, "image": ""}
                     ],
+			"countOfVoting": 15,
 			"chartType":"PieChart"	
         },
         {
             "pollId": 1,
             "postType": "poll",
             "timeStamp": 1401095945,
-            "title": "בלה בלה",
+            "title": "בלק בלה",
             "content": "תגמבךה בלה בלה בלה",
             "image": "./img/image/kneset.jpg",
 			"status": "inactive",
@@ -42,6 +43,7 @@
                         {"name": "Coffee Bean", "votes": 30, "image": ""},
                         {"name": "Coffee Bean", "votes": 10, "image": ""}
                     ],
+			"countOfVoting": 15,
 			"chartType":"ColumnChart"
         },
         {
@@ -58,6 +60,7 @@
                         {"name": "Costa", "votes": 34, "image": ""},
                         {"name": "Coffee Bean", "votes": 30, "image": ""}
                     ],
+			"countOfVoting": 15,
 			"chartType":"PieChart"
         },
         {
@@ -65,7 +68,7 @@
             "postType": "poll",
             "timeStamp": 1401095945,
             "title": "עקירתעציזית",
-            "content": "תגמחירתגמחירתגמחירתגמחירתגמחירתגמחיר",
+            "content": "תגמחירתגמחירתגמחירתגמחירתגמחירתגמחיר וד נשיא המדינה הנבחר ראובן (רובי) ריבלין שהסתיים לפני דקות אחדות נישאו נאומי יושב ראש האני רוצה לאחל להצלחה בהמש וד נשיא המדינה הנבחר ראובן (רובי) ריבלין שהסתיים לפני דקות אחדות נישאו נאומי יושב ראש האני רוצה לאחל להצלחה בהמש וד נשיא המדינה הנבחר ראובן (רובי) ריבלין שהסתיים לפני דקות אחדות נישאו נאומי יושב ראש האני רוצה לאחל להצלחה בהמש",
             "image": "./img/image/kneset.jpg",
 			"status": "active",
 			"optionsForVote":[
@@ -79,6 +82,7 @@
                         {"name": "Costa", "votes": 34, "image": ""},
                         {"name": "Coffee Bean", "votes": 30, "image": ""}
                     ],
+			"countOfVoting": 5,
 			"chartType":"ColumnChart"
         },
         {
@@ -100,6 +104,7 @@
                         {"name": "Costa", "votes": 34, "image": ""},
                         {"name": "Coffee Bean", "votes": 30, "image": "./img/image/kneset.jpg"}
                     ],
+			"countOfVoting": 15,
 			"chartType":"PieChart"
         },
         {
@@ -116,6 +121,7 @@
                         {"name": "Costa", "votes": 34, "image": ""},
                         {"name": "Coffee Bean", "votes": 30, "image": ""}
                     ],
+			"countOfVoting": 15,
 			"chartType":"PieChart"
         }
     ]

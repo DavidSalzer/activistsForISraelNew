@@ -393,69 +393,80 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     };
 })
 
-.directive('googleChart', ['$timeout', 'generalParameters', function ($timeout, generalParameters) {
-    return {
-        restrict: 'A',
-        link: function ($scope, $elm, $attr) {
-            $scope.$watch($attr.data, function (value) {
-
-
-                console.log(generalParameters);
-                var options;
-
-                //render the desired chart based on the type attribute provided
-                var chart;
-                switch ($attr.type) {
-                    case ('PieChart'):
-                        options = generalParameters.getOptionsPieChart();
-                        var data = new google.visualization.DataTable();
-                        data.addColumn('string', 'name');
-                        data.addColumn('number', 'votes');
-
-                        angular.forEach(value, function (row) {
-                            data.addRow([row.name, row.votes]);
-                        });
-                        chart = new google.visualization.PieChart($elm[0]);
-                        chart.draw(data, options);
-                        break;
-                    case ('ColumnChart'):
-
-                        options = generalParameters.getOptionsColumnChart();
-
-                        var data = new google.visualization.DataTable();
-                        data.addColumn('string', 'name');
-                        data.addColumn('number', 'votes');
-                        data.addColumn({ type: 'string', role: 'style' });
-                        data.addColumn('string', 'percent');
-
-                        angular.forEach(value, function (row) {
-                            data.addRow([row.name, row.votes, row.color, row.percent]);
-                        });
-                        console.log(data);
-                        var view = new google.visualization.DataView(data);
-                        view.setColumns([0, 1,
-											   { calc: "stringify",
-											       sourceColumn: 3,
-											       type: "string",
-											       role: "annotation"
-											   },
-											   2]);
-                        chart = new google.visualization.ColumnChart($elm[0]);
-                        chart.draw(view, options);
-                        break;
-                    case ('BarChart'):
-                        chart = new google.visualization.BarChart($elm[0]);
-                        break;
-                    case ('Table'):
-                        chart = new google.visualization.Table($elm[0]);
-                        break;
-                }
-
-
-            });
-        }
+.directive('googleChart', ['$timeout', 'generalParameters', function($timeout, generalParameters) {
+	return {
+            restrict: 'A',
+            link: function ($scope, $elm, $attr) {
+                $scope.$watch($attr.data, function (value) {
+                    
+ 
+                    console.log(generalParameters);
+                    var options;
+				 
+                    //render the desired chart based on the type attribute provided
+                    var chart;
+                    switch ($attr.type) {
+                        case('PieChart'):
+							options = generalParameters.getOptionsPieChart();
+							var data = new google.visualization.DataTable();
+								data.addColumn('string', 'name');
+								data.addColumn('number', 'votes');
+			 
+								angular.forEach(value, function (row) {
+									data.addRow([row.name, row.votes]);
+								});
+                            chart = new google.visualization.PieChart($elm[0]);
+							chart.draw(data, options);
+                            break;
+                        case('ColumnChart'):
+						
+							options = generalParameters.getOptionsColumnChart();
+								  
+							var data = new google.visualization.DataTable();
+								data.addColumn('string', 'name');
+								data.addColumn('number', 'votes');
+								data.addColumn({type: 'string', role: 'style'});
+								//data.addColumn('string', 'percent');
+								data.addColumn({type: 'string', role: 'annotation'});
+			 
+								angular.forEach(value, function (row) {
+									data.addRow(["", row.votes, row.color, row.percent]);
+								});
+								console.log(data);
+							var view = new google.visualization.DataView(data);
+							view.setColumns([0, 1,
+											   2,
+											   { //calc: "stringify",
+											   calc: function (dt, row) {
+      if (dt.getValue(row, 1) >= 0) {
+        return dt.getValue(row, 1) //+3
+      }
+      else {
+        return dt.getValue(row, 1) //-3
+      }
+    },
+												 //sourceColumn: 3,
+												 //type: "string",
+												 type: 'number',
+												 //role: "annotation"
+												 },3]);
+                            chart = new google.visualization.ComboChart($elm[0]);
+							chart.draw(view, options);
+                            break;
+                        case('BarChart'):
+                            chart = new google.visualization.BarChart($elm[0]);
+                            break;
+                        case('Table'):
+                            chart = new google.visualization.Table($elm[0]);
+                            break;
+                    }
+                    
+					
+				});
+			}
     };
-} ])
+}])
+
 
 //in the Html DOM add the word 'scroller' in parent element of the list of the elements.
 //in the Html DOM add 'loadingMethod =' and set it to the function in the controller which will react to the scroll down.

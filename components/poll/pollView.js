@@ -2,20 +2,19 @@
 socialGroupApp.controller('pollView', ['$rootScope','$stateParams','$scope', '$http', 'PostService', 'generalParameters', function ($rootScope,$stateParams,$scope, $http, PostService, generalParameters) {
 	console.log($stateParams);
 	$scope.currentPoll = $stateParams.pollIndex;
+	$scope.choosenOption = -1;
 	$scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/poll.png",
         featureColor: '#da4f00',
-        featureBoxColor: '#ffffff',
-        featureTextColor: '#000000',
-        infoHaeder: "",
-        infoMainText: "",
-        infoSubText: ""
+        infoHaeder: "משאל עם",
+        infoMainText: "בואו להשפיע! כאן מופיעים סקרים שעל סדר היום. ניתן לשתף / או להציע שאלות לסקר. לרשומים בלבד",
+        infoSubText: "ההצבעה באיזור זה מותנית בהצטרפות"
     };
     generalParameters.setFeature($scope.featureDetails);
 	$scope.options = generalParameters.getOptionsPieChart();
 	console.log($scope.options);
-	$scope.polls = PostService.getPolls();
+	$scope.polls = PostService.getPosts();
 	console.log($scope.polls);
 	console.log($scope.currentPoll);
 	console.log($scope.polls[$scope.currentPoll]);
@@ -45,20 +44,49 @@ socialGroupApp.controller('pollView', ['$rootScope','$stateParams','$scope', '$h
     };
 	
 	$scope.thankDetails = {
-        featureColor: '#565c63',
+        featureColor: '#da4f00',
         thankText: 'הצבעתך התקבלה. המערכת תעבד את נתוני ההצבעה והתוצאות יפורסמו בהקדם. ',
         btnText: 'חזרה לעמוד הסקרים',
         headerText: 'סקר פעיל',
         featureState: 'poll'
     };
 	
-	$scope.addVote = function(voteTo) {
-		generalParameters.setBackIcon(false);
-		$scope.featureDetails.featureBoxColor = '#565c63';
-		$scope.featureDetails.featureTextColor = '#ffffff';
-        $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+	$scope.addVote = function() {
+		
+		if($scope.choosenOption > -1 ){
+			$scope.voteDetails = {
+				voteTo: $scope.choosenOption
+			}
+
+			console.log($scope.voteDetails);
+			$scope.json = JSON.stringify($scope.voteDetails);
+			console.log($scope.json);
+
+			//need server
+			//$http.post(domain + 'vote/', $scope.json)
+			//.success(function (data) {
+				if($scope.currentPollObj.countOfVoting > 10){		
+					$scope.currentPollObj.status = "inactive";
+				}
+				else {
+					generalParameters.setBackIcon(false);
+					$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+				//    console.log(data);
+				}
+				//});
+		}
+			
+
 	}
 	
+	$scope.selectOption = function(voteTo) {
+		$scope.choosenOption = voteTo;
+		console.log($scope.choosenOption);
+	}
+	$scope.getIsSelected = function(index) {
+		return ($scope.choosenOption == index);
+		
+	}
 
 }])
 
