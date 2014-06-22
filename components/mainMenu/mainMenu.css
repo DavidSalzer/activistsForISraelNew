@@ -136,15 +136,13 @@ margin: 0;
     height: 100%;
     display: inline-block;
     border: 2px solid #565c63;
-    -webkit-box-shadow: -12px 0 3px 11px rgba(0,0,0,0.53); /* Safari/Chrome, other WebKit */
-    -moz-box-shadow: -12px 0 3px 11px rgba(0,0,0,0.53); /* Firefox, other Gecko */
-    box-shadow: -12px 0 3px 11px rgba(0,0,0,0.53);
+  
 }
 .menu-item-feature:before{
  content: "";
 width: 4px;
 height: 100%;
-left: -2px;
+left: -4px;
 position: absolute;
 z-index: 2;
 bottom: 0px;
@@ -195,7 +193,7 @@ overflow: hidden
     position: absolute;
     background: #565c63;
     height: 4px;
-    bottom: -3px;
+    bottom: -4px;
     width: 100%;
     z-index: 1;
     right: 0px;

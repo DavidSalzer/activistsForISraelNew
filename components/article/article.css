@@ -211,6 +211,7 @@ figure.author-image {
 .author-image img {
     width: 38px;
     height: 38px;
+    position: relative;
 }
 
 span.author-date {
@@ -225,9 +226,13 @@ span.author-name {
     line-height: 13px;
     font-size: 10px;
     margin-right: 0;
-    text-align: center;
-    width: 40px;
+    text-align: right;
+    text-indent: 2px;
+    width: 61px;
     font-weight: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 
