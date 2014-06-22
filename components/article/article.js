@@ -24,7 +24,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-
+    $scope.domain = domain;
     $scope.user = generalParameters.getUser();
     request = {
         startTimestamp: '',
@@ -84,9 +84,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
-            //case "talkback":   
-            //    $state.transitionTo('single-article', { postId: $scope.postId });   
-            //    break;   
+            //case "talkback":    
+            //    $state.transitionTo('single-article', { postId: $scope.postId });    
+            //    break;    
             case "author":
                 $scope.getPostsByAll();
                 $state.transitionTo('author-page', { authorId: $scope.authorId });
@@ -145,9 +145,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     }
 
     $scope.getPostsByAll = function () {
-        $scope.currentFilter = 'all';
+        //$scope.currentFilter = 'all';
         request.postType = 'article';
-        request.endTimestamp = '';
+        //request.endTimestamp = '';
         PostService.getPostsBatch(request);
     }
 
@@ -167,9 +167,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
 
     $scope.getPostsByViews = function () {
-        $scope.currentFilter = 'views';
+        //$scope.currentFilter = 'views';
         request.postType = 'article';
-        request.endTimestamp = '';
+        //request.endTimestamp = '';
         PostService.getPostsBatch(request);
     }
 
