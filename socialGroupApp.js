@@ -173,9 +173,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
 
             $http({
-                //url: domain + queryString,
-                url: URL,
-                //method: method, // temp cancel for local json calls
+                url: domain + queryString,
+                //url: URL,
+                method: method, // temp cancel for local json calls
                 data: request
             }).
             success(function (data, status, header, config) {

@@ -15,18 +15,20 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         infoMainText: "כתבו על כל נושא שמעניין אתכם. המשתמשים יוכלו לסמן 'אהבתי' או להגיב לדבריכם. מוגבל ל 140 תווים.",
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
+
+    $scope.domain = domain;
     generalParameters.setFeature($scope.featureDetails);
     $scope.user = generalParameters.getUser();
     /*init controller data*/
-    request = { 
+    request = {
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
         limit: 20,
         orderBy: '-timestamp',
         postType: 'talkback',
-        userID: $scope.user._id 
-        };
+        userID: $scope.user._id
+    };
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
 
@@ -47,7 +49,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         }
         else {
             generalParameters.setBackIcon(true);
-            $state.transitionTo('write-post', { postType: "talkback",postId:0 });
+            $state.transitionTo('write-post', { postType: "talkback", postId: 0 });
         }
     };
 
