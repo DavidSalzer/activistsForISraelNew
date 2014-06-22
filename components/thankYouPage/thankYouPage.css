@@ -72,12 +72,11 @@
     background-color: #42484e;
     height: 50px;
     width: 94%;
-    margin: auto;
+    margin: 20px auto 0px auto;
     border-radius: 10px;
     display: block;
     color: white;
     border: 0;
-    margin-top: 70px;
     font-size: 30px;
 }
 

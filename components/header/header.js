@@ -45,7 +45,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         },
         {
             featureUrl: 'talk-back',
-            featureName: 'מה בוער',
+            featureName: 'מה קורה',
             featureLogo: "./img/whatsup.png",
             featureColor: "talkback"
         },
