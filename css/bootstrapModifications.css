@@ -35,7 +35,7 @@ img.title-img {
 header .btn.btn-navbar.info {
     width: 35px;
     border: 1px solid white;
-    margin-left: 15px;
+    /*margin-left: 15px;*/
     padding: 0;
     width: 35px;
     height: 35px;
@@ -127,6 +127,7 @@ img.user-thumbnail {
     height: 35px;
     position: absolute;
     left: 5px;
+    top: 7px;
 }
 
 /*main menu*/
@@ -136,6 +137,7 @@ img.user-thumbnail {
     padding: 0;
     padding-right: 5px;
     color: gray;
+    margin: -1px;
 }
 
 .thumbnail {

@@ -53,6 +53,16 @@ header i.fa.share {
     right: -8px;
 }
 
+header i.fa.back {
+    background-image: url(../img/back.png);
+    height: 40px;
+    width: 40px;
+    background-size: 100% 100%;
+    top: 2px;
+    position: relative;
+    right: 5px;
+}
+
 .scroll-main-window {
     height: 100%;
     overflow-y: scroll;
@@ -260,7 +270,7 @@ div.post-main-text {
 .post-feedback .icon {
     background-repeat: no-repeat;
     background-size: 34px 15px;
-    background-position-x: -17px;
+    background-position-x: 1px;
     background-position-y: 1px;
     height: 100%;
     width: 17px;
@@ -281,7 +291,7 @@ div.post-main-text {
 }
 
 .like-post.is-liked .icon {
-    background-position-x: -18px;
+    background-position-x: -17px;
 }
 
 
@@ -302,13 +312,16 @@ span.respond-post, span.like-post {
     height: 18px;
     color: white;
 }
-span.is-liked{
 
-background-color:#31363d;
-
+span.is-liked {
+    background-color: #31363d;
 }
+
 .post-footer {
     position: relative;
+    width: 260px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 span.respond-count, span.like-count {
@@ -398,6 +411,10 @@ span.respond-count, span.like-count {
 
 .sidebar-left {
     background: #000;
+}
+
+.sidebar a.list-group-item {
+    border-bottom: 1px solid #565c63;
 }
 /**********************************comment css******************************************/
 .comment-container {
@@ -705,9 +722,7 @@ button {
     LINE-HEIGHT: 20px;
     background-color: '#ffffff';
     color: '#da4f00';
-    font-weight ': 'bold'; overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2; /* number of lines to show */
+    font-weight ': 'bold'; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; /* number of lines to show */
 }
 
 .imageView-container {

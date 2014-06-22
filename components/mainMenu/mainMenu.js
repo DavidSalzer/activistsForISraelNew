@@ -7,7 +7,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureLogo: './img/whatsup.png',
         featureImg: './img/image/kneset.jpg',
         title: 'בוער לכם להגיד משהו? זה המקום',
-        text: 'עמוד מה בוער',
+        text: 'טוקבק (בעברית: תגובית) הוא מנגנון לתגובות הגולשים באינטרנט. מנגנון הטוקבק מופעל באתרי חדשות, באתרי בלוגים ובאתרים נוספים, והוא מאפשר לגולשים להגיב על הנאמר בדף מסוים, כך שהתגובות מופיעות בהמשכו של הדף. . ',
         postId: 5
     },
     {
@@ -20,19 +20,19 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         text: 'לצפייה מהנייד',
         postId: 5
     },
-    {
-        featureId: 2,
-        featureUrl: 'talk-back',
-        featureName: 'טוקבקים',
-        featureLogo: './img/whatsup.png',
-        featureImg: './img/image/kneset.jpg',
-        title: 'בוער לכם להגיד משהו? זה המקום',
-        text: 'עמוד מה בוער',
-        postId: 5
-    },
+    //{
+    //    featureId: 2,
+    //    featureUrl: 'poll',
+    //    featureName: 'משאל עם',
+    //    featureLogo: './img/poll.png',
+    //    featureImg: './img/image/pic6.png',
+    //    title: 'בואו להצביע בעמוד הסקרים שלנו',
+    //    text: 'עמוד סקרים',
+    //    postId: 5
+    //},
     {
         featureId: 3,
-        featureUrl: 'comments',
+        featureUrl: 'article',
         featureName: 'מאמרים',
         featureLogo: './img/article.png',
         featureImg: './img/image/pic3.png',
@@ -42,23 +42,23 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     },
     {
         featureId: 3,
-        featureUrl: 'facebookBennet/NaftaliBennett',
+        featureUrl: 'facebookBennet',
         featureName: 'facebook',
         featureLogo: './img/NaftaliBennett.png',
-        featureImg: './img/image/pic3.png',
-        title: 'מאמרים בנושאים על סדר היום',
-        text: 'עמוד מאמרים',
+        featureImg: './img/image/pic4.png',
+        title: 'ערוץ הפייסבוק של נפתלי בנט',
+        text: 'הכנסו לקרוא',
         postId: 5
     }
     ,
     {
         featureId: 3,
-        featureUrl: 'facebookPoalim/actionforisrael',
+        featureUrl: 'facebookPoalim',
         featureName: 'facebook-poalim',
-        featureLogo: './img/NaftaliBennett.png',
-        featureImg: './img/image/pic3.png',
-        title: 'מאמרים בנושאים על סדר היום',
-        text: 'עמוד מאמרים',
+        featureLogo: './img/actionforisrael.png',
+        featureImg: './img/image/pic5.png',
+        title: 'ערוץ הפייסבוק של פועלים למען ישראל',
+        text: 'הכנסו לקרוא',
         postId: 5
     }
     
@@ -73,7 +73,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureName: null,
         featureLogo: "./img/poalim-logo.png",
         //infoImg: './img/whatsup.png',
-        featureColor: '#AB14E6',
+        featureColor: '#AB14E6'
         
     };
 

@@ -1,7 +1,7 @@
-socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters', function ($scope,$rootScope, $stateParams, PostService, generalParameters) {
+socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters','$state', function ($scope,$rootScope, $stateParams, PostService, generalParameters,$state) {
  
 	/*init variables*/
-	
+	generalParameters.setBackIcon(true);
 	$scope.parentPost={parentId:$stateParams.postId, parentPostType:$stateParams.postType};
 	
 	$scope.user = generalParameters.getUser();
@@ -24,6 +24,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			$scope.headerText ='כתיבת טקסט';
 			$scope.imageMax = 2;
 			$scope.fileMax = 2;
+			$scope.min = 250;
 			
 			$scope.postData.post.postType='article';
 			$scope.postData.post.title='';
@@ -78,9 +79,9 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			$scope.thankDetails = {
         
 				featureColor: '#da4f00',
-				thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',
-				btnText: 'מוד המאמרים',
-				headerText: 'המאמר שלי',
+				thankText: 'ההצעה התקבלה ותתפרסם בהתאם לכללי האפליקציה',
+				btnText: 'עמוד הסקרים',
+				headerText: 'הסקר שלי',
 				featureState: 'poll'
     
 			};
@@ -97,9 +98,13 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	
 	$scope.sendPost = function () {
 		
-		if($scope.articleData.post.content.length < $scope.min){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;} 
+		if(($scope.min > 0)&&($scope.postData.post.content.length < $scope.min)){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;}  
 		//alert($scope.imgObj);
 		PostService.sendPost($scope.postData, $scope.imgObj);
+		if($scope.postData.post.postType=='talkback'){
+		
+			 $state.transitionTo('talk-back'); arert();return;
+		}
 		$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 	};
 	

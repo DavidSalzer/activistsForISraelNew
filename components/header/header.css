@@ -239,11 +239,12 @@ span.sidbar-text.ng-binding {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding-right: 11px;
+    color: white;
 }
 
 span.sidbar-text.ng-binding:hover {
     /*  background-color: #565c63; */
-    color: white;
+    /*color: white;*/
 }
 
 a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.active:hover {
@@ -266,4 +267,35 @@ a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.acti
     overflow: hidden;
     letter-spacing: 0.7px;
     font-size: 16px;
+    line-height: 65px;
+}
+
+a.list-group-item.talkback.active span, a.list-group-item.talkback.active:focus span , a.list-group-item.talkback.active:hover span {
+	
+	background-color: #993ca7;
+}
+
+a.list-group-item.article.active span, a.list-group-item.article.active:focus span , a.list-group-item.article.active:hover span {
+	
+	background-color: #006dbe;
+}
+
+a.list-group-item.channel.active span, a.list-group-item.channel.active:focus span , a.list-group-item.channel.active:hover span {
+	
+	background-color: #fa0001;
+}
+
+a.list-group-item.FBnaftaly.active span, a.list-group-item.FBnaftaly.active:focus span , a.list-group-item.FBnaftaly.active:hover span {
+	
+	background-color: #004a8e;
+}
+
+a.list-group-item.Fbactivists.active span, a.list-group-item.Fbactivists.active:focus span , a.list-group-item.Fbactivists.active:hover span {
+	
+	background-color: #004a8e;
+}
+
+a.list-group-item.poll.active span, a.list-group-item.poll.active:focus span , a.list-group-item.poll.active:hover span {
+	
+	background-color: #da4f00;
 }
