@@ -509,29 +509,41 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         scope: {
 
             file: '=',
-            img: '='
+            img: '=',
+			textfile: '='
         },
         link: function (scope, el, attrs) {
             el.bind('change', function (event) {
 
                 var file = event.target.files[0];
                 console.log(file);
-                scope.img = file;
-                console.log(scope.img);
 
-                var reader = new FileReader();
+                
+				if(file.type.match('image/*')) {
+					
+					var reader = new FileReader();
+				
+					reader.onload = (function () {
 
-                reader.onload = (function () {
+						return function (e) {
 
-                    return function (e) {
+							console.log(e.target.result); //base64 img
+							scope.file = e.target.result;
+							scope.img = file;
+							scope.$apply();
+						};
+					})(file);
 
-                        console.log(e.target.result); //base64 img
-                        scope.file = e.target.result;
-                        scope.$apply();
-                    };
-                })(file);
-
-                reader.readAsDataURL(file);
+					reader.readAsDataURL(file);
+					return;
+				}
+					  
+				else if (file.type.match('text/plain')) {
+							
+					console.log(file.type);
+					scope.textFile = file;
+					return;
+				}			
             })
         }
     }
