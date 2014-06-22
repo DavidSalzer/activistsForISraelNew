@@ -32,9 +32,9 @@
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
-    -webkit-box-shadow: 0px 0px 35px 2px rgba(0,0,0,0.66); /* Safari/Chrome, other WebKit */
-    -moz-box-shadow: 0px 0px 35px 2px rgba(0,0,0,0.66); /* Firefox, other Gecko */
-    box-shadow: 0px 0px 35px 2px rgba(0,0,0,0.66); /* Opera/IE 8+ */
+    -webkit-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.25);
 }
 
 .current-feature-components.thumbnail{
@@ -87,9 +87,9 @@ overflow: hidden;
     left: 7px;
     top: 6px;
     position: absolute;
-    -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.39);
-    -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.39);
-    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.39);
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.19);
+    -moz-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.19);
+    box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.19);
     background-size: 100% 100%; /*need to ask tal to make the image fill all of the background to rite here background-size:100% 100% becuase the youtube image does not take all of its place*/
 }
 
@@ -104,8 +104,9 @@ overflow: hidden;
     color: #bcccce;
     white-space: normal;
     font-size: 10px;
-    padding-right: 7px;
+    padding-right: 5px;
     margin-top: -2px;
+    padding-left: 5px;
 }
 
 .features-swipe {
@@ -203,6 +204,8 @@ overflow: hidden
 
     .current-feature-text {
         margin-top: 0px;
+        max-height: 19px;
+        overflow-y: hidden;
     }
 
     .current-feature {

@@ -4,7 +4,7 @@
         {
             "postId": 6,
             "postType": "article",
-            "_author": "moshe",
+            "_author": "מנשה מזרחי",
             "authorId": 0,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
@@ -19,7 +19,7 @@
                 {
                     "postId": 0,
                     "postType": "talkback",
-                    "_author": "shimon",
+                    "_author": "מנשה מזרחי",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
                     "title": "תגובה 1",
@@ -30,10 +30,10 @@
                         "isLiked": true
                     }
                 },
-                 {
+                {
                     "postId": 1,
                     "postType": "talkback",
-                    "_author": "shimon sfsd",
+                    "_author": "שמחה ריף",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
                     "title": "תגובה 2",
@@ -49,12 +49,12 @@
         {
             "postId": 7,
             "postType": "article",
-            "_author": "ovadia",
+            "_author": "מנשה התימני",
             "authorId": 1,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
-            "title": "בלה בלה",
-            "content": "hgghfjhjhkaaasd asתגמבךה בלה בלה בלה",
+            "title": "הנמרים הטמילים",
+            "content": "בתחילת חודש יוני ציינו בקולומבו, בירת סרי לנקה, את יום השנה החמישי לאחד ההישגים המזהירים בתולדות המלחמה בטרור בעשורים האחרונים. ב-19 במאי 2009 הסתיים אחד הסכסוכים המזוינים הארוכים בעולם כשארגון הגרילה נמריהשחרורשלטאמיל-אילאם",
             "image": "",
             "likes": {
                 "likesCount": 1,
@@ -64,11 +64,11 @@
                 {
                     "postId": 0,
                     "postType": "talkback",
-                    "author": "_shimon",
+                    "_author": "עזרא",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
-                    "title": "עקירתעציזית",
-                    "content": "תגמחירתגמחירתגמחירתגמחירתגמחירתגמחיר",
+                    "title": "אהה מידיטרניה",
+                    "content": " אני לא רוקד אני לא רוקד כשעצוב",
                     "image": "",
                     "likes": {
                         "likesCount": 12,
@@ -80,12 +80,12 @@
         {
             "postId": 8,
             "postType": "article",
-            "_author": "moshe",
+            "_author": "מיכה",
             "authorId": 1,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
-            "title": "עקירתעציזית",
-            "content": ";plk;kl./pojokl.;po[;oi;lkp;o[l;iop[p;lkpjok",
+            "title": "מלחמה בטרור",
+            "content": "אףשתוצאהזומהווהמקרהכמעטיחידשלמדינהשהצליחהלהביסארגוןטרורבאמצעיםצבאיי  היאלאזכתהלתשומתהלבהראויהבקרבמומחיביטחוןוקובעימדיניותבעולםובישראל.כיצדהצליחהסרילנקה-מדינתעולםשלישי-באתגרשבומדינותחזקותומפותחותממנהנכשלו?מההיההמחירהפוליטי-דמוקרטישהקריבה בעבורההישגה צבאי?ומהישראל יכולהללמודמכךעלדרכיהפעולההיעילות  במלחמהבגרילה ובטרור?",
             "image": "",
             "likes": {
                 "likesCount": 7,
@@ -95,42 +95,11 @@
                 {
                     "postId": 0,
                     "postType": "talkback",
-                    "_author": "shimon",
+                    "_author": "יונה",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
-                    "title": "עקירתעציזית",
-                    "content": "תגמחירתגמחירתגמחירתגמחירתגמחירתגמחיר",
-                    "image": "",
-                    "likes": {
-                        "likesCount": 1,
-                        "isLiked": true
-                    }
-                }
-            ]
-        },
-        {
-            "postId": 9,
-            "postType": "article",
-            "_author": "moshe",
-            "authorId": 2,
-            "authorImage": "./img/penguin-chick.jpg",
-            "timestamp": 1403179734134,
-            "title": "עקירתעציזית",
-            "content": "asssasasasassas s s  ss aaasas  a asתגמחירתגמחירתגמחירתגמחירתגמחירתגמחיר",
-            "image": "",
-            "likes": {
-                "likesCount": 7,
-                "isLiked": true
-            },
-            "comments": [
-                {
-                    "postId": 0,
-                    "postType": "talkback",
-                    "_author": "shimon",
-                    "authorImage": "./img/penguin-chick.jpg",
-                    "timestamp": 1403179734134,
-                    "title": "עקירתעציזית",
-                    "content": "תגמחירתגמחירתגמחירתגמחירתגמחירתגמחיר",
+                    "title": "מלחמהבטרור",
+                    "content": "אףשתוצאהזומהווהמקרהכמעטיחידשלמדינהשהצליחהלהביסארגוןטרורבאמצעיםצבאיים,  היאלאזכתהלתשומתהלבהראויהבקרבמומחיביטחוןוקובעימדיניותבעולםובישראל.כיצדהצליחהסרילנקה-מדינתעולםשלישי-באתגרשבומדינותחזקותומפותחותממנהנכשלו?מההיההמחירהפוליטי-דמוקרטישהקריבהבעבורההישגהצבאי?ומהישראליכולהללמודמכךעלדרכיהפעולההיעילותבמלחמהבגרילהובטרור?",
                     "image": "",
                     "likes": {
                         "likesCount": 1,
@@ -146,8 +115,8 @@
             "authorId": 3,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
-            "title": "עקירתעציזית",
-            "content": "זדגכעכhghhjjklkl;;kl;kgsddsrtetrtffgבעיחיחילחךלךהיעחחלחמלחמצל",
+            "title": "תולדותהסכסוך",
+            "content": "הסכסוךבסרילנקההחלרשמיתב-1983, כשארגוןהנמריםהטמיליםהציבמארבלשיירהצבאיתוהרג13חיילים.בתגובהפרצומהומותברחביהמדינהובמהלכןאזרחיםממוצאסינהלזיתקפובאלימותאתשכניהםהטמילים,  ניפצואתחנויותיהםוהכריחואותםלהימלטמבתיהם.כ-3,   000בניאדםנהרגובמהומותשביטאותהליךהולךוגוברשלהחרפהביחסיםביןהקהילותמאזקיבלההמדינהעצמאותמהשלטוןהבריטיב-1948.הסכסוךנבעמהעובדהשבאיקייםרובסינהלזי(75אחוזים)שמחזיקבאמונההבודהיסטיתומאמיןשהמדינההיאהביטויהפוליטיללאוםושעליהלשקףזאתמכלבחינה.",
             "image": "",
             "likes": {
                 "likesCount": 7,
@@ -160,39 +129,7 @@
                     "_author": "shimon",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
-                    "title": "עקירתעציזית",
-                    "content": "תגמחירתגמחירתגמחירתגמחירתגמחירתגמחיר",
-                    "image": "",
-                    "likes": {
-                        "likesCount": 1,
-                        "isLiked": true
-                    }
-                }
-            ]
-        },
-        {
-            "postId": 11,
-            "postType": "article",
-            "_author": "moshe",
-            "authorId": 4,
-            "authorImage": "./img/penguin-chick.jpg",
-            "timestamp": 1403179734134,
-            "title": "עקירתעציזית",
-            "content": "תלתלתלתלתתלתלתלתתללתתלתלתתללתתלתל",
-            "image": "",
-            "likes": {
-                "likesCount": 7,
-                "isLiked": true
-            },
-            "comments": [
-                {
-                    "postId": 0,
-                    "postType": "talkback",
-                    "_author": "shimon",
-                    "authorImage": "./img/penguin-chick.jpg",
-                    "timestamp": 1403179734134,
-                    "title": "עקירתעציזית",
-                    "content": "תגמחירתגמחיכעיעיחילתחץךחץלךחילחילחךירתגמר",
+                    "content": "ככהמנהליםסכסוך",
                     "image": "",
                     "likes": {
                         "likesCount": 1,

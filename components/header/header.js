@@ -57,7 +57,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         },
         {
             featureUrl: 'channel',
-            featureName: 'YOUTUBE',
+            featureName: 'יוטיוב',
             featureLogo: "./img/youtube.png",
             featureColor: "channel"
         },
@@ -74,18 +74,26 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/actionforisrael.png",
             featureColor: "Fbactivists"
         },
-		{
-		    featureUrl: 'poll',
-		    featureName: 'משאל עם',
-		    featureLogo: "./img/poll.png",
-		    featureColor: "poll"
-		},
+		//{
+		//    featureUrl: 'poll',
+		//    featureName: 'משאל עם',
+		//    featureLogo: "./img/poll.png",
+		//    featureColor: "poll"
+		//},
         {
             featureUrl: 'contact',
             featureName: 'צור קשר',
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
         }
+        //,
+		//{
+		//    featureUrl: 'poll',
+		//    featureName: 'משאל עם',
+		//    featureLogo: "./img/poll.png",
+		//    featureColor: "poll"
+		//}
+
     ];
 
     $scope.userProfile = generalParameters.getUser;

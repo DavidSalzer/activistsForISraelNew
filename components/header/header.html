@@ -2,7 +2,7 @@
                 <div class="info-popup" ng-show="showInfo">
                     <span class="info info-close" data-ng-click="showInpoPopUp()"></span>
                     <span class="arrow-up"></span>
-                    <img ng-src="{{featureDetails().featureLogo}}" class="info-img">
+                    <img ng-src="{{featureDetails().featureWhatsUpLogo}}" class="info-img">
                     <div class="info-header" style="background:{{featureDetails().featureColor}};">
                             {{featureDetails().infoHaeder}}
                     </div>
@@ -20,13 +20,13 @@
                 </div>
 
 
-                <div class="btn-group pull-left" data-ng-hide="backIcon()">
-                    <div data-ng-click="toggle('mainSidebar');closePopups()" class="btn btn-navbar sidebar-toggle">
+                <div class="btn btn-group pull-left" data-ng-hide="backIcon()" data-ng-click="toggle('mainSidebar');closePopups()" >
+                    <divclass="btn btn-navbar sidebar-toggle">
                         <i class="fa fa-bars"></i>
                     </div>
                 </div>
-                <div class="btn-group pull-left" data-ng-show="backIcon()">
-                    <div data-ng-click="back()" class="btn btn-navbar sidebar-toggle">
+                <div class="btn btn-group pull-left" data-ng-show="backIcon()">
+                    <div data-ng-click="back()" class="btn-navbar sidebar-toggle">
                         <i class="fa fa-reply"></i>
                     </div>
                 </div>
