@@ -22,8 +22,8 @@
             <div class="add-file">
                 <div class="plus">+</div>
                 <div class="add-file-text-back">
-                    <div class="add-file-text">צרף קובץ</div>
-                   <!--  <div class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{fileMax}}MB</div> -->
+                    <input type='file' data-upload class="add-file-text">צרף קובץ</input>
+                  <!--  <div class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{fileMax}}MB</div> -->
                 </div>
             
             </div>
@@ -37,11 +37,11 @@
 			
 			<textarea  data-ng-hide='parentPost.parentPostType=="article"' char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
-			<span data-ng-hide='parentPost.parentPostType=="article"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 100%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;''>[{{postData.post.content.length}}/{{max}}]</span>
+			<span data-ng-hide='parentPost.parentPostType=="article"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}}/{{max}}]</span>
 			
 			<textarea  data-ng-show='parentPost.parentPostType=="article"' class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
-			<span data-ng-show='parentPost.parentPostType=="article"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 100%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}} תוים]
+			<span data-ng-show='parentPost.parentPostType=="article"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}} תוים]
 			</span>
 			
 			
@@ -52,14 +52,14 @@
         <div class="add-file"  >
            <div class="plus" >+</div>
             <div class="add-file-text-back" >
-                <input type="file" data-file='postImg' data-img='imgObj' class="add-file-text"  style='opacity:1;position:relative;'>
+                <input type="file" data-upload class="add-file-text"  style='opacity:1;position:relative;'>
 				</input>
-				<!--  <div class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> -->
+				<div data-ng-show="toLargImage==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
             </div>
         </div>
 		
 		<!-- post add img preview-->
-		<img ng-src="{{postImg}}" style='margin: 0px auto 20px auto;display: block'  >
+		<img  data-ng-show="toLargImage==false" ng-src="{{postImg}}" style='margin: 0px auto 20px auto;display: block'  >
 		
 		
 		<!-- post send button-->

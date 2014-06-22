@@ -17,13 +17,14 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/article.png",
+        featureWhatsUpLogo: "./img/article_info.png",
         featureColor: '#006dbe',
         infoHaeder: "מאמרים",
         infoMainText: 'כתבו מאמר בכל נושא שתבחרו. המאמר מוגבל למינימום 250 תווים ויפורסם בהתאם לכללי המערכת. המאמרים ידורגו ע"י הגולשים ויקודמו בהתאם. ניתן להעלות את המאמר כקובץ, או לכתוב אותו ישירות בעמוד. ניתן גם להוסיף תמונה מלווה למאמר.',
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-
+    $scope.domain = domain;
     $scope.user = generalParameters.getUser();
     request = {
         startTimestamp: '',
@@ -83,9 +84,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
-            //case "talkback":   
-            //    $state.transitionTo('single-article', { postId: $scope.postId });   
-            //    break;   
+            //case "talkback":    
+            //    $state.transitionTo('single-article', { postId: $scope.postId });    
+            //    break;    
             case "author":
                 $scope.getPostsByAll();
                 $state.transitionTo('author-page', { authorId: $scope.authorId });
@@ -144,9 +145,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     }
 
     $scope.getPostsByAll = function () {
-        $scope.currentFilter = 'all';
+        //$scope.currentFilter = 'all';
         request.postType = 'article';
-        request.endTimestamp = '';
+        //request.endTimestamp = '';
         PostService.getPostsBatch(request);
     }
 
@@ -166,9 +167,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
 
     $scope.getPostsByViews = function () {
-        $scope.currentFilter = 'views';
+        //$scope.currentFilter = 'views';
         request.postType = 'article';
-        request.endTimestamp = '';
+        //request.endTimestamp = '';
         PostService.getPostsBatch(request);
     }
 

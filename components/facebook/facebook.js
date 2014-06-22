@@ -23,6 +23,7 @@ socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', 'classAja
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/NaftaliBennett.png",
+        featureWhatsUpLogo: "./img/facebook_benet_info.png",
         featureColor: '#004a8e',
         infoHaeder: "עמוד פייסבוק",
         infoMainText: "עמוד הפייסבוק של נפתלי בנט.",
@@ -57,6 +58,7 @@ socialGroupApp.controller('facebookPoalim', ['$scope', '$stateParams', 'classAja
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/actionforisrael.png",
+        featureWhatsUpLogo: "./img/facebook_poalim_info.png",
         featureColor: '#004a8e',
         infoHaeder: "עמוד פייסבוק",
         infoMainText: "עמוד הפייסבוק של פועלים למען ישראל.",

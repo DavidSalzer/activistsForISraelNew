@@ -5,10 +5,10 @@
 }
 
 .current-feature {
-    height: 58%;
+    height: 54%;
     /*height: 282px;*/
     width: 100%;
-    background-color: #2f343b;
+    background-color: #31363d;
     padding-bottom: 12px;
     padding-left: 14px;
     padding-right: 14px;
@@ -16,7 +16,7 @@
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
-    border-bottom: 1px solid #565c63; /*this his here becuase there is a vorder in class .menu-item-feature of 1px */
+    border-bottom: 2px solid #565c63; /*this his here becuase there is a vorder in class .menu-item-feature of 1px */
 }
 
 .current-feature-components {
@@ -24,8 +24,11 @@
     width: 100%;
     height: 100%;
     background-color: #42484e;
-    padding: 2px;
+    /*padding: 2px;*/
+    padding: 0px 0px;
+    padding-top: 2px;
     position: relative;
+    border-radius: 3px 3px 0px 0px
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
@@ -34,14 +37,16 @@
     box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.25);
 }
 
+.current-feature-components.thumbnail{
+    padding: 0px;
+}
 .current-feature-image {
-    height: 158px;
-    background-image: url('../img/image/kneset.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
-    margin: auto;
-    margin-bottom: 4px;
+    height: 157px;
+background-image: url('../img/image/kneset.jpg');
+background-repeat: no-repeat;
+background-position: center;
+background-size: 100% 100%;
+margin: 0px 2px 4px 2px;
 }
 
 .current-feature-name {
@@ -49,12 +54,12 @@
     background-color: #565c63;
     /*width: 100%;*/
     color: #fff;
-    padding-right: 5px;
+    padding: 0px 7px;
     line-height: 23px;
     position: relative;
-    -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.53);
-    -moz-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.53);
-    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.53);
+    -webkit-box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.53);
+    -moz-box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.53);
+    box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.53);
 }
 
 .current-feature-name h2 {
@@ -64,7 +69,11 @@
 .caption p {
     font-size: 10px;
     color: #bcccce;
-    padding-top: 5px;
+    padding-top: 2px;
+    line-height: 13px;
+    
+    height: 42px;
+overflow: hidden;
 }
 
 .feature-logo {
@@ -75,7 +84,7 @@
     height: 18px;
     width: 18px;
     display: inline-block;
-    left: 5px;
+    left: 7px;
     top: 6px;
     position: absolute;
     -webkit-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.19);
@@ -94,38 +103,42 @@
 .current-feature-text {
     color: #bcccce;
     white-space: normal;
-    font-size: 9px;
+    font-size: 10px;
     padding-right: 5px;
     margin-top: -2px;
     padding-left: 5px;
 }
 
 .features-swipe {
-    overflow-y: hidden;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-    height: 42%;
-    /*height: 236px;*/
-    /*white-space: nowrap;*/
-    direction: ltr;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    /*padding-right: 15px;*/
-    margin: 0;
+   
+overflow-y: hidden;
+overflow-x: scroll;
+-webkit-overflow-scrolling: touch;
+width: 100%;
+height: 46%;
+/* height: 236px; */
+/*white-space: nowrap;*/
+direction: ltr;
+/* position: absolute; */
+/* bottom: 0px; */
+/* right: 0px; */
+/* padding-right: 15px; */
+margin: 0;
 }
 
 .menu-item-feature {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
-    background-color: #2f343b;
+    background-color: #31363d;
     padding: 10px;
     width: 145px;
     height: 100%;
     display: inline-block;
-    border: 1px solid #565c63;
+    border: 2px solid #565c63;
+    -webkit-box-shadow: -12px 0 3px 11px rgba(0,0,0,0.53); /* Safari/Chrome, other WebKit */
+    -moz-box-shadow: -12px 0 3px 11px rgba(0,0,0,0.53); /* Firefox, other Gecko */
+    box-shadow: -12px 0 3px 11px rgba(0,0,0,0.53);
     float: right;
 direction: rtl;
 }
@@ -141,7 +154,7 @@ direction: rtl;
 .current-feature-components img {
     position: absolute;
     /* background-color: green; */
-    bottom: 2px;
+    bottom: 3px;
     box-sizing: border-box;
     left: 0;
     right: 0;
@@ -150,7 +163,8 @@ direction: rtl;
     display: table-cell;
     vertical-align: bottom;
     width: 95%;
-    height: 85px;
+    height: 95px;
+    
 }
 
 .caption h3 {
@@ -158,7 +172,10 @@ direction: rtl;
     font-weight: bold;
     color: #bcccce;
     /* line-height: 14px; */
-    padding-top: 8px;
+    padding-top: 7px;
+    
+    max-height: 40px;
+overflow: hidden
 }
 
 /*.btn.btn-navbar.pull-left.info{
@@ -213,4 +230,14 @@ direction: rtl;
     .feature-logo {
         left: 8px;
     }
+}
+
+
+/*bootstrap changes*/
+
+.thumbnail .caption{
+    padding:  0px 5px;
+}
+.thumbnail .caption.desc{
+    height: 83px;
 }

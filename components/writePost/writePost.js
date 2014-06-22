@@ -22,8 +22,8 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	
 			$scope.featureColor ='#006dbe';
 			$scope.headerText ='כתיבת טקסט';
-			$scope.imageMax = 2;
-			$scope.fileMax = 2;
+			$scope.imageMax = 1;
+			$scope.fileMax = 1;
 			$scope.min = 250;
 			
 			$scope.postData.post.postType='article';
@@ -52,15 +52,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			$scope.imageMax = 2;
 			
 			$scope.postData.post.postType='talkback';
-			$scope.thankDetails = {
-        
-				featureColor: '##993ca7',
-				thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',
-				btnText: 'חזרה לעמוד המאמרים',
-				headerText: 'המאמר שלי',
-				featureState: 'talkback'
-    
-			};
+			
 			break; 
 		}
 		   
@@ -98,9 +90,10 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	
 	$scope.sendPost = function () {
 		
-		if(($scope.min > 0)&&($scope.postData.post.content.length < $scope.min)){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;}  
+		/* if(($scope.min > 0)&&($scope.postData.post.content.length < $scope.min)){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;}   */
 		//alert($scope.imgObj);
-		PostService.sendPost($scope.postData, $scope.imgObj);
+		//alert($scope.fileObj);
+		PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj );
 		if($scope.postData.post.postType=='talkback'){
 		
 			 $state.transitionTo('talk-back'); arert();return;

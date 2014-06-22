@@ -44,7 +44,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     {
         featureId: 3,
         featureUrl: 'facebookBennet',
-        featureName: 'facebook',
+        featureName: 'פייסבוק נפתלי',
         featureLogo: './img/NaftaliBennett.png',
         featureImg: './img/image/pic4.png',
         title: 'ערוץ הפייסבוק של נפתלי בנט',
@@ -55,7 +55,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     {
         featureId: 3,
         featureUrl: 'facebookPoalim',
-        featureName: 'facebook-poalim',
+        featureName: 'פייסבוק פועלים',
         featureLogo: './img/actionforisrael.png',
         featureImg: './img/image/pic5.png',
         title: 'ערוץ הפייסבוק של פועלים למען ישראל',
