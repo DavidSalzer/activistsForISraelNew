@@ -1,16 +1,16 @@
 socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
 
     var cropData = {};
+    var crop_data = {};
     var obj = {};
     var $img;
     var jcrop;
 
-    obj.crop = function (canvasId, btnId, conId) {
-        //$('#'+conId+'').height($(document).height()-70);
-        /////////////////////////////////////////////////
+    obj.crop = function (canvasId, btnId, conId) {//canvasid  ,btn-approve, container Id
+        cropData = {};
+        $img = {};
         var request_height = 316;
         var request_width = 500;
-        /////////////////////////////////////////////////
         var request_ratio = request_width / request_height;
 
         var $div = $('#' + conId + '');
@@ -21,8 +21,6 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
         $img.css('width', 'auto').css('height', 'auto')
         $div.css('padding-left', '0').css('padding-top', '0');
 
-
-        //$img.load(function(){
         var pic_real_width = $img.width(), pic_real_height = $img.height();
         var ratio = pic_real_width / pic_real_height;
         var zoom = Math.min(div_height / pic_real_height, div_width / pic_real_width);
@@ -30,18 +28,14 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
         $img.height(pic_real_height * zoom);
         $img.width(pic_real_width * zoom);
 
-        //put the img in the center.
-
-        //$div.css('padding-left',(div_width-pic_real_width*zoom)/2+"px");
-        //$div.css('padding-top',(div_height-pic_real_height*zoom)/2+"px");
-
         // box is the selected area in the img, we will calculate the max size of the box by the request ratio.
         var boxHeight = Math.min(pic_real_height * zoom, pic_real_width * zoom / request_ratio);
         var boxWidth = boxHeight * request_ratio;
         var maxbox = [(pic_real_width * zoom - boxWidth) / 2, (pic_real_height * zoom - boxHeight) / 2, boxWidth, boxHeight];
         zoom = 1;
-        var crop_data;
-        $img.Jcrop({
+        crop_data = {};
+        $img.Jcrop(
+        {
             aspectRatio: 1,
             maxSize: [250, 250],
             minSize: [50, 50],
@@ -56,19 +50,14 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
                 crop_data = JSON.stringify(c);
             }
         },
-		    		function () {
-		    		    jcrop = this;
-		    		}
-		    	);
+		function () {
+		    jcrop = this;
+		});
+
         $('#' + btnId + '').click(function () {
-            console.log('request_height' + request_height);
-            console.log('request_width' + request_width);
-            console.log('crop_data');
-            console.log(crop_data);
-            // $.post("http://faceswap.parentshood.com/uploads/androidUploads/php/saveAndroid.php",{'imagedata': imagedata, 'request_height': request_height, 'request_width': request_width, 'crop_data':crop_data})
-            // 	.done(function(data) {
-            // 		window.location.replace("data:image/jpeg;base64,"+data);
-            // 	});
+            console.log('request_height: ' + request_height);
+            console.log('request_width: ' + request_width);
+            console.log('crop_data: ' + crop_data);
 
             crop_data = JSON.parse(crop_data);
             data = {
@@ -85,14 +74,7 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
             cropData = data;
             obj.cropCanvas(canvasId, data);
         });
-
-        //   	});
     },
-
-
-
-
-
 
 	obj.cropCanvas = function (canvasId, data) {
 
@@ -154,11 +136,8 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
 	        var dataURL = canvas.toDataURL("image/png");
 
 	        $rootScope.$broadcast('editDone', { data: dataURL })
-	        //console.log(dataURL);
 	    } //img onload
-
 	} //crop canvas				
-
 
     obj.destroy = function () {
         return jcrop.destroy();
