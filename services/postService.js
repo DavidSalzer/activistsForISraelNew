@@ -99,10 +99,24 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 			.success(function (data) {
 
 			    console.log(data);
-			    var $file = file;
+				self.attach(file,data.data._id); 
+			})
+			.error(function (data) {
 
+			    console.log(data);
+			});
+
+
+
+        },
+
+        attach: function (file,postId) {
+
+             var $file = file;
+				  console.log($file);
 			    var upload = $upload.upload({
-			        url: domain, // webapi url
+			        
+					url: domain+'FileUpload?ref=post&_id='+postId,
 			        method: "POST",
 			        file: $file
 			    }).progress(function (evt) {
@@ -116,35 +130,6 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 			        console.log(data);
 			    });
 			    //if(file){self.attach(file);}
-
-			})
-			.error(function (data) {
-
-			    console.log(data);
-			});
-
-
-
-        },
-
-        attach: function (file) {
-
-            var $file = file;
-
-            var upload = $upload.upload({
-                url: domain, // webapi url
-                method: "POST",
-                file: $file
-            }).progress(function (evt) {
-                // get upload percentage
-                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-            }).success(function (data, status, headers, config) {
-                // file is uploaded successfully
-                console.log(data);
-            }).error(function (data, status, headers, config) {
-                // file failed to upload
-                console.log(data);
-            }); ssw
 
         },
 
