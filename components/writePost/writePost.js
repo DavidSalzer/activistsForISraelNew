@@ -22,8 +22,8 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	
 			$scope.featureColor ='#006dbe';
 			$scope.headerText ='כתיבת טקסט';
-			$scope.imageMax = 2;
-			$scope.fileMax = 2;
+			$scope.imageMax = 1;
+			$scope.fileMax = 1;
 			$scope.min = 250;
 			
 			$scope.postData.post.postType='article';
@@ -92,7 +92,8 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		
 		/* if(($scope.min > 0)&&($scope.postData.post.content.length < $scope.min)){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;}   */
 		//alert($scope.imgObj);
-		PostService.sendPost($scope.postData, $scope.imgObj, $scope.fileObj );
+		//alert($scope.fileObj);
+		PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj );
 		if($scope.postData.post.postType=='talkback'){
 		
 			 $state.transitionTo('talk-back'); arert();return;

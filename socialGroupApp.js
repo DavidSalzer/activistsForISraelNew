@@ -515,20 +515,23 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 })
 
 
-.directive('file', function () {
+.directive('upload', function () {
     return {
-        scope: {
-
-            file: '=',
-            img: '=',
-			textfile: '='
-        },
+        
         link: function (scope, el, attrs) {
+		
             el.bind('change', function (event) {
-
+				
                 var file = event.target.files[0];
                 console.log(file);
-
+				
+				scope.toLargImage = false;
+				if(file.size >  1000000 * scope.imageMax){
+				
+					scope.toLargImage = true;
+					scope.$apply(); 
+					return;
+				}
                 
 				if(file.type.match('image/*')) {
 					
@@ -539,8 +542,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 						return function (e) {
 
 							console.log(e.target.result); //base64 img
-							scope.file = e.target.result;
-							scope.img = file;
+							scope.postImg = e.target.result;
+							scope.imgObj = file;
 							scope.$apply();
 						};
 					})(file);
@@ -549,10 +552,10 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 					return;
 				}
 					  
-				else if (file.type.match('text/plain')) {
+				else if (file.type.match('text/plain') || (file.name.split('.').pop()=='docx')) {
 							
 					console.log(file.type);
-					scope.textFile = file;
+					scope.fileObj = file;
 					return;
 				}			
             })
