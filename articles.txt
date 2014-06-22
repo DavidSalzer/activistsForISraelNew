@@ -4,7 +4,7 @@
         {
             "postId": 6,
             "postType": "article",
-            "_author": "moshe",
+            "_author": "מנשה מזרחי",
             "authorId": 0,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
@@ -19,7 +19,7 @@
                 {
                     "postId": 0,
                     "postType": "talkback",
-                    "_author": "shimon",
+                    "_author": "מנשה מזרחי",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
                     "title": "תגובה 1",
@@ -33,7 +33,7 @@
                 {
                     "postId": 1,
                     "postType": "talkback",
-                    "_author": "shimon sfsd",
+                    "_author": "שמחה ריף",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
                     "title": "תגובה 2",
@@ -49,7 +49,7 @@
         {
             "postId": 7,
             "postType": "article",
-            "_author": "ovadia",
+            "_author": "מנשה התימני",
             "authorId": 1,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
@@ -64,7 +64,7 @@
                 {
                     "postId": 0,
                     "postType": "talkback",
-                    "_author": "shimon",
+                    "_author": "עזרא",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
                     "title": "אהה מידיטרניה",
@@ -80,7 +80,7 @@
         {
             "postId": 8,
             "postType": "article",
-            "_author": "moshe",
+            "_author": "מיכה",
             "authorId": 1,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
@@ -95,7 +95,7 @@
                 {
                     "postId": 0,
                     "postType": "talkback",
-                    "_author": "shimon",
+                    "_author": "יונה",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
                     "title": "מלחמהבטרור",

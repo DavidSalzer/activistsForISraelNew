@@ -18,7 +18,7 @@
                 {
                     "postId": 0,
                     "postType": "talkback",
-                    "_author": "shimon",
+                    "_author": "ירון לוי",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
                     "title": "עבריין נרצח ביריות בחיפה ",
@@ -48,7 +48,7 @@
                 {
                     "postId": 0,
                     "postType": "talkback",
-                    "_author": "shimon",
+                    "_author": "עודד עודדי",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
                     "title": "סרי לנקה הצליחה לתפוס נמר. ומה איתנו?",
