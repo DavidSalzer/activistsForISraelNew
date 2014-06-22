@@ -231,8 +231,10 @@ span.author-name {
 }
 
 
-
-
+.info-img {
+    position: relative;
+    top: -3px;
+}
 
 div.post-main-text {
     font-size: 10px;

@@ -17,6 +17,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/article.png",
+        featureWhatsUpLogo: "./img/article_info.png",
         featureColor: '#006dbe',
         infoHaeder: "מאמרים",
         infoMainText: 'כתבו מאמר בכל נושא שתבחרו. המאמר מוגבל למינימום 250 תווים ויפורסם בהתאם לכללי המערכת. המאמרים ידורגו ע"י הגולשים ויקודמו בהתאם. ניתן להעלות את המאמר כקובץ, או לכתוב אותו ישירות בעמוד. ניתן גם להוסיף תמונה מלווה למאמר.',

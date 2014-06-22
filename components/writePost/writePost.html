@@ -22,8 +22,8 @@
             <div class="add-file">
                 <div class="plus">+</div>
                 <div class="add-file-text-back">
-                    <div class="add-file-text">צרף קובץ</div>
-                   <!--  <div class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{fileMax}}MB</div> -->
+                    <input type='file' data-upload class="add-file-text">צרף קובץ</input>
+                  <!--  <div class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{fileMax}}MB</div> -->
                 </div>
             
             </div>
@@ -52,14 +52,14 @@
         <div class="add-file"  >
            <div class="plus" >+</div>
             <div class="add-file-text-back" >
-                <input type="file" data-file='postImg' data-img='imgObj' class="add-file-text"  style='opacity:1;position:relative;'>
+                <input type="file" data-upload class="add-file-text"  style='opacity:1;position:relative;'>
 				</input>
-				<!--  <div class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> -->
+				<div data-ng-show="toLargImage==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
             </div>
         </div>
 		
 		<!-- post add img preview-->
-		<img ng-src="{{postImg}}" style='margin: 0px auto 20px auto;display: block'  >
+		<img  data-ng-show="toLargImage==false" ng-src="{{postImg}}" style='margin: 0px auto 20px auto;display: block'  >
 		
 		
 		<!-- post send button-->
