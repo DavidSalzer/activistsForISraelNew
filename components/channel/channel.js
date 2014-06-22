@@ -13,6 +13,7 @@ socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', fu
 	$scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/youtube.png",
+        featureWhatsUpLogo: "./img/hosting_info.png",
         featureColor: '#fa0001',
         //infoImg: './img/youtube_small.png', //unnecessary- to be cancaeld and united with feture logo
         infoHaeder: "ערוץ יוטיוב",

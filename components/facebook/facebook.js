@@ -23,6 +23,7 @@ socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', 'classAja
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/NaftaliBennett.png",
+        featureWhatsUpLogo: "./img/hosting_info.png",
         featureColor: '#004a8e',
         infoHaeder: "עמוד פייסבוק",
         infoMainText: "עמוד הפייסבוק של נפתלי בנט.",
