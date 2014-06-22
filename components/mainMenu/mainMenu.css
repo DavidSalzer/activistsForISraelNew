@@ -9,6 +9,7 @@
     /*height: 282px;*/
     width: 100%;
     background-color: #2f343b;
+    position: relative;
     padding-bottom: 12px;
     padding-left: 14px;
     padding-right: 14px;
@@ -126,6 +127,19 @@
     display: inline-block;
     border: 1px solid #565c63;
 }
+.menu-item-feature:before{
+ content: "";
+width: 4px;
+height: 100%;
+left: -2px;
+position: absolute;
+z-index: 2;
+bottom: 0px;
+background: #565c63;
+/* -webkit-box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.55); */
+-moz-box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.55);
+box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.55);
+}
 
 .feature-item-image {
     background-image: url('../img/image/kneset.jpg');
@@ -158,6 +172,22 @@
     padding-top: 8px;
 }
 
+
+.current-feature:after {
+    content: "";
+    position: absolute;
+    background: #565c63;
+    height: 4px;
+    bottom: -3px;
+    width: 100%;
+    z-index: 1;
+    right: 0px;
+    -webkit-box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.55);
+    -moz-box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.55);
+    box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.55);
+}
+
+
 /*.btn.btn-navbar.pull-left.info{
     display: none;
 }*/
@@ -186,7 +216,7 @@
     }
 
     .current-feature-text {
-        margin-top: 0px;
+        margin-top: -1px;
         max-height: 19px;
         overflow-y: hidden;
     }

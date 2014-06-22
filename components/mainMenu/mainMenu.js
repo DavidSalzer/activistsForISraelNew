@@ -3,7 +3,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     {
         featureId: 2,
         featureUrl: 'talk-back',
-        featureName: 'טוקבקים',
+        featureName: 'מה בוער',
         featureLogo: './img/whatsup.png',
         featureImg: './img/image/kneset.jpg',
         title: 'בוער לכם להגיד משהו? זה המקום',
