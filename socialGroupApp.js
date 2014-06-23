@@ -27,8 +27,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        .state('talk-back', {
-            url: "/talk-back",
+        .state('talkback', {
+            url: "/talkback",
             //url: "/lesson",
             views: {
                 "main": {

@@ -15,7 +15,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		
 		
 		user:{_id:$scope.user._id},
-		post:{_parentID:null,attachment: "",content: ""}
+		post:{_parentID: null ,attachment: "", content: ""}
 		
 	};
 	
@@ -110,9 +110,9 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		//alert($scope.imgObj);
 		//alert($scope.fileObj);
 		PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj );
-		if($scope.postData.post.postType=='talkback'){
-		
-			 $state.transitionTo('talk-back');return;
+		if($scope.postType=='talkback'){
+			
+			$state.transitionTo($scope.parentPostType);return;
 		}
 		$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 	};

@@ -3,7 +3,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     $scope.features = [
     {
         featureId: 2,
-        featureUrl: 'talk-back',
+        featureUrl: 'talkback',
         featureName: 'מה קורה',
         featureLogo: './img/whatsup.png',
         featureImg: './img/image/kneset.jpg',
