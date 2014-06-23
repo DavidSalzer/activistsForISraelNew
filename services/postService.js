@@ -17,9 +17,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         //methodes
 
         getPostsBatch: function (request) {
-            
+
             console.log(request);
-           
+
             queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&userID=' + request.userID;
             console.log(queryString);
             classAjax.getdata('get', queryString, request).then(function (data) {
@@ -36,9 +36,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             })
         },
 
-        
 
-         getMemesBatch: function (request) {
+
+        getMemesBatch: function (request) {
             //dataTransform = { type: type, filter: filter, num: num, token: token };
             console.log(request);
             //$http.get(domain + 'post?offset=0&limit='+num+'&timestamp=1403911934561')
@@ -113,11 +113,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
 			    console.log(data);
 			    console.log(data.data._id);
-				
-				if(textfile)
-					self.attach(textfile,data.data._id); 
-				if(imgFile)
-					self.attach(imgFile,data.data._id); 
+
+			    if (textfile)
+			        self.attach(textfile, data.data._id);
+			    if (imgFile)
+			        self.attach(imgFile, data.data._id);
 			})
 			.error(function (data) {
 
@@ -128,26 +128,26 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         },
 
-        attach: function (file,postId) {
+        attach: function (file, postId) {
 
-             var $file = file;
-				  console.log($file);
-			    var upload = $upload.upload({
-			        
-					url: domain+'FileUpload?ref=post&_id='+postId,
-			        method: "POST",
-			        file: $file
-			    }).progress(function (evt) {
-			        // get upload percentage
-			        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-			    }).success(function (data, status, headers, config) {
-			        // file is uploaded successfully
-			        console.log(data);
-			    }).error(function (data, status, headers, config) {
-			        // file failed to upload
-			        console.log(data);
-			    });
-			    //if(file){self.attach(file);}
+            var $file = file;
+            console.log($file);
+            var upload = $upload.upload({
+
+                url: domain + 'FileUpload?ref=post&_id=' + postId,
+                method: "POST",
+                file: $file
+            }).progress(function (evt) {
+                // get upload percentage
+                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+            }).success(function (data, status, headers, config) {
+                // file is uploaded successfully
+                console.log(data);
+            }).error(function (data, status, headers, config) {
+                // file failed to upload
+                console.log(data);
+            });
+            //if(file){self.attach(file);}
 
         },
 		
@@ -239,6 +239,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         getPostById: function (postid) {
             self = this;
             queryString = 'post/' + postid;
+            console.log(queryString);
             classAjax.getdata('get', queryString, request)
             .then(function (data) {
                 console.log(data);

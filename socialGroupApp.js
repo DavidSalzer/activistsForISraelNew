@@ -257,7 +257,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function (e) {
-                $rootScope.$broadcast('postClicked', { postId: scope.post._Id, postType: scope.post.postType, authorId: scope.post.authorId }); //add post type to emit
+                console.log(scope.post);
+                $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
             });
             //console.log(attrs.showCommentButton);
             //scope.showCommentButton = attrs.showCommentButton;
