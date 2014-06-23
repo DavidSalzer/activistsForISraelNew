@@ -1,25 +1,12 @@
 
-div#Tab1 {
-    position: relative;
-    overflow-x: hidden;
-}
-
-.posts-list {
-    position: relative;
-}
-
-
 .tab-content {
     overflow-y: scroll;
     height: 100%;
-    position: relative;
-    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 .posts-list {
     margin-top: 9px;
-    position: relative;
-    overflow-x: hidden;
 }
 
 .post-title {
@@ -35,7 +22,6 @@ div#Tab1 {
     font-weight: bold;
     position: absolute;
     bottom: 17px;
-    right: 35px;
     width: 66%;
 }
 
@@ -73,6 +59,7 @@ box-sizing: border-box;*/
     width: 100%;
     top: 0;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     height: 100%;
 }
 
@@ -133,14 +120,15 @@ box-sizing: border-box;*/
     line-height: 32px;
     text-indent: 20px;
     font-size: 15px;
-    margin-right: 50px;
+	margin-right: 50px;
 }
 
 .add-file-error {
-    padding-top: 7px;
-    font-size: 0.7em;
-    text-align: right;
-    margin-right: 50px;
+	
+	padding-top: 7px;
+	font-size: 0.7em;
+	text-align: right;
+	margin-right: 50px;
 }
 
 .article-text {
@@ -305,10 +293,8 @@ div.post-main-text {
 .single-article .post-footer {
     position: relative;
     width: 302px;
-    max-width: 302px;
     margin-left: auto;
     margin-right: auto;
-    overflow: hidden;
 }
 
 .single-article .post-feedback {
@@ -351,11 +337,23 @@ div.post-main-text {
     padding-right: 50px;
 }
 
-.upload {
-    color: #695B5B;
-    height: 32px;
-    font-size: 15px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
+.upload{
+	
+	color: #695B5B;
+
+height: 32px;
+
+font-size: 15px;
+
+width: 100%;
+
+
+
+background-color: white;
+
+border-radius: 10px;
+
+
+
+
 }
