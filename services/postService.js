@@ -3,7 +3,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
     var showInput = true;
 
     var posts = [];
-    var polls = [];
+    var singlePost = null;
+    var comments = [];
     var memes = [];
     var selectedAuthor = null;
     var typePrevPage = null;
@@ -12,21 +13,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         //methodes
 
         getPostsBatch: function (request) {
-            //dataTransform = { type: type, filter: filter, num: num, token: token };
+            
             console.log(request);
-            //$http.get(domain + 'post?offset=0&limit='+num+'&timestamp=1403911934561')
-            //.success(function (data) {
-            //    console.log(data);
-            //    if (dataTransform.token == 0) {
-            //        posts = data.data;
-            //    }
-            //    else {
-            //        console.log(data);
-            //        for (var i = 0; i < data.data.length; i++) {
-            //            posts.push(data.data[i]);
-            //        }
-            //    }
-            //});
+           
             queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&userID=' + request.userID;
             console.log(queryString);
             classAjax.getdata('get', queryString, request).then(function (data) {
@@ -43,23 +32,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             })
         },
 
-        getPollsBatch: function (type, filter, num, token) {
-            dataTransform = { type: type, filter: filter, num: num, token: token };
-            console.log(dataTransform);
-            classAjax.getdata(dataTransform).then(function (data) {
-                console.log(data);
-                if (dataTransform.token == 0) {
-                    polls = [];
-                }
-                for (var i = 0; i < data.polls.length; i++) {
-                    if (data.polls[i].status == filter) {
-                        polls.push(data.polls[i]);
-                    }
-                }
-                console.log(polls);
-            })
-        },
-
+        
 
          getMemesBatch: function (request) {
             //dataTransform = { type: type, filter: filter, num: num, token: token };
@@ -226,13 +199,25 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         },
 
         getPostById: function (postid) {
-            console.log(posts.length)
-            for (var i = 0; i < posts.length; i++) {
-                if (posts[i].postId == postid) {
-                    return posts[i];
-                    stop();
-                }
-            };
+            self = this;
+            queryString = 'post/' + postid;
+            classAjax.getdata('get', queryString, request)
+            .then(function (data) {
+                console.log(data);
+                singlePost = data.data;
+                self.getPostsBatch({ offset: 0, limit: 20, _parentID: postid });
+            })
+            //console.log(posts.length)
+            //for (var i = 0; i < posts.length; i++) {
+            //    if (posts[i].postId == postid) {
+            //        return posts[i];
+            //        stop();
+            //    }
+            //};
+        },
+
+        getSinglePost: function () {
+            return singlePost;
         },
 
         setFilterByAuthor: function (author, type) {
