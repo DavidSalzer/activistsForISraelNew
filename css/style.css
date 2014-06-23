@@ -409,7 +409,10 @@ span.respond-count, span.like-count {
     overflow: hidden;
 }
 
- 
+div.list-group {
+    top: -2px;
+    position: relative;
+}
 
 .sidebar-left {
     background: #000;
@@ -499,7 +502,7 @@ span.respond-count, span.like-count {
     position: relative;
     color: white;
     text-align: center;
-    line-height: 42px;
+    line-height: 39px;
     z-index: 1;
     font-weight: bold;
 }
@@ -627,145 +630,142 @@ button {
 
 .text-box {
     height: 84px;
-	LINE-HEIGHT:13px;
-	padding-right: 14px;
+    LINE-HEIGHT: 13px;
+    padding-right: 14px;
 }
 
-.image-container{
+.image-container {
     cursor: pointer;
     position: relative;
-    padding:2px;
+    padding: 2px;
     background-color: #ffffff;
-	border-radius: 3px;
+    border-radius: 3px;
 }
-.polls-container{
 
+.polls-container {
     cursor: pointer;
     position: relative;
     background-color: #31363d;
-	padding:7px;
+    padding: 7px;
 }
-.polls-image{
+
+.polls-image {
     height: 172px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
     margin: auto;
 }
-.padd{
-	padding-bottom: 6px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	font-size: 17px;
+
+.padd {
+    padding-bottom: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 17px;
 }
 
 .ellipsis {
-  overflow: hidden;
-  height: 47px;
-  font-size: 12px;
-  LINE-HEIGHT: 17px;
-  }
-
-.ellipsis:before {
-	content:"";
-	float: right;
-	width: 5px; height: 200px; }
-
-.ellipsis > *:first-child {
-	float: left;
-	width: 100%;
-	margin-right: -5px; }		
-
-.ellipsis:after {
-	content: "\02026"; 
-
-	box-sizing: content-box;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	position: relative;
-	float: left; 
-	top: 0px; 
-	right: 100%; 
-	width: 3em; 
-	margin-left: -3em;
-	
-	text-align: left;
-	@include background(linear-gradient(left, rgba(#fff, 0), #fff 50%, #fff));
-  }
-
-.pollView-text{
-	padding-bottom: 17px;
-	padding-left: 10px;
-	padding-right: 40px;
-	padding-top: 10px;
-	LINE-HEIGHT:20px;
-	background-color: '#ffffff';
-	color: '#000000';
-	
+    overflow: hidden;
+    height: 47px;
+    font-size: 12px;
+    LINE-HEIGHT: 17px;
 }
 
-.pollView-image{
-    
+.ellipsis:before {
+    content: "";
+    float: right;
+    width: 5px;
+    height: 200px;
+}
+
+.ellipsis > *:first-child {
+    float: left;
+    width: 100%;
+    margin-right: -5px;
+}
+
+.ellipsis:after {
+    content: "\02026";
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    position: relative;
+    float: left;
+    top: 0px;
+    right: 100%;
+    width: 3em;
+    margin-left: -3em;
+    text-align: left;
+    @include background(linear-gradient(left, rgba(#fff, 0), #fff 50%, #fff));
+}
+
+.pollView-text {
+    padding-bottom: 17px;
+    padding-left: 10px;
+    padding-right: 40px;
+    padding-top: 10px;
+    LINE-HEIGHT: 20px;
+    background-color: '#ffffff';
+    color: '#000000';
+}
+
+.pollView-image {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
-	margin-right: 3px;
-    height: 150px;  
+    margin-right: 3px;
+    height: 150px;
     width: 229px;
 }
-.pollView-title{
-	padding-top: 20px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-	padding-right: 40px;
-	LINE-HEIGHT:20px;
-	background-color: '#ffffff';
-	color: '#da4f00';
-	font-weight': 'bold';
-	overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-box-orient: vertical;
-   -webkit-line-clamp: 2; /* number of lines to show */
-	
+
+.pollView-title {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 40px;
+    LINE-HEIGHT: 20px;
+    background-color: '#ffffff';
+    color: '#da4f00';
+    font-weight ': 'bold'; overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* number of lines to show */
 }
 
-.imageView-container{
-
+.imageView-container {
     position: relative;
     height: 156px;
     width: 235px;
-	margin-right:56px;
-	margin-left:30px;
-	background-repeat: no-repeat;
+    margin-right: 56px;
+    margin-left: 30px;
+    background-repeat: no-repeat;
     background-position: center;
     padding-top: 3px;
     background-color: #42484e;
-	border-radius: 3px;
+    border-radius: 3px;
 }
-.imageView-background{
 
+.imageView-background {
     position: relative;
-
-	background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
-
     background-color: #ffffff;
 }
 
-.pollView-container{
+.pollView-container {
     overflow: auto;
     height: 100%;
-	overflow: auto;
-	position: absolute;
-	width: 100%;
-	box-sizing: border-box;
-	padding-top: 40px;
-	top: 2px;
-	padding-bottom: 2px;
-	background-color: #31363d;
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 40px;
+    top: 2px;
+    padding-bottom: 2px;
+    background-color: #31363d;
 }
 
 .gray-line {
@@ -778,71 +778,69 @@ button {
     height: 4px;
 }
 
-.legend-container{
-	width: 100%;
-	background-color: #31363d;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	padding-right: 50px;
+.legend-container {
+    width: 100%;
+    background-color: #31363d;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 50px;
 }
 
-.legend-color{
-	width: 15px;
+.legend-color {
+    width: 15px;
     height: 15px;
-	display: inline-block;
-
+    display: inline-block;
 }
 
-.legend-content{
-	width: 50%;
+.legend-content {
+    width: 50%;
     height: 15px;
-	display: inline-block;
-	background-color: '#31363d';
-	color: '#ffffff';	
-	padding-right: 15px;
-
+    display: inline-block;
+    background-color: '#31363d';
+    color: '#ffffff';
+    padding-right: 15px;
 }
-.legend-image{
-	height: 158px;
-	width: 235px;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 75% 85%;
-	padding-top: 10px;
+
+.legend-image {
+    height: 158px;
+    width: 235px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75% 85%;
+    padding-top: 10px;
 }
 
 .optionToVote-container {
-	width: 263px;
-	height: 45px;
-	margin-top: 5px;
-	margin-right: 50px;
-	padding-right: 25px;
-	padding-top: 15px;
+    width: 263px;
+    height: 45px;
+    margin-top: 5px;
+    margin-right: 50px;
+    padding-right: 25px;
+    padding-top: 15px;
 }
 
 .button {
-	border-radius: 7px;
-	width: 103px;
-	text-align: center;
-	height: 36px;
-	line-height: 36px;
-	margin: auto;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	color: #ffffff;
+    border-radius: 7px;
+    width: 103px;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .optionToVote-image {
-	background-color: #42484e;
-	padding:3px;
-	width :70%;
-	height :80%;
-	margin-right :15%;
-	margin-top :10px;
-	
+    background-color: #42484e;
+    padding: 3px;
+    width: 70%;
+    height: 80%;
+    margin-right: 15%;
+    margin-top: 10px;
 }
 
-.tab-content{
+.tab-content {
     overflow-y: scroll;
-height: 100%;
+    height: 100%;
 }
