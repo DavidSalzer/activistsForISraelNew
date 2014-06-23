@@ -48,8 +48,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		   
 			
 		case "talkback":{
-			//alert($stateParams.postType)
-	
+			
 			$scope.featureColor ='#993ca7';
 			$scope.headerText ='כתיבת טקסט';
 			$scope.max = 140;

@@ -256,7 +256,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     };
 } ])
 
-.directive('comment', ['$rootScope', 'PostService', '$state', function ($rootScope, PostService, $state) {
+.directive('comment', ['$rootScope', 'generalParameters', '$state', function ($rootScope, generalParameters, $state) {
     return {
         restrict: 'E',
         template: '<div class="post-comment post-buttons" data-ng-click="$event.stopPropagation();">' +
@@ -265,18 +265,28 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 '<span class="respond-count" >{{post.comments.length+0}}</span></div>',
         replace: 'true',
         link: function (scope, el, attrs) {
-            el.on('click', function () {
+            
+			el.on('click', function () {
                 console.log(scope);
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
                 console.log(scope.post._id);
                 //$rootScope.$broadcast('addCommentClicked', { showInput: true, postid: scope.post.postId });
-                $state.transitionTo('write-post', { postId: scope.post._id, postType: scope.post.postType });
+				var user = generalParameters.getUser();
+				if (user.firstName == 'התחבר') {
+					
+					$rootScope.$broadcast('showInfoPopup', { showInfo: true });
+				}
+				else {
+					
+					$state.transitionTo('write-post', { postId: scope.post._id, postType: 'talkback' });
+				}
+               
             });
         }
 
     };
-} ])
+}])
 
 .directive('like', ['$rootScope', 'PostService', function ($rootScope, PostService) {
     return {
@@ -542,10 +552,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 				
                 var file = event.target.files[0];
                 console.log(file);  
-				console.log(attrs);alert()
-				
-				
-                
+				   
 				if((attrs.upload=='img') && (file.type.match('image/*'))) {
 					
 					scope.toLargImage = false;
