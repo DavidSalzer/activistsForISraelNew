@@ -711,8 +711,8 @@ button {
     padding-right: 40px;
     padding-top: 10px;
     LINE-HEIGHT: 20px;
-    background-color: '#ffffff';
-    color: '#000000';
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .pollView-image {
@@ -730,9 +730,10 @@ button {
     padding-left: 10px;
     padding-right: 40px;
     LINE-HEIGHT: 20px;
-    background-color: '#ffffff';
-    color: '#da4f00';
-    font-weight ': 'bold'; overflow: hidden;
+    background-color: #ffffff;
+    color: #da4f00;
+    font-weight : bold; 
+    overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -801,8 +802,8 @@ button {
     width: 50%;
     height: 15px;
     display: inline-block;
-    background-color: '#31363d';
-    color: '#ffffff';
+    background-color: #31363d;
+    color: #ffffff;
     padding-right: 15px;
 }
 
