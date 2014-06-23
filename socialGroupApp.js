@@ -248,12 +248,12 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function () {
-                console.log('hi');
+                console.log(scope);
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
-                console.log(scope);
+                console.log(scope.post._id);
                 //$rootScope.$broadcast('addCommentClicked', { showInput: true, postid: scope.post.postId });
-                $state.transitionTo('write-post', { postId: scope.post.postId, postType: scope.post.postType });
+                $state.transitionTo('write-post', { postId: scope.post._id, postType: scope.post.postType });
             });
         }
 
@@ -523,18 +523,20 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             el.bind('change', function (event) {
 				
                 var file = event.target.files[0];
-                console.log(file);
+                console.log(file);  
+				console.log(attrs);alert()
 				
-				scope.toLargImage = false;
-				if(file.size >  1000000 * scope.imageMax){
 				
-					scope.toLargImage = true;
-					scope.$apply(); 
-					return;
-				}
                 
-				if(file.type.match('image/*')) {
+				if((attrs.upload=='img') && (file.type.match('image/*'))) {
 					
+					scope.toLargImage = false;
+					if(file.size >  1000000 * scope.imageMax){
+				
+						scope.toLargImage = true;
+						scope.$apply(); 
+						return;
+					}
 					var reader = new FileReader();
 				
 					reader.onload = (function () {
@@ -542,6 +544,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 						return function (e) {
 
 							console.log(e.target.result); //base64 img
+							scope.imgFileText = file.name;
 							scope.postImg = e.target.result;
 							scope.imgObj = file;
 							scope.$apply();
@@ -552,10 +555,20 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 					return;
 				}
 					  
-				else if (file.type.match('text/plain') || (file.name.split('.').pop()=='docx')) {
-							
+				else if( (attrs.upload=='txt')&&(file.type.match('text/plain') || (file.name.split('.').pop()=='docx')))  {
+					
+					scope.toLargTextFile = false;
+					if(file.size >  1000000 * scope.textFileMax){
+					
+						scope.toLargTextFile = true;
+						scope.$apply(); 
+						return;
+					}
+					
 					console.log(file.type);
+					scope.textFileText = file.name;
 					scope.fileObj = file;
+					scope.$apply();
 					return;
 				}			
             })
