@@ -267,7 +267,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     };
 } ])
 
-.directive('comment', ['$rootScope', 'PostService', '$state', function ($rootScope, PostService, $state) {
+.directive('comment', ['$rootScope', 'generalParameters', '$state', function ($rootScope, generalParameters, $state) {
     return {
         restrict: 'E',
         template: '<div class="post-comment post-buttons" data-ng-click="$event.stopPropagation();">' +
