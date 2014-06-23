@@ -2,7 +2,12 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
  
 	/*init variables*/
 	generalParameters.setBackIcon(true);
+	var colors={'article':'#006dbe','talkback':'#993ca7','poll':'#da4f00'};
 	$scope.parentPostType = $stateParams.postType;
+	$scope.postType = $stateParams.postType;
+	
+	if($stateParams.postId != 0){$scope.postType = 'talkback'}
+	
 	$scope.user = generalParameters.getUser();
 	//alert($scope.user._id)
 	
@@ -10,7 +15,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		
 		
 		user:{_id:$scope.user._id},
-		post:{_parentID:$stateParams.postId,attachment: "",content: "ער תושב הכפר עראבה שהגיע עם אביו לעבודה נהרג בפיצוץ בגבול עם סוריה, אביו עובד הקבלן נפצע. גורם צבאי בכיר מסר כי יש חור בגדר כתוצאה מירי, בנוסף היה ירי על משאית של עבודות משרד הביטחון. לא ברור האם זה מטען, פגז או מרגמה"}
+		post:{_parentID:$stateParams.postId,attachment: "",content: ""}
 		
 	};
 	
@@ -18,7 +23,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	$scope.toLargImage = false;
 	$scope.imgFileText = 'צרף תמונה'
 	
-	switch ($stateParams.postType) {
+	switch ($scope.postType) {
             
 		case "article":{
 			
@@ -49,7 +54,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			
 		case "talkback":{
 			
-			$scope.featureColor ='#993ca7';
+			$scope.featureColor = colors[$scope.parentPostType];
 			$scope.headerText ='כתיבת טקסט';
 			$scope.max = 140;
 			$scope.maxLine=3;
