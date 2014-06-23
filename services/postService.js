@@ -1,4 +1,4 @@
-socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload', 'generalParameters', function ($rootScope, classAjax, $http,$upload,generalParameters) {
+socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upload', 'generalParameters', function ($rootScope, classAjax, $http, $upload, generalParameters) {
 
     var showInput = true;
 
@@ -8,10 +8,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
     var memes = [];
     var selectedAuthor = null;
     var typePrevPage = null;
-	var user = generalParameters.getUser();
-	console.log(user)
-	console.log(user._id)
-	
+    var user = generalParameters.getUser();
+    console.log(user)
+    console.log(user._id)
+
 
     return {
         //methodes
@@ -24,15 +24,24 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             console.log(queryString);
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data);
-                if (request.endTimestamp == '') {
-                    posts = data.data;
-                }
-                else {
-                    console.log(data);
-                    for (var i = 0; i < data.data.length; i++) {
+                //if (request.endTimestamp == '') {
+                //    posts = data.data;
+                //}
+                //else {
+                console.log(data);
+                for (var i = 0; i < data.data.length; i++) {
+                    //posts.push(data.data[i]);
+                    flag = true;
+                    for (var j = 0; j < posts.length & flag; j++) {
+                        if (data.data[i]._id == posts[j]._id) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
                         posts.push(data.data[i]);
                     }
                 }
+                //}
             })
         },
 
@@ -150,19 +159,19 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             //if(file){self.attach(file);}
 
         },
-		
-		getIsLike: function (pid) {
-			
-			alert(user._id)
-			alert("pid: "+pid)
-			var parmas = {"activity":{
-							"post":pid,
-							"user":user._id,
-							"type":"like"
-							}
-						};
-            
-			var json = JSON.stringify(parmas);
+
+        getIsLike: function (pid) {
+
+            alert(user._id)
+            alert("pid: " + pid)
+            var parmas = { "activity": {
+                "post": pid,
+                "user": user._id,
+                "type": "like"
+            }
+            };
+
+            var json = JSON.stringify(parmas);
             console.log(json);
 
             $http.post(domain + 'isActivityFound', json)
@@ -174,24 +183,24 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
 			    console.log(data);
 			});
-			
 
-		
-		},
+
+
+        },
 
         sendLike: function (pid) {
 
-			alert(user._id)
-			alert("pid: "+pid)
-			
-			var parmas = {"activity":{
-							"post":pid,
-							"user":user._id,
-							"type":"like"
-							}
-						};
-            
-			var json = JSON.stringify(parmas);
+            alert(user._id)
+            alert("pid: " + pid)
+
+            var parmas = { "activity": {
+                "post": pid,
+                "user": user._id,
+                "type": "like"
+            }
+            };
+
+            var json = JSON.stringify(parmas);
             console.log(json);
 
             $http.post(domain + 'addPostActivity', json)
