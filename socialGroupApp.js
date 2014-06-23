@@ -306,10 +306,10 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         link: function (scope, el, attrs) {
             el.on('click', function () {
 
-
+				 $rootScope.$broadcast('addLike', { postid: scope.post._id });
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
-                scope.post.likes.isLiked = !scope.post.likes.isLiked;
+                /* scope.post.likes.isLiked = !scope.post.likes.isLiked;
 
                 if (scope.post.likes.isLiked == true) {
 
@@ -323,7 +323,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     scope.$apply();
                     $rootScope.$broadcast('disLike', { postid: scope.post._id });
 
-                }
+                } */
             });
         },
         replace: true

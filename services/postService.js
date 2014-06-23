@@ -1,4 +1,4 @@
-socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload', function ($rootScope, classAjax, $http,$upload) {
+socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload', 'generalParameters', function ($rootScope, classAjax, $http,$upload,generalParameters) {
 
     var showInput = true;
 
@@ -8,6 +8,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
     var memes = [];
     var selectedAuthor = null;
     var typePrevPage = null;
+	var user = generalParameters.getUser();
+	console.log(user)
+	console.log(user._id)
+	
 
     return {
         //methodes
@@ -146,17 +150,51 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 			    //if(file){self.attach(file);}
 
         },
-
-        sendLike: function (pid, uid) {
-
-            console.log(domain);
-            console.log(pid);
-            console.log(uid);
-            var like = { like: { post: pid, user: uid} };
-            var json = JSON.stringify(like);
+		
+		getIsLike: function (pid) {
+			
+			alert(user._id)
+			alert("pid: "+pid)
+			var parmas = {"activity":{
+							"post":pid,
+							"user":user._id,
+							"type":"like"
+							}
+						};
+            
+			var json = JSON.stringify(parmas);
             console.log(json);
 
-            $http.post(domain + 'like', json)
+            $http.post(domain + 'isActivityFound', json)
+			.success(function (data) {
+
+			    console.log(data);
+			})
+			.error(function (data) {
+
+			    console.log(data);
+			});
+			
+
+		
+		},
+
+        sendLike: function (pid) {
+
+			alert(user._id)
+			alert("pid: "+pid)
+			
+			var parmas = {"activity":{
+							"post":pid,
+							"user":user._id,
+							"type":"like"
+							}
+						};
+            
+			var json = JSON.stringify(parmas);
+            console.log(json);
+
+            $http.post(domain + 'addPostActivity', json)
 			.success(function (data) {
 
 			    console.log(data);
