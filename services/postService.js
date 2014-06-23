@@ -27,7 +27,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             //        }
             //    }
             //});
-            queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy;
+            queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&userID=' + request.userID;
             console.log(queryString);
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data);
@@ -122,7 +122,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         },
 
         //Send post to server. if it isn't comment on post , postId = 0.
-        sendPost: function (postData, file) {
+        sendPost: function (postData, textfile, imgFile) {
 
             var self = this;
 
@@ -135,7 +135,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 			.success(function (data) {
 
 			    console.log(data);
-				self.attach(file,data.data._id); 
+			    console.log(data.data._id);
+				
+				if(textfile)
+					self.attach(textfile,data.data._id); 
+				if(imgFile)
+					self.attach(imgFile,data.data._id); 
 			})
 			.error(function (data) {
 
