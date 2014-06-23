@@ -149,6 +149,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                  }
              }
          })
+
+          .state('meme', {
+             url: "/meme",
+             views: {
+                 "main": {
+                     templateUrl: "./components/meme/meme.html",
+                     controller: "meme"
+                 }
+             }
+         })
 })
 
 /**** Ajax Service ****/
@@ -170,7 +180,11 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'poll':
                     URL = 'polls.txt';
                     break;
+                case 'meme':
+                    URL = 'memes.txt';
+                    break;
             }
+
 
             $http({
                 url: domain + queryString,
@@ -205,6 +219,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var articleTemplate = 'articleTemplate.html';
             var authorsTemplate = 'authorsTemplate.html';
             //var commentTemplate = 'commentTemplate.html';
+            var memesTemplate = 'components/meme/smallMemeTemplate.html';
 
             var templateURL = '';
             switch (tAttrs.postType) {
@@ -222,6 +237,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'comment':
                     template = talkbackTemplate;
                     break;
+                case 'meme':
+                    template = memesTemplate;
+                    break;
             }
 
             return template;
@@ -238,7 +256,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     };
 } ])
 
-.directive('comment', ['$rootScope', 'PostService', '$state', function ($rootScope, PostService, $state) {
+.directive('comment', ['$rootScope', 'generalParameters', '$state', function ($rootScope, generalParameters, $state) {
     return {
         restrict: 'E',
         template: '<div class="post-comment post-buttons" data-ng-click="$event.stopPropagation();">' +
@@ -247,18 +265,28 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 '<span class="respond-count" >{{post.comments.length+0}}</span></div>',
         replace: 'true',
         link: function (scope, el, attrs) {
-            el.on('click', function () {
-                console.log('hi');
+            
+			el.on('click', function () {
+                console.log(scope);
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
-                console.log(scope);
+                console.log(scope.post._id);
                 //$rootScope.$broadcast('addCommentClicked', { showInput: true, postid: scope.post.postId });
-                $state.transitionTo('write-post', { postId: scope.post.postId, postType: scope.post.postType });
+				var user = generalParameters.getUser();
+				if (user.firstName == 'התחבר') {
+					
+					$rootScope.$broadcast('showInfoPopup', { showInfo: true });
+				}
+				else {
+					
+					$state.transitionTo('write-post', { postId: scope.post._id, postType: 'talkback' });
+				}
+               
             });
         }
 
     };
-} ])
+}])
 
 .directive('like', ['$rootScope', 'PostService', function ($rootScope, PostService) {
     return {
@@ -523,18 +551,17 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             el.bind('change', function (event) {
 				
                 var file = event.target.files[0];
-                console.log(file);
-				
-				scope.toLargImage = false;
-				if(file.size >  1000000 * scope.imageMax){
-				
-					scope.toLargImage = true;
-					scope.$apply(); 
-					return;
-				}
-                
-				if(file.type.match('image/*')) {
+                console.log(file);  
+				   
+				if((attrs.upload=='img') && (file.type.match('image/*'))) {
 					
+					scope.toLargImage = false;
+					if(file.size >  1000000 * scope.imageMax){
+				
+						scope.toLargImage = true;
+						scope.$apply(); 
+						return;
+					}
 					var reader = new FileReader();
 				
 					reader.onload = (function () {
@@ -542,6 +569,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 						return function (e) {
 
 							console.log(e.target.result); //base64 img
+							scope.imgFileText = file.name;
 							scope.postImg = e.target.result;
 							scope.imgObj = file;
 							scope.$apply();
@@ -552,10 +580,20 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 					return;
 				}
 					  
-				else if (file.type.match('text/plain') || (file.name.split('.').pop()=='docx')) {
-							
+				else if( (attrs.upload=='txt')&&(file.type.match('text/plain') || (file.name.split('.').pop()=='docx')))  {
+					
+					scope.toLargTextFile = false;
+					if(file.size >  1000000 * scope.textFileMax){
+					
+						scope.toLargTextFile = true;
+						scope.$apply(); 
+						return;
+					}
+					
 					console.log(file.type);
+					scope.textFileText = file.name;
 					scope.fileObj = file;
+					scope.$apply();
 					return;
 				}			
             })

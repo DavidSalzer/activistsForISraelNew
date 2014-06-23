@@ -10,17 +10,18 @@
 
 .post-title {
     color: rgb(0, 109, 190);
-    float: right;
-    width: 100%;
     box-sizing: border-box;
-    padding-right: 60px;
-    position: absolute;
+    padding-right: 12px;
+    display: inline-block;
     line-height: 19px;
     font-size: 15px;
     max-height: 45px;
     padding-top: 7px;
     overflow: hidden;
     font-weight: bold;
+    position: absolute;
+    bottom: 17px;
+    width: 66%;
 }
 
 .sub-header {
@@ -90,7 +91,7 @@ box-sizing: border-box;*/
     position: relative;
 }
 
-.add-file-text-back {
+/* .add-file-text-back {
     display: inline-block;
     text-align: right;
     border-radius: 10px;
@@ -102,11 +103,11 @@ box-sizing: border-box;*/
     position: absolute;
     right: 0;
     top: 5px;
-}
+} */
 
-.add-file-text-back input[type="file"]::-webkit-file-upload-button {
+/* .add-file-text-back input[type="file"]::-webkit-file-upload-button {
     opacity: 0;
-}
+} */
 
 .add-file-text {
     color: #695B5B;
@@ -117,13 +118,15 @@ box-sizing: border-box;*/
     line-height: 32px;
     text-indent: 20px;
     font-size: 15px;
+	margin-right: 50px;
 }
 
 .add-file-error {
-    clear: both;
-    padding-top: 7px;
-    font-size: 0.7em;
-    text-align: right;
+	
+	padding-top: 7px;
+	font-size: 0.7em;
+	text-align: right;
+	margin-right: 50px;
 }
 
 .article-text {
@@ -147,9 +150,6 @@ box-sizing: border-box;*/
     margin-bottom: 20px;
 }
 
-.article-content .plus {
-    background-color: white;
-}
 
 .article-content input[type="text"], .article-content textarea {
     color: black;
@@ -333,4 +333,25 @@ div.post-main-text {
     text-align: right;
     box-sizing: border-box;
     padding-right: 50px;
+}
+
+.upload{
+	
+	color: #695B5B;
+
+height: 32px;
+
+font-size: 15px;
+
+width: 100%;
+
+
+
+background-color: white;
+
+border-radius: 10px;
+
+
+
+
 }

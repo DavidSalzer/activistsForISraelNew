@@ -4,6 +4,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
     var posts = [];
     var polls = [];
+    var memes = [];
     var selectedAuthor = null;
     var typePrevPage = null;
 
@@ -58,6 +59,41 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
                 console.log(polls);
             })
         },
+
+
+         getMemesBatch: function (request) {
+            //dataTransform = { type: type, filter: filter, num: num, token: token };
+            console.log(request);
+            //$http.get(domain + 'post?offset=0&limit='+num+'&timestamp=1403911934561')
+            //.success(function (data) {
+            //    console.log(data);
+            //    if (dataTransform.token == 0) {
+            //        posts = data.data;
+            //    }
+            //    else {
+            //        console.log(data);
+            //        for (var i = 0; i < data.data.length; i++) {
+            //            posts.push(data.data[i]);
+            //        }
+            //    }
+            //});
+            queryString = 'meme?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy;
+            console.log(queryString);
+            classAjax.getdata('get', queryString, request).then(function (data) {
+                console.log(data);
+                if (request.endTimestamp == '') {
+                    posts = data.data;
+                }
+                else {
+                    console.log(data);
+                    for (var i = 0; i < data.data.length; i++) {
+                        posts.push(data.data[i]);
+                    }
+                }
+            })
+        },
+
+
 
         commentClicked: function () {
             console.log('comment');
@@ -183,6 +219,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         getPolls: function () {
             return polls;
+        },
+
+        getMemes: function () {
+            return memes;
         },
 
         getPostById: function (postid) {

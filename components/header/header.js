@@ -85,6 +85,12 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureName: 'צור קשר',
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
+        },
+         {
+            featureUrl: 'meme',
+            featureName: 'ממים',
+            featureLogo: "./img/meme.png",
+            featureColor: "#f6ba55"
         }
         //,
 		//{
