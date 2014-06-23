@@ -1,4 +1,4 @@
-socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q', 'classAjax', function ($rootScope, $stateParams, $q, classAjax) {
+socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q', 'classAjax','PostService', function ($rootScope, $stateParams, $q, classAjax,PostService) {
 
     var featureDetails = {
 
@@ -98,6 +98,8 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
                 console.log(userDetails);
             }
             
+			
+			PostService.setUser(userDetails);
         },
 
         getBackIcon: function () {

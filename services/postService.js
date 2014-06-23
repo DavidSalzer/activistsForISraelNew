@@ -1,4 +1,4 @@
-socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upload', 'generalParameters', function ($rootScope, classAjax, $http, $upload, generalParameters) {
+socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload', function ($rootScope, classAjax, $http,$upload) {
 
     var showInput = true;
 
@@ -8,9 +8,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
     var memes = [];
     var selectedAuthor = null;
     var typePrevPage = null;
-    var user = generalParameters.getUser();
-    console.log(user)
-    console.log(user._id)
+	var user = null;
+	
 
 
     return {
@@ -159,19 +158,18 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             //if(file){self.attach(file);}
 
         },
-
-        getIsLike: function (pid) {
-
-            alert(user._id)
-            alert("pid: " + pid)
-            var parmas = { "activity": {
-                "post": pid,
-                "user": user._id,
-                "type": "like"
-            }
-            };
-
-            var json = JSON.stringify(parmas);
+		
+		getIsLike: function (pid) {
+			
+			console.log(user)
+			var parmas = {"activity":{
+							"post":pid,
+							"user":user._id,
+							"type":"like"
+							}
+						};
+            
+			var json = JSON.stringify(parmas);
             console.log(json);
 
             $http.post(domain + 'isActivityFound', json)
@@ -190,17 +188,16 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         sendLike: function (pid) {
 
-            alert(user._id)
-            alert("pid: " + pid)
-
-            var parmas = { "activity": {
-                "post": pid,
-                "user": user._id,
-                "type": "like"
-            }
-            };
-
-            var json = JSON.stringify(parmas);
+			console.log(user)
+			
+			var parmas = {"activity":{
+							"post":pid,
+							"user":user._id,
+							"type":"like"
+							}
+						};
+            
+			var json = JSON.stringify(parmas);
             console.log(json);
 
             $http.post(domain + 'addPostActivity', json)
@@ -214,13 +211,18 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			});
 
 
-        },
+        }, 
 
         //getters & setters
         setShowInput: function (state) {
             console.log(showInput);
             showInput = state;
             console.log(showInput);
+        }, 
+		
+		setUser: function (userDetails) {
+           
+		   user = userDetails;
         },
 
         getShowInput: function () {
