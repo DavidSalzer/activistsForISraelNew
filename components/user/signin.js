@@ -71,8 +71,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
             $scope.signinDetails.phone = $scope.phone;
             $scope.signinDetails.address = $scope.address;
         }
-        else
-        {
+        else {
             $scope.signinDetails.phone = "מספר טלפון";
             $scope.signinDetails.address = "כתובת";
         }
@@ -122,7 +121,8 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
 
 
     $scope.croping = function () {
-        imgCrop.crop('c', 'button_ok', 'cropDiv'); //canvasid  ,btn-approve, contener Id
+        imgCrop.obj = {};
+        imgCrop.crop('c', 'button_ok', 'cropDiv'); //canvasid  ,btn-approve, container Id
 
     }
 
@@ -134,17 +134,17 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $scope.userimg = '';
         imgCrop.destroy();
 
-    //    $scope.lesson = classAjax.getdata({ type: 'setUserImg', req: { imgData: d.data} });
-    //    //yishai stern added in line 125 to the bigining "$scope.lesson="  
-    //    $scope.lesson.then(
-    //function (data) {
-    //    //lesson list
-    //    //console.log(data);
-    //},
-    //function (error) {
-    //    console.log(error);
-    //}
-    //)
+        //    $scope.lesson = classAjax.getdata({ type: 'setUserImg', req: { imgData: d.data} });
+        //    //yishai stern added in line 125 to the bigining "$scope.lesson="  
+        //    $scope.lesson.then(
+        //function (data) {
+        //    //lesson list
+        //    //console.log(data);
+        //},
+        //function (error) {
+        //    console.log(error);
+        //}
+        //)
 
     });
 
