@@ -1,29 +1,24 @@
-socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters','$state', function ($scope,$rootScope, $stateParams, PostService, generalParameters,$state) {
+socialGroupApp.controller('writeMeme', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters','$state', function ($scope,$rootScope, $stateParams, PostService, generalParameters,$state) {
  
 	/*init variables*/
 	generalParameters.setBackIcon(true);
-	var colors={'article':'#006dbe','talkback':'#993ca7','poll':'#da4f00'};
 	$scope.parentPostType = $stateParams.postType;
-	$scope.postType = $stateParams.postType;
-	
-	if($stateParams.postId != 0){$scope.postType = 'talkback'}
-	
 	$scope.user = generalParameters.getUser();
 	//alert($scope.user._id)
 	
 	$scope.postData={
 		
 		
-		user:{_id:$scope.user._id},
-		post:{_parentID:$stateParams.postId,attachment: "",content: ""}
+	//	user:{_id:$scope.user._id},
+		//post:{_parentID:$stateParams.postId,attachment: "",content: "ער תושב הכפר עראבה שהגיע עם אביו לעבודה נהרג בפיצוץ בגבול עם סוריה, אביו עובד הקבלן נפצע. גורם צבאי בכיר מסר כי יש חור בגדר כתוצאה מירי, בנוסף היה ירי על משאית של עבודות משרד הביטחון. לא ברור האם זה מטען, פגז או מרגמה"}
 		
 	};
 	
 	$scope.imageMax = 1;
 	$scope.toLargImage = false;
 	$scope.imgFileText = 'צרף תמונה'
-	
-	switch ($scope.postType) {
+	/*
+	switch ($stateParams.postType) {
             
 		case "article":{
 			
@@ -54,7 +49,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			
 		case "talkback":{
 			
-			$scope.featureColor = colors[$scope.parentPostType];
+			$scope.featureColor ='#993ca7';
 			$scope.headerText ='כתיבת טקסט';
 			$scope.max = 140;
 			$scope.maxLine=3;
@@ -91,7 +86,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		   
 		
     }
-		
+	*/	
 	
 	
 	console.log($scope.postData);
