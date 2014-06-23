@@ -4,8 +4,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.showInput = false;
     $scope.currentFilter = 'all';
     $scope.currentPost = null;
-    $scope.showSpiner = false;
+    $scope.showSpiner = PostService.getSpiner;
     $scope.showPostTitle = true;
+
 
 
     $scope.showArticleImg = false;
@@ -110,44 +111,44 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         PostService.getPostsBatch(request);
     }
 
-    $scope.updatePosts = function () {
-        PostService.updatePost({
-            postId: 8,
-            postType: 'talkback',
-            author: 'shimon',
-            timeStamp: '25052014175555',
-            title: 'עקירת עצי זית',
-            content: 'מה המה מה מה מה מה מה מה מה מה ',
-            image: '',
-            likes: {
-                likesCount: 12,
-                isLiked: 0
-            },
-            comments: {
-                commentsCount: 5,
-                comments: [
-                    {
-                        commentId: 0,
-                        postType: 'talkback',
-                        author: 'shimon',
-                        timeStamp: '25052014185555',
-                        title: 'עקירת עצי זית',
-                        content: 'תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר ',
-                        image: '',
-                        like: {
-                            likesCount: 12,
-                            isLiked: 1
-                        }
-                    }
-                ]
-            }
-        })
-    }
+    //$scope.updatePosts = function () {
+    //    PostService.updatePost({
+    //        postId: 8,
+    //        postType: 'talkback',
+    //        author: 'shimon',
+    //        timeStamp: '25052014175555',
+    //        title: 'עקירת עצי זית',
+    //        content: 'מה המה מה מה מה מה מה מה מה מה ',
+    //        image: '',
+    //        likes: {
+    //            likesCount: 12,
+    //            isLiked: 0
+    //        },
+    //        comments: {
+    //            commentsCount: 5,
+    //            comments: [
+    //                {
+    //                    commentId: 0,
+    //                    postType: 'talkback',
+    //                    author: 'shimon',
+    //                    timeStamp: '25052014185555',
+    //                    title: 'עקירת עצי זית',
+    //                    content: 'תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר ',
+    //                    image: '',
+    //                    like: {
+    //                        likesCount: 12,
+    //                        isLiked: 1
+    //                    }
+    //                }
+    //            ]
+    //        }
+    //    })
+    //}
 
     $scope.getPostsByAll = function () {
-        //$scope.currentFilter = 'all';
+        request.endTimestamp = '';
         request.orderBy = '-timestamp';
-        //request.endTimestamp = '';
+        request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
@@ -167,9 +168,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
 
     $scope.getPostsByViews = function () {
-        //$scope.currentFilter = 'views';
-        request.orderBy = '-views';
-        //request.endTimestamp = '';
+        request.endTimestamp = '';
+        request.orderBy = '-timestamp';
+        request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
@@ -181,9 +182,11 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
 
     $scope.loadMore = function () {
-        $scope.showSpiner = true; //need to change to false while get callback from server.
+        //$scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
-        //request.offset = 20;
+        request.offset += 20;
+        post = PostService.getPosts();
+        request.endTimestamp = post[0].timestamp;
         PostService.getPostsBatch(request);
     }
 

@@ -1,4 +1,4 @@
-socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload', function ($rootScope, classAjax, $http,$upload) {
+socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upload', function ($rootScope, classAjax, $http, $upload) {
 
     var showInput = true;
 
@@ -8,8 +8,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
     var memes = [];
     var selectedAuthor = null;
     var typePrevPage = null;
-	var user = null;
-	
+    var user = null;
+    var showSpiner = false;
+
 
 
     return {
@@ -19,15 +20,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
             console.log(request);
 
-            queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&userID=' + request.userID;
+            queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&_parentID=' + request._parentID;
             console.log(queryString);
+            showSpiner = true;
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data);
-                //if (request.endTimestamp == '') {
-                //    posts = data.data;
-                //}
+                if (request.endTimestamp == '') {
+                    posts = [];
+                }
                 //else {
                 console.log(data);
+                showSpiner = false;
                 for (var i = 0; i < data.data.length; i++) {
                     //posts.push(data.data[i]);
                     flag = true;
@@ -158,18 +161,18 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             //if(file){self.attach(file);}
 
         },
-		
-		getIsLike: function (pid) {
-			
-			console.log(user)
-			var parmas = {"activity":{
-							"post":pid,
-							"user":user._id,
-							"type":"like"
-							}
-						};
-            
-			var json = JSON.stringify(parmas);
+
+        getIsLike: function (pid) {
+
+            console.log(user)
+            var parmas = { "activity": {
+                "post": pid,
+                "user": user._id,
+                "type": "like"
+            }
+            };
+
+            var json = JSON.stringify(parmas);
             console.log(json);
 
             $http.post(domain + 'isActivityFound', json)
@@ -188,16 +191,16 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         sendLike: function (pid) {
 
-			console.log(user)
-			
-			var parmas = {"activity":{
-							"post":pid,
-							"user":user._id,
-							"type":"like"
-							}
-						};
-            
-			var json = JSON.stringify(parmas);
+            console.log(user)
+
+            var parmas = { "activity": {
+                "post": pid,
+                "user": user._id,
+                "type": "like"
+            }
+            };
+
+            var json = JSON.stringify(parmas);
             console.log(json);
 
             $http.post(domain + 'addPostActivity', json)
@@ -211,18 +214,18 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 			});
 
 
-        }, 
+        },
 
         //getters & setters
         setShowInput: function (state) {
             console.log(showInput);
             showInput = state;
             console.log(showInput);
-        }, 
-		
-		setUser: function (userDetails) {
-           
-		   user = userDetails;
+        },
+
+        setUser: function (userDetails) {
+
+            user = userDetails;
         },
 
         getShowInput: function () {
@@ -277,6 +280,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         getFilterByAuthor: function () {
             return { type: typePrevPage, author: selectedAuthor };
+        },
+
+        getSpiner: function () {
+            return showSpiner;
         }
 
 
