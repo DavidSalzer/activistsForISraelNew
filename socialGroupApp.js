@@ -279,7 +279,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 				}
 				else {
 					
-					$state.transitionTo('write-post', { postId: scope.post._id, postType: scope.post.postType });
+					$state.transitionTo('write-post', { postId: scope.post._id, postType: 'talkback' });
 				}
                
             });
