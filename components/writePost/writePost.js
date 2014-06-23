@@ -1,12 +1,12 @@
 socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters','$state', function ($scope,$rootScope, $stateParams, PostService, generalParameters,$state) {
- alert( $stateParams.postType)
+
 	/*init variables*/
 	generalParameters.setBackIcon(true);
 	var colors={'article':'#006dbe','talkback':'#993ca7','poll':'#da4f00'};
 	$scope.parentPostType = $stateParams.postType;
 	$scope.postType = $stateParams.postType;
 	
-	if($stateParams.postId != 0){$scope.postType = 'talkback'}
+	
 	
 	$scope.user = generalParameters.getUser();
 	//alert($scope.user._id)
@@ -15,9 +15,16 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		
 		
 		user:{_id:$scope.user._id},
-		post:{_parentID:$stateParams.postId,attachment: "",content: ""}
+		post:{_parentID:null,attachment: "",content: ""}
 		
 	};
+	
+	if($stateParams.postId != 0){//if comment
+	
+		$scope.postType = 'talkback'
+		$scope.postData.post._parentID = $stateParams.postId;
+	}
+
 	
 	$scope.imageMax = 1;
 	$scope.toLargImage = false;
