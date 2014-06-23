@@ -2,18 +2,21 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
  
 	/*init variables*/
 	generalParameters.setBackIcon(true);
-	$scope.parentPost={parentId:$stateParams.postId, parentPostType:$stateParams.postType};
-	
+	$scope.parentPostType = $stateParams.postType;
 	$scope.user = generalParameters.getUser();
 	//alert($scope.user._id)
 	
 	$scope.postData={
-				
+		
+		
 		user:{_id:$scope.user._id},
-		post:{attachment: "",content: ""}
+		post:{_parentID:$stateParams.postId,attachment: "",content: "ער תושב הכפר עראבה שהגיע עם אביו לעבודה נהרג בפיצוץ בגבול עם סוריה, אביו עובד הקבלן נפצע. גורם צבאי בכיר מסר כי יש חור בגדר כתוצאה מירי, בנוסף היה ירי על משאית של עבודות משרד הביטחון. לא ברור האם זה מטען, פגז או מרגמה"}
+		
 	};
 	
+	$scope.imageMax = 1;
 	$scope.toLargImage = false;
+	$scope.imgFileText = 'צרף תמונה'
 	
 	switch ($stateParams.postType) {
             
@@ -22,8 +25,10 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	
 			$scope.featureColor ='#006dbe';
 			$scope.headerText ='כתיבת טקסט';
-			$scope.imageMax = 1;
-			$scope.fileMax = 1;
+			
+			$scope.textFileText ='צרף קובץ טקסט';
+			$scope.toLargTextFile =false;
+			$scope.textFileMax = 1;
 			$scope.min = 250;
 			
 			$scope.postData.post.postType='article';
@@ -43,13 +48,12 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		   
 			
 		case "talkback":{
-			//alert($stateParams.postType)
-	
+			
 			$scope.featureColor ='#993ca7';
 			$scope.headerText ='כתיבת טקסט';
 			$scope.max = 140;
 			$scope.maxLine=3;
-			$scope.imageMax = 2;
+			
 			
 			$scope.postData.post.postType='talkback';
 			
@@ -64,7 +68,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			$scope.headerText ='הצע סקר';
 			$scope.max = 140;
 			$scope.maxLine=3;
-			$scope.imageMax = 2;
+			
 			
 			$scope.postData.post.postType='poll';
 			
@@ -96,7 +100,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj );
 		if($scope.postData.post.postType=='talkback'){
 		
-			 $state.transitionTo('talk-back'); arert();return;
+			 $state.transitionTo('talk-back');return;
 		}
 		$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 	};
