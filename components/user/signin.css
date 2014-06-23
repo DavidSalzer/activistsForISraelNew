@@ -16,7 +16,11 @@
 .sign-in-picture {
 }
 
-
+.jcrop-holder div .jcrop-tracker{
+   background-image: url("/img/avatar-circle.png"); 
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+}
 
 .popup-wrapper {
     position: relative;
@@ -88,7 +92,7 @@
 
 .sign-in-upload-image-zone {
     margin: auto;
-    width: 268px;
+    width: 90%;
     min-height: 42px;
     position: relative;
 }
@@ -99,8 +103,8 @@ input#userImg {
 }
 
 .sign-in-upload-image {
-    width: 30px;
-    height: 30px;
+    width: 10%;
+    height: 10%;
     background-color: white;
     display: inline-block;
     border-radius: 10px;
@@ -114,11 +118,11 @@ input#userImg {
 
 .sign-in-image-name {
     display: inline-block;
-    width: 230px;
+    width: 87%;
     height: 30px;
     background-color: #2f343b;
     border-radius: 10px;
-    margin-right: 8px;
+    margin-right: 3%;
     line-height: 30px;
     color: #A9A9A9;
     padding-right: 10px;
@@ -267,6 +271,7 @@ canvas#c {
     width: 80px;
     height: 80px;
     display: block;
+    border: 1px solid #42484e;
 }
 
 canvas {
