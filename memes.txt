@@ -8,9 +8,9 @@
             "authorId": 2,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
-            "image": "./img/image/kneset.jpg",
+            "image": "./img/image/meme_big.png",
             "likes": {
-                "likesCount": 7,
+                "likesCount": 2000,
                 "isLiked": true
             }
            
@@ -23,9 +23,9 @@
             "authorId": 3,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
-            "image": "./img/image/kneset.jpg",
+            "image": "./img/image/meme_big.png",
             "likes": {
-                "likesCount": 7,
+                "likesCount":700,
                 "isLiked": true
             }
            
@@ -38,9 +38,9 @@
             "authorId": 3,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
-            "image": "./img/image/kneset.jpg",
+            "image": "./img/image/meme_small.png",
             "likes": {
-                "likesCount": 7,
+                "likesCount": 700000,
                 "isLiked": true
             }
            
@@ -54,7 +54,7 @@
             "authorId": 3,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
-            "image": "./img/image/kneset.jpg",
+            "image": "./img/image/meme_big.png",
             "likes": {
                 "likesCount": 7,
                 "isLiked": true
@@ -69,9 +69,9 @@
             "authorId": 3,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
-            "image": "./img/image/kneset.jpg",
+            "image": "./img/image/meme_small.png",
             "likes": {
-                "likesCount": 7,
+                "likesCount": 70,
                 "isLiked": true
             }
            
@@ -84,9 +84,9 @@
             "authorId": 3,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
-            "image": "./img/image/kneset.jpg",
+            "image": "./img/image/meme_small.png",
             "likes": {
-                "likesCount": 7,
+                "likesCount": 700,
                 "isLiked": true
             }
            
@@ -99,9 +99,9 @@
             "authorId": 3,
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
-            "image": "./img/image/kneset.jpg",
+            "image": "./img/image/meme_small.png",
             "likes": {
-                "likesCount": 7,
+                "likesCount": 56,
                 "isLiked": true
             }
            
@@ -116,7 +116,7 @@
             "timestamp": 1403179734134,
             "image": "./img/image/kneset.jpg",
             "likes": {
-                "likesCount": 7,
+                "likesCount": 567,
                 "isLiked": true
             }
            
@@ -131,7 +131,7 @@
             "timestamp": 1403179734134,
             "image": "./img/image/kneset.jpg",
             "likes": {
-                "likesCount": 7,
+                "likesCount": 9840,
                 "isLiked": true
             }
            
