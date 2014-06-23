@@ -1,9 +1,10 @@
 socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'generalParameters', function ($scope, $state, classAjax, generalParameters) {
+
     $scope.features = [
     {
         featureId: 2,
         featureUrl: 'talk-back',
-        featureName: 'טוקבקים',
+        featureName: 'מה קורה',
         featureLogo: './img/whatsup.png',
         featureImg: './img/image/kneset.jpg',
         title: 'בוער לכם להגיד משהו? זה המקום',
@@ -31,15 +32,15 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     //    postId: 5
     //},
     {
-        featureId: 3,
-        featureUrl: 'article',
-        featureName: 'מאמרים',
-        featureLogo: './img/article.png',
-        featureImg: './img/image/pic3.png',
-        title: 'מאמרים בנושאים על סדר היום',
-        text: 'עמוד מאמרים',
-        postId: 5
-    },
+    featureId: 3,
+    featureUrl: 'article',
+    featureName: 'מאמרים',
+    featureLogo: './img/article.png',
+    featureImg: './img/image/pic3.png',
+    title: 'מאמרים בנושאים על סדר היום',
+    text: 'עמוד מאמרים',
+    postId: 5
+},
     {
         featureId: 3,
         featureUrl: 'facebookBennet',
@@ -61,25 +62,27 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         text: 'הכנסו לקרוא',
         postId: 5
     }
-    
+
     ];
 
-    $scope.goToFeature = function (featureUrl, postId) {
-        console.log('featureUrl: ' + featureUrl);
-        $state.transitionTo(featureUrl, { postId: postId });
-    }
+$scope.goToFeature = function (featureUrl, postId) {
+    console.log('featureUrl: ' + featureUrl);
+    $state.transitionTo(featureUrl, { postId: postId });
+}
 
-    $scope.featureDetails = {
-        featureName: null,
-        featureLogo: "./img/poalim-logo.png",
-        //infoImg: './img/whatsup.png',
-        featureColor: '#AB14E6'
-        
-    };
+$scope.featureDetails = {
+    featureName: null,
+    featureLogo: "./img/poalim-logo.png",
+    //infoImg: './img/whatsup.png',
+    featureColor: '#AB14E6'
 
-    generalParameters.setFeature($scope.featureDetails);
+};
 
+generalParameters.setFeature($scope.featureDetails);
 
+$scope.$on('scrollToEnd', function (ngRepeatFinishedEvent) {
+    document.getElementById("features-swipe-inner").scrollLeft = ($scope.features.length - 1) * 145;
+});
 
 } ])
 
