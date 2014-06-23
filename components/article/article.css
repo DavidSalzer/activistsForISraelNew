@@ -90,7 +90,7 @@ box-sizing: border-box;*/
     position: relative;
 }
 
-.add-file-text-back {
+/* .add-file-text-back {
     display: inline-block;
     text-align: right;
     border-radius: 10px;
@@ -102,7 +102,7 @@ box-sizing: border-box;*/
     position: absolute;
     right: 0;
     top: 5px;
-}
+} */
 
 /* .add-file-text-back input[type="file"]::-webkit-file-upload-button {
     opacity: 0;

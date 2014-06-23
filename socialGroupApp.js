@@ -524,10 +524,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 				
                 var file = event.target.files[0];
                 console.log(file);  
-				console.log(attrs);alert()
-				
-				
-                
+				   
 				if((attrs.upload=='img') && (file.type.match('image/*'))) {
 					
 					scope.toLargImage = false;
