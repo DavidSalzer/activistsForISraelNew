@@ -839,3 +839,8 @@ button {
 	margin-top :10px;
 	
 }
+
+.tab-content{
+    overflow-y: scroll;
+height: 100%;
+}

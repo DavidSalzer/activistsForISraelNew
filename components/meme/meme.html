@@ -1,0 +1,54 @@
+<link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
+
+<div class="sub-header" id="feature-header" data-ng-click="writePost()">
+    <div  style="background-color: #f6ba55;">
+    ממים
+    </div>
+    <div class="color-line color-line-bottom "></div>
+</div>
+
+<ul class="nav nav-tabs">
+    <li style="width: 33%"><a href="#Tab1" toggle="on" parent-active-class="active" data-ng-click="getPostsByAll()">הכל</a></li>
+    <li style="width: 33%"><a href="#Tab2" toggle="on" parent-active-class="active" data-ng-click="getAuthors()">הכותבים</a></li>
+    <li style="width: 33%"><a href="#Tab3" toggle="on" parent-active-class="active" data-ng-click="getPostsByViews()">הנצפים</a></li>
+</ul>
+
+<div class="tab-content" scroller loading-method="loadMore()"><!--ignore this section- do not delete-->
+    <div class="tab-pane" toggleable active-class="active" default="active" id="Tab1" exclusion-group="myTabs">
+
+        <div class="posts-list memes" ><!--scroller loading-method="loadMore()"-->
+            <post data-ng-repeat="post in posts()" data-post-type="meme"></post>
+            <div class="spiner-zone" data-ng-show="showSpiner">
+                <div class="fa fa-spinner fa-spin"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="tab-pane" toggleable active-class="active" id="Tab2" exclusion-group="myTabs">
+        <div class="posts-list memes" scroller loading-method="loadMore()">
+            <post data-ng-repeat="post in posts()" data-post-type="meme"></post>
+            <div class="spiner-zone" data-ng-show="showSpiner">
+                <div class="fa fa-spinner fa-spin"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="tab-pane" toggleable active-class="active" id="Tab3" exclusion-group="myTabs">
+        <div class="posts-list memes" scroller loading-method="loadMore()">
+            <post data-ng-repeat="post in posts()" data-post-type="meme"></post>
+            <div class="spiner-zone" data-ng-show="showSpiner">
+                <div class="fa fa-spinner fa-spin"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <!--<div class="posts-list" scroller loading-method="loadMore()">
+                <post data-ng-repeat="post in posts()" data-post-type="article" data-ng-show="post.postType='article'"></post>
+                <post data-ng-repeat="post in posts()" data-post-type="author" data-ng-show="post.postType='author'"></post>
+                <div class="spiner-zone" data-ng-show="showSpiner">
+                    <div class="fa fa-spinner fa-spin"></div>
+                </div>
+            </div>-->

@@ -149,6 +149,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                  }
              }
          })
+
+          .state('meme', {
+             url: "/meme",
+             views: {
+                 "main": {
+                     templateUrl: "./components/meme/meme.html",
+                     controller: "meme"
+                 }
+             }
+         })
 })
 
 /**** Ajax Service ****/
@@ -170,7 +180,11 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'poll':
                     URL = 'polls.txt';
                     break;
+                case 'meme':
+                    URL = 'memes.txt';
+                    break;
             }
+
 
             $http({
                 //url: domain + queryString,
@@ -205,6 +219,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var articleTemplate = 'articleTemplate.html';
             var authorsTemplate = 'authorsTemplate.html';
             //var commentTemplate = 'commentTemplate.html';
+            var memesTemplate = 'components/meme/smallMemeTemplate.html';
 
             var templateURL = '';
             switch (tAttrs.postType) {
@@ -221,6 +236,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     break;
                 case 'comment':
                     template = talkbackTemplate;
+                    break;
+                case 'meme':
+                    template = memesTemplate;
                     break;
             }
 
