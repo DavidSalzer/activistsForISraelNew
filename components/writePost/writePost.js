@@ -1,5 +1,5 @@
 socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters','$state', function ($scope,$rootScope, $stateParams, PostService, generalParameters,$state) {
- 
+ alert( $stateParams.postType)
 	/*init variables*/
 	generalParameters.setBackIcon(true);
 	var colors={'article':'#006dbe','talkback':'#993ca7','poll':'#da4f00'};
