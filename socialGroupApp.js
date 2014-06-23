@@ -303,7 +303,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         restrict: 'E',
         template: '<div class="post-likes post-buttons" data-ng-click="$event.stopPropagation();"><span data-ng-class="{' + "'is-liked':post.likes.isLiked==true ,'like-post':true}" + '">' +
                     '<span class="icon"></span><span>אהבתי</span></span>' +
-                '<span class="like-count">{{post.likes.length+post.likes.likesCount+0}}</span></div>',
+                '<span class="like-count">{{post.likesCount+0}}</span></div>',
         link: function (scope, el, attrs) {
             el.on('click', function () {
 
