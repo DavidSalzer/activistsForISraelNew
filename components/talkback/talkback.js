@@ -28,7 +28,8 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         limit: 20,
         orderBy: '-timestamp',
         postType: 'talkback',
-        userID: $scope.user._id
+        //userID: $scope.user._id,
+        _parentID: ''
     };
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
@@ -108,8 +109,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         console.log($scope.commentText);
         PostService.sendPost('shimon', 'talkback', $scope.commentText, $scope.currentPost);
     }
-    console.log(PostService.getPostById(0));
-
+    
 
     //load more post on scroll down
     $scope.loadMore = function () {

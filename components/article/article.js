@@ -26,6 +26,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     generalParameters.setFeature($scope.featureDetails);
     $scope.domain = domain;
     $scope.user = generalParameters.getUser();
+    console.log(user);
     request = {
         startTimestamp: '',
         endTimestamp: '',
@@ -33,7 +34,8 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         limit: 20,
         orderBy: '-timestamp',
         postType: 'article',
-        userID: $scope.user._id
+        userID: $scope.user._id,
+        _parentID: ''
     };
 
 
@@ -76,6 +78,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     });
 
     $scope.$on('postClicked', function (event, args) {
+        console.log(args);
         $scope.postId = args.postId;
         $scope.authorId = args.authorId;
         console.log('args: ' + args.postId);
@@ -84,9 +87,6 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
-            //case "talkback":    
-            //    $state.transitionTo('single-article', { postId: $scope.postId });    
-            //    break;    
             case "author":
                 $scope.getPostsByAll();
                 $state.transitionTo('author-page', { authorId: $scope.authorId });
@@ -146,7 +146,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
     $scope.getPostsByAll = function () {
         //$scope.currentFilter = 'all';
-        request.postType = 'article';
+        request.orderBy = '-timestamp';
         //request.endTimestamp = '';
         PostService.getPostsBatch(request);
     }
@@ -168,7 +168,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
     $scope.getPostsByViews = function () {
         //$scope.currentFilter = 'views';
-        request.postType = 'article';
+        request.orderBy = '-views';
         //request.endTimestamp = '';
         PostService.getPostsBatch(request);
     }
@@ -178,7 +178,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         PostService.sendPost('shimon', 'talkback', $scope.commentText, $scope.currentPost);
     }
 
-    console.log(PostService.getPostById(0));
+
 
     $scope.loadMore = function () {
         $scope.showSpiner = true; //need to change to false while get callback from server.

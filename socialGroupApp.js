@@ -187,8 +187,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
 
             $http({
-                 //url: domain + queryString,
-               url: URL,
+                url: domain + queryString,
+                //url: URL,
                 method: method, // temp cancel for local json calls
                 data: request
             }).
@@ -247,7 +247,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function (e) {
-                $rootScope.$broadcast('postClicked', { postId: scope.post.postId, postType: scope.post.postType, authorId: scope.post.authorId }); //add post type to emit
+                $rootScope.$broadcast('postClicked', { postId: scope.post._Id, postType: scope.post.postType, authorId: scope.post.authorId }); //add post type to emit
             });
             //console.log(attrs.showCommentButton);
             //scope.showCommentButton = attrs.showCommentButton;
