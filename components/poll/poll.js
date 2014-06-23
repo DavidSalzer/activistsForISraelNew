@@ -55,7 +55,7 @@ socialGroupApp.controller('poll', ['$rootScope','$scope', '$http', '$state', 'Po
 	
 	$scope.SuggestPoll = function () {
 		generalParameters.setBackIcon(true);
-        $state.transitionTo('write-post', { postType: "poll" });
+        $state.transitionTo('write-post', { postType: "poll" , postId: 0 });
     }
 	
    

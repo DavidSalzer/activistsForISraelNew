@@ -27,8 +27,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        .state('talk-back', {
-            url: "/talk-back",
+        .state('talkback', {
+            url: "/talkback",
             //url: "/lesson",
             views: {
                 "main": {
@@ -257,7 +257,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function (e) {
-                $rootScope.$broadcast('postClicked', { postId: scope.post._Id, postType: scope.post.postType, authorId: scope.post.authorId }); //add post type to emit
+                console.log(scope.post);
+                $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
             });
             //console.log(attrs.showCommentButton);
             //scope.showCommentButton = attrs.showCommentButton;
@@ -266,7 +267,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     };
 } ])
 
-.directive('comment', ['$rootScope', 'PostService', '$state', function ($rootScope, PostService, $state) {
+.directive('comment', ['$rootScope', 'generalParameters', '$state', function ($rootScope, generalParameters, $state) {
     return {
         restrict: 'E',
         template: '<div class="post-comment post-buttons" data-ng-click="$event.stopPropagation();">' +
@@ -306,10 +307,10 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         link: function (scope, el, attrs) {
             el.on('click', function () {
 
-
+				 $rootScope.$broadcast('addLike', { postid: scope.post._id });
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
-                scope.post.likes.isLiked = !scope.post.likes.isLiked;
+                /* scope.post.likes.isLiked = !scope.post.likes.isLiked;
 
                 if (scope.post.likes.isLiked == true) {
 
@@ -323,7 +324,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     scope.$apply();
                     $rootScope.$broadcast('disLike', { postid: scope.post._id });
 
-                }
+                } */
             });
         },
         replace: true
