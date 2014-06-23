@@ -1,4 +1,4 @@
-socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload', 'generalParameters', function ($rootScope, classAjax, $http,$upload,generalParameters) {
+socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload', function ($rootScope, classAjax, $http,$upload) {
 
     var showInput = true;
 
@@ -8,9 +8,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
     var memes = [];
     var selectedAuthor = null;
     var typePrevPage = null;
-	var user = generalParameters.getUser();
-	console.log(user)
-	console.log(user._id)
+	var user = null;
 	
 
     return {
@@ -153,8 +151,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 		
 		getIsLike: function (pid) {
 			
-			alert(user._id)
-			alert("pid: "+pid)
+			console.log(user)
 			var parmas = {"activity":{
 							"post":pid,
 							"user":user._id,
@@ -181,8 +178,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         sendLike: function (pid) {
 
-			alert(user._id)
-			alert("pid: "+pid)
+			console.log(user)
 			
 			var parmas = {"activity":{
 							"post":pid,
@@ -205,13 +201,18 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 			});
 
 
-        },
+        }, 
 
         //getters & setters
         setShowInput: function (state) {
             console.log(showInput);
             showInput = state;
             console.log(showInput);
+        }, 
+		
+		setUser: function (userDetails) {
+           
+		   user = userDetails;
         },
 
         getShowInput: function () {
