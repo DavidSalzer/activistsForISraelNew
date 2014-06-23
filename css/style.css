@@ -19,7 +19,7 @@ body {
 }
 
 
-/*testing the nav bar*/
+/*testing nav bar*/
 .navbar, .navbar-app {
     min-height: 0px;
 }
@@ -66,6 +66,7 @@ header i.fa.back {
 .scroll-main-window {
     height: 100%;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 /*************************post template*******************/
 .posts-list {
@@ -414,6 +415,7 @@ div.list-group {
     position: relative;
 }
 
+
 .sidebar-left {
     background: #000;
 }
@@ -428,6 +430,7 @@ div.list-group {
     /* width: 100%; */
     height: 100%;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     background: #565c63;
     background: #828282;
 }
@@ -512,6 +515,7 @@ div.list-group {
     width: 100%;
     height: 100%;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     position: absolute;
     top: 0;
     padding-top: 46px;
@@ -536,6 +540,7 @@ div.list-group {
     width: 100%;
     height: 100%;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     position: absolute;
     top: 0px;
     padding-top: 46px;
@@ -842,5 +847,6 @@ button {
 
 .tab-content {
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     height: 100%;
 }

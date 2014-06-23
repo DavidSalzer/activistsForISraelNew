@@ -183,7 +183,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.loadMore = function () {
         $scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
-        request.endTimestamp = '0';
+        //request.offset = 20;
         PostService.getPostsBatch(request);
     }
 

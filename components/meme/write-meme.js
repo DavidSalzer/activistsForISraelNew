@@ -100,7 +100,7 @@ socialGroupApp.controller('writeMeme', ['$scope','$rootScope','$stateParams', 'P
 		PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj );
 		if($scope.postData.post.postType=='talkback'){
 		
-			 $state.transitionTo('talk-back');return;
+			 $state.transitionTo('talkback');return;
 		}
 		$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 	};

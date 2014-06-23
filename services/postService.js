@@ -8,33 +8,45 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
     var memes = [];
     var selectedAuthor = null;
     var typePrevPage = null;
+	var user = null;
+	
+
 
     return {
         //methodes
 
         getPostsBatch: function (request) {
-            
+
             console.log(request);
-           
+
             queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&userID=' + request.userID;
             console.log(queryString);
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data);
-                if (request.endTimestamp == '') {
-                    posts = data.data;
-                }
-                else {
-                    console.log(data);
-                    for (var i = 0; i < data.data.length; i++) {
+                //if (request.endTimestamp == '') {
+                //    posts = data.data;
+                //}
+                //else {
+                console.log(data);
+                for (var i = 0; i < data.data.length; i++) {
+                    //posts.push(data.data[i]);
+                    flag = true;
+                    for (var j = 0; j < posts.length & flag; j++) {
+                        if (data.data[i]._id == posts[j]._id) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
                         posts.push(data.data[i]);
                     }
                 }
+                //}
             })
         },
 
-        
 
-         getMemesBatch: function (request) {
+
+        getMemesBatch: function (request) {
             //dataTransform = { type: type, filter: filter, num: num, token: token };
             console.log(request);
             //$http.get(domain + 'post?offset=0&limit='+num+'&timestamp=1403911934561')
@@ -109,11 +121,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
 			    console.log(data);
 			    console.log(data.data._id);
-				
-				if(textfile)
-					self.attach(textfile,data.data._id); 
-				if(imgFile)
-					self.attach(imgFile,data.data._id); 
+
+			    if (textfile)
+			        self.attach(textfile, data.data._id);
+			    if (imgFile)
+			        self.attach(imgFile, data.data._id);
 			})
 			.error(function (data) {
 
@@ -124,39 +136,43 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         },
 
-        attach: function (file,postId) {
+        attach: function (file, postId) {
 
-             var $file = file;
-				  console.log($file);
-			    var upload = $upload.upload({
-			        
-					url: domain+'FileUpload?ref=post&_id='+postId,
-			        method: "POST",
-			        file: $file
-			    }).progress(function (evt) {
-			        // get upload percentage
-			        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-			    }).success(function (data, status, headers, config) {
-			        // file is uploaded successfully
-			        console.log(data);
-			    }).error(function (data, status, headers, config) {
-			        // file failed to upload
-			        console.log(data);
-			    });
-			    //if(file){self.attach(file);}
+            var $file = file;
+            console.log($file);
+            var upload = $upload.upload({
+
+                url: domain + 'FileUpload?ref=post&_id=' + postId,
+                method: "POST",
+                file: $file
+            }).progress(function (evt) {
+                // get upload percentage
+                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+            }).success(function (data, status, headers, config) {
+                // file is uploaded successfully
+                console.log(data);
+            }).error(function (data, status, headers, config) {
+                // file failed to upload
+                console.log(data);
+            });
+            //if(file){self.attach(file);}
 
         },
-
-        sendLike: function (pid, uid) {
-
-            console.log(domain);
-            console.log(pid);
-            console.log(uid);
-            var like = { like: { post: pid, user: uid} };
-            var json = JSON.stringify(like);
+		
+		getIsLike: function (pid) {
+			
+			console.log(user)
+			var parmas = {"activity":{
+							"post":pid,
+							"user":user._id,
+							"type":"like"
+							}
+						};
+            
+			var json = JSON.stringify(parmas);
             console.log(json);
 
-            $http.post(domain + 'like', json)
+            $http.post(domain + 'isActivityFound', json)
 			.success(function (data) {
 
 			    console.log(data);
@@ -167,13 +183,46 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 			});
 
 
+
         },
+
+        sendLike: function (pid) {
+
+			console.log(user)
+			
+			var parmas = {"activity":{
+							"post":pid,
+							"user":user._id,
+							"type":"like"
+							}
+						};
+            
+			var json = JSON.stringify(parmas);
+            console.log(json);
+
+            $http.post(domain + 'addPostActivity', json)
+			.success(function (data) {
+
+			    console.log(data);
+			})
+			.error(function (data) {
+
+			    console.log(data);
+			});
+
+
+        }, 
 
         //getters & setters
         setShowInput: function (state) {
             console.log(showInput);
             showInput = state;
             console.log(showInput);
+        }, 
+		
+		setUser: function (userDetails) {
+           
+		   user = userDetails;
         },
 
         getShowInput: function () {
@@ -201,6 +250,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         getPostById: function (postid) {
             self = this;
             queryString = 'post/' + postid;
+            console.log(queryString);
             classAjax.getdata('get', queryString, request)
             .then(function (data) {
                 console.log(data);
