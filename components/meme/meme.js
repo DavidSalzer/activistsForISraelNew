@@ -39,6 +39,16 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         PostService.getPostsBatch(request);
     }
 
+    $scope.writeMeme = function () {
+        $scope.user = generalParameters.getUser();
+       // if ($scope.user.firstName == 'התחבר') {
+      //      $rootScope.$broadcast('showInfoPopup', { showInfo: true });
+      //  }
+       // else {
+            $state.transitionTo('write-meme');
+       // }
+    };
+
 
 
 

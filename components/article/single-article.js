@@ -25,8 +25,10 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
     $scope.articleId = $stateParams.postId;
     console.log('postId: ' + $stateParams.postId);
     //$scope.postId = $stateParams.postId;
-    $scope.post = PostService.getPostById($scope.articleId);
-    $scope.comments = $scope.post.comments;
+    PostService.getPostById($scope.articleId);
+    $scope.post = PostService.getSinglePost;
+
+    //$scope.comments = $scope.post.comments;
 
     $scope.authorClicked = function ($event) {
         //alert('hi22');
