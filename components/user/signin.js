@@ -84,6 +84,15 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         .success(function (data) {
             $scope.showSignIn = false;
             generalParameters.setUser(data.data.user);
+
+            //send image string to be saved at server
+            //if was uploaded
+            console.log($scope.userImg);
+            if ($scope.userImg != '') {
+                $scope.uploadBase64Image();
+            }
+            //$http.post(domain + 'Base64FileUpload?ref=user&_id=data.data.user /',
+            // $scope.json)
             $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
             console.log(data);
         });
@@ -91,15 +100,31 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         console.log($scope.signinDetails);
     }
 
+    //
+    $scope.uploadBase64Image = function () {
+        console.log($scope.userImg);
+        // $scope.json = JSON.stringify($scope.userImg);
+        var userId = generalParameters.getUser();
+        console.log(userId._id);
+        $http.post(domain + 'Base64FileUpload?ref=user&_id=' + userId._id,
+            { "base64": $scope.userImg })
+            .success(function (data) {
+                console.log('base64');
+                console.log(data);
+                generalParameters.setUser(data.data);
+                //generalParameters.setUser(data.data.user);
+            });
+
+    }
 
     document.getElementById('userImg').addEventListener('change', function (e) {
         $scope.fileEdit(e);
     }, false);
 
     $scope.fileEdit = function (e) {
-        //file reader to show the img...
+        //file reader to show the img
         var file = e.target.files[0];
-        //console.log(files);
+
         //file reader
         var reader = new FileReader();
 
@@ -119,6 +144,8 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         }
     }
 
+
+    //user image crop
     $scope.croping = function () {
         imgCrop.obj = {};
         $('#cropDiv img').on('load', function () {
@@ -133,19 +160,6 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $scope.$apply();
         $scope.userimg = '';
         imgCrop.destroy();
-
-        //    $scope.lesson = classAjax.getdata({ type: 'setUserImg', req: { imgData: d.data} });
-        //    //yishai stern added in line 125 to the bigining "$scope.lesson="  
-        //    $scope.lesson.then(
-        //function (data) {
-        //    //lesson list
-        //    //console.log(data);
-        //},
-        //function (error) {
-        //    console.log(error);
-        //}
-        //)
-
     });
 
     $scope.editCancel = function () {

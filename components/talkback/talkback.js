@@ -73,13 +73,13 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     });
 
     $scope.userClicked = function () {
-        alert('hi');
+       // alert('hi');
         //event.stopPropagation();
         $rootScope.$broadcast('userClicked', { showInput: true });
     };
 
     $scope.$on('userClicked', function (event, args) {
-        alert('hi');
+      //  alert('hi');
         generalParameters.setBackIcon(true);
         $state.transitionTo('author-page');
     });

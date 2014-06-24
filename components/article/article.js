@@ -96,13 +96,13 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     });
 
     $scope.userClicked = function () {
-        alert('hi1');
+       // alert('hi1');
         //event.stopPropagation();
         $rootScope.$broadcast('userClicked', { authorId: '53a7df7ec75d61c450b44825' });
     };
 
     $scope.$on('userClicked', function (event, args) {
-        alert('hi2');
+       // alert('hi2');
         $state.transitionTo('author-page', {authorId: args.authorId});
     });
 

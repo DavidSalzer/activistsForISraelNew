@@ -53,7 +53,7 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
 
 
     $scope.$on('userClicked', function (event, args) {
-        alert('hi');
+       // alert('hi');
         $state.transitionTo('author-page');
     });
 
