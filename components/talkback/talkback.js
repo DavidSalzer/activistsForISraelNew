@@ -5,6 +5,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     $scope.currentFilter = 'all';
     $scope.currentPost = null;
     $scope.showSpiner = PostService.getSpiner;
+    $scope.domain = domain;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -112,7 +113,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         console.log($scope.commentText);
         PostService.sendPost('shimon', 'talkback', $scope.commentText, $scope.currentPost);
     }
-    
+
 
     //load more post on scroll down
     $scope.loadMore = function () {

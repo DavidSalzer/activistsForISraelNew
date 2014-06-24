@@ -1,6 +1,6 @@
 <div id="author-header">
     <figure class="author-image">
-        <img data-ng-src="{{post.authorImage}}" alt="user-pic">
+        <img data-ng-src="{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}" alt="user-pic">
     </figure>
     <span class="author-name" data-author="{{post._author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post._author}}</span>
     <div class="color-line color-line-bottom "></div>

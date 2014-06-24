@@ -8,7 +8,7 @@
     <div class="post-title" data-ng-show="showCommentTitle==true">{{post.title}}</div>
 
     <div class="post-main-text">
-        <img data-ng-src="{{post.image}}" alt="post-pic" data-ng-show="post.image!=='' && post.image!==undefined">
+        <img data-ng-src="{{domain}}{{post.img}}" alt="post-pic" data-ng-show="post.img!=='' && post.img!==undefined">
         {{post.content}}
     </div>
 
