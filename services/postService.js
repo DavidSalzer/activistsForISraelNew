@@ -1,20 +1,11 @@
-<<<<<<< HEAD
-socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upload', function ($rootScope, classAjax, $http, $upload) {
-=======
 socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload','$q', function ($rootScope, classAjax, $http,$upload,$q) {
->>>>>>> 2bfc21bef05c3a760db9ba8edf29a3cc6939d6cf
 
     var showInput = true;
 
     var posts = [];
-<<<<<<< HEAD
-    var polls = [];
-    var memeImages = [];
-=======
     var singlePost = null;
     var comments = [];
     var memes = [];
->>>>>>> 2bfc21bef05c3a760db9ba8edf29a3cc6939d6cf
     var selectedAuthor = null;
     var typePrevPage = null;
     var user = null;
@@ -68,10 +59,6 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             })
         },
 
-<<<<<<< HEAD
-        getMemesImages: function (request) {
-            queryString = "";
-=======
 
 
         getMemesBatch: function (request) {
@@ -92,20 +79,21 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             //});
             queryString = 'meme?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy;
             console.log(queryString);
->>>>>>> 2bfc21bef05c3a760db9ba8edf29a3cc6939d6cf
             classAjax.getdata('get', queryString, request).then(function (data) {
-                console.log(data.data);
+                console.log(data);
                 if (request.endTimestamp == '') {
-                    memeImages = data.data;
+                    posts = data.data;
                 }
                 else {
-                    console.log(data.data);
+                    console.log(data);
                     for (var i = 0; i < data.data.length; i++) {
-                        memeImages.push(data[i]);
+                        posts.push(data.data[i]);
                     }
                 }
             })
         },
+
+
 
         commentClicked: function () {
             console.log('comment');
@@ -164,19 +152,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         },
 
         attach: function (file, postId) {
-<<<<<<< HEAD
 
             var $file = file;
             console.log($file);
             var upload = $upload.upload({
 
-=======
-
-            var $file = file;
-            console.log($file);
-            var upload = $upload.upload({
-
->>>>>>> 2bfc21bef05c3a760db9ba8edf29a3cc6939d6cf
                 url: domain + 'FileUpload?ref=post&_id=' + postId,
                 method: "POST",
                 file: $file
@@ -283,24 +263,23 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             return posts;
         },
 
-         getMemes: function () {
-            return memeImages;
-        },
-
         getPolls: function () {
             return polls;
         },
 
+        getMemes: function () {
+            return memes;
+        },
 
         getPostById: function (postid) {
             self = this;
             queryString = 'post/' + postid;
             console.log(queryString);
-            classAjax.getdata('get', queryString, request)
+            classAjax.getdata('get', queryString, {})
             .then(function (data) {
                 console.log(data);
                 singlePost = data.data;
-                self.getPostsBatch({ offset: 0, limit: 20, _parentID: postid });
+                self.getPostsBatch({startTimestamp: '', endTimestamp: '', offset: 0, limit: 2, _parentID: postid, postType: data.data.postType, orderBy: '-timestamp' });
             })
             //console.log(posts.length)
             //for (var i = 0; i < posts.length; i++) {
