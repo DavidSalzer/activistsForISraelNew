@@ -1,7 +1,13 @@
-socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters','$state', function ($scope,$rootScope, $stateParams, PostService, generalParameters,$state) {
+socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters','$state','$window', function ($scope,$rootScope, $stateParams, PostService, generalParameters,$state,$window) {
 
 	/*init variables*/
 	generalParameters.setBackIcon(true);
+	
+	$window.addEventListener("backbutton", (function() {
+       alert('fgdgfdg') 
+    }), false);
+	
+	
 	$scope.imageMax = 1;
 	$scope.toLargImage = false;
 	$scope.imgFileText = 'צרף תמונה'

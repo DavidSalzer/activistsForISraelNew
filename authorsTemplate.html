@@ -2,7 +2,8 @@
   <div class="post-details">
     
         <figure class="author-image" data-ng-show="true">
-            <img data-ng-src="{{post.authorImage}}" alt="user-pic">
+		<div style="background-image:url('{{post.authorImage}}')"></div>
+           <!--  <img data-ng-src="{{post.authorImage}}" alt="user-pic"> -->
         </figure>
          <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post._author}}">{{post._author}}</span>
   

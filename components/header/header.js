@@ -3,8 +3,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     var current = $location.$$url;
     //$scope.active = -1;
 
-   
-
+  
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
         console.log(data);

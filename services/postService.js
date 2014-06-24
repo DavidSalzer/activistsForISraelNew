@@ -176,8 +176,6 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 		
 		getIsLike: function (pid,index) {
 			
-			
-			console.log(user)
 			var parmas = {"activity":{
 							"post":pid,
 							"user":user._id,
