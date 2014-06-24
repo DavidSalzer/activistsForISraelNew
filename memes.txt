@@ -2,7 +2,7 @@
     "type": "meme",
     "data": [
         {
-            "postId": 10,
+            "_id": 100,
             "postType": "meme",
             "_author": "ישראל שיראלי",
             "authorId": 2,
@@ -17,7 +17,7 @@
         },
 
         {
-            "postId": 11,
+            "_id": 110,
             "postType": "meme",
             "_author": "ישראל השני",
             "authorId": 3,
@@ -32,7 +32,7 @@
         },
 
         {
-            "postId": 12,
+            "_id": 120,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
@@ -48,7 +48,7 @@
         ,
 
         {
-            "postId": 13,
+            "_id": 130,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
@@ -63,7 +63,7 @@
         },
 
         {
-            "postId": 14,
+            "_id": 140,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
@@ -78,7 +78,7 @@
         },
 
         {
-            "postId": 15,
+            "_id": 150,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
@@ -93,7 +93,7 @@
         },
 
         {
-            "postId": 16,
+            "_id": 160,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
@@ -108,7 +108,7 @@
         },
 
         {
-            "postId": 17,
+            "_id": 170,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
@@ -123,7 +123,7 @@
         },
 
         {
-            "postId": 18,
+            "_id": 180,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
@@ -138,7 +138,7 @@
         },
 
         {
-            "postId": 19,
+            "_id": 190,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
@@ -153,7 +153,7 @@
         },
 
         {
-            "postId": 20,
+            "_id": 200,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
@@ -168,7 +168,7 @@
         },
 
         {
-            "postId": 21,
+            "_id": 210,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
@@ -183,7 +183,7 @@
         },
 
         {
-            "postId": 22,
+            "_id": 220,
             "postType": "meme",
             "_author": "ישראל שלישי",
             "authorId": 3,
