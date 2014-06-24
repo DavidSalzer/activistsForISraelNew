@@ -5,7 +5,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
     var posts = [];
     var singlePost = null;
     var comments = [];
-    var memes = [];
+   var memeImages = [];
     var selectedAuthor = null;
     var typePrevPage = null;
     var user = null;
@@ -51,45 +51,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 				
 				for (var k = 0; k < posts.length; k++) {
 					
-					self.getIsLike(posts[k]._id,k);
+				//	self.getIsLike(posts[k]._id,k);
 				}
 				
 				console.log(posts);
                 //}
-            })
-        },
-
-
-
-        getMemesBatch: function (request) {
-            //dataTransform = { type: type, filter: filter, num: num, token: token };
-            console.log(request);
-            //$http.get(domain + 'post?offset=0&limit='+num+'&timestamp=1403911934561')
-            //.success(function (data) {
-            //    console.log(data);
-            //    if (dataTransform.token == 0) {
-            //        posts = data.data;
-            //    }
-            //    else {
-            //        console.log(data);
-            //        for (var i = 0; i < data.data.length; i++) {
-            //            posts.push(data.data[i]);
-            //        }
-            //    }
-            //});
-            queryString = 'meme?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy;
-            console.log(queryString);
-            classAjax.getdata('get', queryString, request).then(function (data) {
-                console.log(data);
-                if (request.endTimestamp == '') {
-                    posts = data.data;
-                }
-                else {
-                    console.log(data);
-                    for (var i = 0; i < data.data.length; i++) {
-                        posts.push(data.data[i]);
-                    }
-                }
             })
         },
 
@@ -270,6 +236,26 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         },
 
+         getMemesImages: function (request) {
+            queryString = "";
+
+
+             console.log(queryString);
+            classAjax.getdata('get', queryString, request).then(function (data) {
+                console.log(data.data);
+                if (request.endTimestamp == '') {
+                    memeImages = data.data;
+                }
+                else {
+                    console.log(data.data);
+                    for (var i = 0; i < data.data.length; i++) {
+                        memeImages.push(data[i]);
+                    }
+                }
+            })
+        },
+
+
         //getters & setters
         setShowInput: function (state) {
             console.log(showInput);
@@ -301,7 +287,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         },
 
         getMemes: function () {
-            return memes;
+            return memeImages;
         },
 
         getPostById: function (postid) {
