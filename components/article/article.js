@@ -159,16 +159,16 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     }
 
     $scope.getAuthors = function () {
-        $scope.currentFilter = 'authors';
-        request.postType = 'author';
+        request.orderBy = '-likesCount';
         request.endTimestamp = '';
+        request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
 
     $scope.getPostsByViews = function () {
         request.endTimestamp = '';
-        request.orderBy = '-timestamp';
+        request.orderBy = '-commentsCount';
         request.offset = 0;
         PostService.getPostsBatch(request);
     }
