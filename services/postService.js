@@ -275,19 +275,13 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             self = this;
             queryString = 'post/' + postid;
             console.log(queryString);
-            classAjax.getdata('get', queryString, request)
+            classAjax.getdata('get', queryString, {})
             .then(function (data) {
                 console.log(data);
                 singlePost = data.data;
-                self.getPostsBatch({ offset: 0, limit: 20, _parentID: postid });
+                self.getPostsBatch({startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: data.data.postType, orderBy: '-timestamp' });
             })
-            //console.log(posts.length)
-            //for (var i = 0; i < posts.length; i++) {
-            //    if (posts[i].postId == postid) {
-            //        return posts[i];
-            //        stop();
-            //    }
-            //};
+            
         },
 
         getSinglePost: function () {
