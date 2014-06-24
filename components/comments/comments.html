@@ -1,11 +1,13 @@
 <!--<author-header data-ng-show="{{post.postType=='article'}}"></author-header>-->
-
-<div class="comment-container">
-	<section class='comment-main-post'>
+<div class="comment-container" scroller loading-method="loadMore()">
+    <section class="comment-main-post">
         <post data-post-type="talkback" data-ng-repeat="post in [post()]"></post>
-	</section>
+    </section>
     <div class="between-border-comments"></div>
-	<section class="comments">
-		 <post data-ng-repeat="post in comments" data-post-type="comment" data-ng-init="showCommentButton=false"></post>
-	</section>
+    <section class="comments">
+        <post data-ng-repeat="post in comments()" data-post-type="comment" data-ng-init="showCommentButton=false"></post>
+        <div class="spiner-zone" data-ng-show="showSpiner()">
+            <div class="fa fa-spinner fa-spin"></div>
+        </div>
+    </section>
 </div>

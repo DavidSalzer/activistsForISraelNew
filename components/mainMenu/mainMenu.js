@@ -6,7 +6,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureUrl: 'talkback',
         featureName: 'מה קורה',
         featureLogo: './img/whatsup.png',
-        featureImg: './img/image/kneset.jpg',
+        featureImg: './img/image/j32ym3ii__w470h260q85.jpg',
         title: 'בוער לכם להגיד משהו? זה המקום',
         text: 'טוקבק (בעברית: תגובית) הוא מנגנון לתגובות הגולשים באינטרנט. מנגנון הטוקבק מופעל באתרי חדשות, באתרי בלוגים ובאתרים נוספים, והוא מאפשר לגולשים להגיב על הנאמר בדף מסוים, כך שהתגובות מופיעות בהמשכו של הדף. . ',
         postId: 5
