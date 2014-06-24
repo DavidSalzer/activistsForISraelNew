@@ -24,7 +24,7 @@
 
 <div class="posts-list" scroller loading-method="loadMore()">
     <post data-ng-repeat="post in posts() " data-post-type="talkback"></post>
-    <div class="spiner-zone" data-ng-show="showSpiner">
+    <div class="spiner-zone" data-ng-show="showSpiner()">
         <div class="fa fa-spinner fa-spin"></div>
     </div>
 

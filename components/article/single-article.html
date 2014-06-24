@@ -3,7 +3,7 @@
 <div class="scroll-main-window">
 
 
-    <author-header></author-header>
+    <author-header data-ng-repeat="post in [post()]"></author-header>
 
     <post data-post-type="article" class="single-article" data-ng-repeat="post in [post()]"></post>
 
