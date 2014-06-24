@@ -1,8 +1,8 @@
-<author-header data-ng-show="{{post.postType=='article'}}"></author-header>
+<!--<author-header data-ng-show="{{post.postType=='article'}}"></author-header>-->
 
 <div class="comment-container">
 	<section class='comment-main-post'>
-        <post data-post-type="post.postType"></post>
+        <post data-post-type="talkback" data-ng-repeat="post in [post()]"></post>
 	</section>
     <div class="between-border-comments"></div>
 	<section class="comments">

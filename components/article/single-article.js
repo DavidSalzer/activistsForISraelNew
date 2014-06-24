@@ -9,7 +9,7 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
     $scope.currentPostType = 'article';
     $scope.showCommentDate = false;
     $scope.showCommentTitle = false;
-
+    $scope.domain = domain;
 
     /*init controller details*/
     $scope.featureDetails = {
