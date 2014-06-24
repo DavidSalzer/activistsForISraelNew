@@ -119,11 +119,11 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         }
     }
 
-
     $scope.croping = function () {
         imgCrop.obj = {};
-        imgCrop.crop('c', 'button_ok', 'cropDiv'); //canvasid  ,btn-approve, container Id
-
+        $('#cropDiv img').on('load', function () {
+            imgCrop.crop('c', 'button_ok', 'cropDiv'); //canvasid  ,btn-approve, container Id
+        });
     }
 
     $scope.$on('editDone', function (e, d) {

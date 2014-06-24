@@ -4,8 +4,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.showInput = false;
     $scope.currentFilter = 'all';
     $scope.currentPost = null;
-    $scope.showSpiner = false;
+    $scope.showSpiner = PostService.getSpiner;
     $scope.showPostTitle = true;
+
 
 
     $scope.showArticleImg = false;
@@ -26,6 +27,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     generalParameters.setFeature($scope.featureDetails);
     $scope.domain = domain;
     $scope.user = generalParameters.getUser();
+    console.log(user);
     request = {
         startTimestamp: '',
         endTimestamp: '',
@@ -33,14 +35,15 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         limit: 20,
         orderBy: '-timestamp',
         postType: 'article',
-        userID: $scope.user._id
+        userID: $scope.user._id,
+        _parentID: ''
     };
 
 
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
-
+	$scope.isLiked = PostService.getIsLike;
     $scope.articleId = $stateParams.postId;
 
 
@@ -70,12 +73,12 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.$on('addLike', function (event, args) {
         $scope.currentPost = args.postid;
         $scope.$apply();
-        console.log(args)
-        var userId = $scope.user.userId
-        PostService.sendLike(args.postid, userId)
+        //console.log(args)
+        PostService.sendLike(args.postid)
     });
 
     $scope.$on('postClicked', function (event, args) {
+        console.log(args);
         $scope.postId = args.postId;
         $scope.authorId = args.authorId;
         console.log('args: ' + args.postId);
@@ -84,9 +87,6 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
-            //case "talkback":    
-            //    $state.transitionTo('single-article', { postId: $scope.postId });    
-            //    break;    
             case "author":
                 $scope.getPostsByAll();
                 $state.transitionTo('author-page', { authorId: $scope.authorId });
@@ -98,56 +98,56 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.userClicked = function () {
         alert('hi1');
         //event.stopPropagation();
-        $rootScope.$broadcast('userClicked', { showInput: true });
+        $rootScope.$broadcast('userClicked', { authorId: '53a7df7ec75d61c450b44825' });
     };
 
     $scope.$on('userClicked', function (event, args) {
         alert('hi2');
-        $state.transitionTo('authorPage');
+        $state.transitionTo('author-page', {authorId: args.authorId});
     });
 
     $scope.getPosts = function () {
         PostService.getPostsBatch(request);
     }
 
-    $scope.updatePosts = function () {
-        PostService.updatePost({
-            postId: 8,
-            postType: 'talkback',
-            author: 'shimon',
-            timeStamp: '25052014175555',
-            title: 'עקירת עצי זית',
-            content: 'מה המה מה מה מה מה מה מה מה מה ',
-            image: '',
-            likes: {
-                likesCount: 12,
-                isLiked: 0
-            },
-            comments: {
-                commentsCount: 5,
-                comments: [
-                    {
-                        commentId: 0,
-                        postType: 'talkback',
-                        author: 'shimon',
-                        timeStamp: '25052014185555',
-                        title: 'עקירת עצי זית',
-                        content: 'תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר ',
-                        image: '',
-                        like: {
-                            likesCount: 12,
-                            isLiked: 1
-                        }
-                    }
-                ]
-            }
-        })
-    }
+    //$scope.updatePosts = function () {
+    //    PostService.updatePost({
+    //        postId: 8,
+    //        postType: 'talkback',
+    //        author: 'shimon',
+    //        timeStamp: '25052014175555',
+    //        title: 'עקירת עצי זית',
+    //        content: 'מה המה מה מה מה מה מה מה מה מה ',
+    //        image: '',
+    //        likes: {
+    //            likesCount: 12,
+    //            isLiked: 0
+    //        },
+    //        comments: {
+    //            commentsCount: 5,
+    //            comments: [
+    //                {
+    //                    commentId: 0,
+    //                    postType: 'talkback',
+    //                    author: 'shimon',
+    //                    timeStamp: '25052014185555',
+    //                    title: 'עקירת עצי זית',
+    //                    content: 'תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר ',
+    //                    image: '',
+    //                    like: {
+    //                        likesCount: 12,
+    //                        isLiked: 1
+    //                    }
+    //                }
+    //            ]
+    //        }
+    //    })
+    //}
 
     $scope.getPostsByAll = function () {
-        //$scope.currentFilter = 'all';
-        request.postType = 'article';
-        //request.endTimestamp = '';
+        request.endTimestamp = '';
+        request.orderBy = '-timestamp';
+        request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
@@ -167,9 +167,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
 
     $scope.getPostsByViews = function () {
-        //$scope.currentFilter = 'views';
-        request.postType = 'article';
-        //request.endTimestamp = '';
+        request.endTimestamp = '';
+        request.orderBy = '-timestamp';
+        request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
@@ -178,12 +178,14 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         PostService.sendPost('shimon', 'talkback', $scope.commentText, $scope.currentPost);
     }
 
-    console.log(PostService.getPostById(0));
+
 
     $scope.loadMore = function () {
-        $scope.showSpiner = true; //need to change to false while get callback from server.
+        //$scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
-        request.endTimestamp = '0';
+        request.offset += 20;
+        post = PostService.getPosts();
+        request.endTimestamp = post[0].timestamp;
         PostService.getPostsBatch(request);
     }
 

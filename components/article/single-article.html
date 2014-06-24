@@ -3,9 +3,9 @@
 <div class="scroll-main-window">
 
 
-    <author-header></author-header>
+    <author-header data-ng-repeat="post in [post()]"></author-header>
 
-    <post data-post-type="article" class="single-article"></post>
+    <post data-post-type="article" class="single-article" data-ng-repeat="post in [post()]"></post>
 
     <section class="comments">
         <post data-ng-repeat="post in comments" data-post-type="comment" data-ng-init="showCommentButton=false"></post>

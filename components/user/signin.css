@@ -11,15 +11,16 @@
     right: 0px;
     left: 0px;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .sign-in-picture {
 }
 
-.jcrop-holder div .jcrop-tracker{
-   background-image: url("/img/avatar-circle.png"); 
-   background-repeat: no-repeat;
-   background-size: 100% 100%;
+.jcrop-holder div .jcrop-tracker {
+    background-image: url("/img/avatar-circle.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .popup-wrapper {
@@ -311,9 +312,9 @@ canvas {
 
 .background-button-img {
     background: #565c63;
-    box-shadow: 2px 3px 3px -1px rgba(0,0,0,0.75);
     font-weight: 600;
     letter-spacing: 0.5px;
+    border: 1px solid #42484e;
 }
 
 .color-line {

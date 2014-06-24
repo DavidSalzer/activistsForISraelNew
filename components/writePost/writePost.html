@@ -14,10 +14,10 @@
     <div class="article-content">
 		
 		<!-- article title-->
-        <input data-ng-show='parentPostType=="article"' type="text" class="title-field" placeholder="כותרת" data-ng-model="postData.post.title" />
+        <input data-ng-show='postType=="article"' type="text" class="title-field" placeholder="כותרת" data-ng-model="postData.post.title" />
         
 		<!-- article add text file-->
-		<div data-ng-show='parentPostType=="article"' class="file-add-container">
+		<div data-ng-show='postType=="article"' class="file-add-container">
             <div class="file-instru">ניתן לצרף את המאמר מתוך קובץ:</div>
             <div class="add-file">         
 				<div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
@@ -32,18 +32,18 @@
         </div>
 		
 		<!-- article instructions-->
-        <div data-ng-show='parentPostType=="article"' class="file-instru">או כתבו את המאמר ישירות כאן:</div>
+        <div data-ng-show='postType=="article"' class="file-instru">או כתבו את המאמר ישירות כאן:</div>
 		
 		<!-- post main text area-->
 		<div style="position:relative;border-radius: 10px;">
 			
-			<textarea  data-ng-hide='parentPostType=="article"' char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
+			<textarea  data-ng-hide='postType=="article"' char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
-			<span data-ng-hide='parentPostType=="article"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}}/{{max}}]</span>
+			<span data-ng-hide='postType=="article"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}}/{{max}}]</span>
 			
-			<textarea  data-ng-show='parentPostType=="article"' class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
+			<textarea  data-ng-show='postType=="article"' class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
-			<span data-ng-show='parentPostType=="article"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}} תוים]
+			<span data-ng-show='postType=="article"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}} תוים]
 			</span>
 			
 			

@@ -9,7 +9,7 @@
     <span class="author-name" data-author="{{post.author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post.author}}</span>
     <span class="author-date">{{post.timeStamp  | date : 'dd.MM.yyyy'}}</span>
 </div>-->
-<author-header></author-header>
+<author-header data-ng-repeat="post in [posts()[0]]"></author-header>
 
 <div class="posts-list specific-author" ><!--scroller loading-method="loadMore()"-->
     <post data-ng-repeat="post in posts()" data-post-type="article"></post>

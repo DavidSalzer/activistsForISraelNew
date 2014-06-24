@@ -27,8 +27,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        .state('talk-back', {
-            url: "/talk-back",
+        .state('talkback', {
+            url: "/talkback",
             //url: "/lesson",
             views: {
                 "main": {
@@ -200,8 +200,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
 
             $http({
-                 //url: domain + queryString,
-               url: URL,
+                url: domain + queryString,
+                //url: URL,
                 method: method, // temp cancel for local json calls
                 data: request
             }).
@@ -260,7 +260,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function (e) {
-                $rootScope.$broadcast('postClicked', { postId: scope.post.postId, postType: scope.post.postType, authorId: scope.post.authorId }); //add post type to emit
+                console.log(scope.post);
+                $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
             });
             //console.log(attrs.showCommentButton);
             //scope.showCommentButton = attrs.showCommentButton;
@@ -269,13 +270,13 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     };
 } ])
 
-.directive('comment', ['$rootScope', 'PostService', '$state', function ($rootScope, PostService, $state) {
+.directive('comment', ['$rootScope', 'generalParameters', '$state', function ($rootScope, generalParameters, $state) {
     return {
         restrict: 'E',
         template: '<div class="post-comment post-buttons" data-ng-click="$event.stopPropagation();">' +
                 '<span class="respond-post">' +
                     '<span class="icon"></span><span>הגב</span></span>' +
-                '<span class="respond-count" >{{post.comments.length+0}}</span></div>',
+                '<span class="respond-count" >{{post.commentsCount}}</span></div>',
         replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function () {
@@ -284,7 +285,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 // $scope.$emit('handleEmit', {showInput: false}); 
                 console.log(scope.post._id);
                 //$rootScope.$broadcast('addCommentClicked', { showInput: true, postid: scope.post.postId });
-                $state.transitionTo('write-post', { postId: scope.post._id, postType: scope.post.postType });
+				var user = generalParameters.getUser();
+				if (user.firstName == 'התחבר') {
+					
+					$rootScope.$broadcast('showInfoPopup', { showInfo: true });
+				}
+				else {
+					
+					$state.transitionTo('write-post', { postId: scope.post._id, postType: scope.post.postType });
+				}
+               
             });
         }
 
@@ -294,30 +304,30 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 .directive('like', ['$rootScope', 'PostService', function ($rootScope, PostService) {
     return {
         restrict: 'E',
-        template: '<div class="post-likes post-buttons" data-ng-click="$event.stopPropagation();"><span data-ng-class="{' + "'is-liked':post.likes.isLiked==true ,'like-post':true}" + '">' +
+        template: '<div class="post-likes post-buttons" data-ng-click="$event.stopPropagation();"><span data-ng-class="{' + "'is-liked':post.isLiked==true ,'like-post':true}" + '">' +
                     '<span class="icon"></span><span>אהבתי</span></span>' +
-                '<span class="like-count">{{post.likes.length+post.likes.likesCount+0}}</span></div>',
+                '<span class="like-count">{{post.likesCount+0}}</span></div>',
         link: function (scope, el, attrs) {
             el.on('click', function () {
 
-
+				
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
-                scope.post.likes.isLiked = !scope.post.likes.isLiked;
+                scope.post.isLiked = !scope.post.isLiked;
 
-                if (scope.post.likes.isLiked == true) {
+                if (scope.post.isLiked == true) {//LIKE!
 
-                    scope.post.likes.likesCount++;
+                    scope.post.likesCount++;
                     $rootScope.$broadcast('addLike', { postid: scope.post._id });
 
                 }
-                else {
+                else {//UNLIKE!
 
-                    scope.post.likes.likesCount--;
+                    scope.post.likesCount--;
                     scope.$apply();
                     $rootScope.$broadcast('disLike', { postid: scope.post._id });
 
-                }
+                } 
             });
         },
         replace: true

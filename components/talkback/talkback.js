@@ -4,7 +4,8 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     $scope.showInput = false;
     $scope.currentFilter = 'all';
     $scope.currentPost = null;
-    $scope.showSpiner = false;
+    $scope.showSpiner = PostService.getSpiner;
+    $scope.domain = domain;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -28,10 +29,12 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         limit: 20,
         orderBy: '-timestamp',
         postType: 'talkback',
-        userID: $scope.user._id
+        //userID: $scope.user._id,
+        _parentID: ''
     };
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
+    $scope.isLiked = PostService.getIsLike; 
 
 
 
@@ -58,9 +61,8 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
 
         $scope.currentPost = args.postid;
         $scope.$apply();
-        console.log(args)
-        var userId = $scope.user.userId
-        PostService.sendLike(args.postid, userId)
+        //console.log(args)
+        PostService.sendLike(args.postid)
     });
 
     $scope.$on('postClicked', function (event, args) {
@@ -79,7 +81,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     $scope.$on('userClicked', function (event, args) {
         alert('hi');
         generalParameters.setBackIcon(true);
-        $state.transitionTo('authorPage');
+        $state.transitionTo('author-page');
     });
 
     $scope.getPosts = function () {
@@ -87,20 +89,23 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     }
 
     $scope.getPostsByAll = function () {
+        request.endTimestamp = '';
         request.orderBy = '-timestamp';
-        $scope.currentFilter = '-timestamp';
+        request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
     $scope.getPostsByFavorite = function () {
         request.orderBy = '-likesCount';
-        $scope.currentFilter = '-likesCount';
+        request.endTimestamp = '';
+        request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
     $scope.getPostsByComments = function () {
         request.orderBy = '-commentsCount';
-        $scope.currentFilter = '-commentsCount';
+        request.endTimestamp = '';
+        request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
@@ -108,14 +113,16 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         console.log($scope.commentText);
         PostService.sendPost('shimon', 'talkback', $scope.commentText, $scope.currentPost);
     }
-    console.log(PostService.getPostById(0));
 
 
     //load more post on scroll down
     $scope.loadMore = function () {
-        $scope.showSpiner = true; //need to change to false while get callback from server.
+        //$scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
-        PostService.getPostsBatch('posts.txt', $scope.currentFilter, 9, 1);
+        request.offset += 20;
+        post = PostService.getPosts();
+        request.endTimestamp = post[0].timestamp;
+        PostService.getPostsBatch(request);
     }
 
     $scope.updatePosts = function () {

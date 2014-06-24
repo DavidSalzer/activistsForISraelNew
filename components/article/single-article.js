@@ -9,7 +9,7 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
     $scope.currentPostType = 'article';
     $scope.showCommentDate = false;
     $scope.showCommentTitle = false;
-
+    $scope.domain = domain;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -25,8 +25,10 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
     $scope.articleId = $stateParams.postId;
     console.log('postId: ' + $stateParams.postId);
     //$scope.postId = $stateParams.postId;
-    $scope.post = PostService.getPostById($scope.articleId);
-    $scope.comments = $scope.post.comments;
+    PostService.getPostById($scope.articleId);
+    $scope.post = PostService.getSinglePost;
+
+    //$scope.comments = $scope.post.comments;
 
     $scope.authorClicked = function ($event) {
         //alert('hi22');
@@ -44,14 +46,15 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
     $scope.$on('addLike', function (event, args) {
         $scope.currentPost = args.postId;
         $scope.$apply();
-        console.log(args)
+        //console.log(args);
+		PostService.sendLike(args.postid)
     });
 
 
 
     $scope.$on('userClicked', function (event, args) {
         alert('hi');
-        $state.transitionTo('authorPage');
+        $state.transitionTo('author-page');
     });
 
 
