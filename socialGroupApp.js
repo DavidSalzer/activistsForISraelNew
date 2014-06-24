@@ -193,6 +193,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'meme':
                     URL = 'memes.txt';
                     break;
+                case 'memeImages':
+                    URL = 'memeImages.txt';
+                    break;
             }
 
 
