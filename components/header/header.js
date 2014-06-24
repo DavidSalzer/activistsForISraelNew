@@ -90,7 +90,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureUrl: 'meme',
             featureName: 'ממים',
             featureLogo: "./img/meme.png",
-            featureColor: "#f6ba55"
+            featureColor: "#ffd427"
         }
         //,
 		//{

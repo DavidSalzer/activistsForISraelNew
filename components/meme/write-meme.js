@@ -1,5 +1,7 @@
+var topRgb =0;
+var bottomRgb =0;
 socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', 'memeGenerat', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, memeGenerat) {
-
+    var z;
     /*init variables*/
     generalParameters.setBackIcon(true);
     $scope.parentPostType = $stateParams.postType;
@@ -13,6 +15,19 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     //	//post:{_parentID:$stateParams.postId,attachment: "",content: "ער תושב הכפר עראבה שהגיע עם אביו לעבודה נהרג בפיצוץ בגבול עם סוריה, אביו עובד הקבלן נפצע. גורם צבאי בכיר מסר כי יש חור בגדר כתוצאה מירי, בנוסף היה ירי על משאית של עבודות משרד הביטחון. לא ברור האם זה מטען, פגז או מרגמה"}
     //	
     //};
+
+     /*init controller details*/
+    $scope.featureDetails = {
+        featureName: null,
+        featureLogo: "./img/meme.png",
+        featureWhatsUpLogo: "./img/article_info.png",
+        featureColor: '#ffd427',
+        infoHaeder: "ממים",
+        infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
+        infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
+    };
+    generalParameters.setFeature($scope.featureDetails);
+
 
     $scope.imageMax = 1;
     $scope.toLargImage = false;
@@ -47,6 +62,9 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
     };
 
+    $scope.setColor =function(line,rgb){
+        alert(line+" : " +rgb)
+    }
 
 
 

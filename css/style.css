@@ -851,3 +851,41 @@ button {
     -webkit-overflow-scrolling: touch;
     height: 100%;
 }
+
+
+.add-file-text {
+    color: #695B5B;
+    text-align: right;
+    border-radius: 10px;
+    background: white;
+    height: 32px;
+    line-height: 32px;
+    text-indent: 20px;
+    font-size: 15px;
+	margin-right: 50px;
+}
+.file-text {
+    color: #695B5B;
+    text-align: right;
+    border-radius: 10px;
+    background: white;
+    height: 32px;
+    line-height: 32px;
+    text-indent: 20px;
+    font-size: 15px;
+	margin-right: 50px;
+}
+
+.add-file-error {
+	
+	padding-top: 7px;
+	font-size: 0.7em;
+	text-align: right;
+	margin-right: 50px;
+}
+
+.add-file {
+    margin-top: 12px;
+    height: 52px;
+    position: relative;
+}
