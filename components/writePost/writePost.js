@@ -108,6 +108,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		//alert($scope.imgObj);
 		//alert($scope.fileObj);
 		PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj );
+		generalParameters.setBackIcon(false);
 		if($scope.postType=='talkback'){
 			
 			$state.transitionTo($scope.parentPostType);return;

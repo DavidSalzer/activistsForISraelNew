@@ -45,17 +45,17 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
         console.log(args)
     });
 
-    $scope.$on('addLike', function (event, args) {
+   /*  $scope.$on('addLike', function (event, args) {
         $scope.currentPost = args.postId;
         $scope.$apply();
         //console.log(args);
         PostService.sendLike(args.postid)
-    });
+    }); */
 
 
 
     $scope.$on('userClicked', function (event, args) {
-        alert('hi');
+       // alert('hi');
         $state.transitionTo('author-page');
     });
 

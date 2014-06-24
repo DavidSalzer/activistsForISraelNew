@@ -56,14 +56,14 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
             $state.transitionTo('write-post', { postType: "talkback", postId: 0 });
         }
     };
-
+/* 
     $scope.$on('addLike', function (event, args) {
 
-        $scope.currentPost = args.postid;
-        $scope.$apply();
+        //$scope.currentPost = args.postid;
+        //$scope.$apply();
         //console.log(args)
         PostService.sendLike(args.postid)
-    });
+    }); */
 
     $scope.$on('postClicked', function (event, args) {
         $scope.postId = args.postId;
@@ -73,13 +73,13 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     });
 
     $scope.userClicked = function () {
-        alert('hi');
+       // alert('hi');
         //event.stopPropagation();
         $rootScope.$broadcast('userClicked', { showInput: true });
     };
 
     $scope.$on('userClicked', function (event, args) {
-        alert('hi');
+      //  alert('hi');
         generalParameters.setBackIcon(true);
         $state.transitionTo('author-page');
     });
