@@ -2,14 +2,14 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 
 	/*init variables*/
 	generalParameters.setBackIcon(true);
+	$scope.imageMax = 1;
+	$scope.toLargImage = false;
+	$scope.imgFileText = 'צרף תמונה'
 	var colors={'article':'#006dbe','talkback':'#993ca7','poll':'#da4f00'};
+	
 	$scope.parentPostType = $stateParams.postType;
 	$scope.postType = $stateParams.postType;
-	
-	
-	
 	$scope.user = generalParameters.getUser();
-	//alert($scope.user._id)
 	
 	$scope.postData={
 		
@@ -19,23 +19,23 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		
 	};
 	
+	$scope.featureColor = colors[$scope.postType];
 	if($stateParams.postId != 0){//if comment
-	
+		
+		$scope.featureColor = colors[$scope.parentPostType];
 		$scope.postType = 'talkback'
 		$scope.postData.post._parentID = $stateParams.postId;
 	}
-
 	
-	$scope.imageMax = 1;
-	$scope.toLargImage = false;
-	$scope.imgFileText = 'צרף תמונה'
+	
+	
 	
 	switch ($scope.postType) {
             
 		case "article":{
 			
 	
-			$scope.featureColor ='#006dbe';
+			
 			$scope.headerText ='כתיבת טקסט';
 			
 			$scope.textFileText ='צרף קובץ טקסט';
@@ -48,7 +48,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			
 			$scope.thankDetails = {
         
-				featureColor: '#006dbe',
+				featureColor:colors[$scope.postType], 
 				thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',
 				btnText: 'חזרה לעמוד המאמרים',
 				headerText: 'המאמר שלי',
@@ -61,7 +61,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			
 		case "talkback":{
 			
-			$scope.featureColor = colors[$scope.parentPostType];
+			
 			$scope.headerText ='כתיבת טקסט';
 			$scope.max = 140;
 			$scope.maxLine=3;
@@ -74,9 +74,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		   
 			
 		case "poll":{
-			//alert($stateParams.postType)
 	
-			$scope.featureColor ='#da4f00';
 			$scope.headerText ='הצע סקר';
 			$scope.max = 140;
 			$scope.maxLine=3;
@@ -86,7 +84,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			
 			$scope.thankDetails = {
         
-				featureColor: '#da4f00',
+				featureColor:colors[$scope.postType],
 				thankText: 'ההצעה התקבלה ותתפרסם בהתאם לכללי האפליקציה',
 				btnText: 'עמוד הסקרים',
 				headerText: 'הסקר שלי',

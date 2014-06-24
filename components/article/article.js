@@ -43,7 +43,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
-
+	$scope.isLiked = PostService.getIsLike;
     $scope.articleId = $stateParams.postId;
 
 
@@ -73,9 +73,8 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     $scope.$on('addLike', function (event, args) {
         $scope.currentPost = args.postid;
         $scope.$apply();
-        console.log(args)
-        var userId = $scope.user.userId
-        PostService.sendLike(args.postid, userId)
+        //console.log(args)
+        PostService.sendLike(args.postid)
     });
 
     $scope.$on('postClicked', function (event, args) {
