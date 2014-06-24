@@ -81,7 +81,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     $scope.$on('userClicked', function (event, args) {
         alert('hi');
         generalParameters.setBackIcon(true);
-        $state.transitionTo('authorPage');
+        $state.transitionTo('author-page');
     });
 
     $scope.getPosts = function () {

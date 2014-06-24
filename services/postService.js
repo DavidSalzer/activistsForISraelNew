@@ -278,8 +278,32 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             selectedAuthor = author;
         },
 
-        getFilterByAuthor: function () {
-            return { type: typePrevPage, author: selectedAuthor };
+        getPostsByAuthor: function (request) {
+            queryString = 'post/author/' + request.authorId + '?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType;
+            console.log(queryString);
+
+            classAjax.getdata('get', queryString, request).then(function (data) {
+                console.log(data);
+                if (request.endTimestamp == '') {
+                    posts = [];
+                }
+                //else {
+                console.log(data);
+                showSpiner = false;
+                for (var i = 0; i < data.data.length; i++) {
+                    //posts.push(data.data[i]);
+                    flag = true;
+                    for (var j = 0; j < posts.length & flag; j++) {
+                        if (data.data[i]._id == posts[j]._id) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
+                        posts.push(data.data[i]);
+                    }
+                }
+                //}
+            })
         },
 
         getSpiner: function () {
