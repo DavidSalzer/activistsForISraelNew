@@ -1,4 +1,4 @@
-socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload', function ($rootScope, classAjax, $http,$upload) {
+socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload','$q', function ($rootScope, classAjax, $http,$upload,$q) {
 
     var showInput = true;
 
@@ -16,7 +16,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         //methodes
 
         getPostsBatch: function (request) {
-
+			self = this;
             console.log(request);
 
             queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&userID=' + request.userID;
@@ -30,16 +30,28 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
                 console.log(data);
                 for (var i = 0; i < data.data.length; i++) {
                     //posts.push(data.data[i]);
+					
                     flag = true;
                     for (var j = 0; j < posts.length & flag; j++) {
-                        if (data.data[i]._id == posts[j]._id) {
-                            flag = false;
+						
+                        if (data.data[i]._id == posts[j]._id) {					
+							
+							flag = false;
                         }
                     }
-                    if (flag) {
-                        posts.push(data.data[i]);
-                    }
+                    if (flag){
+						
+						posts.push(data.data[i]); 
+					
+                    } 
                 }
+				
+				for (var k = 0; k < posts.length; k++) {
+					
+					self.getIsLike(posts[k]._id,k);
+				}
+				
+				console.log(posts);
                 //}
             })
         },
@@ -159,7 +171,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         },
 		
-		getIsLike: function (pid) {
+		getIsLike: function (pid,index) {
+			
 			
 			console.log(user)
 			var parmas = {"activity":{
@@ -170,20 +183,28 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 						};
             
 			var json = JSON.stringify(parmas);
-            console.log(json);
+            //console.log(json);
 
             $http.post(domain + 'isActivityFound', json)
 			.success(function (data) {
-
-			    console.log(data);
+				
+				 if(data.data == null){
+					
+					posts[index].isLiked = false;return;
+				}
+				else if(data.data.type=='like'){
+				
+					posts[index].isLiked = true;return; 
+				}	
+				
 			})
 			.error(function (data) {
 
 			    console.log(data);
+				
 			});
-
-
-
+			
+			
         },
 
         sendLike: function (pid) {

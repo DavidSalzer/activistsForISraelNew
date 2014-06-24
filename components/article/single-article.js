@@ -46,7 +46,8 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
     $scope.$on('addLike', function (event, args) {
         $scope.currentPost = args.postId;
         $scope.$apply();
-        console.log(args)
+        //console.log(args);
+		PostService.sendLike(args.postid)
     });
 
 

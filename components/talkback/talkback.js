@@ -33,6 +33,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     };
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
+    $scope.isLiked = PostService.getIsLike; 
 
 
 
@@ -59,9 +60,8 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
 
         $scope.currentPost = args.postid;
         $scope.$apply();
-        console.log(args)
-        var userId = $scope.user.userId
-        PostService.sendLike(args.postid, userId)
+        //console.log(args)
+        PostService.sendLike(args.postid)
     });
 
     $scope.$on('postClicked', function (event, args) {

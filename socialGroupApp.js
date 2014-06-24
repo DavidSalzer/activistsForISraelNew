@@ -301,30 +301,30 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 .directive('like', ['$rootScope', 'PostService', function ($rootScope, PostService) {
     return {
         restrict: 'E',
-        template: '<div class="post-likes post-buttons" data-ng-click="$event.stopPropagation();"><span data-ng-class="{' + "'is-liked':post.likes.isLiked==true ,'like-post':true}" + '">' +
+        template: '<div class="post-likes post-buttons" data-ng-click="$event.stopPropagation();"><span data-ng-class="{' + "'is-liked':post.isLiked==true ,'like-post':true}" + '">' +
                     '<span class="icon"></span><span>אהבתי</span></span>' +
                 '<span class="like-count">{{post.likesCount+0}}</span></div>',
         link: function (scope, el, attrs) {
             el.on('click', function () {
 
-				 $rootScope.$broadcast('addLike', { postid: scope.post._id });
+				
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
-                /* scope.post.likes.isLiked = !scope.post.likes.isLiked;
+                scope.post.isLiked = !scope.post.isLiked;
 
-                if (scope.post.likes.isLiked == true) {
+                if (scope.post.isLiked == true) {//LIKE!
 
-                    scope.post.likes.likesCount++;
+                    scope.post.likesCount++;
                     $rootScope.$broadcast('addLike', { postid: scope.post._id });
 
                 }
-                else {
+                else {//UNLIKE!
 
-                    scope.post.likes.likesCount--;
+                    scope.post.likesCount--;
                     scope.$apply();
                     $rootScope.$broadcast('disLike', { postid: scope.post._id });
 
-                } */
+                } 
             });
         },
         replace: true
