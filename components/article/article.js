@@ -70,12 +70,12 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         console.log(args)
     });
 
-    $scope.$on('addLike', function (event, args) {
+    /* $scope.$on('addLike', function (event, args) {
         $scope.currentPost = args.postid;
         $scope.$apply();
         //console.log(args)
         PostService.sendLike(args.postid)
-    });
+    }); */
 
     $scope.$on('postClicked', function (event, args) {
         console.log(args);

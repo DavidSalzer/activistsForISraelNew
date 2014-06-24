@@ -210,7 +210,40 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 			
         },
 
-        sendLike: function (pid) {
+        unLike: function (pid) {
+
+            console.log(user)
+
+            var parmas = { "activity": {
+                "post": pid,
+                "user": user._id,
+                "type": "like"
+            }
+            };
+		
+
+            var json = JSON.stringify(parmas);
+            console.log(json);
+			
+		
+			//$http.delete(domain + 'deletePostActivity/'+pid, json)
+        
+            $http({url:domain + 'deletePostActivity/'+pid,method:"delete" ,data:json})
+			//$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
+        
+			.success(function (data) {
+
+			    console.log(data);
+			})
+			.error(function (data) {
+
+			    console.log(data);
+			});
+
+
+        },
+		
+		sendLike: function (pid) {
 
             console.log(user)
 
