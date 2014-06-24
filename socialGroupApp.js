@@ -193,6 +193,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'meme':
                     URL = 'memes.txt';
                     break;
+                case 'memeImages':
+                    URL = 'memeImages.txt';
+                    break;
             }
 
 
@@ -273,7 +276,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         template: '<div class="post-comment post-buttons" data-ng-click="$event.stopPropagation();">' +
                 '<span class="respond-post">' +
                     '<span class="icon"></span><span>הגב</span></span>' +
-                '<span class="respond-count" >{{post.comments.length+0}}</span></div>',
+                '<span class="respond-count" >{{post.commentsCount}}</span></div>',
         replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function () {

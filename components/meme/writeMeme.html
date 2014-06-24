@@ -1,9 +1,38 @@
-<div class="add-file">         
-				<div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
-					+
-					<input type="file" data-upload='img' style='position: absolute;top: 0;'>
-					</input>
-				</div>
-				<div class='add-file-text' >{{imgFileText}}</div>
-				<div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+<link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
+
+
+<div class="sub-header" id="feature-header" data-ng-click="writeMeme()">
+    <div  style="background-color: #f6ba55;">
+    המם שלי
+    </div>
+    <div class="color-line color-line-bottom "></div>
+</div>
+
+<div class="posts-list">
+    <div class="instruction">בחר תמונה</div>
+   
+    <div class="suggested-images-wrap">
+        <div class="images-window">
+              <span class="test" data-ng-repeat="image in memeImages()">
+                  <span class="double-container">
+                      <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image[1]}})'}" id="element"></span>
+                      <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image[2]}})'}" id="element"></span>
+                  </span>
+              </span>
+             
+          
+        </div>
+    </div>
+
+     <div class="add-file">  
+        <!--<img id="testUrl" alt="" src="" />-->
+				    <div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
+					    +
+					    <input type="file" data-upload='img' style='position: absolute;top: 0;'>
+					    </input>
+				    </div>
+				    <div class='add-file-text' >{{imgFileText}}</div>
+				    <div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+    </div>
+
 </div>

@@ -10,6 +10,8 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
     $scope.showCommentDate = false;
     $scope.showCommentTitle = false;
     $scope.domain = domain;
+    $scope.showSpiner = PostService.getSpiner;
+    $scope.offset = 20;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -28,7 +30,7 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
     PostService.getPostById($scope.articleId);
     $scope.post = PostService.getSinglePost;
 
-    //$scope.comments = $scope.post.comments;
+    $scope.comments = PostService.getPosts;
 
     $scope.authorClicked = function ($event) {
         //alert('hi22');
@@ -47,21 +49,27 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
         $scope.currentPost = args.postId;
         $scope.$apply();
         //console.log(args);
-		PostService.sendLike(args.postid)
+        PostService.sendLike(args.postid)
     }); */
 
 
 
     $scope.$on('userClicked', function (event, args) {
-        alert('hi');
-        $state.transitionTo('authorPage');
+       // alert('hi');
+        $state.transitionTo('author-page');
     });
 
 
     $scope.sendComment = function () {
         console.log($scope.commentText);
         PostService.sendPost('shimon', 'talkback', $scope.commentText, $scope.currentPost);
-    }
+    };
+
+    $scope.loadMore = function () {
+        posts = PostService.getPosts();
+        self.getPostsBatch({ startTimestamp: '', endTimestamp: posts[0].timestamp, offset: $scope.offset, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
+        $scope.offset += 20;
+    };
 
 
 } ]);
