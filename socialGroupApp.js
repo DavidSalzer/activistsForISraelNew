@@ -202,7 +202,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
             $http({
                 url: domain + queryString,
-                //url: URL,
+               //url: URL,
                 method: method, // temp cancel for local json calls
                 data: request
             }).
@@ -277,7 +277,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         template: '<div class="post-comment post-buttons" data-ng-click="$event.stopPropagation();">' +
                 '<span class="respond-post">' +
                     '<span class="icon"></span><span>הגב</span></span>' +
-                '<span class="respond-count" >{{post.commentsCount}}</span></div>',
+                '<span class="respond-count" >{{post.commentsCount+0}}</span></div>',
         replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function () {
