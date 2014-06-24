@@ -1,10 +1,10 @@
-socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload', function ($rootScope, classAjax, $http,$upload) {
+socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upload', function ($rootScope, classAjax, $http, $upload) {
 
     var showInput = true;
 
     var posts = [];
     var polls = [];
-    var memes = [];
+    var memeImages = [];
     var selectedAuthor = null;
     var typePrevPage = null;
 
@@ -60,40 +60,21 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             })
         },
 
-
-         getMemesBatch: function (request) {
-            //dataTransform = { type: type, filter: filter, num: num, token: token };
-            console.log(request);
-            //$http.get(domain + 'post?offset=0&limit='+num+'&timestamp=1403911934561')
-            //.success(function (data) {
-            //    console.log(data);
-            //    if (dataTransform.token == 0) {
-            //        posts = data.data;
-            //    }
-            //    else {
-            //        console.log(data);
-            //        for (var i = 0; i < data.data.length; i++) {
-            //            posts.push(data.data[i]);
-            //        }
-            //    }
-            //});
-            queryString = 'meme?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy;
-            console.log(queryString);
+        getMemesImages: function (request) {
+            queryString = "";
             classAjax.getdata('get', queryString, request).then(function (data) {
-                console.log(data);
+                console.log(data.data);
                 if (request.endTimestamp == '') {
-                    posts = data.data;
+                    memeImages = data.data;
                 }
                 else {
-                    console.log(data);
+                    console.log(data.data);
                     for (var i = 0; i < data.data.length; i++) {
-                        posts.push(data.data[i]);
+                        memeImages.push(data[i]);
                     }
                 }
             })
         },
-
-
 
         commentClicked: function () {
             console.log('comment');
@@ -136,11 +117,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
 			    console.log(data);
 			    console.log(data.data._id);
-				
-				if(textfile)
-					self.attach(textfile,data.data._id); 
-				if(imgFile)
-					self.attach(imgFile,data.data._id); 
+
+			    if (textfile)
+			        self.attach(textfile, data.data._id);
+			    if (imgFile)
+			        self.attach(imgFile, data.data._id);
 			})
 			.error(function (data) {
 
@@ -151,26 +132,26 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         },
 
-        attach: function (file,postId) {
+        attach: function (file, postId) {
 
-             var $file = file;
-				  console.log($file);
-			    var upload = $upload.upload({
-			        
-					url: domain+'FileUpload?ref=post&_id='+postId,
-			        method: "POST",
-			        file: $file
-			    }).progress(function (evt) {
-			        // get upload percentage
-			        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-			    }).success(function (data, status, headers, config) {
-			        // file is uploaded successfully
-			        console.log(data);
-			    }).error(function (data, status, headers, config) {
-			        // file failed to upload
-			        console.log(data);
-			    });
-			    //if(file){self.attach(file);}
+            var $file = file;
+            console.log($file);
+            var upload = $upload.upload({
+
+                url: domain + 'FileUpload?ref=post&_id=' + postId,
+                method: "POST",
+                file: $file
+            }).progress(function (evt) {
+                // get upload percentage
+                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+            }).success(function (data, status, headers, config) {
+                // file is uploaded successfully
+                console.log(data);
+            }).error(function (data, status, headers, config) {
+                // file failed to upload
+                console.log(data);
+            });
+            //if(file){self.attach(file);}
 
         },
 
@@ -217,13 +198,14 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             return posts;
         },
 
+         getMemes: function () {
+            return memeImages;
+        },
+
         getPolls: function () {
             return polls;
         },
 
-        getMemes: function () {
-            return memes;
-        },
 
         getPostById: function (postid) {
             console.log(posts.length)
