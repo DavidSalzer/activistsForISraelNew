@@ -168,7 +168,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
     $scope.getPostsByViews = function () {
         request.endTimestamp = '';
-        request.orderBy = '-commentsCount';
+        request.orderBy = '-viewsCount';
         request.offset = 0;
         PostService.getPostsBatch(request);
     }

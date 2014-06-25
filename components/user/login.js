@@ -1,5 +1,5 @@
 socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', 'classAjax', 'generalParameters', function ($rootScope, $scope, $state, $http, classAjax, generalParameters) {
-
+    $scope.domain = domain;
     $scope.showEmailError = false;
     $scope.showPassError = false;
 
@@ -54,6 +54,8 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             $scope.showLogin = false;
             generalParameters.setShowLogin(false);
             generalParameters.setUser(data.data.user);
+            $scope.mail = '';
+            $scope.pass = '';
             console.log(data);
         });
 
