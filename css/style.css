@@ -68,6 +68,10 @@ header i.fa.back {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 }
+
+select{
+    border: none;
+}
 /*************************post template*******************/
 .posts-list {
     height: 100%;
