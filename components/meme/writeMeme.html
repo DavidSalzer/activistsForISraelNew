@@ -1,8 +1,7 @@
 <link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
 
-
 <div class="sub-header" id="feature-header" data-ng-click="writeMeme()">
-    <div  style="background-color: #f6ba55;">
+    <div  style="background-color: #ffd427;">
     המם שלי
     </div>
     <div class="color-line color-line-bottom "></div>
@@ -11,28 +10,70 @@
 <div class="posts-list">
     <div class="instruction">בחר תמונה</div>
    
-    <div class="suggested-images-wrap">
-        <div class="images-window">
-              <span class="test" data-ng-repeat="image in memeImages()">
-                  <span class="double-container">
-                      <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image[1]}})'}" id="element"></span>
-                      <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image[2]}})'}" id="element"></span>
-                  </span>
-              </span>
-             
-          
+    <div class="suggested-images-wrap" data-ng-show="false">
+        <div class="images-window">  
+			<div  class='suggested-images-up'>
+				<span   data-ng-repeat="image in memeImages()"  ng-if="$even" class="meme-element2"  style="background-image: url({{image.url}});" >
+				</span>
+            </div>
+			<div  class='suggested-images-down'>
+				<span   data-ng-repeat="image in memeImages()"  ng-if="$odd" class="meme-element2"  style="background-image: url({{image.url}});" >
+				</span>
+            </div>
         </div>
     </div>
 
-     <div class="add-file">  
-        <!--<img id="testUrl" alt="" src="" />-->
-				    <div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
-					    +
-					    <input type="file" data-upload='img' style='position: absolute;top: 0;'>
-					    </input>
-				    </div>
-				    <div class='add-file-text' >{{imgFileText}}</div>
-				    <div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+    <div class="chosenImg">
+         <div class="meme-wrap meme-container" >
+            <div class="meme-dummy" id="dummy"></div>
+            <div class="meme-element"  data-ng-style="{'background-image': 'url(http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg)'}" id="element"></div>
+            <div class="immulate-text top"  data-ng-class="{'size1':topText.length <=12, 'size2':(topText.length >12 && topText.length <=20),'size3':topText.length >20}"  data-ng-style="{'color':getColor('top'),'font-family':font}">{{topText}}</div>
+             <div class="immulate-text bottom"   data-ng-class="{'size1':bottomText.length <=12, 'size2':(bottomText.length >12 && bottomText.length <=20),'size3':bottomText.length >20}"  data-ng-style="{'color':getColor('bottom'),'font-family':font}">{{bottomText}}</div>
+        </div>
     </div>
+     <div class="add-file">  
+       <div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
+			+
+			<input type="file" data-upload='img' style='position: absolute;top: 0;'>
+			</input>
+		</div>
+		<div class='add-file-text' >{{imgFileText}}</div>
+		<div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+    </div>
+    <div class="edit-text-wrap">
+        <div class="font">
+             <div class="plus rtl" data-ng-class="{'rtl-active':rtl == true}" data-ng-click="setDirection('rtl')">
+			
+			
+		    </div>
+           <div class="plus ltr" data-ng-class="{'ltr-active':ltr == true}" data-ng-click="setDirection('ltr')">
+			
+			
+		    </div>
+            <div class="file-text">
+                <select ng-model="font" ng-options="font for font in fontOptions">
+                  <option value="">בחר גופן</option>
+                </select>
+            </div>
+        </div>
 
+        <div class="text-wrap">
+            <div class="colorpicker-wrap">
+                <div class="square" data-ng-style="{'background-color':getColor('top')}"></div>
+                <input type="text" class="colorpicker"  data-ng-model="topRgb"  /><!--{{setColor('up',this.color)}}    onchange ="topRgb =this.color.rgb;"-->
+            </div>
+          <div class="file-text"><input placeholder="טקסט עליון"  data-ng-model="topText" data-ng-change="textChange('top')"/></div>
+            
+        </div>
+        <div class="text-wrap">
+            <div class="colorpicker-wrap">
+                <div class="square" data-ng-style="{'background-color':getColor('bottom')}"></div>
+                <input type="text" class="colorpicker"  data-ng-model="bottomRgb"  /><!--{{setColor('up',this.color)}}    onchange ="topRgb =this.color.rgb;"-->
+            </div>
+          <div class="file-text"><input placeholder="טקסט תחתון" data-ng-model="bottomText"/></div>
+            
+        </div>
+        
+    <div class="button" data-ng-click="createMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">צור מם</div>
+    </div>
 </div>
