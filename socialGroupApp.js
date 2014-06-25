@@ -1,4 +1,4 @@
-var domain = 'http://cambium.co.il:3003/';
+var domain = 'http://cambium.co.il:3004/';
  
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload'])
@@ -566,6 +566,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 				
                 var file = event.target.files[0];
                 console.log(file);  
+				console.log(attrs);
 				
 				if((attrs.upload=='img') && (file.type.match('image/*'))) {
 					

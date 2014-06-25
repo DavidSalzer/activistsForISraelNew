@@ -1,11 +1,41 @@
-var topRgb =0;
-var bottomRgb =0;
+
 socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', 'memeGenerat', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, memeGenerat) {
     var z;
     /*init variables*/
     generalParameters.setBackIcon(true);
     $scope.parentPostType = $stateParams.postType;
     $scope.user = generalParameters.getUser();
+
+    $scope.rtl = true;
+    $scope.ltr = false;
+    $scope.topRgb = "587db4";
+    $scope.bottomRgb = "ff0000";
+
+    $scope.getColor = function (pos) {
+
+        switch (pos) {
+            case "top":
+                return "#" + $scope.topRgb;
+                break;
+            case "bottom":
+                return "#" + $scope.bottomRgb;
+                break;
+        }
+
+    }
+    $scope.setDirection = function (direction) {
+        switch (direction) {
+            case "rtl":
+                $scope.rtl = true;
+                $scope.ltr = false;
+                break;
+            case "ltr":
+                $scope.ltr = true;
+                $scope.rtl = false;
+                break;
+        }
+    }
+
     //alert($scope.user._id)
 
     //$scope.postData={
@@ -16,7 +46,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     //	
     //};
 
-     /*init controller details*/
+    /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/meme.png",
@@ -62,8 +92,8 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
     };
 
-    $scope.setColor =function(line,rgb){
-        alert(line+" : " +rgb)
+    $scope.setColor = function (line, rgb) {
+        alert(line + " : " + rgb)
     }
 
 
