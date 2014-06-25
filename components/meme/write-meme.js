@@ -10,6 +10,11 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.ltr = false;
     $scope.topRgb = "587db4";
     $scope.bottomRgb = "ff0000";
+    $scope.topText = "";
+
+
+    $scope.fontOptions = ['arial', 'Aharoni', 'Calibri'];
+
 
     $scope.getColor = function (pos) {
 
@@ -36,15 +41,10 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         }
     }
 
-    //alert($scope.user._id)
+    $scope.createMeme = function () {
+        var x;
+    }
 
-    //$scope.postData={
-    //	
-    //	
-    ////	user:{_id:$scope.user._id},
-    //	//post:{_parentID:$stateParams.postId,attachment: "",content: "ער תושב הכפר עראבה שהגיע עם אביו לעבודה נהרג בפיצוץ בגבול עם סוריה, אביו עובד הקבלן נפצע. גורם צבאי בכיר מסר כי יש חור בגדר כתוצאה מירי, בנוסף היה ירי על משאית של עבודות משרד הביטחון. לא ברור האם זה מטען, פגז או מרגמה"}
-    //	
-    //};
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -91,11 +91,5 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         }
         $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
     };
-
-    $scope.setColor = function (line, rgb) {
-        alert(line + " : " + rgb)
-    }
-
-
 
 } ]);
