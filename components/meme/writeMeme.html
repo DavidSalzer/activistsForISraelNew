@@ -1,7 +1,5 @@
 <link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
 
-
-
 <div class="sub-header" id="feature-header" data-ng-click="writeMeme()">
     <div  style="background-color: #ffd427;">
     המם שלי
@@ -13,15 +11,15 @@
     <div class="instruction">בחר תמונה</div>
    
     <div class="suggested-images-wrap" data-ng-show="false">
-        <div class="images-window">
-              <span class="test" data-ng-repeat="image in memeImages()">
-                  <span class="double-container">
-                      <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image[1]}})'}" id="element"></span>
-                      <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image[2]}})'}" id="element"></span>
-                  </span>
-              </span>
-             
-          
+        <div class="images-window">  
+			<div  class='suggested-images-up'>
+				<span   data-ng-repeat="image in memeImages()"  ng-if="$even" class="meme-element2"  style="background-image: url({{image.url}});" >
+				</span>
+            </div>
+			<div  class='suggested-images-down'>
+				<span   data-ng-repeat="image in memeImages()"  ng-if="$odd" class="meme-element2"  style="background-image: url({{image.url}});" >
+				</span>
+            </div>
         </div>
     </div>
 

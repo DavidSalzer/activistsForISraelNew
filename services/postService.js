@@ -180,7 +180,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
             var parmas = { "activity": {
                 "post": pid,
-                "user": user._id,
+               // "user": user._id,
                 "type": "like"
             }
             };
@@ -213,7 +213,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
             var parmas = { "activity": {
                 "post": pid,
-                "user": user._id,
+               // "user": user._id,
                 "type": "like"
             }
             };
@@ -241,8 +241,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
              console.log(queryString);
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data.data);
-                if (request.endTimestamp == '') {
-                    memeImages = data.data;
+                if (request.endTimestamp == '') { 
+                    memeImages = data.data;console.log(memeImages);
                 }
                 else {
                     console.log(data.data);
@@ -284,7 +284,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             return polls;
         },
 
-        getMemes: function () {
+        getMemes: function () { 
             return memeImages;
         },
 
