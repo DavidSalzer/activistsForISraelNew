@@ -1,7 +1,8 @@
-socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters','$state', function ($scope,$rootScope, $stateParams, PostService, generalParameters,$state) {
+socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'PostService', 'generalParameters','$state','$window', function ($scope,$rootScope, $stateParams, PostService, generalParameters,$state,$window) {
 
 	/*init variables*/
 	generalParameters.setBackIcon(true);
+	
 	$scope.imageMax = 1;
 	$scope.toLargImage = false;
 	$scope.imgFileText = 'צרף תמונה'
@@ -96,23 +97,22 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 		   
 		
     }
-		
-	
-	
-	console.log($scope.postData);
-	
 	
 	$scope.sendPost = function () {
 		
-		/* if(($scope.min > 0)&&($scope.postData.post.content.length < $scope.min)){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;}   */
-		//alert($scope.imgObj);
-		//alert($scope.fileObj);
+		
+		//article? check if the text is large then minimum
+		if(($scope.min > 0)&&($scope.postData.post.content.length < $scope.min)){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;} 
+		
 		PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj );
+		
 		generalParameters.setBackIcon(false);
+		
 		if($scope.postType=='talkback'){
 			
 			$state.transitionTo($scope.parentPostType);return;
 		}
+		//others - show thank page
 		$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 	};
 	

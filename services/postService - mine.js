@@ -1,11 +1,16 @@
+
 socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload','$q', function ($rootScope, classAjax, $http,$upload,$q) {
 
     var showInput = true;
 
     var posts = [];
+
+    var polls = [];
+    var memeImages = [];
+
     var singlePost = null;
     var comments = [];
-   var memeImages = [];
+    var memes = [];
     var selectedAuthor = null;
     var typePrevPage = null;
     var user = null;
@@ -51,7 +56,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 				
 				for (var k = 0; k < posts.length; k++) {
 					
-				//	self.getIsLike(posts[k]._id,k);
+					self.getIsLike(posts[k]._id,k);
 				}
 				
 				console.log(posts);
@@ -59,7 +64,24 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             })
         },
 
+        getMemesImages: function (request) {
+            queryString = "";
 
+
+             console.log(queryString);
+            classAjax.getdata('get', queryString, request).then(function (data) {
+                console.log(data.data);
+                if (request.endTimestamp == '') {
+                    memeImages = data.data;
+                }
+                else {
+                    console.log(data.data);
+                    for (var i = 0; i < data.data.length; i++) {
+                        memeImages.push(data[i]);
+                    }
+                }
+            })
+        },
 
         commentClicked: function () {
             console.log('comment');
@@ -119,10 +141,16 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         attach: function (file, postId) {
 
+
             var $file = file;
             console.log($file);
             var upload = $upload.upload({
 
+
+
+            var $file = file;
+            console.log($file);
+            var upload = $upload.upload({
                 url: domain + 'FileUpload?ref=post&_id=' + postId,
                 method: "POST",
                 file: $file
@@ -142,6 +170,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 		
 		getIsLike: function (pid,index) {
 			
+			
+			console.log(user)
 			var parmas = {"activity":{
 							"post":pid,
 							"user":user._id,
@@ -174,40 +204,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 			
         },
 
-        unLike: function (pid) {
-
-            console.log(user)
-
-            var parmas = { "activity": {
-                "post": pid,
-                "user": user._id,
-                "type": "like"
-            }
-            };
-		
-
-            var json = JSON.stringify(parmas);
-            console.log(json);
-			
-		
-			//$http.delete(domain + 'deletePostActivity/'+pid, json)
-        
-            $http({url:domain + 'deletePostActivity/'+pid,method:"delete" ,data:json})
-			//$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
-        
-			.success(function (data) {
-
-			    console.log(data);
-			})
-			.error(function (data) {
-
-			    console.log(data);
-			});
-
-
-        },
-		
-		sendLike: function (pid) {
+        sendLike: function (pid) {
 
             console.log(user)
 
@@ -233,26 +230,6 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
 
         },
-
-         getMemesImages: function (request) {
-            queryString = "";
-
-
-             console.log(queryString);
-            classAjax.getdata('get', queryString, request).then(function (data) {
-                console.log(data.data);
-                if (request.endTimestamp == '') {
-                    memeImages = data.data;
-                }
-                else {
-                    console.log(data.data);
-                    for (var i = 0; i < data.data.length; i++) {
-                        memeImages.push(data[i]);
-                    }
-                }
-            })
-        },
-
 
         //getters & setters
         setShowInput: function (state) {
@@ -280,25 +257,32 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             return posts;
         },
 
+         getMemes: function () {
+            return memeImages;
+        },
+
         getPolls: function () {
             return polls;
         },
 
-        getMemes: function () {
-            return memeImages;
-        },
 
         getPostById: function (postid) {
             self = this;
             queryString = 'post/' + postid;
             console.log(queryString);
-            classAjax.getdata('get', queryString, {})
+            classAjax.getdata('get', queryString, request)
             .then(function (data) {
                 console.log(data);
                 singlePost = data.data;
-                self.getPostsBatch({startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
+                self.getPostsBatch({ offset: 0, limit: 20, _parentID: postid });
             })
-            
+            //console.log(posts.length)
+            //for (var i = 0; i < posts.length; i++) {
+            //    if (posts[i].postId == postid) {
+            //        return posts[i];
+            //        stop();
+            //    }
+            //};
         },
 
         getSinglePost: function () {

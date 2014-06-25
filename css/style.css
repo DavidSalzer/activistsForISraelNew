@@ -171,12 +171,27 @@ header i.fa.back {
     padding: 0px 12px 12px 12px;
 }
 
-.author-image img {
+/* .author-image img {
     width: 48px;
     height: 48px;
     border-radius: 50px;
     border-style: solid;
     border-width: 1px;
+} */
+
+.author-image div {
+	
+	background-size: 100% 100%;
+	margin: auto;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	border-radius: 50px;
+	border-style: solid;
+	border-width: 1px;
 }
 
 figure.author-image {
@@ -850,4 +865,42 @@ button {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     height: 100%;
+}
+
+
+.add-file-text {
+    color: #695B5B;
+    text-align: right;
+    border-radius: 10px;
+    background: white;
+    height: 32px;
+    line-height: 32px;
+    text-indent: 20px;
+    font-size: 15px;
+	margin-right: 50px;
+}
+.file-text {
+    color: #695B5B;
+    text-align: right;
+    border-radius: 10px;
+    background: white;
+    height: 32px;
+    line-height: 32px;
+    text-indent: 20px;
+    font-size: 15px;
+	margin-right: 50px;
+}
+
+.add-file-error {
+	
+	padding-top: 7px;
+	font-size: 0.7em;
+	text-align: right;
+	margin-right: 50px;
+}
+
+.add-file {
+    margin-top: 12px;
+    height: 52px;
+    position: relative;
 }

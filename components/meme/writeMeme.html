@@ -1,8 +1,9 @@
 <link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
 
 
+
 <div class="sub-header" id="feature-header" data-ng-click="writeMeme()">
-    <div  style="background-color: #f6ba55;">
+    <div  style="background-color: #ffd427;">
     המם שלי
     </div>
     <div class="color-line color-line-bottom "></div>
@@ -26,13 +27,43 @@
 
      <div class="add-file">  
         <!--<img id="testUrl" alt="" src="" />-->
-				    <div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
-					    +
-					    <input type="file" data-upload='img' style='position: absolute;top: 0;'>
-					    </input>
-				    </div>
-				    <div class='add-file-text' >{{imgFileText}}</div>
-				    <div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+		<div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
+			+
+			<input type="file" data-upload='img' style='position: absolute;top: 0;'>
+			</input>
+		</div>
+		<div class='add-file-text' >{{imgFileText}}</div>
+		<div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
     </div>
+    <div class="edit-text-wrap">
+        <!--<div class="font">
+             <div class="plus">
+			+
+			
+		    </div>
+             <div class="plus">
+			    +
+			
+		    </div>
+             <div class="file-text">
+			
+		    </div>
+        </div>-->
 
+        <div class="text-wrap">
+            
+              <div class="file-text"><input placeholder="טקסט עליון"/></div>
+            
+        </div>
+        <div class="text-wrap">
+            <div class="colorpicker-wrap">
+                <div class="square"></div>
+                <input type="text" class="colorpicker" onchange ="topRgb =this.color.rgb;" /><!--{{setColor('up',this.color)}}-->
+            </div>
+          <div class="file-text"><input placeholder="טקסט תחתון"/></div>
+            
+        </div>
+       <!--<input type="text" class="color" />-->
+    <div class="button" data-ng-click="goToSignin()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">צור מם</div>
+    </div>
 </div>

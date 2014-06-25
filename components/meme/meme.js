@@ -6,7 +6,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         featureName: null,
         featureLogo: "./img/meme.png",
         featureWhatsUpLogo: "./img/article_info.png",
-        featureColor: '#f6ba55',
+        featureColor: '#ffd427',
         infoHaeder: "ממים",
         infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
