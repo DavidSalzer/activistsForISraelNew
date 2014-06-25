@@ -1,4 +1,4 @@
-var domain = 'http://cambium.co.il:3004/';
+var domain = 'http://cambium.co.il:3003/';
  
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload'])
@@ -170,6 +170,25 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
+		 .state('event', {
+             url: "/event",
+             views: {
+                 "main": {
+                     templateUrl: "./components/event/event.html",
+                     controller: "event"
+                 }
+             }
+         })
+
+        /*  .state('write-event', {
+            url: "/write-event",
+            views: {
+                "main": {
+                    templateUrl: "./components/event/writeEvent.html",
+                    controller: "writeEvent"
+                }
+            }
+        }) */
 })
 
 /**** Ajax Service ****/
@@ -201,8 +220,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
 
             $http({
-               // url: domain + queryString,
-               url: URL,
+               url: domain + queryString,
+               //url: URL,
                 method: method, // temp cancel for local json calls
                 data: request
             }).

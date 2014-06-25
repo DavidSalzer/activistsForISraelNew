@@ -92,6 +92,12 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 		    featureName: 'משאל עם',
 		    featureLogo: "./img/poll.png",
 		    featureColor: "poll"
+		},
+		{
+		    featureUrl: 'event',
+		    featureName: 'נפגשים',
+		    featureLogo: "./img/calendar.png",
+		    featureColor: "event"
 		}
 
     ];

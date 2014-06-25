@@ -142,12 +142,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 		
 		getIsLike: function (pid,index) {
 			
-			var parmas = {"activity":{
-							"post":pid,
-							"user":user._id,
-							"type":"like"
-							}
-						};
+			var parmas = {"activity":{ "post":pid, "type":"like"}};
             
 			var json = JSON.stringify(parmas);
             //console.log(json);
@@ -178,21 +173,15 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
             console.log(user)
 
-            var parmas = { "activity": {
-                "post": pid,
-               // "user": user._id,
-                "type": "like"
-            }
-            };
+            var parmas = { "activity": { "post": pid, "type": "like" }};
 		
-
             var json = JSON.stringify(parmas);
             console.log(json);
 			
 		
 			//$http.delete(domain + 'deletePostActivity/'+pid, json)
         
-            $http({url:domain + 'deletePostActivity/'+pid,method:"delete" ,data:json})
+            $http({url:domain + 'deletePostActivity',method:"delete" ,data:json})
 			//$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
         
 			.success(function (data) {
@@ -209,16 +198,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 		
 		sendLike: function (pid) {
 
-            console.log(user)
-
-            var parmas = { "activity": {
-                "post": pid,
-               // "user": user._id,
-                "type": "like"
-            }
-            };
-
-            var json = JSON.stringify(parmas);
+            var parmas = { "activity": { "post": pid, "type": "like" }};
+            
+			var json = JSON.stringify(parmas);
             console.log(json);
 
             $http.post(domain + 'addPostActivity', json)
