@@ -1,6 +1,7 @@
 <div class="post-tab" data-post="{{post._id}}" data-post-type="{{post.postType}}">
     <figure class="author-image" data-ng-show="showAuthorImage!=false">
-        <img data-ng-src="{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}" alt="user-pic">
+		<div style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
+     <!--<img data-ng-src="{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}" alt="user-pic">--> 
     </figure>
     <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post._author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post._author.data.firstName}} {{post._author.data.lastName}}</span>
     <span class="author-date" data-ng-show="showCommentDate!=false">{{post.timestamp | date : 'dd.MM.yyyy'}}</span>

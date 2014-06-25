@@ -3,8 +3,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     var current = $location.$$url;
     //$scope.active = -1;
 
-   
-
+  
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
         console.log(data);
@@ -74,12 +73,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/actionforisrael.png",
             featureColor: "Fbactivists"
         },
-		//{
-		//    featureUrl: 'poll',
-		//    featureName: 'משאל עם',
-		//    featureLogo: "./img/poll.png",
-		//    featureColor: "poll"
-		//},
+	
         {
             featureUrl: 'contact',
             featureName: 'צור קשר',
@@ -92,13 +86,13 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/meme.png",
             featureColor: "#ffd427"
         }
-        //,
-		//{
-		//    featureUrl: 'poll',
-		//    featureName: 'משאל עם',
-		//    featureLogo: "./img/poll.png",
-		//    featureColor: "poll"
-		//}
+        ,
+		{
+		    featureUrl: 'poll',
+		    featureName: 'משאל עם',
+		    featureLogo: "./img/poll.png",
+		    featureColor: "poll"
+		}
 
     ];
 

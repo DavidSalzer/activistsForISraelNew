@@ -16,9 +16,23 @@ socialGroupApp.controller('poll', ['$rootScope','$scope', '$http', '$state', 'Po
         infoSubText: "ההצבעה באיזור זה מותנית בהצטרפות"
     };
     generalParameters.setFeature($scope.featureDetails);
-
+	
+	$scope.user = generalParameters.getUser();
+   
+    var request = {
+        
+		startTimestamp: '',
+        endTimestamp: '',
+        offset: 0,
+        limit: 20,
+        orderBy: '-timestamp',
+        postType: 'poll',
+        userID: $scope.user._id,
+        _parentID: ''
+    };
+	
 	/*init controller data*/
-    PostService.getPostsBatch({postType: 'poll'}); //tell service to refresh posts
+    PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.polls = PostService.getPosts; //ask service for polls
 	
     $scope.userClicked = function (pollIndex) {	
@@ -30,19 +44,19 @@ socialGroupApp.controller('poll', ['$rootScope','$scope', '$http', '$state', 'Po
     };
 	
 	$scope.getPoll = function () {
-        PostService.getPostsBatch({postType: 'poll'});
+        PostService.getPostsBatch(request);
     }
 
     $scope.getActivePoll = function () {
         $scope.currentFilter = "active";
-        PostService.getPostsBatch({postType: 'poll'});
+        PostService.getPostsBatch(request);
 		$scope.polls = PostService.getPosts;
 		console.log($scope.polls);
     }
 
     $scope.getInActivePoll = function () {
         $scope.currentFilter = "inactive";
-        PostService.getPostsBatch({postType: 'poll'});
+        PostService.getPostsBatch(request);
 		$scope.polls = PostService.getPosts;
 		console.log($scope.polls);
     }
@@ -50,7 +64,7 @@ socialGroupApp.controller('poll', ['$rootScope','$scope', '$http', '$state', 'Po
     $scope.loadMore = function () {
         $scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
-        PostService.getPostsBatch({postType: 'poll'});
+        PostService.getPostsBatch(request);
     }
 	
 	$scope.SuggestPoll = function () {

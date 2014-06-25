@@ -171,12 +171,27 @@ header i.fa.back {
     padding: 0px 12px 12px 12px;
 }
 
-.author-image img {
+/* .author-image img {
     width: 48px;
     height: 48px;
     border-radius: 50px;
     border-style: solid;
     border-width: 1px;
+} */
+
+.author-image div {
+	
+	background-size: 100% 100%;
+	margin: auto;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	border-radius: 50px;
+	border-style: solid;
+	border-width: 1px;
 }
 
 figure.author-image {
