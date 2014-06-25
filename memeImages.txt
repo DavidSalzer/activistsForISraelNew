@@ -2,38 +2,38 @@
     "type": "memes",
     "data": [
         
-   { 
-        "1":"./img/image/meme_big.png",
-        "2":"./img/image/meme_big.png"
-    },
-    { 
-        "1":"./img/image/meme_big.png",
-        "2":"./img/image/meme_small.png"
-    },
-    { 
-        "1":"./img/image/meme_big.png",
-        "2":"./img/image/meme_big.png"
-    },
-    { 
-        "1":"./img/image/meme_small.png",
-        "2":"http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg"
-    },
-    { 
-        "1":"http://www.haaretz.co.il/polopoly_fs/1.1891992.1356269543!/image/623086527.jpg_gen/derivatives/landscape_436_326/623086527.jpg",
-        "2":"http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg"
-    },
-    { 
-        "1":"http://www.haaretz.co.il/polopoly_fs/1.1891992.1356269543!/image/623086527.jpg_gen/derivatives/landscape_436_326/623086527.jpg",
-        "2":"http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg"
-    },
-    { 
-        "1":"http://www.haaretz.co.il/polopoly_fs/1.1891992.1356269543!/image/623086527.jpg_gen/derivatives/landscape_436_326/623086527.jpg",
-        "2":"http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg"
-    },
-    { 
-        "1":"http://www.haaretz.co.il/polopoly_fs/1.1891992.1356269543!/image/623086527.jpg_gen/derivatives/landscape_436_326/623086527.jpg",
-        "2":"http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg"
-    }
+   
+        "./img/image/meme_big.png",
+        "./img/image/meme_big.png",
+    
+    
+        "./img/image/meme_big.png",
+        "./img/image/meme_small.png",
+    
+    
+        "./img/image/meme_big.png",
+        "./img/image/meme_big.png",
+    
+    
+        "./img/image/meme_small.png",
+        "http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg",
+    
+    
+        "http://www.haaretz.co.il/polopoly_fs/1.1891992.1356269543!/image/623086527.jpg_gen/derivatives/landscape_436_326/623086527.jpg",
+        "http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg",
+    
+    
+        "http://www.haaretz.co.il/polopoly_fs/1.1891992.1356269543!/image/623086527.jpg_gen/derivatives/landscape_436_326/623086527.jpg",
+        "http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg",
+    
+    
+        "http://www.haaretz.co.il/polopoly_fs/1.1891992.1356269543!/image/623086527.jpg_gen/derivatives/landscape_436_326/623086527.jpg",
+        "http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg",
+    
+    
+        "http://www.haaretz.co.il/polopoly_fs/1.1891992.1356269543!/image/623086527.jpg_gen/derivatives/landscape_436_326/623086527.jpg",
+        "http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg"
+   
     
  
 

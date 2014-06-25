@@ -1,6 +1,23 @@
 <link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
 
+<style>
+.downImg{
 
+bottom:0;
+
+}
+
+upImg{
+
+
+top:0;
+
+}
+
+
+
+
+</style>
 
 <div class="sub-header" id="feature-header" data-ng-click="writeMeme()">
     <div  style="background-color: #ffd427;">
@@ -14,14 +31,13 @@
    
     <div class="suggested-images-wrap">
         <div class="images-window">
-              <span class="test" data-ng-repeat="image in memeImages()">
+				<span class="test" data-ng-repeat="image in memeImages()">
                   <span class="double-container">
                       <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image[1]}})'}" id="element"></span>
                       <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image[2]}})'}" id="element"></span>
                   </span>
               </span>
-             
-          
+           
         </div>
     </div>
 
@@ -67,3 +83,30 @@
     <div class="button" data-ng-click="goToSignin()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">צור מם</div>
     </div>
 </div>
+
+
+
+<!-- <div data-ng-repeat="image in memeImages() track by $index"  ng-class-odd="'downImg'" ng-class-even="'upImg'" style="position:relative; display:inline-block;width: 90px;
+height: 90px;"><div  style='background-image:url("{{image}}");
+background-size: 100% 100%;
+	margin: auto;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	
+	
+'></div></div> -->
+
+
+ <!--   <span class="test" data-ng-repeat="image in memeImages() track by $index"> -->
+                  <!-- <span class="double-container"> -->
+                   <!--    <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image}})'}" ></span> -->
+                     <!--  <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image}})'}" ></span> -->
+                <!--   </span> -->
+             <!--  </span> -->
+		<!-- 	  <span class="test" data-ng-repeat="image in memeImages() track by $index"> -->
+					<!--   <span class="meme-element2"  data-ng-style="{'background-image': 'url({{image}})'}" ></span> -->
+		<!-- 	</span> -->
