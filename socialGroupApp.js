@@ -231,8 +231,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
 
             $http({
-              // url: domain + queryString,
-               url: URL,
+              url: domain + queryString,
+               //url: URL,
                 method: method, // temp cancel for local json calls
                 data: request
             }).
@@ -320,7 +320,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
                 console.log(scope.post._id);
-                //$rootScope.$broadcast('addCommentClicked', { showInput: true, postid: scope.post.postId });
+                
 				var user = generalParameters.getUser();
 				if (user.firstName == 'התחבר') {
 					

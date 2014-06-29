@@ -26,44 +26,21 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
 
     $scope.articleId = $stateParams.postId;
     console.log('postId: ' + $stateParams.postId);
-    //$scope.postId = $stateParams.postId;
+    
     PostService.getPostById($scope.articleId);
     $scope.post = PostService.getSinglePost;
 
     $scope.comments = PostService.getPosts;
 
     $scope.authorClicked = function ($event) {
-        //alert('hi22');
-        // $state.transitionTo('authorPage');
+        
     };
 
-    /* broadcast*/
-    $scope.$on('addCommentClicked', function (event, args) {
-        $scope.currentPost = args.postId;
-        $scope.showInput = args.showInput;
-        $scope.$apply();
-        console.log(args)
-    });
+  
+    //$scope.$on('userClicked', function (event, args) {
+    //    $state.transitionTo('author-page');
+    //});
 
-   /*  $scope.$on('addLike', function (event, args) {
-        $scope.currentPost = args.postId;
-        $scope.$apply();
-        //console.log(args);
-        PostService.sendLike(args.postid)
-    }); */
-
-
-
-    $scope.$on('userClicked', function (event, args) {
-       // alert('hi');
-        $state.transitionTo('author-page');
-    });
-
-
-    $scope.sendComment = function () {
-        console.log($scope.commentText);
-        PostService.sendPost('shimon', 'talkback', $scope.commentText, $scope.currentPost);
-    };
 
     $scope.loadMore = function () {
         posts = PostService.getPosts();

@@ -3,7 +3,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     /*init variables*/
     $scope.showInput = false;
     $scope.currentFilter = 'all';
-    $scope.currentPost = null;
+    //$scope.currentPost = null;
     $scope.showSpiner = PostService.getSpiner;
     $scope.domain = domain;
 
@@ -18,9 +18,9 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
 
-    $scope.domain = domain;
     generalParameters.setFeature($scope.featureDetails);
     $scope.user = generalParameters.getUser();
+    
     /*init controller data*/
     request = {
         startTimestamp: '',
@@ -38,14 +38,6 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
 
 
 
-    /* broadcast*/
-    $scope.$on('addCommentClicked', function (event, args) {
-        $scope.currentPost = args.postId;
-        $scope.showInput = args.showInput;
-        $scope.$apply();
-        console.log(args)
-    });
-
     $scope.writePost = function () {
         $scope.user = generalParameters.getUser();
         if ($scope.user.firstName == 'התחבר') {
@@ -56,14 +48,6 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
             $state.transitionTo('write-post', { postType: "talkback", postId: 0 });
         }
     };
-/* 
-    $scope.$on('addLike', function (event, args) {
-
-        //$scope.currentPost = args.postid;
-        //$scope.$apply();
-        //console.log(args)
-        PostService.sendLike(args.postid)
-    }); */
 
     $scope.$on('postClicked', function (event, args) {
         $scope.postId = args.postId;
@@ -72,22 +56,16 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         $state.transitionTo('comments', { postId: $scope.postId });
     });
 
-    $scope.userClicked = function () {
-       // alert('hi');
-        //event.stopPropagation();
-        $rootScope.$broadcast('userClicked', { showInput: true });
-    };
+    //$scope.userClicked = function () {
+    //    $rootScope.$broadcast('userClicked', { showInput: true });
+    //};
 
-    $scope.$on('userClicked', function (event, args) {
-      //  alert('hi');
-        generalParameters.setBackIcon(true);
-        $state.transitionTo('author-page');
-    });
+    //$scope.$on('userClicked', function (event, args) {
+    //    generalParameters.setBackIcon(true);
+    //    $state.transitionTo('author-page');
+    //});
 
-    $scope.getPosts = function () {
-        //PostService.getPostsBatch('posts.txt', $scope.currentFilter, 20, 0);
-    }
-
+    
     $scope.getPostsByAll = function () {
         request.endTimestamp = '';
         request.orderBy = '-timestamp';
@@ -109,15 +87,9 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         PostService.getPostsBatch(request);
     }
 
-    $scope.sendComment = function () {
-        console.log($scope.commentText);
-        PostService.sendPost('shimon', 'talkback', $scope.commentText, $scope.currentPost);
-    }
-
-
+    
     //load more post on scroll down
     $scope.loadMore = function () {
-        //$scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
         request.offset += 20;
         post = PostService.getPosts();
@@ -125,38 +97,6 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         PostService.getPostsBatch(request);
     }
 
-    $scope.updatePosts = function () {
-        PostService.updatePost({
-            postId: 8,
-            postType: 'talkback',
-            author: 'shimon',
-            timestamp: '25052014175555',
-            title: 'עקירת עצי זית',
-            content: 'מה המה מה מה מה מה מה מה מה מה ',
-            image: '',
-            likes: {
-                likesCount: 12,
-                isLiked: 0
-            },
-            comments: {
-                commentsCount: 5,
-                comments: [
-                    {
-                        commentId: 0,
-                        postType: 'talkback',
-                        author: 'shimon',
-                        timestamp: '25052014185555',
-                        title: 'עקירת עצי זית',
-                        content: 'תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר ',
-                        image: '',
-                        like: {
-                            likesCount: 12,
-                            isLiked: 1
-                        }
-                    }
-                ]
-            }
-        })
-    }
+    
 
 } ]);

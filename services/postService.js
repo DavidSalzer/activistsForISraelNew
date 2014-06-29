@@ -61,12 +61,6 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
 
 
-        commentClicked: function () {
-            console.log('comment');
-            //event.stopPropagation();
-            $rootScope.$broadcast('addCommentClicked', { showInput: true });
-        },
-
         updateCommentsCount: function () {
             posts[0].comments.commentsCount = 6;
         },
@@ -278,6 +272,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             .then(function (data) {
                 console.log(data);
                 singlePost = data.data;
+                posts = [];
                 self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
             })
 
