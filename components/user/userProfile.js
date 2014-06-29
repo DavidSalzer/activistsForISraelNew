@@ -14,37 +14,49 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
 
     $scope.editName = false;
     $scope.editAddress = false;
-    $scope.editEmail = false;
+    $scope.editEmail = true;
     $scope.editPhone = false;
+    $scope.editGender = false;
 
     $scope.editItem = function (field) {
         console.log("edit: " + field);
-        //switch (field) {
-        //    case 'name':
-        //        $scope.editName = true;
-        //        $scope.editAddress = false;
-        //        $scope.editEmail = false;
-        //        $scope.editPhone = false;
-        //        break;
-        //    case 'address':
-        //        $scope.editName = false;
-        //        $scope.editAddress = true;
-        //        $scope.editEmail = false;
-        //        $scope.editPhone = false;
-        //        break;
-        //    case 'email':
-        //        $scope.editName = false;
-        //        $scope.editAddress = false;
-        //        $scope.editEmail = true;
-        //        $scope.editPhone = false;
-        //        break;
-        //    case 'phone':
-        //        $scope.editName = false;
-        //        $scope.editAddress = false;
-        //        $scope.editEmail = false;
-        //        $scope.editPhone = true;
-        //        break;
-        //}
+        switch (field) {
+            case 'name':
+                $scope.editName = true;
+                $scope.editAddress = false;
+                $scope.editEmail = false;
+                $scope.editPhone = false;
+                $scope.editGender = false;
+                break;
+            case 'address':
+                $scope.editName = false;
+                $scope.editAddress = true;
+                $scope.editEmail = false;
+                $scope.editPhone = false;
+                $scope.editGender = false;
+                break;
+            case 'email':
+                $scope.editName = false;
+                $scope.editAddress = false;
+                $scope.editEmail = true;
+                $scope.editPhone = false;
+                $scope.editGender = false;
+                break;
+            case 'phone':
+                $scope.editName = false;
+                $scope.editAddress = false;
+                $scope.editEmail = false;
+                $scope.editPhone = true;
+                $scope.editGender = false;
+                break;
+            case 'gender':
+                $scope.editName = false;
+                $scope.editAddress = false;
+                $scope.editEmail = false;
+                $scope.editPhone = false;
+                $scope.editGender = true;
+                break;
+        }
 
     }
 
