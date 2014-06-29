@@ -44,7 +44,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
-    $scope.isLiked = PostService.getIsLike;
+    //$scope.isLiked = PostService.getIsLike;
     
 
     $scope.writePost = function () {
@@ -88,11 +88,6 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     //    $state.transitionTo('author-page', { authorId: args.authorId });
     //});
 
-    $scope.getPosts = function () {
-        PostService.getPostsBatch(request);
-    }
-
-    
     $scope.getPostsByAll = function () {
         $scope.currentTab = 'article';
         request.endTimestamp = '';
