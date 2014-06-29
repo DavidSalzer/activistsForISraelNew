@@ -298,7 +298,26 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data);
-                posts = data.data;
+
+                if (request.offset == 0) {
+                    posts = [];
+                }
+
+                showSpiner = false;
+                for (var i = 0; i < data.data.length; i++) {
+                    //posts.push(data.data[i]);
+                    flag = true;
+                    for (var j = 0; j < posts.length & flag; j++) {
+                        if (data.data[i][0]._id == posts[j]._id) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
+                        posts.push(data.data[i][0]);
+                    }
+                    
+                }
+                console.log(posts);
             })
         },
 
