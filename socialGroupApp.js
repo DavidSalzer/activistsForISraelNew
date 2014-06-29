@@ -170,6 +170,17 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
+
+        .state('meme-preview', {
+            url: "/meme-preview",
+            views: {
+                "main": {
+                    templateUrl: "./components/meme/memePreview.html",
+                    controller: "previewPubMeme"
+                }
+            }
+        })
+
 		 .state('event', {
              url: "/event",
              views: {
@@ -223,7 +234,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
 			
             $http({
-               url: domain + queryString,
+              url: domain + queryString,
                //url: URL,
                 method: method, // temp cancel for local json calls
                 data: request
@@ -288,7 +299,12 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         link: function (scope, el, attrs) {
             el.on('click', function (e) {
                 console.log(scope.post);
-                $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
+                if(attrs.postType == 'author'){
+                    $rootScope.$broadcast('postClicked', { authorId: scope.post._id, postType: 'author' });
+                }
+                else{
+                    $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
+                }
             });
             //console.log(attrs.showCommentButton);
             //scope.showCommentButton = attrs.showCommentButton;
@@ -311,7 +327,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
                 console.log(scope.post._id);
-                //$rootScope.$broadcast('addCommentClicked', { showInput: true, postid: scope.post.postId });
+                
 				var user = generalParameters.getUser();
 				if (user.firstName == 'התחבר') {
 					

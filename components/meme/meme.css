@@ -172,16 +172,22 @@ display: block;
     } */
 
 .chosenImg{
-    height: 192px;
-}
-
-.chosenImg .meme-container{
-    width: 56%;
-margin: auto;
+  width: 180px;
+height: 180px;
 /* clear: both; */
 /* left: 0; */
 /* right: 0; */
 float: none;
+margin: auto;
+border: none;
+}
+
+.chosenImg .meme-container{
+   width: 180px;
+height: 180px;
+float: none;
+margin: auto;
+border-radius: 0;
 }
 
 .immulate-text{
@@ -316,4 +322,43 @@ right: 42px;
 .button{
     font-size: 21px;
     font-family: Calibri 
+}
+
+.widthCon{
+   width: 180px;
+height: auto;
+top: 0;
+bottom: 0;
+position: absolute;
+margin: auto;
+}
+.heightCon{
+    width: auto;
+    height: 180px;
+}
+
+.preview-wrap{
+   width: 95%;
+margin: auto;
+border: 0px solid #535c63;
+/* border-radius: 31px; */
+padding: 2px;
+background-color: #535c63;
+margin-top: 24px;
+
+}
+#previewImg{
+    width: 200%;
+}
+.buttons-wrap{
+   width: 80%;
+   margin: auto; 
+   text-align: center;
+}
+.buttons-wrap div{
+    display: inline-block;
+    
+}
+.buttons-wrap div:first-child{
+    margin-left: 10px;
 }

@@ -124,6 +124,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	$scope.cleanDetails = function () {//event
 		
 		$scope.postData.post.title='';
+		$scope.postData.post.content='';
 		$scope.postData.post.day='';
 		$scope.postData.post.dayTime='';
 		$scope.postData.post.place='';

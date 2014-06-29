@@ -1,5 +1,5 @@
 
-socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', 'memeGenerat', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, memeGenerat) {
+socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
     var z;
     /*init variables*/
     generalParameters.setBackIcon(true);
@@ -12,9 +12,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.bottomRgb = "ff0000";
     $scope.topText = "";
 
-
     $scope.fontOptions = ['arial', 'Aharoni', 'Calibri'];
-
 
     $scope.getColor = function (pos) {
 
@@ -41,8 +39,25 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         }
     }
 
+    $scope.setClass = function () {
+        var img = document.getElementById('chosenImg');
+        if (img.width > img.height) {
+            return 'widthCon'
+        }
+        else if (img.width < img.height) {
+            return 'heightCon'
+        }
+    }
+
     $scope.createMeme = function () {
-        var x;
+        html2canvas(document.getElementById('html2canvas'), {
+            onrendered: function (canvas) {
+                var dataURL = canvas.toDataURL("image/png");
+                 //document.getElementById('img').src = dataURL;
+               PostService.setPreviewMeme(dataURL);
+               $state.transitionTo('meme-preview');
+            }
+        });
     }
 
 
@@ -77,19 +92,8 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     PostService.getMemesImages(request);
     $scope.memeImages = PostService.getMemes;
     console.log($scope.postData);
-    //memeGenerat.setMeme('shalom','lehitraot','http://upload.wikimedia.org/wikipedia/commons/5/5d/NaftaliBennett.jpg','30px Arial');
 
-    $scope.sendPost = function () {
 
-        /* if(($scope.min > 0)&&($scope.postData.post.content.length < $scope.min)){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;}   */
-        //alert($scope.imgObj);
-        //alert($scope.fileObj);
-        PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj);
-        if ($scope.postData.post.postType == 'talkback') {
-
-            $state.transitionTo('talk-back'); return;
-        }
-        $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
-    };
 
 } ]);
+
