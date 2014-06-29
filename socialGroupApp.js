@@ -1,5 +1,5 @@
 var domain = 'http://cambium.co.il:3003/';
- 
+
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap'])
 
@@ -188,7 +188,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     controller: "writeEvent"
                 }
             }
-        }) */
+        })  */
 })
 
 /**** Ajax Service ****/
@@ -216,9 +216,12 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'memeImages':
                     URL = 'memeImages.txt';
                     break;
+				case 'event':
+                    URL = 'events.txt';
+                    break;
             }
 
-
+			
             $http({
                url: domain + queryString,
                //url: URL,
@@ -226,7 +229,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 data: request
             }).
             success(function (data, status, header, config) {
-                deferred.resolve(data);
+                deferred.resolve(data);	
             }).
             error(function (data, status, header, config) {
                 deferred.reject(data);
@@ -253,6 +256,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var authorsTemplate = 'authorsTemplate.html';
             //var commentTemplate = 'commentTemplate.html';
             var memesTemplate = 'components/meme/smallMemeTemplate.html';
+            var eventTemplate = 'eventTemplate.html';
 
             var templateURL = '';
             switch (tAttrs.postType) {
@@ -272,6 +276,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     break;
                 case 'meme':
                     template = memesTemplate;
+                    break; 
+				case 'event':
+                    template = eventTemplate;
                     break;
             }
 
@@ -648,4 +655,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
          }
      }
  });
+ 
+ angular.module("ngLocale", [], ["$provide", function($provide) {
+var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "many", OTHER: "other"};
+$provide.value("$locale", {"NUMBER_FORMATS":{"DECIMAL_SEP":".","GROUP_SEP":",","PATTERNS":[{"minInt":1,"minFrac":0,"macFrac":0,"posPre":"","posSuf":"","negPre":"-","negSuf":"","gSize":3,"lgSize":3,"maxFrac":3},{"minInt":1,"minFrac":2,"macFrac":0,"posPre":"","posSuf":"Â \u00A4","negPre":"-","negSuf":"Â \u00A4","gSize":3,"lgSize":3,"maxFrac":2}],"CURRENCY_SYM":"â‚ª"},"pluralCat":function (n) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;},"DATETIME_FORMATS":{"MONTH":["ינואר","פברואב","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],"SHORTMONTH":["ינואר","פברואב","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],"DAY":["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"],"SHORTDAY":["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"],"AMPMS":["בבוקר","בצהרים"],"medium":"d ×‘MMM yyyy HH:mm:ss","short":"dd/MM/yy HH:mm","fullDate":"EEEE, d בMMMM y","longDate":"d בMMMM y","mediumDate":"d בMMM yyyy","shortDate":"dd/MM/yy","mediumTime":"HH:mm:ss","shortTime":"HH:mm"},"id":"heb-il"});
+}]);
 

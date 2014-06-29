@@ -13,14 +13,17 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     };
     
 	generalParameters.setFeature($scope.featureDetails);
-
-      request = {
+	 $scope.user = generalParameters.getUser();
+	 
+	 request = {
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
-        limit: 12,
+        limit: 20,
         orderBy: '-timestamp',
-        postType: 'event'
+        postType: 'event',
+        userID: $scope.user._id,
+        _parentID: ''
     };
 
 
@@ -40,24 +43,21 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         PostService.getPostsBatch(request);
     }
 
-    $scope.writeMeme = function () {
-        $scope.user = generalParameters.getUser();
-       // if ($scope.user.firstName == 'התחבר') {
-      //      $rootScope.$broadcast('showInfoPopup', { showInfo: true });
-      //  }
-       // else {
-            $state.transitionTo('write-meme');
-       // }
+    $scope.writeEvent = function () {
+      
+        $state.transitionTo('write-post', { postType: "event", postId: 0 });
+      
     };
 	
-
+ console.log($scope.dt)
 }]);
 
 
 socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', function ( $scope) {
 
   $scope.today = function() {
-    $scope.dt = new Date();
+ 
+    $scope.dt = new Date(); 
   };
   $scope.today();
 
@@ -78,18 +78,30 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', function ( $scope) {
   $scope.open = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
-
+console.log($scope)
     $scope.opened = true;
   };
 
   $scope.dateOptions = {
     formatYear: 'yy',
     startingDay: 1
+	
+	 
+  };
+  
+  $scope.oneWeek = function(){
+    
+	
+	console.log($scope)
+	 
   };
 
-  $scope.initDate = new Date('2016-15-20');
+ // $scope.initDate = new Date('2016-15-20');
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
+  
+  console.log($scope.dt)
+
   
 }]);
 
