@@ -3,6 +3,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
     $scope.showSignIn = false;
     $scope.showFnameError = false;
     $scope.showLnameError = false;
+    $scope.showGenderError = false;
     $scope.showEmailError = false;
     $scope.showPassError = false;
     $scope.showPhoneError = false;
@@ -43,17 +44,19 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
     $scope.sendSignIn = function () {
         $scope.showFnameError = $scope.fName == undefined || $scope.fName == '';
         $scope.showLnameError = $scope.lName == undefined || $scope.lName == '';
+        $scope.showGenderError = $scope.gender == undefined || ($scope.gender != 'זכר' && $scope.gender != 'נקבה');
         $scope.showEmailError = $scope.mail == undefined || $scope.mail == '';
         $scope.showPassError = $scope.pass == undefined || $scope.pass == '' || $scope.pass != $scope.passAuthentication;
         $scope.showPhoneError = $scope.askPhoneAndAddress && ($scope.phone == undefined || $scope.phone == '');
         $scope.showAddressError = $scope.askPhoneAndAddress && ($scope.address == undefined || $scope.address == '');
 
-        if ($scope.showFnameError || $scope.showLnameError || $scope.showEmailError || $scope.showPassError || $scope.showPhoneError || $scope.showAddressError) {
+        if ($scope.showFnameError || $scope.showLnameError || $scope.showGenderError || $scope.showEmailError || $scope.showPassError || $scope.showPhoneError || $scope.showAddressError) {
             return;
         }
 
         $scope.showFnameError = false;
         $scope.showLnameError = false;
+        $scope.showGenderError = false;
         $scope.showEmailError = false;
         $scope.showPassError = false;
         $scope.showPhoneError = false;
@@ -62,6 +65,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $scope.signinDetails = {
             firstName: $scope.fName,
             lastName: $scope.lName,
+            gender: $scope.gender,
             email: $scope.mail,
             password: $scope.pass,
             username: $scope.mail
@@ -94,6 +98,16 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
             //$http.post(domain + 'Base64FileUpload?ref=user&_id=data.data.user /',
             // $scope.json)
             $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+
+            $scope.fName = '';
+            $scope.lName = '';
+            $scope.gender = '';
+            $scope.mail = '';
+            $scope.pass = '';
+            $scope.passAuthentication = '';
+            $scope.phone = '';
+            $scope.address = '';
+            $scope.userImg = '';
             console.log(data);
         });
 

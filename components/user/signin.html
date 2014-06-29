@@ -5,6 +5,13 @@
         </div>
         <input type="text" class="sign-in-field sign-in-first-name" data-ng-class="{loginErrorActive: showFnameError}" placeholder="שם פרטי" data-ng-model="fName">
         <input type="text" class="sign-in-field sign-in-last-name" data-ng-class="{loginErrorActive: showLnameError}" placeholder="שם משפחה" data-ng-model="lName">
+        <!--<div class="sign-in-field sign-in-gender" data-ng-class="{loginErrorActive: showGenderError}">-->
+            <select class="sign-in-field sign-in-gender" data-ng-class="{loginErrorActive: showGenderError}" data-ng-model="gender" data-ng-options="gender for gender in ['נקבה', 'זכר']">
+                <option value="">מין</option>
+                <!--<option value="נקבה">נקבה</option>
+                <option value="זכר">זכר</option>-->
+            </select>
+        <!--</div>-->
         <input type="email" class="sign-in-field sign-in-mail" data-ng-class="{loginErrorActive: showEmailError}" placeholder="תיבת מייל" data-ng-model="mail">
         <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="סיסמה" data-ng-model="pass">
         <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="אימות סיסמה" data-ng-model="passAuthentication">
@@ -22,6 +29,7 @@
         <div class="sign-in-picture"></div>
         <div class="login-error" data-ng-show="showFnameError">* שדה שם פרטי לא הוזן כראוי</div>
         <div class="login-error" data-ng-show="showLnameError">* שדה שם משפחה לא הוזן כראוי</div>
+        <div class="login-error" data-ng-show="showGenderError">* שדה מין לא הוזן כראוי</div>
         <div class="login-error" data-ng-show="showEmailError">* שדה תיבת מייל לא הוזן כראוי</div>
         <div class="login-error" data-ng-show="showPassError">* שדה סיסמה לא הוזן כראוי</div>
         <div class="login-error" data-ng-show="showPhoneError">* שדה טלפון לא הוזן כראוי</div>
