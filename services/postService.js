@@ -1,11 +1,11 @@
-socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$upload','$q', function ($rootScope, classAjax, $http,$upload,$q) {
+socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upload', '$q', function ($rootScope, classAjax, $http, $upload, $q) {
 
     var showInput = true;
 
     var posts = [];
     var singlePost = null;
     var comments = [];
-   var memeImages = [];
+    var memeImages = [];
     var selectedAuthor = null;
     var typePrevPage = null;
     var user = null;
@@ -17,7 +17,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         //methodes
 
         getPostsBatch: function (request) {
-			self = this;
+            self = this;
             console.log(request);
 
             queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&_parentID=' + request._parentID;
@@ -33,28 +33,28 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
                 showSpiner = false;
                 for (var i = 0; i < data.data.length; i++) {
                     //posts.push(data.data[i]);
-					
+
                     flag = true;
                     for (var j = 0; j < posts.length & flag; j++) {
-						
-                        if (data.data[i]._id == posts[j]._id) {					
-							
-							flag = false;
+
+                        if (data.data[i]._id == posts[j]._id) {
+
+                            flag = false;
                         }
                     }
-                    if (flag){
-						
-						posts.push(data.data[i]); 
-					
-                    } 
+                    if (flag) {
+
+                        posts.push(data.data[i]);
+
+                    }
                 }
-				
-				for (var k = 0; k < posts.length; k++) {
-					
-				//	self.getIsLike(posts[k]._id,k);
-				}
-				
-				console.log(posts);
+
+                for (var k = 0; k < posts.length; k++) {
+
+                    //	self.getIsLike(posts[k]._id,k);
+                }
+
+                console.log(posts);
                 //}
             })
         },
@@ -139,51 +139,51 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             //if(file){self.attach(file);}
 
         },
-		
-		getIsLike: function (pid,index) {
-			
-			var parmas = {"activity":{ "post":pid, "type":"like"}};
-            
-			var json = JSON.stringify(parmas);
+
+        getIsLike: function (pid, index) {
+
+            var parmas = { "activity": { "post": pid, "type": "like"} };
+
+            var json = JSON.stringify(parmas);
             //console.log(json);
 
             $http.post(domain + 'isActivityFound', json)
 			.success(function (data) {
-				
-				 if(data.data == null){
-					
-					posts[index].isLiked = false;return;
-				}
-				else if(data.data.type=='like'){
-				
-					posts[index].isLiked = true;return; 
-				}	
-				
+
+			    if (data.data == null) {
+
+			        posts[index].isLiked = false; return;
+			    }
+			    else if (data.data.type == 'like') {
+
+			        posts[index].isLiked = true; return;
+			    }
+
 			})
 			.error(function (data) {
 
 			    console.log(data);
-				
+
 			});
-			
-			
+
+
         },
 
         unLike: function (pid) {
 
             console.log(user)
 
-            var parmas = { "activity": { "post": pid, "type": "like" }};
-		
+            var parmas = { "activity": { "post": pid, "type": "like"} };
+
             var json = JSON.stringify(parmas);
             console.log(json);
-			
-		
-			//$http.delete(domain + 'deletePostActivity/'+pid, json)
-        
-            $http({url:domain + 'deletePostActivity',method:"delete" ,data:json})
-			//$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
-        
+
+
+            //$http.delete(domain + 'deletePostActivity/'+pid, json)
+
+            $http({ url: domain + 'deletePostActivity', method: "delete", data: json })
+            //$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
+
 			.success(function (data) {
 
 			    console.log(data);
@@ -195,12 +195,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
 
         },
-		
-		sendLike: function (pid) {
 
-            var parmas = { "activity": { "post": pid, "type": "like" }};
-            
-			var json = JSON.stringify(parmas);
+        sendLike: function (pid) {
+
+            var parmas = { "activity": { "post": pid, "type": "like"} };
+
+            var json = JSON.stringify(parmas);
             console.log(json);
 
             $http.post(domain + 'addPostActivity', json)
@@ -216,15 +216,15 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
         },
 
-         getMemesImages: function (request) {
+        getMemesImages: function (request) {
             queryString = "";
 
 
-             console.log(queryString);
+            console.log(queryString);
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data.data);
-                if (request.endTimestamp == '') { 
-                    memeImages = data.data;console.log(memeImages);
+                if (request.endTimestamp == '') {
+                    memeImages = data.data; console.log(memeImages);
                 }
                 else {
                     console.log(data.data);
@@ -266,7 +266,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             return polls;
         },
 
-        getMemes: function () { 
+        getMemes: function () {
             return memeImages;
         },
 
@@ -278,9 +278,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
             .then(function (data) {
                 console.log(data);
                 singlePost = data.data;
-                self.getPostsBatch({startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
+                self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
             })
-            
+
         },
 
         getSinglePost: function () {
@@ -290,6 +290,16 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
         setFilterByAuthor: function (author, type) {
             typePrevPage = type;
             selectedAuthor = author;
+        },
+
+        getAuthorsByPostType: function (request) {
+            queryString = 'authors?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType;
+            console.log(queryString);
+
+            classAjax.getdata('get', queryString, request).then(function (data) {
+                console.log(data);
+                posts = data.data;
+            })
         },
 
         getPostsByAuthor: function (request) {

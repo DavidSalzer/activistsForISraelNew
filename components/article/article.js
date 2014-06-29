@@ -2,7 +2,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
     /*init variables*/
     $scope.showInput = false;
-    $scope.currentFilter = 'all';
+    $scope.currentTab = 'article';
     $scope.currentPost = null;
     $scope.showSpiner = PostService.getSpiner;
     $scope.showPostTitle = true;
@@ -43,7 +43,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
-	$scope.isLiked = PostService.getIsLike;
+    $scope.isLiked = PostService.getIsLike;
     $scope.articleId = $stateParams.postId;
 
 
@@ -71,10 +71,10 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     });
 
     /* $scope.$on('addLike', function (event, args) {
-        $scope.currentPost = args.postid;
-        $scope.$apply();
-        //console.log(args)
-        PostService.sendLike(args.postid)
+    $scope.currentPost = args.postid;
+    $scope.$apply();
+    //console.log(args)
+    PostService.sendLike(args.postid)
     }); */
 
     $scope.$on('postClicked', function (event, args) {
@@ -88,22 +88,22 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
             case "author":
-                $scope.getPostsByAll();
-                $state.transitionTo('author-page', { authorId: $scope.authorId });
+                //$scope.getPostsByAll();
+                $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });
                 break;
         }
 
     });
 
     $scope.userClicked = function () {
-       // alert('hi1');
+        // alert('hi1');
         //event.stopPropagation();
         $rootScope.$broadcast('userClicked', { authorId: '53a7df7ec75d61c450b44825' });
     };
 
     $scope.$on('userClicked', function (event, args) {
-       // alert('hi2');
-        $state.transitionTo('author-page', {authorId: args.authorId});
+        // alert('hi2');
+        $state.transitionTo('author-page', { authorId: args.authorId });
     });
 
     $scope.getPosts = function () {
@@ -145,28 +145,31 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     //}
 
     $scope.getPostsByAll = function () {
+        $scope.currentTab = 'article';
         request.endTimestamp = '';
         request.orderBy = '-timestamp';
         request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
-    $scope.getPostsByAuthors = function () {
-        $scope.currentFilter = 'authors';
-        request.postType = 'author';
-        request.endTimestamp = '';
-        PostService.getPostsBatch(request);
-    }
+    //$scope.getPostsByAuthors = function () {
+    //    $scope.currentFilter = 'authors';
+    //    request.postType = 'author';
+    //    request.endTimestamp = '';
+    //    PostService.getPostsBatch(request);
+    //}
 
     $scope.getAuthors = function () {
-        request.orderBy = '-likesCount';
+        $scope.currentTab = 'author';
+        request.orderBy = '-timestamp';
         request.endTimestamp = '';
         request.offset = 0;
-        PostService.getPostsBatch(request);
+        PostService.getAuthorsByPostType(request);
     }
 
 
     $scope.getPostsByViews = function () {
+        $scope.currentTab = 'article';
         request.endTimestamp = '';
         request.orderBy = '-viewsCount';
         request.offset = 0;
@@ -186,7 +189,12 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         request.offset += 20;
         post = PostService.getPosts();
         request.endTimestamp = post[0].timestamp;
-        PostService.getPostsBatch(request);
+        if ($scope.currentTab == 'article') {
+            PostService.getPostsBatch(request);
+        }
+        else {
+            PostService.getAuthorsByPostType(request);
+        }
     }
 
 
