@@ -173,15 +173,15 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http','$uplo
 
             console.log(user)
 
-            var parmas = { "activity": { "post": pid, "type": "like" }};
+            var parmas = {"activity":{"post":pid,"type":"like"}};
 		
             var json = JSON.stringify(parmas);
             console.log(json);
 			
 		
-			//$http.delete(domain + 'deletePostActivity/'+pid, json)
+			//$http.delete(domain + 'deletePostActivity', json)
         
-            $http({url:domain + 'deletePostActivity',method:"delete" ,data:json})
+            $http({url:domain + 'deletePostActivity',method:"delete" ,headers: {'Content-Type': 'application/json'}, data:json})
 			//$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
         
 			.success(function (data) {

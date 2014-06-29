@@ -1,6 +1,10 @@
 
 <!-- <link rel="stylesheet" type="text/css" href="./components/talkback/talkback.css" /> -->
 
+
+
+
+
 <div class="sub-header" id="feature-header" data-ng-click="writePost()">
     <div data-ng-style="{'background-color':featureDetails.featureColor}">
    צור אירוע
@@ -8,6 +12,38 @@
     <div class="color-line color-line-bottom "></div>
 </div>
 
+ <div ng-controller="DatepickerDemoCtrl">
+<!-- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> -->
+    <div style="display:inline-block; min-height:290px;">
+        <datepicker ng-model="dt" min-date="minDate" show-weeks="false" language="He" class="well well-sm"></datepicker>
+    </div>
+</div>
+
+
+
+<!-- <table style='background-color: hsl(208, 100%, 97%);'>
+<tr>
+ ינואר
+</tr>
+<tr>
+  <td>ראשון</td> 
+  <td>שני</td>
+  <td>שלישי</td>
+  <td>רביעי</td>
+  <td>חמישי</td>
+  <td>שישי</td> 
+  <td>שבת</td>
+</tr>
+<tr>
+  <td>1</td> 
+  <td>2</td>
+  <td>3</td>
+  <td>4</td>
+  <td>5</td>
+  <td>6</td> 
+  <td>7</td>
+</tr>
+</table> -->
 
 <div class="tab-content" data-ng-hide="true"><!--ignore this section- do not delete-->
     <div class="tab-pane" toggleable active-class="active" default="active" id="Tab1" exclusion-group="myTabs"></div>

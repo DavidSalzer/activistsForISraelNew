@@ -1,7 +1,7 @@
 var domain = 'http://cambium.co.il:3003/';
  
 
-var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload'])
+var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap'])
 
 /**** UI Router ****/
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -337,13 +337,13 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
                 if (scope.post.isLiked == true) {//LIKE!
 
-                    scope.post.likesCount++;
+                    //scope.post.likesCount++;
 					PostService.sendLike(scope.post._id); 
 
                 }
                 else {//UNLIKE!
-
-                    scope.post.likesCount--;
+					console.log('unlike')
+                    //scope.post.likesCount--;
                     scope.$apply();
 					PostService.unLike(scope.post._id); 
 
