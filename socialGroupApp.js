@@ -172,11 +172,11 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         })
 
         .state('meme-preview', {
-            url: "/meme-preview/:base64",
+            url: "/meme-preview",
             views: {
                 "main": {
                     templateUrl: "./components/meme/memePreview.html",
-                    controller: "writeMeme"
+                    controller: "previewPubMeme"
                 }
             }
         })
