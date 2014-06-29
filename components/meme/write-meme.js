@@ -1,5 +1,5 @@
 
-socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', 'memeGenerat', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, memeGenerat) {
+socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
     var z;
     /*init variables*/
     generalParameters.setBackIcon(true);
@@ -53,9 +53,9 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         html2canvas(document.getElementById('html2canvas'), {
             onrendered: function (canvas) {
                 var dataURL = canvas.toDataURL("image/png");
-                //document.getElementById('img').src = dataURL;
-                $scope.previewMemeBase64 = dataURL;
-                $state.transitionTo('meme-preview', { base64: "" });
+                 //document.getElementById('img').src = dataURL;
+               PostService.setPreviewMeme(dataURL);
+               $state.transitionTo('meme-preview');
             }
         });
     }
@@ -94,26 +94,6 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     console.log($scope.postData);
 
 
-    $scope.sendPost = function () {
-
-        /* if(($scope.min > 0)&&($scope.postData.post.content.length < $scope.min)){ $rootScope.$broadcast('showInfoPopup', { showInfo: true });return;}   */
-        //alert($scope.imgObj);
-        //alert($scope.fileObj);
-        PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj);
-        if ($scope.postData.post.postType == 'talkback') {
-
-            $state.transitionTo('talk-back'); return;
-        }
-        $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
-    };
-
-
-    /***********preview section********************/
-   /* $scope.previewMemeBase64 = "";
-    if ($stateParams.base64 != undefined) {
-        // $scope.previewMemeBase64 = $stateParams.base64;
-       // console.log("base64: " + $stateParams.base64);
-    }*/
 
 } ]);
 

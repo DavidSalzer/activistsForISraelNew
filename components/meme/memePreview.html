@@ -8,7 +8,12 @@
 </div>
 
 <div class="posts-list">
-    <img id="previewImg" data-ng-src="{{previewMemeBase64}}" />
-    <div class="button" data-ng-click="" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">פרסם</div>
-    <div class="button" data-ng-click="" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">שמור</div>
+    <div class="preview-wrap">
+        <img id="previewImg" data-ng-src="{{previewBase64}}" />
+    </div>
+    <div class="buttons-wrap">
+        <div class="button" data-ng-click="publishMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">פרסם</div>
+    <div class="button" data-ng-click="saveMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">שמור</div>
+    </div>
+    
 </div>

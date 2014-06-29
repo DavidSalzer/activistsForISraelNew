@@ -10,7 +10,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
     var typePrevPage = null;
     var user = null;
     var showSpiner = false;
-
+    var previeMemeBase64 = "";
 
 
     return {
@@ -346,6 +346,13 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         getSpiner: function () {
             return showSpiner;
+        },
+
+        getPreviewMeme: function () {
+            return previeMemeBase64;
+        },
+        setPreviewMeme: function (base64) {
+            previeMemeBase64 = base64;
         }
 
 
