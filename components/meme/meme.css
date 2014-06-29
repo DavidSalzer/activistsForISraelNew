@@ -176,12 +176,13 @@ display: block;
 }
 
 .chosenImg .meme-container{
-    width: 56%;
-margin: auto;
+   width: 180px;
+height: 180px;
 /* clear: both; */
 /* left: 0; */
 /* right: 0; */
 float: none;
+margin: auto;
 }
 
 .immulate-text{
@@ -316,4 +317,17 @@ right: 42px;
 .button{
     font-size: 21px;
     font-family: Calibri 
+}
+
+.widthCon{
+   width: 100%;
+height: auto;
+top: 0;
+bottom: 0;
+position: absolute;
+margin: auto;
+}
+.heightCon{
+    width: auto;
+    height: 100%;
 }

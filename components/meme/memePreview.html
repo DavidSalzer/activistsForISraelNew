@@ -1,0 +1,14 @@
+<link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
+
+<div class="sub-header" id="feature-header" data-ng-click="writeMeme()">
+    <div  style="background-color: #ffd427;">
+    המם שלי
+    </div>
+    <div class="color-line color-line-bottom "></div>
+</div>
+
+<div class="posts-list">
+    <img id="previewImg" data-ng-src="{{previewMemeBase64}}" />
+    <div class="button" data-ng-click="" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">פרסם</div>
+    <div class="button" data-ng-click="" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">שמור</div>
+</div>

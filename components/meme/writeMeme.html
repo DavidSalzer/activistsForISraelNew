@@ -23,15 +23,16 @@
         </div>
     </div>
 
-    <div class="chosenImg">
+    <div class="chosenImg" id="html2canvas"  data-ng-show="true">
          <div class="meme-wrap meme-container" >
-            <div class="meme-dummy" id="dummy"></div>
-            <div class="meme-element"  data-ng-style="{'background-image': 'url(http://cdn2.unitedwithisrael.net/wp-content/uploads/2012/02/naftali-bennett.jpg)'}" id="element"></div>
+             <img id="chosenImg" class="" data-ng-class="setClass()" src="./img/image/kneset.jpg" />
+             <!--<img id="chosenImg" class="" data-ng-class="setClass()" src="http://upload.wikimedia.org/wikipedia/commons/5/5d/NaftaliBennett.jpg" />-->
+              <div class="meme-element"  data-ng-style="{'background-image': 'none'}" id="element"></div>
             <div class="immulate-text top"  data-ng-class="{'size1':topText.length <=12, 'size2':(topText.length >12 && topText.length <=20),'size3':topText.length >20}"  data-ng-style="{'color':getColor('top'),'font-family':font}">{{topText}}</div>
              <div class="immulate-text bottom"   data-ng-class="{'size1':bottomText.length <=12, 'size2':(bottomText.length >12 && bottomText.length <=20),'size3':bottomText.length >20}"  data-ng-style="{'color':getColor('bottom'),'font-family':font}">{{bottomText}}</div>
         </div>
     </div>
-     <div class="add-file">  
+     <div class="add-file"  data-ng-show="true">  
        <div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
 			+
 			<input type="file" data-upload='img' style='position: absolute;top: 0;'>
@@ -40,7 +41,7 @@
 		<div class='add-file-text' >{{imgFileText}}</div>
 		<div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
     </div>
-    <div class="edit-text-wrap">
+    <div class="edit-text-wrap"  data-ng-show="true">
         <div class="font">
              <div class="plus rtl" data-ng-class="{'rtl-active':rtl == true}" data-ng-click="setDirection('rtl')">
 			
@@ -74,6 +75,12 @@
             
         </div>
         
-    <div class="button" data-ng-click="createMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">צור מם</div>
+    
+
     </div>
+    <div class="button" data-ng-click="createMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">צור מם</div>
+    <div style="width: 320px;height: 320px">
+        <img width="" height="" src="" id="img" />
+    </div>
+    
 </div>

@@ -170,6 +170,17 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
+
+        .state('meme-preview', {
+            url: "/meme-preview/:base64",
+            views: {
+                "main": {
+                    templateUrl: "./components/meme/memePreview.html",
+                    controller: "writeMeme"
+                }
+            }
+        })
+
 		 .state('event', {
              url: "/event",
              views: {
@@ -220,8 +231,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
 
             $http({
-               url: domain + queryString,
-               //url: URL,
+              // url: domain + queryString,
+               url: URL,
                 method: method, // temp cancel for local json calls
                 data: request
             }).
