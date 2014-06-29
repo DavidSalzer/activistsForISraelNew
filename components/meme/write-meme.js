@@ -12,9 +12,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.bottomRgb = "ff0000";
     $scope.topText = "";
 
-
     $scope.fontOptions = ['arial', 'Aharoni', 'Calibri'];
-
 
     $scope.getColor = function (pos) {
 
@@ -41,8 +39,25 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         }
     }
 
+    $scope.setClass = function () {
+        var img = document.getElementById('chosenImg');
+        if (img.width > img.height) {
+            return 'widthCon'
+        }
+        else if (img.width < img.height) {
+            return 'heightCon'
+        }
+    }
+
     $scope.createMeme = function () {
-        var x;
+        html2canvas(document.getElementById('html2canvas'), {
+            onrendered: function (canvas) {
+                var dataURL = canvas.toDataURL("image/png");
+                //document.getElementById('img').src = dataURL;
+                $scope.previewMemeBase64 = dataURL;
+                $state.transitionTo('meme-preview', { base64: "" });
+            }
+        });
     }
 
 
@@ -77,7 +92,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     PostService.getMemesImages(request);
     $scope.memeImages = PostService.getMemes;
     console.log($scope.postData);
-    //memeGenerat.setMeme('shalom','lehitraot','http://upload.wikimedia.org/wikipedia/commons/5/5d/NaftaliBennett.jpg','30px Arial');
+
 
     $scope.sendPost = function () {
 
@@ -92,4 +107,13 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
     };
 
+
+    /***********preview section********************/
+   /* $scope.previewMemeBase64 = "";
+    if ($stateParams.base64 != undefined) {
+        // $scope.previewMemeBase64 = $stateParams.base64;
+       // console.log("base64: " + $stateParams.base64);
+    }*/
+
 } ]);
+
