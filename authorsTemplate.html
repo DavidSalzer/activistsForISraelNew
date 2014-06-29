@@ -2,10 +2,10 @@
   <div class="post-details">
     
         <figure class="author-image" data-ng-show="true">
-		<div style="background-image:url('{{post.0.data.img.RelativePosition? domain+post.0.data.img.url : post.0.data.img.url}}')"></div>
+		<div style="background-image:url('{{post.data.img.RelativePosition? domain+post.data.img.url : post.data.img.url}}')"></div>
            <!--  <img data-ng-src="{{post.authorImage}}" alt="user-pic"> -->
         </figure>
-         <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post.0.data}}">{{post.0.data.firstName}} {{post.0.data.lastName}}</span>
+         <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post.data}}">{{post.data.firstName}} {{post.data.lastName}}</span>
   
     
   </div>
