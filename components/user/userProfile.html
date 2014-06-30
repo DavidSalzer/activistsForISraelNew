@@ -1,54 +1,63 @@
 <section id="user-profile">
     <div class="user-profile-avatar-zone">
         <div class="color-circle">
-            <div class="user-profile-avatar" data-ng-style="{'background-image': 'url({{profile().userImg}})'}"></div>
+            <div class="user-profile-avatar" style="background-image: url({{profile().userImg}})"></div>
         </div>
     </div>
     <div class="color-line color-fixed-top"></div>
     <div class="user-profile-items">
         <div class="user-profile-name user-profile-item">
-            <div class="user-edit-icon" data-ng-hide="editName"></div>
+            <div class="user-edit-icon" data-ng-hide="editName || !myProfile" data-ng-click="editItem('name')"></div>
             <div data-ng-hide="editName">{{profile().firstName}} {{profile().lastName}}</div>
             <div class="user-edit-icon-v" data-ng-show="editName"></div>
             <input type="text" data-ng-model="profile().firstName" data-ng-show="editName" value="{{ profile().firstName }}">
             <input type="text" data-ng-model="profile().lastName" data-ng-show="editName" value="{{ profile().lastName }}">
-            <div class="user-edit-icon-x" data-ng-show="editName"></div>
+            <div class="user-edit-icon-x" data-ng-show="editName" data-ng-click="editItem('name')"></div>
         </div>
-        <div class="user-profile-date-registration user-profile-item" data-on-long-press="editItem('address')">
-            <div data-ng-hide="editAddress" placeholder="כתובת">רשום מתאריך: {{profile().dateRegistration}}</div>
+        <div class="user-profile-registration-date user-profile-item">
+            <div placeholder="כתובת">רשום מתאריך: {{profile().registrationDate}}</div>
         </div>
-        <div class="user-profile-scoring user-profile-item" data-on-long-press="editItem('address')">
-            <div data-ng-hide="editAddress" placeholder="כתובת">ניקוד מצטבר: {{profile().scoring}}</div>
+        <div class="user-profile-scoring user-profile-item">
+            <div placeholder="כתובת">ניקוד מצטבר: {{profile().scoring}}</div>
         </div>
-        <div class="user-profile-gender user-profile-item" data-on-long-press="editItem('address')">
-            <div class="user-edit-icon" data-ng-hide="editGender"></div>
+        <div class="user-profile-gender user-profile-item" data-ng-show="myProfile">
+            <div class="user-edit-icon" data-ng-hide="editGender" data-ng-click="editItem('gender')"></div>
             <div data-ng-hide="editGender" placeholder="כתובת">{{profile().gender}}</div>
             <div class="user-edit-icon-v" data-ng-show="editGender"></div>
             <input type="text" data-ng-model="profile().gender" data-ng-show="editGender" value="{{profile().gender}}">
-            <div class="user-edit-icon-x" data-ng-show="editGender"></div>
+            <div class="user-edit-icon-x" data-ng-show="editGender" data-ng-click="editItem('gender')"></div>
         </div>
-        <div class="user-profile-address user-profile-item" data-on-long-press="editItem('address')">
-            <div class="user-edit-icon" data-ng-hide="editAddress"></div>
+        <div class="user-profile-address user-profile-item" data-ng-show="myProfile">
+            <div class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
             <div data-ng-hide="editAddress" placeholder="כתובת">{{profile().address}}</div>
             <div class="user-edit-icon-v" data-ng-show="editAddress"></div>
             <input type="text" data-ng-model="profile().address" data-ng-show="editAddress" value="{{profile().address}}">
-            <div class="user-edit-icon-x" data-ng-show="editAddress"></div>
+            <div class="user-edit-icon-x" data-ng-show="editAddress" data-ng-click="editItem('address')"></div>
         </div>
-        <div class="user-profile-mail user-profile-item" data-on-long-press="editItem('email')">
-            <div class="user-edit-icon" data-ng-hide="editEmail"></div>
+        <div class="user-profile-mail user-profile-item" data-ng-show="myProfile">
+            <div class="user-edit-icon" data-ng-hide="editEmail" data-ng-click="editItem('email')"></div>
             <div data-ng-hide="editEmail">{{profile().email}}</div>
             <div class="user-edit-icon-v" data-ng-show="editEmail"></div>
             <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
-            <div class="user-edit-icon-x" data-ng-show="editEmail"></div>
+            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>
         </div>
-        <div class="user-profile-phone user-profile-item" data-on-long-press="editItem('phone')">
-            <div class="user-edit-icon" data-ng-hide="editPhone"></div>
+        <div class="user-profile-phone user-profile-item" data-ng-show="myProfile">
+            <div class="user-edit-icon" data-ng-hide="editPhone" data-ng-click="editItem('phone')"></div>
             <div data-ng-hide="editPhone">{{profile().phone}}</div>
             <div class="user-edit-icon-v" data-ng-show="editPhone"></div>
             <input type="text" data-ng-model="profile().phone" data-ng-show="editPhone" value="{{profile().phone}}">
-            <div class="user-edit-icon-x" data-ng-show="editPhone"></div>
+            <div class="user-edit-icon-x" data-ng-show="editPhone" data-ng-click="editItem('phone')"></div>
         </div>
-        <div class="user-profile-item">
+        <div class="color-line color-fixed-top"></div>
+        <div class="user-profile-item">הפעולות האחרונות</div>
+        <div data-ng-repeat="feature in featuresList track by $index">
+            <div class="user-recent-activity">
+                <div class="user-recent-activity-logo" style="background-image: url({{feature.featureLogo}})"></div>
+            {{feature.featureName}}
+            </div>
+            <div data-ng-repeat="post in feature.recentActivity track by $index"></div>
+        </div>
+        <div class="user-profile-item" data-ng-show="myProfile">
             <input type="button" class="user-profile-logout-btn" data-ng-click="userLogout()" value="התנתק">
         </div>
     </div>

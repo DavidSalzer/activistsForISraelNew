@@ -3,10 +3,10 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     /*init variables*/
     $scope.showInput = false;
     $scope.currentTab = 'article';
-    $scope.currentPost = null;
+    //$scope.currentPost = null;
     $scope.showSpiner = PostService.getSpiner;
     $scope.showPostTitle = true;
-
+    $scope.domain = domain;
 
 
     $scope.showArticleImg = false;
@@ -25,9 +25,10 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-    $scope.domain = domain;
+    
     $scope.user = generalParameters.getUser();
     console.log(user);
+    
     request = {
         startTimestamp: '',
         endTimestamp: '',
@@ -43,9 +44,8 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
-    $scope.isLiked = PostService.getIsLike;
-    $scope.articleId = $stateParams.postId;
-
+    //$scope.isLiked = PostService.getIsLike;
+    
 
     $scope.writePost = function () {
         $scope.user = generalParameters.getUser();
@@ -57,25 +57,10 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         }
     };
 
-    $scope.authorClicked = function ($event) {
-        //alert('hi22');
-        // $state.transitionTo('authorPage');
-    };
+    //$scope.authorClicked = function ($event) {
+    //    
+    //};
 
-    /* broadcast*/
-    $scope.$on('addCommentClicked', function (event, args) {
-        $scope.currentPost = args.postId;
-        $scope.showInput = args.showInput;
-        $scope.$apply();
-        console.log(args)
-    });
-
-    /* $scope.$on('addLike', function (event, args) {
-    $scope.currentPost = args.postid;
-    $scope.$apply();
-    //console.log(args)
-    PostService.sendLike(args.postid)
-    }); */
 
     $scope.$on('postClicked', function (event, args) {
         console.log(args);
@@ -88,61 +73,20 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
                 $state.transitionTo('single-article', { postId: $scope.postId });
                 break;
             case "author":
-                //$scope.getPostsByAll();
                 $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });
                 break;
         }
 
     });
 
-    $scope.userClicked = function () {
-        // alert('hi1');
-        //event.stopPropagation();
-        $rootScope.$broadcast('userClicked', { authorId: '53a7df7ec75d61c450b44825' });
-    };
+    //$scope.userClicked = function () {
+    //    
+    //    $rootScope.$broadcast('userClicked', { authorId: '53a7df7ec75d61c450b44825' });
+    //};
 
-    $scope.$on('userClicked', function (event, args) {
-        // alert('hi2');
-        $state.transitionTo('author-page', { authorId: args.authorId });
-    });
-
-    $scope.getPosts = function () {
-        PostService.getPostsBatch(request);
-    }
-
-    //$scope.updatePosts = function () {
-    //    PostService.updatePost({
-    //        postId: 8,
-    //        postType: 'talkback',
-    //        author: 'shimon',
-    //        timeStamp: '25052014175555',
-    //        title: 'עקירת עצי זית',
-    //        content: 'מה המה מה מה מה מה מה מה מה מה ',
-    //        image: '',
-    //        likes: {
-    //            likesCount: 12,
-    //            isLiked: 0
-    //        },
-    //        comments: {
-    //            commentsCount: 5,
-    //            comments: [
-    //                {
-    //                    commentId: 0,
-    //                    postType: 'talkback',
-    //                    author: 'shimon',
-    //                    timeStamp: '25052014185555',
-    //                    title: 'עקירת עצי זית',
-    //                    content: 'תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר תג מחיר ',
-    //                    image: '',
-    //                    like: {
-    //                        likesCount: 12,
-    //                        isLiked: 1
-    //                    }
-    //                }
-    //            ]
-    //        }
-    //    })
-    //}
+    //$scope.$on('userClicked', function (event, args) {
+    //    $state.transitionTo('author-page', { authorId: args.authorId });
+    //});
 
     $scope.getPostsByAll = function () {
         $scope.currentTab = 'article';
@@ -152,13 +96,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         PostService.getPostsBatch(request);
     }
 
-    //$scope.getPostsByAuthors = function () {
-    //    $scope.currentFilter = 'authors';
-    //    request.postType = 'author';
-    //    request.endTimestamp = '';
-    //    PostService.getPostsBatch(request);
-    //}
-
+    
     $scope.getAuthors = function () {
         $scope.currentTab = 'author';
         request.orderBy = '-timestamp';
@@ -176,15 +114,8 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         PostService.getPostsBatch(request);
     }
 
-    $scope.sendComment = function () {
-        console.log($scope.commentText);
-        PostService.sendPost('shimon', 'talkback', $scope.commentText, $scope.currentPost);
-    }
-
-
-
+    
     $scope.loadMore = function () {
-        //$scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
         request.offset += 20;
         post = PostService.getPosts();

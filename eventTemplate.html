@@ -1,0 +1,31 @@
+<div class="post-tab" data-post="{{post._id}}" data-post-type="{{post.postType}}">
+  <div class="post-details">
+    <div class="author-wrap" data-ng-show="showAuthorImg">
+        <figure class="author-image">
+			<div style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
+            <!-- <img data-ng-src="{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}" alt="user-pic"> -->
+        </figure>
+         <span class="author-name"  data-author="{{post._author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post._author.data.firstName}} {{post._author.data.lastName}}</span>
+  
+    </div>
+       <div class="post-title">{{post.title}}</div>
+       
+    <span class="author-date">{{post.timestamp | date : 'dd.MM.yyyy'}}</span>
+  </div>
+    
+
+    <div class="post-main-text">
+        <img data-ng-src="{{domain+post.img}}" alt="post-pic" data-ng-show="showArticleImg && post.img!='' && post.img!=undefined">
+        {{post.content}}
+    </div>
+
+   <!--  <div class="post-footer">
+        <div class="post-feedback">
+            <comment data-postid="{{post._Id}}" data-ng-show="{{showCommentButton!=false}}"></comment>
+            
+            <like  data-ng-show="showLikeButton!=false"></like>
+            
+        </div>
+    </div> -->
+
+</div>

@@ -6,7 +6,7 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	$scope.imageMax = 1;
 	$scope.toLargImage = false;
 	$scope.imgFileText = 'צרף תמונה'
-	var colors={'article':'#006dbe','talkback':'#993ca7','poll':'#da4f00'};
+	var colors={'article':'#006dbe','talkback':'#993ca7','poll':'#da4f00','event':'#004a8e'};
 	
 	$scope.parentPostType = $stateParams.postType;
 	$scope.postType = $stateParams.postType;
@@ -34,8 +34,6 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 	switch ($scope.postType) {
             
 		case "article":{
-			
-	
 			
 			$scope.headerText ='כתיבת טקסט';
 			
@@ -94,9 +92,46 @@ socialGroupApp.controller('writePost', ['$scope','$rootScope','$stateParams', 'P
 			};
 			break;
 		}
+		
+		case "event":{
+	
+			$scope.headerText ='יצירת אירוע';
+			$scope.max = 140;
+			
+			$scope.postData.post.postType='event';
+			$scope.postData.post.title='';
+			$scope.postData.post.day='';
+			$scope.postData.post.dayTime='';
+			$scope.postData.post.place='';
+			$scope.postData.post.mail = "";
+			$scope.postData.post.phone = "";
+			
+			$scope.thankDetails = {
+        
+				featureColor:colors[$scope.postType],
+				thankText: 'האירוע התקבל ויפורסם בהתאם לכללי האפליקציה',
+				btnText: 'עמוד האירועים',
+				headerText: 'יצירת אירוע',
+				featureState: 'event'
+    
+			};
+			break;
+		}
 		   
 		
     }
+	
+	$scope.cleanDetails = function () {//event
+		
+		$scope.postData.post.title='';
+		$scope.postData.post.content='';
+		$scope.postData.post.day='';
+		$scope.postData.post.dayTime='';
+		$scope.postData.post.place='';
+		$scope.postData.post.mail = "";
+		$scope.postData.post.phone = "";
+		$scope.imgFileText = 'צרף תמונה'
+	};
 	
 	$scope.sendPost = function () {
 		

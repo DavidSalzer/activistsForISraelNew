@@ -1,20 +1,58 @@
-socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAjax', 'generalParameters', function ($scope, $state, $http, classAjax, generalParameters) {
+socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAjax', 'generalParameters', 'PostService', function ($scope, $state, $http, classAjax, generalParameters, PostService) {
     $scope.d = 'disabled';
 
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/user.png",
         //infoImg: './img/whatsup.png',
-        featureColor: '#AB14E6',
-       
+        featureColor: '#AB14E6'
     };
+
+    $scope.featuresList = [
+        
+        {
+            featureUrl: 'talkback',
+            featureName: 'מה קורה',
+            featureLogo: "./img/whatsup.png",
+            featureColor: "talkback",
+            recentActivity: []
+        },
+         {
+            featureUrl: 'article',
+            featureName: 'מאמרים',
+            featureLogo: "./img/article.png",
+            featureColor: "article",
+            recentActivity: []
+        }
+  //       {
+  //          featureUrl: 'meme',
+  //          featureName: 'ממים',
+  //          featureLogo: "./img/meme.png",
+  //          featureColor: "#ffd427"
+  //      }
+  //      ,
+		//{
+		//    featureUrl: 'poll',
+		//    featureName: 'משאל עם',
+		//    featureLogo: "./img/poll.png",
+		//    featureColor: "poll"
+		//},
+		//{
+		//    featureUrl: 'event',
+		//    featureName: 'נפגשים',
+		//    featureLogo: "./img/calendar.png",
+		//    featureColor: "event"
+		//}
+
+    ];
 
     generalParameters.setFeature($scope.featureDetails);
     $scope.profile = generalParameters.getUser;
+    $scope.myProfile = true;
 
     $scope.editName = false;
     $scope.editAddress = false;
-    $scope.editEmail = true;
+    $scope.editEmail = false;
     $scope.editPhone = false;
     $scope.editGender = false;
 
@@ -22,39 +60,64 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
         console.log("edit: " + field);
         switch (field) {
             case 'name':
-                $scope.editName = true;
+                if ($scope.editName) {
+                    $scope.editName = false;
+                }
+                else {
+                    $scope.editName = true;
+                }
                 $scope.editAddress = false;
                 $scope.editEmail = false;
                 $scope.editPhone = false;
                 $scope.editGender = false;
                 break;
             case 'address':
+                if ($scope.editAddress) {
+                    $scope.editAddress = false;
+                }
+                else {
+                    $scope.editAddress = true;
+                }
                 $scope.editName = false;
-                $scope.editAddress = true;
                 $scope.editEmail = false;
                 $scope.editPhone = false;
                 $scope.editGender = false;
                 break;
             case 'email':
+                if ($scope.editEmail) {
+                    $scope.editEmail = false;
+                }
+                else {
+                    $scope.editEmail = true;
+                }
                 $scope.editName = false;
                 $scope.editAddress = false;
-                $scope.editEmail = true;
                 $scope.editPhone = false;
                 $scope.editGender = false;
                 break;
             case 'phone':
+                if ($scope.editPhone) {
+                    $scope.editPhone = false;
+                }
+                else {
+                    $scope.editPhone = true;
+                }
                 $scope.editName = false;
                 $scope.editAddress = false;
                 $scope.editEmail = false;
-                $scope.editPhone = true;
                 $scope.editGender = false;
                 break;
             case 'gender':
+                if ($scope.editGender) {
+                    $scope.editGender = false;
+                }
+                else {
+                    $scope.editGender = true;
+                }
                 $scope.editName = false;
                 $scope.editAddress = false;
                 $scope.editEmail = false;
                 $scope.editPhone = false;
-                $scope.editGender = true;
                 break;
         }
 
