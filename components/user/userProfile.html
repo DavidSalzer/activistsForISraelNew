@@ -1,7 +1,9 @@
 <section id="user-profile">
     <div class="user-profile-avatar-zone">
         <div class="color-circle">
-            <div class="user-profile-avatar" data-ng-style="{'background-image': 'url({{profile().userImg}})'}"></div>
+            <div class="user-profile-avatar" style="background-image: url({{profile().userImg}})">
+                <input type="file" id="userImg1" data-ng-show="myProfile">
+            </div>
         </div>
     </div>
     <div class="color-line color-fixed-top"></div>
@@ -48,8 +50,37 @@
             <input type="text" data-ng-model="profile().phone" data-ng-show="editPhone" value="{{profile().phone}}">
             <div class="user-edit-icon-x" data-ng-show="editPhone" data-ng-click="editItem('phone')"></div>
         </div>
+        <div class="color-line color-fixed-top"></div>
+        <div class="user-profile-item">הפעולות האחרונות</div>
+        <div data-ng-repeat="feature in featuresList track by $index">
+            <div class="user-recent-activity">
+                <div class="user-recent-activity-logo" style="background-image: url({{feature.featureLogo}})"></div>
+            {{feature.featureName}}
+            </div>
+            <div data-ng-repeat="post in feature.recentActivity track by $index"></div>
+        </div>
         <div class="user-profile-item" data-ng-show="myProfile">
             <input type="button" class="user-profile-logout-btn" data-ng-click="userLogout()" value="התנתק">
         </div>
     </div>
+
+    <!-- edit img popup -->
+        <div data-ng-show="editImg" class="editImg">
+            <div class="sign-in-close-zone">
+                <div class="close-sign-in close" data-ng-click="editCancel()"></div>
+            </div>
+            <div id="instruction-for-image">הזז, הגדל והקטן למיקוד התמונה</div>
+            <div id="cropDiv1">
+                <img data-ng-src="{{userimg}}">
+            </div>
+            <div class="button-side-img">
+                <button id="button_ok1" class="cat-Approve background-button-img">אשר</button>
+                </div>
+            <div class="button-side-img">
+                <button id="button_cancel1" class="cat-cancel background-button-img" data-ng-click="editCancel()">בטל</button>
+            </div>
+            <canvas id="c1"></canvas>
+            <div class="color-line color-line-button"></div>
+
+        </div>
 </section>

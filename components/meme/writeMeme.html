@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
-
+ 
 <div class="sub-header" id="feature-header" data-ng-click="writeMeme()">
     <div  style="background-color: #ffd427;">
     המם שלי
@@ -8,24 +8,29 @@
 </div>
 
 <div class="posts-list">
-    <div class="instruction">בחר תמונה</div>
+    <!--<script src="./plugins/color-picker/jscolor.js"></script>-->
+
+    <div class="top-part"  data-ng-show="postImg == ''">
+        <div class="instruction" >בחר תמונה</div>
    
-    <div class="suggested-images-wrap" data-ng-show="false">
-        <div class="images-window">  
-			<div  class='suggested-images-up'>
-				<span   data-ng-repeat="image in memeImages()"  ng-if="$even" class="meme-element2"  style="background-image: url({{image.url}});" >
-				</span>
-            </div>
-			<div  class='suggested-images-down'>
-				<span   data-ng-repeat="image in memeImages()"  ng-if="$odd" class="meme-element2"  style="background-image: url({{image.url}});" >
-				</span>
+        <div class="suggested-images-wrap">
+            <div class="images-window">  
+			    <div  class='suggested-images-up'>
+				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in memeImages()"  ng-if="$even" class="meme-element2"  style="background-image: url({{image.url}});" >
+				    </span>
+                </div>
+			    <div  class='suggested-images-down'>
+				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in memeImages()"  ng-if="$odd" class="meme-element2"  style="background-image: url({{image.url}});" >
+				    </span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="chosenImg"  data-ng-show="true">
+    </div>
+    
+    <div class="chosenImg top-part"  data-ng-show="postImg != ''">
          <div class="meme-wrap meme-container"  id="html2canvas" >
-             <img id="chosenImg" class="" data-ng-class="setClass()" src="./img/image/kneset.jpg" />
+             <img id="chosenImg" class="" data-ng-class="setClass()"  ng-src="{{postImg}}" />
              <!--<img id="chosenImg" class="" data-ng-class="setClass()" src="http://upload.wikimedia.org/wikipedia/commons/5/5d/NaftaliBennett.jpg" />-->
               <div class="meme-element"  data-ng-style="{'background-image': 'none'}" id="element"></div>
             <div class="immulate-text top"  data-ng-class="{'size1':topText.length <=12, 'size2':(topText.length >12 && topText.length <=20),'size3':topText.length >20}"  data-ng-style="{'color':getColor('top'),'font-family':font}">{{topText}}</div>
@@ -79,8 +84,8 @@
 
     </div>
     <div class="button" data-ng-click="createMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">צור מם</div>
-    <div style="width: 320px;height: 320px">
+    <!--<div style="width: 320px;height: 320px">
         <img width="" height="" src="" id="img" />
-    </div>
+    </div>-->
     
 </div>
