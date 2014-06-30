@@ -3,7 +3,7 @@
     "data": [
         {
             "postId": 0,
-            "postType": "talkback",
+             "postType": "talkback",
             "_author": "צחי כהן",
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
@@ -17,7 +17,7 @@
             "comments": [
                 {
                     "postId": 0,
-                    "postType": "talkback",
+                     "postType": "talkback",
                     "_author": "ירון לוי",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
@@ -33,7 +33,7 @@
         },
         {
             "postId": 1,
-            "postType": "talkback",
+             "postType": "talkback",
             "_author": "משה עובדיה",
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
@@ -47,7 +47,7 @@
             "comments": [
                 {
                     "postId": 0,
-                    "postType": "talkback",
+                     "postType": "talkback",
                     "_author": "עודד עודדי",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
@@ -63,7 +63,7 @@
         },
         {
             "postId": 55,
-            "postType": "talkback",
+             "postType": "talkback",
             "_author": "צחי כהן",
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
@@ -77,7 +77,7 @@
             "comments": [
                 {
                     "postId": 0,
-                    "postType": "talkback",
+                     "postType": "talkback",
                     "_author": "shimon",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
@@ -93,7 +93,7 @@
         },
         {
             "postId": 77,
-            "postType": "talkback",
+             "postType": "talkback",
             "_author": "רענן מעפולה",
             "authorImage": "./img/penguin-chick.jpg",
             "timestamp": 1403179734134,
@@ -107,7 +107,7 @@
             "comments": [
                 {
                     "postId": 0,
-                    "postType": "talkback",
+                     "postType": "talkback",
                     "_author": "שמוליק קיפוד",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,

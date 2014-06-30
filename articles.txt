@@ -18,7 +18,7 @@
             "comments": [
                 {
                     "postId": 0,
-                    "postType": "talkback",
+                    "postType": "article",
                     "_author": "מנשה מזרחי",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
@@ -32,7 +32,7 @@
                 },
                 {
                     "postId": 1,
-                    "postType": "talkback",
+                    "postType": "article",
                     "_author": "שמחה ריף",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
@@ -63,7 +63,7 @@
             "comments": [
                 {
                     "postId": 0,
-                    "postType": "talkback",
+                    "postType": "article",
                     "_author": "עזרא",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
@@ -94,7 +94,7 @@
             "comments": [
                 {
                     "postId": 0,
-                    "postType": "talkback",
+                    "postType": "article",
                     "_author": "יונה",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,
@@ -125,7 +125,7 @@
             "comments": [
                 {
                     "postId": 0,
-                    "postType": "talkback",
+                    "postType": "article",
                     "_author": "shimon",
                     "authorImage": "./img/penguin-chick.jpg",
                     "timestamp": 1403179734134,

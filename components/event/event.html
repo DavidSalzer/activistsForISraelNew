@@ -1,42 +1,27 @@
 
-<!-- <link rel="stylesheet" type="text/css" href="./components/talkback/talkback.css" /> -->
+<link rel="stylesheet" type="text/css" href="./components/event/event.css" /> 
 
-<div class="sub-header" id="feature-header" data-ng-click="writePost()">
+
+
+<div class="sub-header" id="feature-header" data-ng-click="writeEvent()">
     <div data-ng-style="{'background-color':featureDetails.featureColor}">
    צור אירוע
     </div>
     <div class="color-line color-line-bottom "></div>
 </div>
 
-
-<div class="tab-content" data-ng-hide="true"><!--ignore this section- do not delete-->
-    <div class="tab-pane" toggleable active-class="active" default="active" id="Tab1" exclusion-group="myTabs"></div>
-    <div class="tab-pane" toggleable active-class="active" id="Tab2" exclusion-group="myTabs"></div>
-    <div class="tab-pane" toggleable active-class="active" id="Tab3" exclusion-group="myTabs"></div>
+ <div ng-controller="DatepickerDemoCtrl">
+<!-- <pre><em>{{dt | date:'fullDate' }}</em></pre> -->
+    <div><!--style="display:inline-block; min-height:290px;"-->
+        <datepicker ng-model="dt" min-date="minDate" show-weeks="false" class="well well-sm calendar"></datepicker>
+    </div>
 </div>
-
- <!--<div class="color-line color-fixed-top"></div>-->
 
 <div class="posts-list" scroller loading-method="loadMore()">
-    <post data-ng-repeat="post in posts() " data-post-type="talkback"></post>
-    <div class="spiner-zone" data-ng-show="showSpiner()">
+    <post data-ng-repeat="event in events() " data-post-type="event"></post>
+   <!--  <div class="spiner-zone" data-ng-show="showSpiner()">
         <div class="fa fa-spinner fa-spin"></div>
-    </div>
-
-</div>
-
-
-<!--<div>{{postId}}</div>-->
-<div class="write-comment-zone" data-ng-show="showInput">
-    <input type="text" class="write-comment-box" placeholder="הזן טקסט כאן" data-ng-model="commentText">
-    <input type="button" class="write-comment-btn" value="שלח &#9664;" data-ng-click="sendComment()">
-</div>
-<div class="comment-balloon" data-ng-show="showInput==false">
-    <span class="balloon-handler"></span>
-    <textarea class="text-balloon">
-    </textarea>
-
-    <p><span class="plus" data-ng-click="updatePosts()">+</span> צרף תמונה</p>
+    </div> -->
 
 </div>
 
