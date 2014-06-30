@@ -6,11 +6,49 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
         featureLogo: "./img/user.png",
         //infoImg: './img/whatsup.png',
         featureColor: '#AB14E6'
-       
     };
+
+    $scope.featuresList = [
+        
+        {
+            featureUrl: 'talkback',
+            featureName: 'מה קורה',
+            featureLogo: "./img/whatsup.png",
+            featureColor: "talkback",
+            recentActivity: []
+        },
+         {
+            featureUrl: 'article',
+            featureName: 'מאמרים',
+            featureLogo: "./img/article.png",
+            featureColor: "article",
+            recentActivity: []
+        }
+  //       {
+  //          featureUrl: 'meme',
+  //          featureName: 'ממים',
+  //          featureLogo: "./img/meme.png",
+  //          featureColor: "#ffd427"
+  //      }
+  //      ,
+		//{
+		//    featureUrl: 'poll',
+		//    featureName: 'משאל עם',
+		//    featureLogo: "./img/poll.png",
+		//    featureColor: "poll"
+		//},
+		//{
+		//    featureUrl: 'event',
+		//    featureName: 'נפגשים',
+		//    featureLogo: "./img/calendar.png",
+		//    featureColor: "event"
+		//}
+
+    ];
 
     generalParameters.setFeature($scope.featureDetails);
     $scope.profile = generalParameters.getUser;
+    $scope.myProfile = true;
 
     $scope.editName = false;
     $scope.editAddress = false;
@@ -22,7 +60,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
         console.log("edit: " + field);
         switch (field) {
             case 'name':
-                if($scope.editName){
+                if ($scope.editName) {
                     $scope.editName = false;
                 }
                 else {
@@ -34,7 +72,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
                 $scope.editGender = false;
                 break;
             case 'address':
-                if($scope.editAddress){
+                if ($scope.editAddress) {
                     $scope.editAddress = false;
                 }
                 else {
@@ -46,7 +84,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
                 $scope.editGender = false;
                 break;
             case 'email':
-                if($scope.editEmail){
+                if ($scope.editEmail) {
                     $scope.editEmail = false;
                 }
                 else {
@@ -58,7 +96,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
                 $scope.editGender = false;
                 break;
             case 'phone':
-                if($scope.editPhone){
+                if ($scope.editPhone) {
                     $scope.editPhone = false;
                 }
                 else {
@@ -70,7 +108,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
                 $scope.editGender = false;
                 break;
             case 'gender':
-                if($scope.editGender){
+                if ($scope.editGender) {
                     $scope.editGender = false;
                 }
                 else {
