@@ -13,6 +13,9 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.topText = "";
 
     $scope.fontOptions = ['arial', 'Aharoni', 'Calibri'];
+    $scope.showSuggestedImages = true;
+    $scope.suggestedMemes = [];
+    $scope.postImg = "";
 
     $scope.getColor = function (pos) {
 
@@ -49,13 +52,25 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         }
     }
 
+    $scope.imageClick = function (index) {
+        console.log(index);
+        $scope.suggestedMemes = PostService.getMemes();
+        $scope.postImg = $scope.suggestedMemes[index].url;
+        $scope.showSuggestedImages = false;
+        $scope.imageChosen();
+    }
+
+    $scope.imageChosen = function () {
+
+    }
+
     $scope.createMeme = function () {
         html2canvas(document.getElementById('html2canvas'), {
             onrendered: function (canvas) {
                 var dataURL = canvas.toDataURL("image/png");
-                 //document.getElementById('img').src = dataURL;
-               PostService.setPreviewMeme(dataURL);
-               $state.transitionTo('meme-preview');
+               // document.getElementById('img').src = dataURL;
+                PostService.setPreviewMeme(dataURL);
+                $state.transitionTo('meme-preview');
             }
         });
     }
