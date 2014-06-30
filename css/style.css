@@ -70,7 +70,12 @@ header i.fa.back {
 }
 
 select{
-    border: none;
+   border: none;
+width: 100%;
+padding:0px;
+padding-right: 0px;
+float:left;
+height: 100%;
 }
 /*************************post template*******************/
 .posts-list {
