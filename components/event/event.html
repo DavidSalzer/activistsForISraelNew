@@ -12,8 +12,9 @@
 
  <div ng-controller="DatepickerDemoCtrl">
 <!-- <pre><em>{{dt | date:'fullDate' }}</em></pre> -->
-    <div><!--style="display:inline-block; min-height:290px;"-->
-        <datepicker ng-model="dt" min-date="minDate" show-weeks="false" class="well well-sm calendar"></datepicker>
+    <div class='calendar-area'>
+        <datepicker ng-model="dt" show-weeks="false" class="well well-sm calendar"></datepicker>
+		<div id="calendar-arrow" data-ng-click="toggleWeekDisplay()"></div>
     </div>
 </div>
 
