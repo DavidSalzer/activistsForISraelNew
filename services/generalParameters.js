@@ -12,8 +12,6 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
     };
 
 
-
-
     var userDetails = {
         firstName: 'התחבר',
         userImg: './img/user.png'

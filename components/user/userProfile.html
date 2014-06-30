@@ -1,7 +1,7 @@
 <section id="user-profile">
     <div class="user-profile-avatar-zone">
         <div class="color-circle">
-            <div class="user-profile-avatar" data-ng-style="{'background-image': 'url({{profile().userImg}})'}"></div>
+            <div class="user-profile-avatar" style="background-image: url({{profile().userImg}})"></div>
         </div>
     </div>
     <div class="color-line color-fixed-top"></div>
@@ -47,6 +47,15 @@
             <div class="user-edit-icon-v" data-ng-show="editPhone"></div>
             <input type="text" data-ng-model="profile().phone" data-ng-show="editPhone" value="{{profile().phone}}">
             <div class="user-edit-icon-x" data-ng-show="editPhone" data-ng-click="editItem('phone')"></div>
+        </div>
+        <div class="color-line color-fixed-top"></div>
+        <div class="user-profile-item">הפעולות האחרונות</div>
+        <div data-ng-repeat="feature in featuresList track by $index">
+            <div class="user-recent-activity">
+                <div class="user-recent-activity-logo" style="background-image: url({{feature.featureLogo}})"></div>
+            {{feature.featureName}}
+            </div>
+            <div data-ng-repeat="post in feature.recentActivity track by $index"></div>
         </div>
         <div class="user-profile-item" data-ng-show="myProfile">
             <input type="button" class="user-profile-logout-btn" data-ng-click="userLogout()" value="התנתק">
