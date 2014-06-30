@@ -114,7 +114,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         console.log($scope.signinDetails);
     }
 
-    //
+    //send base64 string to server to be converted to jpg, then save image to current user details. 
     $scope.uploadBase64Image = function () {
         console.log($scope.userImg);
         // $scope.json = JSON.stringify($scope.userImg);
