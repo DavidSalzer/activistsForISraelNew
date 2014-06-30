@@ -1,113 +1,173 @@
-.calendar-area{
-	
-	position:relative;
-}
-.calendar{
-
-	background-color:#42484e;
-	padding-bottom:30px;
-
-}
-.btn.btn-sm.pull-right{
-
-
-
-}
-.btn.btn-default.btn-sm.btn-info.active{
-
-	
-}
-td.text-center{
-
-	width:10%;
+.calendar-area {
+    position: relative;
 }
 
-thead tr:first-child{
-	
-	background-color: #31363d;
-	border-bottom: 6px solid #ffffff;
-
+.calendar {
+    background-color: #42484e;
+    padding-bottom: 30px;
+    padding-top: 58px;
+    border: none;
 }
 
-thead tr .btn.btn-default.btn-sm{
-	
-	background-color: #31363d;
-	color:#ffffff;
-	font-size:22px;
-	border:none;
-	
+.btn.btn-sm.pull-right {
 }
 
-thead th{
-
-	vertical-align: middle;
-
-}
-thead .btn.btn-default.btn-sm.pull-left{
-
-	background-image: url(../../img/arrow_calendar.png);
-	height: 22px;
-	width: 22px;
-	background-size: contain;
-	background-repeat: no-repeat;
+.btn.btn-default.btn-sm.btn-info.active {
 }
 
-thead .btn.btn-default.btn-sm.pull-right{
-
-	background-image: url(../../img/arrow_calendar.png);
-	height: 22px;
-	width: 22px;
-	background-size: contain;
-	background-repeat: no-repeat;
-	transform:rotate(180deg);
-	-ms-transform:rotate(180deg); /* IE 9 */
-	-webkit-transform:rotate(180deg); /* Opera, Chrome, and Safari */
+td.text-center {
+    width: 10%;
 }
 
-thead tr:last-child{
-background-color:#004a8e;
+thead tr:first-child {
+    background-color: #31363d;
+    border-bottom: 4px solid #ffffff;
+    height: 50px;
 }
 
-thead tr small{
-color:#ffffff;
-font-size:12px;
-
+thead tr .btn.btn-default.btn-sm {
+    background-color: #565c63;
+    color: #ffffff;
+    font-size: 22px;
+    border: none;
+    padding-top: 6px;
 }
 
-tbody .btn.btn-default.btn-sm{
-	
-	background-color:#ffffff;
-	color:#31363d;
-	font-weight: bold;
-	border-radius:0;
-	border: 1px solid #31363d;
-
+thead th {
+    vertical-align: middle;
+    height: 22px;
+    line-height: 1px;
 }
 
-tbody .btn.btn-default.btn-sm.btn-info{
-	
-	padding:4px;
-	border: 2px solid #004a8e;
-
+thead .btn.btn-default.btn-sm.pull-left {
+    background-image: url(../../img/arrow_calendar.png);
+    height: 22px;
+    width: 22px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-#calendar-arrow{
+thead .btn.btn-default.btn-sm.pull-right {
+    background-image: url(../../img/arrow_calendar.png);
+    height: 22px;
+    width: 22px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Opera, Chrome, and Safari */
+}
 
-	background-image: url(../../img/arrow_calendar.png);
-	background-size: contain;
-	width: 30px;
-	height: 30px;
-	position: absolute;
-	margin:auto;
-	
-	bottom: 0;
-	right: 0;
-	left: 0;
-	
-	-webkit-transform: rotate(-90deg);
-	-moz-transform: rotate(-90deg);
-	-ms-transform: rotate(-90deg);
-	-o-transform: rotate(-90deg);
-	transform: rotate(-90deg);
-	
+thead tr:last-child {
+    background-color: #004a8e;
+}
+
+thead tr small {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+tbody .btn.btn-default.btn-sm {
+    background-color: #ffffff;
+    color: #31363d;
+    font-weight: bold;
+    border-radius: 0;
+    border: 1px solid #31363d;
+    position: relative;
+}
+
+/*tbody .btn.btn-default.btn-sm.btn-info {
+    padding: 4px;
+    border: 1px solid #004a8e;
+}*/
+
+tbody .btn.btn-default.btn-sm.btn-info:before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    border: 3px solid #004a8e;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    box-sizing: border-box;
+}
+
+#calendar-arrow {
+    background-image: url(../../img/arrow_calendar.png);
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+/****calander*****/
+
+
+.calendar thead tr:first-child {
+    position: absolute;
+    width: 100%;
+    right: 0px;
+    top: 0px;
+    background-color: #565c63;
+}
+
+/*thead .btn.btn-default.btn-sm.pull-left {
+    position: absolute;
+    display: inline-block;
+    margin-bottom: auto;
+    margin-top: auto;
+    top: 0px;
+    bottom: 0px;
+    right: 10px;
+}
+
+thead .btn.btn-default.btn-sm.pull-right {
+    position: absolute;
+    display: inline-block;
+    margin-bottom: auto;
+    margin-top: auto;
+    top: 0px;
+    bottom: 0px;
+    left: 10px;
+}
+
+thead tr .btn.btn-default.btn-sm {
+    right: 100%;
+    position: relative;
+}*/
+
+.calendar thead tr:first-child th:first-child {
+    position: absolute;
+    margin: auto 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 10px;
+}
+
+.calendar thead tr:first-child th:last-child {
+    margin: auto 0px;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 10px;
+}
+
+.calendar thead tr:first-child th:nth-child(2) {
+    width: 100%;
+    display: inline-block;
+}
+
+#feature-header div {
+    font-size: 15px;
 }

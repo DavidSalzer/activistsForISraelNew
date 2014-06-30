@@ -5,7 +5,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/calendar.png",
-        featureWhatsUpLogo: "./img/calendar.png",
+        featureWhatsUpLogo: "./img/calendar_info.png",
         featureColor: '#004a8e',
         infoHaeder: "פיצ'ר נפגשים",
         infoMainText: 'פרסמו אירועים למען ישראל! לוח לפרסום ויצירת אירועים/חוגי בית/מפגשים בהם תרצו לשתף את החברים.',

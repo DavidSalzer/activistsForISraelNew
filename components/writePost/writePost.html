@@ -8,7 +8,7 @@
 		<div class="color-line color-line-bottom "></div>
 	</div>
 
-<div class="article-content-wrap main-content-wrap" >
+<div class="article-content-wrap main-content-wrap" data-ng-class="calendarType" >
     
 	
     <div class="article-content">
@@ -17,9 +17,15 @@
         <input data-ng-show='postType=="article" || postType=="event"' type="text" class="title-field" placeholder="כותרת" data-ng-model="postData.post.title" />
 		
 		<!--event time-->
-		<input data-ng-show='postType=="event"'  style='margin-top:12px; width:80%;' type="text" class="title-field" data-ng-model="postData.post.day" />
-		<input data-ng-show='postType=="event"' style='margin-top:12px; width:80%;' type="text" class="title-field" data-ng-model="postData.post.dayTime" />
-		<input data-ng-show='postType=="event"' style='margin-top:12px;' type="text" class="title-field" placeholder="מקום" data-ng-model="postData.post.place" />
+        <div class="small-input-wrap top-input-wrap" data-ng-show='postType=="event"'>
+            תאריך:
+		    <input data-ng-show='postType=="event"' type="text" class="title-field" data-ng-model="postData.post.day" />
+		</div>
+        <div class="small-input-wrap bottom-input-wrap" data-ng-show='postType=="event"'>
+            שעה:
+            <input data-ng-show='postType=="event"' type="text" class="title-field" data-ng-model="postData.post.dayTime" />
+		</div>
+        <input data-ng-show='postType=="event"' type="text" class="title-field" placeholder="מקום" data-ng-model="postData.post.place" />
         
 		<!-- article add text file-->
 		<div data-ng-show='postType=="article"' class="file-add-container">
