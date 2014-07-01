@@ -1,5 +1,5 @@
 ﻿google.load('visualization', '1.0', { 'packages': ['corechart'] });
-socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '$http', 'PostService', 'generalParameters', 'classAjax', function ($rootScope, $stateParams, $scope, $http, PostService, generalParameters, classAjax) {
+socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '$state', '$http', 'PostService', 'generalParameters', 'classAjax', function ($rootScope, $stateParams, $scope, $state, $http, PostService, generalParameters, classAjax) {
     console.log($stateParams);
     $scope.currentPoll = $stateParams.pollIndex;
     $scope.choosenOption = [];
@@ -24,52 +24,68 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
     generalParameters.setFeature($scope.featureDetails);
     $scope.options = generalParameters.getOptionsPieChart();
     console.log($scope.options);
-    $scope.polls = PostService.getPosts();
+    //$scope.polls = PostService.getPosts();
+    PostService.getPostById($scope.currentPoll);
 
     $scope.user = generalParameters.getUser();
     console.log($scope.user);
 
-    $scope.maxSelect = 4;
-    $scope.minSelect = 2;
+    $scope.maxSelect = 1;
+    $scope.minSelect = 1;
 
-    $scope.currentPollObj = $scope.polls[$scope.currentPoll];
-    console.log($scope.currentPollObj);
+    //$scope.currentPollObj = $scope.polls[$scope.currentPoll];
+    queryString = 'post/' + $scope.currentPoll;
+    console.log(queryString);
+    classAjax.getdata('get', queryString, {})
+    .then(function (data) {
+        $scope.currentPollObj = data.data;
+        console.log($scope.currentPollObj);
 
-    for (var i in $scope.currentPollObj.activity) {
-        if ($scope.currentPollObj.activity[i].type == 'vote') {
-            $scope.currentPollObj.poll.status = "inactive";
-            if ($scope.currentPollObj.poll.countVote < 10) {
-                generalParameters.setBackIcon(false);
-                $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+        for (var i in $scope.currentPollObj.activity) {
+            if ($scope.currentPollObj.activity[i].type == 'vote') {
+                $scope.currentPollObj.poll.status = "inactive";
+                if ($scope.currentPollObj.poll.countVote < 10) {
+                    generalParameters.setBackIcon(false);
+                    $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+                }
             }
+
         }
 
-    }
+        if ($scope.currentPollObj.poll.maxSelect != undefined) {
+            $scope.maxSelect = $scope.currentPollObj.poll.maxSelect;
+        }
+        if ($scope.currentPollObj.poll.minSelect != undefined) {
+            $scope.minSelect = $scope.currentPollObj.poll.minSelect;
+        }
 
-    $scope.optionsForVote = $scope.currentPollObj.poll.options;
-    $scope.currentPollResults = $scope.polls[$scope.currentPoll].poll.options;
-    console.log($scope.currentPollResults);
+        $scope.optionsForVote = $scope.currentPollObj.poll.options;
+        $scope.currentPollResults = $scope.currentPollObj.poll.options;
+        console.log($scope.currentPollResults);
 
-    $scope.legend = [];
-    for (var i = 0; i < $scope.currentPollResults.length; i++) {
-        $scope.legend.push({ title: $scope.currentPollResults[i].answer, color: $scope.options.colors[i], image: $scope.currentPollResults[i].imageUrl });
-        $scope.choosenOption.push(false);
-    }
-    if ($scope.currentPollObj.poll.status == "inactive") {
-        $scope.temp = [];
+        $scope.legend = [];
         for (var i = 0; i < $scope.currentPollResults.length; i++) {
-            percent = (($scope.currentPollResults[i].count / $scope.currentPollObj.poll.countVote) * 100).toFixed(1);
-            console.log(percent);
-            $scope.temp.push({ name: $scope.currentPollResults[i].answer, votes: $scope.currentPollResults[i].count, color: $scope.options.colors[i], percent: percent + "%" });
+            $scope.legend.push({ title: $scope.currentPollResults[i].answer, color: $scope.options.colors[i], image: $scope.currentPollResults[i].imageUrl });
+            $scope.choosenOption.push(false);
         }
-        $scope.currentPollResults = $scope.temp;
-    }
-    console.log($scope.currentPollResults);
-    console.log($scope.legend);
+        if ($scope.currentPollObj.poll.status == "inactive") {
+            $scope.temp = [];
+            for (var i = 0; i < $scope.currentPollResults.length; i++) {
+                percent = (($scope.currentPollResults[i].count / $scope.currentPollObj.poll.countVote) * 100).toFixed(1);
+                console.log(percent);
+                $scope.temp.push({ name: $scope.currentPollResults[i].answer, votes: $scope.currentPollResults[i].count, color: $scope.options.colors[i], percent: percent + "%" });
+            }
+            $scope.currentPollResults = $scope.temp;
+        }
+        console.log($scope.currentPollResults);
+        console.log($scope.legend);
+
+    })
 
     $scope.pollIsActive = function () {
-        console.log($scope.currentPollObj.status);
-        return ($scope.currentPollObj.poll.status == "active");
+        if ($scope.currentPollObj != undefined) {
+            return ($scope.currentPollObj.poll.status == "active");
+        }
     };
 
 
@@ -99,6 +115,15 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
             classAjax.getdata('post', queryString, $scope.json).then(function (data) {
                 if ($scope.currentPollObj.poll.countVote >= 10) {
                     $scope.currentPollObj.poll.status = "inactive";
+                    if ($scope.currentPollObj.poll.status == "inactive") {
+                        $scope.temp = [];
+                        for (var i = 0; i < $scope.currentPollResults.length; i++) {
+                            percent = (($scope.currentPollResults[i].count / $scope.currentPollObj.poll.countVote) * 100).toFixed(1);
+                            console.log(percent);
+                            $scope.temp.push({ name: $scope.currentPollResults[i].answer, votes: $scope.currentPollResults[i].count, color: $scope.options.colors[i], percent: percent + "%" });
+                        }
+                        $scope.currentPollResults = $scope.temp;
+                    }
                 }
                 else {
                     generalParameters.setBackIcon(false);
