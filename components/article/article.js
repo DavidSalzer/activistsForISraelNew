@@ -127,12 +127,4 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             PostService.getAuthorsByPostType(request);
         }
     }
-
-
-
-
-
-
-
-
-} ]);
+}]);

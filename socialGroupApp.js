@@ -191,15 +191,15 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              }
          })
 
-        /*  .state('write-event', {
-            url: "/write-event",
+        .state('single-event', {
+            url: "/single-event/:postId",
             views: {
                 "main": {
-                    templateUrl: "./components/event/writeEvent.html",
-                    controller: "writeEvent"
+                    templateUrl: "./components/event/single-event.html",
+                    controller: "single-event"
                 }
             }
-        })  */
+        })
 })
 
 /**** Ajax Service ****/
