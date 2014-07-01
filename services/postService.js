@@ -156,13 +156,14 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			var deferred = $q.defer();
 			
             postData={
-                _id:userId,
+                
                 base64: base64
             }
             var json = JSON.stringify(postData);
             console.log(json);
+        
 
-            $http.post(domain + 'Base64FileUpload?ref=post', json)
+            $http.post(domain + 'Base64FileUpload?ref=post&_id='+userId, json)
 			.success(function (data) {
                 
 				console.log(data)
@@ -253,10 +254,13 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         getMemesImages: function (request) {
-            queryString = "";
+            queryString = "meme/template";
 
 
-            console.log(queryString);
+            console.log("meme/template");
+
+            //meme/template
+
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data.data);
                 if (request.endTimestamp == '') {
