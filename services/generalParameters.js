@@ -28,7 +28,7 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
 			backgroundColor: '#42484e',
 			pieSliceBorderColor:'#42484e',
 			height:250,
-			fontSize: 20,
+			fontSize: 15,
 			colors: ['#f6ba55', '#da4f00','#006dbe','#860004','#013d4','#004a8e','#993c7','#004a8e','#8ec531','#009933','#565c63'],
 			chartArea:{left:'10%',top:'10%',width:'80%',height:'80%'}
 			
