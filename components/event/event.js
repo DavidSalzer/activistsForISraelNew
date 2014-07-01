@@ -5,7 +5,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/calendar.png",
-        featureWhatsUpLogo: "./img/calendar.png",
+        featureWhatsUpLogo: "./img/calendar_info.png",
         featureColor: '#004a8e',
         infoHaeder: "פיצ'ר נפגשים",
         infoMainText: 'פרסמו אירועים למען ישראל! לוח לפרסום ויצירת אירועים/חוגי בית/מפגשים בהם תרצו לשתף את החברים.',
@@ -44,16 +44,28 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     }
 
     $scope.writeEvent = function () {
-      
-        $state.transitionTo('write-post', { postType: "event", postId: 0 });
-      
+		
+		$scope.user = generalParameters.getUser();
+        if ($scope.user.firstName == 'התחבר') {
+            $rootScope.$broadcast('showInfoPopup', { showInfo: true });
+        }
+        else {
+            $state.transitionTo('write-post', { postType: "event", postId: 0 });
+        }
     };
 	
- console.log($scope.dt)
+	
+	 
+	 
+ 
 }]);
 
 
 socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', function ( $scope) {
+	
+	angular.element(document).ready(function () { $scope.$$childHead.toggleMode= null;});
+
+ 
 
   $scope.today = function() {
  
@@ -61,24 +73,12 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', function ( $scope) {
   };
   $scope.today();
 
-  $scope.clear = function () {
-    $scope.dt = null;
-  };
-
-  // Disable weekend selection
-  $scope.disabled = function(date, mode) {
-    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-  };
-
-  $scope.toggleMin = function() {
-    $scope.minDate = $scope.minDate ? null : new Date();
-  };
-  $scope.toggleMin();
+ 
 
   $scope.open = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
-console.log($scope)
+
     $scope.opened = true;
   };
 
@@ -87,20 +87,52 @@ console.log($scope)
     startingDay: 1
 	
 	 
-  };
+  }; 
   
-  $scope.oneWeek = function(){
-    
+	$scope.toggleWeekDisplay = function () {
+		
+		var monthArray = $scope.$$childHead.$$childHead.rows;
+		 
+		//single week display? -> open and return
+		if(monthArray.length == 1){
+			
+			$scope.dt = new Date();
+			$scope.togglecaendarArrow(-90);
+			return;
+			 
+		}
+		
+		//month display? -> select and display the current week and return
+		for(var i=0; i < monthArray.length; i++){
+		
+			for(var j=0; j < monthArray[i].length; j++){
+			
+				if( monthArray[i][j].current == true){
+					
+					$scope.$$childHead.$$childHead.rows =[];
+					$scope.$$childHead.$$childHead.rows.push(monthArray[i]);
+					$scope.togglecaendarArrow(90);
+					return;
+				
+				}
+				
+			}
+		
+		}
+   };
+   
+	$scope.togglecaendarArrow = function (deg) {
 	
-	console.log($scope)
-	 
-  };
+		document.getElementById("calendar-arrow").style.setProperty('transform', 'rotate('+deg+'deg)');
+		document.getElementById("calendar-arrow").style.setProperty('-webkit-transform', 'rotate('+deg+'deg)');
+		document.getElementById("calendar-arrow").style.setProperty('-o-transform', 'rotate('+deg+'deg)');
+		document.getElementById("calendar-arrow").style.setProperty('-moz-transform', 'rotate('+deg+'deg)');
+		document.getElementById("calendar-arrow").style.setProperty('-ms-transform', 'rotate('+deg+'deg)');
+	}
 
  // $scope.initDate = new Date('2016-15-20');
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
-  
-  console.log($scope.dt)
 
   
 }]);
