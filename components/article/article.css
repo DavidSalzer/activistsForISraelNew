@@ -175,7 +175,6 @@ box-sizing: border-box;*/
 .post-details {
     position: relative;
     min-height: 57px;
-    ;
 }
 
 .author-wrap {
@@ -329,4 +328,31 @@ div.post-main-text {
     width: 100%;
     background-color: white;
     border-radius: 10px;
+}
+
+
+/******calendar*******8*/
+
+.small-input-wrap {
+    width: 100%;
+    position: relative;
+    height: 44px;
+    box-sizing: border-box;
+    margin-top: 12px;
+    line-height: 25px;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.write-calendar-event .article-content .small-input-wrap input {
+    width:80%; 
+    float: left;
+}
+
+.small-input-wrap.top-input-wrap{
+    background-image: url();
+}
+
+.small-input-wrap.bottom-input-wrap{
+    margin-top: 0px;
 }
