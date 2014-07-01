@@ -52,7 +52,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
 
     $scope.legend = [];
     for (var i = 0; i < $scope.currentPollResults.length; i++) {
-        $scope.legend.push({ title: $scope.currentPollResults[i].answer, color: $scope.options.colors[i], image: $scope.currentPollResults[i].image });
+        $scope.legend.push({ title: $scope.currentPollResults[i].answer, color: $scope.options.colors[i], image: $scope.currentPollResults[i].imageUrl });
         $scope.choosenOption.push(false);
     }
     if ($scope.currentPollObj.poll.status == "inactive") {
@@ -97,7 +97,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
             //$http.post(domain + 'vote/', $scope.json)
             //.success(function (data) {
             classAjax.getdata('post', queryString, $scope.json).then(function (data) {
-                if ($scope.currentPollObj.poll.countVote > 10) {
+                if ($scope.currentPollObj.poll.countVote >= 10) {
                     $scope.currentPollObj.poll.status = "inactive";
                 }
                 else {

@@ -1,5 +1,6 @@
 socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', 'classAjax', 'generalParameters', function ($rootScope, $scope, $state, $http, classAjax, generalParameters) {
     $scope.domain = domain;
+    $scope.returnTo = document.URL;
     $scope.showEmailError = false;
     $scope.showPassError = false;
 
