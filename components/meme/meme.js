@@ -12,7 +12,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-
+     generalParameters.setBackIcon(false);//tester
       request = {
         startTimestamp: '',
         endTimestamp: '',

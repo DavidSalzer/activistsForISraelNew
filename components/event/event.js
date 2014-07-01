@@ -14,6 +14,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     
 	generalParameters.setFeature($scope.featureDetails);
 	 $scope.user = generalParameters.getUser();
+      generalParameters.setBackIcon(false);//tester
 	 
 	 request = {
         startTimestamp: '',
