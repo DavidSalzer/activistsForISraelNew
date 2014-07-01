@@ -21,6 +21,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             console.log(request);
 
             queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&_parentID=' + request._parentID;
+            if (request.pollStatus != undefined) {
+                queryString = queryString + '&pollStatus=' + request.pollStatus;
+            }
             console.log(queryString);
             showSpiner = true;
             classAjax.getdata('get', queryString, request).then(function (data) {
@@ -85,8 +88,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         sendPost: function (postData, textfile, imgFile, isBase64) {
 
             var self = this;
-			var deferred = $q.defer();
-			
+            var deferred = $q.defer();
+
             console.log(domain);
             console.log(postData);
             var json = JSON.stringify(postData);
@@ -104,25 +107,25 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			        if (textfile)
 			            self.attach(textfile, data.data._id);
 			        if (imgFile)
-			            self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data)});
+			            self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
 
 			    }
-				
-				
+
+
 
 			})
 			.error(function (data) {
 
-				deferred.resolve(data);	
+			    deferred.resolve(data);
 			});
 
 
-			 return deferred.promise;
+            return deferred.promise;
         },
 
         attach: function (file, postId) {
-			
-			var deferred = $q.defer();
+
+            var deferred = $q.defer();
             var $file = file;
             console.log($file);
             var upload = $upload.upload({
@@ -130,32 +133,32 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 url: domain + 'FileUpload?ref=post&_id=' + postId,
                 method: "POST",
                 file: $file
-            
-			}).progress(function (evt) {
-                
-				// get upload percentage
+
+            }).progress(function (evt) {
+
+                // get upload percentage
                 console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-            
-			}).success(function (data, status, headers, config) {
+
+            }).success(function (data, status, headers, config) {
                 // file is uploaded successfully
                 console.log(data);
-				deferred.resolve(data);	
-           
-		   }).error(function (data, status, headers, config) {
+                deferred.resolve(data);
+
+            }).error(function (data, status, headers, config) {
                 // file failed to upload
                 console.log(data);
-				deferred.resolve(data);	
-			
-			});
+                deferred.resolve(data);
+
+            });
             //if(file){self.attach(file);}
-			return deferred.promise;
+            return deferred.promise;
         },
         attachBase64: function (base64, userId) {
-			
-			var deferred = $q.defer();
-			
-            postData={
-                _id:userId,
+
+            var deferred = $q.defer();
+
+            postData = {
+                _id: userId,
                 base64: base64
             }
             var json = JSON.stringify(postData);
@@ -163,17 +166,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             $http.post(domain + 'Base64FileUpload?ref=post', json)
 			.success(function (data) {
-                
-				console.log(data)
-				deferred.resolve(data);	
+
+			    console.log(data)
+			    deferred.resolve(data);
 			})
 			.error(function (data) {
 
 			    console.log(data);
-				deferred.resolve(data);	
+			    deferred.resolve(data);
 			});
-			
-			return deferred.promise;
+
+            return deferred.promise;
         },
         getIsLike: function (pid, index) {
 

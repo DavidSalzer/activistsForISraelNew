@@ -1,10 +1,10 @@
-socialGroupApp.controller('poll', ['$rootScope','$scope', '$http', '$state', 'PostService', 'generalParameters', function ($rootScope, $scope, $http,$state, PostService, generalParameters) {
+socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'PostService', 'generalParameters', function ($rootScope, $scope, $http, $state, PostService, generalParameters) {
 
 
-	$scope.currentPoll = null;
-	$scope.showSpiner = PostService.getSpiner;
+    $scope.currentPoll = null;
+    $scope.showSpiner = PostService.getSpiner;
 
-	$scope.featureDetails = {
+    $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/poll.png",
         featureColor: '#da4f00',
@@ -14,51 +14,55 @@ socialGroupApp.controller('poll', ['$rootScope','$scope', '$http', '$state', 'Po
         infoSubText: "ההצבעה באיזור זה מותנית בהצטרפות"
     };
     generalParameters.setFeature($scope.featureDetails);
-	
-	$scope.user = generalParameters.getUser();
-   
+
+    $scope.user = generalParameters.getUser();
+
     var request = {
-        
-		startTimestamp: '',
+
+        startTimestamp: '',
         endTimestamp: '',
         offset: 0,
         limit: 20,
         orderBy: '-timestamp',
         postType: 'poll',
         userID: $scope.user._id,
-        _parentID: ''
+        _parentID: '',
+        pollStatus: 'active'
     };
-	
-	/*init controller data*/
+
+    /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.polls = PostService.getPosts; //ask service for polls
-	
-    $scope.userClicked = function (pollIndex) {	
-		console.log(pollIndex);
-		$scope.currentPoll = pollIndex;
-		console.log($scope.currentPoll);
-		generalParameters.setBackIcon(true);
-        $state.transitionTo('poll-view', { pollIndex: $scope.currentPoll });
+
+    $scope.userClicked = function (pollIndex) {
+        console.log(pollIndex);
+        $scope.currentPoll = pollIndex;
+        console.log($scope.currentPoll);
+        generalParameters.setBackIcon(true);
+        $scope.posts = PostService.getPosts();
+        $state.transitionTo('poll-view', { pollIndex: $scope.posts[pollIndex]._id });
     };
-	
-	$scope.getPoll = function () {
+
+    $scope.getPoll = function () {
         PostService.getPostsBatch(request);
     }
 
     $scope.getActivePoll = function () {
         request.endTimestamp = '';
         request.offset = 0;
+        request.pollStatus = 'active';
         PostService.getPostsBatch(request);
-		//$scope.polls = PostService.getPosts;
-		//console.log($scope.polls);
+        //$scope.polls = PostService.getPosts;
+        //console.log($scope.polls);
     }
 
     $scope.getInActivePoll = function () {
         request.endTimestamp = '';
         request.offset = 0;
+        request.pollStatus = 'inactive';
         PostService.getPostsBatch(request);
-		//$scope.polls = PostService.getPosts;
-		//console.log($scope.polls);
+        //$scope.polls = PostService.getPosts;
+        //console.log($scope.polls);
     }
 
     $scope.loadMore = function () {
@@ -68,12 +72,17 @@ socialGroupApp.controller('poll', ['$rootScope','$scope', '$http', '$state', 'Po
         request.endTimestamp = post[0].timestamp;
         PostService.getPostsBatch(request);
     }
-	
-	$scope.SuggestPoll = function () {
-		generalParameters.setBackIcon(true);
-        $state.transitionTo('write-post', { postType: "poll" , postId: 0 });
-    }
-	
-   
 
-}])
+    $scope.SuggestPoll = function () {
+        if ($scope.user.firstName == 'התחבר') {
+            $rootScope.$broadcast('showInfoPopup', { showInfo: true });
+        }
+        else {
+            generalParameters.setBackIcon(true);
+            $state.transitionTo('write-post', { postType: "poll", postId: 0 });
+        }
+    }
+
+
+
+} ])
