@@ -1,6 +1,16 @@
 socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
-
+	/*init variables*/
+    //$scope.showInput = false;
+    //$scope.currentTab = 'event';
+    //$scope.currentPost = null;
+    //$scope.showSpiner = PostService.getSpiner;
+    $scope.showPostTitle = true;
+    //$scope.domain = domain;
+    $scope.showArticleImg = false;
+    $scope.showAuthorImg = true;
+    //$scope.currentPostType = 'event';
+	
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
@@ -13,7 +23,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     };
     
 	generalParameters.setFeature($scope.featureDetails);
-	 $scope.user = generalParameters.getUser();
+	$scope.user = generalParameters.getUser();
 	 
 	 request = {
         startTimestamp: '',
@@ -30,7 +40,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.events = PostService.getPosts; //ask service for posts
-
+	
 
     $scope.loadMore = function () {
         $scope.showSpiner = true; //need to change to false while get callback from server.
