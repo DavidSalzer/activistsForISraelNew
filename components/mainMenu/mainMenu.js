@@ -81,6 +81,17 @@ $scope.featureDetails = {
 
 };
 
+
+document.addEventListener("backbutton", function() {
+            if ( $('.ui-page-active').attr('id') == 'main-menu') {
+                exitAppPopup();
+            } else {
+                history.back();             
+            }
+        }, false);
+
+
+
 generalParameters.setFeature($scope.featureDetails);
 
 //$scope.$on('scrollToEnd', function (ngRepeatFinishedEvent) {
