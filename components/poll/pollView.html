@@ -11,8 +11,8 @@
 		{{currentPollObj.title}}
 	</div>
 	<div class="imageView-background">
-		<div class="legend-image" data-ng-style="{'margin-right': '56px'}">
-			<img src='{{currentPollObj.image}}' data-ng-style="{'background-color': '#42484e', 'padding':'3px'}">
+		<div class="legend-image" data-ng-style="{'background-image': 'url({{currentPollObj.img}})'}">
+			<!--<img src='{{currentPollObj.img}}' data-ng-style="{'background-color': '#42484e', 'padding':'3px'}">-->
 		</div>
 	</div>
 	<div class="pollView-text" data-ng-style="{'background-color': '#ffffff'}">
@@ -20,7 +20,7 @@
 	</div>
 
 	<!--Div that will hold the pie chart-->
-	<div google-chart data="currentPollResults" type={{currentPollObj.chartType}} data-ng-hide = "pollIsActive()"></div>
+	<div google-chart data="currentPollResults" type={{currentPollObj.pollType}} data-ng-hide = "pollIsActive()"></div>
 	<div class="gray-line" data-ng-hide = "pollIsActive()"></div>
 	 <div ng-repeat="line in legend" class="legend-container" data-ng-hide = "pollIsActive()">
 		<div class="legend-color" data-ng-style="{'background-color': '{{line.color}}'}"></div>
@@ -34,8 +34,8 @@
 		<div class="optionToVote-image" data-ng-show ='{{"item.image"}}'>
 			<img ng-src="{{item.image}}" >
 		</div>
-		<div class="optionToVote-container" data-ng-show = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#ffffff', 'background-color': '#565c63'}"> {{item.name}} </div>
-		<div class="optionToVote-container" data-ng-hide = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#000000', 'background-color': '#ffffff'}"> {{item.name}} </div>
+		<div class="optionToVote-container" data-ng-show = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#ffffff', 'background-color': '#565c63'}"> {{item.answer}} </div>
+		<div class="optionToVote-container" data-ng-hide = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#000000', 'background-color': '#ffffff'}"> {{item.answer}} </div>
 	</div>
 	<div data-ng-show = "pollIsActive()" class="button" data-ng-click="addVote()" data-ng-style="{'background-color': '#da4f00', 'color': '#ffffff'}" > הצבע</div>
 </div>			
