@@ -10,14 +10,14 @@
         <input type="button" class="sign-in-btn" value="היכנס" data-ng-click="sendLogin()">
         <!--<div class="login-forget-pass">שכחת סיסמה?</div>-->
         <div class="log-in-or">או</div>
-        <a href="{{domain}}auth/facebook">
+        <a href="{{domain}}auth/facebook?returnTo={{returnTo}}">
             <button class="sign-in-field">
                 <span>התחבר באמצעות</span>
                 <span class="fa fa-facebook-square"></span>
             </button>
         </a>
         <div class="log-in-or">או</div>
-        <a href="{{domain}}auth/google">
+        <a href="{{domain}}auth/google?returnTo={{returnTo}}">
             <button class="sign-in-field">
                 <span>התחבר באמצעות</span>
                 <span class="fa fa-google-plus"></span>

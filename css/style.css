@@ -868,10 +868,14 @@ button {
 .optionToVote-image {
     background-color: #42484e;
     padding: 3px;
-    width: 70%;
-    height: 80%;
+    height: 158px;
+    width: 235px;
     margin-right: 15%;
     margin-top: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    border: solid 2px #42484e;
 }
 
 .tab-content {
