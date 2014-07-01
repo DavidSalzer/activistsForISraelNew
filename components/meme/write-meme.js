@@ -13,6 +13,24 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.topText = "";
 
     $scope.fontOptions = ['arial', 'Aharoni', 'Calibri'];
+    $scope.showSuggestedImages = true;
+    $scope.suggestedMemes = [];
+    $scope.postImg = "";
+
+     /*init controller details*/
+    $scope.featureDetails = {
+        featureName: null,
+        featureLogo: "./img/meme.png",
+        featureWhatsUpLogo: "./img/meme_info.png",
+        featureColor: '#ffd427',
+        infoHaeder: "ממים",
+        infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
+        infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
+    };
+    generalParameters.setFeature($scope.featureDetails);
+
+
+
 
     $scope.getColor = function (pos) {
 
@@ -49,34 +67,29 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         }
     }
 
+    $scope.imageClick = function (index) {
+        console.log(index);
+        $scope.suggestedMemes = PostService.getMemes();
+        $scope.postImg = $scope.suggestedMemes[index].url;
+        $scope.showSuggestedImages = false;
+        $scope.imageChosen();
+    }
+
+    $scope.imageChosen = function () {
+
+    }
+
     $scope.createMeme = function () {
         html2canvas(document.getElementById('html2canvas'), {
             onrendered: function (canvas) {
                 var dataURL = canvas.toDataURL("image/png");
-                 //document.getElementById('img').src = dataURL;
-               PostService.setPreviewMeme(dataURL);
-               $state.transitionTo('meme-preview');
+               // document.getElementById('img').src = dataURL;
+                PostService.setPreviewMeme(dataURL);
+                $state.transitionTo('meme-preview');
             }
         });
     }
 
-
-    /*init controller details*/
-    $scope.featureDetails = {
-        featureName: null,
-        featureLogo: "./img/meme.png",
-        featureWhatsUpLogo: "./img/article_info.png",
-        featureColor: '#ffd427',
-        infoHaeder: "ממים",
-        infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
-        infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
-    };
-    generalParameters.setFeature($scope.featureDetails);
-
-
-    $scope.imageMax = 1;
-    $scope.toLargImage = false;
-    $scope.imgFileText = 'צרף תמונה';
 
     request = {
         startTimestamp: '',
@@ -95,5 +108,6 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
 
 
+    
 } ]);
 

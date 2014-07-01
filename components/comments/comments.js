@@ -1,4 +1,4 @@
-socialGroupApp.controller('comments', ['$scope', '$stateParams', 'PostService', function ($scope, $stateParams, PostService) {
+socialGroupApp.controller('comments', ['$scope', '$stateParams', 'PostService', 'generalParameters', function ($scope, $stateParams, PostService, generalParameters) {
 
     /*init controller details*/
     $scope.featureDetails = {

@@ -5,7 +5,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/meme.png",
-        featureWhatsUpLogo: "./img/article_info.png",
+        featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
         infoHaeder: "ממים",
         infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
@@ -41,12 +41,12 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 
     $scope.writeMeme = function () {
         $scope.user = generalParameters.getUser();
-       // if ($scope.user.firstName == 'התחבר') {
-      //      $rootScope.$broadcast('showInfoPopup', { showInfo: true });
-      //  }
-       // else {
+        if ($scope.user.firstName == 'התחבר') {
+            $rootScope.$broadcast('showInfoPopup', { showInfo: true });
+        }
+        else {
             $state.transitionTo('write-meme');
-       // }
+        }
     };
 
 

@@ -53,6 +53,13 @@ header i.fa.share {
     right: -8px;
 }
 
+.btn.btn-navbar.ng-scope:active{
+    opacity: 1;
+}
+.btn:active, a:active{
+    opacity: 1;
+}
+
 header i.fa.back {
     background-image: url(../img/back.png);
     height: 40px;
@@ -215,7 +222,7 @@ span.author-name {
     font-weight: bold;
     float: right;
     line-height: 50px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 span.author-date {
@@ -230,7 +237,7 @@ div.post-main-text {
     /*height: 33px;*/
     text-overflow: ellipsis;
     overflow: hidden;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 15px;
     text-align: justify;
 }
@@ -831,8 +838,10 @@ button {
     width: 235px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 75% 85%;
+    background-size: 100% 100%;
     padding-top: 10px;
+    margin: auto;
+    border: solid 2px #42484e;
 }
 
 .optionToVote-container {

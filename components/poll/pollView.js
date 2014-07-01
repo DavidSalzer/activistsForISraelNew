@@ -15,20 +15,20 @@ socialGroupApp.controller('pollView', ['$rootScope','$stateParams','$scope', '$h
 	$scope.options = generalParameters.getOptionsPieChart();
 	console.log($scope.options);
 	$scope.polls = PostService.getPosts();
-	console.log($scope.polls);
-	console.log($scope.currentPoll);
-	console.log($scope.polls[$scope.currentPoll]);
+	
+	
 	$scope.currentPollObj = $scope.polls[$scope.currentPoll];
-	console.log($scope.currentPollObj.image);
-	$scope.temp = $scope.polls[$scope.currentPoll].data;
-	$scope.optionsForVote = $scope.currentPollObj.optionsForVote;
-	$scope.currentPollResults = $scope.polls[$scope.currentPoll].data;
+	console.log($scope.currentPollObj);
+	//$scope.temp = $scope.polls[$scope.currentPoll].data;
+	$scope.optionsForVote = $scope.currentPollObj.poll.options;
+	$scope.currentPollResults = $scope.polls[$scope.currentPoll].poll.options;
 	console.log($scope.currentPollResults);
+    
 	$scope.legend = [];
 	for (var i = 0; i < $scope.currentPollResults.length; i++) {
-			$scope.legend.push({title: $scope.currentPollResults[i].name, color:$scope.options.colors[i], image: $scope.currentPollResults[i].image});
+			$scope.legend.push({title: $scope.currentPollResults[i].answer, color:$scope.options.colors[i], image: $scope.currentPollResults[i].image});
 		}
-	if($scope.currentPollObj.status == "inactive"){
+	if($scope.currentPollObj.poll.status == "inactive"){
 		$scope.temp = [];
 		for (var i = 0; i < $scope.currentPollResults.length; i++) {
 				$scope.temp.push({name: $scope.currentPollResults[i].name, votes: $scope.currentPollResults[i].votes, color:$scope.options.colors[i], percent: $scope.currentPollResults[i].votes + "%"});
@@ -40,7 +40,7 @@ socialGroupApp.controller('pollView', ['$rootScope','$stateParams','$scope', '$h
 	
 	$scope.pollIsActive = function () {
 		console.log($scope.currentPollObj.status);
-        return ($scope.currentPollObj.status == "active");
+        return ($scope.currentPollObj.poll.status == "active");
     };
 	
 	$scope.thankDetails = {

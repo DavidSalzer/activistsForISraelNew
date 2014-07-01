@@ -19,7 +19,7 @@
         <div ng-repeat="list in polls()" class="list-tube">
 			<div class="polls-container" ng-click="userClicked($index);">
 				<div class="image-container" >
-					<div class="polls-image" style="background-image: url('{{list.image}}')"></div>
+					<div class="polls-image" style="background-image: url('{{list.img}}')"></div>
 				</div>		
 			</div>			
             <div class="text-box player-text" ng-click="userClicked($index);">
@@ -28,7 +28,7 @@
             </div>
         </div>
 		
-        <div class="spiner-zone" data-ng-show="showSpiner">
+        <div class="spiner-zone" data-ng-show="showSpiner()">
             <div class="fa fa-spinner fa-spin"></div>
         </div>
     </div>

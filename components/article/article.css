@@ -28,7 +28,7 @@
     overflow: hidden;
     font-weight: bold;
     position: absolute;
-    bottom: 17px;
+    bottom: 20px;
     width: 66%;
     right: 35px;
 }
@@ -174,8 +174,8 @@ box-sizing: border-box;*/
 
 .post-details {
     position: relative;
-    min-height: 57px;
-    ;
+    /*min-height: 57px;*/
+    min-height: 60px;
 }
 
 .author-wrap {
@@ -208,8 +208,8 @@ span.author-date {
 }
 
 span.author-name {
-    line-height: 13px;
-    font-size: 10px;
+    line-height: 17px;
+    font-size: 14px;
     margin-right: 0;
     text-align: right;
     text-indent: 2px;
@@ -227,10 +227,10 @@ span.author-name {
 }
 
 div.post-main-text {
-    font-size: 10px;
+    font-size: 14px;
     height: 50px;
     overflow: hidden;
-    line-height: 12px;
+    line-height: 16px;
     margin-top: 5px;
 }
 
@@ -329,4 +329,34 @@ div.post-main-text {
     width: 100%;
     background-color: white;
     border-radius: 10px;
+}
+
+
+/******calendar*******8*/
+
+.small-input-wrap {
+    width: 100%;
+    position: relative;
+    height: 44px;
+    box-sizing: border-box;
+    margin-top: 12px;
+    line-height: 28px;
+    background-position: 79% 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+    padding-right: 5px;
+}
+/*s*/
+.write-calendar-event .article-content .small-input-wrap input {
+    width: 72%;
+    float: left;
+}
+
+.small-input-wrap.top-input-wrap {
+    background-image: url("/img/calendar_icon.png");
+}
+
+.small-input-wrap.bottom-input-wrap {
+    margin-top: 0px;
+    background-image: url("/img/clock.png");
 }

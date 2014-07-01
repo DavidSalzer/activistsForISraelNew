@@ -18,6 +18,7 @@
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
     border-bottom: 2px solid #565c63; /*this his here becuase there is a vorder in class .menu-item-feature of 1px */
+    overflow-y: hidden; 
 }
 
 .current-feature-components {
@@ -36,6 +37,7 @@
     -webkit-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.25);
     -moz-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.25);
     box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.25);
+    overflow-y: hidden; 
 }
 
 .current-feature-components.thumbnail {
@@ -109,6 +111,11 @@
     margin-top: -2px;
     padding-left: 5px;
     line-height: 12px;
+}
+
+div#features-swipe-inner {
+    direction: ltr;
+    unicode-bidi: embed;
 }
 
 .features-swipe {
@@ -247,6 +254,7 @@
         max-height: 24px;
         overflow-y: hidden;
         line-height: 12px;
+        height: 24px;
     }
 
     .current-feature {
