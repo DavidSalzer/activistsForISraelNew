@@ -12,13 +12,15 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         postId: 5
     },
     {
-        featureId: 1,
-        featureUrl: 'channel',
-        featureName: 'יוטיוב',
-        featureLogo: './img/youtube.png',
-        featureImg: './img/image/pic1.png',
-        title: 'ערוץ היוטיוב של נפתלי בנט',
-        text: 'לצפייה מהנייד',
+       
+
+         featureId: 3,
+        featureUrl: 'facebookPoalim',
+        featureName: 'פייסבוק פועלים',
+        featureLogo: './img/actionforisrael.png',
+        featureImg: './img/image/pic5.png',
+        title: 'ערוץ הפייסבוק של פועלים למען ישראל',
+        text: 'הכנסו לקרוא',
         postId: 5
     },
     //{
@@ -33,16 +35,6 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     //},
     {
     featureId: 3,
-    featureUrl: 'article',
-    featureName: 'מאמרים',
-    featureLogo: './img/article.png',
-    featureImg: './img/image/pic3.png',
-    title: 'מאמרים בנושאים על סדר היום',
-    text: 'עמוד מאמרים',
-    postId: 5
-},
-    {
-        featureId: 3,
         featureUrl: 'facebookBennet',
         featureName: 'פייסבוק נפתלי',
         featureLogo: './img/NaftaliBennett.png',
@@ -50,16 +42,27 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         title: 'ערוץ הפייסבוק של נפתלי בנט',
         text: 'הכנסו לקרוא',
         postId: 5
+},
+    {
+        featureId: 3,
+    featureUrl: 'article',
+    featureName: 'מאמרים',
+    featureLogo: './img/article.png',
+    featureImg: './img/image/pic3.png',
+    title: 'מאמרים בנושאים על סדר היום',
+    text: 'עמוד מאמרים',
+    postId: 5
+        
     }
     ,
     {
-        featureId: 3,
-        featureUrl: 'facebookPoalim',
-        featureName: 'פייסבוק פועלים',
-        featureLogo: './img/actionforisrael.png',
-        featureImg: './img/image/pic5.png',
-        title: 'ערוץ הפייסבוק של פועלים למען ישראל',
-        text: 'הכנסו לקרוא',
+        featureId: 1,
+        featureUrl: 'channel',
+        featureName: 'יוטיוב',
+        featureLogo: './img/youtube.png',
+        featureImg: './img/image/pic1.png',
+        title: 'ערוץ היוטיוב של נפתלי בנט',
+        text: 'לצפייה מהנייד',
         postId: 5
     }
 
@@ -80,9 +83,9 @@ $scope.featureDetails = {
 
 generalParameters.setFeature($scope.featureDetails);
 
-$scope.$on('scrollToEnd', function (ngRepeatFinishedEvent) {
-    document.getElementById("features-swipe-inner").scrollLeft = ($scope.features.length - 1) * 145;
-});
+//$scope.$on('scrollToEnd', function (ngRepeatFinishedEvent) {
+//    document.getElementById("features-swipe-inner").scrollLeft = ($scope.features.length - 1) * 145;
+//});
 
 } ])
 
