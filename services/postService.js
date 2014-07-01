@@ -95,6 +95,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             $http.post(domain + 'post', json)
 			.success(function (data) {
 
+			    console.log(data);
 			    console.log(data.data._id);
 			    if (isBase64) {
 			        //imgFile is base64 string

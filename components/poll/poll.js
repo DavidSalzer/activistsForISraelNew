@@ -14,7 +14,7 @@ socialGroupApp.controller('poll', ['$rootScope','$scope', '$http', '$state', 'Po
         infoSubText: "ההצבעה באיזור זה מותנית בהצטרפות"
     };
     generalParameters.setFeature($scope.featureDetails);
-	
+	 generalParameters.setBackIcon(false);//tester
 	$scope.user = generalParameters.getUser();
    
     var request = {
