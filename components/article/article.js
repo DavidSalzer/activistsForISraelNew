@@ -25,7 +25,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-    
+     generalParameters.setBackIcon(false);//tester
     $scope.user = generalParameters.getUser();
     console.log(user);
     
@@ -127,12 +127,4 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
             PostService.getAuthorsByPostType(request);
         }
     }
-
-
-
-
-
-
-
-
-} ]);
+}]);

@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="./components/event/event.css" />
+
+<div class="scroll-main-window" scroller loading-method="loadMore()">
+
+
+    <div class='single-event-header' data-ng-repeat="post in [post()]">
+		<div> יום {{post.timestamp | date : 'EEEE'}} {{post.timestamp | date : 'dd.MM.yyyy'}} 
+	   שעה {{post.timestamp | date : 'H:mm'}}
+	   </div>
+	   <div>
+	   מקום: {{post.place}}דימונה
+	   </div>
+	   <div class="color-line color-line-bottom "></div>
+	</div>
+	
+	<div class='single-event-body'>
+		<post data-post-type="event" class="single-event" data-ng-repeat="post in [post()]"></post>
+		
+		<div class='event-participation'>
+			<div class='button' style='background-color:{{featureDetails.featureColor}};'>השתתף</div>
+			<div style="margin:12px;font-size:12px;">
+				<div><div>צור קשר</div><div>ישראל ישראלי</div></div>
+				<div><div>מייל</div><div>mail@mail.il</div></div>
+			</div>
+		</div>
+	</div>
+</div>

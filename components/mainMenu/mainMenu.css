@@ -226,6 +226,15 @@ div#features-swipe-inner {
     display: none;
 }*/
 
+@media only screen and ( min-height: 481px ) and ( max-height: 570px ) {
+    .current-feature-text {
+        height: 24px;
+        max-height: 24px;
+        overflow-y: hidden;
+    }
+}
+
+
 @media only screen and ( max-height: 480px ) {
     .features-swipe {
         height: 178px;

@@ -203,8 +203,8 @@ span.author-date {
     position: absolute;
     bottom: 0;
     left: 0;
-    line-height: 13px;
-    font-size: 10px;
+    line-height: 22px;
+    font-size: 14px;
 }
 
 span.author-name {
@@ -213,7 +213,7 @@ span.author-name {
     margin-right: 0;
     text-align: right;
     text-indent: 2px;
-    width: 61px;
+    width: 70px;
     font-weight: normal;
     white-space: nowrap;
     text-overflow: ellipsis;

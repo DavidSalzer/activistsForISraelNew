@@ -1,5 +1,6 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
+     $scope.domain = domain;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -12,14 +13,15 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-
+     generalParameters.setBackIcon(false);//tester
       request = {
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
         limit: 12,
         orderBy: '-timestamp',
-        postType: 'meme'
+        postType: 'meme',
+         _parentID:''
     };
 
 
@@ -49,7 +51,10 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         }
     };
 
-
+    $scope.memeClick = function(){
+       // console.log('test1')
+       $state.transitionTo('single-meme');
+    }
 
 
 
