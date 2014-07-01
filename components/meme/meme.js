@@ -56,8 +56,27 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
        $state.transitionTo('single-meme');
     }
 
+	$scope.like = function($event,$index){
+      
+	 $event.stopPropagation();
+	  console.log($scope.posts())
+	  var meme = $scope.posts()[$index];
+	  console.log(meme)
+	  
+	 // if ($scope.posts[$index].isLiked == true) {//LIKE!
 
+                    //scope.post.likesCount++;
+					PostService.sendLike(meme._id); 
 
+               // }
+                //else {//UNLIKE!
+					//console.log('unlike')
+                    //scope.post.likesCount--;
+                    //scope.$apply();
+					//PostService.unLike(meme._id); 
+
+               // } 
+    }
 
 
 

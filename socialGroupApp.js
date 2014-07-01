@@ -186,7 +186,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             views: {
                 "main": {
                     templateUrl: "./components/meme/singleMeme.html",
-                    controller: "singleMeme"
+                    //controller: "singleMeme"
                 }
             }
         })
