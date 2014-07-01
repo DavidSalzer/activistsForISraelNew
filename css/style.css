@@ -70,12 +70,7 @@ header i.fa.back {
 }
 
 select{
-   border: none;
-width: 100%;
-padding:0px;
-padding-right: 0px;
-float:left;
-height: 100%;
+    border: none;
 }
 /*************************post template*******************/
 .posts-list {
@@ -836,8 +831,10 @@ button {
     width: 235px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 75% 85%;
+    background-size: 100% 100%;
     padding-top: 10px;
+    margin: auto;
+    border: solid 2px #42484e;
 }
 
 .optionToVote-container {

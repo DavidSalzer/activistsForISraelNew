@@ -1,10 +1,8 @@
 socialGroupApp.controller('poll', ['$rootScope','$scope', '$http', '$state', 'PostService', 'generalParameters', function ($rootScope, $scope, $http,$state, PostService, generalParameters) {
 
-		
-    $scope.loadMoreFlag = true;
-	$scope.currentFilter = "active";
+
 	$scope.currentPoll = null;
-	
+	$scope.showSpiner = PostService.getSpiner;
 
 	$scope.featureDetails = {
         featureName: null,
@@ -48,22 +46,26 @@ socialGroupApp.controller('poll', ['$rootScope','$scope', '$http', '$state', 'Po
     }
 
     $scope.getActivePoll = function () {
-        $scope.currentFilter = "active";
+        request.endTimestamp = '';
+        request.offset = 0;
         PostService.getPostsBatch(request);
-		$scope.polls = PostService.getPosts;
-		console.log($scope.polls);
+		//$scope.polls = PostService.getPosts;
+		//console.log($scope.polls);
     }
 
     $scope.getInActivePoll = function () {
-        $scope.currentFilter = "inactive";
+        request.endTimestamp = '';
+        request.offset = 0;
         PostService.getPostsBatch(request);
-		$scope.polls = PostService.getPosts;
-		console.log($scope.polls);
+		//$scope.polls = PostService.getPosts;
+		//console.log($scope.polls);
     }
 
     $scope.loadMore = function () {
-        $scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
+        request.offset += 20;
+        post = PostService.getPosts();
+        request.endTimestamp = post[0].timestamp;
         PostService.getPostsBatch(request);
     }
 	
