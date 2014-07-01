@@ -171,3 +171,24 @@ thead tr .btn.btn-default.btn-sm {
 #feature-header div {
     font-size: 15px;
 }
+
+.event-title{
+	
+	font-weight: bold;
+	padding: 12px;
+}
+
+.event-time{
+	
+	padding: 12px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.event-main-text{
+	
+	padding: 12px;
+	font-size: 12px;
+}
+
+
