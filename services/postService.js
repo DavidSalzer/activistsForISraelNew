@@ -82,10 +82,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         //Send post to server. if it isn't comment on post , postId = 0.
-        sendPost: function (postData, textfile, imgFile) {
+        sendPost: function (postData, textfile, imgFile, isBase64) {
 
             var self = this;
-
+			var deferred = $q.defer();
+			
             console.log(domain);
             console.log(postData);
             var json = JSON.stringify(postData);
@@ -94,25 +95,34 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             $http.post(domain + 'post', json)
 			.success(function (data) {
 
-			    console.log(data);
 			    console.log(data.data._id);
+			    if (isBase64) {
+			        //imgFile is base64 string
+			        self.attachBase64(imgFile, data.data._id);
+			    }
+			    else {
+			        if (textfile)
+			            self.attach(textfile, data.data._id);
+			        if (imgFile)
+			            self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data)});
 
-			    if (textfile)
-			        self.attach(textfile, data.data._id);
-			    if (imgFile)
-			        self.attach(imgFile, data.data._id);
+			    }
+				
+				
+
 			})
 			.error(function (data) {
 
-			    console.log(data);
+				deferred.resolve(data);	
 			});
 
 
-
+			 return deferred.promise;
         },
 
         attach: function (file, postId) {
-
+			
+			var deferred = $q.defer();
             var $file = file;
             console.log($file);
             var upload = $upload.upload({
@@ -120,20 +130,51 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 url: domain + 'FileUpload?ref=post&_id=' + postId,
                 method: "POST",
                 file: $file
-            }).progress(function (evt) {
-                // get upload percentage
+            
+			}).progress(function (evt) {
+                
+				// get upload percentage
                 console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-            }).success(function (data, status, headers, config) {
+            
+			}).success(function (data, status, headers, config) {
                 // file is uploaded successfully
                 console.log(data);
-            }).error(function (data, status, headers, config) {
+				deferred.resolve(data);	
+           
+		   }).error(function (data, status, headers, config) {
                 // file failed to upload
                 console.log(data);
-            });
+				deferred.resolve(data);	
+			
+			});
             //if(file){self.attach(file);}
-
+			return deferred.promise;
         },
+        attachBase64: function (base64, userId) {
+			
+			var deferred = $q.defer();
+			
+            postData={
+                _id:userId,
+                base64: base64
+            }
+            var json = JSON.stringify(postData);
+            console.log(json);
 
+            $http.post(domain + 'Base64FileUpload?ref=post', json)
+			.success(function (data) {
+                
+				console.log(data)
+				deferred.resolve(data);	
+			})
+			.error(function (data) {
+
+			    console.log(data);
+				deferred.resolve(data);	
+			});
+			
+			return deferred.promise;
+        },
         getIsLike: function (pid, index) {
 
             var parmas = { "activity": { "post": pid, "type": "like"} };
@@ -167,17 +208,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             console.log(user)
 
-            var parmas = {"activity":{"post":pid,"type":"like"}};
-		
+            var parmas = { "activity": { "post": pid, "type": "like"} };
+
             var json = JSON.stringify(parmas);
             console.log(json);
-			
-		
-			//$http.delete(domain + 'deletePostActivity', json)
-        
-            $http({url:domain + 'deletePostActivity',method:"delete" ,headers: {'Content-Type': 'application/json'}, data:json})
-			//$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
-        
+
+
+            //$http.delete(domain + 'deletePostActivity', json)
+
+            $http({ url: domain + 'deletePostActivity', method: "delete", headers: { 'Content-Type': 'application/json' }, data: json })
+            //$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
+
 			.success(function (data) {
 
 			    console.log(data);
@@ -310,7 +351,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                     if (flag) {
                         posts.push(data.data[i][0]);
                     }
-                    
+
                 }
                 console.log(posts);
             })

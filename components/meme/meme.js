@@ -41,12 +41,12 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 
     $scope.writeMeme = function () {
         $scope.user = generalParameters.getUser();
-       // if ($scope.user.firstName == 'התחבר') {
-      //      $rootScope.$broadcast('showInfoPopup', { showInfo: true });
-      //  }
-       // else {
+        if ($scope.user.firstName == 'התחבר') {
+            $rootScope.$broadcast('showInfoPopup', { showInfo: true });
+        }
+        else {
             $state.transitionTo('write-meme');
-       // }
+        }
     };
 
 

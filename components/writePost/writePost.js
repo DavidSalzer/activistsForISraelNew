@@ -123,6 +123,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                 };
                 break;
             }
+           
 
 
     }
@@ -145,18 +146,20 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
         //article? check if the text is large then minimum
         if (($scope.min > 0) && ($scope.postData.post.content.length < $scope.min)) { $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return; }
 
-        PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj);
+		PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj)
+	   
+		.then(function (data) {
+		
+			console.log(data);
+			generalParameters.setBackIcon(false);
 
-        generalParameters.setBackIcon(false);
+			if ($scope.postType == 'talkback') {
 
-        if ($scope.postType == 'talkback') {
-
-            $state.transitionTo($scope.parentPostType); return;
-        }
-        //others - show thank page
-        $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+				$state.transitionTo($scope.parentPostType); return;
+			}
+			//others - show thank page
+			$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+		});
     };
-
-
 
 } ]);
