@@ -1,15 +1,6 @@
 socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
-	/*init variables*/
-    //$scope.showInput = false;
-    //$scope.currentTab = 'event';
-    //$scope.currentPost = null;
-    //$scope.showSpiner = PostService.getSpiner;
-    $scope.showPostTitle = true;
-    //$scope.domain = domain;
-    $scope.showArticleImg = false;
-    $scope.showAuthorImg = true;
-    //$scope.currentPostType = 'event';
+	
 	
     /*init controller details*/
     $scope.featureDetails = {
@@ -49,9 +40,9 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         PostService.getPostsBatch(request);
     }
 
-    $scope.getPosts = function () {
+   /*  $scope.getPosts = function () {
         PostService.getPostsBatch(request);
-    }
+    } */
 
     $scope.writeEvent = function () {
 		
