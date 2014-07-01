@@ -51,7 +51,10 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         }
     };
 
-
+    $scope.memeClick = function(){
+       // console.log('test1')
+       $state.transitionTo('single-meme');
+    }
 
 
 

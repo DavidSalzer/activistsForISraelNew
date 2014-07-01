@@ -7,9 +7,9 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         featureLogo: "./img/calendar.png",
         featureWhatsUpLogo: "./img/calendar_info.png",
         featureColor: '#004a8e',
-        infoHaeder: "×¤×™×¦'×¨ × ×¤×’×©×™×",
-        infoMainText: '×¤×¨×¡××• ××™×¨×•×¢×™× ×œ××¢×Ÿ ×™×©×¨××œ! ×œ×•×— ×œ×¤×¨×¡×•× ×•×™×¦×™×¨×ª ××™×¨×•×¢×™×/×—×•×’×™ ×‘×™×ª/××¤×’×©×™× ×‘×”× ×ª×¨×¦×• ×œ×©×ª×£ ××ª ×”×—×‘×¨×™×.',
-        infoSubText: "×™×¦×™×¨×ª ×ª×›× ×™× ×‘××™×–×•×¨ ×–×” ××•×ª× ×™×ª ×‘×”×¦×˜×¨×¤×•×ª ×œ××¤×œ×™×§×¦×™×”"
+        infoHaeder: "ôéö'ø ğôâùéí",
+        infoMainText: 'ôøñîå àéøåòéí ìîòï éùøàì! ìåç ìôøñåí åéöéøú àéøåòéí/çåâé áéú/îôâùéí áäí úøöå ìùúó àú äçáøéí.',
+        infoSubText: "éöéøú úëğéí áàéæåø æä îåúğéú áäöèøôåú ìàôìé÷öéä"
     };
     
 	generalParameters.setFeature($scope.featureDetails);
@@ -46,7 +46,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     $scope.writeEvent = function () {
 		
 		$scope.user = generalParameters.getUser();
-        if ($scope.user.firstName == '×”×ª×—×‘×¨') {
+        if ($scope.user.firstName == 'äúçáø') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else {
@@ -63,36 +63,26 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
 
 socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', function ( $scope) {
 	
-	angular.element(document).ready(function () { $scope.$$childHead.toggleMode= null;});
-
- 
-
-  $scope.today = function() {
- 
-    $scope.dt = new Date(); 
-  };
-  $scope.today();
-
- 
-
-  $scope.open = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-
-    $scope.opened = true;
-  };
-
-  $scope.dateOptions = {
-    formatYear: 'yy',
-    startingDay: 1
+	angular.element(document).ready(function () { 
 	
-	 
-  }; 
-  
-	$scope.toggleWeekDisplay = function () {
+		$scope.$$childHead.toggleMode= null;//prevent select month / year
 		
-		var monthArray = $scope.$$childHead.$$childHead.rows;
+		$scope.$watch(//reset calendar arrow when pageing month
+		
+			function(){return $scope.$$childHead.$$childHead.rows;},
+			function(newValue) {if(newValue.length > 1){$scope.togglecaendarArrow(-90);}},
+			true
+		);	
+		
+	});
+		
+    $scope.dt = new Date(); 
+	
+  	$scope.toggleWeekDisplay = function () {
+		
 		 
+		var monthArray = $scope.$$childHead.$$childHead.rows;
+		
 		//single week display? -> open and return
 		if(monthArray.length == 1){
 			
@@ -103,14 +93,21 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', function ( $scope) {
 		}
 		
 		//month display? -> select and display the current week and return
-		for(var i=0; i < monthArray.length; i++){
 		
+		//back to current month
+		$scope.dt = new Date();
+		$scope.$$childHead.select($scope.dt)
+							
+		monthArray = $scope.$$childHead.$$childHead.rows;
+						
+		for(var i=0; i < monthArray.length; i++){
+			
 			for(var j=0; j < monthArray[i].length; j++){
 			
 				if( monthArray[i][j].current == true){
 					
 					$scope.$$childHead.$$childHead.rows =[];
-					$scope.$$childHead.$$childHead.rows.push(monthArray[i]);
+					$scope.$$childHead.$$childHead.rows.push(monthArray[i]); 
 					$scope.togglecaendarArrow(90);
 					return;
 				
@@ -122,7 +119,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', function ( $scope) {
    };
    
 	$scope.togglecaendarArrow = function (deg) {
-	
+		
 		document.getElementById("calendar-arrow").style.setProperty('transform', 'rotate('+deg+'deg)');
 		document.getElementById("calendar-arrow").style.setProperty('-webkit-transform', 'rotate('+deg+'deg)');
 		document.getElementById("calendar-arrow").style.setProperty('-o-transform', 'rotate('+deg+'deg)');
@@ -130,10 +127,22 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', function ( $scope) {
 		document.getElementById("calendar-arrow").style.setProperty('-ms-transform', 'rotate('+deg+'deg)');
 	}
 
- // $scope.initDate = new Date('2016-15-20');
-  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+ 
+ /*  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
+	$scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
 
+    $scope.opened = true;
+  }; 
+
+ $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+	
+	 
+  };   */
   
 }]);
 
