@@ -20,7 +20,7 @@
 	</div>
 
 	<!--Div that will hold the pie chart-->
-	<div google-chart data="currentPollResults" type={{currentPollObj.pollType}} data-ng-hide = "pollIsActive()"></div>
+	<div google-chart data="currentPollResults" type={{currentPollObj.poll.pollType}} data-ng-hide = "pollIsActive()"></div>
 	<div class="gray-line" data-ng-hide = "pollIsActive()"></div>
 	 <div ng-repeat="line in legend" class="legend-container" data-ng-hide = "pollIsActive()">
 		<div class="legend-color" data-ng-style="{'background-color': '{{line.color}}'}"></div>
