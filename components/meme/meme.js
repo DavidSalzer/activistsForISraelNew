@@ -1,5 +1,6 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
+     $scope.domain = domain;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -19,7 +20,8 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         offset: 0,
         limit: 12,
         orderBy: '-timestamp',
-        postType: 'meme'
+        postType: 'meme',
+         _parentID:''
     };
 
 

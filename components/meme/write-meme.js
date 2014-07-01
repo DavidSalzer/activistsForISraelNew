@@ -1,6 +1,7 @@
 
 socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
-    var z;
+    
+     $scope.domain = domain;
     /*init variables*/
     generalParameters.setBackIcon(true);
     $scope.parentPostType = $stateParams.postType;
@@ -28,8 +29,6 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-
-
 
 
     $scope.getColor = function (pos) {
@@ -70,7 +69,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.imageClick = function (index) {
         console.log(index);
         $scope.suggestedMemes = PostService.getMemes();
-        $scope.postImg = $scope.suggestedMemes[index].url;
+        $scope.postImg = $scope.domain + $scope.suggestedMemes[index].url;
         $scope.showSuggestedImages = false;
         $scope.imageChosen();
     }
@@ -98,7 +97,8 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         limit: 20,
         orderBy: '-timestamp',
         postType: 'memeImages',
-        userID: $scope.user._id
+        userID: $scope.user._id,
+        _parentID:''
     };
 
 
