@@ -17,6 +17,21 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.suggestedMemes = [];
     $scope.postImg = "";
 
+     /*init controller details*/
+    $scope.featureDetails = {
+        featureName: null,
+        featureLogo: "./img/meme.png",
+        featureWhatsUpLogo: "./img/meme_info.png",
+        featureColor: '#ffd427',
+        infoHaeder: "ממים",
+        infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
+        infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
+    };
+    generalParameters.setFeature($scope.featureDetails);
+
+
+
+
     $scope.getColor = function (pos) {
 
         switch (pos) {
@@ -76,23 +91,6 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     }
 
 
-    /*init controller details*/
-    $scope.featureDetails = {
-        featureName: null,
-        featureLogo: "./img/meme.png",
-        featureWhatsUpLogo: "./img/meme_info.png",
-        featureColor: '#ffd427',
-        infoHaeder: "ממים",
-        infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
-        infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
-    };
-    generalParameters.setFeature($scope.featureDetails);
-
-
-    $scope.imageMax = 1;
-    $scope.toLargImage = false;
-    $scope.imgFileText = 'צרף תמונה';
-
     request = {
         startTimestamp: '',
         endTimestamp: '',
@@ -110,5 +108,6 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
 
 
+    
 } ]);
 
