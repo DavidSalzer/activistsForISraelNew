@@ -123,6 +123,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                 };
                 break;
             }
+           
 
 
     }

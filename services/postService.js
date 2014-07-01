@@ -82,7 +82,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         //Send post to server. if it isn't comment on post , postId = 0.
-        sendPost: function (postData, textfile, imgFile) {
+        sendPost: function (postData, textfile, imgFile, isBase64) {
 
             var self = this;
 
@@ -96,11 +96,18 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
 			    console.log(data);
 			    console.log(data.data._id);
+			    if (isBase64) {
+			        //imgFile is base64 string
+			        self.attachBase64(imgFile, data.data._id);
+			    }
+			    else {
+			        if (textfile)
+			            self.attach(textfile, data.data._id);
+			        if (imgFile)
+			            self.attach(imgFile, data.data._id);
 
-			    if (textfile)
-			        self.attach(textfile, data.data._id);
-			    if (imgFile)
-			        self.attach(imgFile, data.data._id);
+			    }
+
 			})
 			.error(function (data) {
 
@@ -133,7 +140,27 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             //if(file){self.attach(file);}
 
         },
+        attachBase64: function (base64, userId) {
 
+            postData={
+                _id:userId,
+                base64: base64
+            }
+            var json = JSON.stringify(postData);
+            console.log(json);
+
+            $http.post(domain + 'Base64FileUpload?ref=post', json)
+			.success(function (data) {
+                console.log(data)
+
+			})
+			.error(function (data) {
+
+			    console.log(data);
+
+			});
+
+        },
         getIsLike: function (pid, index) {
 
             var parmas = { "activity": { "post": pid, "type": "like"} };
@@ -167,17 +194,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             console.log(user)
 
-            var parmas = {"activity":{"post":pid,"type":"like"}};
-		
+            var parmas = { "activity": { "post": pid, "type": "like"} };
+
             var json = JSON.stringify(parmas);
             console.log(json);
-			
-		
-			//$http.delete(domain + 'deletePostActivity', json)
-        
-            $http({url:domain + 'deletePostActivity',method:"delete" ,headers: {'Content-Type': 'application/json'}, data:json})
-			//$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
-        
+
+
+            //$http.delete(domain + 'deletePostActivity', json)
+
+            $http({ url: domain + 'deletePostActivity', method: "delete", headers: { 'Content-Type': 'application/json' }, data: json })
+            //$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
+
 			.success(function (data) {
 
 			    console.log(data);
@@ -310,7 +337,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                     if (flag) {
                         posts.push(data.data[i][0]);
                     }
-                    
+
                 }
                 console.log(posts);
             })
