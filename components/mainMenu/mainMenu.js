@@ -12,9 +12,9 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         postId: 5
     },
     {
-       
 
-         featureId: 3,
+
+        featureId: 3,
         featureUrl: 'facebookPoalim',
         featureName: 'פייסבוק פועלים',
         featureLogo: './img/actionforisrael.png',
@@ -35,24 +35,24 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     //},
     {
     featureId: 3,
-        featureUrl: 'facebookBennet',
-        featureName: 'פייסבוק נפתלי',
-        featureLogo: './img/NaftaliBennett.png',
-        featureImg: './img/image/pic4.png',
-        title: 'ערוץ הפייסבוק של נפתלי בנט',
-        text: 'הכנסו לקרוא',
-        postId: 5
+    featureUrl: 'facebookBennet',
+    featureName: 'פייסבוק נפתלי',
+    featureLogo: './img/NaftaliBennett.png',
+    featureImg: './img/image/pic4.png',
+    title: 'ערוץ הפייסבוק של נפתלי בנט',
+    text: 'הכנסו לקרוא',
+    postId: 5
 },
     {
         featureId: 3,
-    featureUrl: 'article',
-    featureName: 'מאמרים',
-    featureLogo: './img/article.png',
-    featureImg: './img/image/pic3.png',
-    title: 'מאמרים בנושאים על סדר היום',
-    text: 'עמוד מאמרים',
-    postId: 5
-        
+        featureUrl: 'article',
+        featureName: 'מאמרים',
+        featureLogo: './img/article.png',
+        featureImg: './img/image/pic3.png',
+        title: 'מאמרים בנושאים על סדר היום',
+        text: 'עמוד מאמרים',
+        postId: 5
+
     }
     ,
     {
@@ -82,25 +82,27 @@ $scope.featureDetails = {
 };
 
 
-document.addEventListener("backbutton", function() {
-            if ( $('.ui-page-active').attr('id') == 'main-menu') {
-                exitAppPopup();
-            } else {
-                history.back();             
-            }
-        }, false);
+document.addEventListener("backbutton", function () {
+    alert("fdf");
+    if ($('.ui-page-active').attr('id') == 'main-menu') {
+        alert("fdf");
+        exitAppPopup();
+    } else {
+        history.back();
+    }
+}, false);
 
-        function exitAppPopup() {
+function exitAppPopup() {
     navigator.notification.confirm(
           'Exit PhoneGap ' + device.cordova + ' Demo?'
-        , function(button) {
-              if (button == 2) {
-                  navigator.app.exitApp();
-              } 
-          }
+        , function (button) {
+            if (button == 2) {
+                navigator.app.exitApp();
+            }
+        }
         , 'Exit'
         , 'No,Yes'
-    );  
+    );
     return false;
 }
 
