@@ -10,7 +10,7 @@
 <div class="posts-list">
     <!--<script src="./plugins/color-picker/jscolor.js"></script>-->
 
-    <div class="top-part"  data-ng-show="postImg == ''">
+    <div class="top-part" style="position: relative;z-index: 10000"  data-ng-show="postImg == ''">
         <div class="instruction" >בחר תמונה</div>
    
         <!--suggested images by server DONT DELETE-->
@@ -53,15 +53,20 @@
              <div class="immulate-text bottom"   data-ng-class="{'size1':bottomText.length <=12, 'size2':(bottomText.length >12 && bottomText.length <=20),'size3':bottomText.length >20}"  data-ng-style="{'color':getColor('bottom'),'font-family':font}">{{bottomText}}</div>
         </div>
     </div>
-     <div class="add-file"  data-ng-show="true">  
-       <div class="plus" style='position: absolute;top: 0;cursor: pointer;z-index: 100;'>
-			+
-			<input type="file" data-upload='img' style='position: absolute;top: 0;z-index: 100;'>
-			</input>
-		</div>
-		<div class='add-file-text' >{{imgFileText}}</div>
-		<div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+    <div style="position: relative">
+        <input type="file" data-upload='img' style='position: absolute; width: 100%'/>
+			    
+            <div class="add-file"  data-ng-show="true">  
+           <div class="plus" style='position: absolute;top: 0;cursor: pointer;z-index: 100;'>
+			    +
+			
+		    </div>
+		    <div class='add-file-text' >{{imgFileText}}</div>
+		    <div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+        </div>
+
     </div>
+     
     <div class="edit-text-wrap"  data-ng-show="true">
         <div class="font">
              <div class="plus rtl" data-ng-show="false" data-ng-class="{'rtl-active':rtl == true}" data-ng-click="setDirection('rtl')">

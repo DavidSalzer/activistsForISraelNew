@@ -153,9 +153,10 @@ input#userImg {
 }
 
 input[type=file] {
-    opacity: 0;
-    width: inherit;
-    height: inherit;
+   opacity: 0;
+width: inherit;
+height: inherit;
+z-index: 1000;
 }
 
 .log-in-or {
