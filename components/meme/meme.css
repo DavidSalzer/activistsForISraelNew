@@ -7,6 +7,7 @@
 height: 100%;
 width: 320px;
 margin: auto;
+padding-bottom: 100px;
 /*width: 320px;*/
 }
 
@@ -72,7 +73,7 @@ background-color: #535c63;
 position: absolute;
 }
 .icon{
-background-image: url('/img/heart_meme.png');
+background-image: url('../../img/heart_meme.png');
 background-repeat: no-repeat;
 background-size: 34px 15px;
 background-position-x: 1px;
@@ -327,8 +328,12 @@ right: 42px;
 }
 
 .font .file-text{
-    margin-right: 85px;
-    overflow: hidden;
+    /*margin-right: 85px;
+    overflow: hidden;*/
+    
+    margin-right: 0;
+overflow: hidden;
+text-indent: 20px;
 }
 
 
@@ -404,7 +409,7 @@ padding-top: 30px;
 width: 53px;
 }
 
-.single-meme figure.author-image{
+/*.single-meme figure.author-image{
    top: 6px;
 margin-right: 23px;}
 
@@ -413,7 +418,7 @@ margin-right: 23px;}
     color: white;
 font-size: 10px;
 line-height: 10px;
-/* bottom: 9px; */
+
 position: relative;
 margin-top: 43px;
 }
@@ -423,4 +428,4 @@ background-color: #808080;
 bottom: 0px;
 position: absolute;
 width: 100%;
-}
+}*/

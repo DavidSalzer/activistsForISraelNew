@@ -156,6 +156,7 @@
 .info-popup .main-text {
     width: 80%;
     margin: 13px auto;
+    line-height: 19px;
 }
 
 #whatsup-bottom {

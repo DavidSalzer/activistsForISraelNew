@@ -83,6 +83,8 @@ padding:0px;
 padding-right: 0px;
 float:left;
 height: 100%;
+
+text-indent: 20px;
 }
 /*************************post template*******************/
 .posts-list {
@@ -821,7 +823,7 @@ button {
     background-color: #31363d;
     padding-top: 8px;
     padding-bottom: 8px;
-    padding-right: 50px;
+    padding-right: 42px;
 }
 
 .legend-color {
@@ -837,6 +839,7 @@ button {
     background-color: #31363d;
     color: #ffffff;
     padding-right: 15px;
+    margin-bottom: 10px;
 }
 
 .legend-image {
@@ -848,6 +851,10 @@ button {
     padding-top: 10px;
     margin: auto;
     border: solid 2px #42484e;
+}
+
+.legend-container .legend-image {
+    margin: 0;
 }
 
 .optionToVote-container {
