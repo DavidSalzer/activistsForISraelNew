@@ -18,10 +18,10 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.suggestedMemes = [];
     $scope.postImg = "";
 
-    $scope.localMemeImages = [{url:'img/memes/84688.jpg'},{url:'img/memes/1904595.jpg'},{url:'img/memes/3291562.jpg'},{url:'img/memes/4669763.jpg'},{url:'img/memes/5169527.jpg'},
-    {url:'img/memes/224723908.jpg'},{url:'img/memes/232041342.jpg'},{url:'img/memes/16.jpg'},
-    {url:'img/memes/19.jpg'},{url:'img/memes/22.jpg'},{url:'img/memes/49.jpg'}
-    ,{url:'img/memes/65.jpg'},{url:'img/memes/346.jpg'},{url:'img/memes/9061.jpg'}];
+    $scope.localMemeImages = [{ url: 'img/memes/84688.jpg' }, { url: 'img/memes/1904595.jpg' }, { url: 'img/memes/3291562.jpg' }, { url: 'img/memes/4669763.jpg' }, { url: 'img/memes/5169527.jpg' },
+    { url: 'img/memes/224723908.jpg' }, { url: 'img/memes/232041342.jpg' }, { url: 'img/memes/16.jpg' },
+    { url: 'img/memes/19.jpg' }, { url: 'img/memes/22.jpg' }, { url: 'img/memes/49.jpg' }
+    , { url: 'img/memes/65.jpg' }, { url: 'img/memes/346.jpg' }, { url: 'img/memes/9061.jpg'}];
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -63,7 +63,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.setClass = function () {
         var img = document.getElementById('chosenImg');
-        console.log('img width: '+img.offsetWidth+' img height: '+img.offsetHeight)
+        console.log('img width: ' + img.offsetWidth + ' img height: ' + img.offsetHeight)
         if (img.width >= img.height) {
             return 'widthCon'
         }
@@ -74,12 +74,12 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.imageClick = function (index) {
         console.log(index);
-        $scope.suggestedMemes = 
+        $scope.suggestedMemes =
         $scope.postImg = $scope.localMemeImages[index].url;
         $scope.showSuggestedImages = false;
         $scope.imageChosen();
 
-         //suggested images by server DONT DELETE
+        //suggested images by server DONT DELETE
         // console.log(index);
         //$scope.suggestedMemes = PostService.getMemes();
         //$scope.postImg = $scope.domain + $scope.suggestedMemes[index].url;
@@ -119,7 +119,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.memeImages = PostService.getMemes;
     console.log($scope.postData);
 
-
+    $scope.$apply();
 
 
 } ]);
