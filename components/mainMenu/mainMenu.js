@@ -23,16 +23,16 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         text: 'הכנסו לקרוא',
         postId: 5
     },
-    //{
-    //    featureId: 2,
-    //    featureUrl: 'poll',
-    //    featureName: 'משאל עם',
-    //    featureLogo: './img/poll.png',
-    //    featureImg: './img/image/pic6.png',
-    //    title: 'בואו להצביע בעמוד הסקרים שלנו',
-    //    text: 'עמוד סקרים',
-    //    postId: 5
-    //},
+    {
+        featureId: 2,
+        featureUrl: 'poll',
+        featureName: 'משאל עם',
+        featureLogo: './img/poll.png',
+        featureImg: './img/image/pic6.png',
+        title: 'בואו להצביע בעמוד הסקרים שלנו',
+        text: 'עמוד סקרים',
+        postId: 5
+    },
     {
     featureId: 3,
     featureUrl: 'facebookBennet',
@@ -81,12 +81,8 @@ $scope.featureDetails = {
 
 };
 
-
-
 document.addEventListener("backbutton", function () {
-    alert(window.location.hash);
     if (window.location.hash == '#/main-menu') {
-        alert('in'); 
         $scope.exitAppPopup();
     } else {
         history.back();

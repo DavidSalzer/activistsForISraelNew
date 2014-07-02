@@ -54,6 +54,20 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/article.png",
             featureColor: "article"
         },
+         {
+            featureUrl: 'meme',
+            featureName: 'ממים',
+            featureLogo: "./img/meme.png",
+            featureColor: "#ffd427"
+        }
+        ,
+		{
+		    featureUrl: 'poll',
+		    featureName: 'משאל עם',
+		    featureLogo: "./img/poll.png",
+		    featureColor: "poll"
+		}
+        ,
         {
             featureUrl: 'channel',
             featureName: 'יוטיוב',
@@ -79,26 +93,14 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureName: 'צור קשר',
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
-        },
-         {
-            featureUrl: 'meme',
-            featureName: 'ממים',
-            featureLogo: "./img/meme.png",
-            featureColor: "#ffd427"
         }
-        ,
-		{
-		    featureUrl: 'poll',
-		    featureName: 'משאל עם',
-		    featureLogo: "./img/poll.png",
-		    featureColor: "poll"
-		},
-		{
-		    featureUrl: 'event',
-		    featureName: 'נפגשים',
-		    featureLogo: "./img/calendar.png",
-		    featureColor: "event"
-		}
+  //      ,
+		//{
+		//    featureUrl: 'event',
+		//    featureName: 'נפגשים',
+		//    featureLogo: "./img/calendar.png",
+		//    featureColor: "event"
+		//}
 
     ];
 
