@@ -62,6 +62,13 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $scope.showPhoneError = false;
         $scope.showAddressError = false;
 
+        if ($scope.gender == 'זכר') {
+            $scope.gender = 'male';
+        }
+        else {
+            $scope.gender = 'female';
+        }
+
         $scope.signinDetails = {
             firstName: $scope.fName,
             lastName: $scope.lName,

@@ -8,8 +8,8 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         featureLogo: "./img/meme.png",
         featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
-        infoHaeder: "ממים",
-        infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
+        infoHaeder: "פיצ'ר הממים",
+        infoMainText: 'הכינו "ממים"    - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
@@ -51,9 +51,8 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         }
     };
 
-    $scope.memeClick = function(){
-       // console.log('test1')
-       $state.transitionTo('single-meme');
+    $scope.memeClick = function(index){
+        $state.transitionTo('single-meme',{index:index});
     }
 
 	$scope.like = function($event,$index){

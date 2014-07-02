@@ -73,7 +73,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
             for (var i = 0; i < $scope.currentPollResults.length; i++) {
                 percent = (($scope.currentPollResults[i].count / $scope.currentPollObj.poll.countVote) * 100).toFixed(1);
                 console.log(percent);
-                $scope.temp.push({ name: $scope.currentPollResults[i].answer, votes: $scope.currentPollResults[i].count, color: $scope.options.colors[i], percent: percent + "%" });
+                $scope.temp.push({ name: $scope.currentPollResults[i].answer, votes: parseInt(percent), color: $scope.options.colors[i], percent: percent + "%" });
             }
             $scope.currentPollResults = $scope.temp;
         }
