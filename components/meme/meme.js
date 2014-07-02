@@ -29,6 +29,27 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
 
+    $scope.getPostsByAll = function () {
+        request.endTimestamp = '';
+        request.orderBy = '-timestamp';
+        request.offset = 0;
+        PostService.getPostsBatch(request);
+    }
+
+    $scope.getPostsByFavorite = function () {
+        request.orderBy = '-likesCount';
+        request.endTimestamp = '';
+        request.offset = 0;
+        PostService.getPostsBatch(request);
+    }
+
+    $scope.getPostsByViews = function () {
+        $scope.currentTab = 'article';
+        request.endTimestamp = '';
+        request.orderBy = '-viewsCount';
+        request.offset = 0;
+        PostService.getPostsBatch(request);
+    }
 
     $scope.loadMore = function () {
         $scope.showSpiner = true; //need to change to false while get callback from server.
