@@ -13,6 +13,7 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
     $scope.showSpiner = PostService.getSpiner;
     $scope.offset = 20;
 
+
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,

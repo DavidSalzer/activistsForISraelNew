@@ -9,9 +9,9 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/meme.png",
-        featureWhatsUpLogo: "./img/article_info.png",
+        featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
-        infoHaeder: "ממים",
+        infoHaeder: "פיצ'ר הממים",
         infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
