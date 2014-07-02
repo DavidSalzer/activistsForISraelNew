@@ -99,8 +99,11 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
             if (userDetails.gender == 'male') {
                 userDetails.gender = 'זכר';
             }
-            else {
+            else if(userDetails.gender == 'female'){
                 userDetails.gender = 'נקבה';
+            }
+            else {
+                userDetails.gender = 'מין';
             }
             
             PostService.setUser(userDetails);
