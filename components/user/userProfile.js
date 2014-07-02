@@ -25,7 +25,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
              featureLogo: "./img/article.png",
              featureColor: "article",
              recentActivity: []
-         }
+         },
     //       {
     //          featureUrl: 'meme',
     //          featureName: 'ממים',
@@ -33,12 +33,12 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
     //          featureColor: "#ffd427"
     //      }
     //      ,
-    //{
-    //    featureUrl: 'poll',
-    //    featureName: 'משאל עם',
-    //    featureLogo: "./img/poll.png",
-    //    featureColor: "poll"
-    //},
+        {
+        featureUrl: 'poll',
+        featureName: 'משאל עם',
+        featureLogo: "./img/poll.png",
+        featureColor: "poll"
+    }
     //{
     //    featureUrl: 'event',
     //    featureName: 'נפגשים',
@@ -52,6 +52,9 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
     $scope.profile = generalParameters.getUser;
     $scope.myProfile = true;
 
+    $scope.editProfile = angular.copy($scope.profile());
+
+
     $scope.editName = false;
     $scope.editAddress = false;
     $scope.editEmail = false;
@@ -60,6 +63,8 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
 
     $scope.editItem = function (field) {
         console.log("edit: " + field);
+        $scope.editProfile = angular.copy($scope.profile());
+        console.log($scope.editProfile);
         switch (field) {
             case 'name':
                 if ($scope.editName) {
@@ -123,6 +128,40 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
                 break;
         }
 
+    }
+
+    $scope.updateUserDetails = function (field) {
+        switch (field) {
+            case 'name':
+                request = { firstName: $scope.editProfile.firstName, lastName: $scope.editProfile.lastName };
+                break;
+            case 'address':
+                request = { address: $scope.editProfile.address };
+                break;
+            case 'email':
+
+            case 'phone':
+                request = { phone: $scope.editProfile.phone };
+                break;
+            case 'gender':
+                console.log($scope.editProfile.gender);
+                if ($scope.profile().gender == 'זכר') {
+                    gender = 'male';
+                }
+                else {
+                    gender = 'female';
+                }
+                request = { gender: gender };
+                break;
+        }
+
+        console.log(request);
+        queryString = 'profile/update';
+        classAjax.getdata('post', queryString, request).then(function (data) {
+            console.log(data);
+            generalParameters.setUser(data.data);
+            $scope.editItem(field);
+        })
     }
 
     $scope.userLogout = function () {
