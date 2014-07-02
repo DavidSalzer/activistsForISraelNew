@@ -32,11 +32,11 @@
         <div class="suggested-images-wrap">
             <div class="images-window">  
 			    <div  class='suggested-images-up'>
-				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  ng-if="$even" class="meme-element2"  style="background-image:url('{{image.url}}')" >
+				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  ng-if="$even" class="meme-element2"  style="background-image:url('../../{{image.url}}')" >
 				    </span>
                 </div>
 			    <div  class='suggested-images-down'>
-				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  ng-if="$odd" class="meme-element2"  style="background-image: url('{{image.url}}');" >
+				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  ng-if="$odd" class="meme-element2"  style="background-image: url('../../{{image.url}}');" >
 				    </span>
                 </div>
             </div>
@@ -64,11 +64,11 @@
     </div>
     <div class="edit-text-wrap"  data-ng-show="true">
         <div class="font">
-             <div class="plus rtl" data-ng-class="{'rtl-active':rtl == true}" data-ng-click="setDirection('rtl')">
+             <div class="plus rtl" data-ng-show="false" data-ng-class="{'rtl-active':rtl == true}" data-ng-click="setDirection('rtl')">
 			
 			
 		    </div>
-           <div class="plus ltr" data-ng-class="{'ltr-active':ltr == true}" data-ng-click="setDirection('ltr')">
+           <div class="plus ltr" data-ng-show="false" data-ng-class="{'ltr-active':ltr == true}" data-ng-click="setDirection('ltr')">
 			
 			
 		    </div>
