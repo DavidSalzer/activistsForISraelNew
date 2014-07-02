@@ -712,7 +712,7 @@ button {
 
 .ellipsis:before {
     content: "";
-    float: right;
+    /*float: right;*/
     width: 5px;
     height: 200px;
 }
@@ -854,7 +854,7 @@ button {
 }
 
 .legend-container .legend-image {
-    margin: 0;
+    margin: 5px 0;
 }
 
 .optionToVote-container {
@@ -877,6 +877,7 @@ button {
     margin-top: 20px;
     margin-bottom: 20px;
     color: #ffffff;
+    font-weight: bold;
 }
 
 .optionToVote-image {
@@ -933,4 +934,17 @@ button {
     margin-top: 12px;
     height: 52px;
     position: relative;
+}
+
+::-webkit-input-placeholder {
+    color:    #999;
+}
+:-moz-placeholder {
+    color:    #999;
+}
+::-moz-placeholder {
+    color:    #999;
+}
+:-ms-input-placeholder {
+    color:    #999;
 }

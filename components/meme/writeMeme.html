@@ -32,11 +32,11 @@
         <div class="suggested-images-wrap">
             <div class="images-window">  
 			    <div  class='suggested-images-up'>
-				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  ng-if="$even" class="meme-element2"  style="background-image:url('../../{{image.url}}')" >
+				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  ng-if="$even" class="meme-element2"  style="background-image:url('./../{{image.url}}')" >
 				    </span>
                 </div>
 			    <div  class='suggested-images-down'>
-				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  ng-if="$odd" class="meme-element2"  style="background-image: url('../../{{image.url}}');" >
+				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  ng-if="$odd" class="meme-element2"  style="background-image: url('./../{{image.url}}');" >
 				    </span>
                 </div>
             </div>
