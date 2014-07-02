@@ -1,7 +1,7 @@
 
 socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
-    
-     $scope.domain = domain;
+
+    $scope.domain = domain;
     /*init variables*/
     generalParameters.setBackIcon(true);
     $scope.parentPostType = $stateParams.postType;
@@ -18,13 +18,18 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.suggestedMemes = [];
     $scope.postImg = "";
 
-     /*init controller details*/
+    $scope.localMemeImages = [{ url: 'img/memes/84688.jpg' }, { url: 'img/memes/1904595.jpg' }, { url: 'img/memes/3291562.jpg' }, { url: 'img/memes/4669763.jpg' }, { url: 'img/memes/5169527.jpg' },
+    { url: 'img/memes/224723908.jpg' }, { url: 'img/memes/232041342.jpg' }, { url: 'img/memes/16.jpg' },
+    { url: 'img/memes/19.jpg' }, { url: 'img/memes/22.jpg' }, { url: 'img/memes/49.jpg' }
+    , { url: 'img/memes/65.jpg' }, { url: 'img/memes/346.jpg' }, { url: 'img/memes/9061.jpg'}];
+
+    /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/meme.png",
         featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
-        infoHaeder: "ממים",
+        infoHaeder: "פיצ'ר הממים",
         infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
@@ -58,7 +63,8 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.setClass = function () {
         var img = document.getElementById('chosenImg');
-        if (img.width > img.height) {
+        console.log('img width: ' + img.offsetWidth + ' img height: ' + img.offsetHeight)
+        if (img.width >= img.height) {
             return 'widthCon'
         }
         else if (img.width < img.height) {
@@ -68,10 +74,17 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.imageClick = function (index) {
         console.log(index);
-        $scope.suggestedMemes = PostService.getMemes();
-        $scope.postImg = $scope.domain + $scope.suggestedMemes[index].url;
+        $scope.suggestedMemes =
+        $scope.postImg = $scope.localMemeImages[index].url;
         $scope.showSuggestedImages = false;
         $scope.imageChosen();
+
+        //suggested images by server DONT DELETE
+        // console.log(index);
+        //$scope.suggestedMemes = PostService.getMemes();
+        //$scope.postImg = $scope.domain + $scope.suggestedMemes[index].url;
+        //$scope.showSuggestedImages = false;
+        //$scope.imageChosen();
     }
 
     $scope.imageChosen = function () {
@@ -82,7 +95,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         html2canvas(document.getElementById('html2canvas'), {
             onrendered: function (canvas) {
                 var dataURL = canvas.toDataURL("image/png");
-               // document.getElementById('img').src = dataURL;
+                // document.getElementById('img').src = dataURL;
                 PostService.setPreviewMeme(dataURL);
                 $state.transitionTo('meme-preview');
             }
@@ -98,7 +111,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         orderBy: '-timestamp',
         postType: 'memeImages',
         userID: $scope.user._id,
-        _parentID:''
+        _parentID: ''
     };
 
 
@@ -106,8 +119,8 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.memeImages = PostService.getMemes;
     console.log($scope.postData);
 
+    $scope.$apply();
 
 
-    
 } ]);
 

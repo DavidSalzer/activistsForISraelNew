@@ -54,7 +54,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
                 for (var k = 0; k < posts.length; k++) {
 
-                    //	self.getIsLike(posts[k]._id,k);
+                    self.getIsLike(posts[k]._id,k);
                 }
 
                 console.log(posts);
@@ -182,14 +182,14 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
         getIsLike: function (pid, index) {
 
-            var parmas = { "activity": { "post": pid, "type": "like"} };
+            var parmas = { "activity": { "post": pid, "user": user._id, "type": "like"} };
 
             var json = JSON.stringify(parmas);
             //console.log(json);
 
             $http.post(domain + 'isActivityFound', json)
 			.success(function (data) {
-
+				 
 			    if (data.data == null) {
 
 			        posts[index].isLiked = false; return;
@@ -218,14 +218,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             var json = JSON.stringify(parmas);
             console.log(json);
 
-
-            //$http.delete(domain + 'deletePostActivity', json)
-
             $http({ url: domain + 'deletePostActivity', method: "delete", headers: { 'Content-Type': 'application/json' }, data: json })
-            //$http({url:domain + 'deletePostActivity/'+pid,method: "delete",data: JSON.stringify(parmas)})
-
+    
 			.success(function (data) {
-
+			
 			    console.log(data);
 			})
 			.error(function (data) {
@@ -245,7 +241,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             $http.post(domain + 'addPostActivity', json)
 			.success(function (data) {
-
+				
 			    console.log(data);
 			})
 			.error(function (data) {
@@ -312,6 +308,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         getMemes: function () {
             return memeImages;
         },
+
 
         getPostById: function (postid) {
             self = this;

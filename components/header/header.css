@@ -156,14 +156,17 @@
 .info-popup .main-text {
     width: 80%;
     margin: 13px auto;
+    line-height: 19px;
 }
 
 #whatsup-bottom {
-    position: absolute;
-    bottom: 0px;
-    padding: 20px 0px 16px 0px;
-    width: 100%;
-    margin-bottom: 4px;
+   position: absolute;
+bottom: 0px;
+padding: 34px 0px 16px 0px;
+width: 100%;
+margin-bottom: 4px;
+height: 30%;
+
 }
 
 #bottom-main-text {

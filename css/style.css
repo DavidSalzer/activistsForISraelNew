@@ -77,7 +77,14 @@ header i.fa.back {
 }
 
 select{
-    border: none;
+      border: none;
+width: 100%;
+padding:0px;
+padding-right: 0px;
+float:left;
+height: 100%;
+
+text-indent: 20px;
 }
 /*************************post template*******************/
 .posts-list {
@@ -739,6 +746,7 @@ button {
     LINE-HEIGHT: 20px;
     background-color: #ffffff;
     color: #000000;
+    /*margin-bottom: 10px;*/
 }
 
 .pollView-image {
@@ -815,7 +823,7 @@ button {
     background-color: #31363d;
     padding-top: 8px;
     padding-bottom: 8px;
-    padding-right: 50px;
+    padding-right: 42px;
 }
 
 .legend-color {
@@ -831,6 +839,7 @@ button {
     background-color: #31363d;
     color: #ffffff;
     padding-right: 15px;
+    margin-bottom: 10px;
 }
 
 .legend-image {
@@ -844,11 +853,16 @@ button {
     border: solid 2px #42484e;
 }
 
+.legend-container .legend-image {
+    margin: 0;
+}
+
 .optionToVote-container {
     width: 263px;
     height: 45px;
-    margin-top: 5px;
-    margin-right: 50px;
+    margin-top: 7px;
+    margin-right: auto;
+    margin-left: auto;
     padding-right: 25px;
     padding-top: 15px;
 }
@@ -866,12 +880,11 @@ button {
 }
 
 .optionToVote-image {
-    background-color: #42484e;
-    padding: 3px;
+    /*background-color: #42484e;
+    padding: 3px;*/
     height: 158px;
     width: 235px;
-    margin-right: 15%;
-    margin-top: 10px;
+    margin: auto;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;

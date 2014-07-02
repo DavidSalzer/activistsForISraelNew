@@ -1,11 +1,11 @@
-<div class="meme-wrap meme-container"  data-ng-click="memeClick();$event.stopPropagation();" data-ng-class="{ 'large' : $index % 12  == 0 || $index % 12  == 6,  'q6' :  $index % 12  == 6  }"><!--data-ng-class="{ 'large' : $index % 3 == 2, 'small' : $index % 3 == 1, 'small' : $index % 3 == 0}"-->
+<div class="meme-wrap meme-container"  data-ng-click="memeClick($index);$event.stopPropagation();" data-ng-class="{ 'large' : $index % 12  == 0 || $index % 12  == 6,  'q6' :  $index % 12  == 6  }"><!--data-ng-class="{ 'large' : $index % 3 == 2, 'small' : $index % 3 == 1, 'small' : $index % 3 == 0}"-->
     <div class="meme-dummy" id="dummy"></div>
     <div class="meme-element"  data-ng-style="{'background-image': 'url({{domain+post.img}})'}" id="element">
         
     </div>
-    <div class="meme-like" data-ng-click='like($event,$index);$event.stopPropagation();'>
+    <div class="meme-like" data-ng-click='like($index);$event.stopPropagation();'>
         <div class="opacity"></div>
-        <div class="icon"></div>
+        <div class="icon" data-ng-class="{'meme-like-icon-isLike':post.isLiked==true}"></div>
         <div class="num">{{post.likesCount}}</div>
     </div>
 </div>

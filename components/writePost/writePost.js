@@ -14,14 +14,13 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.postData = {
 
-
         user: { _id: $scope.user._id },
         post: { _parentID: null, attachment: "", content: "" }
 
     };
 
     $scope.featureColor = colors[$scope.postType];
-    if ($stateParams.postId != 0) {//if comment
+    if (($stateParams.postId != 0) && ($scope.postType != 'event')) {//if comment
 
         $scope.featureColor = colors[$scope.parentPostType];
         $scope.postType = 'talkback'
@@ -121,6 +120,18 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                     featureState: 'event'
 
                 };
+				
+				if($stateParams.postId != 0){//edit event
+					
+					$scope.headerText = 'עריכת אירוע';
+					$scope.postData.post = PostService.getSinglePost();
+					if($scope.postData.post.img){
+						
+						$scope.imgFileText = $scope.postData.post.img;
+						$scope.postImg = domain + $scope.postData.post.img;
+					}
+					console.log($scope.postData.post)
+				}
                 break;
             }
            
@@ -137,7 +148,9 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
         $scope.postData.post.place = '';
         $scope.postData.post.mail = "";
         $scope.postData.post.phone = "";
-        $scope.imgFileText = 'צרף תמונה'
+        $scope.imgFileText = 'צרף תמונה';
+		$scope.postImg = "";
+		
     };
 
     $scope.sendPost = function () {
@@ -160,6 +173,12 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 			//others - show thank page
 			$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 		});
+    };
+	
+	$scope.editPost = function () {
+
+			console.log($scope.postData.post)
+       
     };
 
 } ]);

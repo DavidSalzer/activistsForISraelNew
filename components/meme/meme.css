@@ -5,7 +5,9 @@
 .posts-list.memes{
     padding: 8px 10px;
 height: 100%;
-width: 100%;
+width: 320px;
+margin: auto;
+padding-bottom: 100px;
 /*width: 320px;*/
 }
 
@@ -60,6 +62,7 @@ width: auto;
 overflow: hidden;
 max-width: 100%;
 }
+
 .large .meme-like{
     width: 20%;
 }
@@ -71,21 +74,27 @@ background-color: #535c63;
 position: absolute;
 }
 .icon{
-background-image: url('/img/heart_meme.png');
-background-repeat: no-repeat;
-background-size: 34px 15px;
-background-position-x: 1px;
-background-position-y: 1px;
-height: 16px;
-width: 17px;
-display: block;
-margin: auto;
-position: relative;
-z-index: 3;
-/* top: 4px; */
-right: 0;
-left: 0;
-margin-top: 4px;
+
+	background-image: url('../../img/heart_meme.png');
+	background-repeat: no-repeat;
+	background-size: 34px 15px;
+	background-position-x: -17px;
+	background-position-y: 1px;
+	height: 16px;
+	width: 17px;
+	display: block;
+	margin: auto;
+	position: relative;
+	z-index: 3;
+	/* top: 4px; */
+	right: 0;
+	left: 0;
+	margin-top: 4px;
+}
+
+.meme-like-icon-isLike{
+	
+	background-position-x: 1px;
 }
 
 .num{
@@ -147,22 +156,23 @@ overflow-y: hidden;
 }
 
 .meme-element2{
-    background-size: contain;
-background-repeat: no-repeat;
-background-position: center;
-/* margin: 5px; */
+    
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	/* margin: 5px; */
 
-border-radius: 3px;
-background-color: #535c63;
-overflow: hidden;
-height: 91px;
-width: 91px;
-/* padding: 3px; */
+	border-radius: 3px;
+	background-color: #535c63;
+	overflow: hidden;
+	height: 91px;
+	width: 91px;
+	/* padding: 3px; */
 
-border: 2px solid #535c63;
-display: inline-block;
-margin: 3px;
-margin-bottom: 6px;
+	border: 2px solid #535c63;
+	display: inline-block;
+	margin: 3px;
+	margin-bottom: 6px;
 }
 /*.meme-container2{
     border-radius: 3px;
@@ -190,13 +200,16 @@ border: none;
 }
 
 .chosenImg .meme-container{
-   width: 180px;
+width: 180px;
 height: 180px;
 float: none;
 margin: auto;
 border-radius: 0;
-padding: 2px;
+/* padding: 7px; */
 margin-top: 47px;
+/* position: relative; */
+/* box-sizing: border-box; */
+border: 2px solid #535c63;
 }
 
 .immulate-text{
@@ -323,8 +336,12 @@ right: 42px;
 }
 
 .font .file-text{
-    margin-right: 85px;
-    overflow: hidden;
+    /*margin-right: 85px;
+    overflow: hidden;*/
+    
+    margin-right: 0;
+overflow: hidden;
+text-indent: 20px;
 }
 
 
@@ -380,3 +397,72 @@ margin-top: 24px;
 .button{
     margin-top: 14px;
 }
+
+
+/*single meme*/
+
+.single-meme{
+    height: 100%;
+
+}
+.single{
+    width: 95%;
+margin: auto;
+display: block;
+padding-top: 30px;
+}
+
+.like-section{
+
+	text-align: center;
+	margin-top: 10px;
+	width: 140px;
+	margin: auto;
+}
+.like-section-icon{
+    
+	background-image: url('../../img/heart_meme.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 40px;
+	width: 40px;
+	display: inline-block;
+	vertical-align: middle;
+	background-position-x: -49px;
+}
+
+.like-section-icon-isLike{
+	
+	background-position-x: -3px;
+}
+
+.like-section-num{
+    
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 16px;
+	color: #ffffff;
+}
+
+
+
+/*.single-meme figure.author-image{
+   top: 6px;
+margin-right: 23px;}
+
+.single-meme .author-name
+{
+    color: white;
+font-size: 10px;
+line-height: 10px;
+
+position: relative;
+margin-top: 43px;
+}
+.author-wrap{
+    height: 70px;
+background-color: #808080;
+bottom: 0px;
+position: absolute;
+width: 100%;
+}*/

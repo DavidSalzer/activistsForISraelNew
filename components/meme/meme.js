@@ -1,6 +1,7 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
      $scope.domain = domain;
+     $scope.showSpiner = PostService.getSpiner;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -8,8 +9,8 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         featureLogo: "./img/meme.png",
         featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
-        infoHaeder: "ממים",
-        infoMainText: 'הכינו "ממים" - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
+        infoHaeder: "פיצ'ר הממים",
+        infoMainText: 'הכינו "ממים"    - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
@@ -29,11 +30,33 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
 
+    $scope.getPostsByAll = function () {
+        request.endTimestamp = '';
+        request.orderBy = '-timestamp';
+        request.offset = 0;
+        PostService.getPostsBatch(request);
+    }
+
+    $scope.getPostsByFavorite = function () {
+        request.orderBy = '-likesCount';
+        request.endTimestamp = '';
+        request.offset = 0;
+        PostService.getPostsBatch(request);
+    }
+
+    $scope.getPostsByViews = function () {
+        $scope.currentTab = 'article';
+        request.endTimestamp = '';
+        request.orderBy = '-viewsCount';
+        request.offset = 0;
+        PostService.getPostsBatch(request);
+    }
 
     $scope.loadMore = function () {
-        $scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
-        request.endTimestamp = '0';
+        request.offset += 12;
+        post = PostService.getPosts();
+        request.endTimestamp = post[0].timestamp;
         PostService.getPostsBatch(request);
     }
 
@@ -51,34 +74,30 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         }
     };
 
-    $scope.memeClick = function(){
-       // console.log('test1')
-       $state.transitionTo('single-meme');
+    $scope.memeClick = function(index){
+        $state.transitionTo('single-meme',{index:index});
     }
 
-	$scope.like = function($event,$index){
+	$scope.like = function($index){
       
-	 $event.stopPropagation();
-	  console.log($scope.posts())
-	  var meme = $scope.posts()[$index];
-	  console.log(meme)
-	  
-	 // if ($scope.posts[$index].isLiked == true) {//LIKE!
 
-                    //scope.post.likesCount++;
-					PostService.sendLike(meme._id); 
-
-               // }
-                //else {//UNLIKE!
-					//console.log('unlike')
-                    //scope.post.likesCount--;
-                    //scope.$apply();
-					//PostService.unLike(meme._id); 
-
-               // } 
+		var meme = $scope.posts()[$index];
+		console.log(meme)
+		
+		if (meme.isLiked == true){//UNLIKE!
+				
+			PostService.unLike(meme._id); 
+			meme.likesCount--;
+			meme.isLiked = false;
+			return;
+        }
+        else {//LIKE!
+			
+            PostService.sendLike(meme._id);        
+			meme.likesCount++;
+			meme.isLiked = true;
+			return;
+        }  
     }
 
-
-
-
-} ]);
+}]);
