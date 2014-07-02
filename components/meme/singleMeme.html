@@ -5,8 +5,9 @@
     <img class="single" data-ng-src="{{domain+memeUrl}}" />
 
     <div class="like-section">
-        <div class="num">{{post.likesCount}}</div>
-        <div class="icon" data-ng-style='{"background-position-x":(post.isLiked==true?1:-17)+"px"}'></div>
+        <div class="like-section-num">{{post.likesCount}}</div>
+        <div class="like-section-icon" data-ng-click='like($index)' data-ng-class="{'like-section-icon-isLike':post.isLiked==true}"></div>
+		
     </div>
 
    <!-- <div class="author-wrap">

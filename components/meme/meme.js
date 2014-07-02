@@ -78,7 +78,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         $state.transitionTo('single-meme',{index:index});
     }
 
-	$scope.like = function($event,$index){
+	$scope.like = function($index){
       
 
 		var meme = $scope.posts()[$index];

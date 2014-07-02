@@ -14,21 +14,23 @@
     <div class="article-content">
 		
 		<!-- article +event title-->
-        <input data-ng-show='postType=="article" || postType=="event"' type="text" class="title-field" placeholder="כותרת" data-ng-model="postData.post.title" />
+        <input data-ng-if='postType=="article" || postType=="event"' type="text" class="title-field" placeholder="כותרת" data-ng-model="postData.post.title" />
 		
 		<!--event time-->
-        <div class="small-input-wrap top-input-wrap" data-ng-show='postType=="event"'>
-            תאריך:
-		    <input data-ng-show='postType=="event"' type="text" placeholder="dd/mm/yy" class="title-field" data-ng-model="postData.post.day" />
-		</div>
-        <div class="small-input-wrap bottom-input-wrap" data-ng-show='postType=="event"'>
-            שעה:
-            <input data-ng-show='postType=="event"' type="text" placeholder="hh/mm" class="title-field" data-ng-model="postData.post.dayTime" />
-		</div>
-        <input data-ng-show='postType=="event"' type="text" class="title-field" placeholder="מקום" data-ng-model="postData.post.place" />
-        
+		<div data-ng-if='postType=="event"'>
+			<div class="small-input-wrap top-input-wrap">
+				תאריך:
+				<input type="text" placeholder="dd/mm/yy" class="title-field" data-ng-model="postData.post.day" />
+			</div>
+			<div class="small-input-wrap bottom-input-wrap">
+				שעה:
+				<input type="text" placeholder="hh/mm" class="title-field" data-ng-model="postData.post.dayTime" />
+			</div>
+			<input  type="text" class="title-field" placeholder="מקום" data-ng-model="postData.post.place" />
+        </div>
+		
 		<!-- article add text file-->
-		<div data-ng-show='postType=="article"' class="file-add-container">
+		<div data-ng-if='postType=="article"' class="file-add-container">
             <div class="file-instru">ניתן לצרף את המאמר מתוך קובץ:</div>
             <div class="add-file">         
 				<div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
@@ -43,7 +45,7 @@
         </div>
 		
 		<!-- article instructions-->
-        <div data-ng-show='postType=="article"' class="file-instru">או כתבו את המאמר ישירות כאן:</div>
+        <div data-ng-if='postType=="article"' class="file-instru">או כתבו את המאמר ישירות כאן:</div>
 		
 		<!-- post main text area-->
 		<div style="position:relative;border-radius: 10px;">
@@ -72,17 +74,23 @@
             </div>
 		
 		<!-- post add img preview-->
-		<img  data-ng-show="toLargImage==false" ng-src="{{postImg}}" style='margin: 0px auto 20px auto;display: block'  >
+		<img  data-ng-show="toLargImage==false" ng-src="{{postImg}}" style='margin:0px auto 20px auto;display: block'  >
 		
-		<input data-ng-show='postType=="event"' style='margin-top:12px;' type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.mail" />
-		<input data-ng-show='postType=="event"' style='margin-top:12px;' type="text" class="title-field" placeholder="טלפון ליצירת קשר (לא חובה)" data-ng-model="postData.post.phone" />
-		
-		<div data-ng-show='postType=="event"' > 
-			<div class="button" style='position: absolute;left:10%;' data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">אשר
+		<div data-ng-if='postType=="event"'>
+			<input  style='margin-top:12px;' type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.mail" />
+			<input style='margin-top:12px;' type="text" class="title-field" placeholder="טלפון ליצירת קשר (לא חובה)" data-ng-model="postData.post.phone" />
+			
+			<div data-ng-if="$stateParams.postId == 0"> 
+				<div class="button" style='position: absolute;left:10%;' data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">אשר
+				</div>
+				<div class="button" style='position: absolute;right:10%;'data-ng-click="cleanDetails()"  data-ng-style="{'background-color': '{{featureColor}}'}">נקה
+				</div>
 			</div>
-			<div class="button" style='position: absolute;right:10%;'data-ng-click="cleanDetails()"  data-ng-style="{'background-color': '{{featureColor}}'}">נקה
+			
+			 <div data-ng-if='$stateParams.postId != 0' class="button" data-ng-click="editPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">ערוך
 			</div>
 		</div>
+		
 		<!-- post send button-->
         <div data-ng-hide='postType=="event"' class="button" data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">שלח
 		</div>
