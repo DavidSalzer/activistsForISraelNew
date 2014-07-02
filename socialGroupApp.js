@@ -186,7 +186,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             views: {
                 "main": {
                     templateUrl: "./components/meme/singleMeme.html",
-                    controller: "singleMeme"
+                    //controller: "singleMeme"
                 }
             }
         })
@@ -362,7 +362,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 '<span class="like-count">{{post.likesCount+0}}</span></div>',
         link: function (scope, el, attrs) {
             el.on('click', function () {
-
+			
 				
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 

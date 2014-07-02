@@ -3,9 +3,9 @@
     <div class="meme-element"  data-ng-style="{'background-image': 'url({{domain+post.img}})'}" id="element">
         
     </div>
-    <div class="meme-like">
+    <div class="meme-like" data-ng-click='like($event,$index);$event.stopPropagation();'>
         <div class="opacity"></div>
-        <div class="icon"></div>
+        <div class="icon" data-ng-style='{"background-position-x":(post.isLiked==true?1:-17)+"px"}'></div>
         <div class="num">{{post.likesCount}}</div>
     </div>
 </div>
