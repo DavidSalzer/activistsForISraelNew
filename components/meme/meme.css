@@ -72,7 +72,7 @@ background-color: #535c63;
 position: absolute;
 }
 .icon{
-background-image: url('/img/heart_meme.png');
+background-image: url('../../img/heart_meme.png');
 background-repeat: no-repeat;
 background-size: 34px 15px;
 background-position-x: 1px;
