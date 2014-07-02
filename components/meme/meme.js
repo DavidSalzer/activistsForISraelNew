@@ -1,6 +1,7 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
      $scope.domain = domain;
+     $scope.showSpiner = PostService.getSpiner;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -52,9 +53,10 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     }
 
     $scope.loadMore = function () {
-        $scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
-        request.endTimestamp = '0';
+        request.offset += 12;
+        post = PostService.getPosts();
+        request.endTimestamp = post[0].timestamp;
         PostService.getPostsBatch(request);
     }
 
