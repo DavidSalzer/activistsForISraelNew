@@ -18,10 +18,13 @@
 		
 		<div class='event-participation'>
 			<div class='button' style='background-color:{{featureDetails.featureColor}};'>השתתף</div>
-			<div style="margin:12px;font-size:12px;">
-				<div><div>צור קשר</div><div>ישראל ישראלי</div></div>
-				<div><div>מייל</div><div>mail@mail.il</div></div>
+			<div>
+				<div><div class='icon phone-icon participation-option-cell'></div><div class='participation-option-cell'><div>צור קשר</div><div>ישראל ישראלי {{post.phone}}052-6071872</div></div></div>
+				<div><div class='icon mail-icon participation-option-cell'></div><div class='participation-option-cell'><div>מייל</div><div>mail@mail.il</div></div></div>
+				<div><div class='icon navigate-icon participation-option-cell'></div><div class='participation-option-cell'>נווט לכתובת: {{post.place}}דימונה</div></div>
 			</div>
 		</div>
+		
+		 <author-header data-ng-repeat="post in [post()]"></author-header>
 	</div>
 </div>

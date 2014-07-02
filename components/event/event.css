@@ -221,5 +221,40 @@ thead tr .btn.btn-default.btn-sm {
 	
 }
 .event-participation{
+	
 	height: 100%;
+	font-size: 12px;
+	margin: auto;
+	width: 200px;
 }
+
+.participation-option-cell{
+
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.event-participation .icon{
+	
+	height: 40px;
+	width: 40px;
+	background-size: contain;
+}
+
+.phone-icon{
+	
+	background-image: url('/../img/phone.png');
+}
+
+.mail-icon{
+	
+	background-image: url('/../img/envelope_small.png');
+}
+
+.navigate-icon{
+	
+	background-image: url('/../img/map.png');
+}
+
+
+

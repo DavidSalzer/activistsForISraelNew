@@ -36,17 +36,8 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
         
     };
 
-  
-    //$scope.$on('userClicked', function (event, args) {
-    //    $state.transitionTo('author-page');
-    //});
 
-
-    $scope.loadMore = function () {
-        posts = PostService.getPosts();
-        self.getPostsBatch({ startTimestamp: '', endTimestamp: posts[0].timestamp, offset: $scope.offset, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
-        $scope.offset += 20;
-    };
+   
 
 
 } ]);
