@@ -1,5 +1,6 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
+     $scope.domain = domain;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -19,7 +20,8 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         offset: 0,
         limit: 12,
         orderBy: '-timestamp',
-        postType: 'meme'
+        postType: 'meme',
+         _parentID:''
     };
 
 
@@ -49,10 +51,32 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         }
     };
 
+    $scope.memeClick = function(){
+       // console.log('test1')
+       $state.transitionTo('single-meme');
+    }
 
+	$scope.like = function($event,$index){
+      
+	 $event.stopPropagation();
+	  console.log($scope.posts())
+	  var meme = $scope.posts()[$index];
+	  console.log(meme)
+	  
+	 // if ($scope.posts[$index].isLiked == true) {//LIKE!
 
+                    //scope.post.likesCount++;
+					PostService.sendLike(meme._id); 
 
+               // }
+                //else {//UNLIKE!
+					//console.log('unlike')
+                    //scope.post.likesCount--;
+                    //scope.$apply();
+					//PostService.unLike(meme._id); 
 
+               // } 
+    }
 
 
 

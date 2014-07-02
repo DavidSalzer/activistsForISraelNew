@@ -284,6 +284,7 @@ canvas {
     text-align: center;
     margin: 5px 0px 15px 0px;
     color: #bcccce;
+    position: relative;
 }
 
 #cropDiv .jcrop-holder {
@@ -308,6 +309,7 @@ canvas {
     height: 44px;
     display: inline-block;
     margin-top: 15px;
+    position: relative;
 }
 
 .background-button-img {
