@@ -145,7 +145,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
                 break;
             case 'gender':
                 console.log($scope.editProfile.gender);
-                if ($scope.profile().gender == 'זכר') {
+                if ($scope.editProfile.gender == 'זכר') {
                     gender = 'male';
                 }
                 else {
