@@ -146,6 +146,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                 $scope.choosenOption[i] = false;
             }
             $scope.choosenOption[voteTo] = true;
+            $scope.choosenCount = 1;
         }
         else if ($scope.choosenCount < $scope.maxSelect) {
             $scope.choosenOption[voteTo] = true;
