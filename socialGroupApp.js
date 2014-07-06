@@ -1,7 +1,7 @@
 var domain = 'http://cambium.co.il:3003/';
+ 
 
-
-var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap'])
+var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload'])
 
 /**** UI Router ****/
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -170,17 +170,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
-
-        .state('meme-preview', {
-            url: "/meme-preview",
-            views: {
-                "main": {
-                    templateUrl: "./components/meme/memePreview.html",
-                    controller: "previewPubMeme"
-                }
-            }
-        })
-
         .state('single-meme', {
             url: "/single-meme/:index",
             views: {
@@ -190,6 +179,15 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
+        .state('meme-preview', {
+             url: "/meme-preview",
+             views: {
+                 "main": {
+                     templateUrl: "./components/meme/memePreview.html",
+                     controller: "previewPubMeme"
+                 }
+             }
+         })
 
 		 .state('event', {
              url: "/event",
@@ -237,20 +235,17 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'memeImages':
                     URL = 'memeImages.txt';
                     break;
-				case 'event':
-                    URL = 'events.txt';
-                    break;
             }
 
-			
+
             $http({
-              url: domain + queryString,
+               url: domain + queryString,
                //url: URL,
                 method: method, // temp cancel for local json calls
                 data: request
             }).
             success(function (data, status, header, config) {
-                deferred.resolve(data);	
+                deferred.resolve(data);
             }).
             error(function (data, status, header, config) {
                 deferred.reject(data);
@@ -277,7 +272,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var authorsTemplate = 'authorsTemplate.html';
             //var commentTemplate = 'commentTemplate.html';
             var memesTemplate = 'components/meme/smallMemeTemplate.html';
-            var eventTemplate = 'eventTemplate.html';
 
             var templateURL = '';
             switch (tAttrs.postType) {
@@ -297,9 +291,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     break;
                 case 'meme':
                     template = memesTemplate;
-                    break; 
-				case 'event':
-                    template = eventTemplate;
                     break;
             }
 
@@ -309,12 +300,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         link: function (scope, el, attrs) {
             el.on('click', function (e) {
                 console.log(scope.post);
-                if(attrs.postType == 'author'){
-                    $rootScope.$broadcast('postClicked', { authorId: scope.post._id, postType: 'author' });
-                }
-                else{
-                    $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
-                }
+                $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
             });
             //console.log(attrs.showCommentButton);
             //scope.showCommentButton = attrs.showCommentButton;
@@ -337,7 +323,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
                 console.log(scope.post._id);
-                
+                //$rootScope.$broadcast('addCommentClicked', { showInput: true, postid: scope.post.postId });
 				var user = generalParameters.getUser();
 				if (user.firstName == 'התחבר') {
 					
@@ -370,13 +356,13 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
                 if (scope.post.isLiked == true) {//LIKE!
 
-                    //scope.post.likesCount++;
+                    scope.post.likesCount++;
 					PostService.sendLike(scope.post._id); 
 
                 }
                 else {//UNLIKE!
-					console.log('unlike')
-                    //scope.post.likesCount--;
+
+                    scope.post.likesCount--;
                     scope.$apply();
 					PostService.unLike(scope.post._id); 
 

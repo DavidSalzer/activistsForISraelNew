@@ -9,8 +9,8 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.rtl = true;
     $scope.ltr = false;
-    $scope.topRgb = "587db4";
-    $scope.bottomRgb = "ff0000";
+    $scope.topRgb = "ffffff";
+    $scope.bottomRgb = "ffffff";
     $scope.topText = "";
 
     $scope.fontOptions = ['arial', 'Aharoni', 'Calibri'];
