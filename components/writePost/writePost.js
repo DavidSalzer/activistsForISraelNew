@@ -163,7 +163,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 	   
 		.then(function (data) {
 		
-			console.log(data);
+			console.log(data);console.log(data);
 			generalParameters.setBackIcon(false);
 
 			if ($scope.postType == 'talkback') {
@@ -176,9 +176,24 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     };
 	
 	$scope.editPost = function () {
+		
+			
+			/* alert("upload");
+			
+			navigator.camera.getPicture(onSuccess, onFail, { 
+				quality: 50,
+				destinationType: Camera.DestinationType.DATA_URL,
+				sourceType: Camera.PictureSourceType.PHOTOLIBRARY 
+			});
 
-			console.log($scope.postData.post)
-       
-    };
+			function onSuccess(imageData) {
+				var image = document.getElementById('myImage');
+				image.src = "data:image/jpeg;base64," + imageData;
+			}
+
+			function onFail(message) {
+				alert('Failed because: ' + message);
+			} */
+	}
 
 } ]);

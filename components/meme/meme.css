@@ -127,6 +127,7 @@ text-align: center;
 height: 197px;
 overflow-x: scroll;
 overflow-y: hidden;
+z-index: 1000;
 }
 .images-window{
 	
@@ -145,6 +146,7 @@ overflow-y: hidden;
 	top: 0;
 	right: 0;
     overflow: hidden;
+    
 }
 
 .suggested-images-down{
@@ -173,6 +175,8 @@ overflow-y: hidden;
 	display: inline-block;
 	margin: 3px;
 	margin-bottom: 6px;
+z-index: 100;
+position: relative;
 }
 /*.meme-container2{
     border-radius: 3px;
@@ -283,6 +287,8 @@ line-height: 30px;
 position: relative;
 padding: 7px;
 position: absolute;
+
+display: none;
 }
 .colorpicker{
     width: 100%;
@@ -293,7 +299,8 @@ top: 0;
 }   
 
 .file-text{
-    margin-right: 43px;
+    /*margin-right: 43px;*/
+     margin-right: 0px;
 }
 
 .square{
