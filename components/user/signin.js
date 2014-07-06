@@ -42,15 +42,16 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
     });
 
     $scope.sendSignIn = function () {
+        console.log($scope.gender);
         $scope.showFnameError = $scope.fName == undefined || $scope.fName == '';
         $scope.showLnameError = $scope.lName == undefined || $scope.lName == '';
-       // $scope.showGenderError = $scope.gender == undefined || ($scope.gender != 'זכר' && $scope.gender != 'נקבה');//temp for submission 0307
+        $scope.showGenderError = $scope.gender == undefined || ($scope.gender != 'זכר' && $scope.gender != 'נקבה'); //temp for submission 0307
         $scope.showEmailError = $scope.mail == undefined || $scope.mail == '';
         $scope.showPassError = $scope.pass == undefined || $scope.pass == '' || $scope.pass != $scope.passAuthentication;
         $scope.showPhoneError = $scope.askPhoneAndAddress && ($scope.phone == undefined || $scope.phone == '');
         $scope.showAddressError = $scope.askPhoneAndAddress && ($scope.address == undefined || $scope.address == '');
 
-        if ($scope.showFnameError || $scope.showLnameError ||  $scope.showEmailError || $scope.showPassError || $scope.showPhoneError || $scope.showAddressError) {//$scope.showGenderError || //temp for submission 0307
+        if ($scope.showFnameError || $scope.showLnameError || $scope.showEmailError || $scope.showPassError || $scope.showPhoneError || $scope.showAddressError || $scope.showGenderError) {//$scope.showGenderError || //temp for submission 0307
             return;
         }
 

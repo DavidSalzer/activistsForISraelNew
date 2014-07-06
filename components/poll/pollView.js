@@ -124,9 +124,12 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                         }
                         $scope.currentPollResults = $scope.temp;
                     }
+                    $scope.thankDetails.featureState = 'poll-view/' + $scope.currentPollObj._id;
+                    $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
                 }
                 else {
                     generalParameters.setBackIcon(false);
+                    $scope.thankDetails.featureState = 'poll';
                     $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
                     console.log(data);
                 }
@@ -141,8 +144,8 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
             $scope.choosenOption[voteTo] = false;
             $scope.choosenCount--;
         }
-        else if($scope.maxSelect == 1){
-            for (var i in $scope.choosenOption){
+        else if ($scope.maxSelect == 1) {
+            for (var i in $scope.choosenOption) {
                 $scope.choosenOption[i] = false;
             }
             $scope.choosenOption[voteTo] = true;

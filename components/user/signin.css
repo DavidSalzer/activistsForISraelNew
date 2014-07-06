@@ -85,7 +85,9 @@
 }
 
 
-/*gdfgdgdg*/
+.placeholder-color {
+    color:  #999;
+}
 
 
 .sign-in-field:-ms-input-placeholder {
