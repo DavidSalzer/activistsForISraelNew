@@ -1,14 +1,14 @@
 <link rel="stylesheet" type="text/css" href="./components/event/event.css" />
 
-<div class="scroll-main-window" scroller loading-method="loadMore()">
+<div class="scroll-main-window" scroller loading-method="loadMore()" data-ng-init='myEvent=post()'>
 
 
-    <div class='single-event-header' data-ng-repeat="post in [post()]">
-		<div> יום {{post.DestinationTime | date : 'EEEE'}} {{post.DestinationTime | date : 'dd.MM.yyyy'}} 
-	   שעה {{post.DestinationTime | date : 'H:mm'}}
+    <div class='single-event-header'>
+		<div> יום {{myEvent.DestinationTime | date : 'EEEE'}} {{myEvent.DestinationTime | date : 'dd.MM.yyyy'}} 
+	   שעה {{myEvent.DestinationTime | date : 'H:mm'}}
 	   </div>
 	   <div>
-	   מקום: {{post.location}}
+	   מקום: {{myEvent.location}}
 	   </div>
 	   <div class="color-line color-line-bottom "></div>
 	</div>
@@ -19,19 +19,19 @@
 		<div class='event-participation'>
 			<div class='button' data-ng-click='participate()' style='background-color:{{featureDetails.featureColor}};'>השתתף</div>
 			<div>
-				<div><div class='icon phone-icon participation-option-cell'></div><div class='participation-option-cell'><div>צור קשר</div><div>ישראל ישראלי {{post.phone}}</div></div></div>
-				<div><div class='icon mail-icon participation-option-cell'></div><div class='participation-option-cell'><div>מייל</div><div>{{post.email}}</div></div></div>
-				<div><div class='icon navigate-icon participation-option-cell'></div><div class='participation-option-cell'>נווט לכתובת: {{post.location}}</div></div>
+				<div><div class='icon phone-icon participation-option-cell'></div><div class='participation-option-cell'><div>צור קשר</div><div>{{myEvent._author.data.firstName}} {{myEvent._author.data.lastName}} {{myEvent.phone}}</div></div></div>
+				<div><div class='icon mail-icon participation-option-cell'></div><div class='participation-option-cell'><div>מייל</div><div>{{myEvent.email}}</div></div></div>
+				<div><div class='icon navigate-icon participation-option-cell'></div><div class='participation-option-cell'>נווט לכתובת: {{myEvent.location}}</div></div>
 			</div>
 		</div>
 		
 		
 		<!--  show author // show edit button-->
-		 <div data-ng-if="post()._author._id != user._id" >
-			<author-header  data-ng-repeat="post in [post()]"></author-header>
+		 <div data-ng-if="myEvent._author._id != user._id" >
+			<author-header  data-ng-init="post=myEvent"></author-header>
 		 </div>
 		 
-		 <div data-ng-if="post()._author._id == user._id" class='single-event-header' style='height: 80px;'>
+		 <div data-ng-if="myEvent._author._id == user._id" class='single-event-header' style='height: 80px;'>
 			<div  class='button' data-ng-click='editEvent()' style='background-color:{{featureDetails.featureColor}};'>ערוך</div>
 		 </div>
 		

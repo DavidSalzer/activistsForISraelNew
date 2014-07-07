@@ -125,6 +125,9 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 					
 					$scope.headerText = 'עריכת אירוע';
 					$scope.postData.post = PostService.getSinglePost();
+					$scope.timeDisplay.date = $filter('date')($scope.postData.post.DestinationTime, "dd/MM/yy");
+					$scope.timeDisplay.time = $filter('date')($scope.postData.post.DestinationTime, "HH:mm");
+					
 					if($scope.postData.post.img){
 						
 						$scope.imgFileText = $scope.postData.post.img;
@@ -175,6 +178,21 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 				$state.transitionTo($scope.parentPostType); return;
 			}
 			//others - show thank page
+			$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+		});
+    }; 
+	
+	$scope.editPost = function () {
+	
+        $scope.convertDate();
+		
+		PostService.updatePost($scope.postData, $scope.fileObj, $scope.imgObj)
+	   
+		.then(function (data) {
+		
+			console.log(data);
+			generalParameters.setBackIcon(false);
+
 			$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 		});
     };
