@@ -80,9 +80,16 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
         },
+        {
+            featureUrl: 'poll',
+            featureName: 'משאל עם',
+            featureLogo: "./img/poll.png",
+            featureColor: "#da4f00"
+        }
+          ,
          {
             featureUrl: 'meme',
-            featureName: 'ממים',
+            featureName: 'צחוקים',
             featureLogo: "./img/meme.png",
             featureColor: "#ffd427"
         }
