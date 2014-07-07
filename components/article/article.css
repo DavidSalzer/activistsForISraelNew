@@ -78,9 +78,11 @@ box-sizing: border-box;*/
     display: block;
     border-radius: 10px;
     padding-right: 10px;
+    position: relative;
     border: 0;
     line-height: 32px;
 }
+
 
 .file-add-container {
     /*color: white;
@@ -256,7 +258,6 @@ div.post-main-text {
 
 .single-article .post-title {
     padding-right: 20px;
-	
 }
 
 .single-article .post-main-text {
@@ -346,19 +347,32 @@ div.post-main-text {
     background-position: 79% 4px;
     background-repeat: no-repeat;
     background-size: 22px;
-    padding-right: 5px;
-}
-/*s*/
-.write-calendar-event .article-content .small-input-wrap input {
-    width: 72%;
-    float: left;
-}
-
-.small-input-wrap.top-input-wrap {
-    background-image: url("/img/calendar_icon.png");
+    padding-right: 80px;
 }
 
 .small-input-wrap.bottom-input-wrap {
+    margin-top: 0px;
+} 
+
+.side-small-input {
+    position: absolute;
+    right: 0px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+    width: 80px;
+    background-position: 8px 4px;
+}
+
+.write-calendar-event .article-content .small-input-wrap input {
+    width: 100%;
+    float: left;
+}
+
+.side-small-input-one {
+    background-image: url("/img/calendar_icon.png");
+}
+
+.side-small-input-tow {
     margin-top: 0px;
     background-image: url("/img/clock.png");
 }
