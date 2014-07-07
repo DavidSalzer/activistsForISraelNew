@@ -670,6 +670,7 @@ button {
     height: 84px;
     LINE-HEIGHT: 13px;
     padding-right: 14px;
+    padding-left: 14px;
 }
 
 .image-container {
@@ -708,6 +709,7 @@ button {
     height: 47px;
     font-size: 12px;
     LINE-HEIGHT: 17px;
+    text-align: justify;
 }
 
 .ellipsis:before {
@@ -740,13 +742,17 @@ button {
 
 .pollView-text {
     padding-bottom: 17px;
-    padding-left: 10px;
-    padding-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 10px;
     LINE-HEIGHT: 20px;
     background-color: #ffffff;
     color: #000000;
     /*margin-bottom: 10px;*/
+}
+
+.pollView-text {
+    text-align: justify;
 }
 
 .pollView-image {

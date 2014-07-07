@@ -26,6 +26,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }
             console.log(queryString);
             showSpiner = true;
+            if(request.offset == 0){
+                posts = [];
+            }
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data);
                 if (request.endTimestamp == '') {

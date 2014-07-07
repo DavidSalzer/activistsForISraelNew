@@ -103,7 +103,7 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
                 userDetails.gender = 'נקבה';
             }
             else {
-                userDetails.gender = 'מין';
+                userDetails.gender = 'מגדר';
             }
             
             PostService.setUser(userDetails);
