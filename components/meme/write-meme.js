@@ -9,8 +9,8 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.rtl = true;
     $scope.ltr = false;
-    $scope.topRgb = "587db4";
-    $scope.bottomRgb = "ff0000";
+    $scope.topRgb = "#ffffff";
+    $scope.bottomRgb = "#ffffff";
     $scope.topText = "";
 
     $scope.fontOptions = ['arial', 'Aharoni', 'Calibri'];
@@ -18,10 +18,15 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.suggestedMemes = [];
     $scope.postImg = "";
 
-    $scope.localMemeImages = [{url:'img/memes/84688.jpg'},{url:'img/memes/1904595.jpg'},{url:'img/memes/3291562.jpg'},{url:'img/memes/4669763.jpg'},{url:'img/memes/5169527.jpg'},
-    {url:'img/memes/224723908.jpg'},{url:'img/memes/232041342.jpg'},{url:'img/memes/16.jpg'},
-    {url:'img/memes/19.jpg'},{url:'img/memes/22.jpg'},{url:'img/memes/49.jpg'}
-    ,{url:'img/memes/65.jpg'},{url:'img/memes/346.jpg'},{url:'img/memes/9061.jpg'}];
+    $scope.localMemeImages = [{ url: 'img/memes/84688.jpg' }, { url: 'img/memes/1904595.jpg' }, { url: 'img/memes/3291562.jpg' }, { url: 'img/memes/4669763.jpg' }, { url: 'img/memes/5169527.jpg' },
+    { url: 'img/memes/224723908.jpg' }, { url: 'img/memes/232041342.jpg' }, { url: 'img/memes/16.jpg' },
+    { url: 'img/memes/19.jpg' }, { url: 'img/memes/22.jpg' }, { url: 'img/memes/49.jpg' }
+    , { url: 'img/memes/65.jpg' }, { url: 'img/memes/346.jpg' }, { url: 'img/memes/9061.jpg'}];
+
+    $scope.paletteColors = [{ color: '#ffffff' }, { color: '#000000' }, { color: '#009966' }, { color: '#002EB8' }, { color: '#FF6633' }, { color: '#CCFF33' }, { color: '#B8005C' }, { color: '#666699'}]
+    $scope.bottomColor = false; /**/
+    $scope.showPaletteTop = false;
+    $scope.showPaletteBottom = false;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -40,13 +45,26 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
         switch (pos) {
             case "top":
-                return "#" + $scope.topRgb;
+                return $scope.topRgb;
                 break;
             case "bottom":
-                return "#" + $scope.bottomRgb;
+                return $scope.bottomRgb;
                 break;
         }
 
+    }
+
+    $scope.setColor = function (pos, col) {
+        switch (pos) {
+            case "top":
+                $scope.topRgb = col;
+                break;
+            case "bottom":
+                $scope.bottomRgb = col;
+                break;
+        }
+        $scope.showPaletteTop = false;
+        $scope.showPaletteBottom = false;
     }
     $scope.setDirection = function (direction) {
         switch (direction) {
@@ -63,7 +81,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.setClass = function () {
         var img = document.getElementById('chosenImg');
-        console.log('img width: '+img.offsetWidth+' img height: '+img.offsetHeight)
+        console.log('img width: ' + img.offsetWidth + ' img height: ' + img.offsetHeight)
         if (img.width >= img.height) {
             return 'widthCon'
         }
@@ -74,12 +92,18 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.imageClick = function (index) {
         console.log(index);
-        $scope.suggestedMemes = 
-        $scope.postImg = $scope.localMemeImages[index].url;
-        $scope.showSuggestedImages = false;
-        $scope.imageChosen();
+        // $scope.suggestedMemes =
+        try {
+            $scope.postImg = $scope.localMemeImages[index].url;
+        }
+        catch (e) {
+            alert('error on imageClick: ' + e.Message);
+        }
 
-         //suggested images by server DONT DELETE
+        $scope.showSuggestedImages = false;
+        //$scope.imageChosen();
+
+        //suggested images by server DONT DELETE
         // console.log(index);
         //$scope.suggestedMemes = PostService.getMemes();
         //$scope.postImg = $scope.domain + $scope.suggestedMemes[index].url;
@@ -119,7 +143,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.memeImages = PostService.getMemes;
     console.log($scope.postData);
 
-
+    $scope.$apply();
 
 
 } ]);

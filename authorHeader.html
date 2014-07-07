@@ -1,10 +1,20 @@
 <div id="author-header">
+
     <figure class="author-image">
-	<div style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
-        <!-- <img data-ng-src="{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}" alt="user-pic"> -->
+		<div style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')">
+		</div>
+			<!-- <img data-ng-src="{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}" alt="user-pic"> -->
     </figure>
-    <span class="author-name" data-author="{{post._author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post._author.data.firstName}} {{post._author.data.lastName}}</span>
-    <div class="color-line color-line-bottom "></div>
+	
+	<span class="author-name" data-ng-if='post.postType =="event"'>
+		יוצר האירוע: 
+	</span>
+	
+    <span class="author-name" data-author="{{post._author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">		{{post._author.data.firstName}} {{post._author.data.lastName}}
+	</span>
+	
+    <div  data-ng-hide='post.postType =="event"' class="color-line color-line-bottom "></div>
+	
 </div>
 
 

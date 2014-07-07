@@ -3,7 +3,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     var current = $location.$$url;
     //$scope.active = -1;
 
-  
+
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
         console.log(data);
@@ -21,15 +21,15 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     });
 
     $scope.back = function () {
-		
+
         window.history.back();
-	
+
         generalParameters.setBackIcon(false);
     }
-	
-	/* $scope.select = function (index) {
 
-       // $scope.active = index;
+    /* $scope.select = function (index) {
+
+    // $scope.active = index;
     } */
 
     $scope.featureDetails = generalParameters.getFeature;
@@ -49,11 +49,25 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureColor: "talkback"
         },
          {
-            featureUrl: 'article',
-            featureName: 'מאמרים',
-            featureLogo: "./img/article.png",
-            featureColor: "article"
-        },
+             featureUrl: 'article',
+             featureName: 'מאמרים',
+             featureLogo: "./img/article.png",
+             featureColor: "article"
+         },
+         {
+             featureUrl: 'meme',
+             featureName: 'ממים',
+             featureLogo: "./img/meme.png",
+             featureColor: "#ffd427"
+         }
+        ,
+		{
+		    featureUrl: 'poll',
+		    featureName: 'משאל עם',
+		    featureLogo: "./img/poll.png",
+		    featureColor: "poll"
+		}
+        ,
         {
             featureUrl: 'channel',
             featureName: 'יוטיוב',
@@ -73,32 +87,20 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/actionforisrael.png",
             featureColor: "Fbactivists"
         },
-	
+
         {
             featureUrl: 'contact',
             featureName: 'צור קשר',
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
-        },
-         {
-            featureUrl: 'meme',
-            featureName: 'ממים',
-            featureLogo: "./img/meme.png",
-            featureColor: "#ffd427"
         }
-        ,
-		{
-		    featureUrl: 'poll',
-		    featureName: 'משאל עם',
-		    featureLogo: "./img/poll.png",
-		    featureColor: "poll"
-		},
-		{
-		    featureUrl: 'event',
-		    featureName: 'נפגשים',
-		    featureLogo: "./img/calendar.png",
-		    featureColor: "event"
-		}
+    //      ,
+    //{
+    //    featureUrl: 'event',
+    //    featureName: 'נפגשים',
+    //    featureLogo: "./img/calendar.png",
+    //    featureColor: "event"
+    //}
 
     ];
 
@@ -115,9 +117,9 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         }
     };
 
-    $scope.goToSignin = function () {
+    $scope.goToLogin = function () {
         $scope.showInfo = false;
-        $rootScope.$broadcast('showSignInPopup', { showSignIn: true });
+        $rootScope.$broadcast('showLoginPopup', { showLogin: true });
     }
 
     $scope.showInpoPopUp = function () {

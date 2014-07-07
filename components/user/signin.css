@@ -29,6 +29,15 @@
     min-height: 100%;
 }
 
+.popup-wrapper select {
+    float: none;
+    text-indent: 0px;
+}
+
+.popup-wrapper select .select-gender{
+    color: #999;
+}
+
 .log-in-wrapper {
     padding-bottom: 117px;
 }
@@ -144,9 +153,10 @@ input#userImg {
 }
 
 input[type=file] {
-    opacity: 0;
-    width: inherit;
-    height: inherit;
+   opacity: 0;
+width: inherit;
+height: inherit;
+z-index: 1000;
 }
 
 .log-in-or {

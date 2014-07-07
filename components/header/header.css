@@ -156,6 +156,7 @@
 .info-popup .main-text {
     width: 80%;
     margin: 13px auto;
+    line-height: 19px;
 }
 
 #whatsup-bottom {
@@ -207,6 +208,7 @@ height: 30%;
     cursor: pointer;
     background-color: #993ca7;
     color: #fff;
+    font-size: 20px;
 }
 
 .devider-line {

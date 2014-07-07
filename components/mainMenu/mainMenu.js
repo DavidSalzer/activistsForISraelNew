@@ -6,7 +6,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureUrl: 'talkback',
         featureName: 'מה קורה',
         featureLogo: './img/whatsup.png',
-        featureImg: './img/image/j32ym3ii__w470h260q85.jpg',
+        featureImg: 'http://cambium.co.il:3003/image/mainImage.jpg',
         title: 'בוער לכם להגיד משהו? זה המקום',
         text: 'טוקבק (בעברית: תגובית) הוא מנגנון לתגובות הגולשים באינטרנט. מנגנון הטוקבק מופעל באתרי חדשות, באתרי בלוגים ובאתרים נוספים, והוא מאפשר לגולשים להגיב על הנאמר בדף מסוים, כך שהתגובות מופיעות בהמשכו של הדף. . ',
         postId: 5
@@ -23,16 +23,16 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         text: 'הכנסו לקרוא',
         postId: 5
     },
-    //{
-    //    featureId: 2,
-    //    featureUrl: 'poll',
-    //    featureName: 'משאל עם',
-    //    featureLogo: './img/poll.png',
-    //    featureImg: './img/image/pic6.png',
-    //    title: 'בואו להצביע בעמוד הסקרים שלנו',
-    //    text: 'עמוד סקרים',
-    //    postId: 5
-    //},
+    {
+        featureId: 2,
+        featureUrl: 'poll',
+        featureName: 'משאל עם',
+        featureLogo: './img/poll.png',
+        featureImg: './img/image/pic6.png',
+        title: 'בואו להצביע בעמוד הסקרים שלנו',
+        text: 'עמוד סקרים',
+        postId: 5
+    },
     {
     featureId: 3,
     featureUrl: 'facebookBennet',
@@ -81,27 +81,24 @@ $scope.featureDetails = {
 
 };
 
-
 document.addEventListener("backbutton", function () {
-    alert("fdf");
-    if ($('.ui-page-active').attr('id') == 'main-menu') {
-        alert("fdf");
-        exitAppPopup();
+    if (window.location.hash == '#/main-menu') {
+        $scope.exitAppPopup();
     } else {
         history.back();
     }
 }, false);
 
-function exitAppPopup() {
+$scope.exitAppPopup = function () {
     navigator.notification.confirm(
-          'Exit PhoneGap ' + device.cordova + ' Demo?'
-        , function (button) {
+          'האם ברצונך לצאת מהאפליקציה?',
+         function (button) {
             if (button == 2) {
                 navigator.app.exitApp();
             }
-        }
-        , 'Exit'
-        , 'No,Yes'
+        },
+         'יציאה', 
+         ['בטל', 'יציאה']
     );
     return false;
 }

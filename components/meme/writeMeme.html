@@ -10,7 +10,7 @@
 <div class="posts-list">
     <!--<script src="./plugins/color-picker/jscolor.js"></script>-->
 
-    <div class="top-part"  data-ng-show="postImg == ''">
+    <div class="top-part" style="position: relative;z-index: 10000"  data-ng-show="postImg == ''">
         <div class="instruction" >בחר תמונה</div>
    
         <!--suggested images by server DONT DELETE-->
@@ -32,11 +32,11 @@
         <div class="suggested-images-wrap">
             <div class="images-window">  
 			    <div  class='suggested-images-up'>
-				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  ng-if="$even" class="meme-element2"  style="background-image:url('{{image.url}}')" >
+				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  ng-if="$even" class="meme-element2"  style="background-image:url('./{{image.url}}')" >
 				    </span>
                 </div>
 			    <div  class='suggested-images-down'>
-				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  ng-if="$odd" class="meme-element2"  style="background-image: url('{{image.url}}');" >
+				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  ng-if="$odd" class="meme-element2"  style="background-image: url('./{{image.url}}');" >
 				    </span>
                 </div>
             </div>
@@ -53,22 +53,27 @@
              <div class="immulate-text bottom"   data-ng-class="{'size1':bottomText.length <=12, 'size2':(bottomText.length >12 && bottomText.length <=20),'size3':bottomText.length >20}"  data-ng-style="{'color':getColor('bottom'),'font-family':font}">{{bottomText}}</div>
         </div>
     </div>
-     <div class="add-file"  data-ng-show="true">  
-       <div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
-			+
-			<input type="file" data-upload='img' style='position: absolute;top: 0;'>
-			</input>
-		</div>
-		<div class='add-file-text' >{{imgFileText}}</div>
-		<div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+    <div style="position: relative">
+        <input type="file" data-upload='img' style='position: absolute; width: 100%'/>
+			    
+            <div class="add-file"  data-ng-show="true">  
+           <div class="plus" style='position: absolute;top: 0;cursor: pointer;z-index: 100;'>
+			    +
+			
+		    </div>
+		    <div class='add-file-text' >{{imgFileText}}</div>
+		    <div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+        </div>
+
     </div>
+     
     <div class="edit-text-wrap"  data-ng-show="true">
         <div class="font">
-             <div class="plus rtl" data-ng-class="{'rtl-active':rtl == true}" data-ng-click="setDirection('rtl')">
+             <div class="plus rtl" data-ng-show="false" data-ng-class="{'rtl-active':rtl == true}" data-ng-click="setDirection('rtl')">
 			
 			
 		    </div>
-           <div class="plus ltr" data-ng-class="{'ltr-active':ltr == true}" data-ng-click="setDirection('ltr')">
+           <div class="plus ltr" data-ng-show="false" data-ng-class="{'ltr-active':ltr == true}" data-ng-click="setDirection('ltr')">
 			
 			
 		    </div>
@@ -80,17 +85,23 @@
         </div>
 
         <div class="text-wrap">
-            <div class="colorpicker-wrap">
-                <div class="square" data-ng-style="{'background-color':getColor('top')}"></div>
-                <input type="text" class="colorpicker"  data-ng-model="topRgb"  /><!--{{setColor('up',this.color)}}    onchange ="topRgb =this.color.rgb;"-->
+             <div class="colorpicker-wrap">
+                <div class="square"  data-ng-click="showPaletteTop=true"  data-ng-style="{'background-color':getColor('top')}"></div>
+                
+            </div>
+            <div class="color-picker-palette" data-ng-show="showPaletteTop">
+                <div class="col" data-ng-repeat="color in paletteColors" data-ng-style="{'background-color':color.color}" data-ng-click="setColor('top',color.color)"></div>
             </div>
           <div class="file-text"><input placeholder="טקסט עליון"  data-ng-model="topText" data-ng-change="textChange('top')"/></div>
             
         </div>
         <div class="text-wrap">
             <div class="colorpicker-wrap">
-                <div class="square" data-ng-style="{'background-color':getColor('bottom')}"></div>
-                <input type="text" class="colorpicker"  data-ng-model="bottomRgb"  /><!--{{setColor('up',this.color)}}    onchange ="topRgb =this.color.rgb;"-->
+                <div class="square" data-ng-click="showPaletteBottom=true" data-ng-style="{'background-color':getColor('bottom')}"></div>
+                
+            </div>
+             <div class="color-picker-palette" data-ng-show="showPaletteBottom">
+                <div class="col" data-ng-repeat="color in paletteColors" data-ng-style="{'background-color':color.color}" data-ng-click="setColor('bottom',color.color)"></div>
             </div>
           <div class="file-text"><input placeholder="טקסט תחתון" data-ng-model="bottomText"/></div>
             

@@ -24,7 +24,7 @@ socialGroupApp.controller('authorPage', ['$scope','$stateParams', 'classAjax', '
     $scope.posts = PostService.getPosts();
    
     $scope.post =$scope.posts[0];
-   
+    
     $scope.posts = PostService.getPosts
 
     $scope.$on('postClicked', function (event, args) {

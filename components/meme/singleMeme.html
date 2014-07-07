@@ -1,18 +1,21 @@
 <link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
 <div class="single-meme">
+    <author-header></author-header>
+
     <img class="single" data-ng-src="{{domain+memeUrl}}" />
 
     <div class="like-section">
-        <div class="num">{{post.likesCount}}</div>
-        <div class="icon" data-ng-style='{"background-position-x":(post.isLiked==true?1:-17)+"px"}'></div>
+        <div class="like-section-num">{{post.likesCount}}</div>
+        <div class="like-section-icon" data-ng-click='like($index)' data-ng-class="{'like-section-icon-isLike':post.isLiked==true}"></div>
+		
     </div>
 
-    <div class="author-wrap">
+   <!-- <div class="author-wrap">
         <figure class="author-image">
 	    <div style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
-            <!-- <img data-ng-src="{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}" alt="user-pic"> -->
+          
         </figure>
         <span class="author-name" data-author="{{post._author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">הועלה על ידי {{post._author.data.firstName}} {{post._author.data.lastName}} </span>
         
-    </div>
+    </div>-->
 </div>
