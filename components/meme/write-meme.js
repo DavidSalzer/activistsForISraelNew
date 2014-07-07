@@ -24,7 +24,6 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     , { url: 'img/memes/65.jpg' }, { url: 'img/memes/346.jpg' }, { url: 'img/memes/9061.jpg'}];
 
     $scope.paletteColors = [{ color: '#ffffff' }, { color: '#000000' }, { color: '#009966' }, { color: '#002EB8' }, { color: '#FF6633' }, { color: '#CCFF33' }, { color: '#B8005C' }, { color: '#666699'}]
-    $scope.bottomColor = false; /**/
     $scope.showPaletteTop = false;
     $scope.showPaletteBottom = false;
 
@@ -116,6 +115,10 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     }
 
     $scope.createMeme = function () {
+            PostService.setPreviewMeme({img:$scope.postImg,top:$scope.topText,bottom:$scope.bottomText,rgbTop:$scope.topRgb,rgbBottom:$scope.bottomRgb,font:$scope.font});
+                $state.transitionTo('meme-preview');
+        /*
+        
         html2canvas(document.getElementById('html2canvas'), {
             onrendered: function (canvas) {
                 var dataURL = canvas.toDataURL("image/png");
@@ -124,6 +127,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
                 $state.transitionTo('meme-preview');
             }
         });
+        */
     }
 
 
@@ -143,7 +147,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.memeImages = PostService.getMemes;
     console.log($scope.postData);
 
-    $scope.$apply();
+//    $scope.$apply();
 
 
 } ]);

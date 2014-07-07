@@ -19,11 +19,13 @@
 		<!--event time-->
 		<div data-ng-if='postType=="event"'>
 			<div class="small-input-wrap top-input-wrap">
-				תאריך:
+                <p class="side-small-input side-small-input-one">תאריך:</p>
+				
 				<input type="text" placeholder="dd/mm/yy" class="title-field" data-ng-model="timeDisplay.date"/>
 			</div>
 			<div class="small-input-wrap bottom-input-wrap">
-				שעה:
+                <p class="side-small-input side-small-input-tow">שעה:</p>
+				
 				<input type="text" placeholder="hh:mm" class="title-field" data-ng-model="timeDisplay.time"/>
 			</div>
 			<input  type="text" class="title-field" placeholder="מקום" data-ng-model="postData.post.location" />

@@ -241,7 +241,7 @@ display: block;
 }
 
 .size3 {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .add-file {
@@ -284,7 +284,6 @@ input {
     padding: 7px;
     position: absolute;
 
-display: none;
 }
 
 .colorpicker {
@@ -312,8 +311,8 @@ box-shadow: 0px 0px 1px 1px gray;
 }
 
 .file-text {
-    /*margin-right: 43px;*/
-     margin-right: 0px;
+    margin-right: 43px;
+     /*margin-right: 0px;*/
     
 }
 
@@ -375,10 +374,11 @@ box-shadow: 0px 0px 1px 1px gray;
 .widthCon {
     width: 180px;
     height: auto;
-    top: 0;
+    /*top: 0;
     bottom: 0;
-    position: absolute;
+    position: absolute;*/
     margin: auto;
+    display: block;
 }
 
 .heightCon {
@@ -396,6 +396,7 @@ box-shadow: 0px 0px 1px 1px gray;
     padding: 2px;
     background-color: #535c63;
     margin-top: 24px;
+    min-height: 300px;
 }
 
 #previewImg {
@@ -490,3 +491,30 @@ bottom: 0px;
 position: absolute;
 width: 100%;
 }*/
+
+.preview-wrap .chosenImg .meme-container{
+    width: 100%;
+/* height: auto; */
+margin-top: 0;
+height: 300px;
+}
+.preview-wrap .top-part{
+    height: auto;
+    width: 100%;
+}
+.preview-wrap .widthCon{
+    width: 100%;
+}
+.preview-wrap .heightCon
+{
+    height: 100%;
+}
+.preview-wrap .size1{
+    font-size: 38px;
+}
+.preview-wrap .size2{
+    font-size: 34px;
+}
+.preview-wrap .size3{
+    font-size: 30px;
+}
