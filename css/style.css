@@ -456,6 +456,56 @@ div.list-group {
 .sidebar a.list-group-item {
     border-bottom: 1px solid #565c63;
 }
+
+/**********************************error popup css******************************************/
+.error-popup {
+    background-color: #fff;
+    z-index: 11;
+    top: 50px;
+    width: 93%;
+    margin: auto;
+    height: 88%;
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    right: 0px;
+    left: 0px;
+    /*overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;*/
+}
+
+.close-error {
+    background-image: url('../../img/small_x_grey.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    display: block;
+    width: 22px;
+    height: 22px;
+    line-height: 15px;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 10px 7px 0px 0px;
+}
+
+.error-title {
+    color: red;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.error-popup-msg {
+    font-size: 15px;
+    text-align: justify;
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 /**********************************comment css******************************************/
 .comment-container {
     /* display: flex; */
@@ -871,6 +921,14 @@ button {
     margin-left: auto;
     padding-right: 25px;
     padding-top: 15px;
+}
+
+.vote-error {
+    color: white;
+    font-size: 10px;
+    padding-right: 30px;
+    padding-bottom: 3px;
+    padding-bottom: 3px;
 }
 
 .button {
