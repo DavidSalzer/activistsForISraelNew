@@ -94,13 +94,13 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
         }
-    //      ,
-    //{
-    //    featureUrl: 'event',
-    //    featureName: 'נפגשים',
-    //    featureLogo: "./img/calendar.png",
-    //    featureColor: "event"
-    //}
+          ,
+		{
+			featureUrl: 'event',
+			featureName: 'נפגשים',
+			featureLogo: "./img/calendar.png",
+			featureColor: "event"
+		}
 
     ];
 

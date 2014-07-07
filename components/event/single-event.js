@@ -39,6 +39,7 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
 	
 	$scope.editEvent = function ($event) {
         
+		
 		$state.transitionTo('write-post', { postType: "event", postId: $stateParams.postId });
 	  
     };

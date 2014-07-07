@@ -1,7 +1,7 @@
 var domain = 'http://cambium.co.il:3003/';
  
 
-var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload'])
+var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap'])
 
 /**** UI Router ****/
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -235,6 +235,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'memeImages':
                     URL = 'memeImages.txt';
                     break;
+				case 'event':
+                    URL = 'events.txt';
+                    break;
             }
 
 
@@ -272,6 +275,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var authorsTemplate = 'authorsTemplate.html';
             //var commentTemplate = 'commentTemplate.html';
             var memesTemplate = 'components/meme/smallMemeTemplate.html';
+			var eventTemplate = 'eventTemplate.html';
 
             var templateURL = '';
             switch (tAttrs.postType) {
@@ -291,6 +295,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     break;
                 case 'meme':
                     template = memesTemplate;
+                    break;
+				case 'event':
+                    template = eventTemplate;
                     break;
             }
 
