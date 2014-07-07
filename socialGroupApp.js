@@ -1,6 +1,5 @@
 var domain = 'http://cambium.co.il:3003/';
 
-
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap'])
 
 /**** UI Router ****/
@@ -140,8 +139,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
-
-         .state('contact', {
+        .state('contact', {
              url: "/contact",
              views: {
                  "main": {
@@ -151,7 +149,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              }
          })
 
-          .state('meme', {
+        .state('meme', {
              url: "/meme",
              views: {
                  "main": {
@@ -170,7 +168,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
-
         .state('meme-preview', {
             url: "/meme-preview",
             views: {
@@ -190,8 +187,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
-
-		 .state('event', {
+		.state('event', {
              url: "/event",
              views: {
                  "main": {
@@ -337,7 +333,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
                 console.log(scope.post._id);
-                
 				var user = generalParameters.getUser();
 				if (user.firstName == 'התחבר') {
 					
@@ -370,13 +365,13 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
                 if (scope.post.isLiked == true) {//LIKE!
 
-                    //scope.post.likesCount++;
+                    scope.post.likesCount++;
 					PostService.sendLike(scope.post._id); 
 
                 }
                 else {//UNLIKE!
-					console.log('unlike')
-                    //scope.post.likesCount--;
+					
+                    scope.post.likesCount--;
                     scope.$apply();
 					PostService.unLike(scope.post._id); 
 

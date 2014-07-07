@@ -20,13 +20,13 @@
 		<div data-ng-if='postType=="event"'>
 			<div class="small-input-wrap top-input-wrap">
 				תאריך:
-				<input type="text" placeholder="dd/mm/yy" class="title-field" data-ng-model="postData.post.day" />
+				<input type="text" placeholder="dd/mm/yy" class="title-field" data-ng-model="timeDisplay.date"/>
 			</div>
 			<div class="small-input-wrap bottom-input-wrap">
 				שעה:
-				<input type="text" placeholder="hh/mm" class="title-field" data-ng-model="postData.post.dayTime" />
+				<input type="text" placeholder="hh:mm" class="title-field" data-ng-model="timeDisplay.time"/>
 			</div>
-			<input  type="text" class="title-field" placeholder="מקום" data-ng-model="postData.post.place" />
+			<input  type="text" class="title-field" placeholder="מקום" data-ng-model="postData.post.location" />
         </div>
 		
 		<!-- article add text file-->
@@ -52,7 +52,7 @@
 			
 			<textarea  data-ng-hide='postType=="article"' char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
-			<span data-ng-hide='postType=="article"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}}/{{max}}]</span>
+			<span data-ng-hide='postType=="article" || postType=="event"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}}/{{max}}]</span>
 			
 			<textarea  data-ng-show='postType=="article"' class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
@@ -66,29 +66,32 @@
 		 <div class="add-file">         
 				<div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
 					+
-					<input id='yaell' type="file" data-upload='img' style='position: absolute;top: 0;' data-ng-click="editPost()">
+					<input type="file" data-upload='img' style='position: absolute;top: 0;'>
 					</input>
 				</div>
 				<div class='add-file-text' >{{imgFileText}}</div>
-				<div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+				<div  data-ng-show="toLargImage==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
             </div>
 		
 		<!-- post add img preview-->
 		<img  data-ng-show="toLargImage==false" ng-src="{{postImg}}" style='margin:0px auto 20px auto;display: block'  >
 		
 		<div data-ng-if='postType=="event"'>
-			<input  style='margin-top:12px;' type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.mail" />
+			<input  style='margin-top:12px;' type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.email" />
 			<input style='margin-top:12px;' type="text" class="title-field" placeholder="טלפון ליצירת קשר (לא חובה)" data-ng-model="postData.post.phone" />
 			
-			<div data-ng-if="$stateParams.postId == 0"> 
-				<div class="button" style='position: absolute;left:10%;' data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">אשר
+			<div data-ng-if='postId == 0' > 
+				
+				<div class="button" style='position: absolute;right:10%;' data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">אשר
 				</div>
-				<div class="button" style='position: absolute;right:10%;'data-ng-click="cleanDetails()"  data-ng-style="{'background-color': '{{featureColor}}'}">נקה
+				<div class="button" style='position: absolute;left:10%;'data-ng-click="cleanDetails()"  data-ng-style="{'background-color': '{{featureColor}}'}">נקה
 				</div>
 			</div>
 			
-			 <div data-ng-if='$stateParams.postId != 0' class="button" data-ng-click="editPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">ערוך
+			 <div data-ng-if='postId != 0' class="button" data-ng-click="editPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">ערוך
 			</div>
+			
+			
 		</div>
 		
 		<!-- post send button-->
