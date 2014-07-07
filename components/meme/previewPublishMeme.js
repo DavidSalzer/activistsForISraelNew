@@ -4,6 +4,12 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     /*init variables*/
     generalParameters.setBackIcon(true);
     $scope.user = generalParameters.getUser();
+    $scope.topRgb = "#ffffff";
+    $scope.bottomRgb = "#ffffff";
+    $scope.topText = "";
+    $scope.bottomText = "";
+    $scope.font;
+    $scope.postImg = "";
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -17,7 +23,15 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     };
     generalParameters.setFeature($scope.featureDetails);
 
-    $scope.previewBase64 = PostService.getPreviewMeme();
+    $scope.previewData = PostService.getPreviewMeme();
+
+    $scope.topRgb = $scope.previewData.rgbTop;
+    $scope.bottomRgb =$scope.previewData.rgbBottom;
+    $scope.topText =$scope.previewData.top;
+    $scope.bottomText = $scope.previewData.bottom;
+    $scope.font = $scope.previewData.font;
+    $scope.postImg = $scope.previewData.img;
+
 
     //send post
     $scope.imageMax = 1;
@@ -52,9 +66,42 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     };
 
 
-    
+     $scope.setClass = function () {
+        var img = document.getElementById('chosenImg');
+        console.log('img width: ' + img.offsetWidth + ' img height: ' + img.offsetHeight)
+        if (img.width >= img.height) {
+            return 'widthCon'
+        }
+        else if (img.width < img.height) {
+            return 'heightCon'
+        }
+    }
+
+    $scope.getColor = function (pos) {
+
+        switch (pos) {
+            case "top":
+                return $scope.topRgb;
+                break;
+            case "bottom":
+                return $scope.bottomRgb;
+                break;
+        }
+
+    }
     $scope.publishMeme = function () {
-        $scope.sendPost();
+
+         html2canvas(document.getElementById('html2canvas'), {
+            onrendered: function (canvas) {
+                $scope.previewBase64 = canvas.toDataURL("image/png");
+                $scope.sendPost();
+                // document.getElementById('img').src = dataURL;
+               // PostService.setPreviewMeme(dataURL);
+               // $state.transitionTo('meme-preview');
+            }
+
+        })
+        //$scope.sendPost();
     }
 
     $scope.sendPost = function () {
@@ -62,7 +109,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
 
         //if (($scope.min > 0) && ($scope.postData.post.content.length < $scope.min)) { $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return; }
 
-        PostService.sendPost($scope.postData, $scope.fileObj, $scope.previewBase64,true);
+        PostService.sendPost($scope.postData, $scope.fileObj, $scope.previewBase64, true);
 
         generalParameters.setBackIcon(false);
 

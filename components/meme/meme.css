@@ -238,7 +238,7 @@ display: block;
 }
 
 .size3 {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .add-file {
@@ -484,3 +484,30 @@ bottom: 0px;
 position: absolute;
 width: 100%;
 }*/
+
+.preview-wrap .chosenImg .meme-container{
+    width: 100%;
+/* height: auto; */
+margin-top: 0;
+height: 300px;
+}
+.preview-wrap .top-part{
+    height: auto;
+    width: 100%;
+}
+.preview-wrap .widthCon{
+    width: 100%;
+}
+.preview-wrap .heightCon
+{
+    height: 100%;
+}
+.preview-wrap .size1{
+    font-size: 38px;
+}
+.preview-wrap .size2{
+    font-size: 34px;
+}
+.preview-wrap .size3{
+    font-size: 30px;
+}
