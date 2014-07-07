@@ -21,6 +21,8 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
         featureState: 'poll'
     };
 
+    $scope.showVoteError = false;
+
     generalParameters.setFeature($scope.featureDetails);
     $scope.options = generalParameters.getOptionsPieChart();
     console.log($scope.options);
@@ -90,13 +92,14 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
 
 
     $scope.addVote = function () {
-
+        $scope.user = generalParameters.getUser();
         if ($scope.user.firstName == 'התחבר') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
             return;
         }
 
         if ($scope.choosenCount >= $scope.minSelect && $scope.choosenCount <= $scope.maxSelect) {
+            $scope.showVoteError = false;
             $scope.voteDetails = [];
             for (var i = 0; i < $scope.choosenOption.length; i++) {
                 if ($scope.choosenOption[i]) {
@@ -134,6 +137,10 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                     console.log(data);
                 }
             });
+        }
+
+        else {
+            $scope.showVoteError = true;
         }
 
 

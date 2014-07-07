@@ -127,6 +127,7 @@
     height: 197px;
     overflow-x: scroll;
     overflow-y: hidden;
+z-index: 1000;
 }
 
 .images-window {
@@ -170,6 +171,8 @@
     display: inline-block;
     margin: 3px;
     margin-bottom: 6px;
+z-index: 100;
+position: relative;
 }
 /*.meme-container2{
     border-radius: 3px;
@@ -280,6 +283,8 @@ input {
     position: relative;
     padding: 7px;
     position: absolute;
+
+display: none;
 }
 
 .colorpicker {
@@ -307,7 +312,8 @@ box-shadow: 0px 0px 1px 1px gray;
 }
 
 .file-text {
-    margin-right: 43px;
+    /*margin-right: 43px;*/
+     margin-right: 0px;
     
 }
 

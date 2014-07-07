@@ -3,12 +3,12 @@
 <div class="scroll-main-window" scroller loading-method="loadMore()">
 
 
-    <div class='single-event-header' data-ng-repeat="post in [post()]">
-		<div> יום {{post.timestamp | date : 'EEEE'}} {{post.timestamp | date : 'dd.MM.yyyy'}} 
-	   שעה {{post.timestamp | date : 'H:mm'}}
+    <div class='single-event-header'>
+		<div> יום {{post().DestinationTime | date : 'EEEE'}} {{post().DestinationTime | date : 'dd.MM.yyyy'}} 
+	   שעה {{post().DestinationTime | date : 'H:mm'}}
 	   </div>
 	   <div>
-	   מקום: {{post.place}}דימונה
+	   מקום: {{post().location}}
 	   </div>
 	   <div class="color-line color-line-bottom "></div>
 	</div>
@@ -19,9 +19,9 @@
 		<div class='event-participation'>
 			<div class='button' data-ng-click='participate()' style='background-color:{{featureDetails.featureColor}};'>השתתף</div>
 			<div>
-				<div><div class='icon phone-icon participation-option-cell'></div><div class='participation-option-cell'><div>צור קשר</div><div>ישראל ישראלי {{post.phone}}052-6071872</div></div></div>
-				<div><div class='icon mail-icon participation-option-cell'></div><div class='participation-option-cell'><div>מייל</div><div>mail@mail.il</div></div></div>
-				<div><div class='icon navigate-icon participation-option-cell'></div><div class='participation-option-cell'>נווט לכתובת: {{post.place}}דימונה</div></div>
+				<div><div class='icon phone-icon participation-option-cell'></div><div class='participation-option-cell'><div>צור קשר</div><div>{{post()._author.data.firstName}} {{post()._author.data.lastName}} {{post().phone}}</div></div></div>
+				<div><div class='icon mail-icon participation-option-cell'></div><div class='participation-option-cell'><div>מייל</div><div>{{post().email}}</div></div></div>
+				<div><div class='icon navigate-icon participation-option-cell'></div><div class='participation-option-cell'>נווט לכתובת: {{post().location}}</div></div>
 			</div>
 		</div>
 		

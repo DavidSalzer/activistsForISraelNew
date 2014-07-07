@@ -5,11 +5,16 @@
         <meta name="viewport" content="initial-scale=1, minimum-scale=1,maximum-scale=1, user-scalable=0, height=device-height, width=device-width" />
 
         <title>פועלים למען ישראל</title>
+		
+		<!-- <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+		<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+		<script src="//Microsoft.WinJS.2.0/js/ui.js"></script> -->
 
+	
         <link rel="stylesheet" href="./css/mobile-angular-ui-base.min.css">
         <link rel="stylesheet" href="./css/mobile-angular-ui-desktop.min.css">
         <link rel="stylesheet" href="./css/bootstrapModifications.css">
-        <!--<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" href="./css/reset.css" />
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
@@ -24,18 +29,25 @@
         <link rel="stylesheet" type="text/css" href="css/jquery.Jcrop.min.css">
 
         <!--phone gap and plugins-->
-<!--        <script type="text/javascript" src="cordova.js"></script>-->
+		<script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/SocialSharing.js"></script>
         <!--phone gap and plugins-->
-    <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script src="./js/vendor/jsapi.js"></script>
 
         <script src="js/jquery.2.min.js"></script>
         <script src="./js/vendor/angular.min.js"></script>
+		<script src="./js/vendor/angular-ui-bootstrap.js"></script>
         <script src="./js/vendor/angular-ui-router.min.js"></script>
         <script src="./js/vendor/mobile-angular-ui.min.js"></script>
-        <script src="./js/vendor/angular-ui-bootstrap.js"></script>
+        
+     <!--    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script> -->
+		<script src="./js/vendor/angular-ui-bootstrap.js"></script>
+<!-- <script src="//code.angularjs.org/1.0.3/i18n/angular-locale_he-il.js"></script>  -->
+		<!-- <script src="./js/vendor/heb.js"></script> -->
+	<!-- 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
+      
         <script src="./js/vendor/angular-file-upload-shim.min.js"></script>
         <script src="./js/vendor/angular-file-upload.min.js"></script>
 
@@ -58,6 +70,7 @@
         <script src="./components/user/login.js"></script>
         <script src="./components/talkback/talkback.js"></script>
         <script src="./components/thankYouPage/thankYouPage.js"></script>
+        <script src="./components/errorPopup/errorPopup.js"></script>
         <script src="components/comments/comments.js"></script>
         <script src="components/channel/channel.js"></script>
         <script src="components/authorPage/authorPage.js"></script>
@@ -113,6 +126,9 @@
 
             <!-- Thank you popup -->
             <ng-include src="'./components/thankYouPage/thankYouPage.html'"></ng-include>
+
+            <!-- Error popup -->
+            <ng-include src="'./components/errorPopup/errorPopup.html'"></ng-include>
 
             <!-- Main view -->
             <div class="app-body">

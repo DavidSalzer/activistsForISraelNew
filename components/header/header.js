@@ -3,7 +3,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     var current = $location.$$url;
     //$scope.active = -1;
 
-
+  
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
         console.log(data);
@@ -21,15 +21,15 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     });
 
     $scope.back = function () {
-
+		
         window.history.back();
-
+	
         generalParameters.setBackIcon(false);
     }
+	
+	/* $scope.select = function (index) {
 
-    /* $scope.select = function (index) {
-
-    // $scope.active = index;
+       // $scope.active = index;
     } */
 
     $scope.featureDetails = generalParameters.getFeature;
@@ -49,25 +49,11 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureColor: "talkback"
         },
          {
-             featureUrl: 'article',
-             featureName: 'מאמרים',
-             featureLogo: "./img/article.png",
-             featureColor: "article"
-         },
-         {
-             featureUrl: 'meme',
-             featureName: 'ממים',
-             featureLogo: "./img/meme.png",
-             featureColor: "#ffd427"
-         }
-        ,
-		{
-		    featureUrl: 'poll',
-		    featureName: 'משאל עם',
-		    featureLogo: "./img/poll.png",
-		    featureColor: "poll"
-		}
-        ,
+            featureUrl: 'article',
+            featureName: 'מאמרים',
+            featureLogo: "./img/article.png",
+            featureColor: "article"
+        },
         {
             featureUrl: 'channel',
             featureName: 'יוטיוב',
@@ -87,20 +73,33 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/actionforisrael.png",
             featureColor: "Fbactivists"
         },
-
+	
         {
             featureUrl: 'contact',
             featureName: 'צור קשר',
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
+        },
+        {
+            featureUrl: 'poll',
+            featureName: 'משאל עם',
+            featureLogo: "./img/poll.png",
+            featureColor: "#da4f00"
         }
-    //      ,
-    //{
-    //    featureUrl: 'event',
-    //    featureName: 'נפגשים',
-    //    featureLogo: "./img/calendar.png",
-    //    featureColor: "event"
-    //}
+          ,
+         {
+            featureUrl: 'meme',
+            featureName: 'צחוקים',
+            featureLogo: "./img/meme.png",
+            featureColor: "#ffd427"
+        }
+          ,
+		{
+			featureUrl: 'event',
+			featureName: 'נפגשים',
+			featureLogo: "./img/calendar.png",
+			featureColor: "event"
+		}
 
     ];
 
@@ -117,9 +116,9 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         }
     };
 
-    $scope.goToLogin = function () {
+    $scope.goToSignin = function () {
         $scope.showInfo = false;
-        $rootScope.$broadcast('showLoginPopup', { showLogin: true });
+        $rootScope.$broadcast('showSignInPopup', { showSignIn: true });
     }
 
     $scope.showInpoPopUp = function () {
@@ -128,12 +127,14 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
             $rootScope.$broadcast('showLoginPopup', { showLogin: false });
             $rootScope.$broadcast('showThankPage', { showThankPage: false });
+            $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
             $scope.showInfo = false;
             generalParameters.setShowLogin(false);
         } else {
             $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
             $rootScope.$broadcast('showLoginPopup', { showLogin: false });
             $rootScope.$broadcast('showThankPage', { showThankPage: false });
+            $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
             $scope.showInfo = true;
             generalParameters.setShowLogin(true);
         }
@@ -149,6 +150,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
         $rootScope.$broadcast('showLoginPopup', { showLogin: false });
         $rootScope.$broadcast('showThankPage', { showThankPage: false });
+        $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
         $scope.showInfo = false;
         generalParameters.setShowLogin(false);
 
@@ -174,6 +176,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
         $rootScope.$broadcast('showLoginPopup', { showLogin: false });
         $rootScope.$broadcast('showThankPage', { showThankPage: false });
+        $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
         $scope.showInfo = false;
         generalParameters.setShowLogin(false);
     }
