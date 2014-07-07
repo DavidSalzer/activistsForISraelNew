@@ -331,3 +331,34 @@ div.post-main-text {
     background-color: white;
     border-radius: 10px;
 }
+
+
+
+/******calendar*******8*/
+
+.small-input-wrap {
+    width: 100%;
+    position: relative;
+    height: 44px;
+    box-sizing: border-box;
+    margin-top: 12px;
+    line-height: 28px;
+    background-position: 79% 4px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+    padding-right: 5px;
+}
+/*s*/
+.write-calendar-event .article-content .small-input-wrap input {
+    width: 72%;
+    float: left;
+}
+
+.small-input-wrap.top-input-wrap {
+    background-image: url("/img/calendar_icon.png");
+}
+
+.small-input-wrap.bottom-input-wrap {
+    margin-top: 0px;
+    background-image: url("/img/clock.png");
+}

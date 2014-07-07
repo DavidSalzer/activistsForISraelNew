@@ -43,6 +43,14 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
 		$state.transitionTo('write-post', { postType: "event", postId: $stateParams.postId });
 	  
     };
+	
+	$scope.inte = function ($event) {
+
+		var intent = new Intent("http://webintents.org/share");
+		window.navigator.startActivity(intent);
+    };
+	
+
 
 
 
