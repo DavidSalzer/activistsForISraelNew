@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="./components/event/event.css" />
-
+<intent 
+  action="http://webintents.org/share" />
+  
 <div class="scroll-main-window" scroller loading-method="loadMore()">
 
 
@@ -20,7 +22,7 @@
 			<div class='button' data-ng-click='participate()' style='background-color:{{featureDetails.featureColor}};'>השתתף</div>
 			<div>
 				<div><div class='icon phone-icon participation-option-cell'></div><div class='participation-option-cell'><div>צור קשר</div><div>{{post()._author.data.firstName}} {{post()._author.data.lastName}} {{post().phone}}</div></div></div>
-				<div><div class='icon mail-icon participation-option-cell'></div><div class='participation-option-cell'><div>מייל</div><div>{{post().email}}</div></div></div>
+				<div data-ng-click='inte()'><div class='icon mail-icon participation-option-cell'></div><div class='participation-option-cell'><div>מייל</div><div>{{post().email}}</div></div></div>
 				<div><div class='icon navigate-icon participation-option-cell'></div><div class='participation-option-cell'>נווט לכתובת: {{post().location}}</div></div>
 			</div>
 		</div>
