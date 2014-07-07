@@ -29,6 +29,15 @@
     min-height: 100%;
 }
 
+.popup-wrapper select {
+    float: none;
+    text-indent: 0px;
+}
+
+.popup-wrapper select .select-gender{
+    color: #999;
+}
+
 .log-in-wrapper {
     padding-bottom: 117px;
 }
@@ -76,7 +85,9 @@
 }
 
 
-/*gdfgdgdg*/
+.placeholder-color {
+    color:  #999;
+}
 
 
 .sign-in-field:-ms-input-placeholder {

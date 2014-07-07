@@ -1,4 +1,4 @@
-
+<!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
 
 <div class="channel-title-zone sub-header">
     <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-show = "pollIsActive()">סקר פעיל</div>
@@ -37,6 +37,7 @@
 		<div class="optionToVote-container" data-ng-show = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#ffffff', 'background-color': '#565c63'}"> {{item.answer}} </div>
 		<div class="optionToVote-container" data-ng-hide = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#000000', 'background-color': '#ffffff'}"> {{item.answer}} </div>
 	</div>
+    <div class="vote-error" data-ng-show = "showVoteError">* מספר השדות שבחרת אינו תקין.</div>
 	<div data-ng-show = "pollIsActive()" class="button" data-ng-click="addVote()" data-ng-style="{'background-color': '#da4f00', 'color': '#ffffff'}" > הצבע</div>
 </div>			
 

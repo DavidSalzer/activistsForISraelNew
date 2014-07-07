@@ -26,6 +26,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }
             console.log(queryString);
             showSpiner = true;
+            if(request.offset == 0){
+                posts = [];
+            }
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data);
                 if (request.endTimestamp == '') {
@@ -68,7 +71,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             posts[0].comments.commentsCount = 6;
         },
 
-        updatePost: function (data) {
+       /*  updatePost: function (data) {
             var postId = data.postId
 
             console.log(postId);
@@ -82,10 +85,41 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 }
             }
             posts.unshift(data);
-        },
+        }, */
 
-        //Send post to server. if it isn't comment on post , postId = 0.
-        sendPost: function (postData, textfile, imgFile, isBase64) {
+        updatePost: function (postData, textfile, imgFile, isBase64) {
+		
+            var self = this;
+            var deferred = $q.defer();
+
+			var post = {'post':postData.post};
+			console.log(post);
+            var json = JSON.stringify(post);
+            console.log(json);
+
+            $http.put(domain + 'post/'+postData.post._id, json)
+			.success(function (data) {
+
+			    console.log(data);
+				if (imgFile){
+			        
+					self.attach(imgFile, postData.post._id)
+					.then(function (data) { deferred.resolve(data) });
+				}
+				else{
+					deferred.resolve(data);
+				}
+			})
+			.error(function (data) {
+
+			    deferred.resolve(data);
+			});
+
+
+            return deferred.promise;
+        }, 
+		
+		sendPost: function (postData, textfile, imgFile, isBase64) {
 
             var self = this;
             var deferred = $q.defer();
@@ -102,18 +136,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    console.log(data.data._id);
 			    if (isBase64) {
 			        //imgFile is base64 string
-			        self.attachBase64(imgFile, data.data._id);
+			        self.attachBase64(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
 			    }
-			    else {
+			    else if(textfile || imgFile){
 			        if (textfile)
 			            self.attach(textfile, data.data._id);
 			        if (imgFile)
 			            self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
-
 			    }
-
-
-
+				else{
+					deferred.resolve(data);
+				}
 			})
 			.error(function (data) {
 

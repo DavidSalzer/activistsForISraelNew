@@ -32,11 +32,11 @@
         <div class="suggested-images-wrap">
             <div class="images-window">  
 			    <div  class='suggested-images-up'>
-				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  ng-if="$even" class="meme-element2"  style="background-image:url('../../{{image.url}}')" >
+				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  ng-if="$even" class="meme-element2"  style="background-image:url('./{{image.url}}')" >
 				    </span>
                 </div>
 			    <div  class='suggested-images-down'>
-				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  ng-if="$odd" class="meme-element2"  style="background-image: url('../../{{image.url}}');" >
+				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  ng-if="$odd" class="meme-element2"  style="background-image: url('./{{image.url}}');" >
 				    </span>
                 </div>
             </div>
@@ -85,17 +85,23 @@
         </div>
 
         <div class="text-wrap">
-            <div class="colorpicker-wrap">
-                <div class="square" data-ng-style="{'background-color':getColor('top')}"></div>
-                <input type="text" class="colorpicker"  data-ng-model="topRgb"  /><!--{{setColor('up',this.color)}}    onchange ="topRgb =this.color.rgb;"-->
+             <div class="colorpicker-wrap">
+                <div class="square"  data-ng-click="showPaletteTop=true"  data-ng-style="{'background-color':getColor('top')}"></div>
+                
+            </div>
+            <div class="color-picker-palette" data-ng-show="showPaletteTop">
+                <div class="col" data-ng-repeat="color in paletteColors" data-ng-style="{'background-color':color.color}" data-ng-click="setColor('top',color.color)"></div>
             </div>
           <div class="file-text"><input placeholder="טקסט עליון"  data-ng-model="topText" data-ng-change="textChange('top')"/></div>
             
         </div>
         <div class="text-wrap">
             <div class="colorpicker-wrap">
-                <div class="square" data-ng-style="{'background-color':getColor('bottom')}"></div>
-                <input type="text" class="colorpicker"  data-ng-model="bottomRgb"  /><!--{{setColor('up',this.color)}}    onchange ="topRgb =this.color.rgb;"-->
+                <div class="square" data-ng-click="showPaletteBottom=true" data-ng-style="{'background-color':getColor('bottom')}"></div>
+                
+            </div>
+             <div class="color-picker-palette" data-ng-show="showPaletteBottom">
+                <div class="col" data-ng-repeat="color in paletteColors" data-ng-style="{'background-color':color.color}" data-ng-click="setColor('bottom',color.color)"></div>
             </div>
           <div class="file-text"><input placeholder="טקסט תחתון" data-ng-model="bottomText"/></div>
             

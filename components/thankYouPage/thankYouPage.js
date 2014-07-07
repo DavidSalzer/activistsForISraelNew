@@ -12,7 +12,7 @@ socialGroupApp.controller('thankYou', ['$rootScope', '$scope', '$state', 'classA
         $scope.thankDetails = args.thankDetails
         $scope.showThankPage = args.showThankPage;
         //$scope.$apply();
-        generalParameters.setShowLogin(true);
+        generalParameters.setShowLogin($scope.showThankPage);
         console.log(args)
     });
 

@@ -21,6 +21,8 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
         featureState: 'poll'
     };
 
+    $scope.showVoteError = false;
+
     generalParameters.setFeature($scope.featureDetails);
     $scope.options = generalParameters.getOptionsPieChart();
     console.log($scope.options);
@@ -90,13 +92,14 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
 
 
     $scope.addVote = function () {
-
+        $scope.user = generalParameters.getUser();
         if ($scope.user.firstName == 'התחבר') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
             return;
         }
 
         if ($scope.choosenCount >= $scope.minSelect && $scope.choosenCount <= $scope.maxSelect) {
+            $scope.showVoteError = false;
             $scope.voteDetails = [];
             for (var i = 0; i < $scope.choosenOption.length; i++) {
                 if ($scope.choosenOption[i]) {
@@ -124,13 +127,20 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                         }
                         $scope.currentPollResults = $scope.temp;
                     }
+                    $scope.thankDetails.featureState = 'poll-view/' + $scope.currentPollObj._id;
+                    $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
                 }
                 else {
                     generalParameters.setBackIcon(false);
+                    $scope.thankDetails.featureState = 'poll';
                     $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
                     console.log(data);
                 }
             });
+        }
+
+        else {
+            $scope.showVoteError = true;
         }
 
 
@@ -140,6 +150,13 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
         if ($scope.choosenOption[voteTo]) {
             $scope.choosenOption[voteTo] = false;
             $scope.choosenCount--;
+        }
+        else if ($scope.maxSelect == 1) {
+            for (var i in $scope.choosenOption) {
+                $scope.choosenOption[i] = false;
+            }
+            $scope.choosenOption[voteTo] = true;
+            $scope.choosenCount = 1;
         }
         else if ($scope.choosenCount < $scope.maxSelect) {
             $scope.choosenOption[voteTo] = true;

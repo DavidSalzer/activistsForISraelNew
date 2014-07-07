@@ -1,3 +1,13 @@
+div.user-profile-gender.user-profile-item { /*temp for submission 0307*/
+    display: none;
+}
+
+div.user-profile-item:last-child { /*temp for submission 0307*/
+    border: none;
+}
+
+
+
 #user-profile {
     width: 100%;
     height: 100%;

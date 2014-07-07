@@ -50,7 +50,7 @@ header i.fa.share {
     background-size: 100% 100%;
     top: 2px;
     position: relative;
-    right: -8px;
+    right: 2px;
 }
 
 .btn.btn-navbar.ng-scope:active{
@@ -456,6 +456,56 @@ div.list-group {
 .sidebar a.list-group-item {
     border-bottom: 1px solid #565c63;
 }
+
+/**********************************error popup css******************************************/
+.error-popup {
+    background-color: #fff;
+    z-index: 11;
+    top: 50px;
+    width: 93%;
+    margin: auto;
+    height: 88%;
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    right: 0px;
+    left: 0px;
+    /*overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;*/
+}
+
+.close-error {
+    background-image: url('../../img/small_x_grey.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    display: block;
+    width: 22px;
+    height: 22px;
+    line-height: 15px;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 10px 7px 0px 0px;
+}
+
+.error-title {
+    color: red;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.error-popup-msg {
+    font-size: 15px;
+    text-align: justify;
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 /**********************************comment css******************************************/
 .comment-container {
     /* display: flex; */
@@ -670,6 +720,7 @@ button {
     height: 84px;
     LINE-HEIGHT: 13px;
     padding-right: 14px;
+    padding-left: 14px;
 }
 
 .image-container {
@@ -708,11 +759,12 @@ button {
     height: 47px;
     font-size: 12px;
     LINE-HEIGHT: 17px;
+    text-align: justify;
 }
 
 .ellipsis:before {
     content: "";
-    float: right;
+    /*float: right;*/
     width: 5px;
     height: 200px;
 }
@@ -740,13 +792,17 @@ button {
 
 .pollView-text {
     padding-bottom: 17px;
-    padding-left: 10px;
-    padding-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 10px;
     LINE-HEIGHT: 20px;
     background-color: #ffffff;
     color: #000000;
     /*margin-bottom: 10px;*/
+}
+
+.pollView-text {
+    text-align: justify;
 }
 
 .pollView-image {
@@ -854,7 +910,7 @@ button {
 }
 
 .legend-container .legend-image {
-    margin: 0;
+    margin: 5px 0;
 }
 
 .optionToVote-container {
@@ -867,6 +923,14 @@ button {
     padding-top: 15px;
 }
 
+.vote-error {
+    color: white;
+    font-size: 10px;
+    padding-right: 30px;
+    padding-bottom: 3px;
+    padding-bottom: 3px;
+}
+
 .button {
     border-radius: 7px;
     width: 103px;
@@ -877,6 +941,7 @@ button {
     margin-top: 20px;
     margin-bottom: 20px;
     color: #ffffff;
+    font-weight: bold;
 }
 
 .optionToVote-image {
@@ -933,4 +998,17 @@ button {
     margin-top: 12px;
     height: 52px;
     position: relative;
+}
+
+::-webkit-input-placeholder {
+    color:    #999;
+}
+:-moz-placeholder {
+    color:    #999;
+}
+::-moz-placeholder {
+    color:    #999;
+}
+:-ms-input-placeholder {
+    color:    #999;
 }

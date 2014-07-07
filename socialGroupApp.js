@@ -168,16 +168,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
-        .state('meme-preview', {
+		
+		.state('meme-preview', {
             url: "/meme-preview",
             views: {
-                "main": {
-                    templateUrl: "./components/meme/memePreview.html",
-                    controller: "previewPubMeme"
-                }
-            }
-        })
-
+                 "main": {
+                     templateUrl: "./components/meme/memePreview.html",
+                     controller: "previewPubMeme"
+                 }
+             }
+         })
         .state('single-meme', {
             url: "/single-meme/:index",
             views: {
@@ -187,6 +187,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
+		
 		.state('event', {
              url: "/event",
              views: {
@@ -238,15 +239,14 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     break;
             }
 
-			
             $http({
-              url: domain + queryString,
+               url: domain + queryString,
                //url: URL,
                 method: method, // temp cancel for local json calls
                 data: request
             }).
             success(function (data, status, header, config) {
-                deferred.resolve(data);	
+                deferred.resolve(data);
             }).
             error(function (data, status, header, config) {
                 deferred.reject(data);
@@ -273,7 +273,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var authorsTemplate = 'authorsTemplate.html';
             //var commentTemplate = 'commentTemplate.html';
             var memesTemplate = 'components/meme/smallMemeTemplate.html';
-            var eventTemplate = 'eventTemplate.html';
+			var eventTemplate = 'eventTemplate.html';
 
             var templateURL = '';
             switch (tAttrs.postType) {
@@ -293,7 +293,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     break;
                 case 'meme':
                     template = memesTemplate;
-                    break; 
+                    break;
 				case 'event':
                     template = eventTemplate;
                     break;
@@ -370,7 +370,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
                 }
                 else {//UNLIKE!
-					
                     scope.post.likesCount--;
                     scope.$apply();
 					PostService.unLike(scope.post._id); 

@@ -80,24 +80,25 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/contact.png",
             featureColor: "#009933"
         },
+        {
+            featureUrl: 'poll',
+            featureName: 'משאל עם',
+            featureLogo: "./img/poll.png",
+            featureColor: "#da4f00"
+        }
+          ,
          {
             featureUrl: 'meme',
-            featureName: 'ממים',
+            featureName: 'צחוקים',
             featureLogo: "./img/meme.png",
             featureColor: "#ffd427"
         }
-        ,
+          ,
 		{
-		    featureUrl: 'poll',
-		    featureName: 'משאל עם',
-		    featureLogo: "./img/poll.png",
-		    featureColor: "poll"
-		},
-		{
-		    featureUrl: 'event',
-		    featureName: 'נפגשים',
-		    featureLogo: "./img/calendar.png",
-		    featureColor: "event"
+			featureUrl: 'event',
+			featureName: 'נפגשים',
+			featureLogo: "./img/calendar.png",
+			featureColor: "event"
 		}
 
     ];
@@ -126,12 +127,14 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
             $rootScope.$broadcast('showLoginPopup', { showLogin: false });
             $rootScope.$broadcast('showThankPage', { showThankPage: false });
+            $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
             $scope.showInfo = false;
             generalParameters.setShowLogin(false);
         } else {
             $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
             $rootScope.$broadcast('showLoginPopup', { showLogin: false });
             $rootScope.$broadcast('showThankPage', { showThankPage: false });
+            $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
             $scope.showInfo = true;
             generalParameters.setShowLogin(true);
         }
@@ -147,6 +150,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
         $rootScope.$broadcast('showLoginPopup', { showLogin: false });
         $rootScope.$broadcast('showThankPage', { showThankPage: false });
+        $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
         $scope.showInfo = false;
         generalParameters.setShowLogin(false);
 
@@ -172,6 +176,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
         $rootScope.$broadcast('showLoginPopup', { showLogin: false });
         $rootScope.$broadcast('showThankPage', { showThankPage: false });
+        $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
         $scope.showInfo = false;
         generalParameters.setShowLogin(false);
     }

@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="css/jquery.Jcrop.min.css">
+
 <div class="sign-in-popup" data-ng-controller="signin" data-ng-show="showSignIn">
     <div class="popup-wrapper sgin-wrapper">
         <div class="sign-in-close-zone">
@@ -6,8 +8,8 @@
         <input type="text" class="sign-in-field sign-in-first-name" data-ng-class="{loginErrorActive: showFnameError}" placeholder="שם פרטי" data-ng-model="fName">
         <input type="text" class="sign-in-field sign-in-last-name" data-ng-class="{loginErrorActive: showLnameError}" placeholder="שם משפחה" data-ng-model="lName">
         <!--<div class="sign-in-field sign-in-gender" data-ng-class="{loginErrorActive: showGenderError}">-->
-            <select class="sign-in-field sign-in-gender" data-ng-class="{loginErrorActive: showGenderError}" data-ng-model="gender" data-ng-options="gender for gender in ['נקבה', 'זכר']">
-                <option value="">מין</option>
+            <select class="sign-in-field sign-in-gender" data-ng-class="{'loginErrorActive': showGenderError, 'placeholder-color': gender == undefined}" data-ng-model="gender" data-ng-options="gender for gender in ['נקבה', 'זכר']">
+                <option value="">מגדר</option>
                 <!--<option value="נקבה">נקבה</option>
                 <option value="זכר">זכר</option>-->
             </select>
@@ -29,7 +31,7 @@
         <div class="sign-in-picture"></div>
         <div class="login-error" data-ng-show="showFnameError">* שדה שם פרטי לא הוזן כראוי</div>
         <div class="login-error" data-ng-show="showLnameError">* שדה שם משפחה לא הוזן כראוי</div>
-        <div class="login-error" data-ng-show="showGenderError">* שדה מין לא הוזן כראוי</div>
+        <div class="login-error" data-ng-show="showGenderError">* שדה מגדר לא הוזן כראוי</div>
         <div class="login-error" data-ng-show="showEmailError">* שדה תיבת מייל לא הוזן כראוי</div>
         <div class="login-error" data-ng-show="showPassError">* שדה סיסמה לא הוזן כראוי</div>
         <div class="login-error" data-ng-show="showPhoneError">* שדה טלפון לא הוזן כראוי</div>
@@ -43,7 +45,7 @@
             <div class="sign-in-close-zone">
                 <div class="close-sign-in close" data-ng-click="editCancel()"></div>
             </div>
-            <div id="instruction-for-image">הזז, הגדל והקטן למיקוד התמונה</div>
+            <div id="instruction-for-image">הזז, הגדל והקטן למיקום התמונה</div>
             <div id="cropDiv">
                 <img data-ng-src="{{userimg}}">
             </div>

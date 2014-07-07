@@ -7,14 +7,15 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/poll.png",
+        featureWhatsUpLogo: "./img/poll_info.png",
         featureColor: '#da4f00',
         featureTabColor: '#da4f',
         infoHaeder: "משאל עם",
-        infoMainText: "בואו להשפיע! כאן מופיעים סקרים שעל סדר היום. ניתן לשתף / או להציע שאלות לסקר. לרשומים בלבד",
+        infoMainText: "בואו להשפיע! כאן מופיעים סקרים שעל סדר היום. ניתן לשתף / או להציע שאלות לסקר. לרשומים בלבד.",
         infoSubText: "ההצבעה באיזור זה מותנית בהצטרפות"
     };
     generalParameters.setFeature($scope.featureDetails);
-	 generalParameters.setBackIcon(false);//tester
+	generalParameters.setBackIcon(false);//tester
 	$scope.user = generalParameters.getUser();
    
     var request = {
