@@ -1,4 +1,4 @@
-socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', '$window', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, $window) {
+socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', '$window', '$filter', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, $window,$filter) {
 
     /*init variables*/
     generalParameters.setBackIcon(true);
@@ -6,10 +6,12 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.imageMax = 1;
     $scope.toLargImage = false;
     $scope.imgFileText = 'צרף תמונה'
+	$scope.timeDisplay={};
     var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'poll': '#da4f00', 'event': '#004a8e' };
 
     $scope.parentPostType = $stateParams.postType;
     $scope.postType = $stateParams.postType;
+    $scope.postId = $stateParams.postId;
     $scope.user = generalParameters.getUser();
 
     $scope.postData = {
@@ -20,15 +22,12 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     };
 
     $scope.featureColor = colors[$scope.postType];
-    if (($stateParams.postId != 0) && ($scope.postType != 'event')) {//if comment
+    if (( $scope.postId != 0) && ($scope.postType != 'event')) {//if comment
 
         $scope.featureColor = colors[$scope.parentPostType];
         $scope.postType = 'talkback'
         $scope.postData.post._parentID = $stateParams.postId;
     }
-
-
-
 
 
     switch ($scope.postType) {
@@ -105,10 +104,11 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
                 $scope.postData.post.postType = 'event';
                 $scope.postData.post.title = '';
-                $scope.postData.post.day = '';
-                $scope.postData.post.dayTime = '';
-                $scope.postData.post.place = '';
-                $scope.postData.post.mail = "";
+				$scope.timeDisplay.date = "";
+                $scope.timeDisplay.time ="";
+          
+                $scope.postData.post.location = '';
+                $scope.postData.post.email = "";
                 $scope.postData.post.phone = "";
 
                 $scope.thankDetails = {
@@ -120,11 +120,14 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                     featureState: 'event'
 
                 };
-				
+			
 				if($stateParams.postId != 0){//edit event
 					
 					$scope.headerText = 'עריכת אירוע';
 					$scope.postData.post = PostService.getSinglePost();
+					$scope.timeDisplay.date = $filter('date')($scope.postData.post.DestinationTime, "dd/MM/yy");
+					$scope.timeDisplay.time = $filter('date')($scope.postData.post.DestinationTime, "HH:mm");
+					
 					if($scope.postData.post.img){
 						
 						$scope.imgFileText = $scope.postData.post.img;
@@ -140,13 +143,14 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     }
 
     $scope.cleanDetails = function () {//event
-
+		
+		
         $scope.postData.post.title = '';
         $scope.postData.post.content = '';
-        $scope.postData.post.day = '';
-        $scope.postData.post.dayTime = '';
-        $scope.postData.post.place = '';
-        $scope.postData.post.mail = "";
+		$scope.timeDisplay.date = '';
+        $scope.timeDisplay.time = '';
+        $scope.postData.post.location = '';
+        $scope.postData.post.email = "";
         $scope.postData.post.phone = "";
         $scope.imgFileText = 'צרף תמונה';
 		$scope.postImg = "";
@@ -154,11 +158,14 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     };
 
     $scope.sendPost = function () {
-
-
+	
         //article? check if the text is large then minimum
         if (($scope.min > 0) && ($scope.postData.post.content.length < $scope.min)) { $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return; }
-
+		
+		else if( $scope.postData.post.postType == 'event'){
+			
+			$scope.convertDate();
+		}
 		PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj)
 	   
 		.then(function (data) {
@@ -173,12 +180,31 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 			//others - show thank page
 			$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 		});
-    };
+    }; 
 	
 	$scope.editPost = function () {
+	
+        $scope.convertDate();
+		
+		PostService.updatePost($scope.postData, $scope.fileObj, $scope.imgObj)
+	   
+		.then(function (data) {
+		
+			console.log(data);
+			generalParameters.setBackIcon(false);
 
-			console.log($scope.postData.post)
-       
+			$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+		});
     };
-
-} ]);
+	
+	
+	$scope.convertDate = function () {
+	
+		$scope.postData.post.DestinationTime = new Date($scope.timeDisplay.date);
+		var hhmm = $scope.timeDisplay.time.split(':');
+		$scope.postData.post.DestinationTime.setHours(hhmm[0],hhmm[1]);
+		console.log($scope.postData.post.DestinationTime); 
+		$scope.postData.post.DestinationTime = $scope.postData.post.DestinationTime.getTime();
+	}
+	
+}]);
