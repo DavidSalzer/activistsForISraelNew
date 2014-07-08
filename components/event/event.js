@@ -16,7 +16,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     generalParameters.setBackIcon(false);//tester
 	 
 	 request = {
-        startTimestamp: '',
+        startTimestamp:'',
         endTimestamp: '',
         offset: 0,
         limit: 20,
@@ -26,13 +26,16 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         _parentID: ''
     };
 
-
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
 	
 
-    $scope.loadMore = function () {
+    $scope.setCurrnetDate = function (stamp) {
+        $scope.currentTimeStamp = stamp;
+    }
+	
+	$scope.loadMore = function () {
         $scope.showSpiner = true; //need to change to false while get callback from server.
         console.log('load more');
         request.endTimestamp = '0';
@@ -61,54 +64,57 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
 }]);
 
 
-socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', function ( $scope) {
+socialGroupApp.controller('DatepickerDemoCtrl', ['$scope','PostService', function ($scope,PostService) {
 	
 	angular.element(document).ready(function () { 
 	
 		$scope.$$childHead.toggleMode= null;//prevent select month / year
 		
-		$scope.$watch(//reset calendar arrow when pageing month
 		
+		$scope.$watch(//reset calendar arrow when paging month
+			
 			function(){return $scope.$$childHead.$$childHead.rows;},
-			function(newValue) {if(newValue.length > 1){$scope.togglecaendarArrow(-90);}},
+			function(newValue) {
+			
+				if(newValue.length > 1){//a new month was selected
+					
+					$scope.monthArray = newValue;//save month for get back from week display
+					$scope.togglecaendarArrow(-90);//make sore the arrow is to up 
+				}
+			},
 			true
-		);	
+		);
+		
+		$scope.$watch('dt', function() {$scope.setCurrnetDate($scope.dt.getTime());}); 
 		
 	});
 		
     $scope.dt = new Date(); 
+  
 	
+
+		
   	$scope.toggleWeekDisplay = function () {
 		
-		 
-		var monthArray = $scope.$$childHead.$$childHead.rows;
 		
-		//single week display? -> open and return
-		if(monthArray.length == 1){
+		//now in single week display? -> open and return
+		if($scope.$$childHead.$$childHead.rows.length == 1){
 			
-			$scope.dt = new Date();
-			$scope.togglecaendarArrow(-90);
-			return;
-			 
+			$scope.$$childHead.$$childHead.rows = $scope.monthArray;//get back current month from memory
+			$scope.togglecaendarArrow(-90);//toggle arrow to up
+			return; 
 		}
 		
-		//month display? -> select and display the current week and return
-		
-		//back to current month
-		$scope.dt = new Date();
-		$scope.$$childHead.select($scope.dt)
-							
-		monthArray = $scope.$$childHead.$$childHead.rows;
-						
-		for(var i=0; i < monthArray.length; i++){
+		//now in month display? -> select and display only the week of selected day	
+		for(var i=0; i < $scope.monthArray.length; i++){
 			
-			for(var j=0; j < monthArray[i].length; j++){
+			for(var j=0; j < $scope.monthArray[i].length; j++){
 			
-				if( monthArray[i][j].current == true){
-					
+				if( $scope.monthArray[i][j].selected == true){
+				
 					$scope.$$childHead.$$childHead.rows =[];
-					$scope.$$childHead.$$childHead.rows.push(monthArray[i]); 
-					$scope.togglecaendarArrow(90);
+					$scope.$$childHead.$$childHead.rows.push($scope.monthArray[i]); //chose selected week
+					$scope.togglecaendarArrow(90);//toggle arrow to down
 					return;
 				
 				}
