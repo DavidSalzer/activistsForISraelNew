@@ -121,6 +121,11 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showSignInPopup', { showSignIn: true });
     }
 
+    $scope.goToLogin = function () {
+        $scope.showInfo = false;
+        $rootScope.$broadcast('showLoginPopup', { showLogin: true });
+    }
+
     $scope.showInpoPopUp = function () {
 
         if ($scope.showInfo == true) {
