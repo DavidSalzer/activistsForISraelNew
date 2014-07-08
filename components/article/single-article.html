@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" href="./components/article/article.css" />
-<!--<script src="./components/article/article.js"></script>-->
 
 <div class="scroll-main-window" scroller loading-method="loadMore()">
 
@@ -11,7 +10,7 @@
     <section class="comments">
         <post data-ng-repeat="post in comments()" data-post-type="comment" data-ng-init="showCommentButton=false"></post>
         <div class="spiner-zone" data-ng-show="showSpiner()">
-            <div class="fa fa-spinner fa-spin"></div>
+            <div class="loader fa fa-spinner fa-spin"></div>
         </div>
     </section>
 </div>
