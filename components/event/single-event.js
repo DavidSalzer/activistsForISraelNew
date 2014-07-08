@@ -18,9 +18,9 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
         featureName: null,
         featureLogo: "./img/calendar.png",
         featureColor: '#004a8e',
-        infoHaeder: "ξΰξψιν",
-        infoMainText: 'λϊαε ξΰξψ αλμ πεωΰ ωϊαηψε. δξΰξψ ξεβαμ μξιπιξεν 250 ϊεειν ειτεψρν αδϊΰν μλμμι δξςψλϊ. δξΰξψιν ιγεψβε ς"ι δβεμωιν ειχεγξε αδϊΰν. πιϊο μδςμεϊ ΰϊ δξΰξψ λχεαυ, ΰε μλϊεα ΰεϊε ιωιψεϊ αςξεγ. πιϊο βν μδερισ ϊξεπδ ξμεεδ μξΰξψ.',
-        infoSubText: "ιφιψϊ ϊλπιν αΰιζεψ ζδ ξεϊπιϊ αδφθψτεϊ μΰτμιχφιδ"
+        infoHaeder: "ΧΧΧΧ¨Χ™Χ",
+        infoMainText: 'Χ›ΧªΧ‘Χ• ΧΧΧΧ¨ Χ‘Χ›Χ Χ Χ•Χ©Χ Χ©ΧªΧ‘Χ—Χ¨Χ•. Χ”ΧΧΧΧ¨ ΧΧ•Χ’Χ‘Χ ΧΧΧ™Χ Χ™ΧΧ•Χ 250 ΧªΧ•Χ•Χ™Χ Χ•Χ™Χ¤Χ•Χ¨Χ΅Χ Χ‘Χ”ΧªΧΧ ΧΧ›ΧΧΧ™ Χ”ΧΧΆΧ¨Χ›Χª. Χ”ΧΧΧΧ¨Χ™Χ Χ™Χ“Χ•Χ¨Χ’Χ• ΧΆ"Χ™ Χ”Χ’Χ•ΧΧ©Χ™Χ Χ•Χ™Χ§Χ•Χ“ΧΧ• Χ‘Χ”ΧªΧΧ. Χ Χ™ΧªΧ ΧΧ”ΧΆΧΧ•Χª ΧΧª Χ”ΧΧΧΧ¨ Χ›Χ§Χ•Χ‘Χ¥, ΧΧ• ΧΧ›ΧªΧ•Χ‘ ΧΧ•ΧªΧ• Χ™Χ©Χ™Χ¨Χ•Χª Χ‘ΧΆΧΧ•Χ“. Χ Χ™ΧªΧ Χ’Χ ΧΧ”Χ•Χ΅Χ™Χ£ ΧªΧΧ•Χ Χ” ΧΧΧ•Χ•Χ” ΧΧΧΧΧ¨.',
+        infoSubText: "Χ™Χ¦Χ™Χ¨Χª ΧªΧ›Χ Χ™Χ Χ‘ΧΧ™Χ–Χ•Χ¨ Χ–Χ” ΧΧ•ΧªΧ Χ™Χª Χ‘Χ”Χ¦ΧΧ¨Χ¤Χ•Χª ΧΧΧ¤ΧΧ™Χ§Χ¦Χ™Χ”"
     };
 	
     generalParameters.setFeature($scope.featureDetails);
@@ -32,22 +32,39 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
     PostService.getPostById($scope.articleId);
     $scope.post = PostService.getSinglePost;
 	
-	$scope.participate = function ($event) {
-       console.log($scope.user._id);
-	  
-    };
-	
 	$scope.editEvent = function ($event) {
-        
 		
 		$state.transitionTo('write-post', { postType: "event", postId: $stateParams.postId });
-	  
     };
 	
-	$scope.inte = function ($event) {
-
-		var intent = new Intent("http://webintents.org/share");
-		window.navigator.startActivity(intent);
+	$scope.call = function () {
+		
+		var tel = $scope.post().phone;
+		window.location.href = 'tel:'+tel;
+    };
+	
+	$scope.mail = function () {
+	
+		var email = $scope.post().email;
+		var subject = "Χ¤Χ•ΧΆΧΧ™Χ ΧΧΧΆΧ Χ™Χ©Χ¨ΧΧ:"+$scope.post().title+" Χ‘"+$scope.post().location;
+		var body = "Χ©ΧΧ•Χ "+$scope.post()._author.data.firstName+" "+$scope.post()._author.data.lastName;
+		console.log(email,subject,body);
+		window.location.href =  "mailto:"+email+"?subject="+subject+"&body="+body;
+    };
+	
+	$scope.participate = function () {
+	
+		var startDate = new Date($scope.post().DestinationTime); // beware: month 0 = january, 11 = december
+		var endDate = new Date($scope.post().DestinationTime);
+		var title = $scope.post().title;
+		var location = $scope.post().location;
+		var notes = $scope.post().content;
+		var success = function(message) { alert("Χ”ΧΧ™Χ¨Χ•ΧΆ Χ Χ•Χ΅Χ£ ΧΧ™Χ•ΧΧ Χ Χ‘Χ”Χ¦ΧΧ—Χ”!")};
+		var error = function(message) { alert("Χ”Χ•Χ΅Χ¤Χª Χ”ΧΧ™Χ¨Χ•ΧΆ ΧΧ™Χ•ΧΧ Χ Χ›Χ©ΧΧ”. Χ©Χ’Χ™ΧΧ”: "+message+"ΧΧ Χ Χ Χ΅Χ” Χ©Χ Χ™Χª")};
+		console.log(startDate,  endDate,  title, location,  notes)
+		
+		window.plugins.calendar.createEvent(title,location,notes,startDate,endDate,success,error);
+	
     };
 	
 
