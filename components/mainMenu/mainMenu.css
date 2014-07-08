@@ -2,23 +2,22 @@
     font-size: 12px;
     font-weight: bold;
     line-height: 30px;
+    letter-spacing: 0.25px;
 }
 
 .current-feature {
     height: 54%;
-    /*height: 282px;*/
     width: 100%;
     background-color: #31363d;
     position: relative;
-    padding-bottom: 12px;
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-bottom: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
     padding-top: 12px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box; /* Firefox, other Gecko */
-    box-sizing: border-box; /* Opera/IE 8+ */
-    border-bottom: 2px solid #565c63; /*this his here becuase there is a vorder in class .menu-item-feature of 1px */
-    overflow-y: hidden; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow-y: hidden;
 }
 
 .current-feature-components {
@@ -30,14 +29,14 @@
     padding: 0px 0px;
     padding-top: 2px;
     position: relative;
-    border-radius: 3px 3px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
     -webkit-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.25);
     -moz-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.25);
     box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.25);
-    overflow-y: hidden; 
+    overflow-y: hidden;
 }
 
 .current-feature-components.thumbnail {
@@ -77,6 +76,7 @@
     line-height: 13px;
     height: 42px;
     overflow: hidden;
+    letter-spacing: 0.25px;
 }
 
 .feature-logo {
@@ -111,6 +111,7 @@
     margin-top: -2px;
     padding-left: 5px;
     line-height: 12px;
+    letter-spacing: 0.25px;
 }
 
 div#features-swipe-inner {
@@ -135,15 +136,14 @@ div#features-swipe-inner {
 }
 
 .menu-item-feature {
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box; /* Firefox, other Gecko */
-    box-sizing: border-box; /* Opera/IE 8+ */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     background-color: #31363d;
-    padding: 10px;
+    padding: 10px 10px 10px 10px;
     width: 145px;
     height: 100%;
     display: inline-block;
-    border-top: 2px solid #565c63;
     border-left: 2px solid #565c63;
     border-right: 2px solid #565c63;
     float: right;
@@ -156,12 +156,12 @@ div#features-swipe-inner {
     height: 100%;
     left: -4px;
     position: absolute;
-    z-index: 2;
+    z-index: 0;
     bottom: 0px;
     background: #565c63;
-    -webkit-box-shadow: inset 0px 0px 0px 1px rgba(37,37,37,0.9);
-    -moz-box-shadow: inset 0px 0px 0px 1px rgba(37,37,37,0.9);
-    box-shadow: inset 0px 0px 0px 1px rgba(37,37,37,0.9);
+    background-repeat: no-repeat;
+    background-image: url("/img/line_vertical.png");
+    background-size: 100% 100%;
 }
 
 .feature-item-image {
@@ -194,6 +194,7 @@ div#features-swipe-inner {
     /* line-height: 14px; */
     padding-top: 7px;
     max-height: 40px;
+    letter-spacing: 0.25px;
     overflow: hidden;
 }
 
@@ -203,13 +204,13 @@ div#features-swipe-inner {
     position: absolute;
     background: #565c63;
     height: 4px;
-    bottom: -4px;
+    bottom: 0px;
     width: 100%;
     z-index: 1;
     right: 0px;
-    -webkit-box-shadow: inset 0px 0px 0px 1px rgba(37,37,37,0.9);
-    -moz-box-shadow: inset 0px 0px 0px 1px rgba(37,37,37,0.9);
-    box-shadow: inset 0px 0px 0px 1px rgba(37,37,37,0.9);
+    background-repeat: no-repeat;
+    background-image: url("/img/line_horizontal.png");
+    background-size: 100% 100%;
 }
 
 

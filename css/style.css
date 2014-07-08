@@ -18,6 +18,20 @@ body {
     background-color: #2f343b;
 }
 
+.loader {
+    position: absolute;
+    margin: auto;
+    height: 40px;
+    width: 40px;
+    top: 0px;
+    display: block;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 15;
+}
+
+
 
 /*testing nav bar*/
 .navbar, .navbar-app {
@@ -247,6 +261,7 @@ div.post-main-text {
     font-size: 14px;
     line-height: 15px;
     text-align: justify;
+    word-wrap: break-word;
 }
 
 .post-main-text img {

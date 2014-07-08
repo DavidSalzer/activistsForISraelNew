@@ -5,10 +5,10 @@
         <meta name="viewport" content="initial-scale=1, minimum-scale=1,maximum-scale=1, user-scalable=0, height=device-height, width=device-width" />
 
         <title>פועלים למען ישראל</title>
-		
-		
 
-	
+
+
+
         <link rel="stylesheet" href="./css/mobile-angular-ui-base.min.css">
         <link rel="stylesheet" href="./css/mobile-angular-ui-desktop.min.css">
         <link rel="stylesheet" href="./css/bootstrapModifications.css">
@@ -27,26 +27,25 @@
         <link rel="stylesheet" type="text/css" href="css/jquery.Jcrop.min.css">
 
         <!--phone gap and plugins-->
-		<!-- <script type="text/javascript" src="cordova.js"></script> -->
+        <!-- <script type="text/javascript" src="cordova.js"></script> -->
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/SocialSharing.js"></script>
         <!--phone gap and plugins-->
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script src="./js/vendor/jsapi.js"></script>
 
-       
+
         <script src="./js/vendor/angular.min.js"></script>
-		<script src="./js/vendor/angular-ui-bootstrap.js"></script>
+        <script src="./js/vendor/angular-ui-bootstrap.js"></script>
         <script src="./js/vendor/angular-ui-router.min.js"></script>
         <script src="./js/vendor/mobile-angular-ui.min.js"></script>
-        
-        
-     <!--    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script> -->
-		<script src="./js/vendor/angular-ui-bootstrap.js"></script>
-<!-- <script src="//code.angularjs.org/1.0.3/i18n/angular-locale_he-il.js"></script>  -->
-		<!-- <script src="./js/vendor/heb.js"></script> -->
-	<!-- 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
-      
+
+
+        <!--    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script> -->
+        <script src="./js/vendor/angular-ui-bootstrap.js"></script>
+        <!-- <script src="//code.angularjs.org/1.0.3/i18n/angular-locale_he-il.js"></script>  -->
+        <!-- <script src="./js/vendor/heb.js"></script> -->
+        <!-- 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
         <script src="./js/vendor/angular-file-upload-shim.min.js"></script>
         <script src="./js/vendor/angular-file-upload.min.js"></script>
 
@@ -54,7 +53,7 @@
         <script src="js/jquery.Jcrop.min.js"></script>
 
         <script src="socialGroupApp.js"></script>
-		<script src="js/jquery.2.min.js"></script>
+        <script src="js/jquery.2.min.js"></script>
         <script src="./services/uploadImg.js"></script>
         <script src="./services/generalParameters.js"></script>
         <script src="./services/postService.js"></script>
@@ -92,7 +91,6 @@
 
         <script src="plugins/html2canvas.js"></script>
         <!--<script src="plugins/color-picker/jscolor.js"></script>-->
-
     </head>
     <body>
 
@@ -131,6 +129,9 @@
 
             <!-- Main view -->
             <div class="app-body">
+                <!--<div class="loader-zone" data-ng-show="true">-->
+                    <div class="loader fa fa-spinner fa-spin" data-ng-controller="headerCtrl" data-ng-show="showLoader"></div>
+                <!--</div>-->
                 <div class="main-view" data-ui-view="main"></div>
             </div>
         </div>
