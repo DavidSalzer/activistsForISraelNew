@@ -261,6 +261,7 @@ div.post-main-text {
     font-size: 14px;
     line-height: 15px;
     text-align: justify;
+    word-wrap: break-word;
 }
 
 .post-main-text img {
