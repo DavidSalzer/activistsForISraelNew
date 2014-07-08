@@ -2,8 +2,9 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
     var current = $location.$$url;
     //$scope.active = -1;
+    $scope.showLoader = true;
 
-  
+
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
         console.log(data);
@@ -21,15 +22,15 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     });
 
     $scope.back = function () {
-		
+
         window.history.back();
-	
+
         generalParameters.setBackIcon(false);
     }
-	
-	/* $scope.select = function (index) {
 
-       // $scope.active = index;
+    /* $scope.select = function (index) {
+
+    // $scope.active = index;
     } */
 
     $scope.featureDetails = generalParameters.getFeature;
@@ -49,11 +50,11 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureColor: "talkback"
         },
          {
-            featureUrl: 'article',
-            featureName: 'מאמרים',
-            featureLogo: "./img/article.png",
-            featureColor: "article"
-        },
+             featureUrl: 'article',
+             featureName: 'מאמרים',
+             featureLogo: "./img/article.png",
+             featureColor: "article"
+         },
         {
             featureUrl: 'channel',
             featureName: 'יוטיוב',
@@ -73,7 +74,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/actionforisrael.png",
             featureColor: "Fbactivists"
         },
-	
+
         {
             featureUrl: 'contact',
             featureName: 'צור קשר',
@@ -88,17 +89,17 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         }
           ,
          {
-            featureUrl: 'meme',
-            featureName: 'צחוקים',
-            featureLogo: "./img/meme.png",
-            featureColor: "#ffd427"
-        }
+             featureUrl: 'meme',
+             featureName: 'צחוקים',
+             featureLogo: "./img/meme.png",
+             featureColor: "#ffd427"
+         }
           ,
 		{
-			featureUrl: 'event',
-			featureName: 'נפגשים',
-			featureLogo: "./img/calendar.png",
-			featureColor: "event"
+		    featureUrl: 'event',
+		    featureName: 'נפגשים',
+		    featureLogo: "./img/calendar.png",
+		    featureColor: "event"
 		}
 
     ];
@@ -148,6 +149,10 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     $scope.$on('showInfoPopup', function (event, args) {
         $scope.showInfo = args.showInfo;
         generalParameters.setShowLogin($scope.showInfo);
+    });
+
+    $scope.$on('showLoader', function (event, args) {
+        $scope.showLoader = args.showLoader;
     });
 
     $scope.share = function () {

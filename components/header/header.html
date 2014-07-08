@@ -1,48 +1,53 @@
 <header class="navbar navbar-app navbar-absolute-top" data-ng-controller="headerCtrl">
-                <div class="info-popup" ng-show="showInfo">
-                    <span class="info info-close" data-ng-click="showInpoPopUp()"></span>
-                    <span class="arrow-up"></span>
-                    <img ng-src="{{featureDetails().featureWhatsUpLogo}}" class="info-img">
-                    <div class="info-header" style="background:{{featureDetails().featureColor}};">
+    <div class="info-popup" ng-show="showInfo">
+        <span class="info info-close" data-ng-click="showInpoPopUp()"></span>
+        <span class="arrow-up"></span>
+        <img ng-src="{{featureDetails().featureWhatsUpLogo}}" class="info-img">
+        <div class="info-header" style="background:{{featureDetails().featureColor}};">
                             {{featureDetails().infoHaeder}}
-                    </div>
-                    <p class="main-text"> {{featureDetails().infoMainText}}</p>
-                    <!--<figure class="devider-line top-diveder"></figure>-->
-                    <div id="whatsup-bottom" data-ng-show="user().firstName=='התחבר'">
-                        <p class="main-text" >{{featureDetails().infoSubText}}</p>
-                        <div class="join-button" data-ng-click="goToLogin()" style="background:{{featureDetails().featureColor}};">התחבר</div>
-                    </div>
-                    <figure class="devider-line bottom-devider"></figure>
+        </div>
+        <p class="main-text"> {{featureDetails().infoMainText}}</p>
+        <!--<figure class="devider-line top-diveder"></figure>-->
+        <div id="whatsup-bottom" data-ng-show="user().firstName=='התחבר'">
+            <p class="main-text">{{featureDetails().infoSubText}}</p>
+            <div class="join-button" data-ng-click="goToLogin()" style="background:{{featureDetails().featureColor}};">התחבר</div>
+        </div>
+        <figure class="devider-line bottom-devider"></figure>
+    </div>
+
+    <div class="navbar-brand navbar-brand-center">
+        <img class="title-img" ng-src="{{featureDetails().featureLogo}}" alt="alt">
+    </div>
+
+
+    <div class="btn btn-group pull-left" data-ng-hide="backIcon()" data-ng-click="toggle('mainSidebar');closePopups()">
+        <divclass ="btn btn-navbar sidebar-toggle">
+            <i class="fa fa-bars"></i>
+    </div>
                 </div>
+    <div class="btn btn-group pull-left" data-ng-show="backIcon()">
+        <div data-ng-click="back()" class="btn-navbar sidebar-toggle">
+            <i class="fa fa-reply"></i>
+        </div>
+    </div>
 
-                <div class="navbar-brand navbar-brand-center">
-                    <img class="title-img" ng-src='{{featureDetails().featureLogo}}' alt="alt">
-                </div>
+    <div class="btn btn-navbar pull-left info" data-ng-click="showInpoPopUp()" data-ng-show="featureDetails().infoHaeder!=undefined">
+    </div>
 
+    <div class="btn-group pull-right" data-ng-click="share();">
+        <i class="fa share"></i>
+    </div>
 
-                <div class="btn btn-group pull-left" data-ng-hide="backIcon()" data-ng-click="toggle('mainSidebar');closePopups()" >
-                    <divclass="btn btn-navbar sidebar-toggle">
-                        <i class="fa fa-bars"></i>
-                    </div>
-                </div>
-                <div class="btn btn-group pull-left" data-ng-show="backIcon()">
-                    <div data-ng-click="back()" class="btn-navbar sidebar-toggle">
-                        <i class="fa fa-reply"></i>
-                    </div>
-                </div>
-
-                <div class="btn btn-navbar pull-left info" data-ng-click="showInpoPopUp()" data-ng-show="featureDetails().infoHaeder!=undefined">
-                </div>
-
-                <div class="btn-group pull-right" data-ng-click="share();"> <i class="fa share"></i></div>
-
-                <!--<div data-content-for="navbarAction">
-                    <div class="btn btn-navbar">
-                        <div class="btn-group pull-right toggleable-dropdown" active-class="open" id="myDropdown" toggleable>
-                            <button type="button" class="btn btn-default dropdown-toggle" toggle target="myDropdown">
-                                <i class="fa share"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>-->
-            </header>
+            <!--<div data-content-for="navbarAction">
+                            <div class="btn btn-navbar">
+                                <div class="btn-group pull-right toggleable-dropdown" active-class="open" id="myDropdown" toggleable>
+                                    <button type="button" class="btn btn-default dropdown-toggle" toggle target="myDropdown">
+                                        <i class="fa share"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>-->
+    <!--<div class="loader-zone" data-ng-show="true">
+        <div class="fa fa-spinner fa-spin"></div>
+    </div>-->
+</header>
