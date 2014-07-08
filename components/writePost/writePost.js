@@ -183,7 +183,8 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     }; 
 	
 	$scope.editPost = function () {
-	
+		
+		//alert($scope.postData.post.DestinationTime);
         $scope.convertDate();
 		
 		PostService.updatePost($scope.postData, $scope.fileObj, $scope.imgObj)
@@ -195,16 +196,20 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
 			$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 		});
+	
     };
 	
 	
 	$scope.convertDate = function () {
-	
-		$scope.postData.post.DestinationTime = new Date($scope.timeDisplay.date);
+		
+		var ddmmyy = $scope.timeDisplay.date.split('/');
+		var date = new Date('20'+ddmmyy[2],ddmmyy[1]-1,ddmmyy[0]);
 		var hhmm = $scope.timeDisplay.time.split(':');
-		$scope.postData.post.DestinationTime.setHours(hhmm[0],hhmm[1]);
-		console.log($scope.postData.post.DestinationTime); 
-		$scope.postData.post.DestinationTime = $scope.postData.post.DestinationTime.getTime();
+		date.setHours(hhmm[0],hhmm[1]);
+		//alert(date.getTime());
+		$scope.postData.post.DestinationTime = date.getTime();
+		//alert($scope.postData.post.DestinationTime);
+		
 	}
 	
 }]);

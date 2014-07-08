@@ -88,10 +88,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         }, */
 
         updatePost: function (postData, textfile, imgFile, isBase64) {
-
+			
             var self = this;
-            var deferred = $q.defer();
-
+			var deferred = $q.defer();
+			//alert(postData.post.DestinationTime)
             var post = { 'post': postData.post };
             console.log(post);
             var json = JSON.stringify(post);
@@ -99,12 +99,13 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             $http.put(domain + 'post/' + postData.post._id, json)
 			.success(function (data) {
-
+			
 			    console.log(data);
-			    if (imgFile) {
-
-			        self.attach(imgFile, postData.post._id)
-					.then(function (data) { deferred.resolve(data) });
+			    if (textfile || imgFile) {
+			        if (textfile)
+			            self.attach(textfile, data.data._id);
+			        if (imgFile)
+			            self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
 			    }
 			    else {
 			        deferred.resolve(data);
