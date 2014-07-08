@@ -169,6 +169,11 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
         .success(function (data) {
             console.log(data);
             generalParameters.setUser({ firstName: 'התחבר', userImg: './img/user.png' });
+            if (document.location.protocol != 'http:' && document.location.protocol != 'https:') {
+                window.cookies.clear(function () {
+                    //alert('Cookies cleared!');
+                });
+            }
             $state.transitionTo('main-menu');
         });
     }
