@@ -26,7 +26,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }
             console.log(queryString);
             showSpiner = true;
-            if(request.offset == 0){
+            if (request.offset == 0) {
                 posts = [];
             }
             classAjax.getdata('get', queryString, request).then(function (data) {
@@ -57,7 +57,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
                 for (var k = 0; k < posts.length; k++) {
 
-                    self.getIsLike(posts[k]._id,k);
+                    self.getIsLike(posts[k]._id, k);
                 }
 
                 console.log(posts);
@@ -71,44 +71,44 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             posts[0].comments.commentsCount = 6;
         },
 
-       /*  updatePost: function (data) {
-            var postId = data.postId
+        /*  updatePost: function (data) {
+        var postId = data.postId
 
-            console.log(postId);
-            for (var post in posts) {
-                console.log('from for: ' + postId);
-                if (posts[post].postId == postId) {
-                    console.log('from for: ' + postId);
-                    posts[post] = data;
-                    console.log('posts[post]: ' + posts[post]);
-                    return;
-                }
-            }
-            posts.unshift(data);
+        console.log(postId);
+        for (var post in posts) {
+        console.log('from for: ' + postId);
+        if (posts[post].postId == postId) {
+        console.log('from for: ' + postId);
+        posts[post] = data;
+        console.log('posts[post]: ' + posts[post]);
+        return;
+        }
+        }
+        posts.unshift(data);
         }, */
 
         updatePost: function (postData, textfile, imgFile, isBase64) {
-		
+
             var self = this;
             var deferred = $q.defer();
 
-			var post = {'post':postData.post};
-			console.log(post);
+            var post = { 'post': postData.post };
+            console.log(post);
             var json = JSON.stringify(post);
             console.log(json);
 
-            $http.put(domain + 'post/'+postData.post._id, json)
+            $http.put(domain + 'post/' + postData.post._id, json)
 			.success(function (data) {
 
 			    console.log(data);
-				if (imgFile){
-			        
-					self.attach(imgFile, postData.post._id)
+			    if (imgFile) {
+
+			        self.attach(imgFile, postData.post._id)
 					.then(function (data) { deferred.resolve(data) });
-				}
-				else{
-					deferred.resolve(data);
-				}
+			    }
+			    else {
+			        deferred.resolve(data);
+			    }
 			})
 			.error(function (data) {
 
@@ -117,9 +117,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
 
             return deferred.promise;
-        }, 
-		
-		sendPost: function (postData, textfile, imgFile, isBase64) {
+        },
+
+        sendPost: function (postData, textfile, imgFile, isBase64, callbackFunc) {
 
             var self = this;
             var deferred = $q.defer();
@@ -136,17 +136,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    console.log(data.data._id);
 			    if (isBase64) {
 			        //imgFile is base64 string
-			        self.attachBase64(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
+			        self.attachBase64(imgFile, data.data._id, callbackFunc).then(function (data) { deferred.resolve(data) });
 			    }
-			    else if(textfile || imgFile){
+			    else if (textfile || imgFile) {
 			        if (textfile)
 			            self.attach(textfile, data.data._id);
 			        if (imgFile)
 			            self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
 			    }
-				else{
-					deferred.resolve(data);
-				}
+			    else {
+			        deferred.resolve(data);
+			    }
 			})
 			.error(function (data) {
 
@@ -187,22 +187,25 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             //if(file){self.attach(file);}
             return deferred.promise;
         },
-        attachBase64: function (base64, userId) {
-			
-			var deferred = $q.defer();
-			
-            postData={
-                
+        attachBase64: function (base64, userId, callbackFunc) {
+
+            var deferred = $q.defer();
+
+            postData = {
+
                 base64: base64
             }
             var json = JSON.stringify(postData);
             console.log(json);
-        
 
-            $http.post(domain + 'Base64FileUpload?ref=post&_id='+userId, json)
+
+            $http.post(domain + 'Base64FileUpload?ref=post&_id=' + userId, json)
 			.success(function (data) {
 
-			    console.log(data)
+			    console.log(data);
+               //hide the loader
+                //show the thank page only after the post created
+                callbackFunc();
 			    deferred.resolve(data);
 			})
 			.error(function (data) {
@@ -222,7 +225,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             $http.post(domain + 'isActivityFound', json)
 			.success(function (data) {
-				 
+
 			    if (data.data == null) {
 
 			        posts[index].isLiked = false; return;
@@ -252,9 +255,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             console.log(json);
 
             $http({ url: domain + 'deletePostActivity', method: "delete", headers: { 'Content-Type': 'application/json' }, data: json })
-    
+
 			.success(function (data) {
-			
+
 			    console.log(data);
 			})
 			.error(function (data) {
@@ -274,7 +277,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             $http.post(domain + 'addPostActivity', json)
 			.success(function (data) {
-				
+
 			    console.log(data);
 			})
 			.error(function (data) {
