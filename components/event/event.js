@@ -1,6 +1,9 @@
 socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
     /*init controller details*/
+	
+	 $scope.showSpiner = PostService.getSpiner;
+	 
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/calendar.png",
@@ -36,10 +39,10 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     }
 	
 	$scope.loadMore = function () {
-        $scope.showSpiner = true; //need to change to false while get callback from server.
+      
         console.log('load more');
         request.endTimestamp = '0';
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request); 
     }
 
     $scope.writeEvent = function () {
