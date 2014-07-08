@@ -46,6 +46,7 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
 	$scope.mail = function () {
 	
 		var email = $scope.post().email;
+		alert(email);
 		var subject = "פועלים למען ישראל:"+$scope.post().title+" ב"+$scope.post().location;
 		var body = "שלום "+$scope.post()._author.data.firstName+" "+$scope.post()._author.data.lastName;
 		console.log(email,subject,body);
@@ -67,8 +68,16 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
 	
     };
 	
+	$scope.nav = function () {
+	
+		var location = $scope.post().location;
+		
+		var addressString = location.replace(/ /g, '+').replace(/[ ]*,[ ]*|[ ]+/g, '%2C');
 
-
-
-
-} ]);
+		console.log(addressString);
+		
+		window.location.href = "geo:0,0?q="+addressString;
+	
+    };
+	
+}]);
