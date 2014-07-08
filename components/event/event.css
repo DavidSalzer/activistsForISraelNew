@@ -273,3 +273,7 @@ thead tr .btn.btn-default.btn-sm {
 .navigate-icon {
     background-image: url('/../img/map.png');
 }
+
+.calendar-area table:first-child {
+    margin: auto;
+}
