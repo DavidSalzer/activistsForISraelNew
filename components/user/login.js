@@ -66,30 +66,74 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     }
 
     $scope.facebooklogin = function () {
-        FB.login(function (response) {
-            if (response.authResponse) {
-                console.log('Welcome!  Fetching your information.... ');
-                FB.api('/me', function (response) {
-                    console.log(response);
-                    console.log('Good to see you, ' + response.name + '.');
+        if (document.location.protocol != 'http:' && document.location.protocol != 'https:') {
+            $scope.ref = window.open(domain + 'auth/facebook', '_blank', 'location=yes');
 
-                    user = {
-                        name: response.first_name,
-                        lastName: response.last_name,
-                        img: 'https://graph.facebook.com/' + response.id + '/picture'
-                    }
-                    console.log(user);
-                    // $rootScope.$broadcast('userLogin', { user: user});
-                    //save to loacl store
-                    localStorage.setItem('user', JSON.stringify(user));
-                });
-            } else {
-                console.log('User cancelled login or did not fully authorize.');
-                localStorage.clear('user');
-            }
-        }, { scpoe: 'email,user_likes' }); // premisions 
+            $scope.ref.addEventListener('loadstop', $scope.endLogin);
+        }
+        else {
+            location.replace(domain + 'auth/facebook?returnTo=' + $scope.returnTo)
+        }
+        
+
+        //    FB.login(function (response) {
+        //        if (response.authResponse) {
+        //            console.log('Welcome!  Fetching your information.... ');
+        //            FB.api('/me', function (response) {
+        //                console.log(response);
+        //                console.log('Good to see you, ' + response.name + '.');
+
+        //                user = {
+        //                    name: response.first_name,
+        //                    lastName: response.last_name,
+        //                    img: 'https://graph.facebook.com/' + response.id + '/picture'
+        //                }
+        //                console.log(user);
+        //                // $rootScope.$broadcast('userLogin', { user: user});
+        //                //save to loacl store
+        //                localStorage.setItem('user', JSON.stringify(user));
+        //            });
+        //        } else {
+        //            console.log('User cancelled login or did not fully authorize.');
+        //            localStorage.clear('user');
+        //        }
+        //    }, { scpoe: 'email,user_likes' }); // premisions 
     }
 
+    $scope.googlelogin = function () {
+        console.log(document.location.protocol);
+        if (document.location.protocol != 'http:' && document.location.protocol != 'https:') {
+            $scope.ref = window.open(domain + 'auth/google', '_blank', 'location=yes');
+
+            $scope.ref.addEventListener('loadstop', $scope.endLogin);
+        }
+        else {
+            location.replace(domain + 'auth/google?returnTo=' + $scope.returnTo)
+        }
+    }
+
+    $scope.endLogin = function (event) {
+        alert('test: ' + event.url);
+        if (event.url == domain + 'auth/return#_=_') {
+            $http.get(domain + 'profile/', { withCredentials: true, async: true })
+                .success(function (data) {
+                    console.log(data);
+                    if (data.data.user != undefined) {
+                        generalParameters.setUser(data.data.user);
+                    }
+                    else {
+                        generalParameters.setUser({ firstName: 'התחבר', userImg: './img/user.png' });
+                    }
+
+                })
+
+            $scope.ref.close();
+            $scope.showLogin = false;
+            generalParameters.setShowLogin(false);
+            $scope.$apply();
+
+        }
+    }
 
 
 } ]);

@@ -26,8 +26,8 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     $scope.previewData = PostService.getPreviewMeme();
 
     $scope.topRgb = $scope.previewData.rgbTop;
-    $scope.bottomRgb =$scope.previewData.rgbBottom;
-    $scope.topText =$scope.previewData.top;
+    $scope.bottomRgb = $scope.previewData.rgbBottom;
+    $scope.topText = $scope.previewData.top;
     $scope.bottomText = $scope.previewData.bottom;
     $scope.font = $scope.previewData.font;
     $scope.postImg = $scope.previewData.img;
@@ -66,7 +66,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     };
 
 
-     $scope.setClass = function () {
+    $scope.setClass = function () {
         var img = document.getElementById('chosenImg');
         console.log('img width: ' + img.offsetWidth + ' img height: ' + img.offsetHeight)
         if (img.width >= img.height) {
@@ -91,13 +91,13 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     }
     $scope.publishMeme = function () {
 
-         html2canvas(document.getElementById('html2canvas'), {
+        html2canvas(document.getElementById('html2canvas'), {
             onrendered: function (canvas) {
                 $scope.previewBase64 = canvas.toDataURL("image/png");
                 $scope.sendPost();
                 // document.getElementById('img').src = dataURL;
-               // PostService.setPreviewMeme(dataURL);
-               // $state.transitionTo('meme-preview');
+                // PostService.setPreviewMeme(dataURL);
+                // $state.transitionTo('meme-preview');
             }
 
         })
@@ -106,18 +106,21 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
 
     $scope.sendPost = function () {
 
-
-        //if (($scope.min > 0) && ($scope.postData.post.content.length < $scope.min)) { $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return; }
-
-        PostService.sendPost($scope.postData, $scope.fileObj, $scope.previewBase64, true);
+        //show the loader
+        var callbackFunc = $scope.showThankPage;
+        PostService.sendPost($scope.postData, $scope.fileObj, $scope.previewBase64, true,callbackFunc);
 
         generalParameters.setBackIcon(false);
 
 
         // show thank page
-        $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+        // $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
     };
 
+    $scope.showThankPage = function () {
+        // show thank page
+        $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+    }
 
 
 } ]);
