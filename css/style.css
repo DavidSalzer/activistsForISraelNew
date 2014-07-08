@@ -19,16 +19,35 @@ body {
 }
 
 .loader {
+    /*position: absolute;
+    margin: auto;*/
+    height: 55px;
+    width: 55px;
+    /*top: 0px;
+    display: block;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 15;*/
+    background-image: url('../img/loader.png');
+}
+
+.general-loader {
     position: absolute;
     margin: auto;
-    height: 40px;
-    width: 40px;
+    height: 55px;
+    width: 55px;
     top: 0px;
     display: block;
     bottom: 0px;
     right: 0px;
     left: 0px;
     z-index: 15;
+    background-image: url('../img/loader.png');
+}
+
+.fa-spinner:before {
+    content: "";
 }
 
 
@@ -67,10 +86,11 @@ header i.fa.share {
     right: 2px;
 }
 
-.btn.btn-navbar.ng-scope:active{
+.btn.btn-navbar.ng-scope:active {
     opacity: 1;
 }
-.btn:active, a:active{
+
+.btn:active, a:active {
     opacity: 1;
 }
 
@@ -90,15 +110,14 @@ header i.fa.back {
     -webkit-overflow-scrolling: touch;
 }
 
-select{
-      border: none;
-width: 100%;
-padding:0px;
-padding-right: 0px;
-float:left;
-height: 100%;
-
-text-indent: 20px;
+select {
+    border: none;
+    width: 100%;
+    padding: 0px;
+    padding-right: 0px;
+    float: left;
+    height: 100%;
+    text-indent: 20px;
 }
 /*************************post template*******************/
 .posts-list {
@@ -212,18 +231,17 @@ text-indent: 20px;
 } */
 
 .author-image div {
-	
-	background-size: 100% 100%;
-	margin: auto;
-	background-repeat: no-repeat;
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	border-radius: 50px;
-	border-style: solid;
-	border-width: 1px;
+    background-size: 100% 100%;
+    margin: auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 50px;
+    border-style: solid;
+    border-width: 1px;
 }
 
 figure.author-image {
@@ -840,7 +858,7 @@ button {
     LINE-HEIGHT: 20px;
     background-color: #ffffff;
     color: #da4f00;
-    font-weight : bold; 
+    font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -990,8 +1008,9 @@ button {
     line-height: 32px;
     text-indent: 20px;
     font-size: 15px;
-	margin-right: 43px;
+    margin-right: 43px;
 }
+
 .file-text {
     color: #695B5B;
     text-align: right;
@@ -1001,15 +1020,14 @@ button {
     line-height: 32px;
     text-indent: 20px;
     font-size: 15px;
-	margin-right: 50px;
+    margin-right: 50px;
 }
 
 .add-file-error {
-	
-	padding-top: 7px;
-	font-size: 0.7em;
-	text-align: right;
-	margin-right: 50px;
+    padding-top: 7px;
+    font-size: 0.7em;
+    text-align: right;
+    margin-right: 50px;
 }
 
 .add-file {
@@ -1019,14 +1037,17 @@ button {
 }
 
 ::-webkit-input-placeholder {
-    color:    #999;
+    color: #999;
 }
+
 :-moz-placeholder {
-    color:    #999;
+    color: #999;
 }
+
 ::-moz-placeholder {
-    color:    #999;
+    color: #999;
 }
+
 :-ms-input-placeholder {
-    color:    #999;
+    color: #999;
 }
