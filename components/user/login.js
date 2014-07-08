@@ -113,7 +113,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     }
 
     $scope.endLogin = function (event) {
-        alert('test: ' + event.url);
+        
         if (event.url == domain + 'auth/return#_=_') {
             $http.get(domain + 'profile/', { withCredentials: true, async: true })
                 .success(function (data) {
