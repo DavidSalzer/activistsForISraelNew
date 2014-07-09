@@ -107,8 +107,9 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     $scope.sendPost = function () {
 
         //show the loader
+        $rootScope.$broadcast('showLoader', { showLoader: true });
         var callbackFunc = $scope.showThankPage;
-        PostService.sendPost($scope.postData, $scope.fileObj, $scope.previewBase64, true,callbackFunc);
+        PostService.sendPost($scope.postData, $scope.fileObj, $scope.previewBase64, true, callbackFunc);
 
         generalParameters.setBackIcon(false);
 

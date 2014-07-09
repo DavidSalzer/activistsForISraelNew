@@ -23,7 +23,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     { url: 'img/memes/19.jpg' }, { url: 'img/memes/22.jpg' }, { url: 'img/memes/49.jpg' }
     , { url: 'img/memes/65.jpg' }, { url: 'img/memes/346.jpg' }, { url: 'img/memes/9061.jpg'}];
 
-    $scope.paletteColors = [{ color: '#ffffff' }, { color: '#000000' }, { color: '#009966' }, { color: '#002EB8' }, { color: '#FF6633' }, { color: '#CCFF33' }, { color: '#B8005C' }, { color: '#666699'}]
+    $scope.paletteColors = [{ color: '#ffffff' }, { color: '#000000' }, { color: '#fa0001' }, { color: '#993ca7' }, { color: '#f6ba55' }, { color: '#8ec531' }, { color: '#004a8e' }, { color: '#bcccce'}]
     $scope.showPaletteTop = false;
     $scope.showPaletteBottom = false;
 
