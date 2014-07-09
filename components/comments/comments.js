@@ -1,4 +1,4 @@
-socialGroupApp.controller('comments', ['$scope', '$stateParams', 'PostService', 'generalParameters', function ($scope, $stateParams, PostService, generalParameters) {
+socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'PostService', 'generalParameters', function ($scope, $state, $stateParams, PostService, generalParameters) {
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -27,6 +27,10 @@ socialGroupApp.controller('comments', ['$scope', '$stateParams', 'PostService', 
         posts = PostService.getPosts();
         self.getPostsBatch({ startTimestamp: '', endTimestamp: posts[0].timestamp, offset: $scope.offset, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
         $scope.offset += 20;
+    };
+
+    $scope.userClicked = function (userId) {
+        $state.transitionTo('user-profile', { userId: userId });
     };
 
 } ]);

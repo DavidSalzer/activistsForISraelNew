@@ -49,5 +49,9 @@ socialGroupApp.controller('single-article', ['$rootScope', '$stateParams', '$sco
         $scope.offset += 20;
     };
 
+    $scope.userClicked = function (userId) {
+        $state.transitionTo('user-profile', { userId: userId });
+    };
+
 
 } ]);
