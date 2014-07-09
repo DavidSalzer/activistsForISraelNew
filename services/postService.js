@@ -204,6 +204,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
 			    console.log(data);
                //hide the loader
+               $rootScope.$broadcast('showLoader', { showLoader: false });
                 //show the thank page only after the post created
                 callbackFunc();
 			    deferred.resolve(data);
