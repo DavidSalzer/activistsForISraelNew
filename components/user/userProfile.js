@@ -49,10 +49,34 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
     ];
 
     generalParameters.setFeature($scope.featureDetails);
-    $scope.profile = generalParameters.getUser;
-    $scope.myProfile = true;
 
-    $scope.editProfile = angular.copy($scope.profile());
+    $scope.myProfile = true;
+    if ($scope.myProfile) {
+        $scope.profile = generalParameters.getUser;
+    }
+    else {
+        $http.get(domain + 'profile/53aaaf9070f55c4f616f9780', { withCredentials: true, async: true })
+            .success(function (data) {
+                console.log(data);
+                $scope.profile = function () {
+                    if (data.data.img == undefined) {
+                        
+                    }
+                    else if (data.data.img.RelativePosition) {
+                        data.data.userImg = domain + data.data.img.url;
+                        
+                    }
+                    else {
+                        data.data.userImg = data.data.img.url;
+                        
+                    }
+                    return data.data;
+                }
+
+            })
+    }
+
+    //$scope.editProfile = angular.copy($scope.profile());
 
 
     $scope.editName = false;

@@ -88,10 +88,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         }, */
 
         updatePost: function (postData, textfile, imgFile, isBase64) {
-
+			
             var self = this;
-            var deferred = $q.defer();
-
+			var deferred = $q.defer();
+			//alert(postData.post.DestinationTime)
             var post = { 'post': postData.post };
             console.log(post);
             var json = JSON.stringify(post);
@@ -99,12 +99,13 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             $http.put(domain + 'post/' + postData.post._id, json)
 			.success(function (data) {
-
+			
 			    console.log(data);
-			    if (imgFile) {
-
-			        self.attach(imgFile, postData.post._id)
-					.then(function (data) { deferred.resolve(data) });
+			    if (textfile || imgFile) {
+			        if (textfile)
+			            self.attach(textfile, data.data._id);
+			        if (imgFile)
+			            self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
 			    }
 			    else {
 			        deferred.resolve(data);
@@ -134,6 +135,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
 			    console.log(data);
 			    console.log(data.data._id);
+				if(data.data._id == undefined){deferred.resolve(data); return deferred.promise;}//fail to create post!
 			    if (isBase64) {
 			        //imgFile is base64 string
 			        self.attachBase64(imgFile, data.data._id, callbackFunc).then(function (data) { deferred.resolve(data) });
@@ -158,7 +160,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         attach: function (file, postId) {
-
+			
+			$rootScope.$broadcast('showLoader', {showLoader:true});
             var deferred = $q.defer();
             var $file = file;
             console.log($file);
@@ -176,10 +179,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }).success(function (data, status, headers, config) {
                 // file is uploaded successfully
                 console.log(data);
+				$rootScope.$broadcast('showLoader', {showLoader:false});
                 deferred.resolve(data);
 
             }).error(function (data, status, headers, config) {
                 // file failed to upload
+				$rootScope.$broadcast('showLoader', {showLoader:false});
                 console.log(data);
                 deferred.resolve(data);
 
@@ -197,7 +202,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }
             var json = JSON.stringify(postData);
             console.log(json);
-
+			$rootScope.$broadcast('showLoader', {showLoader:true});
 
             $http.post(domain + 'Base64FileUpload?ref=post&_id=' + userId, json)
 			.success(function (data) {
@@ -212,6 +217,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			.error(function (data) {
 
 			    console.log(data);
+				$rootScope.$broadcast('showLoader', {showLoader:false});
 			    deferred.resolve(data);
 			});
 
