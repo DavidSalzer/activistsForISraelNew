@@ -18,7 +18,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 		})
 
         .state('user-profile', {
-            url: "/user-profile",
+            url: "/user-profile/:userId",
             views: {
                 "main": {
                     templateUrl: "./components/user/userProfile.html",
@@ -381,18 +381,18 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     };
 } ])
 
-.directive('authorHeader', ['$rootScope', 'PostService', function ($rootScope, PostService) {
+.directive('authorHeader', ['$rootScope', 'PostService', '$state', function ($rootScope, PostService, $state) {
     return {
         restrict: 'E',
-        //template: '<div id="user-header">' +
-        //            '<figure class="author-image">'+ 
-        //                '<img data-ng-src="{{post.authorImage}}" alt="user-pic">'+
-        //            '</figure>'+
-        //            '<span class="author-name" data-author="{{post.author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post.author}}</span>'+
-        //            '<span class="author-date">{{post.timeStamp  | date : "dd.MM.yyyy"}}</span>'+
-        //           '</div>',
-        templateUrl: './authorHeader.html'//,
+        
+        templateUrl: './authorHeader.html',
         //replace: true
+        link: function (scope, el, attrs) {
+            el.on('click', function () {
+                console.log(scope);
+                $state.transitionTo('user-profile', { userId: scope.post._author._id });
+            });
+        }
     };
 } ])
 

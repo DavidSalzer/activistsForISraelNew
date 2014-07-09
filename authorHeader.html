@@ -10,7 +10,7 @@
 		יוצר האירוע: 
 	</span>
 	
-    <span class="author-name" data-author="{{post._author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">		{{post._author.data.firstName}} {{post._author.data.lastName}}
+    <span class="author-name" data-author="{{post._author}}">		{{post._author.data.firstName}} {{post._author.data.lastName}}
 	</span>
 	
     <div  data-ng-hide='post.postType =="event"' class="color-line color-line-bottom "></div>

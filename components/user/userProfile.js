@@ -1,7 +1,8 @@
-socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAjax', 'generalParameters', 'PostService', 'imgCrop', function ($scope, $state, $http, classAjax, generalParameters, PostService, imgCrop) {
+socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'imgCrop', function ($scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, imgCrop) {
     $scope.d = 'disabled';
     $scope.datacrop = {};
     $scope.userImg = '';
+    $scope.myProfile = true;
 
     $scope.featureDetails = {
         featureName: null,
@@ -17,58 +18,68 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
             featureName: 'מה קורה',
             featureLogo: "./img/whatsup.png",
             featureColor: "talkback",
-            recentActivity: []
+            postType: "talkback"
         },
          {
              featureUrl: 'article',
              featureName: 'מאמרים',
              featureLogo: "./img/article.png",
              featureColor: "article",
-             recentActivity: []
+             postType: "article"
          },
-    //       {
-    //          featureUrl: 'meme',
-    //          featureName: 'ממים',
-    //          featureLogo: "./img/meme.png",
-    //          featureColor: "#ffd427"
-    //      }
-    //      ,
+           {
+               featureUrl: 'meme',
+               featureName: 'ממים',
+               featureLogo: "./img/meme.png",
+               featureColor: "#ffd427",
+               postType: "meme"
+           }
+          ,
         {
-        featureUrl: 'poll',
-        featureName: 'משאל עם',
-        featureLogo: "./img/poll.png",
-        featureColor: "poll"
+            featureUrl: 'poll',
+            featureName: 'משאל עם',
+            featureLogo: "./img/poll.png",
+            featureColor: "poll",
+            postType: "poll"
+        },
+    {
+        featureUrl: 'event',
+        featureName: 'נפגשים',
+        featureLogo: "./img/calendar.png",
+        featureColor: "event",
+        postType: "event"
     }
-    //{
-    //    featureUrl: 'event',
-    //    featureName: 'נפגשים',
-    //    featureLogo: "./img/calendar.png",
-    //    featureColor: "event"
-    //}
 
     ];
 
     generalParameters.setFeature($scope.featureDetails);
 
-    $scope.myProfile = true;
-    if ($scope.myProfile) {
-        $scope.profile = generalParameters.getUser;
+    if ($stateParams.userId == generalParameters.getUser()._id) {
+        $scope.myProfile = true;
     }
     else {
-        $http.get(domain + 'profile/53aaaf9070f55c4f616f9780', { withCredentials: true, async: true })
+        $scope.myProfile = false;
+    }
+
+    if ($scope.myProfile) {
+        $scope.profile = generalParameters.getUser;
+        $scope.editProfile = angular.copy($scope.profile());
+    }
+    else {
+        $http.get(domain + 'profile/' + $stateParams.userId, { withCredentials: true, async: true })
             .success(function (data) {
                 console.log(data);
                 $scope.profile = function () {
                     if (data.data.img == undefined) {
-                        
+
                     }
                     else if (data.data.img.RelativePosition) {
                         data.data.userImg = domain + data.data.img.url;
-                        
+
                     }
                     else {
                         data.data.userImg = data.data.img.url;
-                        
+
                     }
                     return data.data;
                 }
@@ -186,6 +197,28 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$http', 'classAja
             generalParameters.setUser(data.data);
             $scope.editItem(field);
         })
+    }
+
+    $scope.currentPost = 'none';
+    $scope.posts = PostService.getPosts;
+
+    $scope.openRecentActivity = function (postType) {
+        if ($scope.currentPost == postType) {
+            $scope.currentPost = 'none';
+        }
+        else {
+            request = {
+                startTimestamp: '',
+                endTimestamp: '',
+                offset: 0,
+                limit: 5,
+                orderBy: '-timestamp',
+                postType: postType,
+                authorId: $stateParams.userId
+            };
+            PostService.getPostsByAuthor(request);
+            $scope.currentPost = postType;
+        }
     }
 
     $scope.userLogout = function () {

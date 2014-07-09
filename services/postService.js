@@ -91,10 +91,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         }, */
 
         updatePost: function (postData, textfile, imgFile, isBase64) {
-			
+
             var self = this;
-			var deferred = $q.defer();
-			//alert(postData.post.DestinationTime)
+            var deferred = $q.defer();
+            //alert(postData.post.DestinationTime)
             var post = { 'post': postData.post };
             console.log(post);
             var json = JSON.stringify(post);
@@ -102,7 +102,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             $http.put(domain + 'post/' + postData.post._id, json)
 			.success(function (data) {
-			
+
 			    console.log(data);
 			    if (textfile || imgFile) {
 			        if (textfile)
@@ -163,8 +163,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         attach: function (file, postId) {
-			
-			$rootScope.$broadcast('showLoader', {showLoader:true});
+
+            $rootScope.$broadcast('showLoader', { showLoader: true });
             var deferred = $q.defer();
             var $file = file;
             console.log($file);
@@ -182,12 +182,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }).success(function (data, status, headers, config) {
                 // file is uploaded successfully
                 console.log(data);
-				$rootScope.$broadcast('showLoader', {showLoader:false});
+                $rootScope.$broadcast('showLoader', { showLoader: false });
                 deferred.resolve(data);
 
             }).error(function (data, status, headers, config) {
                 // file failed to upload
-				$rootScope.$broadcast('showLoader', {showLoader:false});
+                $rootScope.$broadcast('showLoader', { showLoader: false });
                 console.log(data);
                 deferred.resolve(data);
 
@@ -205,22 +205,22 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }
             var json = JSON.stringify(postData);
             console.log(json);
-			$rootScope.$broadcast('showLoader', {showLoader:true});
+            $rootScope.$broadcast('showLoader', { showLoader: true });
 
             $http.post(domain + 'Base64FileUpload?ref=post&_id=' + userId, json)
 			.success(function (data) {
 
 			    console.log(data);
-               //hide the loader
-			   $rootScope.$broadcast('showLoader', {showLoader:false});
-                //show the thank page only after the post created
-                callbackFunc();
+			    //hide the loader
+			    $rootScope.$broadcast('showLoader', { showLoader: false });
+			    //show the thank page only after the post created
+			    callbackFunc();
 			    deferred.resolve(data);
 			})
 			.error(function (data) {
 
 			    console.log(data);
-				$rootScope.$broadcast('showLoader', {showLoader:false});
+			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    deferred.resolve(data);
 			});
 
@@ -446,7 +446,6 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         setPreviewMeme: function (base64) {
             previeMemeBase64 = base64;
         }
-
 
     }
 } ]);

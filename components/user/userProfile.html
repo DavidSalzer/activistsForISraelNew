@@ -57,14 +57,14 @@
             <div class="user-edit-icon-x" data-ng-show="editPhone" data-ng-click="editItem('phone')"></div>
         </div>
         <div class="color-line color-fixed-top"></div>
-        <!--<div class="user-profile-item">הפעולות האחרונות</div>
+        <div class="user-profile-item">הפעולות האחרונות</div>
         <div data-ng-repeat="feature in featuresList track by $index">
-            <div class="user-recent-activity">
+            <div class="user-recent-activity" data-ng-click="openRecentActivity(feature.postType)">
                 <div class="user-recent-activity-logo" style="background-image: url({{feature.featureLogo}})"></div>
             {{feature.featureName}}
             </div>
-            <div data-ng-repeat="post in feature.recentActivity track by $index"></div>
-        </div>-->
+            <post data-ng-repeat="post in posts()" data-ng-show="currentPost == feature.postType" data-post-type="feature.postType"></post>
+        </div>
         <div class="user-profile-item" data-ng-show="myProfile">
             <input type="button" class="user-profile-logout-btn" data-ng-click="userLogout()" value="התנתק">
         </div>
