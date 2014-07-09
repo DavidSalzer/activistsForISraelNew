@@ -24,6 +24,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             if (request.pollStatus != undefined) {
                 queryString = queryString + '&pollStatus=' + request.pollStatus;
             }
+			if (request.DestinationTime != undefined) {
+                queryString = queryString + '&DestinationTime=' + request.DestinationTime;
+            }
             console.log(queryString);
             showSpiner = true;
             if (request.offset == 0) {

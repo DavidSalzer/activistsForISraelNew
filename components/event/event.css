@@ -221,6 +221,17 @@ thead tr .btn.btn-default.btn-sm {
     font-size: 12px;
 }
 
+.event-3points{
+	
+	display: inline-block;
+}
+
+.event-read-more{
+	
+	font-weight: bold;
+	float: left;
+}
+
 .single-event-header {
     width: 100%;
     height: 42px;
