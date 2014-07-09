@@ -225,7 +225,6 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 		$scope.showHHMMError = $scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '' ||  timeTest.test($scope.timeDisplay.time) == false;
 		$scope.showLocationError = $scope.postData.post.location == undefined || $scope.postData.post.location == '';
 		
-		alert($scope.showHHMMError);
 		return(!($scope.showTitleError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || false));
 		
 	}
