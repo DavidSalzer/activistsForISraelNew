@@ -14,21 +14,21 @@
     <div class="article-content">
 		
 		<!-- article +event title-->
-        <input data-ng-if='postType=="article" || postType=="event"' type="text" class="title-field" placeholder="כותרת" data-ng-model="postData.post.title" />
+        <input data-ng-if='postType=="article" || postType=="event"' type="text" data-ng-class='{"title-field":true,"requieredError":showTitleError}' placeholder="כותרת" data-ng-model="postData.post.title" />
 		
 		<!--event time-->
 		<div data-ng-if='postType=="event"'>
 			<div class="small-input-wrap top-input-wrap">
                 <p class="side-small-input side-small-input-one">תאריך:</p>
 				
-				<input type="text" placeholder="dd/mm/yy" class="title-field" data-ng-model="timeDisplay.date"/>
+				<input type="text" placeholder="dd/mm/yy" data-ng-class='{"title-field":true,"requieredError":showDDMMYYError}' data-ng-model="timeDisplay.date"/>
 			</div>
 			<div class="small-input-wrap bottom-input-wrap">
                 <p class="side-small-input side-small-input-tow">שעה:</p>
 				
-				<input type="text" placeholder="hh:mm" class="title-field" data-ng-model="timeDisplay.time"/>
+				<input type="text" placeholder="hh:mm" data-ng-class='{"title-field":true,"requieredError":showHHMMError}' data-ng-model="timeDisplay.time"/>
 			</div>
-			<input  type="text" class="title-field" placeholder="מקום" data-ng-model="postData.post.location" />
+			<input  type="text" data-ng-class='{"title-field":true,"requieredError":showLocationError}' placeholder="מקום" data-ng-model="postData.post.location" />
         </div>
 		
 		<!-- article add text file-->
@@ -64,8 +64,8 @@
 			
 		</div>
 		
-		
-		 <div class="add-file">         
+		<!-- post add img-->
+		 <div class="add-file" style='height: 30px;'>         
 				<div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
 					
 					<input type="file" data-upload='img' style='position: absolute;top: 0;'>
@@ -76,11 +76,25 @@
             </div>
 		
 		<!-- post add img preview-->
-		<img  data-ng-show="toLargImage==false" ng-src="{{postImg}}" style='margin:0px auto 20px auto;display: block'  >
+		<img  data-ng-show="toLargImage==false" ng-src="{{postImg}}" style='margin: 20px auto 20px auto;display: block'  >
 		
+	
+		  
 		<div data-ng-if='postType=="event"'>
 			<input  style='margin-top:12px;' type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.email" />
 			<input style='margin-top:12px;' type="text" class="title-field" placeholder="טלפון ליצירת קשר (לא חובה)" data-ng-model="postData.post.phone" />
+		</div>	
+		
+		<!-- validation msges-->
+		<div style='margin-top:12px;'>
+			<div class="login-error" data-ng-if="showTitleError">* שדה כותרת לא הוזן כראוי</div>
+			<div class="login-error" data-ng-if="showDDMMYYError">* שדה תאריך לא הוזן כראוי</div>
+			<div class="login-error" data-ng-if="showHHMMError">* שדה שעה לא הוזן כראוי</div>
+			<div class="login-error" data-ng-if="showLocationError">* שדה מקום לא הוזן כראוי</div>
+		</div>
+		
+		<!-- buttons-->
+		<div data-ng-if='postType=="event"'>
 			
 			<div data-ng-if='postId == 0' > 
 				
@@ -92,12 +106,12 @@
 			
 			 <div data-ng-if='postId != 0' class="button" data-ng-click="editPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">אשר
 			</div>
+		</div>	
 			
-			
-		</div>
+		
 		
 		<!-- post send button-->
-        <div data-ng-hide='postType=="event"' class="button" data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">שלח
+        <div data-ng-if='postType != "event"' class="button" data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">שלח
 		</div>
    </div>
         

@@ -159,6 +159,8 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.sendPost = function () {
 	
+		if(!$scope.validateInputs()){ /* alert('valdation err'); */return;}
+	
         //article? check if the text is large then minimum
         if (($scope.min > 0) && ($scope.postData.post.content.length < $scope.min)) { $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return; }
 		
@@ -184,8 +186,9 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 	
 	$scope.editPost = function () {
 		
-		//alert($scope.postData.post.DestinationTime);
-        $scope.convertDate();
+		if(!$scope.validateInputs()){ /* alert('valdation err'); */return;}
+        
+		$scope.convertDate();
 		
 		PostService.updatePost($scope.postData, $scope.fileObj, $scope.imgObj)
 	   
@@ -211,5 +214,22 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 		//alert($scope.postData.post.DestinationTime);
 		
 	}
+	
+	$scope.validateInputs = function () {
+		
+		var dateTest = new RegExp("^([0]?[1-9]|[1|2][0-9]|[3][0|1])[/]([0]?[1-9]|[1][0-2])[/]([0-9]{4}|[0-9]{2})$");
+		var timeTest = new RegExp("^([0-9]|0[0-9]|1[0-9]|2[0-3])[:][0-5][0-9]$");
+		$scope.showTitleError = $scope.postData.post.title == undefined || $scope.postData.post.title == '';
+		$scope.showDDMMYYError = $scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '' || 
+		 dateTest.test($scope.timeDisplay.date) == false;
+		$scope.showHHMMError = $scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '' ||  timeTest.test($scope.timeDisplay.time) == false;
+		$scope.showLocationError = $scope.postData.post.location == undefined || $scope.postData.post.location == '';
+		
+		alert($scope.showHHMMError);
+		return(!($scope.showTitleError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || false));
+		
+	}
+	
+	 
 	
 }]);

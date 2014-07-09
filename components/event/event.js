@@ -62,9 +62,10 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
 
     });
 	
-	$scope.updateFeed = function (stamp) {
-        //alert('udateing by '+stamp);
-		request.DestinationTime = stamp;
+	$scope.updateFeed = function (date) {
+	
+		date.setHours(0,0);
+		request.DestinationTime =  date.getTime();
 		//alert(request.DestinationTime);
 		PostService.getPostsBatch(request);
     }
@@ -92,7 +93,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope','PostService', functio
 			true
 		);
 		
-		$scope.$watch('dt', function() {$scope.updateFeed($scope.dt.getTime());}); 
+		$scope.$watch('dt', function() {$scope.updateFeed($scope.dt);}); 
 		
 	});
 		

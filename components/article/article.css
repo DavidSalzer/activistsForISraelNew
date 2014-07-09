@@ -408,3 +408,8 @@ div.post-main-text {
     margin-top: 0px;
     background-image: url("/img/clock.png");
 }
+
+.title-field.requieredError {
+	
+	border: 1px solid hsl(0, 100%, 50%);
+}

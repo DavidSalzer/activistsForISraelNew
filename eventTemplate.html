@@ -2,19 +2,20 @@
   
   <div class="post-details">
 	   <div class="event-title" style='color:{{featureDetails.featureColor}};'>{{post.title}} ב{{post.location}}</div>
-	   <span class='event-time' data-ng-hide="singleEvent">
+	   <span class='event-time' data-ng-if="!singleEvent">
 	   יום {{post.DestinationTime | date : 'EEEE'}} {{post.DestinationTime | date : 'dd.MM.yyyy'}} 
 	   שעה {{post.DestinationTime | date : 'H:mm'}}
 	   </span>
   </div>
 	
   <div class="post-main-text event-main-text" >
-	<img data-ng-show="singleEvent && post.img!='' && post.img!=undefined" data-ng-src="{{domain+post.img}}" alt="post-pic" >
-	<div data-ng-hide="singleEvent">
+	<img data-ng-if="singleEvent && post.img!='' && post.img!=undefined" data-ng-src="{{domain+post.img}}" alt="post-pic" >
+	<div data-ng-if="!singleEvent">
 		{{post.content | limitTo:85 }}<div data-ng-if="85 < post.content.length" class='event-3points'>...</div>
 	</div>
-	<div data-ng-if="85 < post.content.length" class='event-read-more'>קרא עוד...</div>
-  <div data-ng-show="singleEvent" class='singleEvent-text'>{{post.content}}</div>
+	<div data-ng-if="!singleEvent && 85 < post.content.length" class='event-read-more'>קרא עוד...</div>
+	
+  <div data-ng-if="singleEvent" class='singleEvent-text'>{{post.content}}</div>
   
   </div>
 
