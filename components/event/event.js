@@ -9,10 +9,10 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         featureLogo: "./img/calendar.png",
         featureWhatsUpLogo: "./img/calendar_info.png",
         featureColor: '#004a8e',
-        infoHaeder: "ôéö'ø ðôâùéí",
-        infoMainText: 'ôøñîå àéøåòéí ìîòï éùøàì! ìåç ìôøñåí åéöéøú àéøåòéí/çåâé áéú/îôâùéí áäí úøöå ìùúó àú äçáøéí.',
-        infoSubText: "éöéøú úëðéí áàéæåø æä îåúðéú áäöèøôåú ìàôìé÷öéä"
-    };
+         infoHaeder: "×¤×™×¦'×¨ × ×¤×’×©×™×",
+        infoMainText: '×¤×¨×¡×ž×• ××™×¨×•×¢×™× ×œ×ž×¢×Ÿ ×™×©×¨××œ! ×œ×•×— ×œ×¤×¨×¡×•× ×•×™×¦×™×¨×ª ××™×¨×•×¢×™×/×—×•×’×™ ×‘×™×ª/×ž×¤×’×©×™× ×‘×”× ×ª×¨×¦×• ×œ×©×ª×£ ××ª ×”×—×‘×¨×™×.',
+        infoSubText: "×™×¦×™×¨×ª ×ª×›× ×™× ×‘××™×–×•×¨ ×–×” ×ž×•×ª× ×™×ª ×‘×”×¦×˜×¨×¤×•×ª ×œ××¤×œ×™×§×¦×™×”"
+     };
     
 	generalParameters.setFeature($scope.featureDetails);
 	$scope.user = generalParameters.getUser();
@@ -22,7 +22,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         startTimestamp:'',
         endTimestamp: '',
         offset: 0,
-        limit: 20,
+        limit: 0,
         orderBy: '-timestamp',
         postType: 'event',
         userID: $scope.user._id,
@@ -41,14 +41,18 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
 	$scope.loadMore = function () {
       
         console.log('load more');
-        request.endTimestamp = '0';
+		 request.offset += 8;
+        post = PostService.getPosts();
+        request.endTimestamp = post[0].timestamp;
+     
         PostService.getPostsBatch(request); 
     }
 
     $scope.writeEvent = function () {
 		
 		$scope.user = generalParameters.getUser();
-        if ($scope.user.firstName == 'äúçáø') {
+		
+         if ($scope.user.firstName == '×”×ª×—×‘×¨') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else {
@@ -56,14 +60,12 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         }
     };
 	
-	
 	$scope.$on('postClicked', function (event, args) {
            
         $state.transitionTo('single-event', { postId: args.postId });  
 
     });
-	 
- 
+	
 }]);
 
 
@@ -72,7 +74,6 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope','PostService', functio
 	angular.element(document).ready(function () { 
 	
 		$scope.$$childHead.toggleMode= null;//prevent select month / year
-		
 		
 		$scope.$watch(//reset calendar arrow when paging month
 			
@@ -93,12 +94,8 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope','PostService', functio
 	});
 		
     $scope.dt = new Date(); 
-  
-	
-
-		
+  	
   	$scope.toggleWeekDisplay = function () {
-		
 		
 		//now in single week display? -> open and return
 		if($scope.$$childHead.$$childHead.rows.length == 1){
@@ -119,11 +116,8 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope','PostService', functio
 					$scope.$$childHead.$$childHead.rows.push($scope.monthArray[i]); //chose selected week
 					$scope.togglecaendarArrow(90);//toggle arrow to down
 					return;
-				
 				}
-				
 			}
-		
 		}
    };
    
