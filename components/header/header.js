@@ -109,7 +109,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
     $scope.goToUserProfile = function (i) {
         if ($scope.userProfile().firstName != 'התחבר') {
-            $state.transitionTo('user-profile');
+            $state.transitionTo('user-profile', {userId: $scope.userProfile()._id});
         }
         else {
             $rootScope.$broadcast('showLoginPopup', { showLogin: true });

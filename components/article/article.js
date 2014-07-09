@@ -79,10 +79,9 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
     });
 
-    //$scope.userClicked = function () {
-    //    
-    //    $rootScope.$broadcast('userClicked', { authorId: '53a7df7ec75d61c450b44825' });
-    //};
+    $scope.userClicked = function (userId) {
+        $state.transitionTo('user-profile', { userId: userId });
+    };
 
     //$scope.$on('userClicked', function (event, args) {
     //    $state.transitionTo('author-page', { authorId: args.authorId });
