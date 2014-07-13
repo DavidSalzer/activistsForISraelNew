@@ -56,15 +56,6 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         $state.transitionTo('comments', { postId: $scope.postId });
     });
 
-    //$scope.userClicked = function () {
-    //    $rootScope.$broadcast('userClicked', { showInput: true });
-    //};
-
-    //$scope.$on('userClicked', function (event, args) {
-    //    generalParameters.setBackIcon(true);
-    //    $state.transitionTo('author-page');
-    //});
-
     
     $scope.getPostsByAll = function () {
         request.endTimestamp = '';

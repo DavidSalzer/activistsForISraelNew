@@ -331,8 +331,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             //var commentTemplate = 'commentTemplate.html';
             var memesTemplate = 'components/meme/smallMemeTemplate.html';
 			var eventTemplate = 'eventTemplate.html';
+            var pollTemplate = 'pollTemplate.html';
 
-            console.log(scope);
+            //console.log(scope);
             switch (scope.post.postType) {
                 case 'talkback':
                     template = talkbackTemplate;
@@ -351,14 +352,30 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'meme':
                     template = memesTemplate;
                     break;
+                case 'poll':
+                    template = pollTemplate;
+                    break;
 				case 'event':
                     template = eventTemplate;
+                    break;
+                case undefined:
+                    template = authorsTemplate;
                     break;
             }
 
             return template;
                 
            }
+
+           el.on('click', function (e) {
+                console.log(scope.post);
+                if(attrs.postType == 'author'){
+                    $rootScope.$broadcast('postClicked', { authorId: scope.post._id, postType: 'author' });
+                }
+                else{
+                    $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
+                }
+            });
             
         },
         template: '<div ng-include="getContentUrl()"></div>'

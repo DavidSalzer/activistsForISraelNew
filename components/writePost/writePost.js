@@ -219,11 +219,11 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 		
 		var dateTest = new RegExp("^([0]?[1-9]|[1|2][0-9]|[3][0|1])[/]([0]?[1-9]|[1][0-2])[/]([0-9]{4}|[0-9]{2})$");
 		var timeTest = new RegExp("^([0-9]|0[0-9]|1[0-9]|2[0-3])[:][0-5][0-9]$");
-		$scope.showTitleError = $scope.postData.post.title == undefined || $scope.postData.post.title == '';
-		$scope.showDDMMYYError = $scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '' || 
-		 dateTest.test($scope.timeDisplay.date) == false;
-		$scope.showHHMMError = $scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '' ||  timeTest.test($scope.timeDisplay.time) == false;
-		$scope.showLocationError = $scope.postData.post.location == undefined || $scope.postData.post.location == '';
+		$scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
+		$scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '' || 
+		 dateTest.test($scope.timeDisplay.date) == false) && $scope.postType == 'event';
+		$scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '' ||  timeTest.test($scope.timeDisplay.time) == false) && $scope.postType == 'event';
+		$scope.showLocationError = ($scope.postData.post.location == undefined || $scope.postData.post.location == '') && $scope.postType == 'event';
 		
 		return(!($scope.showTitleError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || false));
 		

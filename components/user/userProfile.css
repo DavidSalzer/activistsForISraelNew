@@ -175,6 +175,61 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     transform: rotate(90deg);
 }
 
+.user-recent-activity-arrow-up {
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg); 
+    -o-transform:rotate(180deg);
+}
+
+.user-recent-activity-zone .post-tab {
+    margin: 20px auto 20px auto;
+    width: 90%;
+}
+
+.user-recent-activity-zone .post-footer {
+    width: 235px;
+}
+
+.user-recent-activity-zone span.respond-post, .user-recent-activity-zone span.like-post, .user-recent-activity-zone span.respond-count, .user-recent-activity-zone span.like-count{
+    width: 57px;
+}
+
+.post-title {
+    color: rgb(0, 109, 190);
+    box-sizing: border-box;
+    padding-right: 12px;
+    display: inline-block;
+    line-height: 19px;
+    font-size: 15px;
+    max-height: 45px;
+    padding-top: 7px;
+    overflow: hidden;
+    font-weight: bold;
+    /*position: absolute;
+    bottom: 17px;*/
+    width: 66%;
+    right: 35px;
+}
+
+div.post-main-text {
+    font-size: 12px;
+    height: 49px;
+    overflow: hidden;
+    line-height: 12px;
+    margin-top: 5px;
+}
+
+.user-recent-activity-zone .meme-container, .user-recent-activity-zone .meme-container.large {
+    width: 90%;
+    float: none;
+    margin: 6px auto;
+}
+
+.user-recent-activity-zone .list-tube {
+    width: 90%;
+    margin: 15px auto;
+}
+
 .user-profile-logout-btn {
     width: 50%;
     height: 70%;
@@ -284,3 +339,5 @@ canvas {
     letter-spacing: 0.5px;
     border: 1px solid #42484e;
 }
+
+

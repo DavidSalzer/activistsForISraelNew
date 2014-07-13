@@ -1,4 +1,6 @@
 <link rel="stylesheet" type="text/css" href="css/jquery.Jcrop.min.css">
+<link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
+<link rel="stylesheet" type="text/css" href="./components/event/event.css" /> 
 
 <section id="user-profile">
     <div class="user-profile-avatar-zone">
@@ -62,10 +64,10 @@
             <div data-ng-repeat="feature in featuresList track by $index">
                 <div class="user-recent-activity" data-ng-click="openRecentActivity(feature.postType)">
                     <div class="user-recent-activity-logo" style="background-image: url({{feature.featureLogo}})"></div>
-                    <div class="user-recent-activity-arrow"></div>
+                    <div class="user-recent-activity-arrow" data-ng-class="{'user-recent-activity-arrow-up': currentPost == feature.postType}"></div>
                     {{feature.featureName}}
                 </div>
-                <post data-ng-repeat="post in posts()" data-post-type="{{post.postType}}" data-ng-show="currentPost == post.postType"></post>
+                <post data-ng-repeat="post in posts()" data-post-type="{{post.postType}}" data-ng-show="currentPost == feature.postType"></post>
             </div>
         </div>
         <div class="user-profile-item" data-ng-show="myProfile">

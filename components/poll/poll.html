@@ -16,7 +16,8 @@
 
 <div class="polls-layout channel-con" data-ng-init="getActivePoll()">
     <div class="posts-list" scroller loading-method="loadMore()">
-        <div ng-repeat="list in polls()" class="list-tube">
+        <post ng-repeat="post in polls()" data-post-type="poll">
+            <!--<div class="list-tube">
 			<div class="polls-container" ng-click="userClicked($index);">
 				<div class="image-container" >
 					<div class="polls-image" style="background-image: url('{{list.img}}')"></div>
@@ -26,6 +27,7 @@
                 <h1 class="padd" data-ng-style="{'color': '{{featureDetails.featureColor}}', 'font-weight': 'bold'}">{{list.title}}</h1>
                 <h1 class="ellipsis" data-ng-style="{'color': '#ffffff'}">{{list.content}} </h1>
             </div>
+                </div>-->
         </div>
 		
         <div class="spiner-zone" data-ng-show="showSpiner()">

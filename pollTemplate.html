@@ -1,0 +1,11 @@
+<div class="list-tube">
+    <div class="polls-container" ng-click="userClicked($index);">
+        <div class="image-container">
+            <div class="polls-image" style="background-image: url('{{post.img}}')"></div>
+        </div>
+    </div>
+    <div class="text-box player-text" ng-click="userClicked($index);">
+        <h1 class="padd" data-ng-style="{'color': '{{featureDetails.featureColor}}', 'font-weight': 'bold'}">{{post.title}}</h1>
+        <h1 class="ellipsis" data-ng-style="{'color': '#ffffff'}">{{post.content}} </h1>
+    </div>
+</div>

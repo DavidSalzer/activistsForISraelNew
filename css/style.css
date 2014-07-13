@@ -280,6 +280,7 @@ div.post-main-text {
     line-height: 15px;
     text-align: justify;
     word-wrap: break-word;
+    padding-bottom: 1px;
 }
 
 .post-main-text img {

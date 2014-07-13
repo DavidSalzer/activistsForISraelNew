@@ -445,6 +445,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
         setPreviewMeme: function (base64) {
             previeMemeBase64 = base64;
+        },
+
+        cleanPosts: function () {
+            posts = [];
         }
 
     }

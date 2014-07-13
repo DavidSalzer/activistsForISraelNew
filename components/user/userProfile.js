@@ -211,6 +211,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
             $scope.currentPost = 'none';
         }
         else {
+            PostService.cleanPosts();
             request = {
                 startTimestamp: '',
                 endTimestamp: '',
@@ -223,6 +224,55 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
             PostService.getPostsByAuthor(request);
             $scope.currentPost = postType;
         }
+    }
+
+    $scope.$on('postClicked', function (event, args) {
+        console.log(args);
+        $scope.postId = args.postId;
+        $scope.authorId = args.authorId;
+        console.log('args: ' + args.postId);
+        console.log('args type: ' + args.postType);
+        switch (args.postType) {
+            case "article":
+                $state.transitionTo('single-article', { postId: $scope.postId });
+                break;
+            case "author":
+                $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });
+                break;
+            case "talkback":
+                $state.transitionTo('comments', { postId: $scope.postId });
+                break;
+            case "event":
+                $state.transitionTo('single-event', { postId: args.postId });  
+                break;
+        }
+
+    });
+
+    $scope.memeClick = function(index){
+        $state.transitionTo('single-meme',{index:index});
+    }
+
+	$scope.like = function($index){
+      
+
+		var meme = $scope.posts()[$index];
+		console.log(meme)
+		
+		if (meme.isLiked == true){//UNLIKE!
+				
+			PostService.unLike(meme._id); 
+			meme.likesCount--;
+			meme.isLiked = false;
+			return;
+        }
+        else {//LIKE!
+			
+            PostService.sendLike(meme._id);        
+			meme.likesCount++;
+			meme.isLiked = true;
+			return;
+        }  
     }
 
     $scope.userLogout = function () {
