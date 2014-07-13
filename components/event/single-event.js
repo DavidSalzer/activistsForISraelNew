@@ -1,14 +1,14 @@
 socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
     /*init variables*/
-    $scope.showInput = false;
-    $scope.currentPost = null;
-    $scope.showPostTitle = true;
+    //$scope.showInput = false;
+    //$scope.currentPost = null;
+    //$scope.showPostTitle = true;
     $scope.singleEvent = true;
     $scope.showAuthorImg = false;
-    $scope.currentPostType = 'event';
-    $scope.showCommentDate = false;
-    $scope.showCommentTitle = false;
+    //$scope.currentPostType = 'event';
+    //$scope.showCommentDate = false;
+    //$scope.showCommentTitle = false;
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
     $scope.offset = 20;

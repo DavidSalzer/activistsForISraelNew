@@ -24,6 +24,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             if (request.pollStatus != undefined) {
                 queryString = queryString + '&pollStatus=' + request.pollStatus;
             }
+			if (request.DestinationTime != undefined) {
+                queryString = queryString + '&startDestinationTime=' + request.DestinationTime;
+            }
             console.log(queryString);
             showSpiner = true;
             if (request.offset == 0) {
@@ -208,10 +211,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			.success(function (data) {
 
 			    console.log(data);
-			    //hide the loader
-			    $rootScope.$broadcast('showLoader', { showLoader: false });
-			    //show the thank page only after the post created
-			    callbackFunc();
+               //hide the loader
+               $rootScope.$broadcast('showLoader', { showLoader: false });
+                //show the thank page only after the post created
+                callbackFunc();
 			    deferred.resolve(data);
 			})
 			.error(function (data) {

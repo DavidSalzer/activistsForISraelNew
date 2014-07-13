@@ -26,17 +26,13 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         orderBy: '-timestamp',
         postType: 'event',
         userID: $scope.user._id,
-        _parentID: ''
+        _parentID: '',
+		DestinationTime:new Date().getTime()
     };
 
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
-	
-
-    $scope.setCurrnetDate = function (stamp) {
-        $scope.currentTimeStamp = stamp;
-    }
 	
 	$scope.loadMore = function () {
       
@@ -66,6 +62,14 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
 
     });
 	
+	$scope.updateFeed = function (date) {
+	
+		date.setHours(0,0);
+		request.DestinationTime =  date.getTime();
+		//alert(request.DestinationTime);
+		PostService.getPostsBatch(request);
+    }
+	
 }]);
 
 
@@ -89,7 +93,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope','PostService', functio
 			true
 		);
 		
-		$scope.$watch('dt', function() {$scope.setCurrnetDate($scope.dt.getTime());}); 
+		$scope.$watch('dt', function() {$scope.updateFeed($scope.dt);}); 
 		
 	});
 		
