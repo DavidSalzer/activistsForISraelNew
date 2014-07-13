@@ -3,6 +3,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     $scope.datacrop = {};
     $scope.userImg = '';
     $scope.myProfile = true;
+    $scope.domain = domain;
 
     $scope.featureDetails = {
         featureName: null,
@@ -29,7 +30,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
          },
            {
                featureUrl: 'meme',
-               featureName: 'ממים',
+               featureName: 'צחוקים',
                featureLogo: "./img/meme.png",
                featureColor: "#ffd427",
                postType: "meme"
@@ -51,6 +52,9 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     }
 
     ];
+
+    $scope.showAuthorImage = false;
+    $scope.showAuthorName = false;
 
     generalParameters.setFeature($scope.featureDetails);
 

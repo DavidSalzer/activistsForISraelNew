@@ -129,6 +129,15 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     border-top: 0;
 }
 
+.user-recent-activity-zone {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    width: 90%;
+    margin: auto;
+}
+
 .user-recent-activity {
     width: 90%;
     height: 50px;
@@ -151,6 +160,19 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     position: absolute;
     top: 7.5px;
     right: 7.5px;
+}
+
+.user-recent-activity-arrow {
+    height: 20px;
+    width: 20px;
+    background-image: url('../../img/arrow_user.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    transform: rotate(90deg);
 }
 
 .user-profile-logout-btn {

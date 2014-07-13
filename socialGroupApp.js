@@ -258,25 +258,82 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 } ])
 
 /**** directives ****/
+//.directive('post', ['$rootScope', 'PostService', function ($rootScope, PostService) {
+//    return {
+//        restrict: 'E',
+//        // scope:true,
+//        //{
+//        //    posts:'@',
+//        //    showCommentButton:'='
+//        //},
+//        //  transclude: true,
+//        templateUrl: function (tElement, tAttrs) {
+//            var talkbackTemplate = 'postTemplate.html';
+//            var articleTemplate = 'articleTemplate.html';
+//            var authorsTemplate = 'authorsTemplate.html';
+//            //var commentTemplate = 'commentTemplate.html';
+//            var memesTemplate = 'components/meme/smallMemeTemplate.html';
+//			var eventTemplate = 'eventTemplate.html';
+
+//            var templateURL = '';
+//            switch (tAttrs.postType) {
+//                case 'talkback':
+//                    template = talkbackTemplate;
+//                    break;
+
+//                case 'article':
+//                    template = articleTemplate;
+//                    break;
+
+//                case 'author':
+//                    template = authorsTemplate;
+//                    break;
+//                case 'comment':
+//                    template = talkbackTemplate;
+//                    break;
+//                case 'meme':
+//                    template = memesTemplate;
+//                    break;
+//				case 'event':
+//                    template = eventTemplate;
+//                    break;
+//            }
+
+//            return template;
+//        },
+//        //replace: 'true',
+//        link: function (scope, el, attrs) {
+//            el.on('click', function (e) {
+//                console.log(scope.post);
+//                if(attrs.postType == 'author'){
+//                    $rootScope.$broadcast('postClicked', { authorId: scope.post._id, postType: 'author' });
+//                }
+//                else{
+//                    $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
+//                }
+//            });
+//            //console.log(attrs.showCommentButton);
+//            //scope.showCommentButton = attrs.showCommentButton;
+//            //console.log(scope.showCommentButton);
+//        }
+//    };
+//} ])
+
 .directive('post', ['$rootScope', 'PostService', function ($rootScope, PostService) {
     return {
         restrict: 'E',
-        // scope:true,
-        //{
-        //    posts:'@',
-        //    showCommentButton:'='
-        //},
-        //  transclude: true,
-        templateUrl: function (tElement, tAttrs) {
-            var talkbackTemplate = 'postTemplate.html';
+        
+        link: function (scope, el, attrs) {
+            scope.getContentUrl = function() {
+                var talkbackTemplate = 'postTemplate.html';
             var articleTemplate = 'articleTemplate.html';
             var authorsTemplate = 'authorsTemplate.html';
             //var commentTemplate = 'commentTemplate.html';
             var memesTemplate = 'components/meme/smallMemeTemplate.html';
 			var eventTemplate = 'eventTemplate.html';
 
-            var templateURL = '';
-            switch (tAttrs.postType) {
+            console.log(scope);
+            switch (scope.post.postType) {
                 case 'talkback':
                     template = talkbackTemplate;
                     break;
@@ -300,24 +357,15 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
 
             return template;
+                
+           }
+            
         },
-        //replace: 'true',
-        link: function (scope, el, attrs) {
-            el.on('click', function (e) {
-                console.log(scope.post);
-                if(attrs.postType == 'author'){
-                    $rootScope.$broadcast('postClicked', { authorId: scope.post._id, postType: 'author' });
-                }
-                else{
-                    $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
-                }
-            });
-            //console.log(attrs.showCommentButton);
-            //scope.showCommentButton = attrs.showCommentButton;
-            //console.log(scope.showCommentButton);
-        }
+        template: '<div ng-include="getContentUrl()"></div>'
     };
 } ])
+
+
 
 .directive('comment', ['$rootScope', 'generalParameters', '$state', function ($rootScope, generalParameters, $state) {
     return {
