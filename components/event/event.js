@@ -2,7 +2,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
 
     /*init controller details*/
 	
-	 $scope.showSpiner = PostService.getSpiner;
+	$scope.showSpiner = PostService.getSpiner;
 	 
     $scope.featureDetails = {
         featureName: null,
@@ -23,7 +23,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         endTimestamp: '',
         offset: 0,
         limit: 0,
-        orderBy: '-timestamp',
+        orderBy: 'DestinationTime',//'-timestamp',
         postType: 'event',
         userID: $scope.user._id,
         _parentID: '',
