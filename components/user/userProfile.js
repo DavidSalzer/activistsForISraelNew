@@ -4,12 +4,13 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     $scope.userImg = '';
     $scope.myProfile = true;
     $scope.domain = domain;
+    $scope.showSpiner = PostService.getSpiner;
 
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/user.png",
         //infoImg: './img/whatsup.png',
-        featureColor: '#AB14E6'
+        featureColor: '#004a8e'
     };
 
     $scope.featuresList = [
@@ -57,7 +58,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     $scope.showAuthorName = false;
 
     generalParameters.setFeature($scope.featureDetails);
-
+    console.log(generalParameters.getUser());
     if ($stateParams.userId == generalParameters.getUser()._id) {
         $scope.myProfile = true;
     }
@@ -88,6 +89,11 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                     return data.data;
                 }
 
+                if ($stateParams.userId == $scope.profile()._id) {
+                    $scope.myProfile = true;
+                    $scope.profile = generalParameters.getUser;
+                    $scope.editProfile = angular.copy($scope.profile());
+                }
             })
     }
 
@@ -203,6 +209,11 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
         })
     }
 
+    $scope.givingScore = function () {
+        console.log($scope.profile());
+        console.log('giving score to ' + $scope.profile()._id + ' ' + $scope.profile().firstName);
+    }
+
     $scope.currentPost = 'none';
     $scope.posts = PostService.getPosts;
 
@@ -243,36 +254,36 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 $state.transitionTo('comments', { postId: $scope.postId });
                 break;
             case "event":
-                $state.transitionTo('single-event', { postId: args.postId });  
+                $state.transitionTo('single-event', { postId: args.postId });
                 break;
         }
 
     });
 
-    $scope.memeClick = function(index){
-        $state.transitionTo('single-meme',{index:index});
+    $scope.memeClick = function (index) {
+        $state.transitionTo('single-meme', { index: index });
     }
 
-	$scope.like = function($index){
-      
+    $scope.like = function ($index) {
 
-		var meme = $scope.posts()[$index];
-		console.log(meme)
-		
-		if (meme.isLiked == true){//UNLIKE!
-				
-			PostService.unLike(meme._id); 
-			meme.likesCount--;
-			meme.isLiked = false;
-			return;
+
+        var meme = $scope.posts()[$index];
+        console.log(meme)
+
+        if (meme.isLiked == true) {//UNLIKE!
+
+            PostService.unLike(meme._id);
+            meme.likesCount--;
+            meme.isLiked = false;
+            return;
         }
         else {//LIKE!
-			
-            PostService.sendLike(meme._id);        
-			meme.likesCount++;
-			meme.isLiked = true;
-			return;
-        }  
+
+            PostService.sendLike(meme._id);
+            meme.likesCount++;
+            meme.isLiked = true;
+            return;
+        }
     }
 
     $scope.userLogout = function () {
