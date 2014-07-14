@@ -24,7 +24,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         endTimestamp: '',
         offset: 0,
         limit: 0,
-        orderBy: '-timestamp',
+        orderBy: 'DestinationTime',//'-timestamp',
         postType: 'event',
         userID: $scope.user._id,
         _parentID: '',

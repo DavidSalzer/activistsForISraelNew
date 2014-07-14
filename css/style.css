@@ -345,6 +345,7 @@ div.post-main-text {
     display: inline-block;
     float: right;
     margin-right: 3px;
+    margin-top: 0px;
 }
 
 .like-post .icon {

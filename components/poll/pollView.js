@@ -1,7 +1,7 @@
 ﻿google.load('visualization', '1.0', { 'packages': ['corechart'] });
 socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '$state', '$http', 'PostService', 'generalParameters', 'classAjax', function ($rootScope, $stateParams, $scope, $state, $http, PostService, generalParameters, classAjax) {
     console.log($stateParams);
-    $scope.currentPoll = $stateParams.pollIndex;
+    $scope.currentPoll = $stateParams.postId;
     $scope.choosenOption = [];
     $scope.choosenCount = 0;
     $scope.featureDetails = {
