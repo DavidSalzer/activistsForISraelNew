@@ -113,7 +113,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         })
 
 		.state('poll-view', {
-		    url: "/pollView/:pollIndex",
+		    url: "/pollView/:postId",
 		    views: {
 		        "main": {
 		            templateUrl: "./components/poll/pollView.html",
@@ -332,6 +332,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var memesTemplate = 'components/meme/smallMemeTemplate.html';
 			var eventTemplate = 'eventTemplate.html';
             var pollTemplate = 'pollTemplate.html';
+            var voteToPollTemplate = 'voteToPollTemplate.html';
 
             //console.log(scope);
             switch (scope.post.postType) {
@@ -355,6 +356,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case 'poll':
                     template = pollTemplate;
                     break;
+                case 'voteToPoll':
+                    template = voteToPollTemplate;
+                    break;
 				case 'event':
                     template = eventTemplate;
                     break;
@@ -371,6 +375,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 console.log(scope.post);
                 if(attrs.postType == 'author'){
                     $rootScope.$broadcast('postClicked', { authorId: scope.post._id, postType: 'author' });
+                }
+                else if (scope.post.postType == 'voteToPoll') {
+                    $rootScope.$broadcast('postClicked', { postId: scope.post._parentID, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
                 }
                 else{
                     $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit

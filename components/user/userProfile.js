@@ -41,8 +41,8 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
             featureUrl: 'poll',
             featureName: 'משאל עם',
             featureLogo: "./img/poll.png",
-            featureColor: "poll",
-            postType: "poll"
+            featureColor: "#da4f00",
+            postType: "voteToPoll"
         },
     {
         featureUrl: 'event',
@@ -89,10 +89,11 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                     return data.data;
                 }
 
-                if ($stateParams.userId == $scope.profile()._id) {
+                if ($stateParams.userId == generalParameters.getUser()._id) {
                     $scope.myProfile = true;
                     $scope.profile = generalParameters.getUser;
                     $scope.editProfile = angular.copy($scope.profile());
+                    $scope.$apply();
                 }
             })
     }
@@ -212,6 +213,17 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     $scope.givingScore = function () {
         console.log($scope.profile());
         console.log('giving score to ' + $scope.profile()._id + ' ' + $scope.profile().firstName);
+        queryString = 'addPostActivity';
+        request = {
+            activity: {
+                receiveUser: $stateParams.userId,
+                type: 'userLike'
+            }
+        }
+        classAjax.getdata('post', queryString, request)
+        .then(function (data) {
+            console.log(data);
+        })
     }
 
     $scope.currentPost = 'none';
@@ -255,6 +267,9 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 break;
             case "event":
                 $state.transitionTo('single-event', { postId: args.postId });
+                break;
+            case "voteToPoll":
+                $state.transitionTo('poll-view', { postId: args.postId });
                 break;
         }
 

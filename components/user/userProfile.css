@@ -236,7 +236,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     right: 35px;
 }
 
-div.post-main-text {
+div.post-main-text.article-text {
     font-size: 12px;
     height: 49px;
     overflow: hidden;
@@ -253,6 +253,16 @@ div.post-main-text {
 .user-recent-activity-zone .list-tube {
     width: 90%;
     margin: 15px auto;
+}
+
+.vote-to-poll {
+    /*text-align: center;*/
+    font-weight: bold;
+}
+
+.vote-to-poll-title {
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 .user-profile-logout-btn {

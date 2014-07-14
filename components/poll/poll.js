@@ -41,7 +41,7 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
         console.log($scope.currentPoll);
         generalParameters.setBackIcon(true);
         $scope.posts = PostService.getPosts();
-        $state.transitionTo('poll-view', { pollIndex: $scope.posts[pollIndex]._id });
+        $state.transitionTo('poll-view', { postId: $scope.posts[pollIndex]._id });
     };
 
     $scope.getPoll = function () {
