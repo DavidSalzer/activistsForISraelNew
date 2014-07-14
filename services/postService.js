@@ -411,7 +411,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         getPostsByAuthor: function (request) {
             queryString = 'post/author/' + request.authorId + '?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType;
             console.log(queryString);
-
+            showSpiner = true;
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data);
                 if (request.endTimestamp == '') {
