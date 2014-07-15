@@ -87,22 +87,24 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
 
                     }
 
-                    switch (data.data.point.level) {
-                        case '0':
-                            data.data.rank = 'חבר';
-                            break;
-                        case '1':
-                            data.data.rank = 'פעיל';
-                            break;
-                        case '2':
-                            data.data.rank = 'משפיע';
-                            break;
-                        case '3':
-                            data.data.rank = 'מאסטר';
-                            break;
-                        case '4':
-                            data.data.rank = 'אח';
-                            break;
+                    if (data.data.point != undefined) {
+                        switch (data.data.point.level) {
+                            case '0':
+                                data.data.rank = 'חבר';
+                                break;
+                            case '1':
+                                data.data.rank = 'פעיל';
+                                break;
+                            case '2':
+                                data.data.rank = 'משפיע';
+                                break;
+                            case '3':
+                                data.data.rank = 'מאסטר';
+                                break;
+                            case '4':
+                                data.data.rank = 'אח';
+                                break;
+                        }
                     }
                     return data.data;
                 }

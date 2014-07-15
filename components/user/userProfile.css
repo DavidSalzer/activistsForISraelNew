@@ -311,9 +311,9 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     right: 35px;
 }
 
-div.post-main-text.article-text {
+div.post-main-text.article-text-content {
     font-size: 12px;
-    height: 49px;
+    /*height: 49px;*/
     overflow: hidden;
     line-height: 12px;
     margin-top: 5px;
