@@ -245,8 +245,26 @@ thead tr .btn.btn-default.btn-sm {
     line-height: 13px;
 }
 
+.event-container {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 250px;
+}
+
 .single-event-body {
     background-color: #ffffff;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    padding-top: 38px;
+    overflow: auto;
+}
+
+.single-event-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
 }
 
 .singleEvent-text {
@@ -276,8 +294,6 @@ thead tr .btn.btn-default.btn-sm {
 .join-button.event-join-button {
     display: block;
     width: 155px;
-    line-height: 35px;
-    height: 37px;
     position: relative;
     font-weight: normal;
     margin-bottom: 8px;
@@ -286,7 +302,14 @@ thead tr .btn.btn-default.btn-sm {
 .participation-option-cell {
     display: inline-block;
     vertical-align: middle;
-    width: 68%;
+    width: 71%;
+    line-height: 15px;
+}
+
+.owner-wrapper-detailes {
+    box-shadow: 1px -4px 2px 0px rgba(0,0,0,0.73);
+    -webkit-box-shadow: 0px -10px 2px 0px rgba(86,92,99,0.83);
+    -moz-box-shadow: 0px -10px 2px 0px rgba(86,92,99,0.83);
 }
 
 .event-participation .icon {
@@ -323,7 +346,7 @@ thead tr .btn.btn-default.btn-sm {
 }
 
 
-.meeting-wrapper.we{
+.meeting-wrapper.we {
     padding-top: 333px;
 }
 
@@ -332,3 +355,7 @@ thead tr .btn.btn-default.btn-sm {
     padding-bottom: 0px;
     padding-top: 0px;
 }
+
+
+/****ffffffffffff**/
+

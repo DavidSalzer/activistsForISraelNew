@@ -1,4 +1,4 @@
-socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', '$window', '$filter', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, $window,$filter) {
+socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', '$window', '$filter', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, $window, $filter) {
 
     /*init variables*/
     generalParameters.setBackIcon(true);
@@ -6,7 +6,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.imageMax = 1;
     $scope.toLargImage = false;
     $scope.imgFileText = 'צרף תמונה'
-	$scope.timeDisplay={};
+    $scope.timeDisplay = {};
     var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'poll': '#da4f00', 'event': '#004a8e' };
 
     $scope.parentPostType = $stateParams.postType;
@@ -22,7 +22,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     };
 
     $scope.featureColor = colors[$scope.postType];
-    if (( $scope.postId != 0) && ($scope.postType != 'event')) {//if comment
+    if (($scope.postId != 0) && ($scope.postType != 'event')) {//if comment
 
         $scope.featureColor = colors[$scope.parentPostType];
         $scope.postType = 'talkback'
@@ -104,9 +104,9 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
                 $scope.postData.post.postType = 'event';
                 $scope.postData.post.title = '';
-				$scope.timeDisplay.date = "";
-                $scope.timeDisplay.time ="";
-          
+                $scope.timeDisplay.date = "";
+                $scope.timeDisplay.time = "";
+
                 $scope.postData.post.location = '';
                 $scope.postData.post.email = "";
                 $scope.postData.post.phone = "";
@@ -120,115 +120,155 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                     featureState: 'event'
 
                 };
-			
-				if($stateParams.postId != 0){//edit event
-					
-					$scope.headerText = 'עריכת אירוע';
-					$scope.postData.post = PostService.getSinglePost();
-					$scope.timeDisplay.date = $filter('date')($scope.postData.post.DestinationTime, "dd/MM/yy");
-					$scope.timeDisplay.time = $filter('date')($scope.postData.post.DestinationTime, "HH:mm");
-					
-					if($scope.postData.post.img){
-						
-						$scope.imgFileText = $scope.postData.post.img;
-						$scope.postImg = domain + $scope.postData.post.img;
-					}
-					console.log($scope.postData.post)
-				}
+
+                if ($stateParams.postId != 0) {//edit event
+
+                    $scope.headerText = 'עריכת אירוע';
+                    $scope.postData.post = PostService.getSinglePost();
+                    $scope.timeDisplay.date = $filter('date')($scope.postData.post.DestinationTime, "dd/MM/yy");
+                    $scope.timeDisplay.time = $filter('date')($scope.postData.post.DestinationTime, "HH:mm");
+
+                    if ($scope.postData.post.img) {
+
+                        $scope.imgFileText = $scope.postData.post.img;
+                        $scope.postImg = domain + $scope.postData.post.img;
+                    }
+                    console.log($scope.postData.post)
+                }
                 break;
             }
-           
+
 
 
     }
 
     $scope.cleanDetails = function () {//event
-		
-		
+
+
         $scope.postData.post.title = '';
         $scope.postData.post.content = '';
-		$scope.timeDisplay.date = '';
+        $scope.timeDisplay.date = '';
         $scope.timeDisplay.time = '';
         $scope.postData.post.location = '';
         $scope.postData.post.email = "";
         $scope.postData.post.phone = "";
         $scope.imgFileText = 'צרף תמונה';
-		$scope.postImg = "";
-		
+        $scope.postImg = "";
+
     };
 
     $scope.sendPost = function () {
-	
-		if(!$scope.validateInputs()){ /* alert('valdation err'); */return;}
-	
+
+        if (!$scope.validateInputs()) { /* alert('valdation err'); */return; }
+
         //article? check if the text is large then minimum
         if (($scope.min > 0) && ($scope.postData.post.content.length < $scope.min)) { $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return; }
-		
-		else if( $scope.postData.post.postType == 'event'){
-			
-			$scope.convertDate();
-		}
-		PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj)
-	   
+
+        else if ($scope.postData.post.postType == 'event') {
+
+            $scope.convertDate();
+        }
+        PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj)
+
 		.then(function (data) {
-		
-			console.log(data);
-			generalParameters.setBackIcon(false);
 
-			if ($scope.postType == 'talkback') {
+		    console.log(data);
+		    generalParameters.setBackIcon(false);
 
-				$state.transitionTo($scope.parentPostType); return;
-			}
-			//others - show thank page
-			$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+		    if ($scope.postType == 'talkback') {
+
+		        $state.transitionTo($scope.parentPostType); return;
+		    }
+		    //others - show thank page
+		    $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 		});
-    }; 
-	
-	$scope.editPost = function () {
-		
-		if(!$scope.validateInputs()){ /* alert('valdation err'); */return;}
-        
-		$scope.convertDate();
-		
-		PostService.updatePost($scope.postData, $scope.fileObj, $scope.imgObj)
-	   
-		.then(function (data) {
-		
-			console.log(data);
-			generalParameters.setBackIcon(false);
-
-			$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
-		});
-	
     };
-	
-	
-	$scope.convertDate = function () {
-		
-		var ddmmyy = $scope.timeDisplay.date.split('/');
-		var date = new Date('20'+ddmmyy[2],ddmmyy[1]-1,ddmmyy[0]);
-		var hhmm = $scope.timeDisplay.time.split(':');
-		date.setHours(hhmm[0],hhmm[1]);
-		//alert(date.getTime());
-		$scope.postData.post.DestinationTime = date.getTime();
-		//alert($scope.postData.post.DestinationTime);
-		
-	}
-	
-	$scope.validateInputs = function () {
-		
-		var dateTest = new RegExp("^([0]?[1-9]|[1|2][0-9]|[3][0|1])[/]([0]?[1-9]|[1][0-2])[/]([0-9]{4}|[0-9]{2})$");
-		var timeTest = new RegExp("^([0-9]|0[0-9]|1[0-9]|2[0-3])[:][0-5][0-9]$");
-		$scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
-		$scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '' || 
+
+    $scope.editPost = function () {
+
+        if (!$scope.validateInputs()) { /* alert('valdation err'); */return; }
+
+        $scope.convertDate();
+
+        PostService.updatePost($scope.postData, $scope.fileObj, $scope.imgObj)
+
+		.then(function (data) {
+
+		    console.log(data);
+		    generalParameters.setBackIcon(false);
+
+		    $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+		});
+
+    };
+
+
+    $scope.convertDate = function () {
+
+        var ddmmyy = $scope.timeDisplay.date.split('/');
+        var date = new Date('20' + ddmmyy[2], ddmmyy[1] - 1, ddmmyy[0]);
+        var hhmm = $scope.timeDisplay.time.split(':');
+        date.setHours(hhmm[0], hhmm[1]);
+        //alert(date.getTime());
+        $scope.postData.post.DestinationTime = date.getTime();
+        //alert($scope.postData.post.DestinationTime);
+
+    }
+
+    $scope.validateInputs = function () {
+
+        var dateTest = new RegExp("^([0]?[1-9]|[1|2][0-9]|[3][0|1])[/]([0]?[1-9]|[1][0-2])[/]([0-9]{4}|[0-9]{2})$");
+        var timeTest = new RegExp("^([0-9]|0[0-9]|1[0-9]|2[0-3])[:][0-5][0-9]$");
+        $scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
+        $scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '' ||
 		 dateTest.test($scope.timeDisplay.date) == false) && $scope.postType == 'event';
-		$scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '' ||  timeTest.test($scope.timeDisplay.time) == false) && $scope.postType == 'event';
-		$scope.showLocationError = ($scope.postData.post.location == undefined || $scope.postData.post.location == '') && $scope.postType == 'event';
-		
-		return(!($scope.showTitleError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || false));
-		
-	}
-	
-	 
-	
-}]);
+        $scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '' || timeTest.test($scope.timeDisplay.time) == false) && $scope.postType == 'event';
+        $scope.showLocationError = ($scope.postData.post.location == undefined || $scope.postData.post.location == '') && $scope.postType == 'event';
+
+        return (!($scope.showTitleError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || false));
+
+    }
+
+    //*****************date area**************// 
+
+
+    $scope.today = function () {
+        $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.clear = function () {
+        $scope.dt = null;
+    };
+
+    // Disable weekend selection
+    $scope.disabled = function (date, mode) {
+        return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+    };
+
+    $scope.toggleMin = function () {
+        $scope.minDate = $scope.minDate ? null : new Date();
+    };
+    $scope.toggleMin();
+
+    $scope.open = function ($event) {
+         $scope.opened = true;
+        $event.preventDefault();
+        $event.stopPropagation();
+       
+       
+    };
+
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+    };
+
+    $scope.initDate = new Date('2016-15-20');
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+
+
+    //*****************end date area**************// 
+
+} ]);

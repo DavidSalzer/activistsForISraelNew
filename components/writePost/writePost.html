@@ -16,12 +16,21 @@
 		<!-- article +event title-->
         <input data-ng-if='postType=="article" || postType=="event"' type="text" data-ng-class='{"title-field":true,"requieredError":showTitleError}' placeholder="כותרת" data-ng-model="postData.post.title" />
 		
+
+
 		<!--event time-->
-		<div data-ng-if='postType=="event"'>
+		<div data-ng-show="postType=='event'">
+                            
+                            					
+
+              
+
 			<div class="small-input-wrap top-input-wrap">
                 <p class="side-small-input side-small-input-one">תאריך:</p>
-				
-				<input type="text" placeholder="dd/mm/yy" data-ng-class='{"title-field":true,"requieredError":showDDMMYYError}' data-ng-model="timeDisplay.date"/>
+                <input type="text" class="form-control title-field" ng-click="open($event)"  datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <!--<input type="text" class="form-control" data-ng-click="open($event)" datepicker-Popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />-->
+
+				<!--<input type="text" placeholder="dd/mm/yy" data-ng-class='{"title-field":true,"requieredError":showDDMMYYError}' data-ng-model="timeDisplay.date"/>-->
 			</div>
 			<div class="small-input-wrap bottom-input-wrap">
                 <p class="side-small-input side-small-input-tow">שעה:</p>
@@ -81,6 +90,7 @@
 	
 		  
 		<div data-ng-if='postType=="event"'>
+
 			<input  style='margin-top:12px;' type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.email" />
 			<input style='margin-top:12px;' type="text" class="title-field" placeholder="טלפון ליצירת קשר (לא חובה)" data-ng-model="postData.post.phone" />
 		</div>	
@@ -92,10 +102,10 @@
 			<div class="login-error" data-ng-if="showHHMMError">* שדה שעה לא הוזן כראוי</div>
 			<div class="login-error" data-ng-if="showLocationError">* שדה מקום לא הוזן כראוי</div>
 		</div>
-		
 		<!-- buttons-->
 		<div data-ng-if='postType=="event"'>
-			
+   
+
 			<div data-ng-if='postId == 0' > 
 				
 				<div class="button" style='position: absolute;right:10%;' data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">אשר
@@ -114,7 +124,6 @@
         <div data-ng-if='postType != "event"' class="button" data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">שלח
 		</div>
    </div>
-        
 
 </div>
 
