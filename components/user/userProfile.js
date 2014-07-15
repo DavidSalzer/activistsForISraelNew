@@ -86,6 +86,24 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                         data.data.userImg = data.data.img.url;
 
                     }
+
+                    switch (data.data.point.level) {
+                        case '0':
+                            data.data.rank = 'חבר';
+                            break;
+                        case '1':
+                            data.data.rank = 'פעיל';
+                            break;
+                        case '2':
+                            data.data.rank = 'משפיע';
+                            break;
+                        case '3':
+                            data.data.rank = 'מאסטר';
+                            break;
+                        case '4':
+                            data.data.rank = 'אח';
+                            break;
+                    }
                     return data.data;
                 }
 
@@ -93,7 +111,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                     $scope.myProfile = true;
                     $scope.profile = generalParameters.getUser;
                     $scope.editProfile = angular.copy($scope.profile());
-                    $scope.$apply();
+                    //$scope.$apply();
                 }
             })
     }

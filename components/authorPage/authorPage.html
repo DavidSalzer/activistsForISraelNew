@@ -2,14 +2,7 @@
 <link rel="stylesheet" type="text/css" href="./components/authorPage/authorPage.css" />
 <!--<link rel="stylesheet" type="text/css" href="/components/authorPage/authorPage.css" />-->
 
-<!--<div id="author-header">
-    <figure class="author-image">
-	<div style="background-image:url('{{post.authorImage}}')"></div>
-        <img data-ng-src="{{post.authorImage}}" alt="user-pic">
-    </figure>
-    <span class="author-name" data-author="{{post.author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">{{post.author}}</span>
-    <span class="author-date">{{post.timeStamp  | date : 'dd.MM.yyyy'}}</span>
-</div>-->
+
 <author-header data-ng-repeat="post in [posts()[0]]"></author-header>
 
 <div class="posts-list specific-author" ><!--scroller loading-method="loadMore()"-->

@@ -99,13 +99,31 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
             if (userDetails.gender == 'male') {
                 userDetails.gender = 'זכר';
             }
-            else if(userDetails.gender == 'female'){
+            else if (userDetails.gender == 'female') {
                 userDetails.gender = 'נקבה';
             }
             else {
                 userDetails.gender = 'מגדר';
             }
-            
+
+            switch (userDetails.point.level) {
+                case '0':
+                    userDetails.rank = 'חבר';
+                    break;
+                case '1':
+                    userDetails.rank = 'פעיל';
+                    break;
+                case '2':
+                    userDetails.rank = 'משפיע';
+                    break;
+                case '3':
+                    userDetails.rank = 'מאסטר';
+                    break;
+                case '4':
+                    userDetails.rank = 'אח';
+                    break;
+            }
+
             PostService.setUser(userDetails);
         },
 
