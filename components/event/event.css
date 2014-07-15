@@ -1,5 +1,6 @@
 .calendar-area {
     position: relative;
+    z-index: 1;
 }
 
 .calendar {
@@ -221,15 +222,13 @@ thead tr .btn.btn-default.btn-sm {
     font-size: 12px;
 }
 
-.event-3points{
-	
-	display: inline-block;
+.event-3points {
+    display: inline-block;
 }
 
-.event-read-more{
-	
-	font-weight: bold;
-	float: left;
+.event-read-more {
+    font-weight: bold;
+    float: left;
 }
 
 .single-event-header {
@@ -269,7 +268,7 @@ thead tr .btn.btn-default.btn-sm {
     margin-bottom: 20px;
 }
 
-.detail-wrapper-enent{
+.detail-wrapper-enent {
     position: relative;
     width: 100%;
 }
@@ -297,17 +296,39 @@ thead tr .btn.btn-default.btn-sm {
 }
 
 .phone-icon {
-    background-image: url('/../img/phone.png');
+    background-image: url('../../img/phone.png');
 }
 
 .mail-icon {
-    background-image: url('/../img/envelope_small.png');
+    background-image: url('../../img/envelope_small.png');
 }
 
 .navigate-icon {
-    background-image: url('/../img/map.png');
+    background-image: url('../../img/map.png');
 }
 
 .calendar-area table:first-child {
     margin: auto;
+}
+
+
+.meeting-wrapper {
+    height: 100%;
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    padding-top: 182px;
+    z-index: 0;
+}
+
+
+.meeting-wrapper.we{
+    padding-top: 333px;
+}
+
+.meeting-wrapper .posts-list {
+    position: relative;
+    padding-bottom: 0px;
+    padding-top: 0px;
 }
