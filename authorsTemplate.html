@@ -1,13 +1,15 @@
-<div class="post-tab author-details-wrap"  data-post="{{post.postId}}" data-post-type="author">
-  <div class="post-details">
-    
+<div class="post-tab author-details-wrap" data-post="{{post.postId}}" data-post-type="author">
+    <div class="post-details">
+
         <figure class="author-image" data-ng-show="true" data-ng-click="userClicked(post._id);$event.stopPropagation();">
-		<div style="background-image:url('{{post.data.img.RelativePosition? domain+post.data.img.url : post.data.img.url}}')"></div>
-           <!--  <img data-ng-src="{{post.authorImage}}" alt="user-pic"> -->
+            <div class="author-background-image" style="background-image:url('{{post.data.img.RelativePosition? domain+post.data.img.url : post.data.img.url}}')"></div>
+            <div class="author-rank-image-zone">
+                <div class="author-rank-image"></div>
+            </div>
         </figure>
-         <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post.data}}">{{post.data.firstName}} {{post.data.lastName}}</span>
-  
-    
-  </div>
-    
+        <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post.data}}">{{post.data.firstName}} {{post.data.lastName}}</span>
+
+
+    </div>
+
 </div>

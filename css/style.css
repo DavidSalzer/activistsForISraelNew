@@ -230,7 +230,7 @@ select {
     border-width: 1px;
 } */
 
-.author-image div {
+.author-image .author-background-image {
     background-size: 100% 100%;
     margin: auto;
     background-repeat: no-repeat;
@@ -253,6 +253,32 @@ figure.author-image {
     border-radius: 50px;
     border: solid 1px #9E9C9C;
     float: right;
+}
+
+.author-image .author-rank-image-zone {
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: -1px;
+    bottom: -1px;
+    border-radius: 50px;
+    margin: auto;
+    border: solid 1px #000000;
+}
+
+.author-image .author-rank-image {
+    height: 10px;
+    width: 10px;
+    background-image: url('../../img/rank.png');
+    background-repeat: no-repeat;
+    background-size: 50px 10px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    margin: auto;
 }
 
 span.author-name {
