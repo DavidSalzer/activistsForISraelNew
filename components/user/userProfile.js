@@ -246,6 +246,19 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
         })
     }
 
+    $scope.otherUsersActivity = [];
+
+    $scope.setOtherUsersActivity = function () {
+        queryString = 'getActivitiesByParams?receiveUser=' + $stateParams.userId;
+        classAjax.getdata('get', queryString, {}).then(function (data) {
+            console.log(data);
+            $scope.otherUsersActivity = data;
+        })
+    }
+
+    $scope.otherUserCube = document.getElementsByClassName('user-profile-other-user-activity');
+    console.log($scope.otherUserCube[0].offsetWidth);
+
     $scope.currentPost = 'none';
     $scope.posts = PostService.getPosts;
 

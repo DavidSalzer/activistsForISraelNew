@@ -226,8 +226,10 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     padding-bottom: 10px;
     padding-top: 10px;
     overflow-x: scroll;
+    position: relative;
     overflow-y: hidden;
     padding-right: 5px;
+    direction: ltr;
 }
 
 .user-profile-other-user-wrapper {
@@ -240,15 +242,17 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 120px;
     box-shadow: 0px 0px 4px rgba(50, 50, 50, 0.75);
     position: relative;
+    top: 0px;
     font-size: 10px;
     display: inline-block;
     margin-left: 10px;
 }
 
 .user-profile-other-user-activity figure.author-image {
-    position: relative;
+    position: absolute;
     top: 5px;
     right: 5px;
+    float: none;
 }
 
 .user-profile-other-user-symbol {
@@ -263,21 +267,24 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .user-profile-other-user-activity .author-name {
-    display: block;
-    margin-right: 58px;
+    display: inline-block;
+    /* margin-right: 58px; */
     font-weight: bold;
-     float: none; 
+    float: none;
     text-overflow: ellipsis;
     width: 70px;
     overflow: hidden;
     white-space: nowrap;
-    line-height: 90px;
+    line-height: normal;
     font-size: 10px;
+    direction: rtl;
+    margin-top: 40px;
+    margin-bottom: 10px;
 }
 
 .user-profile-other-user-content {
-    position: relative;
-    top: -25px;
+    /*position: relative;
+    top: -25px;*/
     margin-right: 10px;
     margin-left: 10px;
     text-align: justify;

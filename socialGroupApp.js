@@ -328,7 +328,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 var talkbackTemplate = 'postTemplate.html';
             var articleTemplate = 'articleTemplate.html';
             var authorsTemplate = 'authorsTemplate.html';
-            //var commentTemplate = 'commentTemplate.html';
             var memesTemplate = 'components/meme/smallMemeTemplate.html';
 			var eventTemplate = 'eventTemplate.html';
             var pollTemplate = 'pollTemplate.html';
