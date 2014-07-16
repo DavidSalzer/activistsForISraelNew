@@ -4,6 +4,7 @@ socialGroupApp.controller('authorPage', ['$scope','$stateParams', 'classAjax', '
     $scope.domain = domain;
     $scope.showAuthorImage = false;
     $scope.showAuthorName = false;
+    $scope.showSpiner = PostService.getSpiner;
     $scope.authorId = $stateParams.authorId; //get the current user id
    // $scope.requestDetails = PostService.getFilterByAuthor();
    // console.log($scope.requestDetails);
@@ -24,7 +25,7 @@ socialGroupApp.controller('authorPage', ['$scope','$stateParams', 'classAjax', '
     $scope.posts = PostService.getPosts();
    
     $scope.post =$scope.posts[0];
-    
+   
     $scope.posts = PostService.getPosts
 
     $scope.$on('postClicked', function (event, args) {
@@ -42,5 +43,12 @@ socialGroupApp.controller('authorPage', ['$scope','$stateParams', 'classAjax', '
 
     });
 
+    $scope.loadMore = function () {
+        console.log('load more');
+        request.offset += 20;
+        post = PostService.getPosts();
+        request.endTimestamp = post[0].timestamp;
+        PostService.getPostsByAuthor(request);
+    }
 
 } ]);
