@@ -256,6 +256,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
         $event.preventDefault();
         $event.stopPropagation();
         console.log($scope.timeDisplay.date);
+        console.log($scope.timeDisplay.date instanceof Date);
 
     };
 
