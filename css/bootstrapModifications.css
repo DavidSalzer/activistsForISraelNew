@@ -160,6 +160,7 @@ img.user-thumbnail {
     margin-bottom: -1px;
     padding: 0px;
     float: right;
+    width: 33%;
     /*width: 100%;*/
 }
 
