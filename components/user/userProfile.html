@@ -6,9 +6,15 @@
 
 <section id="user-profile">
     <div class="user-profile-avatar-zone">
-        <div class="color-circle">
-            <div class="user-profile-avatar" style="background-image: url({{profile().userImg}})">
-                <input type="file" id="userImg1" data-ng-show="myProfile">
+        <div class="user-profile-avatar-wrapper">
+            <div class="color-circle">
+                <div class="user-profile-avatar" style="background-image: url({{profile().userImg}})">
+                    <input type="file" id="userImg1" data-ng-show="myProfile">
+                </div>
+            </div>
+            <div class="user-profile-rank">
+                <div class="user-profile-rank-image" data-ng-class="{'rank-image-0': profile().point.level == 0, 'rank-image-1': profile().point.level == 1, 'rank-image-2': profile().point.level == 2, 'rank-image-3': profile().point.level == 3, 'rank-image-4': profile().point.level == 4}"></div>
+                <div class="user-profile-rank-text" data-ng-class="{'rank-text-0': profile().point.level == 0, 'rank-text-1': profile().point.level == 1, 'rank-text-2': profile().point.level == 2, 'rank-text-3': profile().point.level == 3, 'rank-text-4': profile().point.level == 4}">{{profile().rank}}</div>
             </div>
         </div>
     </div>
@@ -23,7 +29,7 @@
             <div class="user-edit-icon-x" data-ng-show="editName" data-ng-click="editItem('name')"></div>
         </div>
         <div class="user-profile-registration-date user-profile-item">
-            <div placeholder="כתובת">רשום מתאריך: {{profile().registrationDate| date : 'dd.MM.yyyy'}}</div>
+            <div placeholder="כתובת">תאריך הרשמה: {{profile().registrationDate| date : 'dd.MM.yyyy'}}</div>
         </div>
         <div class="user-profile-scoring user-profile-item">
             <div class="user-giving-score" data-ng-hide="myProfile" data-ng-click="givingScore()"></div>
@@ -51,8 +57,8 @@
             <!--<div class="user-edit-icon" data-ng-hide="editEmail" data-ng-click="editItem('email')"></div>-->
             <div data-ng-hide="editEmail">{{profile().email}}</div>
                             <!--<div class="user-edit-icon-v" data-ng-show="editEmail"></div>
-                                                                            <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
-                                                                            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
+                                                                                                            <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
+                                                                                                            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
         </div>
         <div class="user-profile-phone user-profile-item" data-ng-show="myProfile">
             <div class="user-edit-icon" data-ng-hide="editPhone" data-ng-click="editItem('phone')"></div>
@@ -61,7 +67,22 @@
             <input type="text" data-ng-model="editProfile.phone" data-ng-show="editPhone" value="{{profile().phone}}">
             <div class="user-edit-icon-x" data-ng-show="editPhone" data-ng-click="editItem('phone')"></div>
         </div>
+
+        <div class="user-profile-other-user-zone">
+            <div class="user-profile-other-user-activity">
+                <figure class="author-image">
+                    <div class="author-background-image" style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
+                    <div class="author-rank-image-zone">
+                        <div class="author-rank-image"></div>
+                    </div>
+                </figure>
+                <span class="author-name" data-author="{{post._author}}">ישראל ישראלי</span>
+            </div>
+        </div>
+
         <div class="color-line color-fixed-top"></div>
+
+
         <div class="user-recent-activity-title">הפעולות האחרונות</div>
         <div class="user-recent-activity-zone">
             <div data-ng-repeat="feature in featuresList track by $index">

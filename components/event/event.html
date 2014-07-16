@@ -17,14 +17,18 @@
     </div>
 
 </div>
+
+<div class="meeting-wrapper" data-ng-class="{'we':f}">
 <div class="posts-list" scroller loading-method="loadMore()">
-    <post data-ng-repeat="post in posts()" data-post-type="event"></post>
+    
+        <post data-ng-repeat="post in posts()" data-post-type="event"></post>
+    
    <div class="spiner-zone" data-ng-show="showSpiner()">
         <div class="loader fa fa-spinner fa-spin"></div>
     </div>
 
 </div>
-
+    </div>
 
 <!-- data-ng-if='currentTimeStamp < post.DestinationTime' -->
 

@@ -410,6 +410,84 @@ div.post-main-text {
 }
 
 .title-field.requieredError {
-	
-	border: 1px solid hsl(0, 100%, 50%);
+    border: 1px solid hsl(0, 100%, 50%);
+}
+
+
+
+/*pop up calendar*/
+
+.input-group-btn {
+    display: none;
+}
+
+.datepicker-popup-calendar ul.dropdown-menu table thead {
+    color: black !important;
+}
+
+.datepicker-popup-calendar ul.dropdown-menu table thead tr:first-child {
+    position: relative;
+    height: 30px;
+}
+
+.datepicker-popup-calendar ul.dropdown-menu table thead tr:first-child th:first-child {
+    position: absolute;
+    z-index: 1;
+}
+
+.datepicker-popup-calendar ul.dropdown-menu table thead tr:first-child th:first-child button {
+    height: 30px;
+    width: 30px;
+    border-left: 0px;
+    background-image: url(../../img/arrow_calendar.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #2295c5;
+}
+
+.datepicker-popup-calendar ul.dropdown-menu table thead tr:first-child th:nth-child(2) {
+    position: absolute;
+    width: 100%;
+}
+
+
+.datepicker-popup-calendar ul.dropdown-menu table thead tr:first-child th:nth-child(2) button {
+   background-color: #2295c5;
+color: white;
+font-weight: bold;
+}
+
+.datepicker-popup-calendar ul.dropdown-menu table thead tr:first-child th:nth-child(3) {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.datepicker-popup-calendar ul.dropdown-menu table thead tr:first-child th:nth-child(3) button {
+    position: absolute;
+    height: 28px;
+    top: 6px;
+    width: 30px;
+    left: 0px;
+    border: 0px;
+    background-color: #2295c5;
+    background-image: url(../../img/arrow_calendar.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+
+.datepicker-popup-calendar ul.dropdown-menu table {
+    margin-left: 15px;
+}
+
+
+.datepicker-popup-calendar ul.dropdown-menu li:nth-child(2) span.btn-group:first-child{
+    float: left;
+}
+
+.datepicker-popup-calendar ul.dropdown-menu li:nth-child(2) span.btn-group:first-child button:first-child{
+    margin-right: 51px;
 }
