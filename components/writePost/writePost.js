@@ -233,12 +233,12 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
 
     $scope.today = function () {
-        $scope.dt = new Date();
+        $scope.dte = new Date();
     };
     $scope.today();
 
     $scope.clear = function () {
-        $scope.dt = null;
+        $scope.dte = null;
     };
 
     // Disable weekend selection
@@ -252,11 +252,12 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.toggleMin();
 
     $scope.open = function ($event) {
-         $scope.opened = true;
+        $scope.opened = true;
         $event.preventDefault();
         $event.stopPropagation();
-       
-       
+        console.log($scope.timeDisplay.date);
+        console.log($scope.timeDisplay.date instanceof Date);
+
     };
 
     $scope.dateOptions = {
@@ -265,8 +266,8 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     };
 
     $scope.initDate = new Date('2016-15-20');
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd/MM/yy', 'shortDate'];
+    $scope.format = $scope.formats[2];
 
 
     //*****************end date area**************// 
