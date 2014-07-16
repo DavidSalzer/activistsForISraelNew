@@ -400,6 +400,7 @@ div.post-main-text {
     width: 100%;
     float: left;
     padding-top: 2px;
+    line-height: 19px;
 }
 
 .side-small-input-one {
@@ -454,9 +455,9 @@ div.post-main-text {
 
 
 .datepicker-popup-calendar ul.dropdown-menu table thead tr:first-child th:nth-child(2) button {
-   background-color: #2295c5;
-color: white;
-font-weight: bold;
+    background-color: #2295c5;
+    color: white;
+    font-weight: bold;
 }
 
 .datepicker-popup-calendar ul.dropdown-menu table thead tr:first-child th:nth-child(3) {
@@ -486,10 +487,10 @@ font-weight: bold;
 }
 
 
-.datepicker-popup-calendar ul.dropdown-menu li:nth-child(2) span.btn-group:first-child{
+.datepicker-popup-calendar ul.dropdown-menu li:nth-child(2) span.btn-group:first-child {
     float: left;
 }
 
-.datepicker-popup-calendar ul.dropdown-menu li:nth-child(2) span.btn-group:first-child button:first-child{
+.datepicker-popup-calendar ul.dropdown-menu li:nth-child(2) span.btn-group:first-child button:first-child {
     margin-right: 51px;
 }
