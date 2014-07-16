@@ -231,6 +231,10 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     width: 128px;
     height: 120px;
     box-shadow: 0px 0px 4px rgba(50, 50, 50, 0.75);
+    position: relative;
+    font-size: 10px;
+    display: inline-block;
+    margin-left: 10px;
 }
 
 .user-profile-other-user-activity figure.author-image {
@@ -239,16 +243,38 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     right: 5px;
 }
 
+.user-profile-other-user-symbol {
+    height: 25px;
+    width: 25px;
+    background-image: url('../../img/last_event.png');
+    background-repeat: no-repeat;
+    background-size: 75px 25px;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+
 .user-profile-other-user-activity .author-name {
     display: block;
     margin-right: 58px;
     font-weight: bold;
-    /* float: right; */
+     float: none; 
     text-overflow: ellipsis;
+    width: 70px;
     overflow: hidden;
     white-space: nowrap;
     line-height: 90px;
     font-size: 10px;
+}
+
+.user-profile-other-user-content {
+    position: relative;
+    top: -25px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: justify;
+    height: 40px;
+    overflow: hidden;
 }
 
 .user-recent-activity-zone {
