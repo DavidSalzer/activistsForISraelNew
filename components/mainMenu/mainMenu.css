@@ -160,7 +160,7 @@ div#features-swipe-inner {
     bottom: 0px;
     background: #565c63;
     background-repeat: no-repeat;
-    background-image: url("/img/line_vertical.png");
+    background-image: url("../../img/line_vertical.png");
     background-size: 100% 100%;
 }
 
@@ -209,7 +209,7 @@ div#features-swipe-inner {
     z-index: 1;
     right: 0px;
     background-repeat: no-repeat;
-    background-image: url("/img/line_horizontal.png");
+    background-image: url("../../img/line_horizontal.png");
     background-size: 100% 100%;
 }
 
