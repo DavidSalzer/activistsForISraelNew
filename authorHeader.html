@@ -1,9 +1,11 @@
 <div id="author-header">
 
     <figure class="author-image">
-		<div style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')">
-		</div>
-			<!-- <img data-ng-src="{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}" alt="user-pic"> -->
+        <div class="author-background-image" style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')">
+        </div>
+        <div class="author-rank-image-zone">
+            <div class="author-rank-image" data-ng-class="{'author-rank-image-0': post._author.data.point.level == 0, 'author-rank-image-1': post._author.data.point.level == 1, 'author-rank-image-2': post._author.data.point.level == 2, 'author-rank-image-3': post._author.data.point.level == 3, 'author-rank-image-4': post._author.data.point.level == 4}"></div>
+        </div>
     </figure>
 	
 	<span class="author-name" data-ng-if='post.postType =="event"'>
@@ -61,10 +63,51 @@
             background-color: #2d3238;
         }
     
-        #author-header .author-date,#author-header span.author-name {
-            line-height: normal;
-            position: relative;
-            top: 20px;
+            #author-header .author-image .author-rank-image-zone {
+                background-color: white;
+                height: 14px;
+                width: 14px;
+                position: absolute;
+                left: -7px;
+                bottom: -3px;
+                border-radius: 50px;
+                margin: auto;
+                border: solid 1px #000000;
+            }
+    
+            #author-header .author-image .author-rank-image {
+                height: 10px;
+                width: 10px;
+                background-image: url('../../img/rank.png');
+                background-repeat: no-repeat;
+                background-size: 50px 10px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                top: 0px;
+                margin: auto;
+            }
+            /*
+            span.author-date {
+                display: block;
+                float: left;
+                margin: 0px 15px 15px 15px;
+            }*/
+    
+            .posts-list.specific-author {
+                background-color: #2d3238;
+            }
+    
+            #author-header .author-date,#author-header span.author-name {
+                line-height: normal;
+                position: relative;
+                top: 20px;
+                font-size: 10px;
+            }
+    
+           #author-header .author-name {
+            line-height: 13px;
             font-size: 10px;
         }
     

@@ -55,8 +55,8 @@
             <!--<div class="user-edit-icon" data-ng-hide="editEmail" data-ng-click="editItem('email')"></div>-->
             <div data-ng-hide="editEmail">{{profile().email}}</div>
                             <!--<div class="user-edit-icon-v" data-ng-show="editEmail"></div>
-                                                                                            <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
-                                                                                            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
+                                                                                                            <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
+                                                                                                            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
         </div>
         <div class="user-profile-phone user-profile-item" data-ng-show="myProfile">
             <div class="user-edit-icon" data-ng-hide="editPhone" data-ng-click="editItem('phone')"></div>
@@ -65,7 +65,22 @@
             <input type="text" data-ng-model="editProfile.phone" data-ng-show="editPhone" value="{{profile().phone}}">
             <div class="user-edit-icon-x" data-ng-show="editPhone" data-ng-click="editItem('phone')"></div>
         </div>
+
+        <div class="user-profile-other-user-zone">
+            <div class="user-profile-other-user-activity">
+                <figure class="author-image">
+                    <div class="author-background-image" style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
+                    <div class="author-rank-image-zone">
+                        <div class="author-rank-image"></div>
+                    </div>
+                </figure>
+                <span class="author-name" data-author="{{post._author}}">ישראל ישראלי</span>
+            </div>
+        </div>
+
         <div class="color-line color-fixed-top"></div>
+
+
         <div class="user-recent-activity-title">הפעולות האחרונות</div>
         <div class="user-recent-activity-zone">
             <div data-ng-repeat="feature in featuresList track by $index">

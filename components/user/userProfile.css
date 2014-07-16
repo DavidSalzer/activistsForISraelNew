@@ -218,6 +218,39 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     border-top: 0;
 }
 
+.user-profile-other-user-zone {
+    width: 90%;
+    height: 140px;
+    border-top: 2px solid gray;
+    margin: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.user-profile-other-user-activity {
+    width: 128px;
+    height: 120px;
+    box-shadow: 0px 0px 4px rgba(50, 50, 50, 0.75);
+}
+
+.user-profile-other-user-activity figure.author-image {
+    position: relative;
+    top: 5px;
+    right: 5px;
+}
+
+.user-profile-other-user-activity .author-name {
+    display: block;
+    margin-right: 58px;
+    font-weight: bold;
+    /* float: right; */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 90px;
+    font-size: 10px;
+}
+
 .user-recent-activity-zone {
     padding-top: 10px;
     padding-bottom: 15px;
@@ -311,9 +344,9 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     right: 35px;
 }
 
-div.post-main-text.article-text {
+div.post-main-text.article-text-content {
     font-size: 12px;
-    height: 49px;
+    /*height: 49px;*/
     overflow: hidden;
     line-height: 12px;
     margin-top: 5px;

@@ -106,22 +106,24 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
                 userDetails.gender = 'מגדר';
             }
 
-            switch (userDetails.point.level) {
-                case '0':
-                    userDetails.rank = 'חבר';
-                    break;
-                case '1':
-                    userDetails.rank = 'פעיל';
-                    break;
-                case '2':
-                    userDetails.rank = 'משפיע';
-                    break;
-                case '3':
-                    userDetails.rank = 'מאסטר';
-                    break;
-                case '4':
-                    userDetails.rank = 'אח';
-                    break;
+            if (userDetails.point != undefined) {
+                switch (userDetails.point.level) {
+                    case '0':
+                        userDetails.rank = 'חבר';
+                        break;
+                    case '1':
+                        userDetails.rank = 'פעיל';
+                        break;
+                    case '2':
+                        userDetails.rank = 'משפיע';
+                        break;
+                    case '3':
+                        userDetails.rank = 'מאסטר';
+                        break;
+                    case '4':
+                        userDetails.rank = 'אח';
+                        break;
+                }
             }
 
             PostService.setUser(userDetails);
