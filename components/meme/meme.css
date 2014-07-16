@@ -398,10 +398,13 @@ box-shadow: 0px 0px 1px 1px gray;
 }
 
 .widthCon {
-    width: 180px;
-    height: auto;
-    margin: auto;
-    display: block;
+  width: 180px;
+height: auto;
+margin: auto;
+display: block;
+top: 0;
+bottom: 0;
+position: absolute;
 }
 
 .heightCon {

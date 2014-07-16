@@ -77,7 +77,7 @@ $scope.featureDetails = {
     featureName: null,
     featureLogo: "./img/poalim-logo.png",
     //infoImg: './img/whatsup.png',
-    featureColor: '#AB14E6'
+    featureColor: 'gray'
 
 };
 
