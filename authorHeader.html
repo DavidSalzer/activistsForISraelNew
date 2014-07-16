@@ -7,51 +7,61 @@
             <div class="author-rank-image" data-ng-class="{'author-rank-image-0': post._author.data.point.level == 0, 'author-rank-image-1': post._author.data.point.level == 1, 'author-rank-image-2': post._author.data.point.level == 2, 'author-rank-image-3': post._author.data.point.level == 3, 'author-rank-image-4': post._author.data.point.level == 4}"></div>
         </div>
     </figure>
-
-    <span class="author-name" data-ng-if="post.postType =='event'">
-		יוצר האירוע:
-    </span>
-
+	
+	<span class="author-name" data-ng-if='post.postType =="event"'>
+		יוצר האירוע: 
+	</span>
+	
     <span class="author-name" data-author="{{post._author}}">		{{post._author.data.firstName}} {{post._author.data.lastName}}
-    </span>
-
-    <div data-ng-hide="post.postType =='event'" class="color-line color-line-bottom "></div>
-
+	</span>
+	
+    <div  data-ng-hide='post.postType =="event"' class="color-line color-line-bottom "></div>
+	
 </div>
 
 
 <style>
-                #author-header {
-                width: 100%;
-                height: 42px;
-                background-color: #565c63;
-                color: white;
-                box-sizing: border-box;
-                padding: 0px 30px;
-                position: relative;
-                z-index: 2;
-            }
+            #author-header {
+            width: 100%;
+            height: 42px;
+            background-color: #565c63;
+            color: white;
+            box-sizing: border-box;
+            padding: 0px 30px;
+            position: relative;
+            z-index: 2;
+        }
     
     
-           #author-header figure.author-image {
-                top: 6px;
-                width: 28px;
-                height: 28px;
-                border-radius: 50px;
-                border: solid 2px #ffffff;
-            }
+       #author-header figure.author-image {
+            top: 6px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50px;
+            border: solid 2px #ffffff;
+        }
     
-           #author-header .author-image img {
-               <!--  width: 26px;
-                height: 26px;
-                border-radius: 28px; -->
-            } 
+       #author-header .author-image img {
+           <!--  width: 26px;
+            height: 26px;
+            border-radius: 28px; -->
+        } 
+		
+		#author-header .author-image div {
+            width: 26px;
+            height: 26px;
+            border-radius: 28px;
+        }
+        /*
+        span.author-date {
+            display: block;
+            float: left;
+            margin: 0px 15px 15px 15px;
+        }*/
     
-            #author-header .author-image .author-background-image {
-                width: 26px;
-                height: 26px;
-                border-radius: 28px;
-            }
+        .posts-list.specific-author {
+            background-color: #2d3238;
+        }
     
             #author-header .author-image .author-rank-image-zone {
                 background-color: white;
@@ -99,11 +109,6 @@
            #author-header .author-name {
             line-height: 13px;
             font-size: 10px;
-            margin-right: 6px;
-            text-align: center;
-            width: 80%;
-            font-weight: normal;
-    text-align: right;
         }
     
        #author-header .author-name {
