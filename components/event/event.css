@@ -307,9 +307,9 @@ thead tr .btn.btn-default.btn-sm {
 }
 
 .owner-wrapper-detailes {
-    box-shadow: 1px -4px 2px 0px rgba(0,0,0,0.73);
-    -webkit-box-shadow: 0px -10px 2px 0px rgba(86,92,99,0.83);
-    -moz-box-shadow: 0px -10px 2px 0px rgba(86,92,99,0.83);
+    box-shadow: 0px 3px 2px 5px rgba(0,0,0,0.73);
+    -webkit-box-shadow: 0px 3px 2px 5px rgba(86,92,99,0.83);
+    -moz-box-shadow: 0px 3px 2px 5px rgba(86,92,99,0.83);
 }
 
 .event-participation .icon {
