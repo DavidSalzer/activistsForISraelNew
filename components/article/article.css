@@ -80,7 +80,8 @@ box-sizing: border-box;*/
     padding-right: 10px;
     position: relative;
     border: 0;
-    line-height: 32px;
+    /*line-height: 32px;*/
+    padding-top: 7px;
 }
 
 
@@ -398,15 +399,16 @@ div.post-main-text {
 .write-calendar-event .article-content .small-input-wrap input {
     width: 100%;
     float: left;
+    padding-top: 1px;
 }
 
 .side-small-input-one {
-    background-image: url("/img/calendar_icon.png");
+    background-image: url("../../img/calendar_icon.png");
 }
 
 .side-small-input-tow {
     margin-top: 0px;
-    background-image: url("/img/clock.png");
+    background-image: url("../../img/clock.png");
 }
 
 .title-field.requieredError {
