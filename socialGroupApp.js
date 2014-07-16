@@ -378,7 +378,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             });
             
         },
-        template: '<div ng-include="getContentUrl()"></div>'
+        template: '<div class="post-wrap" ng-include="getContentUrl()"></div>'
     };
 } ])
 
