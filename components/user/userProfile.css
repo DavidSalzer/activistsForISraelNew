@@ -140,7 +140,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     width: 90%;
     height: 62px;
     margin: auto;
-    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
     position: relative;
     color: #2f343b;
     padding-right: 45px;
@@ -219,12 +219,20 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .user-profile-other-user-zone {
-    width: 90%;
+    width: 100%;
     height: 140px;
-    border-top: 2px solid gray;
+    /*border-top: 2px solid gray;*/
     margin: auto;
     padding-bottom: 10px;
     padding-top: 10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-right: 5px;
+}
+
+.user-profile-other-user-wrapper {
+    width: 440px;
+    position: relative;
 }
 
 .user-profile-other-user-activity {
