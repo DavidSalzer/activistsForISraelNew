@@ -24,7 +24,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             if (request.pollStatus != undefined) {
                 queryString = queryString + '&pollStatus=' + request.pollStatus;
             }
-			if (request.DestinationTime != undefined) {
+            if (request.DestinationTime != undefined) {
                 queryString = queryString + '&startDestinationTime=' + request.DestinationTime;
             }
             console.log(queryString);
@@ -132,13 +132,18 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             console.log(postData);
             var json = JSON.stringify(postData);
             console.log(json);
-
-            $http.post(domain + 'post', json)
+            if (postData.post.postType == 'poll' || postData.post.postType == 'contact') {
+                queryString = 'sendmail';
+            }
+            else {
+                queryString = 'post';
+            }
+            $http.post(domain + queryString, json)
 			.success(function (data) {
 
 			    console.log(data);
 			    console.log(data.data._id);
-				if(data.data._id == undefined){deferred.resolve(data); return deferred.promise;}//fail to create post!
+			    if (data.data._id == undefined) { deferred.resolve(data); return deferred.promise; } //fail to create post!
 			    if (isBase64) {
 			        //imgFile is base64 string
 			        self.attachBase64(imgFile, data.data._id, callbackFunc).then(function (data) { deferred.resolve(data) });
@@ -160,6 +165,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
 
             return deferred.promise;
+        },
+
+        sendContact: function () {
+
         },
 
         attach: function (file, postId) {
@@ -211,10 +220,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			.success(function (data) {
 
 			    console.log(data);
-               //hide the loader
-               $rootScope.$broadcast('showLoader', { showLoader: false });
-                //show the thank page only after the post created
-                callbackFunc();
+			    //hide the loader
+			    $rootScope.$broadcast('showLoader', { showLoader: false });
+			    //show the thank page only after the post created
+			    callbackFunc();
 			    deferred.resolve(data);
 			})
 			.error(function (data) {

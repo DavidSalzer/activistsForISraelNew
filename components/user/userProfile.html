@@ -68,20 +68,21 @@
             <div class="user-edit-icon-x" data-ng-show="editPhone" data-ng-click="editItem('phone')"></div>
         </div>
 
-        <div class="user-profile-other-user-zone">
-            <div class="user-profile-other-user-wrapper">
-                <div class="user-profile-other-user-activity">
-                    <figure class="author-image">
-                        <div class="author-background-image" style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
+        <div class="user-profile-other-user-zone" data-ng-hide="getOtherUsersActivity().length == 0 || getOtherUsersActivity().length == undefined">
+            <div class="user-profile-other-user-wrapper" style="width: {{getOtherUsersActivity().length*140}}px">
+                <div data-ng-repeat="activity in getOtherUsersActivity()" class="user-profile-other-user-activity" data-ng-click="goToSinglePage(activity, activity.type != 'userLike')">
+                    <figure class="author-image" data-ng-click="goToSinglePage(activity, false);$event.stopPropagation();">
+                        <div class="author-background-image" style="background-image:url('{{activity.user.data.img.RelativePosition? domain+activity.user.data.img.url : activity.user.data.img.url}}')"></div>
                         <div class="author-rank-image-zone">
-                            <div class="author-rank-image"></div>
+                            <div class="author-rank-image" data-ng-class="{'author-rank-image-0': activity.user.data.point.level == 0, 'author-rank-image-1': activity.user.data.point.level == 1, 'author-rank-image-2': activity.user.data.point.level == 2, 'author-rank-image-3': activity.user.data.point.level == 3, 'author-rank-image-4': activity.user.data.point.level == 4}"></div>
                         </div>
                     </figure>
-                    <div class="user-profile-other-user-symbol"></div>
-                    <span class="author-name" data-author="{{post._author}}">ישראל ישראלי</span>
-                    <div class="user-profile-other-user-content">dfjk gjikldf iokrgj klrfdjig klklfdgj kiopf gjklf iorgiojkg ilkjdfio riofgjiofdjkfi jifio djdfio iojhiofgvujdfliuo cb</div>
+                    <div class="user-profile-other-user-symbol" data-ng-class="{'other-user-symbol-like': activity.type == 'like', 'other-user-symbol-userLike': activity.type == 'userLike', 'other-user-symbol-comment': activity.type == 'comment'}"></div>
+                    <span class="author-name" data-author="{{post._author}}">{{activity.user.data.firstName}} {{activity.user.data.lastName}}</span>
+                    <div class="user-profile-other-user-content" data-ng-init="textForView(activity)">{{activity.textView}}</div>
+                    <!--<div class="user-profile-other-user-content" data-ng-show="activity.type == 'userLike'">העריך אותך</div>-->
                 </div>
-                                    <div class="user-profile-other-user-activity">
+                                    <!--<div class="user-profile-other-user-activity">
                                     <figure class="author-image">
                                         <div class="author-background-image" style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
                                         <div class="author-rank-image-zone">
@@ -102,7 +103,7 @@
                                     <div class="user-profile-other-user-symbol"></div>
                                     <span class="author-name" data-author="{{post._author}}">ישראל ישראלי</span>
                                     <div class="user-profile-other-user-content">dfjk gjikldf iokrgj klrfdjig klklfdgj kiopf gjklf iorgiojkg ilkjdfio riofgjiofdjkfi jifio djdfio iojhiofgvujdfliuo cb</div>
-                                </div>
+                                </div>-->
             </div>
         </div>
 
