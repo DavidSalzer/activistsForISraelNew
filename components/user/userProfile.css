@@ -266,6 +266,14 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     left: 30px;
 }
 
+.other-user-symbol-userLike {
+    background-position-x: -50px;
+}
+
+.other-user-symbol-comment {
+    background-position-x: -25px;
+}
+
 .user-profile-other-user-activity .author-name {
     display: inline-block;
     /* margin-right: 58px; */
@@ -290,6 +298,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     text-align: justify;
     height: 40px;
     overflow: hidden;
+    direction: rtl;
 }
 
 .user-recent-activity-zone {

@@ -249,15 +249,66 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     $scope.otherUsersActivity = [];
 
     $scope.setOtherUsersActivity = function () {
-        queryString = 'getActivitiesByParams?receiveUser=' + $stateParams.userId;
+        queryString = 'getActivitiesByParams?receiveUserId=' + $stateParams.userId + '&orderBy=-timestamp';
         classAjax.getdata('get', queryString, {}).then(function (data) {
             console.log(data);
-            $scope.otherUsersActivity = data;
+            $scope.otherUsersActivity = data.data;
         })
     }
 
-    $scope.otherUserCube = document.getElementsByClassName('user-profile-other-user-activity');
-    console.log($scope.otherUserCube[0].offsetWidth);
+    $scope.getOtherUsersActivity = function () {
+        return $scope.otherUsersActivity;
+    }
+
+    $scope.textForView = function (activity) {
+        console.log(activity);
+        if (activity.type == 'userLike') {
+            activity.textView = 'העריך אותך';
+        }
+        else if (activity.post.postType == 'meme') {
+            activity.textView = 'אהב את המם שלך';
+        }
+        else if (activity.post.postType == 'article') {
+            activity.textView = activity.post.title;
+        }
+        else {
+            activity.textView = activity.post.content;
+        }
+    }
+
+    $scope.goToSinglePage = function (activity, isPost) {
+        if (isPost) {
+            switch (activity.post.postType) {
+                case "article":
+                    $state.transitionTo('single-article', { postId: activity.post._id });
+                    break;
+                //case "author": 
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' }); 
+                //    break; 
+                case "talkback":
+                    $state.transitionTo('comments', { postId: activity.post._id });
+                    break;
+                case "meme":
+                    $state.transitionTo('single-meme', { index: activity.post._id });
+                    break;
+                //case "event": 
+                //    $state.transitionTo('single-event', { postId: args.postId }); 
+                //    break; 
+                //case "voteToPoll": 
+                //    $state.transitionTo('poll-view', { postId: args.postId }); 
+                //    break; 
+            }
+        }
+        else {
+            $state.transitionTo('user-profile', { userId: activity.user._id });
+        }
+    }
+
+    $scope.setOtherUsersActivity();
+
+
+    //$scope.otherUserCube = document.getElementsByClassName('user-profile-other-user-activity');
+    //console.log($scope.otherUserCube[0].offsetWidth);
 
     $scope.currentPost = 'none';
     $scope.posts = PostService.getPosts;
