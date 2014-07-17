@@ -24,7 +24,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         endTimestamp: '',
         offset: 0,
         limit: 0,
-        orderBy: 'DestinationTime',//'-timestamp',
+        orderBy: 'DestinationTime', //'-timestamp',
         postType: 'event',
         userID: $scope.user._id,
         _parentID: '',
@@ -44,7 +44,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         else {
             $scope.f = true;
         }
-     //   $scope.$apply();
+        //   $scope.$apply();
     }
 
     $scope.loadMore = function () {
@@ -106,7 +106,11 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService', functi
 			true
 		);
 
-        $scope.$watch('dt', function () { $scope.updateFeed($scope.dt); });
+        $scope.$watch('dt', function () {
+            console.log('$scope.dt: ');
+            console.log($scope.dt);
+            $scope.updateFeed($scope.dt);
+        });
 
     });
 
