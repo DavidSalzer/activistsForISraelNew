@@ -56,6 +56,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
 
     $scope.showAuthorImage = false;
     $scope.showAuthorName = false;
+    $scope.userLike = false;
 
     generalParameters.setFeature($scope.featureDetails);
     console.log(generalParameters.getUser());
@@ -74,6 +75,31 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
         $http.get(domain + 'profile/' + $stateParams.userId, { withCredentials: true, async: true })
             .success(function (data) {
                 console.log(data);
+
+                var parmas = { "activity": { "user": $stateParams.userId, "type": "userLike"} };
+
+                var json = JSON.stringify(parmas);
+                //console.log(json);
+
+                $http.post(domain + 'isActivityFound', json)
+			.success(function (data) {
+
+			    if (data.data == null) {
+			        $scope.userLike = false;
+			        console.log('null');
+			    }
+			    else if (data.data.type == 'userLike') {
+			        $scope.userLike = true;
+			        console.log('no null');
+			    }
+
+			})
+			.error(function (data) {
+
+			    console.log(data);
+
+			});
+
                 $scope.profile = function () {
                     if (data.data.img == undefined) {
 
@@ -231,19 +257,21 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     }
 
     $scope.givingScore = function () {
-        console.log($scope.profile());
-        console.log('giving score to ' + $scope.profile()._id + ' ' + $scope.profile().firstName);
-        queryString = 'addPostActivity';
-        request = {
-            activity: {
-                receiveUser: $stateParams.userId,
-                type: 'userLike'
+        if (!$scope.userLike) {
+            console.log($scope.profile());
+            console.log('giving score to ' + $scope.profile()._id + ' ' + $scope.profile().firstName);
+            queryString = 'addPostActivity';
+            request = {
+                activity: {
+                    receiveUser: $stateParams.userId,
+                    type: 'userLike'
+                }
             }
-        }
-        classAjax.getdata('post', queryString, request)
+            classAjax.getdata('post', queryString, request)
         .then(function (data) {
             console.log(data);
         })
+        }
     }
 
     $scope.otherUsersActivity = [];
@@ -282,21 +310,21 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author": 
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' }); 
-                //    break; 
+                //case "author":     
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });     
+                //    break;     
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { index: activity.post._id });
                     break;
-                //case "event": 
-                //    $state.transitionTo('single-event', { postId: args.postId }); 
-                //    break; 
-                //case "voteToPoll": 
-                //    $state.transitionTo('poll-view', { postId: args.postId }); 
-                //    break; 
+                //case "event":     
+                //    $state.transitionTo('single-event', { postId: args.postId });     
+                //    break;     
+                //case "voteToPoll":     
+                //    $state.transitionTo('poll-view', { postId: args.postId });     
+                //    break;     
             }
         }
         else {
