@@ -32,7 +32,7 @@
             <div placeholder="כתובת">תאריך הרשמה: {{profile().registrationDate| date : 'dd.MM.yyyy'}}</div>
         </div>
         <div class="user-profile-scoring user-profile-item">
-            <div class="user-giving-score" data-ng-hide="myProfile" data-ng-click="givingScore()"></div>
+            <div class="user-giving-score" data-ng-class="{'user-giving-score-done': userLike}" data-ng-hide="myProfile" data-ng-click="givingScore()"></div>
             <div placeholder="כתובת">ניקוד מצטבר: {{profile().point.count+0}}</div>
         </div>
         <div class="user-profile-gender user-profile-item" data-ng-show="myProfile">
