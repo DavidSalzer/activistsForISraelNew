@@ -16,6 +16,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
     return {
         //methodes
 
+        //get posts by parameters from server and set in posts array.
         getPostsBatch: function (request) {
             self = this;
             console.log(request);
@@ -123,6 +124,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             return deferred.promise;
         },
 
+        //send post to server.
         sendPost: function (postData, textfile, imgFile, isBase64, callbackFunc) {
 
             var self = this;
@@ -167,9 +169,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             return deferred.promise;
         },
 
-        sendContact: function () {
+        //sendContact: function () {
 
-        },
+        //},
 
         attach: function (file, postId) {
 
@@ -235,6 +237,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             return deferred.promise;
         },
+
+        //check if post, posts or user isLiked by the connected user and add field isLiked to object.
         getIsLike: function (pid, index) {
 
             var parmas = { "activity": { "post": pid, "user": user._id, "type": "like"} };
@@ -375,7 +379,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             return memeImages;
         },
 
-
+        //get post from server by id of the post.
         getPostById: function (postid) {
             self = this;
             singlePost = null;
@@ -401,6 +405,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             selectedAuthor = author;
         },
 
+        //get authors that create posts in the posttype requested.
         getAuthorsByPostType: function (request) {
             queryString = 'authors?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType;
             console.log(queryString);
@@ -430,6 +435,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             })
         },
 
+        //get posts of author from server by author id and postType.
         getPostsByAuthor: function (request) {
             var self = this;
             queryString = 'post/author/' + request.authorId + '?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType;
