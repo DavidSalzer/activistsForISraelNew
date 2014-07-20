@@ -367,6 +367,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         getPostById: function (postid) {
             self = this;
+            singlePost = null;
             queryString = 'post/' + postid;
             console.log(queryString);
             classAjax.getdata('get', queryString, {})
