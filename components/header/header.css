@@ -318,9 +318,9 @@ a.list-group-item.event.active span, a.list-group-item.event.active:focus span, 
 @media only screen and ( max-height: 480px ) {
 
     #whatsup-bottom {
-       margin-bottom: 0px;
-height: 23%;
-padding-top: 10px;
+        margin-bottom: 0px;
+        height: 23%;
+        padding-top: 10px;
     }
 
     #whatsup-bottom p {
@@ -334,5 +334,9 @@ padding-top: 10px;
         height: 31px;
         line-height: 29px;
         font-size: 18px;
+    }
+
+    .info-close {
+        margin-bottom: -1px;
     }
 }
