@@ -14,8 +14,6 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         postId: 5
     },
     {
-
-
         featureId: 3,
         featureUrl: 'facebookPoalim',
         featureName: 'פייסבוק פועלים',
@@ -54,7 +52,6 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         title: 'מאמרים בנושאים על סדר היום',
         text: 'עמוד מאמרים',
         postId: 5
-
     }
     ,
     {

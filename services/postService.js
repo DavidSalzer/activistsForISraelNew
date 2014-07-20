@@ -70,9 +70,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
 
 
-        updateCommentsCount: function () {
-            posts[0].comments.commentsCount = 6;
-        },
+        //updateCommentsCount: function () {
+        //    posts[0].comments.commentsCount = 6;
+        //},
 
         /*  updatePost: function (data) {
         var postId = data.postId
@@ -245,6 +245,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             $http.post(domain + 'isActivityFound', json)
 			.success(function (data) {
 
+			    if (index == undefined) {
+			        if (data.data == null) {
+
+			            singlePost.isLiked = false; return;
+			        }
+			        else if (data.data.type == 'like') {
+
+			            singlePost.isLiked = true; return;
+			        }
+			    }
+
 			    if (data.data == null) {
 
 			        posts[index].isLiked = false; return;
@@ -373,6 +384,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             classAjax.getdata('get', queryString, {})
             .then(function (data) {
                 console.log(data);
+                self.getIsLike(postid);
                 singlePost = data.data;
                 posts = [];
                 self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
@@ -419,6 +431,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         getPostsByAuthor: function (request) {
+            var self = this;
             queryString = 'post/author/' + request.authorId + '?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType;
             console.log(queryString);
             showSpiner = true;
@@ -441,6 +454,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                     if (flag) {
                         posts.push(data.data[i]);
                     }
+                }
+
+                for (var k = 0; k < posts.length; k++) {
+
+                    self.getIsLike(posts[k]._id, k);
                 }
                 //}
             })
