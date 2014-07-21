@@ -1,4 +1,9 @@
 socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'imgCrop', function ($scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, imgCrop) {
+    
+    if(generalParameters.getUser().firstName == 'התחבר'){//if user not login go back.
+        window.history.back();
+    }
+    
     $scope.d = 'disabled';
     $scope.datacrop = {};
     $scope.userImg = '';
@@ -60,6 +65,9 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
 
     generalParameters.setFeature($scope.featureDetails);
     console.log(generalParameters.getUser());
+
+    
+
     if ($stateParams.userId == generalParameters.getUser()._id) {
         $scope.myProfile = true;
     }
@@ -268,9 +276,24 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 }
             }
             classAjax.getdata('post', queryString, request)
-        .then(function (data) {
-            console.log(data);
-        })
+                .then(function (data) {
+                console.log(data);
+            })
+        }
+        else {
+            console.log($scope.profile());
+            console.log('giving score to ' + $scope.profile()._id + ' ' + $scope.profile().firstName);
+            queryString = 'deletePostActivity';
+            request = {
+                activity: {
+                    receiveUser: $stateParams.userId,
+                    type: 'userLike'
+                }
+            }
+            classAjax.getdata('delete', queryString, request)
+                .then(function (data) {
+                console.log(data);
+            })
         }
     }
 
@@ -317,7 +340,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
-                    $state.transitionTo('single-meme', { index: activity.post._id });
+                    $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
                 //case "event":     
                 //    $state.transitionTo('single-event', { postId: args.postId });     
@@ -388,7 +411,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     });
 
     $scope.memeClick = function (index) {
-        $state.transitionTo('single-meme', { index: index });
+        $state.transitionTo('single-meme', { postId: index });
     }
 
     $scope.like = function ($index) {

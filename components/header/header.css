@@ -160,13 +160,12 @@
 }
 
 #whatsup-bottom {
-   position: absolute;
-bottom: 0px;
-padding: 34px 0px 16px 0px;
-width: 100%;
-margin-bottom: 4px;
-height: 30%;
-
+    position: absolute;
+    bottom: 0px;
+    padding: 34px 0px 16px 0px;
+    width: 100%;
+    margin-bottom: 4px;
+    height: 30%;
 }
 
 #bottom-main-text {
@@ -311,7 +310,33 @@ a.list-group-item.Fbactivists.active span, a.list-group-item.Fbactivists.active:
 a.list-group-item.poll.active span, a.list-group-item.poll.active:focus span, a.list-group-item.poll.active:hover span {
     background-color: #da4f00;
 }
+
 a.list-group-item.event.active span, a.list-group-item.event.active:focus span, a.list-group-item.event.active:hover span {
     background-color: #004a8e;
 }
 
+@media only screen and ( max-height: 480px ) {
+
+    #whatsup-bottom {
+        margin-bottom: 0px;
+        height: 23%;
+        padding-top: 10px;
+    }
+
+    #whatsup-bottom p {
+        margin-top: -3px;
+        font-size: 14px;
+    }
+
+    #whatsup-bottom .join-button {
+        margin: 5px auto 0px auto;
+        width: 122px;
+        height: 31px;
+        line-height: 29px;
+        font-size: 18px;
+    }
+
+    .info-close {
+        margin-bottom: -1px;
+    }
+}

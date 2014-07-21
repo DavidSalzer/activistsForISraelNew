@@ -1,13 +1,13 @@
 <link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
 <link rel="stylesheet"  media='screen and (min-width: 900px)' type="text/css" href="../../../components/meme/meme.css" />
 <div class="single-meme">
-    <author-header></author-header>
+    <author-header data-ng-repeat="post in [post()]"></author-header>
 
-    <img class="single" data-ng-src="{{domain+memeUrl}}" />
+    <img class="single" data-ng-src="{{domain+post().img}}" />
 
     <div class="like-section">
-        <div class="like-section-num">{{post.likesCount}}</div>
-        <div class="like-section-icon" data-ng-click='like($index)' data-ng-class="{'like-section-icon-isLike':post.isLiked==true}"></div>
+        <div class="like-section-num">{{post().likesCount}}</div>
+        <div class="like-section-icon" data-ng-click='like($index)' data-ng-class="{'like-section-icon-isLike':post().isLiked==true}"></div>
 		
     </div>
 

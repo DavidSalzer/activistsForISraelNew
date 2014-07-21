@@ -179,7 +179,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              }
          })
         .state('single-meme', {
-            url: "/single-meme/:index",
+            url: "/single-meme/:postId",
             views: {
                 "main": {
                     templateUrl: "./components/meme/singleMeme.html",
