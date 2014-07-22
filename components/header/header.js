@@ -74,13 +74,6 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/actionforisrael.png",
             featureColor: "Fbactivists"
         },
-
-        {
-            featureUrl: 'contact',
-            featureName: 'צור קשר',
-            featureLogo: "./img/contact.png",
-            featureColor: "#009933"
-        },
         {
             featureUrl: 'poll',
             featureName: 'משאל עם',
@@ -100,7 +93,13 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 		    featureName: 'נפגשים',
 		    featureLogo: "./img/calendar.png",
 		    featureColor: "event"
-		}
+		},
+        {
+            featureUrl: 'contact',
+            featureName: 'צור קשר',
+            featureLogo: "./img/contact.png",
+            featureColor: "#009933"
+        }
 
     ];
 

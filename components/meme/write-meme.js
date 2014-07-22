@@ -12,7 +12,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.topRgb = "#ffffff";
     $scope.bottomRgb = "#ffffff";
     $scope.topText = "";
-
+    $scope.imgFileText = 'צרף תמונה';
     $scope.fontOptions = ['arial', 'Aharoni', 'Calibri'];
     $scope.showSuggestedImages = true;
     $scope.suggestedMemes = [];

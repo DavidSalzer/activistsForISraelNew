@@ -545,3 +545,23 @@ height: 300px;
 .preview-wrap .size3{
     font-size: 30px;
 }
+
+.add-file-text{
+    color: #9E9E9E;
+}
+
+
+/*.plus:after{
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    content: "צרף תמונה";
+    padding-top: 1px;
+    color: #9E9E9E;
+    padding-right: 45px;
+    width: 200px;
+    font-size: 15px;
+    text-align: right;
+    font-weight: 500;
+}*/
+
