@@ -545,3 +545,14 @@ height: 300px;
 .preview-wrap .size3{
     font-size: 30px;
 }
+
+.plus:after{
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    content: "צרף תמונה";
+}
+
+.plus{
+    position: relative;
+}
