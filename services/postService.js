@@ -279,7 +279,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         },
 
-        unLike: function (pid) {
+        unLike: function (pid, post) {
 
             console.log(user)
 
@@ -291,7 +291,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             $http({ url: domain + 'deletePostActivity', method: "delete", headers: { 'Content-Type': 'application/json' }, data: json })
 
 			.success(function (data) {
-
+			    if (data.status.statusCode == 0) {
+			        post.likesCount--;
+			        post.isLiked = false;
+			        console.log('success unLike');
+			    }
 			    console.log(data);
 			})
 			.error(function (data) {
@@ -302,7 +306,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         },
 
-        sendLike: function (pid) {
+        sendLike: function (pid, post) {
 
             var parmas = { "activity": { "post": pid, "type": "like"} };
 
@@ -311,7 +315,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             $http.post(domain + 'addPostActivity', json)
 			.success(function (data) {
-
+			    if (data.status.statusCode == 0) {
+                    post.isLiked = true;
+			        post.likesCount++;
+			        console.log('success like');
+			    }
 			    console.log(data);
 			})
 			.error(function (data) {

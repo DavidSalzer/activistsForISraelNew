@@ -257,67 +257,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     }
 } ])
 
-/**** directives ****/
-//.directive('post', ['$rootScope', 'PostService', function ($rootScope, PostService) {
-//    return {
-//        restrict: 'E',
-//        // scope:true,
-//        //{
-//        //    posts:'@',
-//        //    showCommentButton:'='
-//        //},
-//        //  transclude: true,
-//        templateUrl: function (tElement, tAttrs) {
-//            var talkbackTemplate = 'postTemplate.html';
-//            var articleTemplate = 'articleTemplate.html';
-//            var authorsTemplate = 'authorsTemplate.html';
-//            //var commentTemplate = 'commentTemplate.html';
-//            var memesTemplate = 'components/meme/smallMemeTemplate.html';
-//			var eventTemplate = 'eventTemplate.html';
-
-//            var templateURL = '';
-//            switch (tAttrs.postType) {
-//                case 'talkback':
-//                    template = talkbackTemplate;
-//                    break;
-
-//                case 'article':
-//                    template = articleTemplate;
-//                    break;
-
-//                case 'author':
-//                    template = authorsTemplate;
-//                    break;
-//                case 'comment':
-//                    template = talkbackTemplate;
-//                    break;
-//                case 'meme':
-//                    template = memesTemplate;
-//                    break;
-//				case 'event':
-//                    template = eventTemplate;
-//                    break;
-//            }
-
-//            return template;
-//        },
-//        //replace: 'true',
-//        link: function (scope, el, attrs) {
-//            el.on('click', function (e) {
-//                console.log(scope.post);
-//                if(attrs.postType == 'author'){
-//                    $rootScope.$broadcast('postClicked', { authorId: scope.post._id, postType: 'author' });
-//                }
-//                else{
-//                    $rootScope.$broadcast('postClicked', { postId: scope.post._id, postType: scope.post.postType, authorId: scope.post._author._id }); //add post type to emit
-//                }
-//            });
-//            //console.log(attrs.showCommentButton);
-//            //scope.showCommentButton = attrs.showCommentButton;
-//            //console.log(scope.showCommentButton);
-//        }
-//    };
-//} ])
 
 .directive('post', ['$rootScope', 'PostService', function ($rootScope, PostService) {
     return {
@@ -420,7 +359,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     };
 } ])
 
-.directive('like', ['PostService', function (PostService) {
+.directive('like', ['$rootScope', 'PostService', 'generalParameters', function ($rootScope, PostService, generalParameters) {
     return {
         restrict: 'E',
         template: '<div class="post-likes post-buttons" data-ng-click="$event.stopPropagation();"><span data-ng-class="{' + "'is-liked':post.isLiked==true ,'like-post':true}" + '">' +
@@ -429,22 +368,26 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         link: function (scope, el, attrs) {
             el.on('click', function () {
 			
-				
-                //PostService.updateCommentsCount();
-                // $scope.$emit('handleEmit', {showInput: false}); 
-                scope.post.isLiked = !scope.post.isLiked;
+				var user = generalParameters.getUser();
+				if (user.firstName == 'התחבר') {
+					
+					$rootScope.$broadcast('showLoginPopup', { showLogin: true });
+				}
+                else {
+                    //scope.post.isLiked = !scope.post.isLiked;
 
-                if (scope.post.isLiked == true) {//LIKE!
+                    if (scope.post.isLiked == true) {//LIKE!
 
-                    scope.post.likesCount++;
-					PostService.sendLike(scope.post._id); 
+                        //scope.post.likesCount++;
+					    PostService.unLike(scope.post._id, scope.post); 
 
-                }
-                else {//UNLIKE!
-                    scope.post.likesCount--;
-                    scope.$apply();
-					PostService.unLike(scope.post._id); 
+                    }
+                    else {//UNLIKE!
+                        //scope.post.likesCount--;
+                        scope.$apply();
+					    PostService.sendLike(scope.post._id, scope.post); 
 
+                    }
                 } 
             });
         },

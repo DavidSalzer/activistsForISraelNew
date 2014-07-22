@@ -109,7 +109,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
     $scope.goToUserProfile = function (i) {
         if ($scope.userProfile().firstName != 'התחבר') {
-            $state.transitionTo('user-profile', {userId: $scope.userProfile()._id});
+            $state.transitionTo('user-profile', { userId: $scope.userProfile()._id });
         }
         else {
             $rootScope.$broadcast('showLoginPopup', { showLogin: true });
@@ -149,10 +149,12 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     $scope.$on('showInfoPopup', function (event, args) {
         $scope.showInfo = args.showInfo;
         generalParameters.setShowLogin($scope.showInfo);
+        $scope.$apply();
     });
 
     $scope.$on('showLoader', function (event, args) {
         $scope.showLoader = args.showLoader;
+        $scope.$apply();
     });
 
     $scope.share = function () {

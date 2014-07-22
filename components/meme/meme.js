@@ -86,16 +86,16 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 		
 		if (meme.isLiked == true){//UNLIKE!
 				
-			PostService.unLike(meme._id); 
-			meme.likesCount--;
-			meme.isLiked = false;
+			PostService.unLike(meme._id, meme); 
+			//meme.likesCount--;
+			//meme.isLiked = false;
 			return;
         }
         else {//LIKE!
 			
-            PostService.sendLike(meme._id);        
-			meme.likesCount++;
-			meme.isLiked = true;
+            PostService.sendLike(meme._id, meme);        
+			//meme.likesCount++;
+			//meme.isLiked = true;
 			return;
         }  
     }

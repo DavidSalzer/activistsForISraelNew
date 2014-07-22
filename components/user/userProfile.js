@@ -1,9 +1,9 @@
 socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'imgCrop', function ($scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, imgCrop) {
-    
-    if(generalParameters.getUser().firstName == 'התחבר'){//if user not login go back.
-        window.history.back();
-    }
-    
+
+    //if (generalParameters.getUser().firstName == 'התחבר') {//if user not login go back.
+    //    window.history.back();
+    //}
+
     $scope.d = 'disabled';
     $scope.datacrop = {};
     $scope.userImg = '';
@@ -66,7 +66,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     generalParameters.setFeature($scope.featureDetails);
     console.log(generalParameters.getUser());
 
-    
+
 
     if ($stateParams.userId == generalParameters.getUser()._id) {
         $scope.myProfile = true;
@@ -84,14 +84,14 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
             .success(function (data) {
                 console.log(data);
 
-                var parmas = { "activity": { "user": $stateParams.userId, "type": "userLike"} };
+                var parmas = { "activity": { "receivedUser": $stateParams.userId, "type": "userLike"} };
 
                 var json = JSON.stringify(parmas);
                 //console.log(json);
 
                 $http.post(domain + 'isActivityFound', json)
 			.success(function (data) {
-
+			    console.log(data);
 			    if (data.data == null) {
 			        $scope.userLike = false;
 			        console.log('null');
@@ -271,14 +271,17 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
             queryString = 'addPostActivity';
             request = {
                 activity: {
-                    receiveUser: $stateParams.userId,
+                    receivedUser: $stateParams.userId,
                     type: 'userLike'
                 }
             }
             classAjax.getdata('post', queryString, request)
                 .then(function (data) {
-                console.log(data);
-            })
+                    console.log(data);
+                    if (data.status.statusCode == 0) {
+                        $scope.userLike = true;
+                    }
+                })
         }
         else {
             console.log($scope.profile());
@@ -286,21 +289,37 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
             queryString = 'deletePostActivity';
             request = {
                 activity: {
-                    receiveUser: $stateParams.userId,
+                    receivedUser: $stateParams.userId,
                     type: 'userLike'
                 }
             }
-            classAjax.getdata('delete', queryString, request)
-                .then(function (data) {
-                console.log(data);
-            })
+            var json = JSON.stringify(request);
+            console.log(json);
+            $http({ url: domain + 'deletePostActivity', method: "delete", headers: { 'Content-Type': 'application/json' }, data: json })
+
+			.success(function (data) {
+			    if (data.status.statusCode == 0) {
+                        $scope.userLike = false;
+                    }
+			    console.log(data);
+			})
+			.error(function (data) {
+
+			    console.log(data);
+			});
+
+            //classAjax.getdata('delete', queryString, request)
+            //    .then(function (data) {
+            //        console.log(data);
+            //        $scope.userLike = false;
+            //    })
         }
     }
 
     $scope.otherUsersActivity = [];
 
     $scope.setOtherUsersActivity = function () {
-        queryString = 'getActivitiesByParams?receiveUserId=' + $stateParams.userId + '&orderBy=-timestamp';
+        queryString = 'getActivitiesByParams?receivedUser=' + $stateParams.userId + '&orderBy=-timestamp';
         classAjax.getdata('get', queryString, {}).then(function (data) {
             console.log(data);
             $scope.otherUsersActivity = data.data;
@@ -333,21 +352,21 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":     
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });     
-                //    break;     
+                //case "author":       
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });       
+                //    break;       
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":     
-                //    $state.transitionTo('single-event', { postId: args.postId });     
-                //    break;     
-                //case "voteToPoll":     
-                //    $state.transitionTo('poll-view', { postId: args.postId });     
-                //    break;     
+                //case "event":       
+                //    $state.transitionTo('single-event', { postId: args.postId });       
+                //    break;       
+                //case "voteToPoll":       
+                //    $state.transitionTo('poll-view', { postId: args.postId });       
+                //    break;       
             }
         }
         else {
@@ -422,16 +441,16 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
 
         if (meme.isLiked == true) {//UNLIKE!
 
-            PostService.unLike(meme._id);
-            meme.likesCount--;
-            meme.isLiked = false;
+            PostService.unLike(meme._id, meme);
+            //meme.likesCount--;
+            //meme.isLiked = false;
             return;
         }
         else {//LIKE!
 
-            PostService.sendLike(meme._id);
-            meme.likesCount++;
-            meme.isLiked = true;
+            PostService.sendLike(meme._id, meme);
+            //meme.likesCount++;
+            //meme.isLiked = true;
             return;
         }
     }

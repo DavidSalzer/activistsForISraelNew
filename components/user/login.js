@@ -16,7 +16,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     $scope.$on('showLoginPopup', function (event, args) {
         $scope.showLogin = args.showLogin;
         generalParameters.setShowLogin($scope.showLogin);
-        //$scope.$apply();
+        $scope.$apply();
         console.log(args)
     });
 
