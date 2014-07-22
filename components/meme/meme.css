@@ -546,7 +546,12 @@ height: 300px;
     font-size: 30px;
 }
 
-.plus:after{
+.add-file-text{
+    color: #9E9E9E;
+}
+
+
+/*.plus:after{
     position: absolute;
     height: 100%;
     top: 0px;
@@ -558,5 +563,5 @@ height: 300px;
     font-size: 15px;
     text-align: right;
     font-weight: 500;
-}
+}*/
 
