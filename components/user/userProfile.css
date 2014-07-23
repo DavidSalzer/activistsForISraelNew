@@ -162,6 +162,12 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     display: inline-block;
 }
 
+.user-item-text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .user-edit-icon-v {
     height: 35px;
     width: 35px;
@@ -536,4 +542,5 @@ canvas {
     letter-spacing: 0.5px;
     border: 1px solid #42484e;
 }
+
 
