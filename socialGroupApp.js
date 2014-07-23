@@ -1,4 +1,4 @@
-var domain = 'http://cambium.co.il:3003/';
+var domain = 'http://23.23.240.76:3003/';
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap'])
 
