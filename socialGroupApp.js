@@ -1,4 +1,4 @@
-var domain = 'http://23.23.240.76:3003/';
+var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap'])
 
@@ -580,9 +580,11 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         },
         link: function (scope, elem, attrs) {
             rawElement = elem[0];
-
+            
             elem.bind('scroll', function () {
+                
                 if ((rawElement.scrollTop + rawElement.offsetHeight + 5) >= rawElement.scrollHeight) {
+                    console.log(elem);
                     scope.$apply(scope.loadingMethod);
                 }
             });

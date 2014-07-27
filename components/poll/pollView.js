@@ -112,7 +112,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
             console.log($scope.json);
 
             queryString = 'poll/vote/' + $scope.currentPollObj._id;
-            //need server
+            console.log(queryString);
             //$http.post(domain + 'vote/', $scope.json)
             //.success(function (data) {
             classAjax.getdata('post', queryString, $scope.json).then(function (data) {
