@@ -8,6 +8,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.imgFileText = 'צרף תמונה'
     $scope.timeDisplay = {};
     var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'poll': '#da4f00', 'event': '#004a8e' };
+    $scope.isPostPending = false;
 
     $scope.parentPostType = $stateParams.postType;
     $scope.postType = $stateParams.postType;
@@ -137,9 +138,6 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                 }
                 break;
             }
-
-
-
     }
 
     $scope.cleanDetails = function () {//event
@@ -158,17 +156,19 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     };
 
     $scope.sendPost = function () {
+        if (!$scope.isPostPending) {
 
-        if (!$scope.validateInputs()) { /* alert('valdation err'); */return; }
+            if (!$scope.validateInputs()) { return; }
 
-        //article? check if the text is large then minimum
-        if (($scope.min > 0) && ($scope.postData.post.content.length < $scope.min)) { $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return; }
+            //article? check if the text is large then minimum
+            if (($scope.min > 0) && ($scope.postData.post.content.length < $scope.min)) { $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return; }
 
-        else if ($scope.postData.post.postType == 'event') {
+            else if ($scope.postData.post.postType == 'event') {
 
-            $scope.convertDate();
-        }
-        PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj)
+                $scope.convertDate();
+            }
+            $scope.isPostPending = true;
+            PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj)
 
 		.then(function (data) {
 
@@ -181,12 +181,14 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 		    }
 		    //others - show thank page
 		    $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+		    $scope.isPostPending = false;
 		});
+        }
     };
 
     $scope.editPost = function () {
 
-        if (!$scope.validateInputs()) { /* alert('valdation err'); */return; }
+        if (!$scope.validateInputs()) { return; }
 
         $scope.convertDate();
 

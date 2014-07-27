@@ -33,11 +33,11 @@
         <div class="suggested-images-wrap" >
             <div class="images-window"  >  
 			    <div  class='suggested-images-up' >
-				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  ng-if="$even" class="meme-element2"  style="background-image:url('{{image.url}}')"></span>
+				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  data-ng-if="$even" class="meme-element2"  style="background-image:url('{{image.url}}')"></span>
 				    
                 </div>
 			    <div  class='suggested-images-down'>
-				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  ng-if="$odd" class="meme-element2"  style="background-image:url('{{image.url}}')" >
+				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  data-ng-if="$odd" class="meme-element2"  style="background-image:url('{{image.url}}')" >
 				    </span>
                 </div>
             </div>
@@ -55,9 +55,9 @@
         </div>
     </div>
     <div style="position: relative">
-        <input type="file" data-upload='img' style='position: absolute; width: 100%'/>
+        <input type="file" data-upload='img' data-ng-show="showSuggestedImages" style='position: absolute; width: 100%'/>
 			    
-            <div class="add-file"  data-ng-show="true">  
+            <div class="add-file"  data-ng-show="showSuggestedImages">
            <div class="plus" style='position: absolute;top: 0;cursor: pointer;z-index: 100;'>
 			
 			
@@ -79,7 +79,7 @@
 			
 		    </div>
             <div class="file-text">
-                <select ng-model="font" ng-options="font for font in fontOptions">
+                <select data-ng-model="font" data-ng-options="font for font in fontOptions">
                   <option value="">בחר גופן</option>
                 </select>
             </div>

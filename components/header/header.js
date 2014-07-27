@@ -55,25 +55,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
              featureLogo: "./img/article.png",
              featureColor: "article"
          },
-        {
-            featureUrl: 'channel',
-            featureName: 'יוטיוב',
-            featureLogo: "./img/youtube.png",
-            featureColor: "channel"
-        },
 
-        {
-            featureUrl: 'facebookBennet/NaftaliBennett',
-            featureName: 'פייסבוק נפתלי',
-            featureLogo: "./img/NaftaliBennett.png",
-            featureColor: "FBnaftaly"
-        },
-        {
-            featureUrl: 'facebookPoalim/actionforisrael',
-            featureName: 'פייסבוק פועלים',
-            featureLogo: "./img/actionforisrael.png",
-            featureColor: "Fbactivists"
-        },
         {
             featureUrl: 'poll',
             featureName: 'משאל עם',
@@ -94,6 +76,25 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 		    featureLogo: "./img/calendar.png",
 		    featureColor: "event"
 		},
+        {
+            featureUrl: 'channel',
+            featureName: 'יוטיוב',
+            featureLogo: "./img/youtube.png",
+            featureColor: "channel"
+        },
+
+        {
+            featureUrl: 'facebookBennet/NaftaliBennett',
+            featureName: 'פייסבוק נפתלי',
+            featureLogo: "./img/NaftaliBennett.png",
+            featureColor: "FBnaftaly"
+        },
+        {
+            featureUrl: 'facebookPoalim/actionforisrael',
+            featureName: 'פייסבוק פועלים',
+            featureLogo: "./img/actionforisrael.png",
+            featureColor: "Fbactivists"
+        },
         {
             featureUrl: 'contact',
             featureName: 'צור קשר',
