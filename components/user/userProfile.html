@@ -22,7 +22,7 @@
     <div class="user-profile-items">
         <div class="user-profile-name user-profile-item">
             <div class="user-edit-icon" data-ng-hide="editName || !myProfile" data-ng-click="editItem('name')"></div>
-            <div data-ng-hide="editName">{{profile().firstName}} {{profile().lastName}}</div>
+            <div class="user-item-text" data-ng-hide="editName">{{profile().firstName}} {{profile().lastName}}</div>
             <div class="user-edit-icon-v" data-ng-show="editName" data-ng-click="updateUserDetails('name')"></div>
             <input type="text" data-ng-model="editProfile.firstName" data-ng-show="editName" value="{{ profile().firstName }}">
             <input type="text" data-ng-model="editProfile.lastName" data-ng-show="editName" value="{{ profile().lastName }}">
@@ -47,7 +47,7 @@
             <div class="user-edit-icon-x" data-ng-show="editGender" data-ng-click="editItem('gender')"></div>
         </div>
         <div class="user-profile-address user-profile-item" data-ng-show="myProfile">
-            <div class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
+            <div class="user-item-text" class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
             <div data-ng-hide="editAddress" placeholder="כתובת">{{profile().address}}</div>
             <div class="user-edit-icon-v" data-ng-show="editAddress" data-ng-click="updateUserDetails('address')"></div>
             <input type="text" data-ng-model="editProfile.address" data-ng-show="editAddress" value="{{profile().address}}">
@@ -55,14 +55,14 @@
         </div>
         <div class="user-profile-mail user-profile-item" data-ng-show="myProfile">
             <!--<div class="user-edit-icon" data-ng-hide="editEmail" data-ng-click="editItem('email')"></div>-->
-            <div data-ng-hide="editEmail">{{profile().email}}</div>
+            <div class="user-item-text" data-ng-hide="editEmail">{{profile().email}}</div>
                             <!--<div class="user-edit-icon-v" data-ng-show="editEmail"></div>
                                                                                                                             <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
                                                                                                                             <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
         </div>
         <div class="user-profile-phone user-profile-item" data-ng-show="myProfile">
             <div class="user-edit-icon" data-ng-hide="editPhone" data-ng-click="editItem('phone')"></div>
-            <div data-ng-hide="editPhone">{{profile().phone}}</div>
+            <div class="user-item-text" data-ng-hide="editPhone">{{profile().phone}}</div>
             <div class="user-edit-icon-v" data-ng-show="editPhone" data-ng-click="updateUserDetails('phone')"></div>
             <input type="text" data-ng-model="editProfile.phone" data-ng-show="editPhone" value="{{profile().phone}}">
             <div class="user-edit-icon-x" data-ng-show="editPhone" data-ng-click="editItem('phone')"></div>
