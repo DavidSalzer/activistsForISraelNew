@@ -8,7 +8,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureUrl: 'talkback',
         featureName: 'מה קורה',
         featureLogo: './img/whatsup.png',
-        featureImg: 'http://cambium.co.il:3003/image/mainImage.jpg',
+        featureImg: 'http://23.23.240.76:3003/image/mainImage.jpg',
         title: 'מלחמת ההסברה',
         text: 'בשעה שלוחמי צה"ל עומדים על המשמר בהגנה על העורף של מדינת ישראל, מתנהל מלחמה קשה גם בערוצי השידור וברשתות החברתיות ברחבי העולם. גם אתם יכולים לקחת חלק במאבק הזה ע"י הפצה של קטעי וידאו, תמונות וכתבות שהן "תחמושת" במאבק החשוב והמשמעותי הזה.',
         postId: 5

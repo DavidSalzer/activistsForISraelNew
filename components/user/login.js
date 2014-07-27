@@ -74,30 +74,6 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         else {
             location.replace(domain + 'auth/facebook?returnTo=' + $scope.returnTo)
         }
-        
-
-        //    FB.login(function (response) {
-        //        if (response.authResponse) {
-        //            console.log('Welcome!  Fetching your information.... ');
-        //            FB.api('/me', function (response) {
-        //                console.log(response);
-        //                console.log('Good to see you, ' + response.name + '.');
-
-        //                user = {
-        //                    name: response.first_name,
-        //                    lastName: response.last_name,
-        //                    img: 'https://graph.facebook.com/' + response.id + '/picture'
-        //                }
-        //                console.log(user);
-        //                // $rootScope.$broadcast('userLogin', { user: user});
-        //                //save to loacl store
-        //                localStorage.setItem('user', JSON.stringify(user));
-        //            });
-        //        } else {
-        //            console.log('User cancelled login or did not fully authorize.');
-        //            localStorage.clear('user');
-        //        }
-        //    }, { scpoe: 'email,user_likes' }); // premisions 
     }
 
     $scope.googlelogin = function () {
