@@ -1,8 +1,8 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
-     $scope.domain = domain;
-     $scope.showSpiner = PostService.getSpiner;
-
+    $scope.domain = domain;
+    $scope.showSpiner = PostService.getSpiner;
+   
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
@@ -10,19 +10,20 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
         infoHaeder: "פיצ'ר הממים",
+
         infoMainText: 'הכינו "ממים"    - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-     generalParameters.setBackIcon(false);//tester
-      request = {
+    generalParameters.setBackIcon(false); //tester
+    request = {
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
         limit: 12,
         orderBy: '-timestamp',
         postType: 'meme',
-         _parentID:''
+        _parentID: ''
     };
 
 
@@ -74,30 +75,30 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         }
     };
 
-    $scope.memeClick = function(index){
-        $state.transitionTo('single-meme',{postId:index});
+    $scope.memeClick = function (index) {
+        $state.transitionTo('single-meme', { postId: index });
     }
 
-	$scope.like = function($index){
-      
+    $scope.like = function ($index) {
 
-		var meme = $scope.posts()[$index];
-		console.log(meme)
-		
-		if (meme.isLiked == true){//UNLIKE!
-				
-			PostService.unLike(meme._id, meme); 
-			//meme.likesCount--;
-			//meme.isLiked = false;
-			return;
+
+        var meme = $scope.posts()[$index];
+        console.log(meme)
+
+        if (meme.isLiked == true) {//UNLIKE!
+
+            PostService.unLike(meme._id, meme);
+            //meme.likesCount--;
+            //meme.isLiked = false;
+            return;
         }
         else {//LIKE!
-			
-            PostService.sendLike(meme._id, meme);        
-			//meme.likesCount++;
-			//meme.isLiked = true;
-			return;
-        }  
+
+            PostService.sendLike(meme._id, meme);
+            //meme.likesCount++;
+            //meme.isLiked = true;
+            return;
+        }
     }
 
-}]);
+} ]);
