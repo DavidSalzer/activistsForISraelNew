@@ -10,6 +10,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     $scope.bottomText = "";
     $scope.font;
     $scope.postImg = "";
+    $scope.isSiteHeader = true;
 
     /*init controller details*/
     $scope.featureDetails = {
