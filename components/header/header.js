@@ -193,6 +193,71 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         generalParameters.setShowLogin(false);
     }
 
+    $scope.features = [
+    {
+        featureId: 2,
+        featureUrl: 'talkback',
+        featureName: 'מה קורה',
+        featureLogo: './img/whatsup.png',
+        featureImg: 'http://23.23.240.76:3003/image/mainImage.jpg',
+        title: 'מלחמת ההסברה',
+        text: 'בשעה שלוחמי צה"ל עומדים על המשמר בהגנה על העורף של מדינת ישראל, מתנהל מלחמה קשה גם בערוצי השידור וברשתות החברתיות ברחבי העולם. גם אתם יכולים לקחת חלק במאבק הזה ע"י הפצה של קטעי וידאו, תמונות וכתבות שהן "תחמושת" במאבק החשוב והמשמעותי הזה.',
+        postId: 5
+    },
+    {
+        featureId: 3,
+        featureUrl: 'facebookPoalim',
+        featureName: 'פייסבוק פועלים',
+        featureLogo: './img/actionforisrael.png',
+        featureImg: './img/image/pic5.png',
+        title: 'ערוץ הפייסבוק של פועלים למען ישראל',
+        text: 'הכנסו לקרוא',
+        postId: 5
+    },
+    {
+        featureId: 2,
+        featureUrl: 'poll',
+        featureName: 'משאל עם',
+        featureLogo: './img/poll.png',
+        featureImg: './img/image/pic6.png',
+        title: 'בואו להצביע בעמוד הסקרים שלנו',
+        text: 'עמוד סקרים',
+        postId: 5
+    },
+    {
+        featureId: 3,
+        featureUrl: 'facebookBennet',
+        featureName: 'פייסבוק נפתלי',
+        featureLogo: './img/NaftaliBennett.png',
+        featureImg: './img/image/pic4.png',
+        title: 'ערוץ הפייסבוק של נפתלי בנט',
+        text: 'הכנסו לקרוא',
+        postId: 5
+    },
+    {
+        featureId: 3,
+        featureUrl: 'article',
+        featureName: 'מאמרים',
+        featureLogo: './img/article.png',
+        featureImg: './img/image/pic3.png',
+        title: 'מאמרים בנושאים על סדר היום',
+        text: 'עמוד מאמרים',
+        postId: 5
+    }
+    ,
+    {
+        featureId: 1,
+        featureUrl: 'channel',
+        featureName: 'יוטיוב',
+        featureLogo: './img/youtube.png',
+        featureImg: './img/image/pic1.png',
+        title: 'ערוץ היוטיוב של נפתלי בנט',
+        text: 'לצפייה מהנייד',
+        postId: 5
+    }
+
+    ];
+
 } ]);
 
 
