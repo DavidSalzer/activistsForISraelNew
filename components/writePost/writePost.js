@@ -84,6 +84,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
 
                 $scope.postData.post.postType = 'poll';
+                $scope.postData.post.title = 'הצעת סקר';
 
                 $scope.thankDetails = {
 
