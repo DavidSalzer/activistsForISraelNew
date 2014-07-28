@@ -5,7 +5,7 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'classAjax', 'Post
 
     //  $scope.posts = PostService.getPosts;
     $scope.showInput = false;
-
+    $scope.isSiteHeader = true;
 
 
     $scope.featureDetails = {
