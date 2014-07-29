@@ -316,7 +316,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             $http.post(domain + 'addPostActivity', json)
 			.success(function (data) {
 			    if (data.status.statusCode == 0) {
-                    post.isLiked = true;
+			        post.isLiked = true;
 			        post.likesCount++;
 			        console.log('success like');
 			    }
@@ -361,7 +361,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         setUser: function (userDetails) {
-
+            if (userDetails.address == undefined || userDetails.address == '') {
+                userDetails.address = 'כתובת';
+            }
+            if (userDetails.phone == undefined || userDetails.phone == '') {
+                userDetails.phone = 'מספר טלפון';
+            }
             user = userDetails;
         },
 
