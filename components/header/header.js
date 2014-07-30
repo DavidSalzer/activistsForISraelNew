@@ -1,5 +1,7 @@
 socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$state', '$http', 'generalParameters', function ($rootScope, $scope, $location, $state, $http, generalParameters) {
 
+    $rootScope.siteOrigin = siteOrigin;
+
     var current = $location.$$url;
     //$scope.active = -1;
     $scope.showLoader = false;

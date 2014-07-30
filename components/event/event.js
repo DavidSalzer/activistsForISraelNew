@@ -5,7 +5,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     $scope.showSpiner = PostService.getSpiner;
     $scope.f = true;
     $scope.f2 = true;
-     $scope.isSiteHeader = true;
+    $scope.isSiteHeader = true;
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/calendar.png",
