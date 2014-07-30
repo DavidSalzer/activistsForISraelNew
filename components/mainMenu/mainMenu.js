@@ -75,7 +75,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     }
 
     $scope.featureDetails = {
-        featureName: null,
+        featureName: 'mainMenu',
         featureLogo: "./img/poalim-logo.png",
         //infoImg: './img/whatsup.png',
         featureColor: 'gray'
