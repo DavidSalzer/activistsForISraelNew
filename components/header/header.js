@@ -1,6 +1,8 @@
 socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$state', '$http', 'generalParameters', function ($rootScope, $scope, $location, $state, $http, generalParameters) {
 
-    $rootScope.siteOrigin = siteOrigin;
+    $rootScope.siteOrigin = siteOrigin;//origin url of site.
+
+    $scope.originUrl = window.location.origin + window.location.pathname + '#/';//origin url for main menu items.
 
     var current = $location.$$url;
     //$scope.active = -1;
@@ -201,14 +203,14 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         featureUrl: 'talkback',
         featureName: 'מה קורה',
         featureLogo: './img/whatsup.png',
-        featureImg: 'http://23.23.240.76:3003/image/mainImage.jpg',
+        featureImg: domain + 'image/mainImage.jpg',
         title: 'מלחמת ההסברה',
         text: 'בשעה שלוחמי צה"ל עומדים על המשמר בהגנה על העורף של מדינת ישראל, מתנהל מלחמה קשה גם בערוצי השידור וברשתות החברתיות ברחבי העולם. גם אתם יכולים לקחת חלק במאבק הזה ע"י הפצה של קטעי וידאו, תמונות וכתבות שהן "תחמושת" במאבק החשוב והמשמעותי הזה.',
         postId: 5
     },
     {
         featureId: 3,
-        featureUrl: 'facebookPoalim',
+        featureUrl: 'facebookPoalim/actionforisrael',
         featureName: 'פייסבוק פועלים',
         featureLogo: './img/actionforisrael.png',
         featureImg: './img/image/pic5.png',
@@ -228,7 +230,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     },
     {
         featureId: 3,
-        featureUrl: 'facebookBennet',
+        featureUrl: 'facebookBennet/NaftaliBennett',
         featureName: 'פייסבוק נפתלי',
         featureLogo: './img/NaftaliBennett.png',
         featureImg: './img/image/pic4.png',
