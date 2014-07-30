@@ -1,6 +1,6 @@
-<!--<author-header data-ng-show="{{post.postType=='article'}}"></author-header>-->
-<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="../../../components/comments/comments.css" />
+<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/comments/comments.css" />
 
+<!--<author-header data-ng-show="{{post.postType=='article'}}"></author-header>-->
 <div class="comment-container" scroller loading-method="loadMore()">
     <section class="comment-main-post">
         <post data-post-type="talkback" data-ng-repeat="post in [post()]"></post>
