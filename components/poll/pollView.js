@@ -4,6 +4,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
     $scope.currentPoll = $stateParams.postId;
     $scope.choosenOption = [];
     $scope.choosenCount = 0;
+    $scope.isSiteHeader = true;
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/poll.png",
