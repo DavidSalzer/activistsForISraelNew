@@ -138,14 +138,14 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             $rootScope.$broadcast('showLoginPopup', { showLogin: false });
             $rootScope.$broadcast('showThankPage', { showThankPage: false });
             $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
-            $scope.showInfo = false;
+            $rootScope.$broadcast('showInfoPopup', { showInfo: false });
             generalParameters.setShowLogin(false);
         } else {
             $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
             $rootScope.$broadcast('showLoginPopup', { showLogin: false });
             $rootScope.$broadcast('showThankPage', { showThankPage: false });
             $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
-            $scope.showInfo = true;
+            $rootScope.$broadcast('showInfoPopup', { showInfo: true });
             generalParameters.setShowLogin(true);
         }
     }
@@ -167,7 +167,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showLoginPopup', { showLogin: false });
         $rootScope.$broadcast('showThankPage', { showThankPage: false });
         $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
-        $scope.showInfo = false;
+        $rootScope.$broadcast('showInfoPopup', { showInfo: false });
         generalParameters.setShowLogin(false);
 
         //phonegap sharing plugin
@@ -193,7 +193,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showLoginPopup', { showLogin: false });
         $rootScope.$broadcast('showThankPage', { showThankPage: false });
         $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
-        $scope.showInfo = false;
+        $rootScope.$broadcast('showInfoPopup', { showInfo: false });
         generalParameters.setShowLogin(false);
     }
 
