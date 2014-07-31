@@ -156,9 +156,10 @@ input#userImg {
 
 input[type=file] {
    opacity: 0;
-width: inherit;
-height: inherit;
-z-index: 1000;
+    width: inherit;
+    height: inherit;
+    z-index: 1000;
+    cursor: pointer;
 }
 
 .log-in-or {
