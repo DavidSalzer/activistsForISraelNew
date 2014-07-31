@@ -483,6 +483,7 @@ margin-top: 9px;
     display: inline-block;
     vertical-align: middle;
     background-position-x: -49px;
+    cursor: pointer;
 }
 
 .like-section-icon-isLike {

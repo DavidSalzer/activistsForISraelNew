@@ -1,4 +1,4 @@
-<h1 class="app-name" data-toggle="off" data-bubble data-target="mainSidebar" data-ng-click="goToUserProfile()">
+<h1 class="app-name" data-toggle="off" data-bubble data-target="mainSidebar" data-ng-click="closePopups();goToUserProfile()">
     <div id="my-username">{{userProfile().firstName}} {{userProfile().lastName}}</div>  
     <img class="sidebar-logo user-thumbnail" data-ng-src='{{userProfile().userImg}}' alt="alt">
 </h1>
@@ -7,7 +7,7 @@
 
             <div class="scrollable">
                 <div class="scrollable-content">
-                    <div class="list-group" data-toggle="off" data-bubble data-target="mainSidebar"  >
+                    <div class="list-group" data-ng-click="closePopups()" data-toggle="off" data-bubble data-target="mainSidebar"  >
                         <a data-ng-repeat="feature in featuresList" data-ng-class="{'list-group-item':true,'{{feature.featureColor}}':true}" href="#/{{feature.featureUrl}}">
                             <span class="sidbar-text">
                                 {{feature.featureName}}
