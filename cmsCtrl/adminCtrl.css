@@ -1,0 +1,23 @@
+.cms-footer {
+    margin-top: 5px;
+}
+
+.cms-delete {
+    background-image: url('../img/x.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.cms-edit {
+    background-image: url('../img/pencil2.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}

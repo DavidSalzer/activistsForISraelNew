@@ -11,6 +11,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
     var user = null;
     var showSpiner = false;
     var previeMemeBase64 = "";
+    var mainFeatures = [];
 
 
     return {
@@ -483,6 +484,23 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             })
         },
 
+        loadMainFeatures: function () {
+            queryString = 'mainfeatures';
+            console.log(queryString);
+
+            classAjax.getdata('get', queryString).then(function (data) {
+                console.log(data);
+                if (data.status.statusCode == 0) {
+                    mainFeatures = data.data;
+                    for (var i in mainFeatures) {
+                        mainFeatures[i].featureName = featureDictionary[mainFeatures[i].featureType].featureName;
+                        mainFeatures[i].featureLogo = featureDictionary[mainFeatures[i].featureType].featureLogo;
+                    }
+                    console.log(mainFeatures);
+                }
+            })
+        },
+
         getSpiner: function () {
             return showSpiner;
         },
@@ -496,6 +514,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         cleanPosts: function () {
             posts = [];
+        },
+
+        getMainFeatures: function () {
+            return mainFeatures;
         }
 
     }

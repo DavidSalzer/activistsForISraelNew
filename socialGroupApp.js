@@ -216,30 +216,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         getdata: function (method, queryString, request) {
             var deferred = $q.defer();
 
-            switch (request.postType) {
-                case 'talkback':
-                    URL = 'posts.txt';
-                    break;
-                case 'article':
-                    URL = 'articles.txt';
-                    break;
-                case 'author':
-                    URL = 'author.txt';
-                    break;
-                case 'poll':
-                    URL = 'polls.txt';
-                    break;
-                case 'meme':
-                    URL = 'memes.txt';
-                    break;
-                case 'memeImages':
-                    URL = 'memeImages.txt';
-                    break;
-				case 'event':
-                    URL = 'events.txt';
-                    break;
-            }
-
             $http({
                url: domain + queryString,
                //url: URL,
@@ -734,4 +710,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 	});
 	
 }]);
+
+
 

@@ -1,21 +1,23 @@
 <link rel="stylesheet"  media='screen and (min-width: 900px)' type="text/css" href="{{siteOrigin}}components/mainMenu/mainMenu.css" />
 
 <section id="main-menu" data-role="page">
-    <a class="current-feature" href="{{originUrl + features[0].featureUrl}}">
+    <a class="current-feature" href="{{originUrl + features()[0].link}}">
         <div class="current-feature-components">
-            <div class="current-feature-image" style="background-image: url('{{features[0].featureImg}}')"></div>
+            <div class="current-feature-image" style="background-image: url('{{features()[0].image}}')"></div>
             <div class="current-feature-name">
-                <h2>{{features[0].featureName}}</h2>
-                <div class="feature-logo" style="background-image: url('{{features[0].featureLogo}}')"></div>
+                <h2>{{features()[0].featureName}}</h2>
+                <div class="feature-logo" style="background-image: url('{{features()[0].featureLogo}}')"></div>
             </div>
-            <h2 class="current-feature-title">{{features[0].title}}</h2>
-            <p class="current-feature-text">{{features[0].text}}</p>
+            <h2 class="current-feature-title">{{features()[0].title}}</h2>
+            <p class="current-feature-text">{{features()[0].content}}</p>
+            <management-bar data-ng-if="isAdmin"></management-bar>
         </div>
+        
     </a>
 
-    <div id="features-swipe-inner" class="row features-swipe" data-ng-init="this.scrollLeft=($scope.features.length-1)*145">
-        <div data-ng-style="{'position': 'relative','width': '{{(features.length-1)*145}}px','height': '100%'}">
-            <a class="col-sm-6 col-md-4 menu-item-feature" data-ng-repeat="feature in features" href="{{originUrl + feature.featureUrl}}" data-ng-hide="$index==0" data-on-finish-render="scrollToEnd">
+    <div id="features-swipe-inner" class="row features-swipe" data-ng-init="this.scrollLeft=($scope.features().length-1)*145">
+        <div style="position: relative;width: {{(features().length-1)*145}}px;height: 100%">
+            <a class="col-sm-6 col-md-4 menu-item-feature" data-ng-repeat="feature in features()" href="{{originUrl + feature.link}}" data-ng-hide="$index==0" data-on-finish-render="scrollToEnd">
                 <div class="thumbnail current-feature-components">
                     <div class="caption current-feature-name">
                         <h2>{{feature.featureName}}</h2>
@@ -23,11 +25,12 @@
                     </div>
                     <div class="caption desc">
                         <h3>{{feature.title}}</h3>
-                        <p>{{feature.text}}</p>
+                        <p>{{feature.content}}</p>
                     </div>
-                    <img ng-src="{{feature.featureImg}}" alt="...">
-
+                    <img ng-src="{{feature.image}}" alt="...">
+                    <management-bar data-ng-if="isAdmin"></management-bar>
                 </div>
+                
             </a>
         </div>        
       </div>

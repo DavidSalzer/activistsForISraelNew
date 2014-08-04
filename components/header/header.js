@@ -1,8 +1,9 @@
 socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$state', '$http', 'generalParameters', function ($rootScope, $scope, $location, $state, $http, generalParameters) {
 
-    $rootScope.siteOrigin = siteOrigin;//origin url of site.
+    $rootScope.siteOrigin = siteOrigin; //origin url of site.
+    $rootScope.isAdmin = false;
 
-    $scope.originUrl = window.location.origin + window.location.pathname + '#/';//origin url for main menu items.
+    $scope.originUrl = window.location.origin + window.location.pathname + '#/'; //origin url for main menu items.
 
     var current = $location.$$url;
     //$scope.active = -1;
