@@ -3,12 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1, minimum-scale=1,maximum-scale=1, user-scalable=0, height=device-height, width=device-width" />
-
         <title>פועלים למען ישראל</title>
-
-
-
-
         <link rel="stylesheet" href="./css/mobile-angular-ui-base.min.css">
         <link rel="stylesheet" href="./css/mobile-angular-ui-desktop.min.css">
         <link rel="stylesheet" href="./css/bootstrapModifications.css">
@@ -29,6 +24,20 @@
         <!--phone gap and plugins-->
         <!-- <script type="text/javascript" src="cordova.js"></script> -->
         <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            // Wait for device API libraries to load
+            function onLoad() {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+            
+            // device APIs are available
+            function onDeviceReady() {
+                // Now safe to use device APIs
+                navigator.splashscreen.hide();
+            }    
+        </script>
+
+
         <script type="text/javascript" src="js/SocialSharing.js"></script>
         <!--phone gap and plugins-->
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -53,7 +62,7 @@
         <script src="js/jquery.Jcrop.min.js"></script>
 
         <script src="socialGroupApp.js"></script>
-        
+
         <script src="js/dictionary.js"></script>
         <script src="./services/uploadImg.js"></script>
         <script src="./services/generalParameters.js"></script>
@@ -94,7 +103,7 @@
         <script src="plugins/html2canvas.js"></script>
         <!--<script src="plugins/color-picker/jscolor.js"></script>-->
     </head>
-    <body>
+    <body onload="onLoad()">
 
         <!-- facebook sdk  -->
         <div id="fb-root"></div>
@@ -132,7 +141,7 @@
             <!-- Main view -->
             <div class="app-body">
                 <!--<div class="loader-zone" data-ng-show="true">-->
-                    <div class="general-loader fa fa-spinner fa-spin" data-ng-controller="headerCtrl" data-ng-show="showLoader"></div>
+                <div class="general-loader fa fa-spinner fa-spin" data-ng-controller="headerCtrl" data-ng-show="showLoader"></div>
                 <!--</div>-->
                 <div class="main-view" data-ui-view="main"></div>
             </div>
