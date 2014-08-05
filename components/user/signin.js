@@ -83,10 +83,10 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
             $scope.signinDetails.phone = $scope.phone;
             $scope.signinDetails.address = $scope.address;
         }
-        else {
-            $scope.signinDetails.phone = "מספר טלפון";
-            $scope.signinDetails.address = "כתובת";
-        }
+        //else {
+        //    $scope.signinDetails.phone = "מספר טלפון";
+        //    $scope.signinDetails.address = "כתובת";
+        //}
 
         console.log($scope.signinDetails);
         $scope.json = JSON.stringify($scope.signinDetails);

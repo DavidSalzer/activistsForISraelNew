@@ -1,6 +1,8 @@
 <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/poll/poll.css" />
 
-<div class="channel-title-zone sub-header">
+
+<div class="channel-title-zone sub-header" data-ng-class="{'site-sub-header':isSiteHeader==true}">
     <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-show = "pollIsActive()">סקר פעיל</div>
     <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-hide = "pollIsActive()">תודה על השתתפותך</div>
     <div class="color-line"></div>
@@ -22,6 +24,7 @@
 	<!--Div that will hold the pie chart-->
 	<div google-chart data="currentPollResults" type={{currentPollObj.poll.pollType}} data-ng-hide = "pollIsActive()"></div>
 	<div class="gray-line" data-ng-hide = "pollIsActive()"></div>
+    <div class="legend-wraper">
 	 <div ng-repeat="line in legend" class="legend-container" data-ng-hide = "pollIsActive()">
 		<div class="legend-color" data-ng-style="{'background-color': '{{line.color}}'}"></div>
 		<div class="legend-content" data-ng-style="{'color': '#ffffff'}">{{line.title}}</div>
@@ -29,8 +32,8 @@
 			
 		</div>
 	</div>
-	
-	 <div ng-repeat="item in optionsForVote" data-ng-show = "pollIsActive()" data-ng-style="{'padding-top':'10px'}"> 
+	</div>
+	 <div ng-repeat="item in optionsForVote" data-ng-show = "pollIsActive()" class="picking-items" data-ng-style="{'padding-top':'10px'}"> 
 		<div class="optionToVote-image" data-ng-show ='{{"item.imageUrl"}}' style="background-image: url({{item.imageUrl}})">
 			<!--<img ng-src="{{item.imageUrl}}" >-->
 		</div>

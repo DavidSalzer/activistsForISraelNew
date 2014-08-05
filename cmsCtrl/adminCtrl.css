@@ -1,0 +1,28 @@
+.cms-footer {
+    margin-top: 5px;
+}
+
+.cms-delete {
+    background-image: url('../img/x_delete.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    float: left;
+    position: absolute;
+    left: 9px;
+    top: -9px;
+    cursor: pointer;
+}
+
+.cms-edit {
+    background-image: url('../img/pencil2.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}

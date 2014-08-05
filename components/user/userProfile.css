@@ -160,6 +160,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     top: 13px;
     right: 0px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .user-item-text {
@@ -180,6 +181,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     top: 13px;
     right: 0px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .user-edit-icon-x {
@@ -194,6 +196,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     top: 13px;
     left: 0px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .user-giving-score {
@@ -208,6 +211,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     top: 13px;
     right: 0px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .user-giving-score-done {
@@ -256,6 +260,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     font-size: 10px;
     display: inline-block;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .user-profile-other-user-activity figure.author-image {
@@ -342,6 +347,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     position: relative;
     padding-right: 50px;
     line-height: 50px;
+    cursor: pointer;
 }
 
 .user-recent-activity-logo {

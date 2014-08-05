@@ -1,4 +1,9 @@
-socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$state', '$http', 'generalParameters', function ($rootScope, $scope, $location, $state, $http, generalParameters) {
+socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$state', '$http', 'generalParameters', 'PostService', function ($rootScope, $scope, $location, $state, $http, generalParameters, PostService) {
+
+    $rootScope.siteOrigin = siteOrigin; //origin url of site.
+    $rootScope.isAdmin = true;
+
+    $scope.originUrl = window.location.origin + window.location.pathname + '#/'; //origin url for main menu items.
 
     var current = $location.$$url;
     //$scope.active = -1;
@@ -134,14 +139,14 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             $rootScope.$broadcast('showLoginPopup', { showLogin: false });
             $rootScope.$broadcast('showThankPage', { showThankPage: false });
             $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
-            $scope.showInfo = false;
+            $rootScope.$broadcast('showInfoPopup', { showInfo: false });
             generalParameters.setShowLogin(false);
         } else {
             $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
             $rootScope.$broadcast('showLoginPopup', { showLogin: false });
             $rootScope.$broadcast('showThankPage', { showThankPage: false });
             $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
-            $scope.showInfo = true;
+            $rootScope.$broadcast('showInfoPopup', { showInfo: true });
             generalParameters.setShowLogin(true);
         }
     }
@@ -163,7 +168,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showLoginPopup', { showLogin: false });
         $rootScope.$broadcast('showThankPage', { showThankPage: false });
         $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
-        $scope.showInfo = false;
+        $rootScope.$broadcast('showInfoPopup', { showInfo: false });
         generalParameters.setShowLogin(false);
 
         //phonegap sharing plugin
@@ -189,9 +194,14 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showLoginPopup', { showLogin: false });
         $rootScope.$broadcast('showThankPage', { showThankPage: false });
         $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
-        $scope.showInfo = false;
+        $rootScope.$broadcast('showInfoPopup', { showInfo: false });
         generalParameters.setShowLogin(false);
     }
+
+    PostService.loadMainFeatures();
+    $scope.features = PostService.getMainFeatures;
+
+    
 
 } ]);
 

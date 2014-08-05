@@ -1,8 +1,8 @@
 <link rel="stylesheet" type="text/css" href="css/jquery.Jcrop.min.css">
 <link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
 <link rel="stylesheet" type="text/css" href="./components/event/event.css" />
-<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="../../../components/meme/meme.css" />
-<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="../../../components/event/event.css" />
+<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/meme/meme.css" />
+<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/user/userProfile.css" />
 
 <section id="user-profile">
     <div class="user-profile-avatar-zone">
@@ -29,11 +29,11 @@
             <div class="user-edit-icon-x" data-ng-show="editName" data-ng-click="editItem('name')"></div>
         </div>
         <div class="user-profile-registration-date user-profile-item">
-            <div placeholder="כתובת">תאריך הרשמה: {{profile().registrationDate| date : 'dd.MM.yyyy'}}</div>
+            <div>תאריך הרשמה: {{profile().registrationDate| date : 'dd.MM.yyyy'}}</div>
         </div>
         <div class="user-profile-scoring user-profile-item">
             <div class="user-giving-score" data-ng-class="{'user-giving-score-done': userLike}" data-ng-hide="myProfile" data-ng-click="givingScore()"></div>
-            <div placeholder="כתובת">ניקוד מצטבר: {{profile().point.count+0}}</div>
+            <div>ניקוד מצטבר: {{profile().point.count+0}}</div>
         </div>
         <div class="user-profile-gender user-profile-item" data-ng-show="myProfile">
             <div class="user-edit-icon" data-ng-hide="editGender" data-ng-click="editItem('gender')"></div>
@@ -47,6 +47,7 @@
             <div class="user-edit-icon-x" data-ng-show="editGender" data-ng-click="editItem('gender')"></div>
         </div>
         <div class="user-profile-address user-profile-item" data-ng-show="myProfile">
+            <div class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
             <div class="user-item-text" class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
             <div data-ng-hide="editAddress" placeholder="כתובת">{{profile().address}}</div>
             <div class="user-edit-icon-v" data-ng-show="editAddress" data-ng-click="updateUserDetails('address')"></div>

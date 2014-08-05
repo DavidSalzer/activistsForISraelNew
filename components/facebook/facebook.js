@@ -3,6 +3,8 @@ socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', 'classAja
     //$scope.FaceItemWidth = "311"; //Math.floor((facebookWrap.offsetWidth) * 90 / 100);
     //$scope.FaceItemHeight = "901"; //Math.floor((screen.height)*102/100);
     $scope.currentChannel = 'https://www.facebook.com/' + 'NaftaliBennett';
+    $scope.isSiteHeader = true;
+
 
     if (window.outerWidth < 900) {
         $scope.FaceItemWidth = "311"; //Math.floor((facebookWrap.offsetWidth) * 90 / 100);
@@ -54,7 +56,7 @@ socialGroupApp.controller('facebookPoalim', ['$scope', '$stateParams', 'classAja
     //$scope.FaceItemWidth = "311"; //Math.floor((facebookWrap.offsetWidth) * 90 / 100);
     //$scope.FaceItemHeight = "901"; //Math.floor((screen.height)*102/100);
     $scope.currentChannel = 'https://www.facebook.com/' + 'actionforisrael';
-
+     $scope.isSiteHeader = true;
     if (window.outerWidth < 900) {
         $scope.FaceItemWidth = "311"; //Math.floor((facebookWrap.offsetWidth) * 90 / 100);
         $scope.FaceItemHeight = "901"; //Math.floor((screen.height)*102/100);

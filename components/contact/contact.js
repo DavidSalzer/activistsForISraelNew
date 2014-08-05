@@ -5,7 +5,7 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'classAjax', 'Post
 
     //  $scope.posts = PostService.getPosts;
     $scope.showInput = false;
-
+    $scope.isSiteHeader = true;
 
 
     $scope.featureDetails = {
@@ -34,8 +34,9 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'classAjax', 'Post
         $scope.postData = { post: {} };
         $scope.postData.post.postType = 'contact';
         $scope.postData.post.content = $scope.text;
-        $scope.postData.post.username = $scope.name;
-        $scope.postData.post.from = $scope.mail;
+        $scope.postData.post.name = $scope.name;
+        $scope.postData.post.email = $scope.mail;
+        $scope.postData.post.title = 'יצירת קשר';
 
         PostService.sendPost($scope.postData)
 

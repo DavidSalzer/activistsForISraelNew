@@ -4,6 +4,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
     $scope.currentPoll = $stateParams.postId;
     $scope.choosenOption = [];
     $scope.choosenCount = 0;
+    $scope.isSiteHeader = true;
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/poll.png",
@@ -112,7 +113,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
             console.log($scope.json);
 
             queryString = 'poll/vote/' + $scope.currentPollObj._id;
-            //need server
+            console.log(queryString);
             //$http.post(domain + 'vote/', $scope.json)
             //.success(function (data) {
             classAjax.getdata('post', queryString, $scope.json).then(function (data) {

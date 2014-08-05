@@ -1,4 +1,5 @@
-var domain = 'http://23.23.240.76:3003/';
+var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
+var siteOrigin = '../../../';
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap'])
 
@@ -214,30 +215,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     return {
         getdata: function (method, queryString, request) {
             var deferred = $q.defer();
-
-            switch (request.postType) {
-                case 'talkback':
-                    URL = 'posts.txt';
-                    break;
-                case 'article':
-                    URL = 'articles.txt';
-                    break;
-                case 'author':
-                    URL = 'author.txt';
-                    break;
-                case 'poll':
-                    URL = 'polls.txt';
-                    break;
-                case 'meme':
-                    URL = 'memes.txt';
-                    break;
-                case 'memeImages':
-                    URL = 'memeImages.txt';
-                    break;
-				case 'event':
-                    URL = 'events.txt';
-                    break;
-            }
 
             $http({
                url: domain + queryString,
@@ -580,9 +557,11 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         },
         link: function (scope, elem, attrs) {
             rawElement = elem[0];
-
+            
             elem.bind('scroll', function () {
+                
                 if ((rawElement.scrollTop + rawElement.offsetHeight + 5) >= rawElement.scrollHeight) {
+                    console.log(elem);
                     scope.$apply(scope.loadingMethod);
                 }
             });
@@ -731,4 +710,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 	});
 	
 }]);
+
+
 

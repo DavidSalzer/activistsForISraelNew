@@ -178,10 +178,12 @@ select {
 
 .post-likes {
     left: 0px;
+    cursor: pointer;
 }
 
 .post-comment {
     right: 0px;
+    cursor: pointer;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
@@ -212,6 +214,9 @@ select {
     line-height: 16px;
 }
 
+.post-wrap {
+    cursor: pointer;
+}
 
 .post-tab {
     background: #fff;
@@ -311,6 +316,7 @@ span.author-date {
     float: left;
     line-height: 50px;
     font-size: 13px;
+
 }
 
 div.post-main-text {
@@ -521,6 +527,7 @@ span.respond-count, span.like-count {
     height: 64px;
     top: 3px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 div.list-group {
@@ -671,6 +678,11 @@ div.list-group {
     line-height: 39px;
     z-index: 1;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.sub-header.site-sub-header {
+    cursor: default;
 }
 
 .main-content-wrap {
@@ -1001,6 +1013,7 @@ button {
     margin-left: auto;
     padding-right: 25px;
     padding-top: 15px;
+    cursor: pointer;
 }
 
 .vote-error {
@@ -1022,6 +1035,7 @@ button {
     margin-bottom: 20px;
     color: #ffffff;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .optionToVote-image {

@@ -9,6 +9,7 @@ socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', fu
     $scope.showSpiner = false;
     $scope.indexVideo = 0;
     $scope.loadMoreFlag = true;
+    $scope.isSiteHeader = true;
 
     $scope.featureDetails = {
         featureName: null,
