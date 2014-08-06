@@ -402,6 +402,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             classAjax.getdata('get', queryString, {})
             .then(function (data) {
                 console.log(data);
+                //if (data.status.statusCode == 8) { window.history.back(); }//go back if the post not exist.
                 self.getIsLike(postid);
                 singlePost = data.data;
                 posts = [];

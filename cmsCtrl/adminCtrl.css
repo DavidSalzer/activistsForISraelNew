@@ -15,6 +15,11 @@
     left: 9px;
     top: -9px;
     cursor: pointer;
+    z-index: 2;
+}
+
+.single-meme .cms-delete {
+    position: initial;
 }
 
 .cms-edit {
