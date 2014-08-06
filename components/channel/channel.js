@@ -34,12 +34,12 @@ socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', fu
         if ($scope.loadMoreFlag) {
             $scope.loadMoreFlag = false;
             $http({ method: 'GET', url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId='
-        + $scope.channelId + '&maxResults='
-        + $scope.maxResults + '&pageToken='
-        + $scope.pageToken + '&key='
-        + $scope.key + '&order=' + $scope.order
+                + $scope.channelId + '&maxResults='
+                + $scope.maxResults + '&pageToken='
+                + $scope.pageToken + '&key='
+                + $scope.key + '&order=' + $scope.order
             }).
-        success(function (data, status, headers, config) {
+            success(function (data, status, headers, config) {
             // this callback will be called asynchronously
             // when the response is available
             //console.log(data);
@@ -55,11 +55,11 @@ socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', fu
 
             $scope.$apply();
             $scope.showSpiner = false;
-        }).
-        error(function (data, status, headers, config) {
+            }).
+            error(function (data, status, headers, config) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
-        });
+            });
         }
         else {
             setTimeout($scope.getVideos(), 500);

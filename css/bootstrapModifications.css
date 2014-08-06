@@ -1,3 +1,7 @@
+a:focus, a:hover {
+text-decoration: initial;
+}
+
 .btn-default.active, .btn-default:active, .btn-default:focus, .btn-default:hover, .open .dropdown-toggle.btn-default {
     background-color: transparent;
     border-color: transparent;
