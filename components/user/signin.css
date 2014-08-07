@@ -215,6 +215,7 @@ span#signinButton {
     color: white;
     text-align: center;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 #___signin_0, #___signin_0 button {
@@ -234,6 +235,20 @@ span#signinButton {
 
 .loginErrorActive {
     border: 1px solid red;
+}
+
+.password-recovery-title {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.password-recovery-sub-title {
+    color: white;
+    font-size: 12px;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 15px;
 }
 
 /*--------------------------------croping-------------------------*/

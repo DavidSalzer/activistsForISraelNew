@@ -3,6 +3,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     $scope.returnTo = document.URL;
     $scope.showEmailError = false;
     $scope.showPassError = false;
+    $scope.isForgotPassword = false;
 
     if (localStorage.getItem('user')) {
         console.log('user login... transitionTo:');
@@ -16,6 +17,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     $scope.$on('showLoginPopup', function (event, args) {
         $scope.showLogin = args.showLogin;
         generalParameters.setShowLogin($scope.showLogin);
+        $scope.isForgotPassword = false;
         $scope.$apply();
         console.log(args)
     });
@@ -23,6 +25,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     $scope.closeLoginPopup = function () {
         $scope.showLogin = false;
         generalParameters.setShowLogin(false);
+        $scope.isForgotPassword = false;
     }
 
     $scope.openSigninPopup = function () {
@@ -89,7 +92,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     }
 
     $scope.endLogin = function (event) {
-        
+
         if (event.url.search('/profile') != -1) {
             $http.get(domain + 'profile/', { withCredentials: true, async: true })
                 .success(function (data) {
@@ -109,6 +112,61 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             $scope.$apply();
 
         }
+    }
+
+    //Open password recovery page.
+    $scope.forgotPassword = function () {
+        $scope.isForgotPassword = true;
+    }
+
+    //Send forgotPassword request to server.
+    $scope.sendForgotPassword = function () {
+        $scope.showEmailError = $scope.mail == undefined || $scope.mail == '';
+
+        if ($scope.showEmailError) {
+            return;
+        }
+
+        $http.get(domain + 'forgotPassword/' + $scope.mail)
+        .success(function (data) {
+            console.log(data);
+            if (data.status.statusCode == 0) {
+                $scope.successPasswordRecovery = true;
+            }
+        })
+    }
+
+    $scope.setNewPassword = function () {
+        $scope.recoveryCodeError = $scope.recoveryCode == undefined || $scope.recoveryCode == '';
+        $scope.showPassError = $scope.pass == undefined || $scope.pass == '';
+
+        if ($scope.recoveryCodeError || $scope.showPassError) {
+            return;
+        }
+
+        $scope.newPasswordDetails = {
+
+            code: $scope.recoveryCode,
+            password: $scope.pass
+
+        }
+
+        console.log($scope.newPasswordDetails);
+        $scope.json = JSON.stringify($scope.newPasswordDetails);
+        console.log($scope.json);
+
+        $http.put(domain + 'setPassword/' + $scope.mail, $scope.json)
+        .success(function (data) {
+            console.log(data);
+            if (data.status.statusCode == 0) {
+                $scope.showLogin = false;
+                generalParameters.setShowLogin(false);
+                //generalParameters.setUser(data.data.user);
+                $scope.mail = '';
+                $scope.pass = '';
+            }
+        });
+
     }
 
 
