@@ -8,7 +8,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.imgFileText = 'צרף תמונה'
     $scope.isSiteHeader = true;
     $scope.timeDisplay = {};
-    var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'poll': '#da4f00', 'event': '#004a8e' };
+    var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'suggestPoll': '#da4f00', 'event': '#004a8e' };
     $scope.isPostPending = false;
 
     $scope.parentPostType = $stateParams.postType;

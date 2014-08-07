@@ -1,0 +1,78 @@
+<link rel="stylesheet" type="text/css" href="./components/article/article.css" />
+<link rel="stylesheet"  media='screen and (min-width: 900px)' type="text/css" href="{{siteOrigin}}components/article/article.css" />
+<!-- sub header: כתיבת טקסט,סקר -->
+
+<div class="sub-header" data-ng-class="{'site-sub-header':isSiteHeader==true}">
+		<div data-ng-style="{'background-color': '{{featureColor}}'}">
+			{{headerText}}
+		</div>
+		<div class="color-line color-line-bottom "></div>
+	</div>
+
+<div class="article-content-wrap main-content-wrap" data-ng-class="calendarType" >
+    
+	
+    <div class="article-content">
+		
+		<!-- article +event title-->
+        <input type="text" data-ng-class='{"title-field":true,"requieredError":showTitleError}' placeholder="כותרת" data-ng-model="postData.post.title" />
+		
+		<!-- post main text area-->
+		<div style="position:relative;border-radius: 10px;">
+			
+			<textarea  data-ng-hide='postType=="article"' class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
+			</textarea >
+			
+			
+		</div>
+		
+		<!-- post add img-->
+		 <div class="add-file" style='height: 30px;'>         
+				<div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
+					
+					<input type="file" data-upload='img' style='position: absolute;top: 0;'>
+					</input>
+				</div>
+				<div class='add-file-text' >{{imgFileText}}</div>
+				<div  data-ng-show="toLargImage==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+            </div>
+		
+		<!-- post add img preview-->
+		<img  data-ng-show="toLargImage==false" ng-src="{{postImg}}" style='margin: 20px auto 20px auto;display: block'  >
+		
+		<div data-ng-repeat="option in voteOptions" class="add-file" style='height: 30px;'>         
+				<div class="plus" data-ng-click="deleteOption($index)" style='position: absolute;top: 0;cursor: pointer;'>
+				</div>
+				<input class='add-file-text' type="text" placeholder="אפשרות הצבעה" data-ng-model="option.answer">
+         </div>
+
+        <div class="add-file" style='height: 30px;'>         
+				<div class="plus" data-ng-click="addOption()" style='position: absolute;top: 0;cursor: pointer;'>
+				</div>
+         </div>
+
+        <div class="add-file" style='height: 30px;'>
+            <select class="add-file-text" data-ng-model="pollType" data-ng-options="pollType for pollType in ['עוגה', 'עמודות']"></select>
+        </div>
+
+        <div class="add-file" style='height: 30px;'>
+            <input class='add-file-text' type="number" placeholder="מינימום בחירות" data-ng-model="postData.post.poll.minSelect">
+        </div>
+
+        <div class="add-file" style='height: 30px;'>
+            <input class='add-file-text' type="number" placeholder="מקסימום בחירות" data-ng-model="postData.post.poll.maxSelect">
+        </div>
+
+		<!-- validation msges-->
+		<div style='margin-top:12px;'>
+			<div class="login-error" data-ng-if="showTitleError">* שדה כותרת לא הוזן כראוי</div>
+			
+		</div>
+
+		<!-- post send button-->
+        <div class="button" data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">שלח
+		</div>
+   </div>
+
+</div>
+

@@ -15,9 +15,9 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
         infoSubText: "ההצבעה באיזור זה מותנית בהצטרפות"
     };
     generalParameters.setFeature($scope.featureDetails);
-	generalParameters.setBackIcon(false);//tester
-	$scope.user = generalParameters.getUser();
-   
+    generalParameters.setBackIcon(false); //tester
+    $scope.user = generalParameters.getUser();
+
     var request = {
 
         startTimestamp: '',
@@ -75,12 +75,16 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
     }
 
     $scope.SuggestPoll = function () {
-        if ($scope.user.firstName == 'התחבר') {
+        if (generalParameters.getUser().firstName == 'התחבר') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
+        }
+        else if (!$rootScope.isAdmin) {
+            generalParameters.setBackIcon(true);
+            $state.transitionTo('write-post', { postType: "suggestPoll", postId: 0 });
         }
         else {
             generalParameters.setBackIcon(true);
-            $state.transitionTo('write-post', { postType: "poll", postId: 0 });
+            $state.transitionTo('upload-poll', { postType: "poll", postId: 0 });
         }
     }
 

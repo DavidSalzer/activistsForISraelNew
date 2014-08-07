@@ -135,7 +135,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             console.log(postData);
             var json = JSON.stringify(postData);
             console.log(json);
-            if (postData.post.postType == 'poll' || postData.post.postType == 'contact') {
+            if (postData.post.postType == 'suggestPoll' || postData.post.postType == 'contact') {
                 queryString = 'sendmail';
             }
             else {
