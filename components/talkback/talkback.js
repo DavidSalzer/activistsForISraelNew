@@ -14,7 +14,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         featureLogo: "./img/whatsup.png",
         featureWhatsUpLogo: "./img/hosting_info.png",
         featureColor: '#993ca7',
-        infoHaeder: "מה קורה",
+        infoHaeder: "הפורום",
         infoMainText: "כתבו על כל נושא שמעניין אתכם. המשתמשים יוכלו לסמן 'אהבתי' או להגיב לדבריכם. מוגבל ל 140 תווים.",
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
@@ -41,7 +41,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
 
     $scope.writePost = function () {
         $scope.user = generalParameters.getUser();
-        if ($scope.user.firstName == 'התחבר') {
+        if ($scope.user.firstName == 'הצטרף לאפליקציה') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else {

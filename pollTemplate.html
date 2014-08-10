@@ -2,7 +2,7 @@
     <delete-post data-ng-if="isAdmin"></delete-post>
     <div class="polls-container" ng-click="userClicked($index);">
         <div class="image-container">
-            <div class="polls-image" style="background-image: url('{{post.img}}')"></div>
+            <div class="polls-image" style="background-image: url('{{domain}}{{post.img}}')"></div>
         </div>
     </div>
     <div class="text-box player-text" ng-click="userClicked($index);">

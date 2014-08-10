@@ -11,7 +11,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         featureLogo: "./img/calendar.png",
         featureWhatsUpLogo: "./img/calendar_info.png",
         featureColor: '#004a8e',
-        infoHaeder: "פיצ'ר נפגשים",
+        infoHaeder: "אירועים",
         infoMainText: 'פרסמו אירועים למען ישראל! לוח לפרסום ויצירת אירועים/חוגי בית/מפגשים בהם תרצו לשתף את החברים.',
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
@@ -62,7 +62,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
 
         $scope.user = generalParameters.getUser();
 
-        if ($scope.user.firstName == 'התחבר') {
+        if ($scope.user.firstName == 'הצטרף לאפליקציה') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else {

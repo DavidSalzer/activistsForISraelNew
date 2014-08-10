@@ -49,7 +49,7 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
 
     $scope.writePost = function () {
         $scope.user = generalParameters.getUser();
-        if ($scope.user.firstName == 'התחבר') {
+        if ($scope.user.firstName == 'הצטרף לאפליקציה') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else {

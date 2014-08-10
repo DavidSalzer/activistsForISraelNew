@@ -101,7 +101,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
                         generalParameters.setUser(data.data.user);
                     }
                     else {
-                        generalParameters.setUser({ firstName: 'התחבר', userImg: './img/user.png' });
+                        generalParameters.setUser({ firstName: 'הצטרף לאפליקציה', userImg: './img/user.png' });
                     }
 
                 })

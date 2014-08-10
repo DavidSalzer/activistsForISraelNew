@@ -6,14 +6,14 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
         featureLogo: null,
         //infoImg: './img/whatsup.png',
         featureColor: '#AB14E6',
-        infoHaeder: "פיצ'ר מה קורה",
+        infoHaeder: "הפורום",
         infoMainText: "כתבו על כל נושא שמעניין אתכם. המשתמשים יוכלו לסמן 'אהבתי' או להגיב לדבריכם. מוגבל ל 140 תווים.",
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
 
 
     var userDetails = {
-        firstName: 'התחבר',
+        firstName: 'הצטרף לאפליקציה',
         userImg: './img/user.png'
     };
 

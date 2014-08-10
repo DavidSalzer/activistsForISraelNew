@@ -1,6 +1,6 @@
 socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'imgCrop', function ($scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, imgCrop) {
 
-    //if (generalParameters.getUser().firstName == 'התחבר') {//if user not login go back.
+    //if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {//if user not login go back.
     //    window.history.back();
     //}
 
@@ -22,21 +22,21 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
 
         {
             featureUrl: 'talkback',
-            featureName: 'מה קורה',
+            featureName: 'הפורום',
             featureLogo: "./img/whatsup.png",
             featureColor: "talkback",
             postType: "talkback"
         },
-         {
-             featureUrl: 'article',
-             featureName: 'מאמרים',
-             featureLogo: "./img/article.png",
-             featureColor: "article",
-             postType: "article"
-         },
+         //{
+         //    featureUrl: 'article',
+         //    featureName: 'מאמרים',
+         //    featureLogo: "./img/article.png",
+         //    featureColor: "article",
+         //    postType: "article"
+         //},
            {
                featureUrl: 'meme',
-               featureName: 'צחוקים',
+               featureName: 'ממים',
                featureLogo: "./img/meme.png",
                featureColor: "#ffd427",
                postType: "meme"
@@ -44,14 +44,14 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
           ,
         {
             featureUrl: 'poll',
-            featureName: 'משאל עם',
+            featureName: 'סקרים',
             featureLogo: "./img/poll.png",
             featureColor: "#da4f00",
             postType: "voteToPoll"
         },
     {
         featureUrl: 'event',
-        featureName: 'נפגשים',
+        featureName: 'אירועים',
         featureLogo: "./img/calendar.png",
         featureColor: "event",
         postType: "event"
@@ -459,7 +459,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
         $http.get(domain + 'logout/', { withCredentials: true, async: true })
         .success(function (data) {
             console.log(data);
-            generalParameters.setUser({ firstName: 'התחבר', userImg: './img/user.png' });
+            generalParameters.setUser({ firstName: 'הצטרף לאפליקציה', userImg: './img/user.png' });
             if (document.location.protocol != 'http:' && document.location.protocol != 'https:') {
                 window.cookies.clear(function () {
                     //alert('Cookies cleared!');

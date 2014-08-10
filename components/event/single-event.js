@@ -18,8 +18,8 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
         featureName: null,
         featureLogo: "./img/calendar.png",
         featureColor: '#004a8e',
-        infoHaeder: "מאמרים",
-        infoMainText: 'כתבו מאמר בכל נושא שתבחרו. המאמר מוגבל למינימום 250 תווים ויפורסם בהתאם לכללי המערכת. המאמרים ידורגו ע"י הגולשים ויקודמו בהתאם. ניתן להעלות את המאמר כקובץ, או לכתוב אותו ישירות בעמוד. ניתן גם להוסיף תמונה מלווה למאמר.',
+        infoHaeder: "אירועים",
+        infoMainText: 'פרסמו אירועים למען ישראל! לוח לפרסום ויצירת אירועים/חוגי בית/מפגשים בהם תרצו לשתף את החברים.',
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
 

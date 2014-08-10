@@ -2,6 +2,7 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
 
 
     $scope.currentPoll = null;
+    $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
 
     $scope.featureDetails = {
@@ -10,7 +11,7 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
         featureWhatsUpLogo: "./img/poll_info.png",
         featureColor: '#da4f00',
         featureTabColor: '#da4f',
-        infoHaeder: "משאל עם",
+        infoHaeder: "סקרים",
         infoMainText: "בואו להשפיע! כאן מופיעים סקרים שעל סדר היום. ניתן לשתף / או להציע שאלות לסקר. לרשומים בלבד.",
         infoSubText: "ההצבעה באיזור זה מותנית בהצטרפות"
     };
@@ -75,7 +76,7 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
     }
 
     $scope.SuggestPoll = function () {
-        if (generalParameters.getUser().firstName == 'התחבר') {
+        if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
         }
         else if (!$rootScope.isAdmin) {

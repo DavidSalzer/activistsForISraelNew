@@ -1,15 +1,15 @@
 ﻿google.load('visualization', '1.0', { 'packages': ['corechart'] });
 socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '$state', '$http', 'PostService', 'generalParameters', 'classAjax', function ($rootScope, $stateParams, $scope, $state, $http, PostService, generalParameters, classAjax) {
     console.log($stateParams);
+    $scope.domain = domain;
     $scope.currentPoll = $stateParams.postId;
     $scope.choosenOption = [];
     $scope.choosenCount = 0;
-    $scope.isSiteHeader = true;
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/poll.png",
         featureColor: '#da4f00',
-        infoHaeder: "משאל עם",
+        infoHaeder: "סקרים",
         infoMainText: "בואו להשפיע! כאן מופיעים סקרים שעל סדר היום. ניתן לשתף / או להציע שאלות לסקר. לרשומים בלבד",
         infoSubText: "ההצבעה באיזור זה מותנית בהצטרפות"
     };
@@ -94,7 +94,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
 
     $scope.addVote = function () {
         $scope.user = generalParameters.getUser();
-        if ($scope.user.firstName == 'התחבר') {
+        if ($scope.user.firstName == 'הצטרף לאפליקציה') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
             return;
         }

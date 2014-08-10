@@ -1,7 +1,7 @@
 socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$state', '$http', 'generalParameters', 'PostService', function ($rootScope, $scope, $location, $state, $http, generalParameters, PostService) {
 
     $rootScope.siteOrigin = siteOrigin; //origin url of site.
-    $rootScope.isAdmin = false;
+    $rootScope.isAdmin = true;
 
     $scope.originUrl = window.location.origin + window.location.pathname + '#/'; //origin url for main menu items.
 
@@ -17,7 +17,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             generalParameters.setUser(data.data.user);
         }
         else {
-            generalParameters.setUser({ firstName: 'התחבר', userImg: './img/user.png' });
+            generalParameters.setUser({ firstName: 'הצטרף לאפליקציה', userImg: './img/user.png' });
         }
 
     })
@@ -50,34 +50,34 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         },
         {
             featureUrl: 'talkback',
-            featureName: 'מה קורה',
+            featureName: 'הפורום',
             featureLogo: "./img/whatsup.png",
             featureColor: "talkback"
         },
-         {
-             featureUrl: 'article',
-             featureName: 'מאמרים',
-             featureLogo: "./img/article.png",
-             featureColor: "article"
-         },
+         //{
+         //    featureUrl: 'article',
+         //    featureName: 'מאמרים',
+         //    featureLogo: "./img/article.png",
+         //    featureColor: "article"
+         //},
 
         {
             featureUrl: 'poll',
-            featureName: 'משאל עם',
+            featureName: 'סקרים',
             featureLogo: "./img/poll.png",
             featureColor: "#da4f00"
         }
           ,
          {
              featureUrl: 'meme',
-             featureName: 'צחוקים',
+             featureName: 'ממים',
              featureLogo: "./img/meme.png",
              featureColor: "#ffd427"
          }
           ,
 		{
 		    featureUrl: 'event',
-		    featureName: 'נפגשים',
+		    featureName: 'אירועים',
 		    featureLogo: "./img/calendar.png",
 		    featureColor: "event"
 		},
@@ -94,12 +94,12 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/NaftaliBennett.png",
             featureColor: "FBnaftaly"
         },
-        {
-            featureUrl: 'facebookPoalim/actionforisrael',
-            featureName: 'פייסבוק פועלים',
-            featureLogo: "./img/actionforisrael.png",
-            featureColor: "Fbactivists"
-        },
+        //{
+        //    featureUrl: 'facebookPoalim/actionforisrael',
+        //    featureName: 'פייסבוק פועלים',
+        //    featureLogo: "./img/actionforisrael.png",
+        //    featureColor: "Fbactivists"
+        //},
         {
             featureUrl: 'contact',
             featureName: 'צור קשר',
@@ -113,7 +113,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     $scope.showMask = generalParameters.getShowLogin;
 
     $scope.goToUserProfile = function (i) {
-        if ($scope.userProfile().firstName != 'התחבר') {
+        if ($scope.userProfile().firstName != 'הצטרף לאפליקציה') {
             $state.transitionTo('user-profile', { userId: $scope.userProfile()._id });
         }
         else {

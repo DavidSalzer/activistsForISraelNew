@@ -321,7 +321,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 // $scope.$emit('handleEmit', {showInput: false}); 
                 console.log(scope.post._id);
 				var user = generalParameters.getUser();
-				if (user.firstName == 'התחבר') {
+				if (user.firstName == 'הצטרף לאפליקציה') {
 					
 					$rootScope.$broadcast('showInfoPopup', { showInfo: true });
 				}
@@ -346,7 +346,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             el.on('click', function () {
 			
 				var user = generalParameters.getUser();
-				if (user.firstName == 'התחבר') {
+				if (user.firstName == 'הצטרף לאפליקציה') {
 					
 					$rootScope.$broadcast('showLoginPopup', { showLogin: true });
 				}

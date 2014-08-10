@@ -13,7 +13,7 @@
 		{{currentPollObj.title}}
 	</div>
 	<div class="imageView-background">
-		<div class="legend-image" style="background-image: url({{currentPollObj.img}})">
+		<div class="legend-image" style="background-image: url({{domain}}{{currentPollObj.img}})">
 			<!--<img src='{{currentPollObj.img}}' data-ng-style="{'background-color': '#42484e', 'padding':'3px'}">-->
 		</div>
 	</div>
@@ -34,7 +34,7 @@
 	</div>
 	</div>
 	 <div ng-repeat="item in optionsForVote" data-ng-show = "pollIsActive()" class="picking-items" data-ng-style="{'padding-top':'10px'}"> 
-		<div class="optionToVote-image" data-ng-show ='{{"item.imageUrl"}}' style="background-image: url({{item.imageUrl}})">
+		<div class="optionToVote-image" data-ng-show ='{{"item.imageUrl"}}' style="background-image: url({{domain}}{{item.imageUrl}})">
 			<!--<img ng-src="{{item.imageUrl}}" >-->
 		</div>
 		<div class="optionToVote-container" data-ng-show = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#ffffff', 'background-color': '#565c63'}"> {{item.answer}} </div>

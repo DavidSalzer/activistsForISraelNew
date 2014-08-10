@@ -3,8 +3,6 @@ socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', 'classAja
     //$scope.FaceItemWidth = "311"; //Math.floor((facebookWrap.offsetWidth) * 90 / 100);
     //$scope.FaceItemHeight = "901"; //Math.floor((screen.height)*102/100);
     $scope.currentChannel = 'https://www.facebook.com/' + 'NaftaliBennett';
-    $scope.isSiteHeader = true;
-
 
     if (window.outerWidth < 900) {
         $scope.FaceItemWidth = "311"; //Math.floor((facebookWrap.offsetWidth) * 90 / 100);
@@ -50,46 +48,46 @@ socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', 'classAja
 ]);
 
 
-socialGroupApp.controller('facebookPoalim', ['$scope', '$stateParams', 'classAjax', 'PostService', 'generalParameters', function ($scope, $stateParams, classAjax, PostService, generalParameters) {
+//socialGroupApp.controller('facebookPoalim', ['$scope', '$stateParams', 'classAjax', 'PostService', 'generalParameters', function ($scope, $stateParams, classAjax, PostService, generalParameters) {
 
-   var facebookWrap = document.getElementById('face-wrap');
-    //$scope.FaceItemWidth = "311"; //Math.floor((facebookWrap.offsetWidth) * 90 / 100);
-    //$scope.FaceItemHeight = "901"; //Math.floor((screen.height)*102/100);
-    $scope.currentChannel = 'https://www.facebook.com/' + 'actionforisrael';
-     $scope.isSiteHeader = true;
-    if (window.outerWidth < 900) {
-        $scope.FaceItemWidth = "311"; //Math.floor((facebookWrap.offsetWidth) * 90 / 100);
-        $scope.FaceItemHeight = "901"; //Math.floor((screen.height)*102/100);
-    }
-    else {
-        $scope.FaceItemWidth = "622";//Math.floor((facebookWrap.offsetWidth) * 90 / 100);
-        $scope.FaceItemHeight = "901";//Math.floor((screen.height)*102/100);
-    }
+//   var facebookWrap = document.getElementById('face-wrap');
+//    //$scope.FaceItemWidth = "311"; //Math.floor((facebookWrap.offsetWidth) * 90 / 100);
+//    //$scope.FaceItemHeight = "901"; //Math.floor((screen.height)*102/100);
+//    $scope.currentChannel = 'https://www.facebook.com/' + 'actionforisrael';
 
-    facebookWrap.innerHTML = '<div class="fb-like-box" data-href="' + $scope.currentChannel + '" data-width="' + $scope.FaceItemWidth + '" data-height="' + $scope.FaceItemHeight + '" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>';
+//    if (window.outerWidth < 900) {
+//        $scope.FaceItemWidth = "311"; //Math.floor((facebookWrap.offsetWidth) * 90 / 100);
+//        $scope.FaceItemHeight = "901"; //Math.floor((screen.height)*102/100);
+//    }
+//    else {
+//        $scope.FaceItemWidth = "622";//Math.floor((facebookWrap.offsetWidth) * 90 / 100);
+//        $scope.FaceItemHeight = "901";//Math.floor((screen.height)*102/100);
+//    }
 
-    try {
-        FB.XFBML.parse();
-    }
-    catch (e) {
+//    facebookWrap.innerHTML = '<div class="fb-like-box" data-href="' + $scope.currentChannel + '" data-width="' + $scope.FaceItemWidth + '" data-height="' + $scope.FaceItemHeight + '" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>';
 
-    }
+//    try {
+//        FB.XFBML.parse();
+//    }
+//    catch (e) {
 
-    $scope.featureDetails = {
-        featureName: null,
-        featureLogo: "./img/actionforisrael.png",
-        featureWhatsUpLogo: "./img/facebook_poalim_info.png",
-        featureColor: '#004a8e',
-        infoHaeder: "עמוד פייסבוק",
-        infoMainText: "עמוד הפייסבוק של פועלים למען ישראל.",
-        infoSubText: "עדיין לא הצטרפת לאפליקציה?"
-    };
+//    }
 
-
-    generalParameters.setFeature($scope.featureDetails);
+//    $scope.featureDetails = {
+//        featureName: null,
+//        featureLogo: "./img/actionforisrael.png",
+//        featureWhatsUpLogo: "./img/facebook_poalim_info.png",
+//        featureColor: '#004a8e',
+//        infoHaeder: "עמוד פייסבוק",
+//        infoMainText: "עמוד הפייסבוק של פועלים למען ישראל.",
+//        infoSubText: "עדיין לא הצטרפת לאפליקציה?"
+//    };
 
 
+//    generalParameters.setFeature($scope.featureDetails);
 
-}
-]);
+
+
+//}
+//]);
 

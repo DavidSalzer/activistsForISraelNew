@@ -35,30 +35,30 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     switch ($scope.postType) {
 
 
-        case "article":
-            {
+        //case "article":
+        //    {
 
-                $scope.headerText = 'כתיבת טקסט';
+        //        $scope.headerText = 'כתיבת טקסט';
 
-                $scope.textFileText = 'צרף קובץ טקסט';
-                $scope.toLargTextFile = false;
-                $scope.textFileMax = 1;
-                $scope.min = 250;
+        //        $scope.textFileText = 'צרף קובץ טקסט';
+        //        $scope.toLargTextFile = false;
+        //        $scope.textFileMax = 1;
+        //        $scope.min = 250;
 
-                $scope.postData.post.postType = 'article';
-                $scope.postData.post.title = '';
+        //        $scope.postData.post.postType = 'article';
+        //        $scope.postData.post.title = '';
 
-                $scope.thankDetails = {
+        //        $scope.thankDetails = {
 
-                    featureColor: colors[$scope.postType],
-                    thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',
-                    btnText: 'חזרה לעמוד המאמרים',
-                    headerText: 'המאמר שלי',
-                    featureState: 'article'
+        //            featureColor: colors[$scope.postType],
+        //            thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',
+        //            btnText: 'חזרה לעמוד המאמרים',
+        //            headerText: 'המאמר שלי',
+        //            featureState: 'article'
 
-                };
-                break;
-            }
+        //        };
+        //        break;
+        //    }
 
 
         case "talkback":
