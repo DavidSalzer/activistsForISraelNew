@@ -1,18 +1,22 @@
 <header class="navbar navbar-app navbar-absolute-top" data-ng-controller="headerCtrl">
     <div class="info-popup" ng-show="showInfo">
-        <span class="info info-close" data-ng-click="showInpoPopUp()"></span>
-        <span class="arrow-up"></span>
-        <img ng-src="{{featureDetails().featureWhatsUpLogo}}" class="info-img">
-        <div class="info-header" style="background:{{featureDetails().featureColor}};">
+        <section data-ng-hide="true">
+            <span class="info info-close" data-ng-click="showInpoPopUp()"></span>
+            <span class="arrow-up"></span>
+            <img ng-src="{{featureDetails().featureWhatsUpLogo}}" class="info-img">
+            <div class="info-header" style="background:{{featureDetails().featureColor}};">
                             {{featureDetails().infoHaeder}}
-        </div>
-        <p class="main-text"> {{featureDetails().infoMainText}}</p>
-        <!--<figure class="devider-line top-diveder"></figure>-->
-        <div id="whatsup-bottom" data-ng-show="user().firstName=='הצטרף לאפליקציה'">
-            <p class="main-text">{{featureDetails().infoSubText}}</p>
-            <div class="join-button" data-ng-click="goToLogin()" style="background:{{featureDetails().featureColor}};">הצטרף לאפליקציה</div>
-        </div>
-        <figure class="devider-line bottom-devider"></figure>
+            </div>
+            <p class="main-text"> {{featureDetails().infoMainText}}</p>
+            <!--<figure class="devider-line top-diveder"></figure>-->
+            <div id="whatsup-bottom" data-ng-show="user().firstName=='הצטרף לאפליקציה'">
+                <p class="main-text">{{featureDetails().infoSubText}}</p>
+                <div class="join-button" data-ng-click="goToLogin()" style="background:{{featureDetails().featureColor}};">הצטרף לאפליקציה</div>
+            </div>
+            <figure class="devider-line bottom-devider"></figure>
+        </section>
+         <section data-ng-show="true">
+             </section>
     </div>
 
     <div class="navbar-brand navbar-brand-center">
@@ -39,15 +43,15 @@
     </div>
 
             <!--<div data-content-for="navbarAction">
-                                    <div class="btn btn-navbar">
-                                        <div class="btn-group pull-right toggleable-dropdown" active-class="open" id="myDropdown" toggleable>
-                                            <button type="button" class="btn btn-default dropdown-toggle" toggle target="myDropdown">
-                                                <i class="fa share"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>-->
+                                            <div class="btn btn-navbar">
+                                                <div class="btn-group pull-right toggleable-dropdown" active-class="open" id="myDropdown" toggleable>
+                                                    <button type="button" class="btn btn-default dropdown-toggle" toggle target="myDropdown">
+                                                        <i class="fa share"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>-->
             <!--<div class="loader-zone" data-ng-show="true">
-                <div class="fa fa-spinner fa-spin"></div>
-            </div>-->
+                        <div class="fa fa-spinner fa-spin"></div>
+                    </div>-->
 </header>
