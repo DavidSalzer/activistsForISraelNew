@@ -103,7 +103,7 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
                 userDetails.gender = 'נקבה';
             }
             else {
-                userDetails.gender = 'מגדר';
+                userDetails.gender = 'זכר/נקבה';
             }
 
             if (userDetails.point != undefined) {

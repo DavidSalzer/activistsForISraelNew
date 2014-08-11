@@ -18,6 +18,8 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         $scope.showLogin = args.showLogin;
         generalParameters.setShowLogin($scope.showLogin);
         $scope.isForgotPassword = false;
+        $scope.isNewPasswordPage = false;
+        $scope.successPasswordRecovery = false;
         $scope.$apply();
         console.log(args)
     });
@@ -117,6 +119,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     //Open password recovery page.
     $scope.forgotPassword = function () {
         $scope.isForgotPassword = true;
+        $scope.isNewPasswordPage = false;
     }
 
     //Send forgotPassword request to server.
@@ -134,6 +137,31 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
                 $scope.successPasswordRecovery = true;
             }
         })
+    }
+
+    $scope.sendRecoveryCode = function () {
+        $scope.recoveryCodeError = $scope.recoveryCode == undefined || $scope.recoveryCode == '';
+        if ($scope.recoveryCodeError) {
+            return;
+        }
+
+        $scope.newPasswordDetails = {
+
+            code: $scope.recoveryCode
+
+        }
+
+        console.log($scope.newPasswordDetails);
+        $scope.json = JSON.stringify($scope.newPasswordDetails);
+        console.log($scope.json);
+
+        $http.post(domain + 'verifyPassCode/' + $scope.mail, $scope.json)
+        .success(function (data) {
+            console.log(data);
+            if (data.status.statusCode == 0) {
+                $scope.isNewPasswordPage = true;
+            }
+        });
     }
 
     $scope.setNewPassword = function () {

@@ -7,7 +7,7 @@ socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'Post
         featureWhatsUpLogo: "./img/hosting_info.png",
         featureColor: '#993ca7',
         infoHaeder: "הפורום",
-        infoMainText: "כתבו על כל נושא שמעניין אתכם. המשתמשים יוכלו לסמן 'אהבתי' או להגיב לדבריכם. מוגבל ל 140 תווים.",
+        infoMainText: "כתבו על כל נושא שמעניין אתכם. המשתמשים יוכלו לסמן 'אהבתי' או להגיב לדבריכם. מוגבל ל 140 תווים. יש לשמור על זכויות יוצרים",
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
 

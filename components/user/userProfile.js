@@ -27,20 +27,20 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
             featureColor: "talkback",
             postType: "talkback"
         },
-         //{
-         //    featureUrl: 'article',
-         //    featureName: 'מאמרים',
-         //    featureLogo: "./img/article.png",
-         //    featureColor: "article",
-         //    postType: "article"
-         //},
+    //{
+    //    featureUrl: 'article',
+    //    featureName: 'מאמרים',
+    //    featureLogo: "./img/article.png",
+    //    featureColor: "article",
+    //    postType: "article"
+    //},
            {
-               featureUrl: 'meme',
-               featureName: 'ממים',
-               featureLogo: "./img/meme.png",
-               featureColor: "#ffd427",
-               postType: "meme"
-           }
+           featureUrl: 'meme',
+           featureName: 'ממים',
+           featureLogo: "./img/meme.png",
+           featureColor: "#ffd427",
+           postType: "meme"
+       }
           ,
         {
             featureUrl: 'poll',
@@ -172,6 +172,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 }
                 else {
                     $scope.editName = true;
+                    document.getElementById('uio').focus();
                 }
                 $scope.editAddress = false;
                 $scope.editEmail = false;
@@ -299,8 +300,8 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
 
 			.success(function (data) {
 			    if (data.status.statusCode == 0) {
-                        $scope.userLike = false;
-                    }
+			        $scope.userLike = false;
+			    }
 			    console.log(data);
 			})
 			.error(function (data) {
@@ -352,21 +353,21 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":       
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });       
-                //    break;       
+                //case "author":        
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });        
+                //    break;        
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":       
-                //    $state.transitionTo('single-event', { postId: args.postId });       
-                //    break;       
-                //case "voteToPoll":       
-                //    $state.transitionTo('poll-view', { postId: args.postId });       
-                //    break;       
+                //case "event":        
+                //    $state.transitionTo('single-event', { postId: args.postId });        
+                //    break;        
+                //case "voteToPoll":        
+                //    $state.transitionTo('poll-view', { postId: args.postId });        
+                //    break;        
             }
         }
         else {

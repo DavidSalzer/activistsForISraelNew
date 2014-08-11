@@ -19,7 +19,7 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
         featureLogo: "./img/calendar.png",
         featureColor: '#004a8e',
         infoHaeder: "אירועים",
-        infoMainText: 'פרסמו אירועים למען ישראל! לוח לפרסום ויצירת אירועים/חוגי בית/מפגשים בהם תרצו לשתף את החברים.',
+        infoMainText: 'פרסמו אירועים למען ישראל! לוח לפרסום ויצירת אירועים/חוגי בית/מפגשים בהם תרצו לשתף את החברים. יש לשמור על זכויות יוצרים',
         infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
     };
 

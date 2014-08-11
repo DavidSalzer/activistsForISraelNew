@@ -224,6 +224,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 35px;
     line-height: 35px;
     float: none;
+    outline: -webkit-focus-ring-color auto 5px;
 }
 
 .user-profile-name.user-profile-item {
