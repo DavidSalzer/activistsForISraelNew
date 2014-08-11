@@ -2,6 +2,7 @@
     <div class="popup-wrapper log-in-wrapper">
         <div class="sign-in-close-zone">
             <div class="close-sign-in" data-ng-click="closeLoginPopup()"></div>
+            <div data-ng-show="isForgotPassword" class="back-to-login" data-ng-click="backToLogin()"></div>
         </div>
         <div data-ng-hide="isForgotPassword">
             <input type="email" class="sign-in-field sign-in-mail" data-ng-class="{loginErrorActive: showEmailError}" placeholder="מייל" data-ng-model="mail">
@@ -39,31 +40,28 @@
             <div class="password-recovery-title">שחזור סיסמה:</div>
             <div class="password-recovery-sub-title">קוד לשחזור סיסמה ישלח אליך לאחר מילוי תיבת המייל של חשבונך</div>
             <input type="email" class="sign-in-field sign-in-mail" data-ng-class="{loginErrorActive: showEmailError}" placeholder="מייל" data-ng-model="mail">
-            <input type="button" class="sign-in-btn" value="שחזר" data-ng-click="sendForgotPassword()">
             <div class="login-error" data-ng-show="showEmailError">* שדה מייל לא הוזן כראוי</div>
             <div class="login-error" data-ng-show="successPasswordRecovery">* קוד שחזור נשלח למייל שלך</div>
             <div class="login-error" data-ng-show="false">* שגיאה בשרת</div><!--not exist yet-->
+            <input type="button" class="sign-in-btn" value="שחזר" data-ng-click="sendForgotPassword()">
+            <div class="login-forget-pass" data-ng-click="openCodefield()">כבר יש לי קוד שחזור</div>
 
             <div data-ng-show="successPasswordRecovery">
                 <input type="text" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: recoveryCodeError}" placeholder="קוד שחזור" data-ng-model="recoveryCode" style="margin-top: 70px">
-                <!--<input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="הזן סיסמה חדשה" data-ng-model="pass">
-                <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="אימות סיסמה" data-ng-model="passAuthentication">-->
-                <input type="button" class="sign-in-btn" value="הבא" data-ng-click="sendRecoveryCode()">
                 <div class="login-error" data-ng-show="recoveryCodeError">* לא הוזן קוד שחזור</div>
-                <!--<div class="login-error" data-ng-show="showPassError">* שדה סיסמה לא הוזן כראוי</div>-->
                 <div class="login-error" data-ng-show="false">* שגיאה בשרת</div><!--not exist yet-->
+                <input type="button" class="sign-in-btn" value="הבא" data-ng-click="sendRecoveryCode()">
+                
             </div>
         </div>
         <!--end password recovery page-->
         <div  data-ng-show="isForgotPassword && isNewPasswordPage">
             <div class="password-recovery-title">שחזור סיסמה:</div>
-            <input type="email" class="sign-in-field sign-in-mail" data-ng-class="{loginErrorActive: showEmailError}" placeholder="מייל" data-ng-model="mail">
             <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="הזן סיסמה חדשה" data-ng-model="pass">
             <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="אימות סיסמה" data-ng-model="passAuthentication">
-            <input type="button" class="sign-in-btn" value="היכנס" data-ng-click="setNewPassword()">
-            <div class="login-error" data-ng-show="showEmailError">* שדה מייל לא הוזן כראוי</div>
             <div class="login-error" data-ng-show="showPassError">* שדה סיסמה לא הוזן כראוי</div>
             <div class="login-error" data-ng-show="false">* שגיאה בשרת</div><!--not exist yet-->
+            <input type="button" class="sign-in-btn" value="היכנס" data-ng-click="setNewPassword()">
         </div>
 
         <div class="color-line color-line-bottom"></div>

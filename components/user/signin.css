@@ -237,6 +237,28 @@ span#signinButton {
     border: 1px solid red;
 }
 
+.back-to-login {
+    background-image: url('../../img/arrow_user.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    line-height: 15px;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: -20px 0px 0px 7px;
+    float: left;
+    transform: rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg); 
+    -o-transform:rotate(90deg);
+}
+
 .password-recovery-title {
     text-align: center;
     color: white;

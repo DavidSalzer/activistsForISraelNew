@@ -122,6 +122,13 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         $scope.isNewPasswordPage = false;
     }
 
+    //Back to login page from password recovery page.
+    $scope.backToLogin = function (){
+        $scope.isForgotPassword = false;
+        $scope.isNewPasswordPage = false;
+        $scope.successPasswordRecovery = false;
+    }
+
     //Send forgotPassword request to server.
     $scope.sendForgotPassword = function () {
         $scope.showEmailError = $scope.mail == undefined || $scope.mail == '';
@@ -137,6 +144,10 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
                 $scope.successPasswordRecovery = true;
             }
         })
+    }
+
+    $scope.openCodefield = function () {
+         $scope.successPasswordRecovery = true;
     }
 
     $scope.sendRecoveryCode = function () {

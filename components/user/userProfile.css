@@ -224,6 +224,10 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 35px;
     line-height: 35px;
     float: none;
+    
+}
+
+.user-profile-item input[type=text] {
     outline: -webkit-focus-ring-color auto 5px;
 }
 
@@ -373,9 +377,13 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     top: 15px;
     left: 15px;
     transform: rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg); 
+    -o-transform:rotate(90deg);
 }
 
 .user-recent-activity-arrow-up {
+    transform: rotate(180deg);
     -webkit-transform:rotate(180deg);
     -moz-transform:rotate(180deg); 
     -o-transform:rotate(180deg);
