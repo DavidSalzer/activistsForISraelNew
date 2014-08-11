@@ -16,6 +16,7 @@
     font-size: 15px;
     text-align: center;
     z-index: 4;
+    overflow-y: auto;
 }
 
 .arrow-up {
@@ -257,4 +258,150 @@ a.list-group-item.event.active span, a.list-group-item.event.active:focus span, 
     .info-close {
         margin-bottom: -1px;
     }
+}
+
+
+/********************point-count-area************************/
+
+.point-section {
+    overflow-x: hidden;
+    padding-bottom: 20px;
+}
+
+#main-point-wrapper .point-wrapper.point-wrapper-left:first-child .inner-point-wrapper {
+    border-top-left-radius: 0px;
+}
+
+#main-point-wrapper .point-wrapper.point-wrapper-left:first-child {
+    padding-top: 10px;
+}
+
+.point-section .inner-point-wrapper:first-child {
+}
+
+.point-wrapper {
+    box-sizing: border-box;
+    padding: 0px 15px;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.point-wrapper-left .inner-point-wrapper {
+    border-left: 1px solid black;
+    border-bottom-right-radius: 0px;
+    padding-left: 70px;
+}
+
+.point-wrapper-right .inner-point-wrapper {
+    border-right: 1px solid black;
+    border-bottom-left-radius: 0px;
+    padding-right: 70px;
+}
+
+.inner-point-wrapper {
+    border-radius: 10px;
+    border-bottom: 1px solid black;
+    padding: 25px 0px;
+}
+
+.quality-scores {
+    padding: 11px 0px;
+    font-size: 17px;
+    background-repeat: no-repeat;
+    background-size: 21px;
+}
+
+.point-wrapper.point-wrapper-left {
+    padding-right: 25px;
+}
+
+/*.point-wrapper.point-wrapper-left:after{
+    background-image: url("../../img/side-point-right.jpg");
+    background-size: 54px;
+    width: 50px;
+    height: 80px;
+    background-repeat: no-repeat;
+    
+    
+}*/
+
+.point-wrapper-left .score-image {
+    left: -50px;
+}
+
+.point-wrapper-right .score-image {
+    right: -50px;
+}
+
+
+.score-image {
+    position: absolute;
+    margin: auto 0px;
+    top: 0px;
+    bottom: 0px;
+    border-radius: 68px;
+    height: 130px;
+    z-index: 0;
+    width: 130px;
+    background-color: red;
+    font-weight: bold;
+    font-size: 65px;
+    padding-top: 25px;
+    color: #000000;
+    text-align: left;
+    direction: ltr;
+}
+
+.score-height {
+    display: inline-block;
+}
+
+.point-wrapper-left .score-image {
+    padding-left: 50px;
+}
+
+.point-wrapper-right .score-image {
+    padding-left: 13px;
+}
+
+.point-plus {
+    width: 25px;
+    height: 60px;
+    display: inline-block;
+    background-color: blue;
+}
+
+.quality-scores.quality-scores-left {
+    text-align: right;
+    padding-left: 22px;
+    background-position: left;
+}
+
+.point-wrapper.point-wrapper-right {
+    padding-left: 25px;
+}
+
+.quality-scores.quality-scores-right {
+    text-align: left;
+    background-position: right;
+    padding-right: 25px;
+}
+
+.score-one {
+}
+
+.score-two {
+}
+
+div#point-header-text {
+    height: 57px;
+}
+
+#main-point-wrapper .point-wrapper:last-child .inner-point-wrapper {
+    border-bottom: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.point-devider-line {
+    margin-bottom: 10px;
 }
