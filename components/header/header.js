@@ -90,7 +90,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
         {
             featureUrl: 'facebookBennet/NaftaliBennett',
-            featureName: 'פייסבוק נפתלי',
+            featureName: 'פייסבוק',
             featureLogo: "./img/NaftaliBennett.png",
             featureColor: "FBnaftaly"
         },
