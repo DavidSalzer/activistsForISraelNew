@@ -126,27 +126,25 @@
     width: 100%;
     height: 200px;
     overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
     overflow-y: hidden;
-z-index: 1000;
+    z-index: 1000;
 }
 
 .images-window {
-overflow-y: hidden;
-overflow-x: scroll;
--webkit-overflow-scrolling: touch;
-width: 100%;
-height:200px;
-/* height: 236px; */
-/* white-space: nowrap; */
-direction: ltr;
-/* position: absolute; */
-/* bottom: 0px; */
-/* right: 0px; */
-/* padding-right: 15px; */
-margin: 0; 
-    
-    
-    
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    height: 200px;
+    /* height: 236px; */
+    /* white-space: nowrap; */
+    direction: ltr;
+    /* position: absolute; */
+    /* bottom: 0px; */
+    /* right: 0px; */
+    /* padding-right: 15px; */
+    margin: 0;
     /*position: relative;
     height: 100%;
     overflow-y: hidden;
@@ -155,29 +153,25 @@ margin: 0;
 }
 
 .suggested-images-up {
-position: relative;
-width: 700px;
-height: 97px;
-    
-    
-  /* background-color: red; */
-/* height: 102px; */
-/* position: relative; */
-/* z-index: 10000; */
-/* direction: ltr; */
-/* color: black; */
-
-/*top: 0;
+    position: relative;
+    width: 700px;
+    height: 97px;
+    /* background-color: red; */
+    /* height: 102px; */
+    /* position: relative; */
+    /* z-index: 10000; */
+    /* direction: ltr; */
+    /* color: black; */
+    /*top: 0;
 right: 0;
 overflow: hidden;
 width: 679px;*/
 }
 
 .suggested-images-down {
-    
     position: relative;
-width: 700px;
-height: 102px;
+    width: 700px;
+    height: 102px;
     /*position: absolute;
     bottom: 0;
     right: 0;
@@ -189,7 +183,7 @@ height: 102px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-   border-radius: 3px;
+    border-radius: 3px;
     background-color: #535c63;
     overflow: hidden;
     height: 91px;
@@ -198,7 +192,7 @@ height: 102px;
     display: inline-block;
     margin: 3px;
     margin-bottom: 6px;
-position: relative;
+    position: relative;
 }
 /*.meme-container2{
     border-radius: 3px;
@@ -298,7 +292,6 @@ input {
 }
 
 .colorpicker-wrap {
-   
     width: 32px;
     height: 32px;
     background: #E4E4E4;
@@ -309,7 +302,6 @@ input {
     position: relative;
     padding: 7px;
     position: absolute;
-
 }
 
 .colorpicker {
@@ -319,27 +311,28 @@ input {
     position: absolute;
     top: 0;
 }
-.color-picker-palette{
-   width: 161px;
-height: 77px;
-position: absolute;
-z-index: 3;
-background-color: white;
-box-shadow: 1px 1px 1px 1px black;
-right: 16%;
+
+.color-picker-palette {
+    width: 161px;
+    height: 77px;
+    position: absolute;
+    z-index: 3;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px black;
+    right: 16%;
 }
-.col{
-   width: 30px;
-height: 30px;
-margin: 5px 5px 0px 5px;
-display: inline-block;
-box-shadow: 0px 0px 1px 1px gray;
+
+.col {
+    width: 30px;
+    height: 30px;
+    margin: 5px 5px 0px 5px;
+    display: inline-block;
+    box-shadow: 0px 0px 1px 1px gray;
 }
 
 .file-text {
     margin-right: 43px;
-     /*margin-right: 0px;*/
-    
+    /*margin-right: 0px;*/
 }
 
 .square {
@@ -398,13 +391,13 @@ box-shadow: 0px 0px 1px 1px gray;
 }
 
 .widthCon {
-  width: 180px;
-height: auto;
-margin: auto;
-display: block;
-top: 0;
-bottom: 0;
-position: absolute;
+    width: 180px;
+    height: auto;
+    margin: auto;
+    display: block;
+    top: 0;
+    bottom: 0;
+    position: absolute;
 }
 
 .heightCon {
@@ -467,11 +460,11 @@ position: absolute;
 }
 
 .like-section {
-   text-align: center;
-margin-top: 10px;
-width: 100%;
-margin: auto;
-margin-top: 9px;
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+    margin: auto;
+    margin-top: 9px;
 }
 
 .like-section-icon {
@@ -520,34 +513,39 @@ position: absolute;
 width: 100%;
 }*/
 
-.preview-wrap .chosenImg .meme-container{
+.preview-wrap .chosenImg .meme-container {
     width: 100%;
-/* height: auto; */
-margin-top: 0;
-height: 300px;
+    /* height: auto; */
+    margin-top: 0;
+    height: 300px;
 }
-.preview-wrap .top-part{
+
+.preview-wrap .top-part {
     height: auto;
     width: 100%;
 }
-.preview-wrap .widthCon{
+
+.preview-wrap .widthCon {
     width: 100%;
 }
-.preview-wrap .heightCon
-{
+
+.preview-wrap .heightCon {
     height: 100%;
 }
-.preview-wrap .size1{
+
+.preview-wrap .size1 {
     font-size: 38px;
 }
-.preview-wrap .size2{
+
+.preview-wrap .size2 {
     font-size: 34px;
 }
-.preview-wrap .size3{
+
+.preview-wrap .size3 {
     font-size: 30px;
 }
 
-.add-file-text{
+.add-file-text {
     color: #9E9E9E;
 }
 

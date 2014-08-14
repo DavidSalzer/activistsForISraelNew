@@ -166,7 +166,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         $scope.json = JSON.stringify($scope.newPasswordDetails);
         console.log($scope.json);
 
-        $http.post(domain + 'verifyPassCode/' + $scope.mail, $scope.json)
+        $http.post(domain + 'verifyPassCode', $scope.json)
         .success(function (data) {
             console.log(data);
             if (data.status.statusCode == 0) {
@@ -194,13 +194,13 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         $scope.json = JSON.stringify($scope.newPasswordDetails);
         console.log($scope.json);
 
-        $http.put(domain + 'setPassword/' + $scope.mail, $scope.json)
+        $http.put(domain + 'setPassword', $scope.json)
         .success(function (data) {
             console.log(data);
             if (data.status.statusCode == 0) {
                 $scope.showLogin = false;
                 generalParameters.setShowLogin(false);
-                //generalParameters.setUser(data.data.user);
+                generalParameters.setUser(data.data.data);
                 $scope.mail = '';
                 $scope.pass = '';
             }
