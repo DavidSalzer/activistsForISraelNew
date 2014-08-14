@@ -126,6 +126,7 @@ select {
     padding-bottom: 160px;
     box-sizing: border-box;
     padding-top: 3px;
+    -webkit-overflow-scrolling: touch;
     /*border-left: 12px solid #2d3238;
     border-right: 12px solid #2d3238;*/
 }
