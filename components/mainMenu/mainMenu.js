@@ -1,5 +1,7 @@
 socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'generalParameters', 'PostService', function ($scope, $state, classAjax, generalParameters, PostService) {
 
+    var exitFlag = false;
+
     generalParameters.setBackIcon(false);
     $scope.originUrl = window.location.origin + window.location.pathname + '#/';
     console.log($scope.originUrl);
@@ -7,7 +9,7 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     PostService.loadMainFeatures();
     $scope.features = PostService.getMainFeatures;
 
-    
+
     $scope.goToFeature = function (featureUrl, postId) {
         console.log('featureUrl: ' + featureUrl);
         $state.transitionTo(featureUrl, { postId: postId });
@@ -20,28 +22,6 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureColor: 'gray'
 
     };
-
-    document.addEventListener("backbutton", function () {
-        if (window.location.hash == '#/main-menu') {
-            $scope.exitAppPopup();
-        } else {
-            history.back();
-        }
-    }, false);
-
-    $scope.exitAppPopup = function () {
-        navigator.notification.confirm(
-          'האם ברצונך לצאת מהאפליקציה?',
-         function (button) {
-             if (button == 2) {
-                 navigator.app.exitApp();
-             }
-         },
-         'יציאה',
-         ['בטל', 'יציאה']
-    );
-        return false;
-    }
 
     generalParameters.setFeature($scope.featureDetails);
     //$scope.swipeCubeWidth = function () { };
