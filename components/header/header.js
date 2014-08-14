@@ -54,19 +54,19 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/whatsup.png",
             featureColor: "talkback"
         },
-         //{
-         //    featureUrl: 'article',
-         //    featureName: 'מאמרים',
-         //    featureLogo: "./img/article.png",
-         //    featureColor: "article"
-         //},
+    //{
+    //    featureUrl: 'article',
+    //    featureName: 'מאמרים',
+    //    featureLogo: "./img/article.png",
+    //    featureColor: "article"
+    //},
 
         {
-            featureUrl: 'poll',
-            featureName: 'סקרים',
-            featureLogo: "./img/poll.png",
-            featureColor: "#da4f00"
-        }
+        featureUrl: 'poll',
+        featureName: 'סקרים',
+        featureLogo: "./img/poll.png",
+        featureColor: "#da4f00"
+    }
           ,
          {
              featureUrl: 'meme',
@@ -94,18 +94,18 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/NaftaliBennett.png",
             featureColor: "FBnaftaly"
         },
-        //{
-        //    featureUrl: 'facebookPoalim/actionforisrael',
-        //    featureName: 'פייסבוק פועלים',
-        //    featureLogo: "./img/actionforisrael.png",
-        //    featureColor: "Fbactivists"
-        //},
+    //{
+    //    featureUrl: 'facebookPoalim/actionforisrael',
+    //    featureName: 'פייסבוק פועלים',
+    //    featureLogo: "./img/actionforisrael.png",
+    //    featureColor: "Fbactivists"
+    //},
         {
-            featureUrl: 'contact',
-            featureName: 'צור קשר',
-            featureLogo: "./img/contact.png",
-            featureColor: "#009933"
-        }
+        featureUrl: 'contact',
+        featureName: 'צור קשר',
+        featureLogo: "./img/contact.png",
+        featureColor: "#009933"
+    }
 
     ];
 
@@ -201,7 +201,78 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     PostService.loadMainFeatures();
     $scope.features = PostService.getMainFeatures;
 
-    
+    $scope.receiveScoringRanks = [
+        {
+            score: 1,
+            color: '#01a3d4',
+            activities: [
+                {
+                    text: 'השתתפות בסקר',
+                    img: './../img/poll_info.png'
+                }
+            ]
+        },
+        {
+            score: 2,
+            color: '#f6ba55',
+            activities: [
+                {
+                    text: 'כתיבה בפורום',
+                    img: './../img/hosting_info.png'
+                },
+                {
+                    text: 'שיתוף מתוך האפליקציה',
+                    img: './../img/poalim-logo.png'
+                }
+            ]
+        },
+        {
+            score: 3,
+            color: '#da4f00',
+            activities: [
+                {
+                    text: 'השתתפות באירוע',
+                    img: './../img/calendar_info.png'
+                },
+                {
+                    text: 'העלאת מם',
+                    img: './../img/meme_info.png'
+                }
+            ]
+        },
+        {
+            score: 4,
+            color: '#8ec531',
+            activities: [
+                {
+                    text: 'הערכת חבר',
+                    img: './../img/appreciate.png'
+                },
+                {
+                    text: 'שליחת שאלה לסקר',
+                    img: './../img/poll_info.png'
+                },
+                {
+                    text: 'דרגה חדשה',
+                    img: './../img/poalim-logo.png'
+                }
+            ]
+        },
+        {
+            score: 5,
+            color: '#006dbe',
+            activities: [
+                {
+                    text: 'הרשמה',
+                    img: './../img/poalim-logo.png'
+                },
+                {
+                    text: 'יצירת אירוע',
+                    img: './../img/calendar_info.png'
+                }
+            ]
+        }
+    ];
 
 } ]);
 
