@@ -368,7 +368,7 @@ a.list-group-item.event.active span, a.list-group-item.event.active:focus span, 
     width: 25px;
     height: 60px;
     display: inline-block;
-    background-color: blue;
+    /*background-color: blue;*/
 }
 
 .quality-scores.quality-scores-left {
@@ -394,7 +394,8 @@ a.list-group-item.event.active span, a.list-group-item.event.active:focus span, 
 }
 
 div#point-header-text {
-    height: 57px;
+    height: 40px;
+    font-weight: bold;
 }
 
 #main-point-wrapper .point-wrapper:last-child .inner-point-wrapper {

@@ -113,7 +113,7 @@ padding-right: 0;
             #author-header .author-date,#author-header span.author-name {
                 line-height: normal;
                 position: relative;
-                top: 20px;
+                /*top: 20px;*/
                 font-size: 10px;
             }
     

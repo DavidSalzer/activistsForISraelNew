@@ -19,7 +19,8 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
         featureName: 'mainMenu',
         featureLogo: "./img/poalim-logo.png",
         //infoImg: './img/whatsup.png',
-        featureColor: 'gray'
+        featureColor: 'gray',
+        infoHaeder: "מדרג קבלת הניקוד"
 
     };
 
