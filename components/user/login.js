@@ -200,7 +200,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             if (data.status.statusCode == 0) {
                 $scope.showLogin = false;
                 generalParameters.setShowLogin(false);
-                generalParameters.setUser(data.data.data);
+                //generalParameters.setUser(data.data.data);
                 $scope.mail = '';
                 $scope.pass = '';
             }

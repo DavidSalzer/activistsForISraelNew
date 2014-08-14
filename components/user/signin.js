@@ -95,7 +95,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $http.post(domain + 'signup/', $scope.json)
         .success(function (data) {
             $scope.showSignIn = false;
-            //generalParameters.setUser(data.data.user);
+            generalParameters.setUser(data.data.user);
 
             //send image string to be saved at server
             //if was uploaded
