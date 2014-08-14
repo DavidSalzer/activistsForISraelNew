@@ -77,7 +77,12 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
         //replace spaces with '+', replace ',' with "%2C"
         var addressString = location.replace(/ /g, '+').replace(/[ ]*,[ ]*|[ ]+/g, '%2C');
 
-        window.location.href = "geo:0,0?q=" + addressString;
+        if (isAndroid) {
+            window.location.href = "geo:0,0?q=" + addressString;
+        }
+        else {
+            window.location.href = 'maps://maps.apple.com/?q=' + addressString;
+        }
 
     };
 
