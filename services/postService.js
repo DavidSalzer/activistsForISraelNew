@@ -143,7 +143,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }
             $http.post(domain + queryString, json)
 			.success(function (data) {
-
+                $rootScope.$broadcast('showLoader', { showLoader: false });
 			    console.log(data);
 			    console.log(data.data._id);
 			    if (data.data._id == undefined) { deferred.resolve(data); return deferred.promise; } //fail to create post!
@@ -162,7 +162,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    }
 			})
 			.error(function (data) {
-
+                $rootScope.$broadcast('showLoader', { showLoader: false });
 			    deferred.resolve(data);
 			});
 

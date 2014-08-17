@@ -184,7 +184,7 @@ div#features-swipe-inner {
     margin-right: auto;
     display: table-cell;
     vertical-align: bottom;
-    width: 95%;
+    max-width: 95%;
     height: 95px;
 }
 

@@ -208,7 +208,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             activities: [
                 {
                     text: 'השתתפות בסקר',
-                    img: './../img/poll_info.png'
+                    img: './img/poll_info.png'
                 }
             ]
         },
@@ -218,11 +218,11 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             activities: [
                 {
                     text: 'כתיבה בפורום',
-                    img: './../img/hosting_info.png'
+                    img: './img/hosting_info.png'
                 },
                 {
                     text: 'שיתוף מתוך האפליקציה',
-                    img: './../img/poalim-logo.png'
+                    img: './img/poalim-logo.png'
                 }
             ]
         },
@@ -232,11 +232,11 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             activities: [
                 {
                     text: 'השתתפות באירוע',
-                    img: './../img/calendar_info.png'
+                    img: './img/calendar_info.png'
                 },
                 {
                     text: 'העלאת מם',
-                    img: './../img/meme_info.png'
+                    img: './img/meme_info.png'
                 }
             ]
         },
@@ -246,15 +246,15 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             activities: [
                 {
                     text: 'הערכת חבר',
-                    img: './../img/appreciate.png'
+                    img: './img/appreciate.png'
                 },
                 {
                     text: 'שליחת שאלה לסקר',
-                    img: './../img/poll_info.png'
+                    img: './img/poll_info.png'
                 },
                 {
                     text: 'דרגה חדשה',
-                    img: './../img/poalim-logo.png'
+                    img: './img/poalim-logo.png'
                 }
             ]
         },
@@ -264,11 +264,11 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             activities: [
                 {
                     text: 'הרשמה',
-                    img: './../img/poalim-logo.png'
+                    img: './img/poalim-logo.png'
                 },
                 {
                     text: 'יצירת אירוע',
-                    img: './../img/calendar_info.png'
+                    img: './img/calendar_info.png'
                 }
             ]
         }
