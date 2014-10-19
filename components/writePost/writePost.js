@@ -18,7 +18,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.postData = {
 
-        user: { _id: $scope.user._id },
+        //user: { _id: $scope.user._id },
         post: { _parentID: null, attachment: "", content: "" }
 
     };
