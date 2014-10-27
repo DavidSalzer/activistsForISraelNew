@@ -83,7 +83,8 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
         $http.get(domain + 'profile/' + $stateParams.userId, { withCredentials: true, async: true })
             .success(function (data) {
                 console.log(data);
-
+                $scope.otherUser = data.data.user;
+                
                 var parmas = { "activity": { "receivedUser": $stateParams.userId, "type": "userLike"} };
 
                 var json = JSON.stringify(parmas);
@@ -109,38 +110,38 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
 			});
 
                 $scope.profile = function () {
-                    if (data.data.img == undefined) {
+                    if ($scope.otherUser.img == undefined) {
 
                     }
-                    else if (data.data.img.RelativePosition) {
-                        data.data.userImg = domain + data.data.img.url;
+                    else if ($scope.otherUser.img.RelativePosition) {
+                        $scope.otherUser.userImg = domain + $scope.otherUser.img.url;
 
                     }
                     else {
-                        data.data.userImg = data.data.img.url;
+                        data.data.user.userImg = data.data.user.img.url;
 
                     }
 
-                    if (data.data.point != undefined) {
-                        switch (data.data.point.level) {
+                    if ($scope.otherUser.point != undefined) {
+                        switch ($scope.otherUser.point.level) {
                             case '0':
-                                data.data.rank = 'חבר';
+                                $scope.otherUser.rank = 'חבר';
                                 break;
                             case '1':
-                                data.data.rank = 'פעיל';
+                                $scope.otherUser.rank = 'פעיל';
                                 break;
                             case '2':
-                                data.data.rank = 'משפיע';
+                                $scope.otherUser.rank = 'משפיע';
                                 break;
                             case '3':
-                                data.data.rank = 'מאסטר';
+                                $scope.otherUser.rank = 'מאסטר';
                                 break;
                             case '4':
-                                data.data.rank = 'אח';
+                                $scope.otherUser.rank = 'אח';
                                 break;
                         }
                     }
-                    return data.data;
+                    return $scope.otherUser;
                 }
 
                 if ($stateParams.userId == generalParameters.getUser()._id) {
@@ -258,9 +259,9 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
 
         console.log(request);
         queryString = 'profile/update';
-        classAjax.getdata('post', queryString, request).then(function (data) {
+        classAjax.getdata('put', queryString, request).then(function (data) {
             console.log(data);
-            generalParameters.setUser(data.data);
+            generalParameters.setUser(data.data.user);
             $scope.editItem(field);
         })
     }
@@ -353,21 +354,21 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":        
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });        
-                //    break;        
+                //case "author":          
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });          
+                //    break;          
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":        
-                //    $state.transitionTo('single-event', { postId: args.postId });        
-                //    break;        
-                //case "voteToPoll":        
-                //    $state.transitionTo('poll-view', { postId: args.postId });        
-                //    break;        
+                //case "event":          
+                //    $state.transitionTo('single-event', { postId: args.postId });          
+                //    break;          
+                //case "voteToPoll":          
+                //    $state.transitionTo('poll-view', { postId: args.postId });          
+                //    break;          
             }
         }
         else {

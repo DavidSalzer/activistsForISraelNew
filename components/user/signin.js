@@ -92,6 +92,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $scope.json = JSON.stringify($scope.signinDetails);
         console.log($scope.json);
 
+        $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.post(domain + 'signup/', $scope.json)
         .success(function (data) {
             $scope.showSignIn = false;
@@ -105,6 +106,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
             }
             //$http.post(domain + 'Base64FileUpload?ref=user&_id=data.data.user /',
             // $scope.json)
+            $rootScope.$broadcast('showLoader', { showLoader: false });
             $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 
             $scope.fName = '';

@@ -55,6 +55,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         $scope.json = JSON.stringify($scope.loginDetails);
         console.log($scope.json);
 
+        $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.post(domain + 'login/', $scope.json)
         .success(function (data) {
             $scope.showLogin = false;
@@ -63,6 +64,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             $scope.mail = '';
             $scope.pass = '';
             console.log(data);
+            $rootScope.$broadcast('showLoader', { showLoader: false });
         });
 
         //$scope.showLogin = false;
@@ -137,11 +139,13 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             return;
         }
 
+        $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.get(domain + 'forgotPassword/' + $scope.mail)
         .success(function (data) {
             console.log(data);
             if (data.status.statusCode == 0) {
                 $scope.successPasswordRecovery = true;
+                $rootScope.$broadcast('showLoader', { showLoader: false });
             }
         })
     }
@@ -166,11 +170,13 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         $scope.json = JSON.stringify($scope.newPasswordDetails);
         console.log($scope.json);
 
+        $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.post(domain + 'verifyPassCode', $scope.json)
         .success(function (data) {
             console.log(data);
             if (data.status.statusCode == 0) {
                 $scope.isNewPasswordPage = true;
+                $rootScope.$broadcast('showLoader', { showLoader: false });
             }
         });
     }
@@ -194,6 +200,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         $scope.json = JSON.stringify($scope.newPasswordDetails);
         console.log($scope.json);
 
+        $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.put(domain + 'setPassword', $scope.json)
         .success(function (data) {
             console.log(data);
@@ -203,6 +210,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
                 //generalParameters.setUser(data.data.data);
                 $scope.mail = '';
                 $scope.pass = '';
+                $rootScope.$broadcast('showLoader', { showLoader: false });
             }
         });
 
