@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="./components/article/article.css" />
 <link rel="stylesheet"  media='screen and (min-width: 900px)' type="text/css" href="{{siteOrigin}}components/article/article.css" />
+ <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <!-- sub header: כתיבת טקסט,סקר -->
 
 <div class="sub-header" data-ng-class="{'site-sub-header':isSiteHeader==true}">
@@ -20,23 +21,34 @@
 
 
 		<!--event time-->
-		<div data-ng-show="postType=='event'">
-                            
-                            					
-
-              
-
+		<div data-ng-show="postType=='event'" class="my-big-datewrap">
+         <quick-datepicker ng-model="timeDisplay.date" date-format='dd/MM/yy' disable-timepicker='true' class="date-picker-wrapper my-own-date"></quick-datepicker>
+         <div class="show-timepick" data-ng-click="showTimePicker = !showTimePicker"></div>
+         <div data-ng-show="showTimePicker" class="my-big-timepick" >                                        					
+            <timepicker ng-model="timeDisplay.time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+            <input type="button" class="go-out-time" value="close" data-ng-click="showTimePicker = false">
+            <div class="row" style="text-align: center; color: #000000; display: none;"> 
+            <div class="col-xs-6">
+                שינוי שעות:
+                <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
+            </div>
+            <div class="col-xs-6">
+                שינוי דקות:
+                <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+            </div>
+        </div>
+         </div>
 			<div class="small-input-wrap top-input-wrap datepicker-popup-calendar">
                 <p class="side-small-input side-small-input-one">תאריך:</p>
                 <!--<input type="text" placeholder="dd/mm/yy" class="form-control title-field" ng-click="open($event)"  datepicker-popup="{{format}}" ng-model="timeDisplay.date" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />-->
                  
 
-				<input type="text" placeholder="dd/mm/yy" data-ng-class='{"title-field":true,"requieredError":showDDMMYYError}' data-ng-model="timeDisplay.date"/>
+				<input type="text" placeholder="dd/mm/yy" data-ng-class='{"title-field":true,"requieredError":showDDMMYYError}' value="{{timeDisplay.date|date : 'dd/MM/yy'}}" disabled /><!--data-ng-model="timeDisplay.date"-->
 			</div>
 			<div class="small-input-wrap bottom-input-wrap">
                 <p class="side-small-input side-small-input-tow">שעה:</p>
 				
-				<input type="text" placeholder="hh:mm" data-ng-class='{"title-field":true,"requieredError":showHHMMError}' data-ng-model="timeDisplay.time"/>
+				<input type="text" placeholder="hh:mm" data-ng-class='{"title-field":true,"requieredError":showHHMMError}' value="{{timeDisplay.time|date : 'shortTime'}}" disabled /><!--data-ng-model="timeDisplay.time"-->
 			</div>
 			<input  type="text" data-ng-class='{"title-field":true,"requieredError":showLocationError}' placeholder="מקום" data-ng-model="postData.post.location" />
         </div>

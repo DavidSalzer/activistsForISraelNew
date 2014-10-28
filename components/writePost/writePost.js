@@ -2,7 +2,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
     /*init variables*/
     generalParameters.setBackIcon(true);
-
+    $scope.showTimePicker = false;
     $scope.imageMax = 1;
     $scope.toLargImage = false;
     $scope.imgFileText = 'צרף תמונה'
@@ -35,30 +35,30 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     switch ($scope.postType) {
 
 
-        //case "article":
-        //    {
+        //case "article":     
+        //    {     
 
-        //        $scope.headerText = 'כתיבת טקסט';
+        //        $scope.headerText = 'כתיבת טקסט';     
 
-        //        $scope.textFileText = 'צרף קובץ טקסט';
-        //        $scope.toLargTextFile = false;
-        //        $scope.textFileMax = 1;
-        //        $scope.min = 250;
+        //        $scope.textFileText = 'צרף קובץ טקסט';     
+        //        $scope.toLargTextFile = false;     
+        //        $scope.textFileMax = 1;     
+        //        $scope.min = 250;     
 
-        //        $scope.postData.post.postType = 'article';
-        //        $scope.postData.post.title = '';
+        //        $scope.postData.post.postType = 'article';     
+        //        $scope.postData.post.title = '';     
 
-        //        $scope.thankDetails = {
+        //        $scope.thankDetails = {     
 
-        //            featureColor: colors[$scope.postType],
-        //            thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',
-        //            btnText: 'חזרה לעמוד המאמרים',
-        //            headerText: 'המאמר שלי',
-        //            featureState: 'article'
+        //            featureColor: colors[$scope.postType],     
+        //            thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',     
+        //            btnText: 'חזרה לעמוד המאמרים',     
+        //            headerText: 'המאמר שלי',     
+        //            featureState: 'article'     
 
-        //        };
-        //        break;
-        //    }
+        //        };     
+        //        break;     
+        //    }     
 
 
         case "talkback":
@@ -158,7 +158,9 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
         $scope.postImg = "";
 
     };
-
+    $scope.gg = function () {
+        var f = 1;
+    }
     $scope.sendPost = function () {
         if (!$scope.isPostPending) {
 
@@ -211,27 +213,44 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.convertDate = function () {
 
-        var ddmmyy = $scope.timeDisplay.date.split('/');
-        var date = new Date('20' + ddmmyy[2], ddmmyy[1] - 1, ddmmyy[0]);
-        var hhmm = $scope.timeDisplay.time.split(':');
-        date.setHours(hhmm[0], hhmm[1]);
+        //var ddmmyy = $scope.timeDisplay.date.split('/');
+        //var date = new Date('20' + ddmmyy[2], ddmmyy[1] - 1, ddmmyy[0]);
+        //var hhmm = $scope.timeDisplay.time.split(':');
+        //date.setHours(hhmm[0], hhmm[1]);
+        ////alert(date.getTime());
+        //$scope.postData.post.DestinationTime = date.getTime();
+        ////alert($scope.postData.post.DestinationTime);
+//from now what yishai did
+
+        var date = new Date(($scope.timeDisplay.date).getFullYear(), ($scope.timeDisplay.date).getMonth(), ($scope.timeDisplay.date).getDate());
+        date.setHours(($scope.timeDisplay.date).getHours(), ($scope.timeDisplay.date).getMinutes());
         //alert(date.getTime());
         $scope.postData.post.DestinationTime = date.getTime();
         //alert($scope.postData.post.DestinationTime);
+
 
     }
 
     $scope.validateInputs = function () {
 
-        var dateTest = new RegExp("^([0]?[1-9]|[1|2][0-9]|[3][0|1])[/]([0]?[1-9]|[1][0-2])[/]([0-9]{4}|[0-9]{2})$");
-        var timeTest = new RegExp("^([0-9]|0[0-9]|1[0-9]|2[0-3])[:][0-5][0-9]$");
-        $scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
-        $scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '' ||
-		 dateTest.test($scope.timeDisplay.date) == false) && $scope.postType == 'event';
-        $scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '' || timeTest.test($scope.timeDisplay.time) == false) && $scope.postType == 'event';
+   //     var dateTest = new RegExp("^([0]?[1-9]|[1|2][0-9]|[3][0|1])[/]([0]?[1-9]|[1][0-2])[/]([0-9]{4}|[0-9]{2})$");
+   //     var timeTest = new RegExp("^([0-9]|0[0-9]|1[0-9]|2[0-3])[:][0-5][0-9]$");
+   //     $scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
+   //     $scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '' ||
+		 //dateTest.test($scope.timeDisplay.date) == false) && $scope.postType == 'event';
+   //     $scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '' || timeTest.test($scope.timeDisplay.time) == false) && $scope.postType == 'event';
+   //     $scope.showLocationError = ($scope.postData.post.location == undefined || $scope.postData.post.location == '') && $scope.postType == 'event';
+
+   //     return (!($scope.showTitleError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || false));
+   //this is what was and from now is what yishai changed
+
+            $scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
+        $scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '') && $scope.postType == 'event';
+        $scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '') && $scope.postType == 'event';
         $scope.showLocationError = ($scope.postData.post.location == undefined || $scope.postData.post.location == '') && $scope.postType == 'event';
 
         return (!($scope.showTitleError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || false));
+
 
     }
 
@@ -266,6 +285,8 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
     };
 
+
+
     $scope.dateOptions = {
         formatYear: 'yy',
         startingDay: 1
@@ -277,5 +298,45 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
 
     //*****************end date area**************// 
+
+
+
+    /****timoe pivker ****/
+
+
+
+    $scope.mytime = new Date();
+
+    $scope.hstep = 1;
+    $scope.mstep = 5;
+
+    $scope.options = {
+        hstep: [1, 2, 3],
+        mstep: [1, 5, 10, 15, 25, 30]
+    };
+
+    $scope.ismeridian = false;
+    $scope.toggleMode = function () {
+
+    };
+
+    $scope.update = function () {
+        $scope.showTimePicker = false;
+        var d = new Date();
+        d.setHours(14);
+        d.setMinutes(0);
+        $scope.timeDisplay.time = d;
+
+    };
+
+    $scope.changed = function () {
+        console.log('Time changed to: ' + $scope.mytime);
+    };
+
+    $scope.clear = function () {
+        $scope.mytime = null;
+    };
+
+
 
 } ]);
