@@ -61,6 +61,7 @@
     width: auto;
     overflow: hidden;
     max-width: 100%;
+    right: 0;
 }
 
 .large .meme-like {

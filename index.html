@@ -95,7 +95,19 @@
         <script src="js/jquery.2.min.js"></script>
         <script src="js/jquery.Jcrop.min.js"></script>
 
+        <script src="js/initPushwoosh.js"></script>
+        
         <script src="socialGroupApp.js"></script>
+        <script>
+            function handleOpenURL(url) {
+                //alert('handleOpenURL');
+                setTimeout(function () {
+                    page = url.replace('bennet://', '');
+                    window.location.replace(window.location.pathname + '#/' + page);
+                }, 0);
+
+            }
+        </script>
 
         <script src="js/dictionary.js"></script>
         <script src="./services/generalParameters.js"></script>
