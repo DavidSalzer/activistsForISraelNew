@@ -10,3 +10,17 @@ featureDictionary['meme'] = { featureLogo: './img/meme.png', featureName: 'ממ�
 featureDictionary['event'] = { featureLogo: './img/calendar.png', featureName: 'אירועים' };
 
 console.log(featureDictionary);
+
+var shareDetailes = [];
+shareDetailes['main-menu'] = {message:'רוצים להצטרף לאחליקציה של בנט?'};
+shareDetailes['talkback'] = {message:'רוצים לכתוב בפורום של האחליקציה? היכנסו לכאן!'};
+shareDetailes['comments'] = {message:'בואו תראו מה כתוב באחליקציה של בנט', hasContent: true};
+shareDetailes['poll'] = {message:'בואו תשתתפו גם אתם בסקר באחליקציה של בנט'};
+shareDetailes['poll-view'] = {message:'בואו תשתתפו גם אתם בסקר באחליקציה של בנט', hasTitle: true};
+shareDetailes['meme'] = {message:'בואו לראות וליצור ממים באחליקציה של בנט'};
+shareDetailes['single-meme'] = {message:'בואו תראו מם באחליקציה של בנט'};
+shareDetailes['event'] = {message:'בואו תראו מה קורה באחליקציה של בנט'};
+shareDetailes['single-event'] = {message:'אירוע חשוב - בואו הצטרפו!', hasTitle: true};
+shareDetailes['channel'] = {message:'צפו בסרטונים באחליקציה של בנט'};
+shareDetailes['facebookBennet'] = {message:'צפו בדף פייסבוק של בנט דרך האחליקציה'};
+//shareDetailes['user-profile'] = {message:''};

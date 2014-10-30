@@ -114,7 +114,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         })
 
 		.state('poll-view', {
-		    url: "/pollView/:postId",
+		    url: "/poll-view/:postId",
 		    views: {
 		        "main": {
 		            templateUrl: "./components/poll/pollView.html",

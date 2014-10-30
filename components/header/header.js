@@ -172,11 +172,24 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         generalParameters.setShowLogin(false);
 
         //phonegap sharing plugin
-        message = 'קראתי מאמר באפליקצית פועלים למען ישראל, כנסו לקרוא..';
-        subject = 'קראתי מאמר באפליקצית פועלים למען ישראל, כנסו לקרוא..';
-        img = 'http://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Naftali-Bennett.jpg/640px-Naftali-Bennett.jpg';
-        link = 'https://www.facebook.com/NaftaliBennett';
-        window.plugins.socialsharing.share(message, subject, img, link);
+        //message = 'קראתי מאמר באחליקציה, כנסו לקרוא..';
+        subject = 'האחליקציה של בנט ';
+        img = null;
+        link = 'http://www.cambium-team.com/bennet/core/' + window.location.hash;
+
+        currentState = $state.$current;
+
+        message = shareDetailes[currentState].message;
+
+        if (shareDetailes[currentState].hasTitle) {
+            message = message + ': ' + PostService.getSinglePost().title;
+        }
+        else if (shareDetailes[currentState].hasContent) {
+            message = message + ': ' + PostService.getSinglePost().content;
+        }
+
+        $rootScope.$broadcast('showLoader', { showLoader: true });
+        window.plugins.socialsharing.share(message, subject, img, link, function () { $rootScope.$broadcast('showLoader', { showLoader: false }); });
 
         // You can share text, a subject (in case the user selects the email application), (any type and location of) file (like an image), and a link.
         // However, what exactly gets shared, depends on the application the user chooses to complete the action. A few examples:
@@ -188,6 +201,16 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         //Facebook iOS: message, image (other filetypes are not supported), link.
         //Facebook Android: sharing a message is not possible. You can share either a link or an image (not both), but a description can not be prefilled
     }
+
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        console.log(toState);
+        if (shareDetailes[toState.name] != undefined) {
+            $scope.showShareBtn = true;
+        }
+        else {
+            $scope.showShareBtn = false;
+        }
+    });
 
     $scope.closePopups = function () {
         $rootScope.$broadcast('showSignInPopup', { showSignIn: false });

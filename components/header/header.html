@@ -62,7 +62,7 @@
 
 
     <div class="btn btn-group pull-left" data-ng-hide="backIcon()" data-ng-click="toggle('mainSidebar');closePopups()">
-        <divclass ="btn btn-navbar sidebar-toggle">
+        <div class ="btn btn-navbar sidebar-toggle">
             <i class="fa fa-bars"></i>
     </div>
                 </div>
@@ -75,7 +75,7 @@
     <div class="btn btn-navbar pull-left info" data-ng-click="showInpoPopUp()" data-ng-show="featureDetails().infoHaeder!=undefined">
     </div>
 
-    <div class="btn-group pull-right" data-ng-click="share();">
+    <div data-ng-if="showShareBtn" class="btn-group pull-right" data-ng-click="share();">
         <i class="fa share"></i>
     </div>
 
