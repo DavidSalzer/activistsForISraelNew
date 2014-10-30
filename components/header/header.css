@@ -162,20 +162,8 @@ header .btn.btn-navbar.info {
 }*/
 
 
-
-span.sidbar-text.ng-binding {
-    display: inline-block;
-    width: 80%;
-    width: 144px;
-    position: relative;
-    right: -25px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding-right: 11px;
-    color: white;
-    top: -3px;
-    height: 35px;
+.sidebar-header {
+    height: 98px;
 }
 
 span.sidbar-text.ng-binding:hover {
@@ -195,16 +183,6 @@ a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.acti
     z-index: 3;
 }
 
-#my-username {
-    box-sizing: border-box;
-    padding-left: 35px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    letter-spacing: 0.7px;
-    font-size: 16px;
-    line-height: 65px;
-}
 
 a.list-group-item.talkback.active span, a.list-group-item.talkback.active:focus span, a.list-group-item.talkback.active:hover span {
     background-color: #993ca7;

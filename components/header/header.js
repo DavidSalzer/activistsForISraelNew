@@ -44,7 +44,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     $scope.featuresList = [
         {
             featureUrl: 'main-menu',
-            featureName: 'דף הבית',
+            featureName: 'עמוד הבית',
             featureLogo: "./img/poalim-logo.png",
             featureColor: 'menu'
         },
@@ -54,43 +54,63 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureLogo: "./img/whatsup.png",
             featureColor: "talkback"
         },
+        {
+            featureUrl: 'meme',
+            featureName: 'ממים',
+            featureLogo: "./img/meme.png",
+            featureColor: "#ffd427"
+        },
     //{
     //    featureUrl: 'article',
     //    featureName: 'מאמרים',
     //    featureLogo: "./img/article.png",
     //    featureColor: "article"
     //},
-
         {
-        featureUrl: 'poll',
-        featureName: 'סקרים',
-        featureLogo: "./img/poll.png",
-        featureColor: "#da4f00"
-    }
-          ,
-         {
-             featureUrl: 'meme',
-             featureName: 'ממים',
-             featureLogo: "./img/meme.png",
-             featureColor: "#ffd427"
-         }
-          ,
-		{
 		    featureUrl: 'event',
 		    featureName: 'אירועים',
 		    featureLogo: "./img/calendar.png",
 		    featureColor: "event"
 		},
         {
+            featureUrl: 'poll',
+            featureName: 'סקרים',
+            featureLogo: "./img/poll.png",
+            featureColor: "#da4f00"
+        },
+        {
+            featureUrl: 'chat',
+            featureName: "צ'אט חי",
+            featureLogo: "./img/poll.png",
+            featureColor: "#da4f00"
+        },
+        {
+            featureUrl: 'tv',
+            featureName: "לייב tv",
+            featureLogo: "./img/poll.png",
+            featureColor: "#da4f00"
+        },
+        {
             featureUrl: 'channel',
-            featureName: 'יוטיוב',
+            featureName: 'ערוץ יוטיוב',
             featureLogo: "./img/youtube.png",
             featureColor: "channel"
         },
-
         {
             featureUrl: 'facebookBennet/NaftaliBennett',
-            featureName: 'פייסבוק',
+            featureName: 'פייסבוק נפתלי',
+            featureLogo: "./img/NaftaliBennett.png",
+            featureColor: "FBnaftaly"
+        },
+        {
+            featureUrl: 'facebookBennet/NaftaliBennett',
+            featureName: 'מבזקים',
+            featureLogo: "./img/NaftaliBennett.png",
+            featureColor: "FBnaftaly"
+        },
+        {
+            featureUrl: 'facebookBennet/NaftaliBennett',
+            featureName: 'הניקוד שלי',
             featureLogo: "./img/NaftaliBennett.png",
             featureColor: "FBnaftaly"
         },

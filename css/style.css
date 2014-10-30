@@ -512,19 +512,73 @@ span.respond-count, span.like-count {
 }
 
 /**********************side-bar**************************8*/
+
+span.sidbar-text.ng-binding {
+    display: inline-block;
+    width: 80%;
+    width: 144px;
+    position: relative;
+    right: -25px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 11px;
+    color: #2d2829;
+    top: -3px;
+    height: 35px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
 .sidebar .app-name {
-    background-color: #565c63;
-    height: 64px;
-    top: 3px;
+    background-color: #D2DCEA;
+    height: 98px;
+    top: 0px;
     overflow: hidden;
     cursor: pointer;
+}
+
+.name-in-header {
+    text-align: center;
+}
+
+.sidebar h3 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    letter-spacing: 0.7px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #2d2829;
+}
+
+
+.sidebar-logo.user-thumbnail.header-user-logo {
+    position: relative;
+    display: block;
+    height: 60px;
+    width: 60px;
+    margin: 10px auto 5px auto;
+}
+
+div#mainSidebar {
+    padding: 0px;
+}
+
+.app-name + .scrollable {
+    padding-top: 98px;
 }
 
 div.list-group {
     top: -2px;
     position: relative;
+    background-color: #ffffff;
 }
 
+div.scrollable-content.overthrow {
+    background-color: #fff;
+}
 
 .sidebar-left {
     background: #000;
@@ -532,6 +586,7 @@ div.list-group {
 
 .sidebar a.list-group-item {
     border-bottom: 1px solid #565c63;
+    background-color: #ffffff;
 }
 
 /**********************************error popup css******************************************/
