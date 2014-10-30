@@ -10,12 +10,20 @@
         </div>
     </a>
 
+    <div id="demanded-area">
+        <h3 class="demanded-title"></h3>
+        <div class="demand-circle" style=""></div>
+        <div class="demand-circle" style=""></div>
+        <div class="demand-circle" style=""></div>
+        <div class="demand-circle" style=""></div>
+    </div>
+
     <div id="features-list" class="caption">
         <a class="menu-item-feature" data-ng-repeat="feature in features()" href="{{originUrl + feature.link}}" data-ng-hide="$index==0">
             <div class="current-feature-components">
                 <img ng-src="{{feature.image}}" alt="...">
-                <div class="current-feature-title">
-                    <h3>{{feature.title}}</h3>
+                <div class="features-title">
+                    <h3 class="inner-features-title">{{feature.title}}</h3>
                 </div>
             </div>
         </a>
