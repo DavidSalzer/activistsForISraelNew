@@ -15,20 +15,12 @@ body {
 .app-body, .main-view, #main-menu {
     height: 100%;
     position: relative;
-    background-color: #2f343b;
+    background-color: #ecf8ff;
 }
 
 .loader {
-    /*position: absolute;
-    margin: auto;*/
     height: 55px;
     width: 55px;
-    /*top: 0px;
-    display: block;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
-    z-index: 15;*/
     background-image: url('../img/loader.png');
 }
 
@@ -50,16 +42,13 @@ body {
     content: "";
 }
 
-
-
 /*testing nav bar*/
 .navbar, .navbar-app {
     min-height: 0px;
 }
 
 header.navbar.navbar-app.navbar-absolute-top {
-    /*z-index: 0;*/
-    height: 43px;
+    height: 44px;
 }
 
 
@@ -318,7 +307,6 @@ span.author-date {
     float: left;
     line-height: 50px;
     font-size: 13px;
-
 }
 
 div.post-main-text {
