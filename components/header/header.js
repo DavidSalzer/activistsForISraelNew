@@ -145,10 +145,6 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     $scope.showMask = generalParameters.getShowLogin;
 
 
-    $scope.gh = function (e , b) {
-      e.target.style.backgroundColor = b;
-    }
-
     $scope.goToUserProfile = function (i) {
         if ($scope.userProfile().firstName != 'הצטרף לאפליקציה') {
             $state.transitionTo('user-profile', { userId: $scope.userProfile()._id });
