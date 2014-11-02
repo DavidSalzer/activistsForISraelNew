@@ -194,6 +194,11 @@ a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.acti
     height: 100%;
 }
 
+.list-group-item img {
+    left: 12px;
+    
+}
+
 a.list-group-item.menu.active, a.list-group-item.menu.active:focus, a.list-group-item.menu.active:hover , a.list-group-item.menu:hover {
     background-color: #00aeef;color: #ffffff;
 }
