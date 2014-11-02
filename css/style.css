@@ -562,6 +562,7 @@ span.sidbar-text.ng-binding {
 
 div#mainSidebar {
     padding: 0px;
+    width: 154px;
 }
 
 .app-name + .scrollable {
@@ -1154,4 +1155,25 @@ button {
 
 :-ms-input-placeholder {
     color: #999;
+}
+
+
+/*******************sub-header*************************/
+
+.sub-header.special-sub-header {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    height: 44px;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px -3px 3px 0px rgba(0,0,0,0.3);
+}
+
+.inner-special-header {
+    width: 96px;
+    margin: 5px auto 0px auto;
+    border-radius: 7px;
+    height: 32px;
 }
