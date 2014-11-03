@@ -24,3 +24,6 @@ shareDetailes['single-event'] = {message:'אירוע חשוב - בואו הצט�
 shareDetailes['channel'] = {message:'צפו בסרטונים באחליקציה של בנט'};
 shareDetailes['facebookBennet'] = {message:'צפו בדף פייסבוק של בנט דרך האחליקציה'};
 //shareDetailes['user-profile'] = {message:''};
+
+var errorMessages = {};
+errorMessages.generalError = 'אירעה שגיאה, בדוק חיבור לאינטרנט או נסה שנית';

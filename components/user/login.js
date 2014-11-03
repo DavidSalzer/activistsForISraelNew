@@ -3,7 +3,10 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     $scope.returnTo = document.URL;
     $scope.showEmailError = false;
     $scope.showPassError = false;
+    $scope.showLoginError = false;
     $scope.isForgotPassword = false;
+    $scope.showForgotPasswordError = false;
+    $scope.recoveryCodeServerError = false;
 
     if (localStorage.getItem('user')) {
         console.log('user login... transitionTo:');
@@ -64,10 +67,23 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             $scope.mail = '';
             $scope.pass = '';
             console.log(data);
+            $scope.showLoginError = false;
             $rootScope.$broadcast('showLoader', { showLoader: false });
         })
-        .error(function (data) {
+        .error(function (data, status, headers, config, statusText) {
             console.log(data);
+            console.log(status);
+            if (status == 401 || status == 404) {
+                $scope.loginErrorMessage = 'שם משתמש או סיסמה שגויים';
+            }
+            else if (status == 4011) {
+                $scope.loginErrorMessage = 'לא אישרת הצטרפות לאפליקציה במייל';
+            }
+            else {
+                $scope.loginErrorMessage = errorMessages.generalError;
+            }
+            $scope.showLoginError = true;
+
             $rootScope.$broadcast('showLoader', { showLoader: false });
         });
 
@@ -149,8 +165,22 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             console.log(data);
             if (data.status.statusCode == 0) {
                 $scope.successPasswordRecovery = true;
-                $rootScope.$broadcast('showLoader', { showLoader: false });
+                $scope.showForgotPasswordError = false;
             }
+            else if (data.status.statusCode == 404) {
+                $scope.showForgotPasswordError = true;
+                $scope.forgotPasswordError = 'המייל שהזנת לא מוכר במערכת';
+            }
+            else {
+                $scope.showForgotPasswordError = true;
+                $scope.forgotPasswordError = errorMessages.generalError;
+            }
+            $rootScope.$broadcast('showLoader', { showLoader: false });
+        })
+        .error(function (data) {
+            $scope.showForgotPasswordError = true;
+            $scope.forgotPasswordError = errorMessages.generalError;
+            $rootScope.$broadcast('showLoader', { showLoader: false });
         })
     }
 
@@ -180,8 +210,22 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             console.log(data);
             if (data.status.statusCode == 0) {
                 $scope.isNewPasswordPage = true;
-                $rootScope.$broadcast('showLoader', { showLoader: false });
+                $scope.recoveryCodeServerError = false;
             }
+            else if (data.status.statusCode == 401) {
+                $scope.recoveryCodeServerError = true;
+                $scope.recoveryCodeErrorMessage = 'קוד השחזור שגוי או אינו בתוקף';
+            }
+            else {
+                $scope.recoveryCodeServerError = true;
+                $scope.recoveryCodeErrorMessage = errorMessages.generalError;
+            }
+            $rootScope.$broadcast('showLoader', { showLoader: false });
+        })
+        .error(function (data) {
+            $scope.recoveryCodeServerError = true;
+            $scope.recoveryCodeErrorMessage = errorMessages.generalError;
+            $rootScope.$broadcast('showLoader', { showLoader: false });
         });
     }
 
@@ -214,8 +258,14 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
                 //generalParameters.setUser(data.data.data);
                 $scope.mail = '';
                 $scope.pass = '';
+                $scope.passErrorInServer = false;
                 $rootScope.$broadcast('showLoader', { showLoader: false });
             }
+        })
+        .error(function (data) {
+            $scope.passErrorInServer = true;
+            $scope.passErrorMessage = errorMessages.generalError;
+            $rootScope.$broadcast('showLoader', { showLoader: false });
         });
 
     }
