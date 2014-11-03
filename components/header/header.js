@@ -44,15 +44,24 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     $scope.featuresList = [
         {
             featureUrl: 'main-menu',
-            featureName: 'דף הבית',
-            featureLogo: "./img/poalim-logo.png",
-            featureColor: 'menu'
+            featureName: 'עמוד הבית',
+            featureLogo: "./img/sidebar-menu-icon.png",
+            featureStyleName : 'menu',
+            featureColor: '#00aeef'
         },
         {
             featureUrl: 'talkback',
             featureName: 'הפורום',
-            featureLogo: "./img/whatsup.png",
-            featureColor: "talkback"
+            featureLogo: "./img/sidebar-talk-back-icon.png",
+            featureStyleName : 'talkback',
+            featureColor: "#993ca7"
+        },
+        {
+            featureUrl: 'meme',
+            featureName: 'ממים',
+            featureLogo: "./img/sidebar-meme-icon.png",
+            featureStyleName : 'meme',
+            featureColor: "#ffd427"
         },
     //{
     //    featureUrl: 'article',
@@ -60,39 +69,61 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     //    featureLogo: "./img/article.png",
     //    featureColor: "article"
     //},
-
         {
-        featureUrl: 'poll',
-        featureName: 'סקרים',
-        featureLogo: "./img/poll.png",
-        featureColor: "#da4f00"
-    }
-          ,
-         {
-             featureUrl: 'meme',
-             featureName: 'ממים',
-             featureLogo: "./img/meme.png",
-             featureColor: "#ffd427"
-         }
-          ,
-		{
-		    featureUrl: 'event',
-		    featureName: 'אירועים',
-		    featureLogo: "./img/calendar.png",
-		    featureColor: "event"
-		},
+        featureUrl: 'event',
+        featureName: 'אירועים',
+        featureLogo: "./img/sidebar-event-icon.png",
+        featureStyleName : 'event',
+        featureColor: "#004a8e"
+    },
+        {
+            featureUrl: 'poll',
+            featureName: 'סקרים',
+            featureLogo: "./img/sidebar-poll-icon.png",
+            featureStyleName : 'poll',
+            featureColor: "#f55c06"
+        },
+        {
+            featureUrl: 'chat',
+            featureName: "צ'אט חי",
+            featureLogo: "./img/sidebar-chat-icon.png",
+             featureStyleName : 'chat',
+            featureColor: "#01a3d4"
+        },
+        {
+            featureUrl: 'tv',
+            featureName: "לייב tv",
+            featureLogo: "./img/sidebar-tv-icon.png",
+            featureStyleName : 'tv',
+            featureColor: "#9e0b0f"
+        },
         {
             featureUrl: 'channel',
-            featureName: 'יוטיוב',
-            featureLogo: "./img/youtube.png",
-            featureColor: "channel"
+            featureName: 'ערוץ יוטיוב',
+            featureLogo: "./img/sidebar-youtube-icon.png",
+            featureStyleName : 'channel',
+            featureColor: "#fa0001"
         },
-
         {
             featureUrl: 'facebookBennet/NaftaliBennett',
-            featureName: 'פייסבוק',
-            featureLogo: "./img/NaftaliBennett.png",
-            featureColor: "FBnaftaly"
+            featureName: 'פייסבוק נפתלי',
+            featureLogo: "./img/sidebar-facebook-icon.png",
+            featureStyleName : 'facebooknaf',
+            featureColor: "#004a8e"
+        },
+        {
+            featureUrl: 'facebookBennet/NaftaliBennett',
+            featureName: 'מבזקים',
+            featureLogo: "./img/sidebar-flash-icon.png",
+            featureStyleName : 'flash',
+            featureColor: "#00aeff"
+        },
+        {
+            featureUrl: 'facebookBennet/NaftaliBennett',
+            featureName: 'הניקוד שלי',
+            featureLogo: "./img/sidebar-score-icon.png",
+            featureStyleName : 'score',
+            featureColor: "#00be9c"
         },
     //{
     //    featureUrl: 'facebookPoalim/actionforisrael',
@@ -103,7 +134,8 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         {
         featureUrl: 'contact',
         featureName: 'צור קשר',
-        featureLogo: "./img/contact.png",
+        featureLogo: "./img/sidebar-contact-icon.png",
+        featureStyleName : 'contact',
         featureColor: "#009933"
     }
 
@@ -111,6 +143,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
     $scope.userProfile = generalParameters.getUser;
     $scope.showMask = generalParameters.getShowLogin;
+
 
     $scope.goToUserProfile = function (i) {
         if ($scope.userProfile().firstName != 'הצטרף לאפליקציה') {

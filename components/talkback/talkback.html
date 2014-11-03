@@ -1,15 +1,9 @@
 <link rel="stylesheet" type="text/css" href="./components/talkback/talkback.css" />
-<link rel="stylesheet"  media='screen and (min-width: 900px)' type="text/css" href="{{siteOrigin}}components/talkback/talkback.css" />
+<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/talkback/talkback.css" />
 <script src="./components/article/article.js"></script>
 
-<div class="sub-header" id="feature-header" data-ng-click="writePost()">
-    <div data-ng-style="{'background-color':featureDetails.featureColor}">
-    כתוב פוסט
-    </div>
-    <div class="color-line color-line-bottom "></div>
-</div>
-
-<ul class="nav nav-tabs" ><!--data-ng-style="{'background-color':featureDetails.featureColor}"-->
+<ul class="nav nav-tabs">
+    <!--data-ng-style="{'background-color':featureDetails.featureColor}"-->
     <li style=""><a href="#Tab1" toggle="on" parent-active-class="active" data-ng-click="getPostsByAll()">הכל</a></li>
     <li style=""><a href="#Tab2" toggle="on" parent-active-class="active" data-ng-click="getPostsByFavorite()">אהובים</a></li>
     <li style=""><a href="#Tab3" toggle="on" parent-active-class="active" data-ng-click="getPostsByComments()">מדוברים</a></li>
@@ -22,8 +16,7 @@
     <div class="tab-pane" toggleable active-class="active" id="Tab3" exclusion-group="myTabs"></div>
 </div>
 
- <!--<div class="color-line color-fixed-top"></div>-->
-
+<!--<div class="color-line color-fixed-top"></div>-->
 <div class="posts-list" scroller loading-method="loadMore()">
     <post data-ng-repeat="post in posts() " data-post-type="talkback"></post>
     <div class="spiner-zone" data-ng-show="showSpiner()">
@@ -34,15 +27,20 @@
 
 
 <!--<div>{{postId}}</div>-->
-<!--<div class="write-comment-zone" data-ng-show="showInput">
-    <input type="text" class="write-comment-box" placeholder="הזן טקסט כאן" data-ng-model="commentText">
-    <input type="button" class="write-comment-btn" value="שלח &#9664;" data-ng-click="sendComment()">
-</div>
-<div class="comment-balloon" data-ng-show="showInput==false">
-    <span class="balloon-handler"></span>
-    <textarea class="text-balloon">
-    </textarea>
-
-    <p><span class="plus" data-ng-click="updatePosts()">+</span> צרף תמונה</p>
-
-</div>-->
+    <!--<div class="write-comment-zone" data-ng-show="showInput">
+        <input type="text" class="write-comment-box" placeholder="הזן טקסט כאן" data-ng-model="commentText">
+        <input type="button" class="write-comment-btn" value="שלח &#9664;" data-ng-click="sendComment()">
+    </div>
+    <div class="comment-balloon" data-ng-show="showInput==false">
+        <span class="balloon-handler"></span>
+        <textarea class="text-balloon">
+        </textarea>
+    
+        <p><span class="plus" data-ng-click="updatePosts()">+</span> צרף תמונה</p>
+    
+    </div>-->
+<div class="sub-header special-sub-header" id="feature-header" data-ng-click="writePost()">
+    <div class="inner-special-header" data-ng-style="{'background-color':featureDetails.featureColor}">
+    כתוב פוסט
+    </div>
+</div> 

@@ -1,25 +1,27 @@
-<h1 class="app-name" data-toggle="off" data-bubble data-target="mainSidebar" data-ng-click="closePopups();goToUserProfile()">
-    <div id="my-username">{{userProfile().firstName}} {{userProfile().lastName}}</div>  
-    <img class="sidebar-logo user-thumbnail" data-ng-src='{{userProfile().userImg}}' alt="alt">
-</h1>
+<div class="app-name" data-toggle="off" data-bubble data-target="mainSidebar" data-ng-click="closePopups();goToUserProfile()">
+    <img class="sidebar-logo user-thumbnail header-user-logo" data-ng-src="{{userProfile().userImg}}" alt="alt">
+    <h3 class="name-in-header">{{userProfile().firstName}} {{userProfile().lastName}}</h3>
+</div>
 
 
 
-            <div class="scrollable">
-                <div class="scrollable-content">
-                    <div class="list-group" data-ng-click="closePopups()" data-toggle="off" data-bubble data-target="mainSidebar"  >
-                        <a data-ng-repeat="feature in featuresList" data-ng-class="{'list-group-item':true,'{{feature.featureColor}}':true}" href="#/{{feature.featureUrl}}">
-                            <span class="sidbar-text">
+<div class="scrollable" style="background-color: ">
+    <div class="scrollable-content">
+        <div class="list-group out-list-group" data-ng-click="closePopups()" data-toggle="off" data-bubble data-target="mainSidebar">
+            <a data-ng-repeat="feature in featuresList" data-ng-class="{'list-group-item':true,'{{feature.featureStyleName}}':true}" href="#/{{feature.featureUrl}}">
+                <div class="inner-list-group">
+                    <span class="sidbar-text">
                                 {{feature.featureName}}
-                            </span>
-                            <img class="sidebar-logo" data-ng-src='{{feature.featureLogo}}' alt="alt" >
-                        </a>
-                        <!-- ... -->
-                    </div>
-
+                    </span>
                 </div>
-            </div>
-			
-			
-			
-			<!--  -->
+                <img class="sidebar-logo" data-ng-src="{{feature.featureLogo}}" alt="alt">
+            </a>
+            <!-- ... -->
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- data-ng-mouseover="gh($event , feature.featureColor)" data-ng-repeat="" -->

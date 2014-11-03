@@ -15,7 +15,7 @@ text-decoration: initial;
 /*nav bar*/
 
 header.navbar.navbar-app.navbar-absolute-top {
-    background-color: #000000;
+    background-color: #12426F;
     border-bottom-width: 0px;
 }
 
@@ -84,13 +84,13 @@ div#mainSidebar {
 }
 
 .sidebar-left-in .app {
-    -webkit-transform: translate3d(200px,0,0);
-    transform: translate3d(200px,0,0);
+    -webkit-transform: translate3d(154px,0,0);
+    transform: translate3d(154px,0,0);
 }
 
 @media (min-width: 992px) {
     .has-sidebar-left .app, .sidebar-left-in .app {
-        margin-left: 200px;
+        margin-left: 154px;
         left: 0;
         -webkit-transform: translate3d(0,0,0)!important;
         -moz-transform: translate3d(0,0,0)!important;
