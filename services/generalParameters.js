@@ -63,8 +63,8 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
     };
 
     var backIcon = false;
-
-    return {
+	
+	return {
 
         setFeature: function (fd) {
             console.log(featureDetails);
@@ -152,6 +152,54 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
 
         setShowLogin: function (state) {
             showLogin = state;
-        }
+        },
+		
+		androidIs442: function () {	
+		
+			var deviceOS  = device.platform.toLowerCase();
+			alert(deviceOS);
+			
+			var deviceOSVersion = device.version;  
+			alert(deviceOSVersion);
+	
+			var is442 = false;
+			if(deviceOS === 'android' && deviceOSVersion.indexOf( '4.4.2' ) === 0){is442 = true;}
+			alert(is442)
+			
+			return is442;
+		},
+		
+		fileTrasnfer: function (details, filePath) {	
+			
+			var options = new FileUploadOptions();
+	
+			var ft = new FileTransfer();
+			
+			function win(r) {
+		
+				alert("Code = " + r.responseCode+" Sent = " + r.bytesSent+" Response = " + r.response.data);
+
+						
+					var jsDataObject = JSON.parse(r.response);
+					console.log(jsDataObject);
+			}
+
+			function fail(error) {
+				alert("An error has occurred: Code = " + error.code);
+			}
+
+			var uploadUrl = domain ; //+ other url details
+	
+			ft.onprogress = function(progressEvent) {
+				if (progressEvent.lengthComputable) {
+					loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+				} 
+				else {
+					loadingStatus.increment();
+				}
+			};
+	
+			ft.upload(filePath, uploadUrl, win, fail, options);
+		}
     }
-} ])
+}])

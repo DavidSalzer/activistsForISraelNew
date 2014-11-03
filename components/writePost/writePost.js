@@ -158,9 +158,15 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
         $scope.postImg = "";
 
     };
+	
     $scope.gg = function () {
         var f = 1;
     }
+	
+	$scope.androidIs442 = function () {
+        return generalParameters.androidIs442();
+    }
+	
     $scope.sendPost = function () {
         if (!$scope.isPostPending) {
 

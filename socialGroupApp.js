@@ -336,6 +336,42 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     };
 } ])
 
+.directive('plugin', function () {
+    return {
+        restrict: 'E',
+        template: '<div class="filePlugin"></div>',
+        replace: 'true',
+        link: function (scope, el, attrs) {
+            el.on('click', function () {
+                alert(2);
+				navigator.camera.getPicture(
+				
+					function(uri) {
+						alert(uri);
+						scope.imgFileText = uri;
+						scope.postImg = uri;
+						scope.$apply();
+								
+					},
+							
+					function(e) {
+								
+						alert("Error getting picture: " + e);
+					},
+							
+					{ 
+						quality: 50, 
+						destinationType: navigator.camera.DestinationType.FILE_URI, 
+						sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+					}
+				);
+
+            });
+        }
+
+    };
+})
+
 .directive('like', ['$rootScope', 'PostService', 'generalParameters', function ($rootScope, PostService, generalParameters) {
     return {
         restrict: 'E',

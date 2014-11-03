@@ -7,7 +7,7 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
     var jcrop;
 
     obj.crop = function (canvasId, btnId, conId) {//canvasid  ,btn-approve, container Id
-        // cropData = {};
+       // cropData = {};
         $img = {};
         var request_height = 316;
         var request_width = 500;
@@ -54,8 +54,7 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
 		    jcrop = this;
 		});
 
-        $('#' + btnId + '').off('click.sendImage');
-        $('#' + btnId + '').on('click.sendImage', function () {
+        $('#' + btnId + '').click(function () {
             console.log('request_height: ' + request_height);
             console.log('request_width: ' + request_width);
             console.log('crop_data: ' + crop_data);
@@ -72,7 +71,7 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
                 cropW: crop_data.w, //crop w
                 cropH: crop_data.h
             }
-            // cropData = data;
+           // cropData = data;
             obj.cropCanvas(canvasId, data);
         });
     },
