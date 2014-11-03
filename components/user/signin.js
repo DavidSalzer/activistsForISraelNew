@@ -96,7 +96,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $http.post(domain + 'signup/', $scope.json)
         .success(function (data) {
             $scope.showSignIn = false;
-            generalParameters.setUser(data.data.user);
+            //generalParameters.setUser(data.data.user);
 
             //send image string to be saved at server
             //if was uploaded
@@ -171,7 +171,10 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
 
     //user image crop
     $scope.croping = function () {
+        console.log(1);
+        console.log($('#cropDiv img'));
         imgCrop.obj = {};
+        $('#cropDiv img').off('load');
         $('#cropDiv img').on('load', function () {
             imgCrop.crop('c', 'button_ok', 'cropDiv'); //canvasid  ,btn-approve, container Id
         });
