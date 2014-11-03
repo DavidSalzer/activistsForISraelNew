@@ -15,7 +15,10 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.postType = $stateParams.postType;
     $scope.postId = $stateParams.postId;
     $scope.user = generalParameters.getUser();
-
+	$scope.androidIs442 = generalParameters.androidIs442();
+		
+		
+    
     $scope.postData = {
 
         //user: { _id: $scope.user._id },
@@ -161,10 +164,6 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 	
     $scope.gg = function () {
         var f = 1;
-    }
-	
-	$scope.androidIs442 = function () {
-        return generalParameters.androidIs442();
     }
 	
     $scope.sendPost = function () {

@@ -91,8 +91,8 @@
 		 <div class="add-file" style='height: 30px;' data-ng-hide='postType=="poll"'>         
 				<div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
 					
-					<input data-ng-if="!androidIs442()" type="file" data-upload='img' style='position: absolute;top: 0;'></input>
-					<plugin data-ng-if="true"></plugin>
+					<input data-ng-if="!androidIs442" type="file" data-upload='img' style='position: absolute;top: 0;'></input>
+					<plugin data-ng-if="androidIs442"></plugin>
 					
 					
 				</div>

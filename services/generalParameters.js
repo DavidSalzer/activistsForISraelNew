@@ -1,5 +1,10 @@
 socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q', 'classAjax', 'PostService', function ($rootScope, $stateParams, $q, classAjax, PostService) {
-
+	
+	var ua = ua || navigator.userAgent;
+	var match = ua.match(/Android\s([0-9\.]*)/);
+	alert(match[1]);
+	var is442 =  match[1].indexOf( '4.4.2' ) === 0? true : false;
+			
     var featureDetails = {
 
         featureName: null,
@@ -156,7 +161,7 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
 		
 		androidIs442: function () {	
 		
-			var deviceOS  = device.platform.toLowerCase();
+			/* var deviceOS  = device.platform.toLowerCase();
 			alert(deviceOS);
 			
 			var deviceOSVersion = device.version;  
@@ -166,8 +171,10 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
 			if(deviceOS === 'android' && deviceOSVersion.indexOf( '4.4.2' ) === 0){is442 = true;}
 			alert(is442)
 			
+			return is442; */
+			alert(is442)
 			return is442;
-		},
+		}, 
 		
 		fileTrasnfer: function (details, filePath) {	
 			
