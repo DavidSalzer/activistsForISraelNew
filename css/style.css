@@ -498,6 +498,14 @@ span.respond-count, span.like-count {
     background-size: 100% 100%;
 }
 
+.filePlugin{
+	height: 100%;
+	width: 100%;
+	background-color: #F00;
+	position: absolute;
+	
+}
+
 .comment-balloon p {
     color: #E4E4E4;
     position: absolute;
