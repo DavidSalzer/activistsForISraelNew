@@ -203,6 +203,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $scope.userImg = d.data;
         $scope.editImg = false;
         $scope.$apply();
+        //$('#userImg').val("");
         $scope.userimg = '';
         imgCrop.destroy();
     });

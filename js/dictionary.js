@@ -27,3 +27,4 @@ shareDetailes['facebookBennet'] = {message:'צפו בדף פייסבוק של ב
 
 var errorMessages = {};
 errorMessages.generalError = 'אירעה שגיאה, בדוק חיבור לאינטרנט או נסה שנית';
+errorMessages.unConfirmed = 'לא אישרת הצטרפות לאפליקציה במייל';

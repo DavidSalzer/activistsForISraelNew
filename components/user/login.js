@@ -77,7 +77,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
                 $scope.loginErrorMessage = 'שם משתמש או סיסמה שגויים';
             }
             else if (status == 4011) {
-                $scope.loginErrorMessage = 'לא אישרת הצטרפות לאפליקציה במייל';
+                $scope.loginErrorMessage = errorMessages.unConfirmed;
             }
             else {
                 $scope.loginErrorMessage = errorMessages.generalError;
