@@ -65,7 +65,9 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
         featureName: 'mainMenu',
         featureLogo: "./img/poalim-logo.png",
         featureColor: 'gray',
-        infoHaeder: "מדרג קבלת הניקוד"
+        infoHaeder: "מדרג קבלת הניקוד",
+        infoMainText: 'ברוכים הבאים לאחליקציה! הצטרפו אלינו ותוכלו לצפות, לכתוב, לפרסם ולהגיב. לחצו על האייקון משמאל לצפייה בתפריט המלא.',
+        infoSubText: "עוד לא הצטרפת לאחליקציה?"
 
     };
 

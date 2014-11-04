@@ -11,7 +11,9 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'classAjax', 'Post
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/contact.png",
-        featureColor: '#009933'
+        featureColor: '#009933',
+        infoMainText: "כאן תוכלו לפנות אלינו.",
+        infoSubText: "עוד לא הצטרפת לאחליקציה?"
     };
 
     generalParameters.setFeature($scope.featureDetails);

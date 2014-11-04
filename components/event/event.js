@@ -12,8 +12,8 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         featureWhatsUpLogo: "./img/calendar_info.png",
         featureColor: '#004a8e',
         infoHaeder: "אירועים",
-        infoMainText: 'פרסמו אירועים למען ישראל! לוח לפרסום ויצירת אירועים/חוגי בית/מפגשים בהם תרצו לשתף את החברים. יש לשמור על זכויות יוצרים',
-        infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
+        infoMainText: 'לוח האירועים של האחליקציה. כאן תוכלו לראות את האירועים הקיימים ולפרסם אירועים/חוגי בית ושאר מפגשים שתרצו לשתף בהם את החברים',
+        infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
 
     generalParameters.setFeature($scope.featureDetails);
