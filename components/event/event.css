@@ -42,7 +42,7 @@ thead tr:first-child {
 }
 
 thead tr .btn.btn-default.btn-sm {
-    background-color: #565c63;
+    background-color: rgb(0, 74, 142);
     color: #ffffff;
     font-size: 20px;
     line-height: 34px;
@@ -343,13 +343,13 @@ thead tr .btn.btn-default.btn-sm {
     position: absolute;
     width: 100%;
     bottom: 0px;
-    padding-top: 182px;
+    padding-top: 142px;
     z-index: 0;
 }
 
 
 .meeting-wrapper.we {
-    padding-top: 333px;
+    padding-top: 292px;
 }
 
 .meeting-wrapper .posts-list {

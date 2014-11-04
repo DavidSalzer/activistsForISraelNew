@@ -587,8 +587,9 @@ div.scrollable-content.overthrow {
     border-bottom: 0px;
     background-color: #ffffff;
     color: #000;
-    padding: 0px 11px 0px 11px;
+    padding: 0px 7px 0px 7px;
     position: relative;
+    height: 48px;
 }
 
 /**********************************error popup css******************************************/
@@ -1164,6 +1165,7 @@ button {
     position: absolute;
     width: 100%;
     bottom: 0px;
+    z-index: 2;
     height: 44px;
     background-color: #ffffff;
     -webkit-box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.75);
@@ -1172,8 +1174,14 @@ button {
 }
 
 .inner-special-header {
-    width: 96px;
-    margin: 5px auto 0px auto;
+    width: 110px;
+    margin: 6px auto 0px auto;
     border-radius: 7px;
     height: 32px;
+    text-align: center;
+    line-height: 32px;
+    letter-spacing: 0.7px;
+    -webkit-box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.42);  
+    -moz-box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.42);  
+    box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.42);
 }
