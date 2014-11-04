@@ -13,12 +13,12 @@
                 <p class="main-text">{{featureDetails().infoSubText}}</p>
                 <div class="join-button" data-ng-click="goToLogin()" style="background:{{featureDetails().featureColor}};">הצטרף לאפליקציה</div>
             </div>
-            <figure class="devider-line bottom-devider"></figure>
+            <!--<figure class="devider-line bottom-devider"></figure>-->
         </section>
         <section class="point-section" data-ng-show="featureDetails().featureName=='mainMenu'">
             <span class="info info-close" data-ng-click="showInpoPopUp()"></span>
             <div id="point-header-text">{{featureDetails().infoHaeder}}</div>
-            <figure class="devider-line point-devider-line"></figure>
+            <!--<figure class="devider-line point-devider-line"></figure>-->
             <div id="main-point-wrapper">
                 <div class="point-wrapper score-one"data-ng-class="{'point-wrapper-left': $index%2==0, 'point-wrapper-right': $index%2==1}" data-ng-repeat="scoreCategory in receiveScoringRanks track by $index">
                     <div class="score-image" style="background-color: {{scoreCategory.color}}"><div class="point-plus">+</div><div class="score-height">{{scoreCategory.score}}</div></div>

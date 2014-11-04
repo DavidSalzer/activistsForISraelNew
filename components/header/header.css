@@ -65,26 +65,28 @@
 .info-header {
     height: 42px;
     border-radius: 10px;
-    margin: 10px;
+    margin: 12px auto 15px auto;
     color: #fff;
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
+    width: 252px;
     line-height: 42px;
 }
 
 .info-popup .main-text {
-    width: 80%;
-    margin: 13px auto;
+    width: 252px;
+    margin: 20px auto;
     line-height: 19px;
+    font-size: 14px;
+    color: #000000;
 }
 
 #whatsup-bottom {
     position: absolute;
     bottom: 0px;
-    padding: 34px 0px 16px 0px;
+    padding: 0px 0px 0px 0px;
     width: 100%;
     margin-bottom: 4px;
-    height: 30%;
 }
 
 #bottom-main-text {
@@ -94,23 +96,9 @@
 }
 
 #whatsup-bottom p {
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin-bottom: 4px;
 }
 
-#whatsup-bottom p::before {
-    background-image: url(../../img/image/color_line.png);
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 4px;
-    background-size: 100% 100%;
-    position: absolute;
-    content: "";
-    position: absolute;
-    z-index: 1;
-    top: 0px;
-    right: 0px;
-}
 
 .join-button {
     margin: 12px auto 0px auto;
@@ -122,7 +110,7 @@
     width: 160px;
     height: 40px;
     line-height: 40px;
-    border-radius: 11px;
+    border-radius: 8px;
     cursor: pointer;
     background-color: #993ca7;
     color: #fff;
@@ -183,7 +171,7 @@ a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.acti
     z-index: 3;
 }
 
-.out-list-group.list-group{
+.out-list-group.list-group {
     padding-left: 0px;
     padding-right: 0px;
 }
@@ -197,62 +185,74 @@ a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.acti
 
 .list-group-item img {
     left: 13px;
-    
     width: 34px;
     height: 34px;
     top: 8px;
 }
 
-a.list-group-item.menu.active, a.list-group-item.menu.active:focus, a.list-group-item.menu.active:hover , a.list-group-item.menu:hover {
-    background-color: #00aeef;color: #ffffff;
+a.list-group-item.menu.active, a.list-group-item.menu.active:focus, a.list-group-item.menu.active:hover, a.list-group-item.menu:hover {
+    background-color: #00aeef;
+    color: #ffffff;
 }
 
-a.list-group-item.talkback.active, a.list-group-item.talkback.active:focus, a.list-group-item.talkback.active:hover , a.list-group-item.talkback:hover {
-    background-color: #993ca7;color: #ffffff;
+a.list-group-item.talkback.active, a.list-group-item.talkback.active:focus, a.list-group-item.talkback.active:hover, a.list-group-item.talkback:hover {
+    background-color: #993ca7;
+    color: #ffffff;
 }
 
-a.list-group-item.meme.active, a.list-group-item.meme.meme:focus, a.list-group-item.meme.active:hover , a.list-group-item.meme:hover {
-    background-color: #ffd427;color: #ffffff;
+a.list-group-item.meme.active, a.list-group-item.meme.meme:focus, a.list-group-item.meme.active:hover, a.list-group-item.meme:hover {
+    background-color: #ffd427;
+    color: #ffffff;
 }
 
-a.list-group-item.event.active, a.list-group-item.event.active:focus, a.list-group-item.event.active:hover , a.list-group-item.event:hover {
-    background-color: #004a8e;color: #ffffff;
+a.list-group-item.event.active, a.list-group-item.event.active:focus, a.list-group-item.event.active:hover, a.list-group-item.event:hover {
+    background-color: #004a8e;
+    color: #ffffff;
 }
 
-a.list-group-item.poll.active, a.list-group-item.poll.active:focus, a.list-group-item.poll.active:hover , a.list-group-item.poll:hover {
-    background-color: #f55c06;color: #ffffff;
+a.list-group-item.poll.active, a.list-group-item.poll.active:focus, a.list-group-item.poll.active:hover, a.list-group-item.poll:hover {
+    background-color: #f55c06;
+    color: #ffffff;
 }
 
-a.list-group-item.chat.active, a.list-group-item.chat.active:focus, a.list-group-item.chat.active:hover , a.list-group-item.chat:hover {
-    background-color: #01a3d4;color: #ffffff;
+a.list-group-item.chat.active, a.list-group-item.chat.active:focus, a.list-group-item.chat.active:hover, a.list-group-item.chat:hover {
+    background-color: #01a3d4;
+    color: #ffffff;
 }
 
-a.list-group-item.menu.active, a.list-group-item.menu.active:focus, a.list-group-item.menu.active:hover , a.list-group-item.menu:hover {
-    background-color: #00aeef;color: #ffffff;
+a.list-group-item.menu.active, a.list-group-item.menu.active:focus, a.list-group-item.menu.active:hover, a.list-group-item.menu:hover {
+    background-color: #00aeef;
+    color: #ffffff;
 }
 
-a.list-group-item.tv.active, a.list-group-item.tv.active:focus, a.list-group-item.tv.active:hover , a.list-group-item.tv:hover {
-    background-color: #9e0b0f;color: #ffffff;
+a.list-group-item.tv.active, a.list-group-item.tv.active:focus, a.list-group-item.tv.active:hover, a.list-group-item.tv:hover {
+    background-color: #9e0b0f;
+    color: #ffffff;
 }
 
-a.list-group-item.channel.active, a.list-group-item.channel.active:focus, a.list-group-item.channel.active:hover , a.list-group-item.channel:hover {
-    background-color: #fa0001;color: #ffffff;
+a.list-group-item.channel.active, a.list-group-item.channel.active:focus, a.list-group-item.channel.active:hover, a.list-group-item.channel:hover {
+    background-color: #fa0001;
+    color: #ffffff;
 }
 
-a.list-group-item.facebooknaf.active, a.list-group-item.facebooknaf.active:focus, a.list-group-item.facebooknaf.active:hover , a.list-group-item.facebooknaf:hover {
-    background-color: #004a8e;color: #ffffff;
+a.list-group-item.facebooknaf.active, a.list-group-item.facebooknaf.active:focus, a.list-group-item.facebooknaf.active:hover, a.list-group-item.facebooknaf:hover {
+    background-color: #004a8e;
+    color: #ffffff;
 }
 
-a.list-group-item.flash.active, a.list-group-item.flash.active:focus, a.list-group-item.flash.active:hover , a.list-group-item.flash:hover {
-    background-color: #00aeff;color: #ffffff;
+a.list-group-item.flash.active, a.list-group-item.flash.active:focus, a.list-group-item.flash.active:hover, a.list-group-item.flash:hover {
+    background-color: #00aeff;
+    color: #ffffff;
 }
 
-a.list-group-item.score.active, a.list-group-item.score.active:focus, a.list-group-item.score.active:hover , a.list-group-item.score:hover {
-    background-color: #00be9c;color: #ffffff;
+a.list-group-item.score.active, a.list-group-item.score.active:focus, a.list-group-item.score.active:hover, a.list-group-item.score:hover {
+    background-color: #00be9c;
+    color: #ffffff;
 }
 
-a.list-group-item.contact.active, a.list-group-item.contact.active:focus, a.list-group-item.contact.active:hover , a.list-group-item.contact:hover {
-    background-color: #009933;color: #ffffff;
+a.list-group-item.contact.active, a.list-group-item.contact.active:focus, a.list-group-item.contact.active:hover, a.list-group-item.contact:hover {
+    background-color: #009933;
+    color: #ffffff;
 }
 
 
@@ -262,21 +262,22 @@ a.list-group-item.contact.active, a.list-group-item.contact.active:focus, a.list
 
     #whatsup-bottom {
         margin-bottom: 0px;
-        height: 23%;
-        padding-top: 10px;
+        padding-top: 0px;
     }
 
     #whatsup-bottom p {
-        margin-top: -3px;
         font-size: 14px;
     }
 
     #whatsup-bottom .join-button {
         margin: 5px auto 0px auto;
-        width: 150px;
-        height: 31px;
-        line-height: 29px;
-        font-size: 18px;
+        width: 103px;
+        height: 32px;
+        line-height: 30px;
+        font-size: 15px;
+        -webkit-box-shadow: 1px 8px 6px -2px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 1px 8px 6px -2px rgba(0, 0, 0, 0.4);
+        box-shadow: 1px 8px 6px -2px rgba(0, 0, 0, 0.4);
     }
 
     .info-close {
