@@ -1,9 +1,9 @@
 socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q', 'classAjax', 'PostService', function ($rootScope, $stateParams, $q, classAjax, PostService) {
 	
-	var ua = ua || navigator.userAgent;
-	var match = ua.match(/Android\s([0-9\.]*)/);
-	alert(match[1]);
-	var is442 =  match[1].indexOf( '4.4.2' ) === 0? true : false;
+	//var ua = ua || navigator.userAgent;
+	//var match = ua.match(/Android\s([0-9\.]*)/);
+	//alert(match[1]);
+	var is442 = false; //match[1].indexOf( '4.4.2' ) === 0? true : false;
 			
     var featureDetails = {
 

@@ -7,7 +7,7 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
     var jcrop;
 
     obj.crop = function (canvasId, btnId, conId) {//canvasid  ,btn-approve, container Id
-       // cropData = {};
+        // cropData = {};
         $img = {};
         var request_height = 316;
         var request_width = 500;
@@ -15,12 +15,12 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
 
         var $div = $('#' + conId + '');
         $img = $('#' + conId + ' img');
+        
+        $img.css('width', 'auto').css('height', 'auto')
+        $div.css('padding-left', '0').css('padding-top', '0');
         var div_width = $div.width();
         var div_height = $div.height();
         var div_ratio = request_width / request_height;
-        $img.css('width', 'auto').css('height', 'auto')
-        $div.css('padding-left', '0').css('padding-top', '0');
-
         var pic_real_width = $img.width(), pic_real_height = $img.height();
         var ratio = pic_real_width / pic_real_height;
         var zoom = Math.min(div_height / pic_real_height, div_width / pic_real_width);
@@ -54,7 +54,8 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
 		    jcrop = this;
 		});
 
-        $('#' + btnId + '').click(function () {
+        $('#' + btnId + '').off('click.sendImage');
+        $('#' + btnId + '').on('click.sendImage', function () {
             console.log('request_height: ' + request_height);
             console.log('request_width: ' + request_width);
             console.log('crop_data: ' + crop_data);
@@ -71,7 +72,7 @@ socialGroupApp.factory('imgCrop', ['$rootScope', function ($rootScope) {
                 cropW: crop_data.w, //crop w
                 cropH: crop_data.h
             }
-           // cropData = data;
+            // cropData = data;
             obj.cropCanvas(canvasId, data);
         });
     },
