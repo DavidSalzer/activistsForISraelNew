@@ -1,5 +1,5 @@
 .sign-in-popup {
-    background-color: #565c63;
+    background-color: #ecf8ff;
     z-index: 11;
     top: 50px;
     width: 93%;
@@ -71,7 +71,7 @@
 .sign-in-field {
     height: 42px;
     width: 90%;
-    background-color: #2f343b;
+    background-color: #fff;
     display: block;
     border-radius: 10px;
     color: white;
@@ -143,7 +143,7 @@ input#userImg {
 }
 
 .sign-in-btn {
-    background-color: #42484e;
+    background-color: #12426F;
     height: 42px;
     width: 155px;
     font-size: 19px;
@@ -170,7 +170,7 @@ input[type=file] {
 
 .no-sign-in-yet {
     text-align: center;
-    color: white;
+    color: #2d2829;
     margin-bottom: 8px;
     font-weight: bold;
 }
@@ -212,10 +212,11 @@ span#signinButton {
 }
 
 .login-forget-pass {
-    color: white;
+    color: #2d2829;
     text-align: center;
     margin-bottom: 20px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 #___signin_0, #___signin_0 button {
@@ -261,16 +262,17 @@ span#signinButton {
 
 .password-recovery-title {
     text-align: center;
-    color: white;
+    color: #2d2829;
     margin-bottom: 10px;
 }
 
 .password-recovery-sub-title {
-    color: white;
+    color: #2d2829;
     font-size: 12px;
     width: 90%;
     margin: auto;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 /*--------------------------------croping-------------------------*/

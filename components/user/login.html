@@ -45,7 +45,7 @@
             <div class="login-error" data-ng-show="showForgotPasswordError">* {{forgotPasswordError}}</div>
             <div class="login-error" data-ng-show="successPasswordRecovery">* קוד שחזור נשלח למייל שלך</div>
             <input type="button" class="sign-in-btn" value="שחזר" data-ng-click="sendForgotPassword()">
-            <div class="login-forget-pass" data-ng-click="openCodefield()">כבר יש לי קוד שחזור</div>
+            <div class="login-forget-pass" data-ng-click="openCodefield()">יש בידי קוד</div>
 
             <div data-ng-show="successPasswordRecovery">
                 <input type="text" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: recoveryCodeError}" placeholder="קוד שחזור" data-ng-model="recoveryCode" style="margin-top: 70px">
