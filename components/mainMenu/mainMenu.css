@@ -225,12 +225,12 @@ h3 {
     height: 33px;
     width: 33px;
     background-repeat: no-repeat;
-    background-position: 49% 7px;
     border-radius: 21px;
     display: inline-block;
     margin-right: 11px;
     margin-top: 9px;
     border: 2px solid #ffffff;
+    background-size: 100% 100%;
 }
 
 .demanded-title {
