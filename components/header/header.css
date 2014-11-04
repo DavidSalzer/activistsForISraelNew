@@ -20,13 +20,13 @@
 }
 
 .arrow-up {
-    width: 0;
-    height: 0;
+    width: 28px;
+    height: 20px;
     border-left: 18px solid transparent;
     border-right: 18px solid transparent;
-    border-bottom: 18px solid #fff;
-    position: absolute;
-    top: -15px;
+    border-bottom: 18px solid #ffffff;
+    position: fixed;
+    top: 42px;
     left: 31px;
 }
 
@@ -171,7 +171,7 @@ a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.acti
     z-index: 3;
 }
 
-.out-list-group.list-group {
+.out-list-group.list-group{
     padding-left: 0px;
     padding-right: 0px;
 }
@@ -185,74 +185,62 @@ a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.acti
 
 .list-group-item img {
     left: 13px;
+    
     width: 34px;
     height: 34px;
     top: 8px;
 }
 
-a.list-group-item.menu.active, a.list-group-item.menu.active:focus, a.list-group-item.menu.active:hover, a.list-group-item.menu:hover {
-    background-color: #00aeef;
-    color: #ffffff;
+a.list-group-item.menu.active, a.list-group-item.menu.active:focus, a.list-group-item.menu.active:hover , a.list-group-item.menu:hover {
+    background-color: #00aeef;color: #ffffff;
 }
 
-a.list-group-item.talkback.active, a.list-group-item.talkback.active:focus, a.list-group-item.talkback.active:hover, a.list-group-item.talkback:hover {
-    background-color: #993ca7;
-    color: #ffffff;
+a.list-group-item.talkback.active, a.list-group-item.talkback.active:focus, a.list-group-item.talkback.active:hover , a.list-group-item.talkback:hover {
+    background-color: #993ca7;color: #ffffff;
 }
 
-a.list-group-item.meme.active, a.list-group-item.meme.meme:focus, a.list-group-item.meme.active:hover, a.list-group-item.meme:hover {
-    background-color: #ffd427;
-    color: #ffffff;
+a.list-group-item.meme.active, a.list-group-item.meme.meme:focus, a.list-group-item.meme.active:hover , a.list-group-item.meme:hover {
+    background-color: #ffd427;color: #ffffff;
 }
 
-a.list-group-item.event.active, a.list-group-item.event.active:focus, a.list-group-item.event.active:hover, a.list-group-item.event:hover {
-    background-color: #004a8e;
-    color: #ffffff;
+a.list-group-item.event.active, a.list-group-item.event.active:focus, a.list-group-item.event.active:hover , a.list-group-item.event:hover {
+    background-color: #004a8e;color: #ffffff;
 }
 
-a.list-group-item.poll.active, a.list-group-item.poll.active:focus, a.list-group-item.poll.active:hover, a.list-group-item.poll:hover {
-    background-color: #f55c06;
-    color: #ffffff;
+a.list-group-item.poll.active, a.list-group-item.poll.active:focus, a.list-group-item.poll.active:hover , a.list-group-item.poll:hover {
+    background-color: #f55c06;color: #ffffff;
 }
 
-a.list-group-item.chat.active, a.list-group-item.chat.active:focus, a.list-group-item.chat.active:hover, a.list-group-item.chat:hover {
-    background-color: #01a3d4;
-    color: #ffffff;
+a.list-group-item.chat.active, a.list-group-item.chat.active:focus, a.list-group-item.chat.active:hover , a.list-group-item.chat:hover {
+    background-color: #01a3d4;color: #ffffff;
 }
 
-a.list-group-item.menu.active, a.list-group-item.menu.active:focus, a.list-group-item.menu.active:hover, a.list-group-item.menu:hover {
-    background-color: #00aeef;
-    color: #ffffff;
+a.list-group-item.menu.active, a.list-group-item.menu.active:focus, a.list-group-item.menu.active:hover , a.list-group-item.menu:hover {
+    background-color: #00aeef;color: #ffffff;
 }
 
-a.list-group-item.tv.active, a.list-group-item.tv.active:focus, a.list-group-item.tv.active:hover, a.list-group-item.tv:hover {
-    background-color: #9e0b0f;
-    color: #ffffff;
+a.list-group-item.tv.active, a.list-group-item.tv.active:focus, a.list-group-item.tv.active:hover , a.list-group-item.tv:hover {
+    background-color: #9e0b0f;color: #ffffff;
 }
 
-a.list-group-item.channel.active, a.list-group-item.channel.active:focus, a.list-group-item.channel.active:hover, a.list-group-item.channel:hover {
-    background-color: #fa0001;
-    color: #ffffff;
+a.list-group-item.channel.active, a.list-group-item.channel.active:focus, a.list-group-item.channel.active:hover , a.list-group-item.channel:hover {
+    background-color: #fa0001;color: #ffffff;
 }
 
-a.list-group-item.facebooknaf.active, a.list-group-item.facebooknaf.active:focus, a.list-group-item.facebooknaf.active:hover, a.list-group-item.facebooknaf:hover {
-    background-color: #004a8e;
-    color: #ffffff;
+a.list-group-item.facebooknaf.active, a.list-group-item.facebooknaf.active:focus, a.list-group-item.facebooknaf.active:hover , a.list-group-item.facebooknaf:hover {
+    background-color: #004a8e;color: #ffffff;
 }
 
-a.list-group-item.flash.active, a.list-group-item.flash.active:focus, a.list-group-item.flash.active:hover, a.list-group-item.flash:hover {
-    background-color: #00aeff;
-    color: #ffffff;
+a.list-group-item.flash.active, a.list-group-item.flash.active:focus, a.list-group-item.flash.active:hover , a.list-group-item.flash:hover {
+    background-color: #00aeff;color: #ffffff;
 }
 
-a.list-group-item.score.active, a.list-group-item.score.active:focus, a.list-group-item.score.active:hover, a.list-group-item.score:hover {
-    background-color: #00be9c;
-    color: #ffffff;
+a.list-group-item.score.active, a.list-group-item.score.active:focus, a.list-group-item.score.active:hover , a.list-group-item.score:hover {
+    background-color: #00be9c;color: #ffffff;
 }
 
-a.list-group-item.contact.active, a.list-group-item.contact.active:focus, a.list-group-item.contact.active:hover, a.list-group-item.contact:hover {
-    background-color: #009933;
-    color: #ffffff;
+a.list-group-item.contact.active, a.list-group-item.contact.active:focus, a.list-group-item.contact.active:hover , a.list-group-item.contact:hover {
+    background-color: #009933;color: #ffffff;
 }
 
 
@@ -275,10 +263,10 @@ a.list-group-item.contact.active, a.list-group-item.contact.active:focus, a.list
         height: 32px;
         line-height: 30px;
         font-size: 15px;
-        -webkit-box-shadow: 1px 8px 6px -2px rgba(0, 0, 0, 0.4);
-        -moz-box-shadow: 1px 8px 6px -2px rgba(0, 0, 0, 0.4);
+    
+        -webkit-box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.5);      -moz-box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.5);      
         box-shadow: 1px 8px 6px -2px rgba(0, 0, 0, 0.4);
-    }
+}
 
     .info-close {
         margin-bottom: -1px;

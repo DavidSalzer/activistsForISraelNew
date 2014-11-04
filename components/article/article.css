@@ -127,6 +127,24 @@ box-sizing: border-box;*/
     margin-top: 12px;
 }
 
+
+.article-text::-webkit-input-placeholder {
+   color: #bcccce;
+}
+
+.article-text:-moz-placeholder { /* Firefox 18- */
+  color: #bcccce;
+}
+
+.article-text::-moz-placeholder {  /* Firefox 19+ */
+ color: #bcccce;
+}
+
+.article-text:-ms-input-placeholder {  
+  color: #bcccce;
+}
+
+
 .input-article-text {
 }
 
