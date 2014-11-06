@@ -1,12 +1,11 @@
 <link rel="stylesheet" type="text/css" href="./components/event/event.css" />
 <link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/event/event.css" />
-<div class="scroll-main-window site-single-event" scroller loading-method="loadMore()">
+<div class="scroll-main-window site-single-event" scroller loading-method="loadMore()" ng-controller="DatepickerDemoCtrl">
 
 
-    <div class="single-event-header">
+    <div class="single-event-header" ng-model="dt">
         <div>
- יום {{post().DestinationTime | date : 'EEEE'}} {{post().DestinationTime | date : 'dd.MM.yyyy'}}
-	   שעה {{post().DestinationTime | date : 'H:mm'}}
+ יום {{post().DestinationTime | date : 'EEEE'}} {{post().DestinationTime | date : 'dd.MM.yyyy'}} {{hedt}}  &nbsp שעה {{post().DestinationTime | date : 'H:mm'}}
         </div>
         <div>
 	   מקום: {{post().location}}

@@ -111,11 +111,16 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService', functi
             console.log('$scope.dt: ');
             console.log($scope.dt);
             $scope.updateFeed($scope.dt);
+            $scope.hedt = (new HeDate($scope.dt)).toString();
         });
 
     });
 
     $scope.dt = new Date();
+
+    $scope.hedt = (new HeDate($scope.dt)).toString();
+    console.log("$scope.hedt");
+
 
     $scope.toggleWeekDisplay = function () {
 
