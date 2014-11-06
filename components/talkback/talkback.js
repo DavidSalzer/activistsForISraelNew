@@ -11,7 +11,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/whatsup.png",
+        featureLogo: "./img/sidebar-talk-back-icon.png",
         featureWhatsUpLogo: "./img/hosting_info.png",
         featureColor: '#993ca7',
         infoHaeder: "הפורום",

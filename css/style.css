@@ -108,6 +108,14 @@ select {
     height: 100%;
     text-indent: 20px;
 }
+
+
+.shadow-buttons {
+    -webkit-box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.5);
+}
+
 /*************************post template*******************/
 .posts-list {
     height: 100%;
@@ -481,7 +489,7 @@ span.respond-count, span.like-count {
 .plus {
     width: 32px;
     height: 32px;
-    background: #E4E4E4;
+    background: #ffffff;
     display: inline-block;
     /*float: right;*/
     margin-left: 5px;
@@ -723,6 +731,11 @@ div.scrollable-content.overthrow {
     width: 100%;
 }
 
+.sub-header {
+    -webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+    box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+}
 
 .sub-header {
     height: 42px;
@@ -764,8 +777,7 @@ div.scrollable-content.overthrow {
 }
 
 .channel-con {
-    background: #252525;
-    padding: 0px 14px;
+    padding: 0px 10px;
     width: 100%;
     height: 100%;
     overflow-y: scroll;
@@ -774,11 +786,29 @@ div.scrollable-content.overthrow {
     top: 0px;
     padding-top: 46px;
     box-sizing: border-box;
+    overflow-x: visible;
+}
+
+.polls-layout.channel-con .posts-list {
+    padding: 0px 4px;
+}
+
+.polls-layout.channel-con .posts-list .post-wrap {
+    box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.4);
+}
+
+.legend-wraper {
+    background-color: #d4deec;
 }
 
 .channel-list {
     height: 100%;
     overflow: auto;
+    padding: 0px 4px;
+}
+
+.channel-list .list-tube {
+    box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.4);
 }
 
 .player-contener {
@@ -869,7 +899,7 @@ button {
 .image-container {
     cursor: pointer;
     position: relative;
-    padding: 2px;
+    padding: 7px;
     background-color: #ffffff;
     border-radius: 3px;
 }
@@ -877,8 +907,7 @@ button {
 .polls-container {
     cursor: pointer;
     position: relative;
-    background-color: #31363d;
-    padding: 7px;
+    background-color: #ffffff;
 }
 
 .polls-image {
@@ -986,6 +1015,19 @@ button {
     border-radius: 3px;
 }
 
+.white-line {
+    width: 100%;
+    height: 4px;
+    background-color: #ffffff;
+    position: absolute;
+    bottom: 0px;
+}
+
+.white-line.thanks-white {
+    position: relative;
+    top: 0px;
+}
+
 .imageView-background {
     position: relative;
     background-repeat: no-repeat;
@@ -1004,7 +1046,7 @@ button {
     padding-top: 40px;
     top: 2px;
     padding-bottom: 2px;
-    background-color: #31363d;
+    background-color: #d4deec;
 }
 
 .gray-line {
@@ -1019,7 +1061,6 @@ button {
 
 .legend-container {
     width: 100%;
-    background-color: #31363d;
     padding-top: 8px;
     padding-bottom: 8px;
     padding-right: 42px;
@@ -1029,14 +1070,15 @@ button {
     width: 15px;
     height: 15px;
     display: inline-block;
+    position: relative;
+    top: 2px;
 }
 
 .legend-content {
     width: 50%;
     height: 15px;
     display: inline-block;
-    background-color: #31363d;
-    color: #ffffff;
+    color: #000000;
     padding-right: 15px;
     margin-bottom: 10px;
 }
@@ -1049,7 +1091,6 @@ button {
     background-size: 100% 100%;
     padding-top: 10px;
     margin: auto;
-    border: solid 2px #42484e;
 }
 
 .legend-container .legend-image {
@@ -1065,6 +1106,12 @@ button {
     padding-right: 25px;
     padding-top: 15px;
     cursor: pointer;
+    -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
+}
+
+;
 }
 
 .vote-error {
@@ -1109,7 +1156,7 @@ button {
 
 
 .add-file-text {
-    color: #695B5B;
+    color: #818181;
     text-align: right;
     border-radius: 10px;
     background: white;

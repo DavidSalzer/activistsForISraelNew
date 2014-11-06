@@ -7,7 +7,7 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
 
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/poll.png",
+        featureLogo: "./img/sidebar-poll-icon.png",
         featureWhatsUpLogo: "./img/poll_info.png",
         featureColor: '#da4f00',
         featureTabColor: '#da4f',

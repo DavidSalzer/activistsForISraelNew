@@ -3,20 +3,18 @@
 <div class="scroll-main-window site-single-event" scroller loading-method="loadMore()">
 
 
-    <div class="single-event-header">
-        <div>
- יום {{post().DestinationTime | date : 'EEEE'}} {{post().DestinationTime | date : 'dd.MM.yyyy'}}
-	   שעה {{post().DestinationTime | date : 'H:mm'}}
-        </div>
-        <div>
-	   מקום: {{post().location}}
-        </div>
-        <div class="color-line color-line-bottom "></div>
-    </div>
-
+            <!--<div class="single-event-header">
+        
+                <div class="color-line color-line-bottom "></div>
+            </div>-->
     <div class="single-event-body">
+
         <div class="event-container">
-            <post data-post-type="event" class="single-event" data-ng-repeat="post in [post()]"></post>
+
+            <post data-post-type="event" class="single-event" data-ng-repeat="post in [post()]">
+            
+            </post>
+
             <div class="single-event-wrapper">
                 <div class="event-participation">
                     <div class="button join-button event-join-button" data-ng-click="participate()" style="background-color:{{featureDetails.featureColor}};">השתתף</div>

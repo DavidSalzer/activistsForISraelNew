@@ -8,7 +8,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     $scope.isSiteHeader = true;
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/calendar.png",
+        featureLogo: "./img/sidebar-event-icon.png",
         featureWhatsUpLogo: "./img/calendar_info.png",
         featureColor: '#004a8e',
         infoHaeder: "אירועים",

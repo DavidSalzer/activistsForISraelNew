@@ -1,7 +1,13 @@
 <div data-ng-class="{'post-tab':!singleEvent}" data-post="{{post._id}}" data-post-type="event">
   <delete-post data-ng-if="isAdmin"></delete-post>
-  <div class="post-details">
+  <div class="post-details">  
 	   <div class="event-title" style='color:{{featureDetails.featureColor}};'>{{post.title}} ב{{post.location}}</div>
+      <div data-ng-if="singleEvent" class="the-single-title">
+         יום {{post.DestinationTime | date : 'EEEE'}} {{post.DestinationTime | date : 'dd.MM.yyyy'}} שעה {{post.DestinationTime | date : 'H:mm'}}
+    </div>
+    <div data-ng-if="singleEvent" class="the-single-title">
+	   מקום: {{post.location}}
+    </div>
 	   <span class='event-time' data-ng-if="!singleEvent">
 	   יום {{post.DestinationTime | date : 'EEEE'}} {{post.DestinationTime | date : 'dd.MM.yyyy'}} 
 	   שעה {{post.DestinationTime | date : 'H:mm'}}

@@ -3,9 +3,13 @@
     z-index: 1;
 }
 
+
+.post-details {
+padding: 0px 14px;
+}
+
 .calendar.well {
-    /*background-color: #42484e;*/
-    background-color: #2f343b;
+    background-color: #ecf8ff;
     padding-bottom: 30px;
     padding-top: 58px;
     border: none;
@@ -20,9 +24,9 @@
     z-index: 1;
     height: 4px;
     bottom: -2px;
-    background: #747474;
+    background: #ffffff;
     right: 0px;
-    border: 1px inset rgba(45,50,56,0.75);
+    /* border: 1px inset rgba(45,50,56,0.75); */
 }
 
 .btn.btn-sm.pull-right {
@@ -36,7 +40,7 @@ td.text-center {
 }
 
 thead tr:first-child {
-    background-color: #31363d;
+    background-color: rgb(0, 74, 142);
     border-bottom: 4px solid #ffffff;
     height: 42px;
 }
@@ -76,7 +80,7 @@ thead .btn.btn-default.btn-sm.pull-right {
 }
 
 .posts-list {
-    background-color: #42484e;
+    background-color: #d4deec;
 }
 
 .calendar-area table thead th:nth-child(2) button:first-child {
@@ -146,10 +150,8 @@ tbody .btn.btn-default.btn-sm.btn-info:before {
     width: 100%;
     right: 0px;
     top: 0px;
-    background-color: #565c63;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.95);
-    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.95);
-    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.95);
+    /* background-color: #565c63; */
+    -webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);  -moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);  box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
 }
 
 /*thead .btn.btn-default.btn-sm.pull-left {
@@ -205,7 +207,7 @@ thead tr .btn.btn-default.btn-sm {
 
 .event-title {
     font-weight: bold;
-    padding: 12px 23px 12px 24px;
+    margin-bottom: 4px;
 }
 
 .posts-list .event-title {
@@ -258,7 +260,7 @@ thead tr .btn.btn-default.btn-sm {
     position: absolute;
     width: 100%;
     top: 0px;
-    padding-top: 38px;
+    padding-top: 14px;
     overflow: auto;
 }
 
@@ -358,6 +360,9 @@ thead tr .btn.btn-default.btn-sm {
     padding-top: 0px;
 }
 
+.the-single-title {
+    
+}
 
 /****ffffffffffff**/
 

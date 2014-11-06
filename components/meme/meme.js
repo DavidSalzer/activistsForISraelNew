@@ -6,7 +6,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/meme.png",
+        featureLogo: "./img/sidebar-meme-icon.png",
         featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
         infoHaeder: "פיצ'ר הממים",
