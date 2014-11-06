@@ -7,7 +7,7 @@
         </div>
     </figure>
     <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post._author}}" data-ng-click="userClicked(post._author._id);$event.stopPropagation();">{{post._author.data.firstName}} {{post._author.data.lastName}}</span>
-    <span class="author-date" data-ng-show="showCommentDate!=false">{{post.timestamp | date : 'dd.MM.yyyy'}}</span>
+    <span class="author-date" data-ng-show="showCommentDate!=false">{{post.timestamp | date : 'dd.MM.yyyy HH:MM'}}</span>
 
     <div class="post-title" data-ng-show="showCommentTitle==true">{{post.title}}</div>
 
@@ -15,6 +15,8 @@
         <img data-ng-src="{{domain}}{{post.img}}" alt="post-pic" data-ng-show="post.img!=='' && post.img!==undefined">
         {{post.content}}
     </div>
+
+    <div class="read-the-comments">קרא תגובות</div>
 
     <div class="post-footer">
         <div class="post-feedback">

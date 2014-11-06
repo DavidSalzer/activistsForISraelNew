@@ -19,7 +19,7 @@ socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', fu
         //infoImg: './img/youtube_small.png', //unnecessary- to be cancaeld and united with feture logo
         infoHaeder: "ערוץ יוטיוב",
         infoMainText: "ערוץ היוטיוב של נפתלי בנט.",
-        infoSubText: "עדיין לא הצטרפת לאפליקציה?"
+        infoSubText: "עוד לא הצטרפת לאחליקציה?"
     };
     generalParameters.setFeature($scope.featureDetails);
 

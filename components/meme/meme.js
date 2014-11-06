@@ -10,8 +10,8 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
         infoHaeder: "פיצ'ר הממים",
-        infoMainText: 'הכינו "ממים"    - גלויות מצחיקות- בעזרת מכשיר הכנת הממים שלנו- ושתפו עם החברים. יש לשמור על זכויות יוצרים',
-        infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
+        infoMainText: 'עוד לא הכנתם מם? כאן תוכלו ליצור מם משלכם בעזרת מחולל הממים המיוחד ולשתף עם חברים. *יש לשמור על זכויות יוצרים',
+        infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
      generalParameters.setBackIcon(false);//tester

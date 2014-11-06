@@ -95,30 +95,48 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.post(domain + 'signup/', $scope.json)
         .success(function (data) {
-            $scope.showSignIn = false;
-            generalParameters.setUser(data.data.user);
+            if (data.status.statusCode == 0) {
+                $scope.showSignIn = false;
+                //generalParameters.setUser(data.data.user);
 
-            //send image string to be saved at server
-            //if was uploaded
-            console.log($scope.userImg);
-            if ($scope.userImg != '') {
-                $scope.uploadBase64Image();
+                //send image string to be saved at server
+                //if was uploaded
+                console.log($scope.userImg);
+                if ($scope.userImg != '') {
+                    $scope.uploadBase64Image();
+                }
+                //$http.post(domain + 'Base64FileUpload?ref=user&_id=data.data.user /',
+                // $scope.json)
+                $rootScope.$broadcast('showLoader', { showLoader: false });
+                $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+
+                $scope.fName = '';
+                $scope.lName = '';
+                $scope.gender = '';
+                $scope.mail = '';
+                $scope.pass = '';
+                $scope.passAuthentication = '';
+                $scope.phone = '';
+                $scope.address = '';
+                $scope.userImg = '';
+                console.log(data);
+                $scope.showSignupError = false;
             }
-            //$http.post(domain + 'Base64FileUpload?ref=user&_id=data.data.user /',
-            // $scope.json)
+            else if (data.status.statusCode == 409) {
+                $scope.showSignupError = true;
+                $scope.signupErrorMessage = 'המייל שהזנת כבר קיים במערכת';
+                $rootScope.$broadcast('showLoader', { showLoader: false });
+            }
+            else {
+                $scope.showSignupError = true;
+                $scope.signupErrorMessage = errorMessages.generalError;
+                $rootScope.$broadcast('showLoader', { showLoader: false });
+            }
+        })
+        .error(function (data) {
+            $scope.showSignupError = true;
+            $scope.signupErrorMessage = errorMessages.generalError;
             $rootScope.$broadcast('showLoader', { showLoader: false });
-            $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
-
-            $scope.fName = '';
-            $scope.lName = '';
-            $scope.gender = '';
-            $scope.mail = '';
-            $scope.pass = '';
-            $scope.passAuthentication = '';
-            $scope.phone = '';
-            $scope.address = '';
-            $scope.userImg = '';
-            console.log(data);
         });
 
         console.log($scope.signinDetails);
@@ -171,7 +189,10 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
 
     //user image crop
     $scope.croping = function () {
+        console.log(1);
+        console.log($('#cropDiv img'));
         imgCrop.obj = {};
+        $('#cropDiv img').off('load');
         $('#cropDiv img').on('load', function () {
             imgCrop.crop('c', 'button_ok', 'cropDiv'); //canvasid  ,btn-approve, container Id
         });
@@ -182,6 +203,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $scope.userImg = d.data;
         $scope.editImg = false;
         $scope.$apply();
+        //$('#userImg').val("");
         $scope.userimg = '';
         imgCrop.destroy();
     });

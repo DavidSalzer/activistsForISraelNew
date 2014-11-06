@@ -36,7 +36,7 @@ socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', 'classAja
         featureColor: '#004a8e',
         infoHaeder: "עמוד פייסבוק",
         infoMainText: "עמוד הפייסבוק של נפתלי בנט.",
-        infoSubText: "עדיין לא הצטרפת לאפליקציה?"
+        infoSubText: "עוד לא הצטרפת לאחליקציה?"
     };
 
 
