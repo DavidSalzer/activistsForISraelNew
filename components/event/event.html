@@ -8,7 +8,11 @@
 <!-- <pre><em>{{dt | date:'fullDate' }}</em></pre> -->
     <div class='calendar-area'>
         <datepicker ng-model="dt" show-weeks="false" class="well well-sm calendar"></datepicker>
-		<div id="calendar-arrow" data-ng-click="toggleWeekDisplay()"></div>
+        <div >
+            <span id="todayButton">היום</span>
+            <span id="displayedDate">{{dt|date:"dd.MM.yyyy"}} {{hedt}}</span>
+            <span id="calendar-arrow" data-ng-click="toggleWeekDisplay()"></span>
+        </div>		
     </div>
 
 </div>
