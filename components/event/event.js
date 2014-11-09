@@ -29,7 +29,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         postType: 'event',
         userID: $scope.user._id,
         _parentID: '',
-        DestinationTime: new Date().getTime()
+        DestinationTime: new Date().getTime(),
     };
 
     /*init controller data*/
