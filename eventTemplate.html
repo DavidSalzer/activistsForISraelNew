@@ -19,10 +19,12 @@
 	<div data-ng-if="!singleEvent">
 		{{post.content | limitTo:85 }}<div data-ng-if="85 < post.content.length" class='event-3points'>...</div>
 	</div>
-	<div data-ng-if="!singleEvent && 85 < post.content.length" class='event-read-more'>קרא עוד...</div>
+	<div data-ng-if="!singleEvent && 85 < post.content.length" class="read-more-event">
+        <div class="inner-readmore-event">קרא עוד...</div>
+    </div>
 	
   <div data-ng-if="singleEvent" class='singleEvent-text'>{{post.content}}</div>
   
   </div>
-
+   
 </div>

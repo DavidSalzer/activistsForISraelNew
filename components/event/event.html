@@ -8,8 +8,8 @@
 <!-- <pre><em>{{dt | date:'fullDate' }}</em></pre> -->
     <div class='calendar-area'>
         <datepicker ng-model="dt" show-weeks="false" class="well well-sm calendar"></datepicker>
-        <div >
-            <span id="todayButton">היום</span>
+        <div class="bottom-part-calendar">
+            <span id="todayButton" class="shadow-buttons">היום</span>
             <span id="displayedDate">{{dt|date:"dd.MM.yyyy"}} {{hedt}}</span>
             <span id="calendar-arrow" data-ng-click="toggleWeekDisplay()"></span>
         </div>		
@@ -19,7 +19,7 @@
 
 <div class="meeting-wrapper" data-ng-class="{'we':f}">
 <div class="posts-list" scroller loading-method="loadMore()">
-    
+        <div class="close-events-title">אירועים קרובים</div>
         <post data-ng-repeat="post in posts()" data-post-type="event"></post>
     
    <div class="spiner-zone" data-ng-show="showSpiner()">

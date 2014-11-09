@@ -1,23 +1,25 @@
 .calendar-area {
     position: relative;
     z-index: 1;
+    background-color: #ecf8ff;
+    padding-bottom: 11px;
 }
 
 
 .post-details {
-padding: 0px 14px;
+padding: 0px;
 }
 
 .calendar.well {
     background-color: #ecf8ff;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     padding-top: 58px;
     border: none;
     margin-bottom: 0px;
     position: relative;
 }
 
-.calendar:after {
+/*.calendar:after {
     position: absolute;
     content: "";
     width: 100%;
@@ -26,8 +28,8 @@ padding: 0px 14px;
     bottom: -2px;
     background: #ffffff;
     right: 0px;
-    /* border: 1px inset rgba(45,50,56,0.75); */
-}
+     border: 1px inset rgba(45,50,56,0.75); 
+}*/
 
 .btn.btn-sm.pull-right {
 }
@@ -132,9 +134,8 @@ tbody .btn.btn-default.btn-sm.btn-info:before {
     cursor: pointer;
     position: absolute;
     margin: auto;
-    bottom: 4px;
-    right: 0;
-    left: 0;
+    bottom: 11px;
+    left: 19px;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
@@ -207,21 +208,22 @@ thead tr .btn.btn-default.btn-sm {
 
 .event-title {
     font-weight: bold;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+    font-size: 15px;
 }
 
 .posts-list .event-title {
-    padding-right: 10px;
+    padding-right: 0px;
 }
 
 .event-time {
-    padding: 12px;
+    padding: 0px;
     font-weight: bold;
     font-size: 12px;
 }
 
 .event-main-text {
-    padding: 12px;
+    padding: 8px 0px 0px 0px;
     font-size: 12px;
 }
 
@@ -351,7 +353,7 @@ thead tr .btn.btn-default.btn-sm {
 
 
 .meeting-wrapper.we {
-    padding-top: 292px;
+    padding-top: 303px;
 }
 
 .meeting-wrapper .posts-list {
@@ -364,5 +366,53 @@ thead tr .btn.btn-default.btn-sm {
     
 }
 
+
+.bottom-part-calendar {
+    
+}
+
+#todayButton {
+   background-color: #004a8e;
+   border-radius: 5px; 
+   color: #ffffff;
+   width: 50px;
+   height: 23px;
+   display: inline-block;
+   text-align: center;
+   line-height: 23px;
+   margin: 0px 11px;
+   font-size: 15px;
+}
+
 /****ffffffffffff**/
 
+span#displayedDate {
+    font-size: 11px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.close-events-title {
+    color: #004a8e;
+    font-size: 18px;
+    text-align: right;
+    padding-right: 12px;
+    font-weight: bold;
+    margin-top: 13px;
+    margin-bottom: -7px;
+}
+
+.post-wrap .post-tab {
+    padding: 10px 14px 10px 14px;
+    
+}
+
+.read-more-event {
+    text-align: left;
+    color: rgb(0, 74, 142);
+    margin-top: 5px;
+}
+
+.inner-readmore-event {
+    
+}
