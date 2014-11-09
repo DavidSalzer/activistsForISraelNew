@@ -48,7 +48,7 @@
 }
 
 .close-sign-in {
-    background-image: url('../../img/small_x.png');
+    background-image: url(../../img/information-x.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -68,13 +68,21 @@
     opacity: .68;
 }
 
+.my-facebook-square {
+    
+} 
+
+.my-google-plus {
+    
+}
+
 .sign-in-field {
-    height: 42px;
+    height: 36px;
     width: 90%;
     background-color: #fff;
     display: block;
-    border-radius: 10px;
-    color: white;
+    border-radius: 11px;
+    color: #000000;
     padding-right: 10px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -164,8 +172,9 @@ input[type=file] {
 
 .log-in-or {
     text-align: center;
-    color: white;
+    color: #000000;
     margin-top: -6px;
+    font-weight: bold;
 }
 
 .no-sign-in-yet {
