@@ -65,6 +65,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                     self.getIsLike(posts[k]._id, k);
                 }
 
+                if (request.postType == 'event') {
+                    for (var j = 0; j < posts.length; j++) {
+                        posts[j].hebrewDate = self.hebrewDate(posts[j].DestinationTime);
+                    }
+                }
+
                 console.log(posts);
                 //}
             })
@@ -143,7 +149,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }
             $http.post(domain + queryString, json)
 			.success(function (data) {
-                $rootScope.$broadcast('showLoader', { showLoader: false });
+			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    console.log(data);
 			    console.log(data.data._id);
 			    if (data.data._id == undefined) { deferred.resolve(data); return deferred.promise; } //fail to create post!
@@ -162,7 +168,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    }
 			})
 			.error(function (data) {
-                $rootScope.$broadcast('showLoader', { showLoader: false });
+			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    deferred.resolve(data);
 			});
 
@@ -278,6 +284,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			});
 
 
+        },
+
+        hebrewDate: function (DestinationTime) {
+            Detime = new Date(DestinationTime);
+            var hedt = new HeDate(Detime).toString();
+            return hedt;
         },
 
         unLike: function (pid, post) {
