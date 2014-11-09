@@ -101,7 +101,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService', functi
 			    if (newValue.length > 1) {//a new month was selected
 
 			        $scope.monthArray = newValue; //save month for get back from week display
-			        $scope.togglecaendarArrow(-90); //make sore the arrow is to up 
+			        $scope.togglecaendarArrow(0); //make sore the arrow is to up 
 			    }
 			},
 			true
@@ -128,7 +128,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService', functi
         if ($scope.$$childHead.$$childHead.rows.length == 1) {
 
             $scope.$$childHead.$$childHead.rows = $scope.monthArray; //get back current month from memory
-            $scope.togglecaendarArrow(-90); //toggle arrow to up
+            $scope.togglecaendarArrow(0); //toggle arrow to up
             //$scope.f = true; //yishai added this row for the wrapper of the events to know to decrease the paading
             $scope.l(false);
             //$scope.$apply();
@@ -147,7 +147,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService', functi
 
                     $scope.$$childHead.$$childHead.rows = [];
                     $scope.$$childHead.$$childHead.rows.push($scope.monthArray[i]); //chose selected week
-                    $scope.togglecaendarArrow(90); //toggle arrow to down
+                    $scope.togglecaendarArrow(180); //toggle arrow to down
                     // $scope.$apply();
                     return;
                 }

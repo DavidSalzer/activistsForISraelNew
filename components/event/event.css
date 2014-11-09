@@ -12,11 +12,10 @@ padding: 0px;
 
 .calendar.well {
     background-color: #ecf8ff;
-    padding-bottom: 10px;
-    padding-top: 58px;
     border: none;
     margin-bottom: 0px;
     position: relative;
+    padding: 58px 0px 10px 0px;
 }
 
 /*.calendar:after {
@@ -108,6 +107,7 @@ tbody .btn.btn-default.btn-sm {
     border-radius: 0;
     border: 1px solid #31363d;
     position: relative;
+    padding: 8px 6px;
 }
 
 /*tbody .btn.btn-default.btn-sm.btn-info {
@@ -136,11 +136,11 @@ tbody .btn.btn-default.btn-sm.btn-info:before {
     margin: auto;
     bottom: 11px;
     left: 19px;
-    -webkit-transform: rotate(-90deg);
+    /*-webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
-    transform: rotate(-90deg);
+    transform: rotate(-90deg);*/
 }
 
 /****calander*****/
@@ -239,7 +239,7 @@ thead tr .btn.btn-default.btn-sm {
 .single-event-header {
     width: 100%;
     height: 42px;
-    background-color: hsl(212, 7%, 36%);
+    background-color: #ecf8ff;
     color: hsl(0, 100%, 100%);
     box-sizing: border-box;
     padding: 0px 30px;
@@ -254,6 +254,7 @@ thead tr .btn.btn-default.btn-sm {
     position: relative;
     min-height: 100%;
     padding-bottom: 250px;
+    padding: 0px 14px 250px 14px;
 }
 
 .single-event-body {
@@ -270,12 +271,11 @@ thead tr .btn.btn-default.btn-sm {
     position: absolute;
     width: 100%;
     bottom: 0px;
+    right: 0px;
 }
 
 .singleEvent-text {
     text-align: justify;
-    margin-left: 12px;
-    padding-right: 12px;
     word-wrap: break-word;
 }
 
@@ -286,7 +286,7 @@ thead tr .btn.btn-default.btn-sm {
     height: 100%;
     font-size: 12px;
     margin: auto;
-    width: 63%;
+    width: 240px;
     position: relative;
     margin-bottom: 20px;
 }
@@ -294,34 +294,49 @@ thead tr .btn.btn-default.btn-sm {
 .detail-wrapper-enent {
     position: relative;
     width: 100%;
+    border-radius: 15px;
+    background-color: #ecf8ff;
+    height: 32px;
+    margin-bottom: 9px;
 }
 
 .join-button.event-join-button {
     display: block;
-    width: 155px;
+    width: 112px;
     position: relative;
     font-weight: normal;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    height: 33px;
+    line-height: 33px;
+    font-size: 15px;
 }
 
 .participation-option-cell {
     display: inline-block;
     vertical-align: middle;
-    width: 71%;
-    line-height: 15px;
+    width: 205px;
+    vertical-align: top;
+    height: 100%;
+    padding: 5px 3px 0px 0px;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.participation-option-cell div {
+    line-height: 11px;
+    
 }
 
 .owner-wrapper-detailes {
-    box-shadow: 0px 3px 2px 5px rgba(0,0,0,0.73);
-    -webkit-box-shadow: 0px 3px 2px 5px rgba(86,92,99,0.83);
-    -moz-box-shadow: 0px 3px 2px 5px rgba(86,92,99,0.83);
+    margin-bottom: 14px;
 }
 
 .event-participation .icon {
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
     background-size: contain;
     cursor: pointer;
+    margin: 3px 5px 0px 0px;
 }
 
 .phone-icon {
@@ -347,23 +362,29 @@ thead tr .btn.btn-default.btn-sm {
     position: absolute;
     width: 100%;
     bottom: 0px;
-    padding-top: 142px;
+    padding-top: 152px;
     z-index: 0;
 }
 
 
 .meeting-wrapper.we {
-    padding-top: 303px;
+    padding-top: 339px;
 }
 
 .meeting-wrapper .posts-list {
     position: relative;
-    padding-bottom: 0px;
+    padding-bottom: 42px;
     padding-top: 0px;
 }
 
+.top-single-title {
+    margin-top:10px
+}
+
 .the-single-title {
+    font-size: 12px;
     
+    line-height: 14px;
 }
 
 
@@ -415,4 +436,24 @@ span#displayedDate {
 
 .inner-readmore-event {
     
+}
+
+.participation-option-cell.nav-to{
+    padding-top: 9px;
+    
+}
+
+.single-event-body #author-header {
+    background-color: #004a8e;
+    
+    padding: 0px 30px 0px 30px;
+    height: 45px;
+}
+
+.single-event-body #author-header .author-name {
+    width: auto !important;
+}
+
+.single-event-body #author-header .author-name:first-child {
+    margin-right: 10px;
 }

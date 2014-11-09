@@ -17,11 +17,26 @@
 
             <div class="single-event-wrapper">
                 <div class="event-participation">
-                    <div class="button join-button event-join-button" data-ng-click="participate()" style="background-color:{{featureDetails.featureColor}};">השתתף</div>
+                    <div class="button join-button event-join-button shadow-buttons" data-ng-click="participate()" style="background-color:{{featureDetails.featureColor}};">השתתף</div>
                     <div>
-                        <div data-ng-click="call()" class="detail-wrapper-enent"><div class="icon phone-icon participation-option-cell"></div><div class="participation-option-cell"><div>צור קשר</div><div>{{post()._author.data.firstName}} {{post()._author.data.lastName}} {{post().phone}}</div></div></div>
-                        <div data-ng-show="post().email!=''" data-ng-click="mail()" class="detail-wrapper-enent"><div class="icon mail-icon participation-option-cell"></div><div class="participation-option-cell"><div>מייל</div><div>{{post().email}}</div></div></div>
-                        <div data-ng-click="nav()" class="detail-wrapper-enent"><div class="icon navigate-icon participation-option-cell"></div><div class="participation-option-cell">נווט לכתובת: {{post().location}}</div></div>
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-click="call()">
+                            <div class="icon phone-icon participation-option-cell"></div>
+                            <div class="participation-option-cell">
+                                <div>צור קשר</div>
+                                <div>{{post()._author.data.firstName}} {{post()._author.data.lastName}} {{post().phone}}</div>
+                            </div>
+                        </div>
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-show="post().email!=''" data-ng-click="mail()" >
+                            <div class="icon mail-icon participation-option-cell"></div>
+                            <div class="participation-option-cell">
+                                <div>מייל</div>
+                                <div>{{post().email}}</div>
+                            </div>
+                        </div>
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-click="nav()">
+                            <div class="icon navigate-icon participation-option-cell"></div>
+                            <div class="participation-option-cell nav-to">נווט לכתובת: {{post().location}}</div>
+                        </div>
                     </div>
                 </div>
                 <!--  show author // show edit button-->
@@ -29,7 +44,7 @@
                     <author-header data-ng-repeat="post in [post()]"></author-header>
                 </div>
                 <div data-ng-if="post()._author._id == user._id" class="single-event-header" style="height: 50px;">
-                    <div class="button" data-ng-click="editEvent()" style="background-color:{{featureDetails.featureColor}}; margin-top: initial;">ערוך</div>
+                    <div class="button" data-ng-click="editEvent()" style="margin-bottom: 0px; background-color:{{featureDetails.featureColor}}; margin-top: initial;">ערוך</div>
                 </div>
             </div>
 
