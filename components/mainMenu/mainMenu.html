@@ -12,7 +12,7 @@
 
     <div id="demanded-area" class="main-menu-shadow">
         <h3 class="demanded-title">מבוקשים</h3>
-         <div data-ng-repeat="feature in demandes" class="demand-circle" data-ng-click="goToFromeDemand({{feature.featureIcon}})" style="background-image: url('{{feature.featureIcon}}'); background-color: {{feature.featureColor}}; "></div>
+         <div data-ng-repeat="feature in demandes" class="demand-circle" data-ng-click="goToFromeDemand(feature.featureSendInClick)" style="background-image: url('{{feature.featureIcon}}'); background-color: {{feature.featureColor}}; "></div>
     </div>
 
     <div id="features-list" class="caption">

@@ -1,4 +1,4 @@
-socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'generalParameters', 'PostService', function ($scope, $state, classAjax, generalParameters, PostService) {
+socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classAjax', 'generalParameters', 'PostService', function ($rootScope, $scope, $state, classAjax, generalParameters, PostService) {
 
     var exitFlag = false;
 
@@ -9,22 +9,22 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     $scope.demandes = [
     {
         featureColor: '#878787',
-        featureIcon: './img/temp-demand.png',
+        featureIcon: './img/profile_small.png',
         featureSendInClick: 'profile'
     },
     {
         featureColor: '#00BD9B',
-        featureIcon: './img/temp-demand.png',
+        featureIcon: './img/sidebar-score-icon.png',
         featureSendInClick: 'pointes'
     },
     {
         featureColor: '#01A2D2',
-        featureIcon: './img/temp-demand.png',
+        featureIcon: './img/sidebar-chat-icon.png',
         featureSendInClick: 'chat'
     },
     {
         featureColor: '#9D0B0F',
-        featureIcon: './img/temp-demand.png',
+        featureIcon: './img/sidebar-talk-back-icon.png',
         featureSendInClick: 'video'
     }];
 
@@ -33,7 +33,27 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
     $scope.features = PostService.getMainFeatures;
 
     $scope.goToFromeDemand = function (frome) {
-        alert('dsd');
+        userProfile = generalParameters.getUser;
+        switch (frome) {
+            case 'profile':
+                if (userProfile().firstName != 'הצטרף לאפליקציה') {
+                    $state.transitionTo('user-profile', { userId: userProfile()._id });
+                }
+                else {
+                    $rootScope.$broadcast('showLoginPopup', { showLogin: true });
+                    console.log('sign in');
+                }
+                break;
+            case 'pointes':
+                $state.transitionTo('talkback');
+                break;
+            case 'chat':
+                $state.transitionTo('talkback');
+                break;
+            case 'video':
+                $state.transitionTo('talkback');
+                break;
+        }
     }
 
     $scope.goToFeature = function (featureUrl, postId) {
@@ -43,9 +63,11 @@ socialGroupApp.controller('mainMenu', ['$scope', '$state', 'classAjax', 'general
 
     $scope.featureDetails = {
         featureName: 'mainMenu',
-        featureLogo: "./img/poalim-logo.png",
+        featureLogo: "./img/sidebar-menu-icon.png",
         featureColor: 'gray',
-        infoHaeder: "מדרג קבלת הניקוד"
+        infoHaeder: "מדרג קבלת הניקוד",
+        infoMainText: 'ברוכים הבאים לאחליקציה! הצטרפו אלינו ותוכלו לצפות, לכתוב, לפרסם ולהגיב. לחצו על האייקון משמאל לצפייה בתפריט המלא.',
+        infoSubText: "עוד לא הצטרפת לאחליקציה?"
 
     };
 

@@ -11,12 +11,12 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/whatsup.png",
+        featureLogo: "./img/sidebar-talk-back-icon.png",
         featureWhatsUpLogo: "./img/hosting_info.png",
         featureColor: '#993ca7',
         infoHaeder: "הפורום",
-        infoMainText: "כתבו על כל נושא שמעניין אתכם. המשתמשים יוכלו לסמן 'אהבתי' או להגיב לדבריכם. מוגבל ל 140 תווים. יש לשמור על זכויות יוצרים",
-        infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאפליקציה"
+        infoMainText: 'זה המקום לשתף את כולם במה שמעניין אתכם. המשתמשים יוכלו לסמן "אהבתי" ו/או להגיב לדבריכם. מוגבל  ל140 תווים.',
+        infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
 
     generalParameters.setFeature($scope.featureDetails);

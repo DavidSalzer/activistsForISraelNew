@@ -44,9 +44,11 @@
 
 
 .posts-list {
-    border-left: 12px solid #2d3238;
-    border-right: 12px solid #2d3238;
-    background-color: #808080;
+    /* border-left: 12px solid #2d3238; */
+    /* border-right: 12px solid #2d3238; */
+    /*background-color: #808080;*/
+    padding-left: 11px;
+    padding-right: 11px;
 }
 
 .nav.nav-tabs {

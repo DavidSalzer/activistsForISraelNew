@@ -13,7 +13,7 @@
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 }
-
+/*/*/
 .sign-in-picture {
 }
 
@@ -48,7 +48,7 @@
 }
 
 .close-sign-in {
-    background-image: url('../../img/small_x.png');
+    background-image: url(../../img/information-x.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -68,13 +68,52 @@
     opacity: .68;
 }
 
+.my-facebook-square {
+    background-image: url('../../img/f.png');
+    
+} 
+
+.my-google-plus {
+    background-image: url('../../img/g.png');
+    
+}
+
+.sign-in-field span{
+    vertical-align: top;
+    
+    color: #ffffff;
+}
+
+.sign-in-field.facebook-login-feild {
+    background-color:#004a8e;
+    width: 262px;
+}
+
+.sign-in-field.google-login-feild {
+       background-color:#d93e25;
+       width: 262px;
+}
+
+.my-square{
+    width: 27px;
+    
+    height: 26px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    top: -2px;
+    margin-right: 4px;
+}
+
+
 .sign-in-field {
-    height: 42px;
-    width: 90%;
+    height: 36px;
+    width: 262px;
     background-color: #fff;
     display: block;
-    border-radius: 10px;
-    color: #2d2829;
+    border-radius: 11px;
+    color: #000000;
     padding-right: 10px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -115,8 +154,8 @@ input#userImg {
 }
 
 .sign-in-upload-image {
-    width: 10%;
-    height: 10%;
+    width: 35px;
+    height: 33px;
     background-color: white;
     display: inline-block;
     border-radius: 10px;
@@ -130,23 +169,23 @@ input#userImg {
 
 .sign-in-image-name {
     display: inline-block;
-    width: 87%;
-    height: 30px;
-    background-color: #2f343b;
+    width: 222px;
+    height: 33px;
+    background-color: #ffffff;
     border-radius: 10px;
     margin-right: 3%;
-    line-height: 30px;
+    line-height: 32px;
     color: #A9A9A9;
     padding-right: 10px;
-    /*float: left;*/
+    /* float: left; */
     margin-bottom: 20px;
 }
 
 .sign-in-btn {
     background-color: #12426F;
-    height: 42px;
-    width: 155px;
-    font-size: 19px;
+    height: 33px;
+    width: 91px;
+    font-size: 15px;
     border-radius: 10px;
     display: block;
     color: white;
@@ -164,8 +203,10 @@ input[type=file] {
 
 .log-in-or {
     text-align: center;
-    color: white;
+    color: #000000;
     margin-top: -6px;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .no-sign-in-yet {
@@ -173,11 +214,11 @@ input[type=file] {
     color: #2d2829;
     margin-bottom: 8px;
     font-weight: bold;
+    font-size: 14px;
 }
 
 
 .sign-in-wrapper:before {
-    content: "";
     position: absolute;
     height: 3px;
     width: 100%;
@@ -192,9 +233,6 @@ input[type=file] {
     position: absolute;
     width: 100%;
     bottom: 0px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     padding: 15px 0px;
 }
 
@@ -212,11 +250,12 @@ span#signinButton {
 }
 
 .login-forget-pass {
-    color: #2d2829;
+    color: #000;
     text-align: center;
     margin-bottom: 20px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 14px;
 }
 
 #___signin_0, #___signin_0 button {
@@ -239,13 +278,13 @@ span#signinButton {
 }
 
 .back-to-login {
-    background-image: url('../../img/arrow_user.png');
+    background-image: url(../../img/arrow_calendar.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
     display: inline-block;
-    width: 22px;
-    height: 22px;
+    width: 11px;
+    height: 9px;
     line-height: 15px;
     text-align: center;
     border-radius: 10px;
@@ -254,10 +293,10 @@ span#signinButton {
     cursor: pointer;
     margin: -20px 0px 0px 7px;
     float: left;
-    transform: rotate(90deg);
-    -webkit-transform:rotate(90deg);
-    -moz-transform:rotate(90deg); 
-    -o-transform:rotate(90deg);
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg); 
+    -o-transform: rotate(270deg);
 }
 
 .password-recovery-title {
@@ -324,7 +363,7 @@ canvas#c {
     width: 80px;
     height: 80px;
     display: block;
-    border: 1px solid #42484e;
+    border: 0px solid #42484e;
 }
 
 canvas {
@@ -371,10 +410,13 @@ canvas {
     border: 1px solid #42484e;
 }
 
-.color-line {
-    position: absolute;
-    bottom: 0px;
-    height: 4px;
+.login-forget-pass.code-here {
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.login-forget-pass.blue-login-forget {
+    color: #004a8e;
 }
 
 #relative-plus {
@@ -384,4 +426,34 @@ canvas {
     width: 100%;
     font-size: 27px;
     font-weight: 700;
+}
+
+.confirm-terms-benetwrapper {
+    padding: 0px 14px;
+    vertical-align: top;
+}
+
+.term-benet-box {
+    width: 33px;
+    height: 35px;
+    display: inline-block;
+    vertical-align: top;
+    background-color: red;
+    border-radius: 9px;
+    margin-left: 5px;
+}
+
+.term-benet-confirm {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 33px;
+}
+
+.benet-terms-content.ng-binding {
+    padding: 8px 14px;
+    font-size: 11px;
+}
+
+span.underline-benet-terms {
+    text-decoration: underline;
 }

@@ -10,20 +10,19 @@
             <div class="login-error" data-ng-show="showEmailError">* שדה מייל לא הוזן כראוי</div>
             <div class="login-error" data-ng-show="showPassError">* שדה סיסמה לא הוזן כראוי</div>
             <div class="login-error" data-ng-show="showLoginError">* {{loginErrorMessage}}</div>
-            <input type="button" class="sign-in-btn" value="היכנס" data-ng-click="sendLogin()">
+            <input type="button" class="sign-in-btn shadow-buttons" value="היכנס" data-ng-click="sendLogin()">
             <div class="login-forget-pass" data-ng-click="forgotPassword()">שכחת סיסמה?</div>
-            <div class="log-in-or">או</div>
             <!--<a href="{{domain}}auth/facebook?returnTo={{returnTo}}">-->
-            <button class="sign-in-field" data-ng-click="facebooklogin()">
+            <button class="sign-in-field facebook-login-feild" data-ng-click="facebooklogin()">
                 <span>התחבר באמצעות</span>
-                <span class="fa fa-facebook-square"></span>
+                <span class="my-facebook-square my-square"></span>
             </button>
             <!--</a>-->
             <div class="log-in-or">או</div>
             <!--<a href="{{domain}}auth/google?returnTo={{returnTo}}">-->
-            <button class="sign-in-field" data-ng-click="googlelogin()">
+            <button class="sign-in-field google-login-feild" data-ng-click="googlelogin()">
                 <span>התחבר באמצעות</span>
-                <span class="fa fa-google-plus"></span>
+                <span class="my-google-plus my-square"></span>
                 <!--  4 שורות מכאן כבר היו בהערה-->                                                                                                                                                                                                                                                                                                                                                                                                 <!--<span id="signinButton">
                                                                                                                                                                                                                                                                                                                                                                                                                                     <span class="g-signin" data-callback="signinCallback" data-clientid="634600880816-oosgcbaoahhg8h75t9rmqscjipup6jq4.apps.googleusercontent.com" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schemas.google.com/AddActivity" data-scope="https://www.googleapis.com/auth/plus.login">
                                                                                                                                                                                                                                                                                                                                                                                                                                     </span>
@@ -32,7 +31,7 @@
             <!--</a>-->
             <div class="sign-in-wrapper">
                 <div class="no-sign-in-yet">עדיין לא הצטרפת?</div>
-                <input type="button" class="sign-in-btn" value="להצטרפות" data-ng-click="openSigninPopup()">
+                <input type="button" class="sign-in-btn shadow-buttons" value="הצטרף" data-ng-click="openSigninPopup()">
             </div>
         </div>
 
@@ -44,14 +43,15 @@
             <div class="login-error" data-ng-show="showEmailError">* שדה מייל לא הוזן כראוי</div>
             <div class="login-error" data-ng-show="showForgotPasswordError">* {{forgotPasswordError}}</div>
             <div class="login-error" data-ng-show="successPasswordRecovery">* קוד שחזור נשלח למייל שלך</div>
-            <input type="button" class="sign-in-btn" value="שחזר" data-ng-click="sendForgotPassword()">
-            <div class="login-forget-pass" data-ng-click="openCodefield()">יש בידי קוד</div>
+            <input type="button" class="sign-in-btn shadow-buttons" value="שחזר" data-ng-click="sendForgotPassword()">
+            <div class="login-forget-pass blue-login-forget" data-ng-click="openCodefield()">יש בידי קוד</div>
 
             <div data-ng-show="successPasswordRecovery">
-                <input type="text" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: recoveryCodeError}" placeholder="קוד שחזור" data-ng-model="recoveryCode" style="margin-top: 70px">
+                 <div class="login-forget-pass code-here">הכנס קוד כאן:</div>
+                <input type="text" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: recoveryCodeError}" placeholder="קוד" data-ng-model="recoveryCode" style="">
                 <div class="login-error" data-ng-show="recoveryCodeError">* לא הוזן קוד שחזור</div>
                 <div class="login-error" data-ng-show="recoveryCodeServerError">* {{recoveryCodeErrorMessage}}</div>
-                <input type="button" class="sign-in-btn" value="הבא" data-ng-click="sendRecoveryCode()">
+                <input type="button" class="sign-in-btn shadow-buttons" value="הבא" data-ng-click="sendRecoveryCode()">
                 
             </div>
         </div>
@@ -66,7 +66,7 @@
             <input type="button" class="sign-in-btn" value="היכנס" data-ng-click="setNewPassword()">
         </div>
 
-        <div class="color-line color-line-bottom"></div>
+       
     </div>
 </div>
 <!-- Place this asynchronous JavaScript just before your </body> tag -->

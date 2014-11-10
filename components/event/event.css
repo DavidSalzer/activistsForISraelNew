@@ -1,29 +1,34 @@
 .calendar-area {
     position: relative;
     z-index: 1;
+    background-color: #ecf8ff;
+    padding-bottom: 11px;
+}
+
+
+.post-details {
+padding: 0px;
 }
 
 .calendar.well {
-    /*background-color: #42484e;*/
-    background-color: #2f343b;
-    padding-bottom: 30px;
-    padding-top: 58px;
+    background-color: #ecf8ff;
     border: none;
     margin-bottom: 0px;
     position: relative;
+    padding: 58px 0px 10px 0px;
 }
 
-.calendar:after {
+/*.calendar:after {
     position: absolute;
     content: "";
     width: 100%;
     z-index: 1;
     height: 4px;
     bottom: -2px;
-    background: #747474;
+    background: #ffffff;
     right: 0px;
-    border: 1px inset rgba(45,50,56,0.75);
-}
+     border: 1px inset rgba(45,50,56,0.75); 
+}*/
 
 .btn.btn-sm.pull-right {
 }
@@ -36,13 +41,13 @@ td.text-center {
 }
 
 thead tr:first-child {
-    background-color: #31363d;
+    background-color: rgb(0, 74, 142);
     border-bottom: 4px solid #ffffff;
     height: 42px;
 }
 
 thead tr .btn.btn-default.btn-sm {
-    background-color: #565c63;
+    background-color: rgb(0, 74, 142);
     color: #ffffff;
     font-size: 20px;
     line-height: 34px;
@@ -76,7 +81,7 @@ thead .btn.btn-default.btn-sm.pull-right {
 }
 
 .posts-list {
-    background-color: #42484e;
+    background-color: #d4deec;
 }
 
 .calendar-area table thead th:nth-child(2) button:first-child {
@@ -102,6 +107,7 @@ tbody .btn.btn-default.btn-sm {
     border-radius: 0;
     border: 1px solid #31363d;
     position: relative;
+    padding: 8px 6px;
 }
 
 /*tbody .btn.btn-default.btn-sm.btn-info {
@@ -128,14 +134,13 @@ tbody .btn.btn-default.btn-sm.btn-info:before {
     cursor: pointer;
     position: absolute;
     margin: auto;
-    bottom: 4px;
-    right: 0;
-    left: 0;
-    -webkit-transform: rotate(-90deg);
+    bottom: 11px;
+    left: 19px;
+    /*-webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
-    transform: rotate(-90deg);
+    transform: rotate(-90deg);*/
 }
 
 /****calander*****/
@@ -146,10 +151,8 @@ tbody .btn.btn-default.btn-sm.btn-info:before {
     width: 100%;
     right: 0px;
     top: 0px;
-    background-color: #565c63;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.95);
-    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.95);
-    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.95);
+    /* background-color: #565c63; */
+    -webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);  -moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);  box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
 }
 
 /*thead .btn.btn-default.btn-sm.pull-left {
@@ -205,21 +208,22 @@ thead tr .btn.btn-default.btn-sm {
 
 .event-title {
     font-weight: bold;
-    padding: 12px 23px 12px 24px;
+    margin-bottom: 2px;
+    font-size: 15px;
 }
 
 .posts-list .event-title {
-    padding-right: 10px;
+    padding-right: 0px;
 }
 
 .event-time {
-    padding: 12px;
+    padding: 0px;
     font-weight: bold;
     font-size: 12px;
 }
 
 .event-main-text {
-    padding: 12px;
+    padding: 8px 0px 0px 0px;
     font-size: 12px;
 }
 
@@ -235,7 +239,7 @@ thead tr .btn.btn-default.btn-sm {
 .single-event-header {
     width: 100%;
     height: 42px;
-    background-color: hsl(212, 7%, 36%);
+    background-color: #ecf8ff;
     color: hsl(0, 100%, 100%);
     box-sizing: border-box;
     padding: 0px 30px;
@@ -250,6 +254,7 @@ thead tr .btn.btn-default.btn-sm {
     position: relative;
     min-height: 100%;
     padding-bottom: 250px;
+    padding: 0px 14px 250px 14px;
 }
 
 .single-event-body {
@@ -258,7 +263,7 @@ thead tr .btn.btn-default.btn-sm {
     position: absolute;
     width: 100%;
     top: 0px;
-    padding-top: 38px;
+    padding-top: 14px;
     overflow: auto;
 }
 
@@ -266,12 +271,11 @@ thead tr .btn.btn-default.btn-sm {
     position: absolute;
     width: 100%;
     bottom: 0px;
+    right: 0px;
 }
 
 .singleEvent-text {
     text-align: justify;
-    margin-left: 12px;
-    padding-right: 12px;
     word-wrap: break-word;
 }
 
@@ -282,7 +286,7 @@ thead tr .btn.btn-default.btn-sm {
     height: 100%;
     font-size: 12px;
     margin: auto;
-    width: 63%;
+    width: 240px;
     position: relative;
     margin-bottom: 20px;
 }
@@ -290,34 +294,49 @@ thead tr .btn.btn-default.btn-sm {
 .detail-wrapper-enent {
     position: relative;
     width: 100%;
+    border-radius: 15px;
+    background-color: #ecf8ff;
+    height: 32px;
+    margin-bottom: 9px;
 }
 
 .join-button.event-join-button {
     display: block;
-    width: 155px;
+    width: 112px;
     position: relative;
     font-weight: normal;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    height: 33px;
+    line-height: 33px;
+    font-size: 15px;
 }
 
 .participation-option-cell {
     display: inline-block;
     vertical-align: middle;
-    width: 71%;
-    line-height: 15px;
+    width: 205px;
+    vertical-align: top;
+    height: 100%;
+    padding: 5px 3px 0px 0px;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.participation-option-cell div {
+    line-height: 11px;
+    
 }
 
 .owner-wrapper-detailes {
-    box-shadow: 0px 3px 2px 5px rgba(0,0,0,0.73);
-    -webkit-box-shadow: 0px 3px 2px 5px rgba(86,92,99,0.83);
-    -moz-box-shadow: 0px 3px 2px 5px rgba(86,92,99,0.83);
+    margin-bottom: 14px;
 }
 
 .event-participation .icon {
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
     background-size: contain;
     cursor: pointer;
+    margin: 3px 5px 0px 0px;
 }
 
 .phone-icon {
@@ -343,21 +362,98 @@ thead tr .btn.btn-default.btn-sm {
     position: absolute;
     width: 100%;
     bottom: 0px;
-    padding-top: 182px;
+    padding-top: 152px;
     z-index: 0;
 }
 
 
 .meeting-wrapper.we {
-    padding-top: 333px;
+    padding-top: 339px;
 }
 
 .meeting-wrapper .posts-list {
     position: relative;
-    padding-bottom: 0px;
+    padding-bottom: 42px;
     padding-top: 0px;
 }
 
+.top-single-title {
+    margin-top:10px
+}
+
+.the-single-title {
+    font-size: 12px;
+    
+    line-height: 14px;
+}
+
+
+.bottom-part-calendar {
+    
+}
+
+#todayButton {
+   background-color: #004a8e;
+   border-radius: 5px; 
+   color: #ffffff;
+   width: 50px;
+   height: 23px;
+   display: inline-block;
+   text-align: center;
+   line-height: 23px;
+   margin: 0px 11px;
+   font-size: 15px;
+}
 
 /****ffffffffffff**/
 
+span#displayedDate {
+    font-size: 11px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.close-events-title {
+    color: #004a8e;
+    font-size: 18px;
+    text-align: right;
+    padding-right: 12px;
+    font-weight: bold;
+    margin-top: 13px;
+    margin-bottom: -7px;
+}
+
+.post-wrap .post-tab {
+    padding: 10px 14px 10px 14px;
+    
+}
+
+.read-more-event {
+    text-align: left;
+    color: rgb(0, 74, 142);
+    margin-top: 5px;
+}
+
+.inner-readmore-event {
+    
+}
+
+.participation-option-cell.nav-to{
+    padding-top: 9px;
+    
+}
+
+.single-event-body #author-header {
+    background-color: #004a8e;
+    
+    padding: 0px 30px 0px 30px;
+    height: 45px;
+}
+
+.single-event-body #author-header .author-name {
+    width: auto !important;
+}
+
+.single-event-body #author-header .author-name:first-child {
+    margin-right: 10px;
+}

@@ -10,7 +10,9 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
     $scope.showAddressError = false;
     $scope.errorMsg = '';
     $scope.datacrop = {};
-    $scope.userImg = '';
+    $scope.userImg = './img/user.png';
+    $scope.terms = 'ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי. ';
+
 
     $scope.closeSignInPopup = function () {
         $scope.showSignIn = false;

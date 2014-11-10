@@ -13,7 +13,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
 
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/user.png",
+        featureLogo: "./img/profile_small.png",
         //infoImg: './img/whatsup.png',
         featureColor: '#004a8e'
     };

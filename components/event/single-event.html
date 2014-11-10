@@ -1,29 +1,42 @@
 <link rel="stylesheet" type="text/css" href="./components/event/event.css" />
 <link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/event/event.css" />
-<div class="scroll-main-window site-single-event" scroller loading-method="loadMore()">
+<div class="scroll-main-window site-single-event" scroller loading-method="loadMore()" ng-controller="DatepickerDemoCtrl">
 
 
-    <div class="single-event-header">
-        <div>
- יום {{post().DestinationTime | date : 'EEEE'}} {{post().DestinationTime | date : 'dd.MM.yyyy'}}
-	   שעה {{post().DestinationTime | date : 'H:mm'}}
-        </div>
-        <div>
-	   מקום: {{post().location}}
-        </div>
-        <div class="color-line color-line-bottom "></div>
-    </div>
-
+            <!--<div class="single-event-header">
+        
+                <div class="color-line color-line-bottom "></div>
+            </div>-->
     <div class="single-event-body">
+
         <div class="event-container">
-            <post data-post-type="event" class="single-event" data-ng-repeat="post in [post()]"></post>
+
+            <post data-post-type="event" class="single-event" data-ng-repeat="post in [post()]">
+            
+            </post>
+
             <div class="single-event-wrapper">
                 <div class="event-participation">
-                    <div class="button join-button event-join-button" data-ng-click="participate()" style="background-color:{{featureDetails.featureColor}};">השתתף</div>
+                    <div class="button join-button event-join-button shadow-buttons" data-ng-click="participate()" style="background-color:{{featureDetails.featureColor}};">השתתף</div>
                     <div>
-                        <div data-ng-click="call()" class="detail-wrapper-enent"><div class="icon phone-icon participation-option-cell"></div><div class="participation-option-cell"><div>צור קשר</div><div>{{post()._author.data.firstName}} {{post()._author.data.lastName}} {{post().phone}}</div></div></div>
-                        <div data-ng-show="post().email!=''" data-ng-click="mail()" class="detail-wrapper-enent"><div class="icon mail-icon participation-option-cell"></div><div class="participation-option-cell"><div>מייל</div><div>{{post().email}}</div></div></div>
-                        <div data-ng-click="nav()" class="detail-wrapper-enent"><div class="icon navigate-icon participation-option-cell"></div><div class="participation-option-cell">נווט לכתובת: {{post().location}}</div></div>
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-click="call()">
+                            <div class="icon phone-icon participation-option-cell"></div>
+                            <div class="participation-option-cell">
+                                <div>צור קשר</div>
+                                <div>{{post()._author.data.firstName}} {{post()._author.data.lastName}} {{post().phone}}</div>
+                            </div>
+                        </div>
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-show="post().email!=''" data-ng-click="mail()" >
+                            <div class="icon mail-icon participation-option-cell"></div>
+                            <div class="participation-option-cell">
+                                <div>מייל</div>
+                                <div>{{post().email}}</div>
+                            </div>
+                        </div>
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-click="nav()">
+                            <div class="icon navigate-icon participation-option-cell"></div>
+                            <div class="participation-option-cell nav-to">נווט לכתובת: {{post().location}}</div>
+                        </div>
                     </div>
                 </div>
                 <!--  show author // show edit button-->
@@ -31,7 +44,7 @@
                     <author-header data-ng-repeat="post in [post()]"></author-header>
                 </div>
                 <div data-ng-if="post()._author._id == user._id" class="single-event-header" style="height: 50px;">
-                    <div class="button" data-ng-click="editEvent()" style="background-color:{{featureDetails.featureColor}}; margin-top: initial;">ערוך</div>
+                    <div class="button" data-ng-click="editEvent()" style="margin-bottom: 0px; background-color:{{featureDetails.featureColor}}; margin-top: initial;">ערוך</div>
                 </div>
             </div>
 
