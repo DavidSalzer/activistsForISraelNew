@@ -12,14 +12,15 @@
                     <input type="file" id="userImg1" data-ng-show="myProfile">
                 </div>
             </div>
-            <div class="user-profile-rank">
+            <!--<div class="user-profile-rank">
                 <div class="user-profile-rank-image" data-ng-class="{'rank-image-0': profile().point.level == 0, 'rank-image-1': profile().point.level == 1, 'rank-image-2': profile().point.level == 2, 'rank-image-3': profile().point.level == 3, 'rank-image-4': profile().point.level == 4}"></div>
                 <div class="user-profile-rank-text" data-ng-class="{'rank-text-0': profile().point.level == 0, 'rank-text-1': profile().point.level == 1, 'rank-text-2': profile().point.level == 2, 'rank-text-3': profile().point.level == 3, 'rank-text-4': profile().point.level == 4}">{{profile().rank}}</div>
-            </div>
+            </div>-->
         </div>
     </div>
-    <div class="color-line color-fixed-top"></div>
+    <!--<div class="color-line color-fixed-top"></div>-->
     <div class="user-profile-items">
+        
         <div class="user-profile-name user-profile-item">
             <div class="user-edit-icon" data-ng-hide="editName || !myProfile" data-ng-click="editItem('name')"></div>
             <div class="user-item-text" data-ng-hide="editName">{{profile().firstName}} {{profile().lastName}}</div>
@@ -27,10 +28,17 @@
             <input type="text" data-ng-model="editProfile.firstName" data-ng-show="editName" value="{{ profile().firstName }}">
             <input type="text" data-ng-model="editProfile.lastName" data-ng-show="editName" value="{{ profile().lastName }}">
             <div class="user-edit-icon-x" data-ng-show="editName" data-ng-click="editItem('name')"></div>
+            <img data-ng-src="./img/sidebar-menu-icon.png" alt="side-profile" class="profile-item-circle" />
         </div>
-        <div class="user-profile-registration-date user-profile-item">
+
+          <div class="pazam-item user-profile-item">
+            <div>פז"ם: 200 ימים</div>
+        </div>
+
+        <!--<div class="user-profile-registration-date user-profile-item">
             <div>תאריך הרשמה: {{profile().registrationDate| date : 'dd.MM.yyyy'}}</div>
-        </div>
+        </div>-->
+
         <div class="user-profile-scoring user-profile-item">
             <div class="user-giving-score" data-ng-class="{'user-giving-score-done': userLike}" data-ng-hide="myProfile" data-ng-click="givingScore()"></div>
             <div>ניקוד מצטבר: {{profile().point.count+0}}</div>
@@ -46,6 +54,15 @@
             </select>
             <div class="user-edit-icon-x" data-ng-show="editGender" data-ng-click="editItem('gender')"></div>
         </div>
+      
+        <div class="user-profile-mail user-profile-item" data-ng-show="myProfile">
+            <!--<div class="user-edit-icon" data-ng-hide="editEmail" data-ng-click="editItem('email')"></div>-->
+            <div class="user-item-text" data-ng-hide="editEmail">{{profile().email}}</div>
+                            <!--<div class="user-edit-icon-v" data-ng-show="editEmail"></div>
+                                                                                                                            <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
+                                                                                                                            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
+        </div>
+
         <div class="user-profile-address user-profile-item" data-ng-show="myProfile">
             <div class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
             <div class="user-item-text" class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
@@ -54,13 +71,7 @@
             <input type="text" data-ng-model="editProfile.address" data-ng-show="editAddress" value="{{profile().address}}">
             <div class="user-edit-icon-x" data-ng-show="editAddress" data-ng-click="editItem('address')"></div>
         </div>
-        <div class="user-profile-mail user-profile-item" data-ng-show="myProfile">
-            <!--<div class="user-edit-icon" data-ng-hide="editEmail" data-ng-click="editItem('email')"></div>-->
-            <div class="user-item-text" data-ng-hide="editEmail">{{profile().email}}</div>
-                            <!--<div class="user-edit-icon-v" data-ng-show="editEmail"></div>
-                                                                                                                            <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
-                                                                                                                            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
-        </div>
+
         <div class="user-profile-phone user-profile-item" data-ng-show="myProfile">
             <div class="user-edit-icon" data-ng-hide="editPhone" data-ng-click="editItem('phone')"></div>
             <div class="user-item-text" data-ng-hide="editPhone">{{profile().phone}}</div>
@@ -87,7 +98,7 @@
             </div>
         </div>
 
-        <div class="color-line color-fixed-top"></div>
+        <!--<div class="color-line color-fixed-top"></div>-->
 
 
         <div class="user-recent-activity-title">הפעולות האחרונות</div>

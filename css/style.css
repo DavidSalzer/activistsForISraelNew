@@ -776,6 +776,11 @@ div.scrollable-content.overthrow {
     position: absolute;*/
 }
 
+.polls-layout.channel-con
+{
+    padding-bottom:60px;
+}
+
 .channel-con {
     padding: 0px 10px;
     width: 100%;
@@ -887,7 +892,10 @@ button {
 
 
 /*********** poll css *************************/
-
+.polls-layout .text-box {
+    background-color: #ffffff;
+    
+}
 
 .text-box {
     height: 84px;
@@ -1021,6 +1029,7 @@ button {
     background-color: #ffffff;
     position: absolute;
     bottom: 0px;
+    right: 0px;
 }
 
 .white-line.thanks-white {
