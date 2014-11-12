@@ -59,7 +59,6 @@ position: absolute;
 top: 0;
 padding-top: 46px;
 box-sizing: border-box;*/
-    background: #252525;
 }
 
 .article-content-window {
@@ -72,7 +71,7 @@ box-sizing: border-box;*/
 }
 
 .article-content .title-field {
-    height: 32px;
+    height: 36px;
     width: 100%;
     background-color: white;
     display: block;
@@ -124,24 +123,43 @@ box-sizing: border-box;*/
     border-radius: 10px;
     height: 100%;
     min-height: 160px;
-    margin-top: 12px;
+    border: 0px;
+    margin-top: 14px;
 }
 
 
 .article-text::-webkit-input-placeholder {
-   color: #bcccce;
+   color: #818181;
+   
 }
 
 .article-text:-moz-placeholder { /* Firefox 18- */
-  color: #bcccce;
+  color: #818181;
 }
 
 .article-text::-moz-placeholder {  /* Firefox 19+ */
- color: #bcccce;
+ color: #818181;
 }
 
 .article-text:-ms-input-placeholder {  
-  color: #bcccce;
+  color: #818181;
+}
+
+.title-field::-webkit-input-placeholder {
+   color: #818181;
+   
+}
+
+.title-field:-moz-placeholder { /* Firefox 18- */
+  color: #818181;
+}
+
+.title-field::-moz-placeholder {  /* Firefox 19+ */
+ color: #818181;
+}
+
+.title-field:-ms-input-placeholder {  
+  color: #818181;
 }
 
 
@@ -152,7 +170,7 @@ box-sizing: border-box;*/
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     min-height: 135px;
-    border-bottom: 0px;
+    border: 0px;
 }
 
 
@@ -170,11 +188,8 @@ box-sizing: border-box;*/
     background-color: hsl(0, 100%, 100%);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    border-top: 0px;
+    border: 0px;
     border-color: rgb(169, 169, 169);
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-    border-left: 1px solid;
 }
 
 .button {
@@ -392,9 +407,10 @@ div.post-main-text {
 .small-input-wrap {
     width: 100%;
     position: relative;
-    height: 44px;
+    height: 36px;
     box-sizing: border-box;
-    margin-top: 12px;
+    margin-top: 14px;
+    margin-bottom: 14px;
     line-height: 28px;
     background-position: 79% 4px;
     background-repeat: no-repeat;
@@ -413,6 +429,7 @@ div.post-main-text {
     background-size: 22px;
     width: 80px;
     background-position: 8px 4px;
+    color: #000000;
 }
 
 .write-calendar-event .article-content .small-input-wrap input {
@@ -604,4 +621,10 @@ input.go-out-time.needsclick {
     height: 25px;
     line-height: 3px;
     color: #000000;
+}
+
+
+.main-content-wrap.wirte-post-wrapper {
+     padding: 46px 14px 0px 14px;
+     background-color: #d4deec;
 }

@@ -8,7 +8,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     $scope.isSiteHeader = true;
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/calendar.png",
+        featureLogo: "./img/sidebar-event-icon.png",
         featureWhatsUpLogo: "./img/calendar_info.png",
         featureColor: '#004a8e',
         infoHaeder: "אירועים",
@@ -104,7 +104,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService','$timeo
 			    if (newValue.length > 1) {//a new month was selected
 
 			        $scope.monthArray = newValue; //save month for get back from week display
-			        $scope.togglecaendarArrow(-90); //make sore the arrow is to up 
+			        $scope.togglecaendarArrow(0); //make sore the arrow is to up 
                     $scope.backgroundDateColor($scope.monthArray);
 			    }
                 
@@ -134,7 +134,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService','$timeo
         if ($scope.$$childHead.$$childHead.rows.length == 1) {
 
             $scope.$$childHead.$$childHead.rows = $scope.monthArray; //get back current month from memory
-            $scope.togglecaendarArrow(-90); //toggle arrow to up
+            $scope.togglecaendarArrow(0); //toggle arrow to up
             //$scope.f = true; //yishai added this row for the wrapper of the events to know to decrease the paading
             $scope.l(false);
             //$scope.$apply();
@@ -153,7 +153,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService','$timeo
 
                     $scope.$$childHead.$$childHead.rows = [];
                     $scope.$$childHead.$$childHead.rows.push($scope.monthArray[i]); //chose selected week
-                    $scope.togglecaendarArrow(90); //toggle arrow to down
+                    $scope.togglecaendarArrow(180); //toggle arrow to down
                     // $scope.$apply();
                     return;
                 }

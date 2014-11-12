@@ -231,11 +231,16 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
 
     $scope.setNewPassword = function () {
         $scope.recoveryCodeError = $scope.recoveryCode == undefined || $scope.recoveryCode == '';
-        $scope.showPassError = $scope.pass == undefined || $scope.pass == '';
+        $scope.showPassError = $scope.pass == undefined || $scope.pass.length < 6;
+        $scope.showPassAuthenticationError = $scope.pass != $scope.passAuthentication;
 
-        if ($scope.recoveryCodeError || $scope.showPassError) {
+        if ($scope.recoveryCodeError || $scope.showPassError || $scope.showPassAuthenticationError) {
             return;
         }
+
+        $scope.recoveryCodeError = false;
+        $scope.recoveryCodeError = false;
+        $scope.showPassAuthenticationError = false;
 
         $scope.newPasswordDetails = {
 

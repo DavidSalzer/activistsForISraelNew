@@ -1,6 +1,6 @@
 <div class="thank-you-page" data-ng-controller="thankYou" data-ng-show="showThankPage">
     <div class="channel-title" data-ng-style="{'background-color': thankDetails.featureColor}">{{thankDetails.headerText}}</div>
-    <div class="color-line color-fixed-top"></div>
+    <div class="white-line thanks-white sub-header"></div>
     <div class="thank-you-external-background">
         <div class="thank-you-background">
             <div class="center-text-wrapper">
@@ -8,6 +8,7 @@
                 <div class="thank-you-details" >{{thankDetails.thankText}}</div>
                 <div class="thank-you-image"></div>
                 <input type="button" class="thank-you-return-btn" value="{{thankDetails.btnText}}" data-ng-click="backToApp(thankDetails.featureState)" data-ng-style="{'background-color': thankDetails.featureColor}">
+                <div class="login-forget-pass" style="margin-top: 12px; margin-bottom: 0px;">שלח אלי מייל אישור שוב</div>
             </div>
         </div>
     </div>

@@ -8,9 +8,14 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
     $scope.showPassError = false;
     $scope.showPhoneError = false;
     $scope.showAddressError = false;
+    $scope.showTerms = false;
+    $scope.showTermsVee = false;
+    $scope.didConfirmTerms = false;
     $scope.errorMsg = '';
     $scope.datacrop = {};
-    $scope.userImg = '';
+    $scope.userImg = './img/user.png';
+    $scope.terms = 'ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי. ';
+
 
     $scope.closeSignInPopup = function () {
         $scope.showSignIn = false;
@@ -45,13 +50,15 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         console.log($scope.gender);
         $scope.showFnameError = $scope.fName == undefined || $scope.fName == '';
         $scope.showLnameError = $scope.lName == undefined || $scope.lName == '';
+        $scope.didConfirmTerms = !$scope.showTermsVee;
         $scope.showGenderError = $scope.gender == undefined || ($scope.gender != 'זכר' && $scope.gender != 'נקבה'); //temp for submission 0307
         $scope.showEmailError = $scope.mail == undefined || $scope.mail == '';
-        $scope.showPassError = $scope.pass == undefined || $scope.pass == '' || $scope.pass != $scope.passAuthentication;
+        $scope.showPassError = $scope.pass == undefined || $scope.pass.length < 6;
+        $scope.showPassAuthenticationError = $scope.pass != $scope.passAuthentication;
         $scope.showPhoneError = $scope.askPhoneAndAddress && ($scope.phone == undefined || $scope.phone == '');
         $scope.showAddressError = $scope.askPhoneAndAddress && ($scope.address == undefined || $scope.address == '');
 
-        if ($scope.showFnameError || $scope.showLnameError || $scope.showEmailError || $scope.showPassError || $scope.showPhoneError || $scope.showAddressError || $scope.showGenderError) {//$scope.showGenderError || //temp for submission 0307
+        if ($scope.didConfirmTerms || $scope.showFnameError || $scope.showLnameError || $scope.showEmailError || $scope.showPassError || $scope.showPassAuthenticationError || $scope.showPhoneError || $scope.showAddressError || $scope.showGenderError) {//$scope.showGenderError || //temp for submission 0307
             return;
         }
 
@@ -60,6 +67,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $scope.showGenderError = false;
         $scope.showEmailError = false;
         $scope.showPassError = false;
+        $scope.showPassAuthenticationError = false;
         $scope.showPhoneError = false;
         $scope.showAddressError = false;
 

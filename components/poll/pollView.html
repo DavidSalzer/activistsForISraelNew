@@ -5,7 +5,7 @@
 <div class="channel-title-zone sub-header" data-ng-class="{'site-sub-header':isSiteHeader==true}">
     <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-show = "pollIsActive()">סקר פעיל</div>
     <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-hide = "pollIsActive()">תודה על השתתפותך</div>
-    <div class="color-line"></div>
+    <div class="white-line"></div>
 </div>
 
 <div class="pollView-container" >
@@ -23,11 +23,11 @@
 
 	<!--Div that will hold the pie chart-->
 	<div google-chart data="currentPollResults" type={{currentPollObj.poll.pollType}} data-ng-hide = "pollIsActive()"></div>
-	<div class="gray-line" data-ng-hide = "pollIsActive()"></div>
+	<!--<div class="gray-line" data-ng-hide = "pollIsActive()"></div>-->
     <div class="legend-wraper">
 	 <div ng-repeat="line in legend" class="legend-container" data-ng-hide = "pollIsActive()">
-		<div class="legend-color" data-ng-style="{'background-color': '{{line.color}}'}"></div>
-		<div class="legend-content" data-ng-style="{'color': '#ffffff'}">{{line.title}}</div>
+		<div class="legend-color" data-ng-style="{'background-color': '{{line.color}}'}"></div><!---->
+		<div class="legend-content" >{{line.title}}</div><!--data-ng-style="{'color': '#ffffff'}"-->
 		<div class="legend-image" data-ng-show='{{"line.image"}}' data-ng-style="{'background-image': 'url({{line.image}})'}">
 			
 		</div>

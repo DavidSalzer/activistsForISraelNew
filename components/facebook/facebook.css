@@ -4,21 +4,31 @@
     height: auto;
 }
 
-#face-wrap iframe{
-    width:310px !important;
-    height:900px !important;
+#tt {
+    width: 290px;
+    height: 100%;
+    background: #dcdee3;
+    position: absolute;
+    margin: auto;
+    right: 0px;
+    left: 0px;
 }
 
-#face-wrap span{
-    width:310px !important;
-    height:900px !important;
-   /* display: block;
+#face-wrap iframe {
+    width: 310px !important;
+    height: 900px !important;
+}
+
+#face-wrap span {
+    width: 310px !important;
+    height: 900px !important;
+    /* display: block;
     margin: auto;*/
 }
 
-.fb_iframe_widget_fluid span{
+.fb_iframe_widget_fluid span {
     margin: auto;
-display: block;
+    display: block;
 }
 /*
 .facebook-wrap .fb_iframe_widget_fluid iframe{
