@@ -58,8 +58,8 @@
             <!--<div class="user-edit-icon" data-ng-hide="editEmail" data-ng-click="editItem('email')"></div>-->
             <div class="user-item-text" data-ng-hide="editEmail">{{profile().email}}</div>
                             <!--<div class="user-edit-icon-v" data-ng-show="editEmail"></div>
-                                                                                                                            <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
-                                                                                                                            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
+                                                                                                                                            <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
+                                                                                                                                            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
         </div>
         <div class="user-profile-phone user-profile-item" data-ng-show="myProfile">
             <div class="user-edit-icon" data-ng-hide="editPhone" data-ng-click="editItem('phone')"></div>
@@ -83,7 +83,7 @@
                     <div class="user-profile-other-user-content" data-ng-init="textForView(activity)">{{activity.textView}}</div>
                     <!--<div class="user-profile-other-user-content" data-ng-show="activity.type == 'userLike'">העריך אותך</div>-->
                 </div>
-                                    
+
             </div>
         </div>
 
@@ -130,3 +130,15 @@
 
     </div>
 </section>
+
+<div class="sign-in-popup change-pass-popup" data-ng-show="showChangePassword">
+    <div class="close-sign-in" data-ng-click="showChangePassword = !showChangePassword"></div>
+    <div class="password-recovery-title">שינוי סיסמה:</div>
+    <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="הזן סיסמה נוכחית" data-ng-model="oldPass">
+    <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError || showPassAuthenticationError}" placeholder="הזן סיסמה חדשה" data-ng-model="newPass">
+    <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: !showPassError && showPassAuthenticationError}" placeholder="אמת סיסמה חדשה" data-ng-model="passAuthentication">
+    <div class="login-error" data-ng-show="showPassError">* יש להזין סיסמה בת 6 תווים לפחות</div>
+    <div class="login-error" data-ng-show="!showPassError && showPassAuthenticationError">* אימות הסיסמה שונה מהסיסמה שבחרת</div>
+    <div class="login-error" data-ng-show="passErrorInServer">* {{passErrorMessage}}</div>
+    <input type="button" class="sign-in-btn" value="אשר" data-ng-click="setNewPassword()">
+</div>

@@ -560,4 +560,6 @@ canvas {
     border: 1px solid #42484e;
 }
 
-
+.sign-in-popup.change-pass-popup {
+    top: 20px;
+}
