@@ -46,7 +46,7 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
         legend: { position: 'none' },
         title: "",
         //backgroundColor: {strokeWidth: 0},
-        backgroundColor: '#42484e',
+        backgroundColor: '#d4deec',
         height: 250,
         //width:600,
         fontSize: 12,
@@ -55,7 +55,7 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
                 type: 'bars'
             }, 1: {
                 type: 'line',
-                color: '#ffffff',
+                color: '#000000',
                 lineWidth: 0,
                 pointSize: 0,
                 visibleInLegend: false

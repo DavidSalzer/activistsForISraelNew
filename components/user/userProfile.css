@@ -1,10 +1,11 @@
 div.user-profile-gender.user-profile-item { /*temp for submission 0307*/
-    display: none;
+   
 }
 
 div.user-profile-item:last-child { /*temp for submission 0307*/
     border: none;
-}
+ width: 100%; 
+ height: 54px;}
 
 
 
@@ -17,8 +18,8 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 
 .user-profile-avatar-zone {
     width: 100%;
-    height: 50%;
-    background-color: #2f343b;
+    height: 168px;
+    background-color: #fff;
     position: relative;
 }
 
@@ -28,19 +29,18 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     bottom: 0px;
     right: 0px;
     left: 0px;
-    height: 186px;
+    height: 124px;
     width: 186px;
     margin: auto;
 }
 
 .color-circle {
-    background-image: url('../../img/color_circle.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
     margin: auto;
-    height: 153px;
-    width: 153px;
+    height: 122px;
+    width: 122px;
     position: absolute;
     top: 0px;
     /*bottom: 0px;*/
@@ -50,10 +50,10 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 
 .user-profile-avatar {
     border-radius: 100%;
-    border: 2px solid #2f343b;
+    border: 1px solid #2f343b;
     background-size: 100% 100%;
-    width: 145px;
-    height: 145px;
+    width: 122px;
+    height: 122px;
     /* line-height: 152px; */
     background-color: white;
     margin: auto;
@@ -138,13 +138,13 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .user-profile-item {
-    width: 90%;
-    height: 62px;
+    width: 282px;
+    height: 58px;
     margin: auto;
-    border-bottom: 2px solid gray;
+    border-bottom: 1px solid gray;
     position: relative;
     color: #2f343b;
-    padding-right: 45px;
+    padding-right: 55px;
     line-height: 62px;
     font-weight: bold;
 }
@@ -159,7 +159,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     background-size: 100% 100%;
     position: absolute;
     top: 13px;
-    right: 0px;
+    right: 10px;
     display: inline-block;
     cursor: pointer;
 }
@@ -235,15 +235,15 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 .user-profile-name.user-profile-item {
     /*background-color: White;
     color: Black;*/
-    border-top: 0;
+    border-top: 1px solid gray;
 }
 
 .user-profile-other-user-zone {
     width: 100%;
-    height: 140px;
+    height: 151px;
     /*border-top: 2px solid gray;*/
     margin: auto;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     padding-top: 10px;
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
@@ -251,6 +251,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     overflow-y: hidden;
     padding-right: 5px;
     direction: ltr;
+    background-color: #ecf8ff;
 }
 
 .user-profile-other-user-wrapper {
@@ -259,7 +260,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .user-profile-other-user-activity {
-    width: 128px;
+    width: 125px;
     height: 120px;
     box-shadow: 0px 0px 4px rgba(50, 50, 50, 0.75);
     position: relative;
@@ -268,13 +269,14 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     display: inline-block;
     margin-left: 10px;
     cursor: pointer;
+    vertical-align: top;
 }
 
 .user-profile-other-user-activity figure.author-image {
-    position: absolute;
+    /* position: absolute; */
     top: 5px;
     right: 5px;
-    float: none;
+    float: right;
 }
 
 .user-profile-other-user-symbol {
@@ -302,14 +304,16 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     font-weight: bold;
     float: none;
     text-overflow: ellipsis;
-    width: 70px;
+    width: 60px;
     overflow: hidden;
     white-space: nowrap;
     line-height: normal;
     font-size: 10px;
     direction: rtl;
     margin-top: 40px;
+    position: absolute;
     margin-bottom: 10px;
+    right: 47px;
 }
 
 .user-profile-other-user-content {
@@ -321,26 +325,30 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 40px;
     overflow: hidden;
     direction: rtl;
+    margin-top: 65px;
 }
 
 .user-recent-activity-zone {
     padding-top: 10px;
     padding-bottom: 15px;
-    border-top: 2px solid gray;
-    border-bottom: 2px solid gray;
-    width: 90%;
+    border-bottom: 0px solid gray;
+    width: 100%;
     margin: auto;
+    background-color: #ecf8ff;
 }
 
 .user-recent-activity-title {
-    width: 90%;
-    height: 62px;
+    width: 100%;
+    height: 31px;
     margin: auto;
     position: relative;
     color: #2f343b;
-    line-height: 62px;
+    line-height: 47px;
     font-weight: bold;
     text-align: center;
+    background-color: #ecf8ff;
+    border-top: 4px solid #fff;
+    padding-top: 0px;
 }
 
 .user-recent-activity {
@@ -474,7 +482,7 @@ div.editImg {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #828282;
+    /* background: #828282; */
 }
 
 #cropDiv1 {
@@ -560,6 +568,22 @@ canvas {
     border: 1px solid #42484e;
 }
 
+.user-profile-logout-btn.needsclick {
+    height: 32px;
+    
+    line-height: 29px;
+}
+
+.profile-item-circle {
+    position: absolute;
+    
+    top: 13px;
+    left: 8px;
+    height: 35px;
+    width: 35px;
+    border: 1px solid gray;
+    border-radius: 30px;
+}
 .sign-in-popup.change-pass-popup {
     top: 20px;
 }

@@ -5,14 +5,14 @@
     <div  style="background-color: #ffd427;">
     המם שלי
     </div>
-    <div class="color-line color-line-bottom "></div>
+    <div class="white-line"></div>
 </div>
 
 <div class="posts-list">
     <!--<script src="./plugins/color-picker/jscolor.js"></script>-->
 
     <div class="top-part" style="position: relative;"  data-ng-show="postImg == ''">
-        <div class="instruction" >בחר תמונה</div>
+        <!--<div class="instruction" >בחר תמונה</div>-->
    
         <!--suggested images by server DONT DELETE-->
         <!--<div class="suggested-images-wrap">
@@ -78,8 +78,8 @@
 			
 			
 		    </div>
-            <div class="file-text">
-                <select data-ng-model="font" data-ng-options="font for font in fontOptions">
+            <div class="file-text" style="margin-right: 0px !important;">
+                <select data-ng-model="font" data-ng-options="font for font in fontOptions" >
                   <option value="">בחר גופן</option>
                 </select>
             </div>
@@ -111,7 +111,7 @@
     
 
     </div>
-    <div class="button" data-ng-click="createMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">צור מם</div>
+    <div class="button shadow-buttons" data-ng-click="createMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">צור מם</div>
     <!--<div style="width: 320px;height: 320px">
         <img width="" height="" src="" id="img" />
     </div>-->

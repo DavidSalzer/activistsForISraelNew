@@ -17,7 +17,7 @@
     margin: 6px;
     width: 29%;
     border-radius: 3px;
-    background-color: #535c63;
+    background-color: #d4deec;
     overflow: hidden;
 }
 
@@ -54,18 +54,18 @@
 
 .meme-like {
     position: absolute;
-    min-width: 36%;
     z-index: 2;
     top: 30%;
-    height: 37px;
-    width: auto;
+    width: 25px;
+    height: 30px;
     overflow: hidden;
     max-width: 100%;
     right: 0;
 }
 
 .large .meme-like {
-    width: 20%;
+    width: 25px;
+    height: 30px;
 }
 
 .opacity {
@@ -82,7 +82,7 @@
     background-size: 34px 15px;
     background-position-x: -17px;
     background-position-y: 1px;
-    height: 16px;
+    height: 15px;
     width: 17px;
     display: block;
     margin: auto;
@@ -91,7 +91,7 @@
     /* top: 4px; */
     right: 0;
     left: 0;
-    margin-top: 4px;
+    margin-top: 1px;
 }
 
 .meme-like-icon-isLike {
@@ -105,11 +105,11 @@
     z-index: 3;
     right: 0;
     left: 0;
-    font-size: 11px;
+    font-size: 9px;
     color: white;
     text-align: center;
     z-index: 3;
-    margin-top: 3px;
+    margin-top: 2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -180,6 +180,14 @@ width: 679px;*/
     width: 679px;*/
 }
 
+.nav.nav-tabs {
+-webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+-moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+position: relative;
+z-index: 1;
+}
+
 .meme-element2 {
     background-size: contain;
     background-repeat: no-repeat;
@@ -227,7 +235,7 @@ display: block;
     margin: auto;
     border-radius: 0;
     /* padding: 7px; */
-    margin-top: 47px;
+    margin-top: 14px;
     /* position: relative; */
     /* box-sizing: border-box; */
     border: 2px solid #535c63;
@@ -269,11 +277,15 @@ display: block;
     margin-top: 13px;
     height: 45px;
     position: relative;
-    padding: 0px 28px;
+    width: 291px;
+    padding: 0px 0px;
+    margin: auto;
 }
 
 .edit-text-wrap {
-    padding: 0px 28px;
+    padding: 0;
+    width: 291px;
+    margin: auto;
 }
 
 .font {
@@ -293,8 +305,8 @@ input {
 }
 
 .colorpicker-wrap {
-    width: 32px;
-    height: 32px;
+    width: 35px;
+    height: 35px;
     background: #E4E4E4;
     color: #695B5B;
     border-radius: 6px;
@@ -383,12 +395,13 @@ input {
     margin-right: 0;
     overflow: hidden;
     text-indent: 20px;
+    width: 291px;
+    height: 36px;
 }
 
 
 .button {
-    font-size: 21px;
-    font-family: Calibri;
+    font-size: 15px;
 }
 
 .widthCon {
@@ -438,7 +451,7 @@ input {
 }
 
 .top-part {
-    height: 239px;
+    height: 212px;
     overflow: hidden;
 }
 
@@ -451,6 +464,7 @@ input {
 
 .single-meme {
     height: 100%;
+    overflow-y: scroll;
 }
 
 .single {
@@ -466,6 +480,7 @@ input {
     width: 100%;
     margin: auto;
     margin-top: 9px;
+    margin-bottom: 20px;
 }
 
 .like-section-icon {
@@ -485,10 +500,11 @@ input {
 }
 
 .like-section-num {
-    display: inline-block;
+    display: block;
     vertical-align: middle;
     font-size: 16px;
-    color: #ffffff;
+    color: #000000;
+    font-weight: bold;
 }
 
 
@@ -564,4 +580,31 @@ width: 100%;
     text-align: right;
     font-weight: 500;
 }*/
+.text-wrap .file-text, .add-file .add-file-text {
+    height: 36px;
+    width: 250px;
+}
 
+
+#author-header {
+    -webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+    box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+}
+
+#author-header .author-name{
+    color: #000000;
+}
+
+.file-text, .add-file-text {
+    margin-right: 41px !important;
+}
+
+.text-wrap .file-text input {
+    height: 36px;
+}
+
+.add-file .plus {
+    width: 35px;
+    height: 35px;
+}

@@ -32,9 +32,10 @@
 .popup-wrapper select {
     float: none;
     text-indent: 0px;
+    padding: 1px 7px 0px 0px;
 }
 
-.popup-wrapper select .select-gender{
+.popup-wrapper select .select-gender {
     color: #999;
 }
 
@@ -62,6 +63,7 @@
     font-size: 1.2em;
     cursor: pointer;
     margin: 10px 7px 0px 0px;
+    opacity: 1 !important;
 }
 
 .close-sign-in.close:hover {
@@ -70,45 +72,41 @@
 
 .my-facebook-square {
     background-image: url('../../img/f.png');
-    
-} 
+}
 
 .my-google-plus {
     background-image: url('../../img/g.png');
-    
 }
 
-.sign-in-field span{
+.sign-in-field span {
     vertical-align: top;
-    
     color: #ffffff;
 }
 
 .sign-in-field.facebook-login-feild {
-    background-color:#004a8e;
+    background-color: #004a8e;
     width: 262px;
 }
 
 .sign-in-field.google-login-feild {
-       background-color:#d93e25;
-       width: 262px;
+    background-color: #d93e25;
+    width: 262px;
 }
 
-.my-square{
+.my-square {
     width: 27px;
-    
     height: 26px;
     display: inline-block;
     background-repeat: no-repeat;
     background-size: contain;
     position: relative;
-    top: -2px;
+    top: -5px;
     margin-right: 4px;
 }
 
 
 .sign-in-field {
-    height: 36px;
+    height: 32px;
     width: 262px;
     background-color: #fff;
     display: block;
@@ -118,14 +116,14 @@
     padding-top: 8px;
     padding-bottom: 8px;
     border: 0;
-    margin: 5px auto 10px auto;
+    margin: 5px auto 13px auto;
     position: relative;
     line-height: normal;
 }
 
 
 .placeholder-color {
-    color:  #999;
+    color: #999;
 }
 
 
@@ -194,7 +192,7 @@ input#userImg {
 }
 
 input[type=file] {
-   opacity: 0;
+    opacity: 0;
     width: inherit;
     height: inherit;
     z-index: 1000;
@@ -255,7 +253,8 @@ span#signinButton {
     margin-bottom: 20px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
+    margin-top: 32px;
 }
 
 #___signin_0, #___signin_0 button {
@@ -295,7 +294,7 @@ span#signinButton {
     float: left;
     transform: rotate(270deg);
     -webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg); 
+    -moz-transform: rotate(270deg);
     -o-transform: rotate(270deg);
 }
 
@@ -322,7 +321,7 @@ div.editImg {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #828282;
+    /* background: #828282; */
 }
 
 #cropDiv {
@@ -344,24 +343,18 @@ canvas#c {
 
 .cat-Approve {
     float: left;
-    width: 70% !important;
-    margin-left: 3%;
-    height: 44px !important;
 }
 
 .cat-cancel {
     float: right;
-    width: 70% !important;
-    height: 44px;
-    margin-right: 3%;
 }
 
 .userImg {
     border-radius: 100%;
     clear: both;
     margin: 0px auto 20px auto;
-    width: 80px;
-    height: 80px;
+    width: 110px;
+    height: 110px;
     display: block;
     border: 0px solid #42484e;
 }
@@ -374,7 +367,7 @@ canvas {
     width: 100%;
     text-align: center;
     margin: 5px 0px 15px 0px;
-    color: #bcccce;
+    color: #000000;
     position: relative;
 }
 
@@ -404,19 +397,21 @@ canvas {
 }
 
 .background-button-img {
-    background: #565c63;
     font-weight: 600;
     letter-spacing: 0.5px;
-    border: 1px solid #42484e;
+    width: 91px !important;
+    height: 33px !important;
+    background-color: #12426F;
 }
 
 .login-forget-pass.code-here {
     font-weight: normal;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .login-forget-pass.blue-login-forget {
     color: #004a8e;
+    margin-top: 11px;
 }
 
 #relative-plus {
@@ -435,23 +430,35 @@ canvas {
 
 .term-benet-box {
     width: 33px;
+    position: relative;
     height: 35px;
     display: inline-block;
     vertical-align: top;
-    background-color: red;
+    background-color: #ffffff;
     border-radius: 9px;
     margin-left: 5px;
+    border: 1px solid #959595;
+    padding: 5px;
+}
+
+.term-benet-box div {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../img/sginv.png');
+    background-size: contain;
 }
 
 .term-benet-confirm {
     display: inline-block;
     vertical-align: top;
     line-height: 33px;
+    font-size: 14px;
 }
 
 .benet-terms-content.ng-binding {
     padding: 8px 14px;
-    font-size: 11px;
+    font-size: 10px;
+    margin-bottom: 10px;
 }
 
 span.underline-benet-terms {
