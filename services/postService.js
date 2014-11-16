@@ -60,17 +60,19 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                     }
                 }
 
-                for (var k = 0; k < posts.length; k++) {
-
-                    self.getIsLike(posts[k]._id, k);
-                }
-
-                if (request.postType == 'event') {
+                 if (request.postType == 'event') {
                     for (var j = 0; j < posts.length; j++) {
                         posts[j].hebrewDate = self.hebrewDate(posts[j].DestinationTime);
                     }
                 }
 
+
+                for (var k = 0; k < posts.length; k++) {
+
+                    self.getIsLike(posts[k]._id, k);
+                }
+
+               
                 console.log(posts);
                 //}
             })

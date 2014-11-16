@@ -10,6 +10,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     $scope.myProfile = true;
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
+    $scope.showChangePassword = true;
 
     $scope.featureDetails = {
         featureName: null,
@@ -84,7 +85,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
             .success(function (data) {
                 console.log(data);
                 $scope.otherUser = data.data.user;
-                
+
                 var parmas = { "activity": { "receivedUser": $stateParams.userId, "type": "userLike"} };
 
                 var json = JSON.stringify(parmas);
@@ -354,21 +355,21 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":          
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });          
-                //    break;          
+                //case "author":           
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });           
+                //    break;           
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":          
-                //    $state.transitionTo('single-event', { postId: args.postId });          
-                //    break;          
-                //case "voteToPoll":          
-                //    $state.transitionTo('poll-view', { postId: args.postId });          
-                //    break;          
+                //case "event":           
+                //    $state.transitionTo('single-event', { postId: args.postId });           
+                //    break;           
+                //case "voteToPoll":           
+                //    $state.transitionTo('poll-view', { postId: args.postId });           
+                //    break;           
             }
         }
         else {
