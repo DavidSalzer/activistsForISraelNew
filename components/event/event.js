@@ -195,7 +195,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
                                 var myNode = document.querySelectorAll('.calendar-area td button');
                                 myNode[j * 7 + k].style.background = "#B2C8DD"; 
                                                              
-                                if (data.data[i]._author.local.role == 'staff') {
+                                if (data.data[i]._author.local.role == 'stuff') {
                                     myNode[j * 7 + k].style.backgroundImage = "url('../img/calendar_benet.png')";
                                     myNode[j * 7 + k].style.backgroundPosition = "9px 13px";
                                     myNode[j * 7 + k].style.backgroundSize = "20px 20px";
