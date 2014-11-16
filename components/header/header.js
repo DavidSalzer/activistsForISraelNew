@@ -192,6 +192,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
     $scope.$on('showLoader', function (event, args) {
         $scope.showLoader = args.showLoader;
+       
         $scope.$apply();
     });
 
