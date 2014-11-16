@@ -29,7 +29,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         postType: 'event',
         userID: $scope.user._id,
         _parentID: '',
-        DestinationTime: new Date().getTime(),
+        DestinationTime: new Date().getTime()
     };
 
     /*init controller data*/
@@ -91,7 +91,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
 
 
 
-socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService','$timeout', function ($scope, PostService, $timeout) {
+socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService', '$timeout', function ($scope, $http, PostService, $timeout) {
     angular.element(document).ready(function () {
         $scope.monthArray = $scope.$$childHead.$$childHead.rows;
         $scope.backgroundDateColor($scope.monthArray);
@@ -105,15 +105,15 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService','$timeo
 
 			        $scope.monthArray = newValue; //save month for get back from week display
 			        $scope.togglecaendarArrow(0); //make sore the arrow is to up 
-                    $scope.backgroundDateColor($scope.monthArray);
+			        $scope.backgroundDateColor($scope.monthArray);
 			    }
-                
-			},true);
+
+			}, true);
 
         $scope.$watch('dt', function () {
             $scope.monthArray = $scope.$$childHead.$$childHead.rows;
-        $scope.backgroundDateColor($scope.monthArray);
-        console.log($scope.monthArray);alert("1");
+            $scope.backgroundDateColor($scope.monthArray);
+            console.log($scope.monthArray);
             console.log('$scope.dt: ');
             console.log($scope.dt);
             $scope.updateFeed($scope.dt);
@@ -163,6 +163,10 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService','$timeo
         // $scope.$apply();
     };
 
+    $scope.showCurrentDate = function () {
+        $scope.dt = new Date()
+    };
+
     $scope.togglecaendarArrow = function (deg) {
 
         document.getElementById("calendar-arrow").style.setProperty('transform', 'rotate(' + deg + 'deg)');
@@ -173,22 +177,36 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', 'PostService','$timeo
     }
 
     $scope.backgroundDateColor = function (monthArray) {
-        var delay1 = $timeout(function () {var arr = $scope.posts();
-                var d = new Date();
-                
-     for(var i=0; i< arr.length;i++){
-      d.setTime(arr[i].DestinationTime);
-      for (var j = 0; j < $scope.monthArray.length; j++) {
+        var delay1 = $timeout(function () {
+            // var arr = $scope.posts();
+            var d = new Date();
+            var startDate = $scope.monthArray[0][0].date.getTime();
+            var endDate = $scope.monthArray[5][6].date.getTime();
+            $http.get(domain + 'getDestinationTimesOfPosts?postType=event&startDestinationTime=' + startDate + '&endDestinationTime=' + endDate)
+            .success(function (data) {
+                console.log(data);
+                for (var i = 0; i < data.data.length; i++) {
+                    d.setTime(data.data[i].DestinationTime);
+                    for (var j = 0; j < $scope.monthArray.length; j++) {
 
-       for (var k = 0; k < $scope.monthArray[j].length; k++) {
-        
-        if(d.getDate() == $scope.monthArray[j][k].date.getDate() && d.getMonth() == $scope.monthArray[j][k].date.getMonth() && d.getFullYear() == $scope.monthArray[j][k].date.getFullYear()){
-                var myNode = document.querySelectorAll('.calendar-area td button');
-                myNode[j*7 + k].style.background = "#B2C8DD";alert("2");
-            }
-       }
-      }
-     } }, 0);
+                        for (var k = 0; k < $scope.monthArray[j].length; k++) {
+
+                            if (d.getDate() == $scope.monthArray[j][k].date.getDate() && d.getMonth() == $scope.monthArray[j][k].date.getMonth() && d.getFullYear() == $scope.monthArray[j][k].date.getFullYear()) {
+                                var myNode = document.querySelectorAll('.calendar-area td button');
+                                myNode[j * 7 + k].style.background = "#B2C8DD"; 
+                                                             
+                                if (data.data[i]._author.local.role == 'stuff') {
+                                    myNode[j * 7 + k].style.backgroundImage = "url('../img/calendar_benet.png')";
+                                    myNode[j * 7 + k].style.backgroundPosition = "9px 13px";
+                                    myNode[j * 7 + k].style.backgroundSize = "20px 20px";
+                                    myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
+                                };
+                            }
+                        }
+                    }
+                }
+            });
+        }, 0);
     }
 
 } ]);
