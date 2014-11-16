@@ -5,9 +5,8 @@
     padding-bottom: 11px;
 }
 
-
 .post-details {
-padding: 0px;
+    padding: 0px;
 }
 
 .calendar.well {
@@ -152,7 +151,9 @@ tbody .btn.btn-default.btn-sm.btn-info:before {
     right: 0px;
     top: 0px;
     /* background-color: #565c63; */
-    -webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);  -moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);  box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+    -webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
+    box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.55);
 }
 
 /*thead .btn.btn-default.btn-sm.pull-left {
@@ -324,7 +325,6 @@ thead tr .btn.btn-default.btn-sm {
 
 .participation-option-cell div {
     line-height: 11px;
-    
 }
 
 .owner-wrapper-detailes {
@@ -378,35 +378,29 @@ thead tr .btn.btn-default.btn-sm {
 }
 
 .top-single-title {
-    margin-top:10px
+    margin-top: 10px;
 }
-<<<<<<< .mine
 
-=======
-
->>>>>>> .theirs
-.the-single-title {
+.mine  .theirs .the-single-title {
     font-size: 12px;
-    
     line-height: 14px;
 }
 
 
 .bottom-part-calendar {
-    
 }
 
 #todayButton {
-   background-color: #004a8e;
-   border-radius: 5px; 
-   color: #ffffff;
-   width: 50px;
-   height: 23px;
-   display: inline-block;
-   text-align: center;
-   line-height: 23px;
-   margin: 0px 11px;
-   font-size: 15px;
+    background-color: #004a8e;
+    border-radius: 5px;
+    color: #ffffff;
+    width: 50px;
+    height: 23px;
+    display: inline-block;
+    text-align: center;
+    line-height: 23px;
+    margin: 0px 11px;
+    font-size: 15px;
 }
 
 /****ffffffffffff**/
@@ -429,7 +423,6 @@ span#displayedDate {
 
 .post-wrap .post-tab {
     padding: 10px 14px 10px 14px;
-    
 }
 
 .read-more-event {
@@ -439,17 +432,14 @@ span#displayedDate {
 }
 
 .inner-readmore-event {
-    
 }
 
-.participation-option-cell.nav-to{
+.participation-option-cell.nav-to {
     padding-top: 9px;
-    
 }
 
 .single-event-body #author-header {
     background-color: #004a8e;
-    
     padding: 0px 30px 0px 30px;
     height: 45px;
 }
@@ -461,3 +451,4 @@ span#displayedDate {
 .single-event-body #author-header .author-name:first-child {
     margin-right: 10px;
 }
+
