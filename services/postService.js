@@ -21,6 +21,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         getPostsBatch: function (request) {
             self = this;
             console.log(request);
+            if(request.orderBy != '-timestamp'){
+                request.endTimestamp = '';
+            }
 
             queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&_parentID=' + request._parentID;
             if (request.pollStatus != undefined) {
@@ -36,7 +39,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }
             classAjax.getdata('get', queryString, request).then(function (data) {
                 console.log(data);
-                if (request.endTimestamp == '') {
+                if (request.offset == 0) {
                     posts = [];
                 }
                 //else {
