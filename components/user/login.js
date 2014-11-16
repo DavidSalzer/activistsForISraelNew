@@ -68,6 +68,11 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             $scope.pass = '';
             console.log(data);
             $scope.showLoginError = false;
+            //if the current state is "meme" - refresh the feed
+            if ($state.is("meme")) {
+
+                $rootScope.$broadcast('refreshMemesFeed');
+            }
             $rootScope.$broadcast('showLoader', { showLoader: false });
         })
         .error(function (data, status, headers, config, statusText) {
@@ -278,55 +283,55 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
 
 } ]);
 
- function signinCallback(authResult) {
-  if (authResult['status']['signed_in']) {
-    console.log(authResult);
-    // Update the app to reflect a signed in user
-    // Hide the sign-in button now that the user is authorized, for example:
-    document.getElementById('signinButton').setAttribute('style', 'display: none');
-    getClientData(authResult.access_token);
+function signinCallback(authResult) {
+    if (authResult['status']['signed_in']) {
+        console.log(authResult);
+        // Update the app to reflect a signed in user
+        // Hide the sign-in button now that the user is authorized, for example:
+        document.getElementById('signinButton').setAttribute('style', 'display: none');
+        getClientData(authResult.access_token);
 
-  } else {
-    // Update the app to reflect a signed out user
-    // Possible error values:
-    //   "user_signed_out" - User is signed-out
-    //   "access_denied" - User denied access to your app
-    //   "immediate_failed" - Could not automatically log in the user
-    console.log('Sign-in state: ' + authResult['error']);
-    localStorage.clear('user');
-  }
+    } else {
+        // Update the app to reflect a signed out user
+        // Possible error values:
+        //   "user_signed_out" - User is signed-out
+        //   "access_denied" - User denied access to your app
+        //   "immediate_failed" - Could not automatically log in the user
+        console.log('Sign-in state: ' + authResult['error']);
+        localStorage.clear('user');
+    }
 }
 
 var user;
 
-function getClientData(accessToken){
-  console.log("Getting client data");       
- 
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET',
+function getClientData(accessToken) {
+    console.log("Getting client data");
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET',
     'https://www.googleapis.com/plus/v1/people/me/');
-  xhr.setRequestHeader('Authorization',
+    xhr.setRequestHeader('Authorization',
     'Bearer ' + accessToken);
-  xhr.send();
- 
-  xhr.onreadystatechange = function() {
-    if(this.readyState == 4) {
-      myProfile = JSON.parse(xhr.responseText);
-      if(myProfile.image.url){
-            imgurl = myProfile.image.url;
-            Fname  = myProfile.name.givenName;
-            Lname  = myProfile.name.familyName;
-        }else{ 
-            imgurl = '';
-            Fname = myProfile.first_name;
-            Lname = myProfile.last_name;
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            myProfile = JSON.parse(xhr.responseText);
+            if (myProfile.image.url) {
+                imgurl = myProfile.image.url;
+                Fname = myProfile.name.givenName;
+                Lname = myProfile.name.familyName;
+            } else {
+                imgurl = '';
+                Fname = myProfile.first_name;
+                Lname = myProfile.last_name;
+            }
+            user = {
+                name: Fname,
+                lastName: Lname,
+                img: imgurl
+            }
+            localStorage.setItem('user', JSON.stringify(user));
         }
-     user={
-        name:Fname,
-        lastName:Lname,
-        img:imgurl
-        }
-       localStorage.setItem('user',JSON.stringify(user));
     }
-  }
 }

@@ -9,7 +9,7 @@
     <div class='calendar-area'>
         <datepicker ng-model="dt" show-weeks="false" class="well well-sm calendar"></datepicker>
         <div class="bottom-part-calendar">
-            <span id="todayButton" class="shadow-buttons">היום</span>
+            <span id="todayButton" class="shadow-buttons" data-ng-click="showCurrentDate()">היום</span>
             <span id="displayedDate">{{dt|date:"dd.MM.yyyy"}} {{hedt}}</span>
             <span id="calendar-arrow" data-ng-click="toggleWeekDisplay()"></span>
         </div>	
