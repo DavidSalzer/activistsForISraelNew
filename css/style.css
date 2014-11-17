@@ -111,8 +111,8 @@ select {
 
 
 .shadow-buttons {
-    -webkit-box-shadow:  0px 5px 5px -1px rgba(0, 0, 0, 0.28);
-    -moz-box-shadow:  0px 5px 5px -1px rgba(0, 0, 0, 0.28);
+    -webkit-box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.28);
     box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.28);
 }
 
@@ -225,6 +225,12 @@ select {
     padding: 0px 12px 12px 12px;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 }
+
+.post-tab.staff {
+    background-color: #e0f4ff;
+    border-top: 5px solid #12426f;
+}
+
 
 /* .author-image img {
     width: 48px;
@@ -776,9 +782,8 @@ div.scrollable-content.overthrow {
     position: absolute;*/
 }
 
-.polls-layout.channel-con
-{
-    padding-bottom:60px;
+.polls-layout.channel-con {
+    padding-bottom: 60px;
 }
 
 .channel-con {
@@ -894,7 +899,6 @@ button {
 /*********** poll css *************************/
 .polls-layout .text-box {
     background-color: #ffffff;
-    
 }
 
 .text-box {
@@ -1253,5 +1257,3 @@ button {
     width: 100px;
     color: #888888;
 }
-
-

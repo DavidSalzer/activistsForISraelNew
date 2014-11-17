@@ -8,6 +8,10 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     $scope.domain = domain;
     generalParameters.setBackIcon(false);
 
+    var dateObj = new Date();
+    var timeNow = dateObj.getTime();
+    var timeSubstruct = timeNow - (1000 * 60 * 60 * 24 * 30); //substruct 30 days from today- for use in likes and comments
+
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
@@ -21,7 +25,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
 
     generalParameters.setFeature($scope.featureDetails);
     $scope.user = generalParameters.getUser();
-    
+
     /*init controller data*/
     request = {
         startTimestamp: '',
@@ -35,7 +39,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     };
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
-    $scope.isLiked = PostService.getIsLike; 
+    $scope.isLiked = PostService.getIsLike;
 
 
 
@@ -57,8 +61,9 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         $state.transitionTo('comments', { postId: $scope.postId });
     });
 
-    
+
     $scope.getPostsByAll = function () {
+        request.startTimestamp = '';
         request.endTimestamp = '';
         request.orderBy = '-timestamp';
         request.offset = 0;
@@ -67,6 +72,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
 
     $scope.getPostsByFavorite = function () {
         request.orderBy = '-likesCount';
+        request.startTimestamp = timeSubstruct;
         request.endTimestamp = '';
         request.offset = 0;
         PostService.getPostsBatch(request);
@@ -74,12 +80,13 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
 
     $scope.getPostsByComments = function () {
         request.orderBy = '-commentsCount';
+        request.startTimestamp = timeSubstruct;
         request.endTimestamp = '';
         request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
-    
+
     //load more post on scroll down
     $scope.loadMore = function () {
         console.log('load more');
