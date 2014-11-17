@@ -21,7 +21,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         getPostsBatch: function (request) {
             self = this;
             console.log(request);
-            if(request.orderBy != '-timestamp'){
+            if (request.orderBy != '-timestamp') {
                 request.endTimestamp = '';
             }
 
@@ -63,7 +63,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                     }
                 }
 
-                 if (request.postType == 'event') {
+                if (request.postType == 'event') {
                     for (var j = 0; j < posts.length; j++) {
                         posts[j].hebrewDate = self.hebrewDate(posts[j].DestinationTime);
                     }
@@ -72,10 +72,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
                 for (var k = 0; k < posts.length; k++) {
 
-                    self.getIsLike(posts[k]._id, k);
+                    self.getIsLike(posts[k]);
                 }
 
-               
+
                 console.log(posts);
                 //}
             })
@@ -251,42 +251,51 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         //check if post, posts or user isLiked by the connected user and add field isLiked to object.
-        getIsLike: function (pid, index) {
+        getIsLike: function (post) {
+            var isLiked = false;
+            for (var i = 0; i < post.activity.length; i++) {
+                if (post.activity[i].type == 'like') {
+                    isLiked = true;
+                    break;
+                }
+            }
 
-            var parmas = { "activity": { "post": pid, "user": user._id, "type": "like"} };
+            post.isLiked = isLiked;
 
-            var json = JSON.stringify(parmas);
-            //console.log(json);
+            //         var parmas = { "activity": { "post": pid, "user": user._id, "type": "like"} };
 
-            $http.post(domain + 'isActivityFound', json)
-			.success(function (data) {
+            //         var json = JSON.stringify(parmas);
+            //         //console.log(json);
 
-			    if (index == undefined) {
-			        if (data.data == null) {
+            //         $http.post(domain + 'isActivityFound', json)
+            //.success(function (data) {
 
-			            singlePost.isLiked = false; return;
-			        }
-			        else if (data.data.type == 'like') {
+            //    if (index == undefined) {
+            //        if (data.data == null) {
 
-			            singlePost.isLiked = true; return;
-			        }
-			    }
+            //            singlePost.isLiked = false; return;
+            //        }
+            //        else if (data.data.type == 'like') {
 
-			    if (data.data == null) {
+            //            singlePost.isLiked = true; return;
+            //        }
+            //    }
 
-			        posts[index].isLiked = false; return;
-			    }
-			    else if (data.data.type == 'like') {
+            //    if (data.data == null) {
 
-			        posts[index].isLiked = true; return;
-			    }
+            //        posts[index].isLiked = false; return;
+            //    }
+            //    else if (data.data.type == 'like') {
 
-			})
-			.error(function (data) {
+            //        posts[index].isLiked = true; return;
+            //    }
 
-			    console.log(data);
+            //})
+            //.error(function (data) {
 
-			});
+            //    console.log(data);
+
+            //});
 
 
         },
@@ -420,8 +429,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             .then(function (data) {
                 console.log(data);
                 //if (data.status.statusCode == 8) { window.history.back(); }//go back if the post not exist.
-                self.getIsLike(postid);
                 singlePost = data.data;
+                self.getIsLike(singlePost);
                 posts = [];
                 self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
             })
@@ -496,7 +505,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
                 for (var k = 0; k < posts.length; k++) {
 
-                    self.getIsLike(posts[k]._id, k);
+                    self.getIsLike(posts[k]);
                 }
                 //}
             })
