@@ -116,8 +116,14 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     }
 
     $scope.createMeme = function () {
+        if($scope.postImg.length > 0){
             PostService.setPreviewMeme({img:$scope.postImg,top:$scope.topText,bottom:$scope.bottomText,rgbTop:$scope.topRgb,rgbBottom:$scope.bottomRgb,font:$scope.font});
                 $state.transitionTo('meme-preview');
+        }
+        else{
+            alert('עליך לבחור תמונה על מנת ליצור מם')
+        }
+            
         /*
         
         html2canvas(document.getElementById('html2canvas'), {
