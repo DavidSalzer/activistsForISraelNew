@@ -138,6 +138,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
             //$scope.f = true; //yishai added this row for the wrapper of the events to know to decrease the paading
             $scope.l(false);
             //$scope.$apply();
+
             return;
         }
 
@@ -153,8 +154,11 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
 
                     $scope.$$childHead.$$childHead.rows = [];
                     $scope.$$childHead.$$childHead.rows.push($scope.monthArray[i]); //chose selected week
+                    console.log($scope.monthArray[i]);
+                    $scope.backgroundDateColor($scope.monthArray[i]);
                     $scope.togglecaendarArrow(180); //toggle arrow to down
                     // $scope.$apply();
+                    console.log($scope.monthArray);
                     return;
                 }
             }
@@ -175,38 +179,61 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
         document.getElementById("calendar-arrow").style.setProperty('-moz-transform', 'rotate(' + deg + 'deg)');
         document.getElementById("calendar-arrow").style.setProperty('-ms-transform', 'rotate(' + deg + 'deg)');
     }
-
+    //paint the date with event on event board
     $scope.backgroundDateColor = function (monthArray) {
-        var delay1 = $timeout(function () {
-            // var arr = $scope.posts();
-            var d = new Date();
-            var startDate = $scope.monthArray[0][0].date.getTime();
-            var endDate = $scope.monthArray[5][6].date.getTime();
-            $http.get(domain + 'getDestinationTimesOfPosts?postType=event&startDestinationTime=' + startDate + '&endDestinationTime=' + endDate)
+        var d = new Date();
+        if (monthArray[1][0]) { //check if the argument is 2d
+            var startDate = monthArray[0][0].date.getTime() - 60 * 60 * 12 * 1000; // amount of milliseconds in 12 hours - (seconds*minutes*hours)*1000.
+            var endDate = monthArray[5][6].date.getTime() + 60 * 60 * 12 * 1000;
+        } else {
+            var startDate = monthArray[0].date.getTime() - 60 * 60 * 12 * 10000;
+            var endDate = monthArray[6].date.getTime() + 60 * 60 * 12 * 1000;
+        }
+        console.log(startDate);
+        console.log(startDate);
+        //take two timestamp arguments and give array (data.data) of all the event-posts between them.
+        $http.get(domain + 'getDestinationTimesOfPosts?postType=event&startDestinationTime=' + startDate + '&endDestinationTime=' + endDate)
             .success(function (data) {
-                console.log(data);
                 for (var i = 0; i < data.data.length; i++) {
                     d.setTime(data.data[i].DestinationTime);
-                    for (var j = 0; j < $scope.monthArray.length; j++) {
+                    if (monthArray[1][0]) {
 
-                        for (var k = 0; k < $scope.monthArray[j].length; k++) {
+                        for (var j = 0; j < monthArray.length; j++) {
+                            for (var k = 0; k < monthArray[j].length; k++) {
 
-                            if (d.getDate() == $scope.monthArray[j][k].date.getDate() && d.getMonth() == $scope.monthArray[j][k].date.getMonth() && d.getFullYear() == $scope.monthArray[j][k].date.getFullYear()) {
-                                var myNode = document.querySelectorAll('.calendar-area td button');
-                                myNode[j * 7 + k].style.background = "#B2C8DD"; 
-                                                             
-                                if (data.data[i]._author.local.role == 'stuff') {
-                                    myNode[j * 7 + k].style.backgroundImage = "url('../img/calendar_benet.png')";
-                                    myNode[j * 7 + k].style.backgroundPosition = "9px 13px";
-                                    myNode[j * 7 + k].style.backgroundSize = "20px 20px";
-                                    myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
-                                };
+                                if (d.getDate() == monthArray[j][k].date.getDate() && d.getMonth() == monthArray[j][k].date.getMonth() && d.getFullYear() == monthArray[j][k].date.getFullYear()) {
+                                    var myNode = document.querySelectorAll('.calendar-area td button');
+                                    myNode[j * 7 + k].style.background = "#B2C8DD";
+
+                                    if (data.data[i]._author.local.role == 'staff') {
+                                        myNode[j * 7 + k].style.backgroundImage = "url('../img/calendar_benet.png')";
+                                        myNode[j * 7 + k].style.backgroundPosition = "9px 12px";
+                                        myNode[j * 7 + k].style.backgroundSize = "20px 20px";
+                                        myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
+                                    };
+                                }
                             }
                         }
+                    } else {
+                        for (var j = 0; j < monthArray.length; j++) {
+
+                            if (d.getDate() == monthArray[j].date.getDate() && d.getMonth() == monthArray[j].date.getMonth() && d.getFullYear() == monthArray[j].date.getFullYear()) {
+                                var myNode = document.querySelectorAll('.calendar-area td button');
+                                myNode[j].style.background = "#B2C8DD";
+
+                                if (data.data[i]._author.local.role == 'staff') {
+                                    myNode[j].style.backgroundImage = "url('../img/calendar_benet.png')";
+                                    myNode[j].style.backgroundPosition = "9px 12px";
+                                    myNode[j].style.backgroundSize = "20px 20px";
+                                    myNode[j].style.backgroundRepeat = "no-repeat";
+                                };
+                            }
+
+                        }
                     }
+
                 }
             });
-        }, 0);
     }
 
 } ]);
