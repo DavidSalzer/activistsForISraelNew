@@ -5,14 +5,24 @@
 
             <!--<div class="single-event-header">
         
-                <div class="color-line color-line-bottom "></div>
-            </div>-->
+                        <div class="color-line color-line-bottom "></div>
+                    </div>-->
     <div class="single-event-body">
+
+        <div class="event-popup-wrapper">
+            <div class="single-event-popup">
+                <div id="evet-x-pop"></div>
+                <img ng-src="" class="info-img" src="./img/calendar_info.png">
+                <div class="event-txt-pop">האירוע:</div>
+                <div class="event-bold-pop">{{post.title}} ב{{post.location}}</div>
+                <div class="event-txt-pop">נשמר ביומנך האישי</div>
+            </div>
+        </div>
 
         <div class="event-container">
 
             <post data-post-type="event" class="single-event" data-ng-repeat="post in [post()]">
-            
+
             </post>
 
             <div class="single-event-wrapper">
@@ -26,7 +36,7 @@
                                 <div>{{post()._author.data.firstName}} {{post()._author.data.lastName}} {{post().phone}}</div>
                             </div>
                         </div>
-                        <div class="detail-wrapper-enent shadow-buttons" data-ng-show="post().email!=''" data-ng-click="mail()" >
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-show="post().email!=''" data-ng-click="mail()">
                             <div class="icon mail-icon participation-option-cell"></div>
                             <div class="participation-option-cell">
                                 <div>מייל</div>

@@ -58,10 +58,13 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         switch (pos) {
             case "top":
                 $scope.topRgb = col;
+                document.getElementById('squareTop').style.backgroundImage = "none"
                 break;
             case "bottom":
                 $scope.bottomRgb = col;
+                document.getElementById('squareBottom').style.backgroundImage = "none"
                 break;
+
         }
         $scope.showPaletteTop = false;
         $scope.showPaletteBottom = false;
@@ -116,17 +119,23 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     }
 
     $scope.createMeme = function () {
-            PostService.setPreviewMeme({img:$scope.postImg,top:$scope.topText,bottom:$scope.bottomText,rgbTop:$scope.topRgb,rgbBottom:$scope.bottomRgb,font:$scope.font});
-                $state.transitionTo('meme-preview');
+        if ($scope.postImg.length > 0) {
+            PostService.setPreviewMeme({ img: $scope.postImg, top: $scope.topText, bottom: $scope.bottomText, rgbTop: $scope.topRgb, rgbBottom: $scope.bottomRgb, font: $scope.font });
+            $state.transitionTo('meme-preview');
+        }
+        else {
+            alert('עליך לבחור תמונה על מנת ליצור מם')
+        }
+
         /*
         
         html2canvas(document.getElementById('html2canvas'), {
-            onrendered: function (canvas) {
-                var dataURL = canvas.toDataURL("image/png");
-                // document.getElementById('img').src = dataURL;
-                PostService.setPreviewMeme(dataURL);
-                $state.transitionTo('meme-preview');
-            }
+        onrendered: function (canvas) {
+        var dataURL = canvas.toDataURL("image/png");
+        // document.getElementById('img').src = dataURL;
+        PostService.setPreviewMeme(dataURL);
+        $state.transitionTo('meme-preview');
+        }
         });
         */
     }
@@ -148,8 +157,18 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.memeImages = PostService.getMemes;
     console.log($scope.postData);
 
-//    $scope.$apply();
+    //    $scope.$apply();
 
+
+    document.getElementById('write-meme-wrap').addEventListener('click', function (e) {
+        //if the click was NOT on the color picker- close the color pickers
+        if (e.target.id != "squareTop" && e.target.id != "squareBottom") {
+            $scope.showPaletteTop = false;
+            $scope.showPaletteBottom = false;
+            $scope.$apply()
+        }
+
+    }, false);
 
 } ]);
 
