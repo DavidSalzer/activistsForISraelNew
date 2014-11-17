@@ -537,17 +537,20 @@ span.respond-count, span.like-count {
 
 span.sidbar-text.ng-binding {
     display: inline-block;
-    width: 80%;
-    width: 144px;
+    width: 89px;
     position: relative;
     right: 0px;
+    top: 0px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    top: 0px;
     font-size: 13px;
     line-height: 50px;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 45px;
+    white-space: nowrap;
 }
 
 
