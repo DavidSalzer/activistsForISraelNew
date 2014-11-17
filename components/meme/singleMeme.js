@@ -24,27 +24,33 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
     $scope.memeUrl = $scope.post.img;
     //  console.log($stateParams.index);
     // $scope.memeUrl = $scope.memeImages[$stateParams.index].url;
-	
-	$scope.like = function($event,$index){
-      
 
-		var meme = $scope.post();
-		console.log(meme)
-		
-		if (meme.isLiked == true){//UNLIKE!
-				
-			PostService.unLike(meme._id, meme); 
-			//meme.likesCount--;
-			//meme.isLiked = false;
-			return;
+    $scope.like = function ($event, $index) {
+
+
+        var meme = $scope.post();
+        console.log(meme)
+
+        if (meme.isLiked == true) {//UNLIKE!
+
+            PostService.unLike(meme._id, meme);
+            //meme.likesCount--;
+            //meme.isLiked = false;
+            return;
         }
         else {//LIKE!
-			
-            PostService.sendLike(meme._id, meme);        
-			//meme.likesCount++;
-			//meme.isLiked = true;
-			return;
-        }  
+            //send the like- only if the user login
+            $scope.user = generalParameters.getUser();
+            if ($scope.user.firstName == 'הצטרף לאפליקציה') {
+                $rootScope.$broadcast('showInfoPopup', { showInfo: true });
+            }
+            else {
+                PostService.sendLike(meme._id, meme);
+            }
+
+
+            return;
+        }
     }
 
 } ]);

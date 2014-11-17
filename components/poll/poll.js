@@ -81,7 +81,7 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
         }
         else if (!$rootScope.isAdmin) {
             generalParameters.setBackIcon(true);
-            $state.transitionTo('write-post', { postType: "suggestPoll", postId: 0 });
+            $state.transitionTo('write-post', { postType: "poll", postId: 0 });
         }
         else {
             generalParameters.setBackIcon(true);

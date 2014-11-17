@@ -93,11 +93,25 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         }
         else {//LIKE!
 			
-            PostService.sendLike(meme._id, meme);        
+        //send the like- only if the user login
+         $scope.user = generalParameters.getUser();
+        if ($scope.user.firstName == 'הצטרף לאפליקציה') {
+            $rootScope.$broadcast('showInfoPopup', { showInfo: true });
+        }
+        else {
+            PostService.sendLike(meme._id, meme);       
+        }
+
+            
 			//meme.likesCount++;
 			//meme.isLiked = true;
 			return;
         }  
     }
 
+    //when comeback from login - refresh the feed
+    
+      $scope.$on('refreshMemesFeed', function (event, args) {
+       PostService.getPostsBatch(request);
+    });
 }]);

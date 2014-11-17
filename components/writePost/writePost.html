@@ -17,7 +17,8 @@
 		
 		<!-- article +event title-->
         <input data-ng-if='postType=="article" || postType=="event"' type="text" data-ng-class='{"title-field":true,"requieredError":showTitleError}' placeholder="כותרת" data-ng-model="postData.post.title" />
-		
+        <!-- poll question-->
+		<input data-ng-if='postType=="poll"' type="text" data-ng-class='{"title-field":true,"requieredError":showPollQuestionError}' placeholder="כתוב שאלה כאן..." data-ng-model="postData.post.title" />
 
 
 		<!--event time-->
@@ -74,15 +75,16 @@
 		<!-- post main text area-->
 		<div style="position:relative;border-radius: 10px;">
 			
-			<textarea  data-ng-hide='postType=="article" || postType=="event"' char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
+			<textarea  data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text" data-ng-class='{"requieredError":showContentError}' placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
-			<span data-ng-hide='postType=="article" || postType=="event"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}}/{{max}}]</span>
+			<span data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' style='color: #bcccce;position: absolute;bottom: 0px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}}/{{max}}]</span>
 			
-			<textarea  data-ng-show='postType=="article" || postType=="event"' class="article-text input-article-text" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
+			<textarea  data-ng-show='postType=="article" || postType=="event"' class="article-text input-article-text" data-ng-class='{"requieredError":showContentError}' placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
 			<span data-ng-show='postType=="article" || postType=="event"' class="input-article-span">[{{postData.post.content.length}} תוים]
 			</span>
-			
+			<textarea  data-ng-if="postType=='poll'" class="article-text" data-ng-class='{"requieredError":showpollDescriptionerror}' placeholder="תיאור" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
+			</textarea >
 			
 		</div>
 		
@@ -101,7 +103,7 @@
             </div>
 		
 		<!-- post add img preview-->
-		<img  data-ng-show="toLargImage==false" ng-src="{{postImg}}" style='margin: 20px auto 20px auto;display: block'  >
+		<img  data-ng-show="toLargImage==false && postType!='poll'" ng-src="{{postImg}}" style='margin: 20px auto 20px auto;display: block'  >
 		
 	
 		  
@@ -110,13 +112,24 @@
 			<input  style='margin-top:12px;' type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.email" />
 			<input style='margin-top:12px;' type="text" class="title-field" placeholder="טלפון ליצירת קשר (לא חובה)" data-ng-model="postData.post.phone" />
 		</div>	
+
+        <input data-ng-if='postType=="poll"' style='margin-top:14px;' type="text" data-ng-class='{"title-field":true}' placeholder="תשובה א'" data-ng-model="voteOptions[0].answer" />
+        <input data-ng-if='postType=="poll"' style='margin-top:14px;' type="text" data-ng-class='{"title-field":true}' placeholder="תשובה ב'" data-ng-model="voteOptions[1].answer" />
+        <input data-ng-if='postType=="poll"' style='margin-top:14px;' type="text" data-ng-class='{"title-field":true}' placeholder="תשובה ג'" data-ng-model="voteOptions[2].answer" />
+        <input data-ng-if='postType=="poll"' style='margin-top:14px;' type="text" data-ng-class='{"title-field":true}' placeholder="תשובה ד'" data-ng-model="voteOptions[3].answer" />
 		
 		<!-- validation msges-->
 		<div style='margin-top:12px;'>
 			<div class="login-error" data-ng-if="showTitleError">* שדה כותרת לא הוזן כראוי</div>
+            <div class="login-error" data-ng-if="showContentError">* שדה טקסט לא הוזן כראוי</div>
 			<div class="login-error" data-ng-if="showDDMMYYError">* שדה תאריך לא הוזן כראוי</div>
 			<div class="login-error" data-ng-if="showHHMMError">* שדה שעה לא הוזן כראוי</div>
 			<div class="login-error" data-ng-if="showLocationError">* שדה מקום לא הוזן כראוי</div>
+            <div class="login-error" data-ng-if="showPollQuestionError">* שדה שאלת סקר לא הוזן כראוי</div>
+            <div class="login-error" data-ng-if="showpollDescriptionerror">* שדה תיאור לא הוזן כראוי</div>
+            <div class="login-error" data-ng-if="showPollAnsError">* יש להזין לפחות שתי תשובות אפשריות</div>
+
+            <div class="login-error" data-ng-if="showSendPostError">* {{sendPostError}}</div>
 		</div>
 		<!-- buttons-->
 		<div data-ng-if='postType=="event"' style="height: 76px;">

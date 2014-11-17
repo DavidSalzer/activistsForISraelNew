@@ -10,7 +10,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     $scope.myProfile = true;
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
-    $scope.showChangePassword = true;
+    $scope.showChangePassword = false;
 
     $scope.featureDetails = {
         featureName: null,

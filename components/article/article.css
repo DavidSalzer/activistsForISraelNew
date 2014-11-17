@@ -448,7 +448,7 @@ div.post-main-text {
     background-image: url("../../img/clock.png");
 }
 
-.title-field.requieredError {
+.title-field.requieredError, .article-text.requieredError {
     border: 1px solid hsl(0, 100%, 50%);
 }
 
