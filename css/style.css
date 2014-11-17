@@ -107,12 +107,19 @@ select {
     float: left;
     height: 100%;
     text-indent: 20px;
+    
+    -webkit-appearance: none;
+background-image: url('/img/arrow_user.png');
+background-repeat: no-repeat;
+background-size: 20px 20px;
+background-position-x: 10px;
+background-position-y: 7px;
 }
 
 
 .shadow-buttons {
-    -webkit-box-shadow:  0px 5px 5px -1px rgba(0, 0, 0, 0.28);
-    -moz-box-shadow:  0px 5px 5px -1px rgba(0, 0, 0, 0.28);
+    -webkit-box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.28);
     box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.28);
 }
 
@@ -225,6 +232,12 @@ select {
     padding: 0px 12px 12px 12px;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 }
+
+.post-tab.staff {
+    background-color: #e0f4ff;
+    border-top: 5px solid #12426f;
+}
+
 
 /* .author-image img {
     width: 48px;
@@ -531,17 +544,20 @@ span.respond-count, span.like-count {
 
 span.sidbar-text.ng-binding {
     display: inline-block;
-    width: 80%;
-    width: 144px;
+    width: 89px;
     position: relative;
     right: 0px;
+    top: 0px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    top: 0px;
     font-size: 13px;
     line-height: 50px;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 45px;
+    white-space: nowrap;
 }
 
 
@@ -776,9 +792,8 @@ div.scrollable-content.overthrow {
     position: absolute;*/
 }
 
-.polls-layout.channel-con
-{
-    padding-bottom:60px;
+.polls-layout.channel-con {
+    padding-bottom: 60px;
 }
 
 .channel-con {
@@ -894,7 +909,6 @@ button {
 /*********** poll css *************************/
 .polls-layout .text-box {
     background-color: #ffffff;
-    
 }
 
 .text-box {
@@ -1174,6 +1188,10 @@ button {
     text-indent: 20px;
     font-size: 15px;
     margin-right: 43px;
+    
+    white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
 .file-text {
@@ -1196,9 +1214,9 @@ button {
 }
 
 .add-file {
-    margin-top: 12px;
-    height: 52px;
-    position: relative;
+   margin-top: 12px;
+height: 44px;
+position: relative;
 }
 
 ::-webkit-input-placeholder {
@@ -1253,5 +1271,3 @@ button {
     width: 100px;
     color: #888888;
 }
-
-

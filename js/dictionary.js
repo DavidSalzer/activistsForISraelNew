@@ -29,3 +29,4 @@ var errorMessages = {};
 errorMessages.generalError = 'אירעה שגיאה, בדוק חיבור לאינטרנט או נסה שנית';
 errorMessages.unConfirmed = 'לא אישרת הצטרפות לאפליקציה במייל';
 errorMessages.shortPassword = 'הסיסמה צריכה להיות באורך שישה תווים לפחות';
+//errorMessages.shortPassword = 'הסיסמה צריכה להיות באורך שישה תווים לפחות';
