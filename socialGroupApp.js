@@ -703,7 +703,15 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              }
          }
      }
- });
+ })
+ 
+ .filter('trustHtml', ['$sce', function ($sce) {
+    return function (val) {
+        if (val != null) {
+            return $sce.trustAsHtml(val.toString());
+        }
+    };
+} ]);
  
  
  //angular language hebrew (for calendar) ->heb-il
@@ -730,8 +738,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 		},
 		
 		"DATETIME_FORMATS":{
-			"MONTH":["ינואר","פברואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
-			"SHORTMONTH":["ינואר","פברואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
+			"MONTH":["ינואר","פברואב","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
+			"SHORTMONTH":["ינואר","פברואב","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
 			"DAY":["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"],
 			"SHORTDAY":["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"],
 			"AMPMS":["בבוקר","בצהרים"],

@@ -12,8 +12,8 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
         featureColor: '#da4f00',
         featureTabColor: '#da4f',
         infoHaeder: "סקרים",
-        infoMainText: "בואו להשפיע! כאן מופיעים סקרים בנושאים שונים. ניתן להשתתף בסקר קיים או להציע סקר חדש..",
-        infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאפליקציה"
+        infoMainText: "בואו להשפיע!<br>כאן מופיעים סקרים בנושאים שונים.<br>ניתן להשתתף בסקר קיים<br>או להציע סקר חדש.",
+        infoSubText: "יצירת תכנים באיזור זה מותנית בהצטרפות לאחליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
     generalParameters.setBackIcon(false); //tester
