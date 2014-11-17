@@ -8,7 +8,7 @@
     <div class="white-line"></div>
 </div>
 
-<div class="posts-list">
+<div id="write-meme-wrap" class="posts-list">
     <!--<script src="./plugins/color-picker/jscolor.js"></script>-->
 
     <div class="top-part" style="position: relative;"  data-ng-show="postImg == ''">
@@ -85,22 +85,22 @@
 
         <div class="text-wrap">
              <div class="colorpicker-wrap">
-                <div class="square"  data-ng-click="showPaletteTop=true"  data-ng-style="{'background-color':getColor('top')}"></div>
+                <div class="square" id="squareTop" data-ng-click="showPaletteTop=!showPaletteTop"  data-ng-style="{'background-color':getColor('top')}"></div>
                 
             </div>
             <div class="color-picker-palette" data-ng-show="showPaletteTop">
-                <div class="col" data-ng-repeat="color in paletteColors" data-ng-style="{'background-color':color.color}" data-ng-click="setColor('top',color.color)"></div>
+                <div class="col" data-ng-repeat="color in paletteColors" data-ng-style="{'background-color':color.color}" data-ng-click="setColor('top',color.color);$event.stopPropagation();"></div>
             </div>
           <div class="file-text"><input placeholder="טקסט עליון"  data-ng-model="topText" data-ng-change="textChange('top')"/></div>
             
         </div>
         <div class="text-wrap">
             <div class="colorpicker-wrap">
-                <div class="square" data-ng-click="showPaletteBottom=true" data-ng-style="{'background-color':getColor('bottom')}"></div>
+                <div class="square" id="squareBottom" data-ng-click="showPaletteBottom=!showPaletteBottom" data-ng-style="{'background-color':getColor('bottom')}"></div>
                 
             </div>
              <div class="color-picker-palette" data-ng-show="showPaletteBottom">
-                <div class="col" data-ng-repeat="color in paletteColors" data-ng-style="{'background-color':color.color}" data-ng-click="setColor('bottom',color.color)"></div>
+                <div class="col" data-ng-repeat="color in paletteColors" data-ng-style="{'background-color':color.color}" data-ng-click="setColor('bottom',color.color);$event.stopPropagation();"></div>
             </div>
           <div class="file-text"><input placeholder="טקסט תחתון" data-ng-model="bottomText"/></div>
             
