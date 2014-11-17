@@ -34,7 +34,7 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
         pieSliceBorderColor: '#42484e',
         height: 250,
         fontSize: 15,
-        colors: ['#f6ba55', '#da4f00', '#006dbe', '#860004', '#013d4', '#004a8e', '#993c7', '#004a8e', '#8ec531', '#009933', '#565c63'],
+        colors: ['#f6ba55', '#da4f00', '#006dbe', '#860004', '#013d43', '#004a8e', '#993c71', '#004a8e', '#8ec531', '#009933', '#565c63'],
         chartArea: { left: '10%', top: '10%', width: '80%', height: '80%' }
 
     };
@@ -62,7 +62,7 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
             }
         },
         axisTitlesPosition: 'none',
-        colors: ['#f6ba55', '#da4f00', '#006dbe', '#860004', '#013d4', '#004a8e', '#993c7', '#004a8e', '#8ec531', '#009933', '#565c63'],
+        colors: ['#f6ba55', '#da4f00', '#006dbe', '#860004', '#013d43', '#004a8e', '#993c71', '#004a8e', '#8ec531', '#009933', '#565c63'],
         chartArea: { left: '25%', top: '10%', width: '50%', height: '80%' }
 
     };

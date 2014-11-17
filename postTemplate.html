@@ -1,4 +1,4 @@
-<div class="post-tab" data-post="{{post._id}}" data-post-type="{{post.postType}}">
+<div class="post-tab" data-post="{{post._id}}" data-post-type="{{post.postType}}" data-ng-class="{'staff': post._author.local.role == 'staff'}">
     <delete-post data-ng-if="isAdmin"></delete-post>
     <figure class="author-image" data-ng-show="showAuthorImage!=false" data-ng-click="userClicked(post._author._id);$event.stopPropagation();">
 		<div class="author-background-image" style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
@@ -16,7 +16,7 @@
         {{post.content}}
     </div>
 
-    <div class="read-the-comments">קרא תגובות</div>
+    <div data-ng-if="post.commentsCount>0" class="read-the-comments">קרא תגובות</div>
 
     <div class="post-footer">
         <div class="post-feedback">

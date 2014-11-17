@@ -8,17 +8,17 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.imgFileText = 'צרף תמונה'
     $scope.isSiteHeader = true;
     $scope.timeDisplay = {};
-    var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'suggestPoll': '#da4f00', 'event': '#004a8e' };
+    var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'poll': '#da4f00', 'event': '#004a8e' };
     $scope.isPostPending = false;
 
     $scope.parentPostType = $stateParams.postType;
     $scope.postType = $stateParams.postType;
     $scope.postId = $stateParams.postId;
     $scope.user = generalParameters.getUser();
-	$scope.androidIs442 = generalParameters.androidIs442();
-		
-		
-    
+    $scope.androidIs442 = generalParameters.androidIs442();
+
+
+
     $scope.postData = {
 
         //user: { _id: $scope.user._id },
@@ -38,30 +38,30 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     switch ($scope.postType) {
 
 
-        //case "article":     
-        //    {     
+        //case "article":                
+        //    {                
 
-        //        $scope.headerText = 'כתיבת טקסט';     
+        //        $scope.headerText = 'כתיבת טקסט';                
 
-        //        $scope.textFileText = 'צרף קובץ טקסט';     
-        //        $scope.toLargTextFile = false;     
-        //        $scope.textFileMax = 1;     
-        //        $scope.min = 250;     
+        //        $scope.textFileText = 'צרף קובץ טקסט';                
+        //        $scope.toLargTextFile = false;                
+        //        $scope.textFileMax = 1;                
+        //        $scope.min = 250;                
 
-        //        $scope.postData.post.postType = 'article';     
-        //        $scope.postData.post.title = '';     
+        //        $scope.postData.post.postType = 'article';                
+        //        $scope.postData.post.title = '';                
 
-        //        $scope.thankDetails = {     
+        //        $scope.thankDetails = {                
 
-        //            featureColor: colors[$scope.postType],     
-        //            thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',     
-        //            btnText: 'חזרה לעמוד המאמרים',     
-        //            headerText: 'המאמר שלי',     
-        //            featureState: 'article'     
+        //            featureColor: colors[$scope.postType],                
+        //            thankText: 'המאמר התקבל ויפורסם בהתאם לכללי האפליקציה',                
+        //            btnText: 'חזרה לעמוד המאמרים',                
+        //            headerText: 'המאמר שלי',                
+        //            featureState: 'article'                
 
-        //        };     
-        //        break;     
-        //    }     
+        //        };                
+        //        break;                
+        //    }                
 
 
         case "talkback":
@@ -88,15 +88,19 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
 
                 $scope.postData.post.postType = 'poll';
-                $scope.postData.post.title = 'הצעת סקר';
-                $scope.postData.post.name = $scope.user.firstName + ' ' + $scope.user.lastName;
-                $scope.postData.post.email = $scope.user.email;
+                $scope.postData.post.title = '';
+                $scope.postData.post.poll = {};
+                $scope.postData.post.poll.status = 'draft';
+                $scope.voteOptions = [{ answer: '' }, { answer: '' }, { answer: '' }, { answer: ''}];
+
+                //$scope.postData.post.name = $scope.user.firstName + ' ' + $scope.user.lastName;
+                //$scope.postData.post.email = $scope.user.email;
 
                 $scope.thankDetails = {
 
                     featureColor: colors[$scope.postType],
-                    thankText: 'ההצעה התקבלה ותתפרסם בהתאם לכללי האפליקציה',
-                    btnText: 'עמוד הסקרים',
+                    thankText: 'הצעתך לסקר התקבלה במערכת',
+                    btnText: 'חזרה לעמוד הסקרים',
                     headerText: 'הסקר שלי',
                     featureState: 'poll'
 
@@ -161,13 +165,21 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
         $scope.postImg = "";
 
     };
-	
+
     $scope.gg = function () {
         var f = 1;
     }
-	
+
     $scope.sendPost = function () {
         if (!$scope.isPostPending) {
+            if ($scope.postType == 'poll') {
+                $scope.postData.post.poll.options = [];
+                for (var i = 0; i < $scope.voteOptions.length; i++) {
+                    if ($scope.voteOptions[i].answer.length > 0) {
+                        $scope.postData.post.poll.options.push($scope.voteOptions[i]);
+                    }
+                }
+            }
 
             if (!$scope.validateInputs()) { return; }
 
@@ -184,14 +196,21 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 		.then(function (data) {
 
 		    console.log(data);
-		    generalParameters.setBackIcon(false);
+		    if (data.status.statusCode == 0) {
+		        generalParameters.setBackIcon(false);
 
-		    if ($scope.postType == 'talkback') {
+		        if ($scope.postType == 'talkback') {
 
-		        $state.transitionTo($scope.parentPostType); return;
+		            $state.transitionTo($scope.parentPostType); return;
+		        }
+		        $scope.showSendPostError = false; ;
+		        //others - show thank page
+		        $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
 		    }
-		    //others - show thank page
-		    $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+		    else {
+		        $scope.showSendPostError = true;
+		        $scope.sendPostError = errorMessages.generalError;
+		    }
 		    $scope.isPostPending = false;
 		});
         }
@@ -225,7 +244,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
         ////alert(date.getTime());
         //$scope.postData.post.DestinationTime = date.getTime();
         ////alert($scope.postData.post.DestinationTime);
-//from now what yishai did
+        //from now what yishai did
 
         var date = new Date(($scope.timeDisplay.date).getFullYear(), ($scope.timeDisplay.date).getMonth(), ($scope.timeDisplay.date).getDate());
         date.setHours(($scope.timeDisplay.date).getHours(), ($scope.timeDisplay.date).getMinutes());
@@ -238,23 +257,29 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.validateInputs = function () {
 
-   //     var dateTest = new RegExp("^([0]?[1-9]|[1|2][0-9]|[3][0|1])[/]([0]?[1-9]|[1][0-2])[/]([0-9]{4}|[0-9]{2})$");
-   //     var timeTest = new RegExp("^([0-9]|0[0-9]|1[0-9]|2[0-3])[:][0-5][0-9]$");
-   //     $scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
-   //     $scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '' ||
-		 //dateTest.test($scope.timeDisplay.date) == false) && $scope.postType == 'event';
-   //     $scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '' || timeTest.test($scope.timeDisplay.time) == false) && $scope.postType == 'event';
-   //     $scope.showLocationError = ($scope.postData.post.location == undefined || $scope.postData.post.location == '') && $scope.postType == 'event';
+        //     var dateTest = new RegExp("^([0]?[1-9]|[1|2][0-9]|[3][0|1])[/]([0]?[1-9]|[1][0-2])[/]([0-9]{4}|[0-9]{2})$");
+        //     var timeTest = new RegExp("^([0-9]|0[0-9]|1[0-9]|2[0-3])[:][0-5][0-9]$");
+        //     $scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
+        //     $scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '' ||
+        //dateTest.test($scope.timeDisplay.date) == false) && $scope.postType == 'event';
+        //     $scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '' || timeTest.test($scope.timeDisplay.time) == false) && $scope.postType == 'event';
+        //     $scope.showLocationError = ($scope.postData.post.location == undefined || $scope.postData.post.location == '') && $scope.postType == 'event';
 
-   //     return (!($scope.showTitleError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || false));
-   //this is what was and from now is what yishai changed
+        //     return (!($scope.showTitleError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || false));
+        //this is what was and from now is what yishai changed
 
-            $scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
+        $scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
+        $scope.showContentError = ($scope.postData.post.content == undefined || $scope.postData.post.content == '') && ($scope.postType == 'event' || $scope.postType == 'talkback');
         $scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '') && $scope.postType == 'event';
         $scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '') && $scope.postType == 'event';
         $scope.showLocationError = ($scope.postData.post.location == undefined || $scope.postData.post.location == '') && $scope.postType == 'event';
+        if ($scope.postType == 'poll') {
+            $scope.showPollQuestionError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'poll');
+            $scope.showpollDescriptionerror = ($scope.postData.post.content == undefined || $scope.postData.post.content == '') && ($scope.postType == 'poll');
+            $scope.showPollAnsError = ($scope.postData.post.poll.options == undefined || $scope.postData.post.poll.options.length < 2) && $scope.postType == 'poll';
+        }
 
-        return (!($scope.showTitleError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || false));
+        return (!($scope.showTitleError || $scope.showContentError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || $scope.showPollQuestionError || $scope.showpollDescriptionerror || $scope.showPollAnsError || false));
 
 
     }

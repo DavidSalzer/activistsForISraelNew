@@ -144,7 +144,7 @@ h3 {
     display: block;
 }
 
-.menu-item-feature:before {
+/*.menu-item-feature:before {
     content: "";
     width: 4px;
     height: 100%;
@@ -156,7 +156,7 @@ h3 {
     background-repeat: no-repeat;
     background-image: url("../../img/line_vertical.png");
     background-size: 100% 100%;
-}
+}*/
 
 .feature-item-image {
     background-image: url('../img/image/kneset.jpg');
