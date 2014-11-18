@@ -120,6 +120,8 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.createMeme = function () {
         if ($scope.postImg.length > 0) {
+            $scope.$apply();
+            $rootScope.$broadcast('showLoader', { showLoader: true });
             PostService.setPreviewMeme({ img: $scope.postImg, top: $scope.topText, bottom: $scope.bottomText, rgbTop: $scope.topRgb, rgbBottom: $scope.bottomRgb, font: $scope.font });
             $state.transitionTo('meme-preview');
         }

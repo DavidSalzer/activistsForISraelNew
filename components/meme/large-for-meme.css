@@ -1,0 +1,18 @@
+.posts-list.memes{
+padding: 8px 10px !important;
+padding-right: 37px !important;
+padding-left: 36px !important;
+
+width: 734px !important;
+}
+.meme-container.large {
+width: 63% !important;
+}
+.meme-container{
+    margin: 10px !important;
+    width: 30% !important;
+}
+.meme-container.q6
+{
+    margin-left: 16px !important;
+}
