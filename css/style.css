@@ -68,12 +68,12 @@ header i.fa {
 
 header i.fa.share {
     background-image: url(../img/share.png);
-    height: 40px;
-    width: 40px;
+    height: 29px;
+    width: 29px;
     background-size: 100% 100%;
-    top: 2px;
+    top: 7px;
     position: relative;
-    right: 2px;
+    right: 6px;
 }
 
 .btn.btn-navbar.ng-scope:active {
