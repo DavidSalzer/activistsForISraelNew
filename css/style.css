@@ -108,13 +108,12 @@ select {
     float: left;
     height: 100%;
     text-indent: 20px;
-    
     -webkit-appearance: none;
-background-image: url('/img/arrow_user.png');
-background-repeat: no-repeat;
-background-size: 20px 20px;
-background-position-x: 10px;
-background-position-y: 7px;
+    background-image: url('/img/arrow_user.png');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position-x: 10px;
+    background-position-y: 7px;
 }
 
 
@@ -1187,10 +1186,9 @@ button {
     text-indent: 20px;
     font-size: 15px;
     margin-right: 43px;
-    
     white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .file-text {
@@ -1213,9 +1211,9 @@ text-overflow: ellipsis;
 }
 
 .add-file {
-   margin-top: 12px;
-height: 44px;
-position: relative;
+    margin-top: 12px;
+    height: 44px;
+    position: relative;
 }
 
 ::-webkit-input-placeholder {
@@ -1285,11 +1283,9 @@ position: relative;
 
 .brother-types-img {
     width: 36px;
-    
 }
 
 .brother-types-text {
-    
 }
 
 .points-wrapper {
@@ -1303,22 +1299,21 @@ position: relative;
 
 .mid-roller {
     margin-left: 1px;
-    background-color: #ffffff;    
+    background-color: #ffffff;
     height: 15px;
     display: inline-block;
 }
 
 .side-roller {
-   background-color: #ffffff;   
-   height: 15px;
-   width: 22px;
-   display: inline-block;
-} 
+    background-color: #ffffff;
+    height: 15px;
+    width: 22px;
+    display: inline-block;
+}
 
 .left-roller {
-    border-top-left-radius: 8px;  
+    border-top-left-radius: 8px;
     border-bottom-left-radius: 9px;
-   
 }
 
 .your-stat {
@@ -1330,7 +1325,6 @@ position: relative;
 
 .right-roller {
     border-top-right-radius: 8px;
-    
     border-bottom-right-radius: 9px;
 }
 
@@ -1361,5 +1355,64 @@ position: relative;
 }
 
 .score-arrow {
-    
+    width: 18px;
+    height: 22px;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 6px;
+    left: 15px;
+    background-image: url('../img/points_arrow.png');
+    z-index: 20;
+}
+
+.roller-wrapper {
+    position: relative;
+}
+
+
+.big-score-wrap {
+    background-color: #fff;
+    margin-bottom: 18px;
+    padding: 12px 12px 4px 12px;
+    position: relative;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.increase-num {
+    position: absolute;
+    left: 33px;
+    font-size: 40px;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    height: 40px;
+}
+
+.small-score-wrap {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+img.brother-types-img {
+    display: inline-block;
+    width: 27px;
+    margin-left: 3px;
+}
+
+.score-text {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 27px;
+    font-size: 14px;
+}
+
+.tab-content.tab-points {
+    height: auto;
+}
+
+.how-get-points {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    margin-top: 9px;
 }
