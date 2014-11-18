@@ -1,0 +1,55 @@
+
+
+<ul class="nav nav-tabs" style="position: relative; z-index: 3; background-color:{{featureDetails.featureColor}} ">
+    <!--data-ng-style="{'background-color':featureDetails.featureColor}"-->
+    <li style="width: 50%"><a href="#Tab1" toggle="on" parent-active-class="active" data-ng-click="showPart('1')">הניקוד שלי</a></li>
+    <li style="width: 50%"><a href="#Tab2" toggle="on" parent-active-class="active" data-ng-click="showPart('2')">לוח הניקוד</a></li>
+</ul>
+
+<div class="tab-content tab-points"><!--ignore this section- do not delete-->
+    <div class="tab-pane" toggleable active-class="active" default="active" id="Tab1" exclusion-group="myTabs"></div>
+    <div class="tab-pane" toggleable active-class="active" id="Tab2" exclusion-group="myTabs"></div>
+</div>
+<div style="height: 100%;top: -41px;padding-top: 41px;overflow-y: scroll;position: relative;z-index: 1;">
+    <div data-ng-show="myScoreNow">
+        <div class="points-wrapper">
+            <div class="points-icons">
+                <div data-ng-repeat="feature in featuresList" class="brother-types" style="margin-left: {{marg}}px;">
+                    <img class="brother-types-img" data-ng-src="{{feature.featureLogo}}" alt="alt">
+                    <span class="brother-types-text">
+                    {{feature.featureName}}
+                    </span>
+                </div>
+            </div>
+            <div class="roller-wrapper">
+                <span class="side-roller right-roller"></span>
+                <span class="mid-roller" style="width: {{margTwo}}px;"></span>
+                <span class="mid-roller" style="width: {{margTwo}}px;"></span>
+                <span class="mid-roller" style="width: {{margTwo}}px;"></span>
+                <span class="mid-roller" style="width: {{margTwo}}px;"></span>
+                <span class="side-roller left-roller"></span>
+                <div class="score-arrow"></div>
+            </div>
+            <div class="your-stat">דרגתך : {{staus}}</div>
+        </div>
+        <div class="points-whote-line"></div>
+        <div class="points-wrapper">
+            <div class="my-scores">הניקוד המצטבר שלי: {{score}}</div>
+            <div class="my-scores">ניקוד נדרש עד הדרגה הבאה: {{next}}</div>
+        </div>
+    </div>
+    <div data-ng-show="myScoreBord">
+       
+        <div class="points-wrapper">
+             <div class="how-get-points">כיצד מקבלים ניקוד</div>
+            <div data-ng-repeat="feature in scoredetailes" class="big-score-wrap" style="">
+                <div class="increase-num">{{feature.num}}+</div>
+                <div data-ng-repeat="tell in feature.items" class="small-score-wrap">
+                    <img class="brother-types-img" class="score-image" data-ng-src="{{tell.logo}}" alt="alt">
+                    <div class="score-text">{{tell.text}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
