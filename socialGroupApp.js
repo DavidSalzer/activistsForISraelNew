@@ -199,6 +199,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              }
          })
 
+         .state('points', {
+             url: "/points",
+             views: {
+                 "main": {
+                     templateUrl: "./components/points/points.html",
+                     controller: "points"
+                 }
+             }
+         })
+
         .state('single-event', {
             url: "/single-event/:postId",
             views: {

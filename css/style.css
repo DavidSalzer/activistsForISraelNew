@@ -1270,3 +1270,96 @@ position: relative;
     width: 100px;
     color: #888888;
 }
+
+
+/********************************points******************************/
+
+.brother-types {
+    display: inline-block;
+    position: relative;
+    height: 52px;
+    width: 36px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.brother-types-img {
+    width: 36px;
+    
+}
+
+.brother-types-text {
+    
+}
+
+.points-wrapper {
+    padding: 14px 14px 0px 14px;
+    position: relative;
+}
+
+.brother-types:last-child {
+    margin-left: 0px !important;
+}
+
+.mid-roller {
+    margin-left: 1px;
+    background-color: #ffffff;    
+    height: 15px;
+    display: inline-block;
+}
+
+.side-roller {
+   background-color: #ffffff;   
+   height: 15px;
+   width: 22px;
+   display: inline-block;
+} 
+
+.left-roller {
+    border-top-left-radius: 8px;  
+    border-bottom-left-radius: 9px;
+   
+}
+
+.your-stat {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 18px;
+    margin-bottom: 17px;
+}
+
+.right-roller {
+    border-top-right-radius: 8px;
+    
+    border-bottom-right-radius: 9px;
+}
+
+.points-icons {
+    position: relative;
+    padding: 0px 6px;
+    margin-bottom: 7px;
+    margin-top: 17px;
+}
+
+.points-whote-line {
+    width: 100%;
+    height: 4px;
+    background-color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.my-scores {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    font-size: 15px;
+    padding: 0px 14px;
+    text-align: center;
+    background-color: #ffffff;
+    margin-bottom: 14px;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.score-arrow {
+    
+}
