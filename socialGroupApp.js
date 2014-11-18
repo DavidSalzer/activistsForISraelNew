@@ -642,7 +642,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 })
 
 
-.directive('upload', function () {
+.directive('upload', function ($rootScope) {
     return {
         
         link: function (scope, el, attrs) {
@@ -663,7 +663,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 						return;
 					}
 					var reader = new FileReader();
-				
+				    $rootScope.$broadcast('showLoader', { showLoader: true });
 					reader.onload = (function () {
 
 						return function (e) {
@@ -673,6 +673,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 							scope.postImg = e.target.result;
 							scope.imgObj = file;
 							scope.$apply();
+                            $rootScope.$broadcast('showLoader', { showLoader: false });
 						};
 					})(file);
 
