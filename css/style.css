@@ -63,6 +63,7 @@ header .btn.btn-navbar.info {
 header i.fa {
     position: relative;
     top: -2px;
+    left: -13px;
 }
 
 header i.fa.share {

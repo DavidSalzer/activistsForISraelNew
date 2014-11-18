@@ -628,3 +628,20 @@ input.go-out-time.needsclick {
      padding: 46px 14px 0px 14px;
      background-color: #d4deec;
 }
+
+.confirm-and-clean {
+    width: 214px;
+    
+    display: block;
+    margin: auto;
+    /* height: 58px; */
+}
+
+.confirm-and-clean div {
+    margin:0px;
+    display: inline-block;
+}
+
+.confirm-and-clean div:first-child {
+    margin-left: 3px;
+}

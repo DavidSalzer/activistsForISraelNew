@@ -59,7 +59,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     $scope.thankDetails = {
 
         featureColor: '#ffd427',
-        thankText: 'המם התקבל ויפורסם בהתאם לכללי האפליקציה',
+        thankText: 'המם התקבל ויפורסם בהתאם לכללי האחליקציה',
         btnText: 'חזרה לעמוד הממים',
         headerText: 'המאמר שלי',
         featureState: 'meme'
