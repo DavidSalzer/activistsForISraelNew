@@ -101,7 +101,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
             $scope.$apply()
         }
         catch (e) {
-            alert('error on imageClick: ' + e.Message);
+           console.log('error on imageClick: ' + e.Message);
         }
 
         $scope.showSuggestedImages = false;
