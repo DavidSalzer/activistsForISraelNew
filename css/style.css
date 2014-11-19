@@ -19,9 +19,11 @@ body {
 }
 
 .loader {
-    height: 55px;
-    width: 55px;
-    background-image: url('../img/loader.png');
+height: 100px;
+width: 137px;
+background-image: url('../img/loading.gif');
+background-size: 100% 100%;
+margin: auto;
 }
 
 .general-loader {
@@ -35,11 +37,11 @@ body {
     right: 0px;
     left: 0px;
     z-index: 15;
-    background-image: url('../img/loader.png');
+    background-image: url('../img/loading.gif');
 }
 
 .fa-spinner:before {
-    content: "";
+    /*content: "";*/
 }
 
 /*testing nav bar*/
@@ -109,7 +111,7 @@ select {
     height: 100%;
     text-indent: 20px;
     -webkit-appearance: none;
-    background-image: url('/img/arrow_user.png');
+    background-image: url('../../img/arrow_user.png');
     background-repeat: no-repeat;
     background-size: 20px 20px;
     background-position-x: 10px;

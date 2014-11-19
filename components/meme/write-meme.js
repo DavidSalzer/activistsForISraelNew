@@ -98,6 +98,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         // $scope.suggestedMemes =
         try {
             $scope.postImg = $scope.localMemeImages[index].url;
+            $scope.$apply()
         }
         catch (e) {
             alert('error on imageClick: ' + e.Message);
