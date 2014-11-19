@@ -1,3 +1,11 @@
+@import url("large-for-meme.css") only screen and (min-width:481px);
+
+@media only screen and (min-device-width: 480px) and (max-device-width: 1024px)
+
+{
+    @import "large-for-meme.css";
+}
+
 .posts-list {
     padding-bottom: 30px;
 }
@@ -7,7 +15,7 @@
 padding-right: 12px;
 padding-left: 9px;
     height: 100%;
-    width: 100%;
+    width: 320px;
     margin: auto;
     padding-bottom: 100px;
     /*width: 320px;*/
@@ -474,7 +482,10 @@ box-shadow: none;
 .buttons-wrap div {
     display: inline-block;
 }
-
+.button.transition
+{
+    width: 177px;
+}
 .buttons-wrap div:first-child {
     margin-left: 10px;
 }

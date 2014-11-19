@@ -4,7 +4,11 @@ socialGroupApp.controller('thankYou', ['$rootScope', '$scope', '$state', 'classA
     $scope.backToApp = function (state) {
         $scope.showThankPage = false;
         generalParameters.setShowLogin(false);
-        $state.transitionTo(state);
+        $state.transitionTo(state, $scope.thankDetails.featureStateParams, {
+            reload: true,
+            inherit: false,
+            notify: true
+        });
     };
 
     $scope.$on('showThankPage', function (event, args) {

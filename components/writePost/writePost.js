@@ -126,8 +126,8 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                 $scope.thankDetails = {
 
                     featureColor: colors[$scope.postType],
-                    thankText: 'האירוע התקבל ויפורסם בהתאם לכללי האפליקציה',
-                    btnText: 'עמוד האירועים',
+                    thankText: 'האירוע התקבל ויפורסם בהתאם לכללי האחליקציה',
+                    btnText: 'חזרה לעמוד האירועים',
                     headerText: 'יצירת אירוע',
                     featureState: 'event'
 
@@ -191,10 +191,11 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                 $scope.convertDate();
             }
             $scope.isPostPending = true;
+            $rootScope.$broadcast('showLoader', { showLoader: true });
             PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj)
 
 		.then(function (data) {
-
+            $rootScope.$broadcast('showLoader', { showLoader: false });
 		    console.log(data);
 		    if (data.status.statusCode == 0) {
 		        generalParameters.setBackIcon(false);

@@ -3,8 +3,9 @@
 
 
 <div class="channel-title-zone sub-header" data-ng-class="{'site-sub-header':isSiteHeader==true}">
-    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-show = "pollIsActive()">סקר פעיל</div>
-    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-hide = "pollIsActive()">תודה על השתתפותך</div>
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "pollIsActive()">סקר פעיל</div>
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "!pollIsActive() && !closedPoll">תודה על השתתפותך</div>
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "closedPoll">סקר סגור</div>
     <div class="white-line"></div>
 </div>
 
@@ -12,11 +13,11 @@
 	<div class="pollView-title">
 		{{currentPollObj.title}}
 	</div>
-	<div class="imageView-background">
+	<!--<div class="imageView-background">
 		<div class="legend-image" style="background-image: url({{domain}}{{currentPollObj.img}})">
-			<!--<img src='{{currentPollObj.img}}' data-ng-style="{'background-color': '#42484e', 'padding':'3px'}">-->
+			
 		</div>
-	</div>
+	</div>-->
 	<div class="pollView-text">
 		<p>{{currentPollObj.content}} </p>
 	</div>
@@ -28,19 +29,20 @@
 	 <div ng-repeat="line in legend" class="legend-container" data-ng-hide = "pollIsActive()">
 		<div class="legend-color" data-ng-style="{'background-color': '{{line.color}}'}"></div><!---->
 		<div class="legend-content" >{{line.title}}</div><!--data-ng-style="{'color': '#ffffff'}"-->
-		<div class="legend-image" data-ng-show='{{"line.image"}}' data-ng-style="{'background-image': 'url({{line.image}})'}">
+		<!--<div class="legend-image" data-ng-show='{{"line.image"}}' data-ng-style="{'background-image': 'url({{line.image}})'}">
 			
-		</div>
+		</div>-->
 	</div>
 	</div>
 	 <div ng-repeat="item in optionsForVote" data-ng-show = "pollIsActive()" class="picking-items" data-ng-style="{'padding-top':'10px'}"> 
-		<div class="optionToVote-image" data-ng-show ='{{"item.imageUrl"}}' style="background-image: url({{domain}}{{item.imageUrl}})">
+		<!--<div class="optionToVote-image" data-ng-show ='{{"item.imageUrl"}}' style="background-image: url({{domain}}{{item.imageUrl}})">-->
 			<!--<img ng-src="{{item.imageUrl}}" >-->
-		</div>
-		<div class="optionToVote-container" data-ng-show = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#ffffff', 'background-color': '#565c63'}"> {{item.answer}} </div>
-		<div class="optionToVote-container" data-ng-hide = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#000000', 'background-color': '#ffffff'}"> {{item.answer}} </div>
+		<!--</div>-->
+		<div class="optionToVote-container" data-ng-show = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#ffffff', 'background-color': '#565c63'}"><div style="display: table;width: 100%;height: 100%;"> <div style="display: table-cell; vertical-align: middle">{{item.answer}}</div></div> </div>
+		<div class="optionToVote-container" data-ng-hide = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#000000', 'background-color': '#ffffff'}"><div style="display: table;width: 100%;height: 100%;"> <div style="display: table-cell; vertical-align: middle">{{item.answer}}</div></div> </div>
 	</div>
-    <div class="vote-error" data-ng-show = "showVoteError">* מספר השדות שבחרת אינו תקין.</div>
+    <div class="vote-error" data-ng-if = "showVoteError">* מספר השדות שבחרת אינו תקין.</div>
+    <div class="vote-error" data-ng-if = "showServerVoteError">* {{voteErrorMsg}}</div>
 	<div data-ng-show = "pollIsActive()" class="button" data-ng-click="addVote()" data-ng-style="{'background-color': '#da4f00', 'color': '#ffffff'}" > הצבע</div>
 </div>			
 

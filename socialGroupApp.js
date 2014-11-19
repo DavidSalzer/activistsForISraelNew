@@ -199,6 +199,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              }
          })
 
+         .state('points', {
+             url: "/points",
+             views: {
+                 "main": {
+                     templateUrl: "./components/points/points.html",
+                     controller: "points"
+                 }
+             }
+         })
+
         .state('single-event', {
             url: "/single-event/:postId",
             views: {
@@ -632,7 +642,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 })
 
 
-.directive('upload', function () {
+.directive('upload', function ($rootScope) {
     return {
         
         link: function (scope, el, attrs) {
@@ -653,7 +663,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 						return;
 					}
 					var reader = new FileReader();
-				
+				    $rootScope.$broadcast('showLoader', { showLoader: true });
 					reader.onload = (function () {
 
 						return function (e) {
@@ -663,6 +673,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 							scope.postImg = e.target.result;
 							scope.imgObj = file;
 							scope.$apply();
+                            $rootScope.$broadcast('showLoader', { showLoader: false });
 						};
 					})(file);
 
@@ -703,7 +714,15 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              }
          }
      }
- });
+ })
+ 
+ .filter('trustHtml', ['$sce', function ($sce) {
+    return function (val) {
+        if (val != null) {
+            return $sce.trustAsHtml(val.toString());
+        }
+    };
+} ]);
  
  
  //angular language hebrew (for calendar) ->heb-il
@@ -730,8 +749,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 		},
 		
 		"DATETIME_FORMATS":{
-			"MONTH":["ינואר","פברואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
-			"SHORTMONTH":["ינואר","פברואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
+			"MONTH":["ינואר","פברואב","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
+			"SHORTMONTH":["ינואר","פברואב","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
 			"DAY":["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"],
 			"SHORTDAY":["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"],
 			"AMPMS":["בבוקר","בצהרים"],
