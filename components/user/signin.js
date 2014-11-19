@@ -42,6 +42,9 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
 
     $scope.$on('showSignInPopup', function (event, args) {
         $scope.showSignIn = args.showSignIn;
+        if(args.showSendConfirm){
+            $scope.showSendConfirmMail = true;
+        }
         //$scope.$apply();
         generalParameters.setShowLogin($scope.showSignIn);
         console.log(args)

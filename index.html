@@ -22,7 +22,7 @@
 
         <!-- facebook sdk end -->
         <div class="app">
-
+            <div id="launchmyapp" data-ng-controller="launcher"></div>
 
             <div data-ng-controller="headerCtrl" class="popups-mask" data-ng-show="showMask()"></div>
 
@@ -101,12 +101,13 @@
         <script src="js/initPushwoosh.js"></script>
         
         <script src="socialGroupApp.js"></script>
+        <script src="js/launcher.js"></script>
         <script>
             function handleOpenURL(url) {
                 //alert('handleOpenURL');
                 setTimeout(function () {
                     page = url.replace('bennet://', '');
-                    window.location.replace(window.location.pathname + '#/' + page);
+                    angular.element($("#launchmyapp")).scope().launchMyAppHere(page);
                 }, 0);
 
             }
@@ -129,7 +130,6 @@
         <script src="./components/errorPopup/errorPopup.js"></script>
         <script src="components/comments/comments.js"></script>
         <script src="components/channel/channel.js"></script>
-        <script src="components/points/points.js"></script>
         <script src="components/authorPage/authorPage.js"></script>
         <script src="components/meme/meme.js"></script>
         <script src="components/meme/write-meme.js"></script>

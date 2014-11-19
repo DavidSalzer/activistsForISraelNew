@@ -426,6 +426,7 @@ canvas {
 .confirm-terms-benetwrapper {
     padding: 0px 14px;
     vertical-align: top;
+    margin-bottom: 10px;
 }
 
 .term-benet-box {
@@ -444,7 +445,7 @@ canvas {
 .term-benet-box div {
     width: 100%;
     height: 100%;
-    background-image: url('../../img/sginv.png');
+    background-image: url('../../img/signv.png');
     background-size: contain;
 }
 

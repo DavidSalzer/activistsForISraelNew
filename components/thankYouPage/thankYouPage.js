@@ -29,4 +29,9 @@ socialGroupApp.controller('thankYou', ['$rootScope', '$scope', '$state', 'classA
         console.log(args)
     });
 
+    $scope.openSendConfirm = function () {
+        $scope.showThankPage = false;
+        $rootScope.$broadcast('showSignInPopup', { showSignIn: true, showSendConfirm: true });
+    }
+
 } ])
