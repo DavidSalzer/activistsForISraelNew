@@ -60,16 +60,23 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
         var title = $scope.post().title;
         var location = $scope.post().location;
         var notes = $scope.post().content;
-        var success = function (message) {
-            navigator.notification.alert("האירוע נוסף ליומנך בהצלחה!", null, '', 'אשר'); //phonegap native notifications- messge,callback,title,button label
-        };
+        //var success = function (message) {
+        $scope.showPartiPop = true;
+
+        //var showPartiPop = $scope.showPartiPop;
+        //showPartiPop = true;
+        //};
         var error = function (message) {
             navigator.notification.alert("הוספת האירוע ליומן נכשלה. שגיאה: " + message + "אנא נסה שנית", null, '', 'אשר'); //phonegap native notifications- messge,callback,title,button label
         };
-        console.log(startDate, endDate, title, location, notes)
+        //console.log(startDate, endDate, title, location, notes)
         window.plugins.calendar.createEvent(title, location, notes, startDate, endDate, success, error); //call phonegap plugin
 
     };
+
+    $scope.closeEventPop = function (){
+        $scope.showPartiPop = false;
+    }
 
     $scope.nav = function () {
 

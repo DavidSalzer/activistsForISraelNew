@@ -343,11 +343,11 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function () {
-                alert(2);
+                //alert(2);
 				navigator.camera.getPicture(
 				
 					function(uri) {
-						alert(uri);
+						//alert(uri);
 						scope.imgFileText = uri;
 						scope.postImg = uri;
 						scope.$apply();
@@ -356,7 +356,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 							
 					function(e) {
 								
-						alert("Error getting picture: " + e);
+						//alert("Error getting picture: " + e);
 					},
 							
 					{ 

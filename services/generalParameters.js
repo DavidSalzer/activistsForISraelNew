@@ -172,7 +172,7 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
 			alert(is442)
 			
 			return is442; */
-			alert(is442)
+			//alert(is442)
 			return is442;
 		}, 
 		
