@@ -11,6 +11,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     $scope.font;
     $scope.postImg = "";
     $scope.isSiteHeader = true;
+    $scope.showTransitionButton = false;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -25,7 +26,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     generalParameters.setFeature($scope.featureDetails);
 
     $scope.previewData = PostService.getPreviewMeme();
-
+    $rootScope.$broadcast('showLoader', { showLoader: false });
     $scope.topRgb = $scope.previewData.rgbTop;
     $scope.bottomRgb = $scope.previewData.rgbBottom;
     $scope.topText = $scope.previewData.top;
@@ -59,7 +60,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     $scope.thankDetails = {
 
         featureColor: '#ffd427',
-        thankText: 'המם התקבל ויפורסם בהתאם לכללי האפליקציה',
+        thankText: 'המם התקבל ויפורסם בהתאם לכללי האחליקציה',
         btnText: 'חזרה לעמוד הממים',
         headerText: 'המאמר שלי',
         featureState: 'meme'
@@ -119,6 +120,8 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
                 $scope.showSendPostError = false; ;
                 // show thank page
                 $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+                //change the publish button to "חזור לעמוד ממים"
+                $scope.showTransitionButton = true;
             }
             //else- show the error message
             else {
@@ -138,6 +141,8 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
 
     }
 
-
+    $scope.transitioToMainMemes = function(){
+        $state.transitionTo('meme');
+    }
 } ]);
 

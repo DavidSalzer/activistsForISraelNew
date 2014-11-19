@@ -136,8 +136,13 @@
 }
 
 header .btn.btn-navbar.info {
-    background-image: url("../../img/info.png");
+    background-image: url("../../img/i.png");
     background-size: 100% 100%;
+    border: 0px;
+    width: 28px;
+    height: 28px;
+    top: 9px;
+    left: -6px;
 }
 
 /********************side-bar*******************/
