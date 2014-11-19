@@ -43,6 +43,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
     .then(function (data) {
         $scope.currentPollObj = data.data;
         console.log($scope.currentPollObj);
+        $scope.closedPoll = $scope.currentPollObj.poll.status == "inactive";
 
         for (var i in $scope.currentPollObj.activity) {
             if ($scope.currentPollObj.activity[i].type == 'vote') {
@@ -133,7 +134,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                             $scope.currentPollResults = $scope.temp;
                         }
                         $scope.thankDetails.featureState = 'poll-view';
-                        $scope.thankDetails.featureStateParams = {postId: $scope.currentPollObj._id}
+                        $scope.thankDetails.featureStateParams = { postId: $scope.currentPollObj._id }
                         $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
                     }
                     else {
