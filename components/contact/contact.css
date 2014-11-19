@@ -144,35 +144,46 @@ a:link, a:active, a:hover, a:visited, a:focus {
 
 .contact-lang {
     position: absolute;
-    right: 15px;
-    top: -16px;
-    text-align: center;
-    background: rgb(0, 153, 51);
-    color: #fff;
-    font-size: 15px;
-    border-radius: 100%;
-    width: 70px;
+    right: 5px;
+    top: -18px;
+    width: 35px;
+    height: 35px;
 }
 
-/*#title-hebrew{
-    top: 286px;
+#title-hebrew {
+    background-image: url('../../img/heb.png');
+    background-position: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
-#title-english{
-    top: 418px;
+#title-english {
+    background-image: url('../../img/ENG.png');
+    background-position: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
-#title-russian{
-    top: 519px;
+#title-russian {
+    background-image: url('../../img/RU.png');
+    background-position: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
-#title-arabic{
-    top: 621px;
+#title-arabic {
+    background-image: url('../../img/AR.png');
+    background-position: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
-#title-french{
-    top: 724px;
-}*/
+#title-french {
+    background-image: url('../../img/FRA.png');
+    background-position: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
 
 .contact-facebook {
     background-image: url('../../img/contact_facebook.png');

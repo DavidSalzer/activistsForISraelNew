@@ -10,9 +10,9 @@
     <div class="single-event-body">
 
         <div class="event-popup-wrapper" data-ng-controller="single-event" data-ng-show="showPartiPop">
-            <div class="single-event-popup" data-ng-controller="writePost">
+            <div class="single-event-popup">
                 <div id="evet-x-pop" data-ng-click="closeEventPop()"></div>
-                <img ng-src="" class="info-img" src="./img/calendar_info.png">
+                <img data-ng-src="" class="info-img" src="./img/calendar_info.png">
                 <div class="event-txt-pop">האירוע:</div>
                 <div class="event-bold-pop">{{post().title}} ב{{post().location}}</div>
                 <div class="event-txt-pop">נשמר ביומנך האישי</div>

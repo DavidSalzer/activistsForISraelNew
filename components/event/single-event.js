@@ -1,5 +1,5 @@
 socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
-
+    $scope.showPartiPop = false;
     /*init variables*/
     //$scope.showInput = false;
     //$scope.currentPost = null;
@@ -60,7 +60,7 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
         var title = $scope.post().title;
         var location = $scope.post().location;
         var notes = $scope.post().content;
-        //var success = function (message) {
+        //var success = function (message) { //need to uncomment - function needed.
         $scope.showPartiPop = true;
 
         //var showPartiPop = $scope.showPartiPop;
@@ -70,11 +70,11 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
             navigator.notification.alert("הוספת האירוע ליומן נכשלה. שגיאה: " + message + "אנא נסה שנית", null, '', 'אשר'); //phonegap native notifications- messge,callback,title,button label
         };
         //console.log(startDate, endDate, title, location, notes)
-        window.plugins.calendar.createEvent(title, location, notes, startDate, endDate, success, error); //call phonegap plugin
+        window.plugins.calendar.createEvent(title, location, notes, startDate, endDate, success, error); //call phonegap plugin //need to uncomment - function needed.
 
     };
 
-    $scope.closeEventPop = function (){
+    $scope.closeEventPop = function () {
         $scope.showPartiPop = false;
     }
 

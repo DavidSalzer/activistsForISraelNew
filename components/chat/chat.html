@@ -1,0 +1,14 @@
+<div class="chat-page" data-ng-controller="chat" data-ng-show="showChatPage">
+    <div class="chat-title" data-ng-style="{'background-color': chatDetails.featureColor}">{{chatDetails.headerText}}</div>
+    <div class="white-line chat-white sub-header"></div>
+    <div class="chat-external-background">
+        <div class="chat-background">
+            <div class="center-text-wrapper">
+                <div class="chat-image"></div>
+                <input type="button" class="chat-return-btn" value="צ'אט חי" data-ng-click="backToApp(chatDetails.featureState)" data-ng-style="{'background-color': chatDetails.featureColor}">
+                <div class="chat" data-ng-style="{'color': chatDetails.featureColor}">בקרוב!</div>
+                <div data-ng-if="loginChat" class="login-forget-pass" style="margin-top: 12px; margin-bottom: 0px;">שלח אלי מייל אישור שוב</div>
+            </div>
+        </div>
+    </div>
+</div>
