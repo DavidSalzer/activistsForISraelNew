@@ -86,7 +86,7 @@ height: auto;
     position: absolute;
     z-index: 2;
     top: 30%;
-    width: 25px;
+    width: 34px;
     height: 30px;
     overflow: hidden;
     max-width: 100%;
@@ -389,7 +389,7 @@ background-color: #587db4;
 /* margin: 5px; */
 position: relative; 
     background-color: rgb(255, 255, 255);
-background-image: url('/img/colPicker.png');
+background-image: url('../../img/colPicker.png');
 background-size: 100%;
 box-shadow: none;
 }
