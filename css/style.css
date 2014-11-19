@@ -914,7 +914,7 @@ button {
 }
 
 .text-box {
-    height: 84px;
+    height: 104px;
     LINE-HEIGHT: 13px;
     padding-right: 14px;
     padding-left: 14px;
@@ -946,8 +946,9 @@ button {
     padding-bottom: 6px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     font-size: 17px;
+    line-height: 18px;
 }
 
 .ellipsis {
@@ -965,11 +966,11 @@ button {
     height: 200px;
 }
 
-.ellipsis > *:first-child {
+/*.ellipsis > *:first-child {
     float: left;
     width: 100%;
     margin-right: -5px;
-}
+}*/
 
 .ellipsis:after {
     content: "\02026";
@@ -1100,7 +1101,7 @@ button {
 }
 
 .legend-content {
-    width: 50%;
+    width: 90%;
     height: 15px;
     display: inline-block;
     color: #000000;
@@ -1125,11 +1126,13 @@ button {
 .optionToVote-container {
     width: 263px;
     height: 45px;
+    line-height: 20px;
     margin-top: 7px;
     margin-right: auto;
     margin-left: auto;
-    padding-right: 25px;
-    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    /*padding-top: 15px;*/
     cursor: pointer;
     -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
     -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);

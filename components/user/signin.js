@@ -15,9 +15,10 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
     $scope.datacrop = {};
     $scope.userImg = './img/user.png';
     $scope.terms = 'ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי. ';
-
+    $scope.showSendConfirmMail = false;
 
     $scope.closeSignInPopup = function () {
+        $scope.showSendConfirmMail = false;
         $scope.showSignIn = false;
         generalParameters.setShowLogin(false);
     }
@@ -116,7 +117,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
                 //$http.post(domain + 'Base64FileUpload?ref=user&_id=data.data.user /',
                 // $scope.json)
                 $rootScope.$broadcast('showLoader', { showLoader: false });
-                $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true,isSignin:true });
+                $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true, isSignin: true });
 
                 $scope.fName = '';
                 $scope.lName = '';
@@ -220,6 +221,43 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         $scope.editImg = false;
         $scope.userimg = '';
         imgCrop.destroy();
+    }
+
+    $scope.sendConfirmMail = function () {
+        $scope.showEmailError = $scope.mail == undefined || $scope.mail == '';
+
+        if ($scope.showEmailError) {
+            return;
+        }
+        $scope.showEmailError = false;
+
+        $rootScope.$broadcast('showLoader', { showLoader: true });
+        $http.get(domain + 'sendConfirmMail/' + $scope.mail)
+        .success(function (data) {
+            $rootScope.$broadcast('showLoader', { showLoader: false });
+            if (data.status.statusCode == 0) {
+                $scope.showSignIn = false;
+                $scope.showSendConfirmError = false;
+                $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true, isSignin: true });
+            }
+            else if(data.status.statusCode == 404){
+                $scope.showSendConfirmError = true;
+                $scope.sendConfirmErrorMessage = errorMessages.mailNotFound;
+            }
+            else if(data.status.statusCode == 2){
+                $scope.showSendConfirmError = true;
+                $scope.sendConfirmErrorMessage = 'כבר אישרת הצטרפות במייל';
+            }
+            else {
+                $scope.showSendConfirmError = true;
+                $scope.sendConfirmErrorMessage = errorMessages.generalError;
+            }
+        })
+        .error(function (data) {
+            $rootScope.$broadcast('showLoader', { showLoader: false });
+            $scope.showSendConfirmError = true;
+            $scope.sendConfirmErrorMessage = errorMessages.generalError;
+        })
     }
 
 } ])
