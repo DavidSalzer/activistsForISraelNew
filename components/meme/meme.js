@@ -1,7 +1,7 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
 
-     $scope.domain = domain;
-     $scope.showSpiner = PostService.getSpiner;
+    $scope.domain = domain;
+    $scope.showSpiner = PostService.getSpiner;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -14,15 +14,15 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
     generalParameters.setFeature($scope.featureDetails);
-     generalParameters.setBackIcon(false);//tester
-      request = {
+    generalParameters.setBackIcon(false); //tester
+    request = {
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
         limit: 12,
         orderBy: '-timestamp',
         postType: 'meme',
-         _parentID:''
+        _parentID: ''
     };
 
 
@@ -45,7 +45,13 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     }
 
     $scope.getPostsByViews = function () {
+        var dateObj = new Date();
+        var timeNow = dateObj.getTime();
+        var timeSubstruct = timeNow - (1000 * 60 * 60 * 24 * 30); //substruct 30 days from today- for use in likes and comments
+
         $scope.currentTab = 'article';
+        //for - last 30 days
+        request.startTimestamp = timeSubstruct;
         request.endTimestamp = '';
         request.orderBy = '-viewsCount';
         request.offset = 0;
@@ -74,44 +80,44 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         }
     };
 
-    $scope.memeClick = function(index){
-        $state.transitionTo('single-meme',{postId:index});
+    $scope.memeClick = function (index) {
+        $state.transitionTo('single-meme', { postId: index });
     }
 
-	$scope.like = function($index){
-      
+    $scope.like = function ($index) {
 
-		var meme = $scope.posts()[$index];
-		console.log(meme)
-		
-		if (meme.isLiked == true){//UNLIKE!
-				
-			PostService.unLike(meme._id, meme); 
-			//meme.likesCount--;
-			//meme.isLiked = false;
-			return;
+
+        var meme = $scope.posts()[$index];
+        console.log(meme)
+
+        if (meme.isLiked == true) {//UNLIKE!
+
+            PostService.unLike(meme._id, meme);
+            //meme.likesCount--;
+            //meme.isLiked = false;
+            return;
         }
         else {//LIKE!
-			
-        //send the like- only if the user login
-         $scope.user = generalParameters.getUser();
-        if ($scope.user.firstName == 'הצטרף לאפליקציה') {
-            $rootScope.$broadcast('showInfoPopup', { showInfo: true });
-        }
-        else {
-            PostService.sendLike(meme._id, meme);       
-        }
 
-            
-			//meme.likesCount++;
-			//meme.isLiked = true;
-			return;
-        }  
+            //send the like- only if the user login
+            $scope.user = generalParameters.getUser();
+            if ($scope.user.firstName == 'הצטרף לאפליקציה') {
+                $rootScope.$broadcast('showInfoPopup', { showInfo: true });
+            }
+            else {
+                PostService.sendLike(meme._id, meme);
+            }
+
+
+            //meme.likesCount++;
+            //meme.isLiked = true;
+            return;
+        }
     }
 
     //when comeback from login - refresh the feed
-    
-      $scope.$on('refreshMemesFeed', function (event, args) {
-       PostService.getPostsBatch(request);
+
+    $scope.$on('refreshMemesFeed', function (event, args) {
+        PostService.getPostsBatch(request);
     });
-}]);
+} ]);

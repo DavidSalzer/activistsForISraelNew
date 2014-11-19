@@ -111,7 +111,7 @@
                 </div>
                 <post data-ng-repeat="post in posts()" data-post-type="{{post.postType}}" data-ng-show="currentPost == feature.postType"></post>
                 <div class="spiner-zone" data-ng-show="currentPost == feature.postType && showSpiner()">
-                    <div class="loader fa fa-spinner fa-spin"></div>
+                    <div class="loader"></div>
                 </div>
                 <div class="user-recent-activity-title" data-ng-class="{'none-activity': true}" data-ng-show="currentPost == feature.postType && !showSpiner() && posts().length == 0">אין למשתמש פעילות באזור זה</div>
             </div>
