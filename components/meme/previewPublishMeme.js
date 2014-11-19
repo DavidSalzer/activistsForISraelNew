@@ -109,21 +109,12 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
 
         //show the loader
         $rootScope.$broadcast('showLoader', { showLoader: true });
-        var callbackFunc = $scope.showThankPage;
-        PostService.sendPost($scope.postData, $scope.fileObj, $scope.previewBase64, true, callbackFunc);
+        PostService.sendPost($scope.postData, $scope.fileObj, $scope.previewBase64, true).then(function (data) {
+            $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+        });
 
         generalParameters.setBackIcon(false);
-
-
-        // show thank page
-        // $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
     };
-
-    $scope.showThankPage = function () {
-        // show thank page
-        $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
-    }
-
 
 } ]);
 
