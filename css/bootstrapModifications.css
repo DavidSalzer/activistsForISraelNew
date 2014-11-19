@@ -191,8 +191,8 @@ img.user-thumbnail {
 }
 
 .fa-spinner {
-    color: #fff;
-    font-size: 40px;
+    /*color: #fff;
+    font-size: 40px;*/
 }
 
 input.ng-invalid {

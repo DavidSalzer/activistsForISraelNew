@@ -5,6 +5,10 @@
     padding-bottom: 11px;
 }
 
+button:focus, input:focus {
+    outline: none !important;
+}
+
 .post-details {
     padding: 0px;
 }
@@ -42,16 +46,17 @@ td.text-center {
 thead tr:first-child {
     background-color: rgb(0, 74, 142);
     border-bottom: 4px solid #ffffff;
-    height: 42px;
+    height: 50px;
 }
 
 thead tr .btn.btn-default.btn-sm {
     background-color: rgb(0, 74, 142);
     color: #ffffff;
     font-size: 20px;
-    line-height: 34px;
+    line-height: 43px;
     border: none;
     padding: 3px 10px 0px 10px;
+    font-weight: bold;
 }
 
 thead th {
@@ -109,7 +114,11 @@ tbody .btn.btn-default.btn-sm {
     border-radius: 0;
     border: 1px solid #31363d;
     position: relative;
-    padding: 8px 6px;
+    padding: 0 0 22px 4px;
+    height: 36px;
+    text-indent: 10px;
+    font-size: 10px;
+    text-align: left;
 }
 
 /*tbody .btn.btn-default.btn-sm.btn-info {
@@ -131,13 +140,15 @@ tbody .btn.btn-default.btn-sm.btn-info:before {
 #calendar-arrow {
     background-image: url(../../img/arrow_calendar.png);
     background-size: contain;
-    width: 22px;
-    height: 22px;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    color: rgba(0, 0, 0, 0);
     cursor: pointer;
     position: absolute;
-    margin: auto;
-    bottom: 11px;
-    left: 19px;
+    left: 56px;
+    bottom: 15px;
+    width: 20px;
+    height: 16px;
     /*-webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
@@ -212,7 +223,7 @@ thead tr .btn.btn-default.btn-sm {
 
 .event-title {
     font-weight: bold;
-    margin-bottom: 2px;
+    margin-bottom: 6px;
     font-size: 15px;
 }
 
@@ -227,8 +238,9 @@ thead tr .btn.btn-default.btn-sm {
 }
 
 .event-main-text {
-    padding: 8px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
     font-size: 12px;
+    margin-top: 10px;
 }
 
 .event-3points {
@@ -258,7 +270,7 @@ thead tr .btn.btn-default.btn-sm {
     position: relative;
     min-height: 100%;
     padding-bottom: 250px;
-    padding: 0px 14px 250px 14px;
+    padding: 0px 14px 253px 14px;
 }
 
 .single-event-body {
@@ -281,6 +293,7 @@ thead tr .btn.btn-default.btn-sm {
 .singleEvent-text {
     text-align: justify;
     word-wrap: break-word;
+    font-size: 10px;
 }
 
 .single-event {
@@ -301,7 +314,7 @@ thead tr .btn.btn-default.btn-sm {
     border-radius: 15px;
     background-color: #ecf8ff;
     height: 32px;
-    margin-bottom: 9px;
+    margin-bottom: 8px;
 }
 
 .join-button.event-join-button {
@@ -381,16 +394,19 @@ thead tr .btn.btn-default.btn-sm {
 }
 
 .top-single-title {
-    margin-top: 10px;
+    margin-top: 0px;
+    font-size: 11px;
 }
 
-.mine  .theirs .the-single-title {
+.mine .theirs .the-single-title {
     font-size: 12px;
     line-height: 14px;
 }
 
 
 .bottom-part-calendar {
+    width: 280px;
+    margin: auto;
 }
 
 #todayButton {
@@ -402,14 +418,14 @@ thead tr .btn.btn-default.btn-sm {
     display: inline-block;
     text-align: center;
     line-height: 23px;
-    margin: 0px 11px;
+    margin-left: 10px;
     font-size: 11px;
 }
 
 /****ffffffffffff**/
 
 span#displayedDate {
-    font-size: 11px;
+    font-size: 10px;
     color: #000000;
     font-weight: bold;
 }
@@ -421,20 +437,22 @@ span#displayedDate {
     padding-right: 12px;
     font-weight: bold;
     margin-top: 13px;
-    margin-bottom: -7px;
+    margin-bottom: 0px;
 }
 
 .post-wrap .post-tab {
-    padding: 10px 14px 10px 14px;
+    padding: 12px 12px 12px 12px;
+    margin: 15px 7px 0px 7px;
 }
 
 .read-more-event {
     text-align: left;
     color: rgb(0, 74, 142);
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 .inner-readmore-event {
+    font-size: 8px;
 }
 
 .participation-option-cell.nav-to {
@@ -449,9 +467,95 @@ span#displayedDate {
 
 .single-event-body #author-header .author-name {
     width: auto !important;
+    margin-top: 19px;
+}
+
+.bottom-auther-name {
+    font-weight: bold !important;
 }
 
 .single-event-body #author-header .author-name:first-child {
     margin-right: 10px;
 }
 
+/*----------event-popup----------*/
+
+.event-popup-wrapper {
+    z-index: 3;
+    position: fixed;
+    top: 44px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.single-event-popup {
+    width: 90%;
+    height: 300px;
+    margin: auto;
+    margin-top: 50px;
+    background: white;
+}
+
+.the-single-title {
+    font-size: 11px;
+}
+
+#evet-x-pop {
+    background-image: url(../../img/information-x.png);
+    background-repeat: no-repeat;
+    background-size: 85% 85%;
+    background-position: 6px 5px;
+    display: block;
+    width: 35px;
+    height: 35px;
+    line-height: 17px;
+    text-align: center;
+    border-radius: 20px;
+    font-weight: 100;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin: 5px 5px 0 0;
+}
+
+.event-txt-pop {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#event-bold-pop {
+    text-align: center;
+    color: blue;
+}
+
+
+author-header #author-header figure.author-image {
+    top: 5px;
+    width: 35px;
+    height: 35px;
+    border: solid 1px #ffffff;
+    margin-left: 3px;
+}
+
+
+
+
+author-header #author-header .author-image div {
+    width: 35px;
+    height: 35px;
+    border-radius: 28px;
+}
+
+author-header #author-header .author-image .author-rank-image-zone {
+    background-color: white;
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    left: -7px;
+    bottom: -3px;
+    border-radius: 50px;
+    margin: auto;
+    border: solid 1px #000000;
+}

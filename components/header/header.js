@@ -119,10 +119,10 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureColor: "#00aeff"
         },
         {
-            featureUrl: 'facebookBennet/NaftaliBennett',
+            featureUrl: 'points',
             featureName: 'הניקוד שלי',
             featureLogo: "./img/sidebar-score-icon.png",
-            featureStyleName : 'score',
+            featureStyleName : 'points',
             featureColor: "#00be9c"
         },
     //{

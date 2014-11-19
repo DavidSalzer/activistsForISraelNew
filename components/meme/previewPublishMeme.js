@@ -11,6 +11,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     $scope.font;
     $scope.postImg = "";
     $scope.isSiteHeader = true;
+    $scope.showTransitionButton = false;
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -25,7 +26,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     generalParameters.setFeature($scope.featureDetails);
 
     $scope.previewData = PostService.getPreviewMeme();
-
+    $rootScope.$broadcast('showLoader', { showLoader: false });
     $scope.topRgb = $scope.previewData.rgbTop;
     $scope.bottomRgb = $scope.previewData.rgbBottom;
     $scope.topText = $scope.previewData.top;
@@ -59,7 +60,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     $scope.thankDetails = {
 
         featureColor: '#ffd427',
-        thankText: 'המם התקבל ויפורסם בהתאם לכללי האפליקציה',
+        thankText: 'המם התקבל ויפורסם בהתאם לכללי האחליקציה',
         btnText: 'חזרה לעמוד הממים',
         headerText: 'המאמר שלי',
         featureState: 'meme'
@@ -109,12 +110,35 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
 
         //show the loader
         $rootScope.$broadcast('showLoader', { showLoader: true });
-        PostService.sendPost($scope.postData, $scope.fileObj, $scope.previewBase64, true).then(function (data) {
-            $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+        //  var callbackFunc = $scope.sendMemeCallback;
+        PostService.sendPost($scope.postData, $scope.fileObj, $scope.previewBase64, true)
+        .then(function (data) {
+
+            //if success
+            if (data.status.statusCode == 0) {
+                //hide the error message
+                $scope.showSendPostError = false; ;
+                // show thank page
+                $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+                //change the publish button to "חזור לעמוד ממים"
+                $scope.showTransitionButton = true;
+            }
+            //else- show the error message
+            else {
+                $scope.showSendPostError = true;
+                $scope.sendPostError = errorMessages.generalError;
+            }
         });
 
         generalParameters.setBackIcon(false);
     };
 
+    $scope.sendMemeCallback = function (data) {
+
+    }
+
+    $scope.transitioToMainMemes = function(){
+        $state.transitionTo('meme');
+    }
 } ]);
 
