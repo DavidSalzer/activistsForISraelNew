@@ -102,7 +102,7 @@
         <script src="js/launcher.js"></script>
         <script>
             function handleOpenURL(url) {
-                //alert('handleOpenURL');
+                alert('handleOpenURL');
                 setTimeout(function () {
                     page = url.replace('bennet://', '');
                     angular.element($("#launchmyapp")).scope().launchMyAppHere(page);

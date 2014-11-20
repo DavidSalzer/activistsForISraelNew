@@ -57,7 +57,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                         }
                     }
                     if (flag) {
-
+                        self.getIsLike(data.data[i]);
                         posts.push(data.data[i]);
 
                     }
@@ -70,10 +70,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 }
 
 
-                for (var k = 0; k < posts.length; k++) {
+                //for (var k = 0; k < posts.length; k++) {
 
-                    self.getIsLike(posts[k]);
-                }
+                //    self.getIsLike(posts[k]);
+                //}
 
 
                 console.log(posts);
@@ -221,7 +221,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         attachBase64: function (base64, userId, callbackFunc) {
 
             var deferred = $q.defer();
-
+            console.log(base64);
+            console.log(base64.length);
             postData = {
 
                 base64: base64
@@ -229,7 +230,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             var json = JSON.stringify(postData);
             console.log(json);
             $rootScope.$broadcast('showLoader', { showLoader: true });
-
+            console.log(domain + 'Base64FileUpload?ref=post&_id=' + userId);
             $http.post(domain + 'Base64FileUpload?ref=post&_id=' + userId, json)
 			.success(function (data) {
 
@@ -237,10 +238,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    //hide the loader
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    //show the thank page only after the post created
-                if(callbackFunc){
-                    callbackFunc();
-                }
-			    
+			    if (callbackFunc) {
+			        callbackFunc();
+			    }
+
 			    deferred.resolve(data);
 			})
 			.error(function (data) {
@@ -432,8 +433,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             .then(function (data) {
                 console.log(data);
                 //if (data.status.statusCode == 8) { window.history.back(); }//go back if the post not exist.
+                self.getIsLike(data.data);
                 singlePost = data.data;
-                self.getIsLike(singlePost);
                 posts = [];
                 self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
             })
@@ -502,14 +503,15 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                         }
                     }
                     if (flag) {
+                        self.getIsLike(data.data[i]);
                         posts.push(data.data[i]);
                     }
                 }
 
-                for (var k = 0; k < posts.length; k++) {
+                //for (var k = 0; k < posts.length; k++) {
 
-                    self.getIsLike(posts[k]);
-                }
+                //    self.getIsLike(posts[k]);
+                //}
                 //}
             })
         },
