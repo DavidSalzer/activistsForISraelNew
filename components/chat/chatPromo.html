@@ -1,13 +1,11 @@
-<div class="chat-page" data-ng-controller="chat" data-ng-show="showChatPage">
-    <div data-ng-style="{'background-color': chatDetails.featureColor}">{{chatDetails.headerText}}</div>
+<div class="chat-page" data-ng-controller="chat">
     <div class="white-line chat-white sub-header"></div>
     <div class="chat-external-background">
         <div class="chat-background">
             <div class="center-text-wrapper">
                 <div class="chat-image"></div>
-                <input type="button" class="chat-return-btn" value="צ'אט חי" data-ng-click="backToApp(chatDetails.featureState)" data-ng-style="{'background-color': chatDetails.featureColor}">
-                <div class="chat-title" data-ng-style="{'color': chatDetails.featureColor}">בקרוב!</div>
-                <div data-ng-if="loginChat" class="login-forget-pass" style="margin-top: 12px; margin-bottom: 0px;">שלח אלי מייל אישור שוב</div>
+                <input type="button" class="chat-return-btn" value="צ'אט חי" style="cursor: default;" data-ng-style="{'background-color': featureDetails.featureColor}">
+                <div class="chat-title" data-ng-style="{'color': featureDetails.featureColor}">בקרוב!</div>
             </div>
         </div>
     </div>
@@ -37,7 +35,7 @@
         -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
         -moz-box-sizing: border-box; /* Firefox, other Gecko */
         box-sizing: border-box;
-        padding: 18px 18px 64px 18px;
+        padding: 18px 18px 18px 18px;
         /*z-index: 2;
         position: absolute;
         top: 95px;*/

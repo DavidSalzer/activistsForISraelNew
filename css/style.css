@@ -6,6 +6,10 @@ body {
     font-family: 'Open Sans Hebrew';
 }
 
+:focus {
+outline: none;
+}
+
 .app {
     height: 100%;
     padding-top: 43px;
