@@ -1,4 +1,8 @@
 
+a:link, a:active, a:hover, a:visited, a:focus {
+    color: grey;
+}
+
 .contact-content-wrap input::-webkit-input-placeholder {
     color: #000000;
 }
@@ -34,7 +38,7 @@
 
 .contact-content-wrap button {
     height: 32px;
-    width: 286px;
+    width: 100%;
     -webkit-box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.5);
     box-shadow: 1px 8px 6px -2px rgba(0, 0, 0, 0.4);
@@ -122,4 +126,95 @@
     height: 4px;
     width: 100%;
     background-color: #ffffff;
+}
+
+#contact-social-networks {
+    direction: ltr;
+    margin-top: 40px;
+}
+
+.contact-social {
+    border-top: 2px solid black;
+    padding: 20px 0 20px 0;
+    margin: 0 10px;
+    line-height: 30px;
+    font-size: 13px;
+    position: relative;
+}
+
+.contact-lang {
+    position: absolute;
+    right: 5px;
+    top: -18px;
+    width: 35px;
+    height: 35px;
+}
+
+#title-hebrew {
+    background-image: url('../../img/heb.png');
+    background-position: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+#title-english {
+    background-image: url('../../img/ENG.png');
+    background-position: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+#title-russian {
+    background-image: url('../../img/RU.png');
+    background-position: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+#title-arabic {
+    background-image: url('../../img/AR.png');
+    background-position: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+#title-french {
+    background-image: url('../../img/FRA.png');
+    background-position: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.contact-facebook {
+    background-image: url('../../img/contact_facebook.png');
+    background-position: 0px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+}
+
+.contact-twitter {
+    background-image: url('../../img/contact_twitter.png');
+    background-position: 0px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+}
+
+.contact-newsLetter {
+    background-image: url('../../img/contact_book.png');
+    background-position: 0px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+}
+
+.contact-version {
+    border-top: 2px solid black;
+    padding-left: 35px;
+    font-size: 13px;
+    color: grey;
+    height: 70px;
+    padding-top: 20px;
+    margin: 0 10px;
 }
