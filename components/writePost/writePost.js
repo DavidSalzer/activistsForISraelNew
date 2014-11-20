@@ -1,4 +1,4 @@
-socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', '$window', '$filter', 'fileUpload', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, $window, $filter, fileUpload) {
+socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', '$window', '$filter', 'filePicker', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, $window, $filter, filePicker) {
 
     /*init variables*/
     generalParameters.setBackIcon(true);
@@ -291,7 +291,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
     // can be a button click or anything else
     $scope.takePicture = function () {
-        fileUpload.getPicture()
+        filePicker.getPicture()
         .then(function (imageData) {
             // imageData is your base64-encoded image
             // update some ng-src directive

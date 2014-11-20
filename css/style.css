@@ -19,11 +19,11 @@ body {
 }
 
 .loader {
-height: 100px;
-width: 137px;
-background-image: url('../img/loading.gif');
-background-size: 100% 100%;
-margin: auto;
+    height: 100px;
+    width: 137px;
+    background-image: url('../img/loading.gif');
+    background-size: 100% 100%;
+    margin: auto;
 }
 
 .general-loader {
@@ -66,6 +66,10 @@ header i.fa {
     position: relative;
     top: -2px;
     left: -13px;
+}
+
+i.fa.fa-reply {
+    left: 0px;
 }
 
 header i.fa.share {

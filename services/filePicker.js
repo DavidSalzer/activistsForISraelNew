@@ -1,4 +1,4 @@
-socialGroupApp.factory('fileUpload', ['$rootScope', '$q', function ($rootScope, $q) {
+socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, $q) {
 
     return {
         getPicture: function (options) {
@@ -21,7 +21,7 @@ socialGroupApp.factory('fileUpload', ['$rootScope', '$q', function ($rootScope, 
                             console.log(file.name);
                             // strip beginning from string
                             var encodedData = {};
-                            encodedData.imgData = reader.result;//.replace(/data:image\/jpeg;base64,/, '');
+                            encodedData.imgData = reader.result; //.replace(/data:image\/jpeg;base64,/, '');
                             encodedData.fileText = file.name;
                             deferred.resolve(encodedData);
                         });
@@ -36,7 +36,10 @@ socialGroupApp.factory('fileUpload', ['$rootScope', '$q', function ($rootScope, 
                 var defaultOptions = {
                     sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
                     destinationType: Camera.DestinationType.DATA_URL,
-                    mediaType: Camera.MediaType.PICTURE
+                    mediaType: Camera.MediaType.PICTURE,
+                    correctOrientation: false,
+                    targetWidth: 200,
+                    targetHeight: 200
                 };
 
                 // allow overriding the default options

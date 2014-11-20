@@ -357,8 +357,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 			
 				var user = generalParameters.getUser();
 				if (user.firstName == 'הצטרף לאפליקציה') {
-					
-					$rootScope.$broadcast('showLoginPopup', { showLogin: true });
+					$rootScope.$broadcast('showInfoPopup', { showInfo: true });
 				}
                 else {
                     //scope.post.isLiked = !scope.post.isLiked;
