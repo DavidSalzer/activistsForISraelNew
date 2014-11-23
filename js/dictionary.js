@@ -30,3 +30,4 @@ errorMessages.generalError = 'אירעה שגיאה, בדוק חיבור לאי�
 errorMessages.unConfirmed = 'לא אישרת הצטרפות לאפליקציה במייל';
 errorMessages.shortPassword = 'הסיסמה צריכה להיות באורך שישה תווים לפחות';
 errorMessages.mailNotFound = 'המייל שהזנת אינו קיים במערכת';
+errorMessages.wrongPassword = 'הסיסמה שהקשת שגויה';

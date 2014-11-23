@@ -244,7 +244,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         }
 
         $scope.recoveryCodeError = false;
-        $scope.recoveryCodeError = false;
+        $scope.showPassError = false;
         $scope.showPassAuthenticationError = false;
 
         $scope.newPasswordDetails = {
@@ -269,8 +269,13 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
                 $scope.mail = '';
                 $scope.pass = '';
                 $scope.passErrorInServer = false;
-                $rootScope.$broadcast('showLoader', { showLoader: false });
+                
             }
+            else{
+                $scope.passErrorInServer = true;
+                $scope.passErrorMessage = errorMessages.generalError;
+            }
+            $rootScope.$broadcast('showLoader', { showLoader: false });
         })
         .error(function (data) {
             $scope.passErrorInServer = true;

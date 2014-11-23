@@ -153,7 +153,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 35px;
     width: 35px;
     line-height: 62px;
-    background-image: url('../../img/pencil2.png');
+    background-image: url('../../img/pencil.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -174,7 +174,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 35px;
     width: 35px;
     line-height: 62px;
-    background-image: url('../../img/v.png');
+    background-image: url('../../img/check.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -189,7 +189,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 35px;
     width: 35px;
     line-height: 62px;
-    background-image: url('../../img/x.png');
+    background-image: url('../../img/x_check.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -578,7 +578,7 @@ canvas {
     position: absolute;
     
     top: 13px;
-    left: 8px;
+    left: 0px;
     height: 35px;
     width: 35px;
     border: 1px solid gray;
