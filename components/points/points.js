@@ -10,13 +10,38 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope', 'cl
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
      generalParameters.setFeature($scope.featureDetails);
-    $scope.staus = 'מתחיל';
-    $scope.score = 1024;
-    $scope.next = 1024;
+
+    $scope.staus = 'התחבר על מנת להתחיל';
+    $scope.score = 0;
+    $scope.next = "לא מבוצע";
     $scope.marg = (window.innerWidth - 36 * 5 - 28 - 12) / 4;
     $scope.margTwo = (window.innerWidth - 28 - 44 - 5 * 5) / 4;
     $scope.myScoreBord = false;
     $scope.myScoreNow = true;
+    $scope.notLogin = true;
+    
+    //set page when user is login
+    $scope.userLogin = function () {
+        $scope.staus = $scope.user.rank;
+        $scope.score = $scope.user.point.count;
+        $scope.next = "לא מבוצע";
+        $scope.level = $scope.user.point.level;
+
+        $scope.notLogin = false;
+    }
+
+     $scope.user = generalParameters.getUser();
+    //if login
+    if ($scope.user.firstName != "הצטרף לאפליקציה") {
+        $scope.userLogin();
+    }
+
+    $rootScope.$on('setUser', function (event, user) {
+        $scope.user = user.userDetails;
+        if ($scope.user.firstName != "הצטרף לאפליקציה") {
+            $scope.userLogin();
+        }
+    });
 
     $scope.scoredetailes = [
         {
@@ -135,6 +160,10 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope', 'cl
                 $scope.myScoreNow = true;
                 break;
         }
+    }
+
+    $scope.goToLogin = function () {       
+        $rootScope.$broadcast('showLoginPopup', { showLogin: true });
     }
 
 

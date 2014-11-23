@@ -22,13 +22,13 @@
                 </div>
             </div>
             <div class="roller-wrapper">
-                <span class="side-roller right-roller"></span>
-                <span class="mid-roller" style="width: {{margTwo}}px;"></span>
-                <span class="mid-roller" style="width: {{margTwo}}px;"></span>
-                <span class="mid-roller" style="width: {{margTwo}}px;"></span>
-                <span class="mid-roller" style="width: {{margTwo}}px;"></span>
-                <span class="side-roller left-roller"></span>
-                <div class="score-arrow"></div>
+                <span class="side-roller right-roller" data-ng-class="{'full': level >= 4}"></span>
+                <span class="mid-roller" data-ng-class="{'full': level >= 4}" style="width: {{margTwo}}px;"></span>
+                <span class="mid-roller" data-ng-class="{'full': level >= 3}" style="width: {{margTwo}}px;"></span>
+                <span class="mid-roller" data-ng-class="{'full': level >= 2}" style="width: {{margTwo}}px;"></span>
+                <span class="mid-roller" data-ng-class="{'full': level >= 1}" style="width: {{margTwo}}px;"></span>
+                <span class="side-roller left-roller full"></span>
+                <div class="score-arrow" style="left: {{(margTwo+5) * level + 22 - 6}}px;"></div>
             </div>
             <div class="your-stat">דרגתך : {{staus}}</div>
         </div>
@@ -52,4 +52,11 @@
         </div>
     </div>
 
+</div>
+
+<div class="sub-header  special-sub-header" id="feature-header" data-ng-show="notLogin" style="height: 84px;">
+    <div data-ng-style="{'color':featureDetails.featureColor}">על מנת לצבור ניקוד הצטרף לאחליקציה</div>
+    <div class="inner-special-header" data-ng-style="{'background-color':featureDetails.featureColor}" data-ng-click="goToLogin()">
+   הצטרף
+    </div>
 </div>
