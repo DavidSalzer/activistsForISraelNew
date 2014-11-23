@@ -340,10 +340,10 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.textForView = function (activity) {
         console.log(activity);
         if (activity.type == 'userLike') {
-            activity.textView = 'העריך אותך';
+            activity.textView = 'פינק בניקוד את ' + $scope.profile().firstName +' '+$scope.profile().lastName;
         }
         else if (activity.post.postType == 'meme') {
-            activity.textView = 'אהב את המם שלך';
+            activity.textView = 'אהב את המם של ' + $scope.profile().firstName +' '+$scope.profile().lastName;
         }
         else if (activity.post.postType == 'article') {
             activity.textView = activity.post.title;

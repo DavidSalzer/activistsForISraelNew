@@ -30,6 +30,11 @@
             <img data-ng-src="./img/sidebar-menu-icon.png" alt="side-profile" class="profile-item-circle" data-ng-hide="editName" />
         </div>
 
+        <div class="user-profile-give-score user-profile-item" data-ng-show="!myProfile">
+            <div>פנק אותו בניקוד</div>
+            <div class="user-giving-score" data-ng-click="givingScore()" data-ng-class="{'user-giving-score-done': userLike}"></div>
+        </div>
+
           <div class="pazam-item user-profile-item">
             <div>פז"ם: 200 ימים</div>
         </div>
@@ -39,19 +44,19 @@
         </div>-->
 
         <div class="user-profile-scoring user-profile-item">
-            <div class="user-giving-score" data-ng-class="{'user-giving-score-done': userLike}" data-ng-hide="myProfile" data-ng-click="givingScore()"></div>
+            <!--<div class="user-giving-score" data-ng-class="{'user-giving-score-done': userLike}" data-ng-hide="myProfile" data-ng-click="givingScore()"></div>-->
             <div>ניקוד מצטבר: {{profile().point.count+0}}</div>
         </div>
-        <div class="user-profile-gender user-profile-item" data-ng-show="myProfile">
-            <div class="user-edit-icon" data-ng-hide="editGender" data-ng-click="editItem('gender')"></div>
+        <div class="user-profile-gender user-profile-item">
+            <div class="user-edit-icon" data-ng-hide="editGender || !myProfile" data-ng-click="editItem('gender')"></div>
             <div data-ng-hide="editGender">{{profile().gender}}</div>
-            <div class="user-edit-icon-v" data-ng-show="editGender" data-ng-click="updateUserDetails('gender')"></div>
+            <div class="user-edit-icon-v" data-ng-show="editGender && myProfile" data-ng-click="updateUserDetails('gender')"></div>
             <!--<input type="text" data-ng-model="profile().gender" data-ng-show="editGender" value="{{profile().gender}}">-->
-            <select data-ng-show="editGender" data-ng-model="editProfile.gender">
+            <select data-ng-show="editGender && myProfile" data-ng-model="editProfile.gender">
                 <option value="נקבה">נקבה</option>
                 <option value="זכר">זכר</option>
             </select>
-            <div class="user-edit-icon-x" data-ng-show="editGender" data-ng-click="editItem('gender')"></div>
+            <div class="user-edit-icon-x" data-ng-show="editGender && myProfile" data-ng-click="editItem('gender')"></div>
         </div>
       
         <div class="user-profile-mail user-profile-item" data-ng-show="myProfile">
@@ -93,7 +98,7 @@
                             <div class="author-rank-image" data-ng-class="{'author-rank-image-0': activity.user.data.point.level == 0, 'author-rank-image-1': activity.user.data.point.level == 1, 'author-rank-image-2': activity.user.data.point.level == 2, 'author-rank-image-3': activity.user.data.point.level == 3, 'author-rank-image-4': activity.user.data.point.level == 4}"></div>
                         </div>
                     </figure>
-                    <div class="user-profile-other-user-symbol" data-ng-class="{'other-user-symbol-like': activity.type == 'like', 'other-user-symbol-userLike': activity.type == 'userLike', 'other-user-symbol-comment': activity.type == 'comment'}"></div>
+                    <div class="user-profile-other-user-symbol" data-ng-class="{'other-user-symbol-like': activity.type == 'like', 'other-user-symbol-like': activity.type == 'userLike', 'other-user-symbol-comment': activity.type == 'comment'}"></div>
                     <span class="author-name" data-author="{{post._author}}">{{activity.user.data.firstName}} {{activity.user.data.lastName}}</span>
                     <div class="user-profile-other-user-content" data-ng-init="textForView(activity)">{{activity.textView}}</div>
                     <!--<div class="user-profile-other-user-content" data-ng-show="activity.type == 'userLike'">העריך אותך</div>-->
@@ -102,7 +107,6 @@
             </div>
         </div>
 
-        <!--<div class="color-line color-fixed-top"></div>-->
 
 
         <div class="user-recent-activity-title">הפעולות האחרונות</div>

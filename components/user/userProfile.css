@@ -210,7 +210,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     background-size: 70px 35px;
     position: absolute;
     top: 13px;
-    right: 0px;
+    left: 0px;
     display: inline-block;
     cursor: pointer;
 }
