@@ -1324,6 +1324,10 @@ button {
     display: inline-block;
 }
 
+.side-roller.full,.mid-roller.full{
+    background-color: #12426F;
+}
+
 .left-roller {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 9px;
