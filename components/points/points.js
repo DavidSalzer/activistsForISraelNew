@@ -9,6 +9,7 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope', 'cl
         infoMainText: 'לוח האירועים של האחליקציה. כאן תוכלו לראות את האירועים הקיימים ולפרסם אירועים/חוגי בית ושאר מפגשים שתרצו לשתף בהם את החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
+     generalParameters.setFeature($scope.featureDetails);
     $scope.staus = 'מתחיל';
     $scope.score = 1024;
     $scope.next = 1024;
