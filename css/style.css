@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
+
 body {
     direction: rtl;
     height: 100%;
@@ -1322,6 +1323,10 @@ button {
     height: 15px;
     width: 22px;
     display: inline-block;
+}
+
+.side-roller.full,.mid-roller.full{
+    background-color: #12426F;
 }
 
 .left-roller {
