@@ -108,19 +108,19 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope', 'cl
          },
          {
              featureName: 'מאסטר',
-             featureLogo: "./img/sidebar-menu-icon.png"
+             featureLogo: "./img/points4.png"
          },
          {
              featureName: 'משפיע',
-             featureLogo: "./img/sidebar-menu-icon.png"
+             featureLogo: "./img/points3.png"
          },
          {
              featureName: 'פעיל',
-             featureLogo: "./img/sidebar-menu-icon.png"
+             featureLogo: "./img/points2.png"
          },
          {
              featureName: 'חבר',
-             featureLogo: "./img/sidebar-menu-icon.png"
+             featureLogo: "./img/points1.png"
          }]
 
 

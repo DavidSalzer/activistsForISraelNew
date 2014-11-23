@@ -569,13 +569,15 @@ div.post-main-text {
 
 .quickdate-button {
     opacity: 0 !important;
+    width: 100%;
+    height: 100%;
 }
 
 .my-own-date {
     position: absolute !important;
     top: 0px;
-    height: 30px;
-    width: 75px;
+    height: 38px;
+    width: 100%;
     z-index: 2;
 }
 
@@ -584,8 +586,8 @@ div.post-main-text {
 }
 
 .show-timepick {
-    width: 70px;
-    height: 24px;
+    width: 100%;
+    height: 42px;
     position: absolute;
     top: 47px;
     right: 0px;
