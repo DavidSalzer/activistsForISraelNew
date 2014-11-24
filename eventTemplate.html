@@ -3,7 +3,7 @@
   <div class="post-details">  
 	   <div class="event-title" style='color:{{featureDetails.featureColor}};'>{{post.title}} ב{{post.location}}</div>
       <div data-ng-if="singleEvent" class="the-single-title top-single-title">
-         יום {{post.DestinationTime | date : 'EEEE'}} {{post.DestinationTime | date : 'dd.MM.yyyy'}} שעה {{post.DestinationTime | date : 'H:mm'}}
+         יום {{post.DestinationTime | date : 'EEEE'}} {{post.DestinationTime | date : 'dd.MM.yyyy'}}  שעה {{post.DestinationTime | date : 'H:mm'}}
     </div>
     <div data-ng-if="singleEvent" class="the-single-title">
 	   מקום: {{post.location}}

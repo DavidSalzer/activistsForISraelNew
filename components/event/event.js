@@ -205,9 +205,14 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
 
                                     if (data.data[i]._author.local.role == 'staff') {
                                         myNode[j * 7 + k].style.backgroundImage = "url('../img/calendar_benet.png')";
-                                        myNode[j * 7 + k].style.backgroundPosition = "9px 12px";
-                                        myNode[j * 7 + k].style.backgroundSize = "20px 20px";
+                                        //myNode[j * 7 + k].style.backgroundPosition = "9px 12px";
+                                        //myNode[j * 7 + k].style.backgroundSize = "20px 20px";
                                         myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
+                                         myNode[j * 7 + k].style.setProperty('background-size', '20px 20px');
+                                        myNode[j * 7 + k].style.setProperty('background-position', '9px 12px');
+                                        myNode[j * 7 + k].style.setProperty('opacity', '0.5');
+
+                                         
                                     };
                                 }
                             }
@@ -221,9 +226,12 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
 
                                 if (data.data[i]._author.local.role == 'staff') {
                                     myNode[j].style.backgroundImage = "url('../img/calendar_benet.png')";
-                                    myNode[j].style.backgroundPosition = "9px 12px";
-                                    myNode[j].style.backgroundSize = "20px 20px";
-                                    myNode[j].style.backgroundRepeat = "no-repeat";
+                                     //myNode[j * 7 + k].style.backgroundPosition = "9px 12px";
+                                        //myNode[j * 7 + k].style.backgroundSize = "20px 20px";
+                                        myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
+                                         myNode[j * 7 + k].style.setProperty('background-size', '20px 20px');
+                                        myNode[j * 7 + k].style.setProperty('background-position', '9px 12px');
+                                        myNode[j * 7 + k].style.setProperty('opacity', '0.5');
                                 };
                             }
 
