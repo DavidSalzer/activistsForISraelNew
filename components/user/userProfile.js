@@ -1,4 +1,4 @@
-socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'imgCrop', function ($rootScope, $scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, imgCrop) {
+socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'imgCrop', function ($scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, imgCrop) {
 
     //if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {//if user not login go back.
     //    window.history.back();
@@ -142,6 +142,10 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                                 break;
                         }
                     }
+
+                    d = new Date();
+                    d1 = new Date($scope.otherUser.registrationDate);
+                    $scope.otherUser.registrationTime = parseInt((d.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
                     return $scope.otherUser;
                 }
 
@@ -259,7 +263,6 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 }
                 request = { gender: gender };
                 break;
-
         }
 
         console.log(request);
@@ -340,16 +343,21 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.textForView = function (activity) {
         console.log(activity);
         if (activity.type == 'userLike') {
-            activity.textView = 'פינק בניקוד את ' + $scope.profile().firstName +' '+$scope.profile().lastName;
+            activity.textView = 'פינק בניקוד את ' + $scope.profile().firstName + ' ' + $scope.profile().lastName;
         }
         else if (activity.post.postType == 'meme') {
-            activity.textView = 'אהב את המם של ' + $scope.profile().firstName +' '+$scope.profile().lastName;
+            activity.textView = 'אוהב את המם של ' + $scope.profile().firstName + ' ' + $scope.profile().lastName;
         }
         else if (activity.post.postType == 'article') {
             activity.textView = activity.post.title;
         }
         else {
-            activity.textView = activity.post.content;
+            if (activity.type == 'like') {
+                activity.textView = 'אוהב את הפוסט: ' + activity.post.content;
+            }
+            else {
+                activity.textView = 'הגיב על הפוסט: ' + activity.post.content;
+            }
         }
     }
 
@@ -359,21 +367,21 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":              
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });              
-                //    break;              
+                //case "author":                   
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                   
+                //    break;                   
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":              
-                //    $state.transitionTo('single-event', { postId: args.postId });              
-                //    break;              
-                //case "voteToPoll":              
-                //    $state.transitionTo('poll-view', { postId: args.postId });              
-                //    break;              
+                //case "event":                   
+                //    $state.transitionTo('single-event', { postId: args.postId });                   
+                //    break;                   
+                //case "voteToPoll":                   
+                //    $state.transitionTo('poll-view', { postId: args.postId });                   
+                //    break;                   
             }
         }
         else {
@@ -586,11 +594,11 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 $scope.passErrorInServer = false;
                 $scope.showChangePassword = false;
             }
-            else if (data.status.statusCode == 3){
+            else if (data.status.statusCode == 3) {
                 $scope.passErrorInServer = true;
                 $scope.passErrorMessage = errorMessages.wrongPassword;
             }
-            else{
+            else {
                 $scope.passErrorInServer = true;
                 $scope.passErrorMessage = errorMessages.generalError;
             }
@@ -602,5 +610,6 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             $rootScope.$broadcast('showLoader', { showLoader: false });
         });
     }
+
 
 } ])

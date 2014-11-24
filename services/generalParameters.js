@@ -126,9 +126,11 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
                 }
             }
 
-            PostService.setUser(userDetails);
+            d = new Date();
+            d1 = new Date(userDetails.registrationDate);
+            userDetails.registrationTime = parseInt((d.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
 
-            $rootScope.$broadcast('setUser', { userDetails: userDetails });
+            PostService.setUser(userDetails);
         },
 
         getBackIcon: function () {
