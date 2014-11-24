@@ -54,19 +54,19 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
     };
 
     $scope.participate = function () {
-
+        alert("לחצת על השתתף ");
         var startDate = new Date($scope.post().DestinationTime); // beware: month 0 = january, 11 = december
         var endDate = new Date($scope.post().DestinationTime);
         var title = $scope.post().title;
         var location = $scope.post().location;
         var notes = $scope.post().content;
-        //var success = function (message) { //need to uncomment - function needed.
-        $scope.showPartiPop = true;
-
-        //var showPartiPop = $scope.showPartiPop;
-        //showPartiPop = true;
-        //};
+        var success = function (message) {
+            $scope.showPartiPop = true;
+            alert($scope.showPartiPop);
+            
+        };
         var error = function (message) {
+            alert("נכשל");
             navigator.notification.alert("הוספת האירוע ליומן נכשלה. שגיאה: " + message + "אנא נסה שנית", null, '', 'אשר'); //phonegap native notifications- messge,callback,title,button label
         };
         //console.log(startDate, endDate, title, location, notes)

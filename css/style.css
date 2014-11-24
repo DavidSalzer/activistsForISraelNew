@@ -78,13 +78,14 @@ i.fa.fa-reply {
 }
 
 header i.fa.share {
-    background-image: url(../img/share.png);
+    /*background: url(../img/share.png) ;*/
     height: 29px;
     width: 29px;
-    background-size: 100% 100%;
+    /*background-size: 100% 100%;*/
     top: 7px;
     position: relative;
     right: 6px;
+    background: url(../img/share.png) 9px 12px / 20px 20px no-repeat rgb(178, 200, 221);
 }
 
 .btn.btn-navbar.ng-scope:active {
