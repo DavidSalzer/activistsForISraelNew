@@ -50,16 +50,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        .state('single-article', {
-            url: "/single-article/:postId",
-            //url: "/lesson",
-            views: {
-                "main": {
-                    templateUrl: "./components/article/single-article.html",
-                    controller: "single-article"
-                }
-            }
-        })
+        //.state('single-article', {
+        //    url: "/single-article/:postId",
+        //    //url: "/lesson",
+        //    views: {
+        //        "main": {
+        //            templateUrl: "./components/article/single-article.html",
+        //            controller: "single-article"
+        //        }
+        //    }
+        //})
 
         .state('channel', {
             url: "/channel",
@@ -71,25 +71,25 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        .state('author-page', {
-            url: "/author-page/:authorId",
-            views: {
-                "main": {
-                    templateUrl: "./components/authorPage/authorPage.html",
-                    controller: "authorPage"
-                }
-            }
-        })
+        //.state('author-page', {
+        //    url: "/author-page/:authorId",
+        //    views: {
+        //        "main": {
+        //            templateUrl: "./components/authorPage/authorPage.html",
+        //            controller: "authorPage"
+        //        }
+        //    }
+        //})
 
-        .state('article', {
-            url: "/article",
-            views: {
-                "main": {
-                    templateUrl: "./components/article/article.html",
-                    controller: "article"
-                }
-            }
-        })
+        //.state('article', {
+        //    url: "/article",
+        //    views: {
+        //        "main": {
+        //            templateUrl: "./components/article/article.html",
+        //            controller: "article"
+        //        }
+        //    }
+        //})
 
         .state('facebookBennet', {
             url: "/facebookBennet/:channelId",
@@ -102,16 +102,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        .state('facebookPoalim', {
-            url: "/facebookPoalim/:channelId",
-            //url: "/facebookPoalim",
-            views: {
-                "main": {
-                    templateUrl: "./components/facebook/facebookPoalim.html",
-                    controller: "facebookPoalim"
-                }
-            }
-        })
+        //.state('facebookPoalim', {
+        //    url: "/facebookPoalim/:channelId",
+        //    //url: "/facebookPoalim",
+        //    views: {
+        //        "main": {
+        //            templateUrl: "./components/facebook/facebookPoalim.html",
+        //            controller: "facebookPoalim"
+        //        }
+        //    }
+        //})
 
 		.state('poll-view', {
 		    url: "/poll-view/:postId",
@@ -218,6 +218,26 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
+
+        .state('chat', {
+            url: "/chat",
+            views: {
+                "main": {
+                    templateUrl: "./components/chat/chatPromo.html",
+                    controller: "chatPromo"
+                }
+            }
+        })
+
+        //.state('chat', {
+        //    url: "/chat",
+        //    views: {
+        //        "main": {
+        //            templateUrl: "./components/chat/chat.html",
+        //            controller: "chat"
+        //        }
+        //    }
+        //})
 })
 
 /**** Ajax Service ****/
@@ -357,8 +377,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 			
 				var user = generalParameters.getUser();
 				if (user.firstName == 'הצטרף לאפליקציה') {
-					
-					$rootScope.$broadcast('showLoginPopup', { showLogin: true });
+					$rootScope.$broadcast('showInfoPopup', { showInfo: true });
 				}
                 else {
                     //scope.post.isLiked = !scope.post.isLiked;

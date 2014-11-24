@@ -131,6 +131,10 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
         });
 
         generalParameters.setBackIcon(false);
+
+
+        // show thank page
+        // $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
     };
 
     $scope.sendMemeCallback = function (data) {

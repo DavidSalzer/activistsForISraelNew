@@ -189,8 +189,6 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
             var startDate = monthArray[0].date.getTime() - 60 * 60 * 12 * 10000;
             var endDate = monthArray[6].date.getTime() + 60 * 60 * 12 * 1000;
         }
-        console.log(startDate);
-        console.log(startDate);
         //take two timestamp arguments and give array (data.data) of all the event-posts between them.
         $http.get(domain + 'getDestinationTimesOfPosts?postType=event&startDestinationTime=' + startDate + '&endDestinationTime=' + endDate)
             .success(function (data) {

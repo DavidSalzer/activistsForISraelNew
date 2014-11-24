@@ -137,7 +137,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         //send post to server.
-        sendPost: function (postData, textfile, imgFile, isBase64, callbackFunc) {
+        sendPost: function (postData, textfile, imgFile, isBase64) {//, callbackFunc- this paramater to be canceled 
 
             var self = this;
             var deferred = $q.defer();
@@ -160,7 +160,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    if (data.data._id == undefined) { deferred.resolve(data); return deferred.promise; } //fail to create post!
 			    if (isBase64) {
 			        //imgFile is base64 string
-			        self.attachBase64(imgFile, data.data._id, callbackFunc).then(function (data) { deferred.resolve(data) });
+			        self.attachBase64(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });//, callbackFunc - nominated for cancelation
 			    }
 			    else if (textfile || imgFile) {
 			        if (textfile)
@@ -218,7 +218,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             //if(file){self.attach(file);}
             return deferred.promise;
         },
-        attachBase64: function (base64, userId, callbackFunc) {
+        attachBase64: function (base64, userId) {//, callbackFunc- nominated to cancelation
 
             var deferred = $q.defer();
             console.log(base64);
@@ -238,10 +238,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    //hide the loader
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    //show the thank page only after the post created
-			    if (callbackFunc) {
-			        callbackFunc();
-			    }
-
+                //if(callbackFunc){
+                //    callbackFunc();
+                //}
+			    
 			    deferred.resolve(data);
 			})
 			.error(function (data) {

@@ -487,7 +487,6 @@ span#displayedDate {
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.5);
-    display: none;
 }
 
 .single-event-popup {
@@ -521,13 +520,20 @@ span#displayedDate {
 
 .event-txt-pop {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 18px;
     margin-bottom: 15px;
 }
 
-#event-bold-pop {
+.event-bold-pop {
     text-align: center;
-    color: blue;
+    color: #004A8E;
+    font-size: 22px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 90%;
+    margin: auto;
 }
 
 
