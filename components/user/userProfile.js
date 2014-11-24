@@ -1,4 +1,4 @@
-socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'imgCrop', function ($scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, imgCrop) {
+socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'imgCrop', function ($rootScope, $scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, imgCrop) {
 
     //if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {//if user not login go back.
     //    window.history.back();
@@ -229,6 +229,9 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 $scope.editEmail = false;
                 $scope.editPhone = false;
                 break;
+            case 'password':
+                $scope.showChangePassword = true;
+                break;
         }
 
     }
@@ -256,6 +259,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 }
                 request = { gender: gender };
                 break;
+
         }
 
         console.log(request);
@@ -336,10 +340,10 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     $scope.textForView = function (activity) {
         console.log(activity);
         if (activity.type == 'userLike') {
-            activity.textView = 'העריך אותך';
+            activity.textView = 'פינק בניקוד את ' + $scope.profile().firstName +' '+$scope.profile().lastName;
         }
         else if (activity.post.postType == 'meme') {
-            activity.textView = 'אהב את המם שלך';
+            activity.textView = 'אהב את המם של ' + $scope.profile().firstName +' '+$scope.profile().lastName;
         }
         else if (activity.post.postType == 'article') {
             activity.textView = activity.post.title;
@@ -355,21 +359,21 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":           
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });           
-                //    break;           
+                //case "author":              
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });              
+                //    break;              
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":           
-                //    $state.transitionTo('single-event', { postId: args.postId });           
-                //    break;           
-                //case "voteToPoll":           
-                //    $state.transitionTo('poll-view', { postId: args.postId });           
-                //    break;           
+                //case "event":              
+                //    $state.transitionTo('single-event', { postId: args.postId });              
+                //    break;              
+                //case "voteToPoll":              
+                //    $state.transitionTo('poll-view', { postId: args.postId });              
+                //    break;              
             }
         }
         else {
@@ -542,6 +546,61 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
         $scope.editImg = false;
         $scope.userimg = '';
         imgCrop.destroy();
+    }
+
+    //change password popup
+    $scope.sendNewPassword = function () {
+        $scope.showOldPassError = $scope.oldPass == undefined || $scope.oldPass == '';
+        $scope.showPassError = $scope.newPass == undefined || $scope.newPass.length < 6;
+        $scope.showPassAuthenticationError = $scope.newPass != $scope.passAuthentication;
+
+        if ($scope.showOldPassError || $scope.showPassError || $scope.showPassAuthenticationError) {
+            return;
+        }
+
+        $scope.showOldPassError = false;
+        $scope.showPassError = false;
+        $scope.showPassAuthenticationError = false;
+
+        $scope.newPasswordDetails = {
+
+            oldPassword: $scope.oldPass,
+            newPassword: $scope.newPass
+
+        }
+
+        console.log($scope.newPasswordDetails);
+        $scope.json = JSON.stringify($scope.newPasswordDetails);
+        console.log($scope.json);
+
+        $rootScope.$broadcast('showLoader', { showLoader: true });
+        $http.put(domain + 'changePassword', $scope.json)
+        .success(function (data) {
+            console.log(data);
+            if (data.status.statusCode == 0) {
+                $scope.showLogin = false;
+                generalParameters.setShowLogin(false);
+                $scope.oldPass = '';
+                $scope.newPass = '';
+                $scope.passAuthentication = '';
+                $scope.passErrorInServer = false;
+                $scope.showChangePassword = false;
+            }
+            else if (data.status.statusCode == 3){
+                $scope.passErrorInServer = true;
+                $scope.passErrorMessage = errorMessages.wrongPassword;
+            }
+            else{
+                $scope.passErrorInServer = true;
+                $scope.passErrorMessage = errorMessages.generalError;
+            }
+            $rootScope.$broadcast('showLoader', { showLoader: false });
+        })
+        .error(function (data) {
+            $scope.passErrorInServer = true;
+            $scope.passErrorMessage = errorMessages.generalError;
+            $rootScope.$broadcast('showLoader', { showLoader: false });
+        });
     }
 
 } ])
