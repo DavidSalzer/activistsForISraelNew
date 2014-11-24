@@ -112,7 +112,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureColor: "#004a8e"
         },
         {
-            featureUrl: 'facebookBennet/NaftaliBennett',
+            featureUrl: 'breakingnews',
             featureName: 'מבזקים',
             featureLogo: "./img/sidebar-flash-icon.png",
             featureStyleName : 'flash',

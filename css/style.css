@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
+
 body {
     direction: rtl;
     height: 100%;
@@ -297,10 +298,10 @@ figure.author-image {
 .author-image .author-rank-image {
     height: 10px;
     width: 10px;
-    background-image: url('./../img/rank.png');
     background-repeat: no-repeat;
-    background-size: 50px 10px;
+    background-size: contain;
     position: absolute;
+    background-image: url("../img/rank1.png");
     bottom: 0px;
     left: 0px;
     right: 0px;
@@ -309,19 +310,19 @@ figure.author-image {
 }
 
 .author-rank-image-1 {
-    background-position-x: -10px;
+    background-image: url("../img/rank2.png");
 }
 
 .author-rank-image-2 {
-    background-position-x: -20px;
+     background-image: url("../img/rank3.png");
 }
 
 .author-rank-image-3 {
-    background-position-x: -30px;
+    background-image: url("../img/rank4.png");
 }
 
 .author-rank-image-4 {
-    background-position-x: -40px;
+    background-image: url("../img/rank5.png");
 }
 
 span.author-name {
@@ -1322,6 +1323,10 @@ button {
     height: 15px;
     width: 22px;
     display: inline-block;
+}
+
+.side-roller.full,.mid-roller.full{
+    background-color: #12426F;
 }
 
 .left-roller {

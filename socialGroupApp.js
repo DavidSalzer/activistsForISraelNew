@@ -209,6 +209,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              }
          })
 
+         .state('breakingnews', {
+             url: "/breakingnews",
+             views: {
+                 "main": {
+                     templateUrl: "./components/breakingnews/breakingnews.html",
+                     controller: "breakingnews"
+                 }
+             }
+         })
+
         .state('single-event', {
             url: "/single-event/:postId",
             views: {

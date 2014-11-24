@@ -127,6 +127,8 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
             }
 
             PostService.setUser(userDetails);
+
+            $rootScope.$broadcast('setUser', { userDetails: userDetails });
         },
 
         getBackIcon: function () {
