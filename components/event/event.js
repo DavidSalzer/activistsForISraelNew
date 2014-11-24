@@ -210,7 +210,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
                                         myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
                                          myNode[j * 7 + k].style.setProperty('background-size', '20px 20px');
                                         myNode[j * 7 + k].style.setProperty('background-position', '9px 12px');
-
+                                        myNode[j * 7 + k].style.setProperty('opacity', '0.5');
 
                                          
                                     };
@@ -231,6 +231,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
                                         myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
                                          myNode[j * 7 + k].style.setProperty('background-size', '20px 20px');
                                         myNode[j * 7 + k].style.setProperty('background-position', '9px 12px');
+                                        myNode[j * 7 + k].style.setProperty('opacity', '0.5');
                                 };
                             }
 
