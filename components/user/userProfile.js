@@ -28,21 +28,13 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
             featureColor: "talkback",
             postType: "talkback"
         },
-    //{
-    //    featureUrl: 'article',
-    //    featureName: 'מאמרים',
-    //    featureLogo: "./img/article.png",
-    //    featureColor: "article",
-    //    postType: "article"
-    //},
-           {
-           featureUrl: 'meme',
-           featureName: 'ממים',
-           featureLogo: "./img/meme.png",
-           featureColor: "#ffd427",
-           postType: "meme"
-       }
-          ,
+        {
+            featureUrl: 'meme',
+            featureName: 'ממים',
+            featureLogo: "./img/meme.png",
+            featureColor: "#ffd427",
+            postType: "meme"
+        },
         {
             featureUrl: 'poll',
             featureName: 'סקרים',
@@ -50,14 +42,13 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
             featureColor: "#da4f00",
             postType: "voteToPoll"
         },
-    {
-        featureUrl: 'event',
-        featureName: 'אירועים',
-        featureLogo: "./img/calendar.png",
-        featureColor: "event",
-        postType: "event"
-    }
-
+        {
+            featureUrl: 'event',
+            featureName: 'אירועים',
+            featureLogo: "./img/calendar.png",
+            featureColor: "event",
+            postType: "event"
+        }
     ];
 
     $scope.showAuthorImage = false;
@@ -79,6 +70,7 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
     if ($scope.myProfile) {
         $scope.profile = generalParameters.getUser;
         $scope.editProfile = angular.copy($scope.profile());
+        generalParameters.getUser().registrationDate;
     }
     else {
         $http.get(domain + 'profile/' + $stateParams.userId, { withCredentials: true, async: true })
@@ -355,21 +347,21 @@ socialGroupApp.controller('userProfile', ['$scope', '$state', '$stateParams', '$
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":           
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });           
-                //    break;           
+                //case "author":             
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });             
+                //    break;             
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":           
-                //    $state.transitionTo('single-event', { postId: args.postId });           
-                //    break;           
-                //case "voteToPoll":           
-                //    $state.transitionTo('poll-view', { postId: args.postId });           
-                //    break;           
+                //case "event":             
+                //    $state.transitionTo('single-event', { postId: args.postId });             
+                //    break;             
+                //case "voteToPoll":             
+                //    $state.transitionTo('poll-view', { postId: args.postId });             
+                //    break;             
             }
         }
         else {

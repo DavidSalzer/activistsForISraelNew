@@ -1,6 +1,22 @@
 socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', 'classAjax', 'PostService', 'generalParameters', function ($scope, $stateParams, classAjax, PostService, generalParameters) {
+    $scope.featureDetails = {
+        featureName: null,
+        featureLogo: "./img/sidebar-facebook-icon.png",
+        featureWhatsUpLogo: "./img/facebook_benet_info.png",
+        featureColor: '#004a8e',
+        infoHaeder: "עמוד פייסבוק",
+        infoMainText: "עמוד הפייסבוק של נפתלי בנט.",
+        infoSubText: "עוד לא הצטרפת לאחליקציה?"
+    };
+
+
+    generalParameters.setFeature($scope.featureDetails);
     $scope.ref = window.open('https://www.facebook.com/bennettnaftalienglish?fref=ts', '_blank', 'location=yes');
-    $scope.ref.addEventListener('loadstop', $scope.endLogin);
+    $scope.ref.addEventListener('loadstop', backToMainMenu);
+    function backToMainMenu() {
+        $state.transitionTo('main-menu');
+    }
+
 } ]);
 
 

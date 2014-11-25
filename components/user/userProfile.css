@@ -270,6 +270,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     margin-left: 10px;
     cursor: pointer;
     vertical-align: top;
+    background-color: white;
 }
 
 .user-profile-other-user-activity figure.author-image {
