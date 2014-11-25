@@ -29,15 +29,7 @@
                     <img ng-src="{{userImg}}" class="userImg" data-ng-show="userImg">
                 </div>
                 <div class="sign-in-picture"></div>
-                <div class="login-error" data-ng-show="showFnameError">* שדה שם פרטי לא הוזן כראוי</div>
-                <div class="login-error" data-ng-show="showLnameError">* שדה שם משפחה לא הוזן כראוי</div>
-                <div class="login-error" data-ng-show="showGenderError">* שדה זכר/נקבה לא הוזן כראוי</div>
-                <div class="login-error" data-ng-show="showEmailError">* שדה מייל לא הוזן כראוי</div>
-                <div class="login-error" data-ng-show="showPassError">* יש להזין סיסמה בת 6 תווים לפחות</div>
-                <div class="login-error" data-ng-show="!showPassError && showPassAuthenticationError">* אימות הסיסמה שונה מהסיסמה שבחרת</div>
-                <div class="login-error" data-ng-show="showPhoneError">* שדה טלפון לא הוזן כראוי</div>
-                <div class="login-error" data-ng-show="showAddressError">* שדה ישוב לא הוזן כראוי</div>
-                <div class="login-error" data-ng-show="showSignupError">* {{signupErrorMessage}}</div>
+                
 
                 <div class="confirm-terms-benetwrapper">
                     <div class="term-benet-box" data-ng-click="showTermsVee = !showTermsVee">
@@ -48,7 +40,18 @@
                     </div>
                 </div>
                 <div class="benet-terms-content" data-ng-if="showTerms">{{terms}}</div>
-                <div class="login-error" style="margin-top: 10px;" data-ng-if="didConfirmTerms">* הערה: לא הוזן שדה כראוי</div>
+
+                <div class="login-error" data-ng-show="showFnameError">* שדה שם פרטי לא הוזן כראוי</div>
+                <div class="login-error" data-ng-show="showLnameError">* שדה שם משפחה לא הוזן כראוי</div>
+                <div class="login-error" data-ng-show="showGenderError">* שדה זכר/נקבה לא הוזן כראוי</div>
+                <div class="login-error" data-ng-show="showEmailError">* שדה מייל לא הוזן כראוי</div>
+                <div class="login-error" data-ng-show="showPassError">* יש להזין סיסמה בת 6 תווים לפחות</div>
+                <div class="login-error" data-ng-show="!showPassError && showPassAuthenticationError">* אימות הסיסמה שונה מהסיסמה שבחרת</div>
+                <div class="login-error" data-ng-show="showPhoneError">* שדה טלפון לא הוזן כראוי</div>
+                <div class="login-error" data-ng-show="showAddressError">* שדה ישוב לא הוזן כראוי</div>
+                <div class="login-error" data-ng-if="didConfirmTerms">* לא אישרת תנאי שימוש</div>
+                <div class="login-error" data-ng-show="showSignupError">* {{signupErrorMessage}}</div>
+
                 <input type="button" class="sign-in-btn shadow-buttons" value="הצטרף" data-ng-click="sendSignIn()">
                 <div class="login-forget-pass" data-ng-click="showSendConfirmMail=true">כבר נרשמתי, שלח אלי מייל אישור שוב</div>
             </div>

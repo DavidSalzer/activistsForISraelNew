@@ -7,6 +7,7 @@
     </div>
     <div class="text-box player-text" ng-click="userClicked($index);">
         <h1 class="padd" data-ng-style="{'color': '{{featureDetails.featureColor}}', 'font-weight': 'bold'}">{{post.title}}</h1>
-        <h1 class="ellipsis" data-ng-style="{'color': '#ffffff'}">{{post.content}} </h1>
+        <h1 class="ellipsis" data-ng-style="{'color': '#000000'}">
+            {{post.content | limitTo:140 }}<span data-ng-if="140 < post.content.length" class='event-3points'>...</span> </h1>
     </div>
 </div>

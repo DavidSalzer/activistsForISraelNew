@@ -42,13 +42,16 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
 
     $scope.$on('showSignInPopup', function (event, args) {
         $scope.showSignIn = args.showSignIn;
+        if(args.showSendConfirm){
+            $scope.showSendConfirmMail = true;
+        }
         //$scope.$apply();
         generalParameters.setShowLogin($scope.showSignIn);
-        console.log(args)
+        
     });
 
     $scope.sendSignIn = function () {
-        console.log($scope.gender);
+        
         $scope.showFnameError = $scope.fName == undefined || $scope.fName == '';
         $scope.showLnameError = $scope.lName == undefined || $scope.lName == '';
         $scope.didConfirmTerms = !$scope.showTermsVee;
@@ -97,9 +100,9 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
         //    $scope.signinDetails.address = "כתובת";
         //}
 
-        console.log($scope.signinDetails);
+        
         $scope.json = JSON.stringify($scope.signinDetails);
-        console.log($scope.json);
+        
 
         $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.post(domain + 'signup/', $scope.json)
@@ -110,7 +113,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
 
                 //send image string to be saved at server
                 //if was uploaded
-                console.log($scope.userImg);
+                
                 if ($scope.userImg != '') {
                     $scope.uploadBase64Image();
                 }
@@ -128,7 +131,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
                 $scope.phone = '';
                 $scope.address = '';
                 $scope.userImg = '';
-                console.log(data);
+                
                 $scope.showSignupError = false;
             }
             else if (data.status.statusCode == 409) {
@@ -148,20 +151,19 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
             $rootScope.$broadcast('showLoader', { showLoader: false });
         });
 
-        console.log($scope.signinDetails);
+        
     }
 
     //send base64 string to server to be converted to jpg, then save image to current user details. 
     $scope.uploadBase64Image = function () {
-        console.log($scope.userImg);
+        
         // $scope.json = JSON.stringify($scope.userImg);
         var userId = generalParameters.getUser();
-        console.log(userId._id);
+        
         $http.post(domain + 'Base64FileUpload?ref=user&_id=' + userId._id,
             { "base64": $scope.userImg })
             .success(function (data) {
-                console.log('base64');
-                console.log(data);
+                
                 generalParameters.setUser(data.data);
                 //generalParameters.setUser(data.data.user);
             });
@@ -183,8 +185,8 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
             var reader = new FileReader();
             reader.onload = (function () {
                 return function (e) {
-                    //console.log(e);
-                    console.log(e.target.result); //base64 img
+                    
+                    
                     $scope.userimg = e.target.result;
                     $scope.editImg = true;
                     $scope.$apply();
@@ -198,8 +200,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
 
     //user image crop
     $scope.croping = function () {
-        console.log(1);
-        console.log($('#cropDiv img'));
+        
         imgCrop.obj = {};
         $('#cropDiv img').off('load');
         $('#cropDiv img').on('load', function () {
@@ -208,7 +209,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
     }
 
     $scope.$on('editDone', function (e, d) {
-        console.log(d);
+        
         $scope.userImg = d.data;
         $scope.editImg = false;
         $scope.$apply();

@@ -20,7 +20,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         //get posts by parameters from server and set in posts array.
         getPostsBatch: function (request) {
             self = this;
-            console.log(request);
+            
             if (request.orderBy != '-timestamp') {
                 request.endTimestamp = '';
             }
@@ -32,18 +32,18 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             if (request.DestinationTime != undefined) {
                 queryString = queryString + '&startDestinationTime=' + request.DestinationTime;
             }
-            console.log(queryString);
+            
             showSpiner = true;
             if (request.offset == 0) {
                 posts = [];
             }
             classAjax.getdata('get', queryString, request).then(function (data) {
-                console.log(data);
-                if (request.offset == 0) {
-                    posts = [];
-                }
+                
+                //if (request.offset == 0) {
+                //    posts = [];
+                //}
                 //else {
-                console.log(data);
+                
                 showSpiner = false;
                 for (var i = 0; i < data.data.length; i++) {
                     //posts.push(data.data[i]);
@@ -57,7 +57,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                         }
                     }
                     if (flag) {
-
+                        self.getIsLike(data.data[i]);
                         posts.push(data.data[i]);
 
                     }
@@ -70,22 +70,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 }
 
 
-                for (var k = 0; k < posts.length; k++) {
+                //for (var k = 0; k < posts.length; k++) {
 
-                    self.getIsLike(posts[k]);
-                }
+                //    self.getIsLike(posts[k]);
+                //}
 
 
-                console.log(posts);
+                
                 //}
             })
         },
 
-
-
-        //updateCommentsCount: function () {
-        //    posts[0].comments.commentsCount = 6;
-        //},
 
         /*  updatePost: function (data) {
         var postId = data.postId
@@ -109,14 +104,14 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             var deferred = $q.defer();
             //alert(postData.post.DestinationTime)
             var post = { 'post': postData.post };
-            console.log(post);
+            
             var json = JSON.stringify(post);
-            console.log(json);
+            
 
             $http.put(domain + 'post/' + postData.post._id, json)
 			.success(function (data) {
 
-			    console.log(data);
+			    
 			    if (textfile || imgFile) {
 			        if (textfile)
 			            self.attach(textfile, data.data._id);
@@ -142,10 +137,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             var self = this;
             var deferred = $q.defer();
 
-            console.log(domain);
-            console.log(postData);
+            
             var json = JSON.stringify(postData);
-            console.log(json);
+            
             if (postData.post.postType == 'suggestPoll' || postData.post.postType == 'contact') {
                 queryString = 'sendmail';
             }
@@ -155,8 +149,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             $http.post(domain + queryString, json)
 			.success(function (data) {
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
-			    console.log(data);
-			    console.log(data.data._id);
+			    
 			    if (data.data._id == undefined) { deferred.resolve(data); return deferred.promise; } //fail to create post!
 			    if (isBase64&&imgFile) {
 			        //imgFile is base64 string
@@ -190,7 +183,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             $rootScope.$broadcast('showLoader', { showLoader: true });
             var deferred = $q.defer();
             var $file = file;
-            console.log($file);
+            
             var upload = $upload.upload({
 
                 url: domain + 'FileUpload?ref=post&_id=' + postId,
@@ -204,14 +197,14 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             }).success(function (data, status, headers, config) {
                 // file is uploaded successfully
-                console.log(data);
+                
                 $rootScope.$broadcast('showLoader', { showLoader: false });
                 deferred.resolve(data);
 
             }).error(function (data, status, headers, config) {
                 // file failed to upload
                 $rootScope.$broadcast('showLoader', { showLoader: false });
-                console.log(data);
+                
                 deferred.resolve(data);
 
             });
@@ -221,19 +214,19 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         attachBase64: function (base64, userId) {//, callbackFunc- nominated to cancelation
 
             var deferred = $q.defer();
-
+            
             postData = {
 
                 base64: base64
             }
             var json = JSON.stringify(postData);
-            console.log(json);
+            
             $rootScope.$broadcast('showLoader', { showLoader: true });
-
+            
             $http.post(domain + 'Base64FileUpload?ref=post&_id=' + userId, json)
 			.success(function (data) {
 
-			    console.log(data);
+			    
 			    //hide the loader
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    //show the thank page only after the post created
@@ -245,7 +238,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			})
 			.error(function (data) {
 
-			    console.log(data);
+			    
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    deferred.resolve(data);
 			});
@@ -265,42 +258,6 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             post.isLiked = isLiked;
 
-            //         var parmas = { "activity": { "post": pid, "user": user._id, "type": "like"} };
-
-            //         var json = JSON.stringify(parmas);
-            //         //console.log(json);
-
-            //         $http.post(domain + 'isActivityFound', json)
-            //.success(function (data) {
-
-            //    if (index == undefined) {
-            //        if (data.data == null) {
-
-            //            singlePost.isLiked = false; return;
-            //        }
-            //        else if (data.data.type == 'like') {
-
-            //            singlePost.isLiked = true; return;
-            //        }
-            //    }
-
-            //    if (data.data == null) {
-
-            //        posts[index].isLiked = false; return;
-            //    }
-            //    else if (data.data.type == 'like') {
-
-            //        posts[index].isLiked = true; return;
-            //    }
-
-            //})
-            //.error(function (data) {
-
-            //    console.log(data);
-
-            //});
-
-
         },
 
         hebrewDate: function (DestinationTime) {
@@ -311,12 +268,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         unLike: function (pid, post) {
 
-            console.log(user)
+            
 
             var parmas = { "activity": { "post": pid, "type": "like"} };
 
             var json = JSON.stringify(parmas);
-            console.log(json);
+            
 
             $http({ url: domain + 'deletePostActivity', method: "delete", headers: { 'Content-Type': 'application/json' }, data: json })
 
@@ -324,13 +281,13 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    if (data.status.statusCode == 0) {
 			        post.likesCount--;
 			        post.isLiked = false;
-			        console.log('success unLike');
+			        
 			    }
-			    console.log(data);
+			    
 			})
 			.error(function (data) {
 
-			    console.log(data);
+			    
 			});
 
 
@@ -341,20 +298,20 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             var parmas = { "activity": { "post": pid, "type": "like"} };
 
             var json = JSON.stringify(parmas);
-            console.log(json);
+            
 
             $http.post(domain + 'addPostActivity', json)
 			.success(function (data) {
 			    if (data.status.statusCode == 0) {
 			        post.isLiked = true;
 			        post.likesCount++;
-			        console.log('success like');
+			        
 			    }
-			    console.log(data);
+			    
 			})
 			.error(function (data) {
 
-			    console.log(data);
+			    
 			});
 
 
@@ -364,17 +321,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             queryString = "meme/template";
 
 
-            console.log("meme/template");
+            
 
             //meme/template
 
             classAjax.getdata('get', queryString, request).then(function (data) {
-                console.log(data.data);
+                
                 if (request.endTimestamp == '') {
-                    memeImages = data.data; console.log(memeImages);
+                    memeImages = data.data;
                 }
                 else {
-                    console.log(data.data);
+                    
                     for (var i = 0; i < data.data.length; i++) {
                         memeImages.push(data[i]);
                     }
@@ -385,9 +342,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         //getters & setters
         setShowInput: function (state) {
-            console.log(showInput);
+            
             showInput = state;
-            console.log(showInput);
+            
         },
 
         setUser: function (userDetails) {
@@ -401,12 +358,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         getShowInput: function () {
-            console.log('get: ' + showInput);
+            
             return showInput;
         },
 
         setPosts: function (state) {
-            console.log('set: ' + posts);
+            
             //showInput = state;
         },
 
@@ -427,13 +384,13 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             self = this;
             singlePost = null;
             queryString = 'post/' + postid;
-            console.log(queryString);
+            
             classAjax.getdata('get', queryString, {})
             .then(function (data) {
-                console.log(data);
+                
                 //if (data.status.statusCode == 8) { window.history.back(); }//go back if the post not exist.
+                self.getIsLike(data.data);
                 singlePost = data.data;
-                self.getIsLike(singlePost);
                 posts = [];
                 self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
             })
@@ -452,10 +409,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         //get authors that create posts in the posttype requested.
         getAuthorsByPostType: function (request) {
             queryString = 'authors?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType;
-            console.log(queryString);
+            
 
             classAjax.getdata('get', queryString, request).then(function (data) {
-                console.log(data);
+                
 
                 if (request.offset == 0) {
                     posts = [];
@@ -475,7 +432,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                     }
 
                 }
-                console.log(posts);
+                
             })
         },
 
@@ -483,15 +440,15 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         getPostsByAuthor: function (request) {
             var self = this;
             queryString = 'post/author/' + request.authorId + '?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType;
-            console.log(queryString);
+            
             showSpiner = true;
             classAjax.getdata('get', queryString, request).then(function (data) {
-                console.log(data);
+                
                 if (request.endTimestamp == '') {
                     posts = [];
                 }
                 //else {
-                console.log(data);
+                
                 showSpiner = false;
                 for (var i = 0; i < data.data.length; i++) {
                     //posts.push(data.data[i]);
@@ -502,31 +459,32 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                         }
                     }
                     if (flag) {
+                        self.getIsLike(data.data[i]);
                         posts.push(data.data[i]);
                     }
                 }
 
-                for (var k = 0; k < posts.length; k++) {
+                //for (var k = 0; k < posts.length; k++) {
 
-                    self.getIsLike(posts[k]);
-                }
+                //    self.getIsLike(posts[k]);
+                //}
                 //}
             })
         },
 
         loadMainFeatures: function () {
             queryString = 'mainfeatures';
-            console.log(queryString);
+            
 
             classAjax.getdata('get', queryString).then(function (data) {
-                console.log(data);
+                
                 if (data.status.statusCode == 0) {
                     mainFeatures = data.data;
                     for (var i in mainFeatures) {
                         mainFeatures[i].featureName = featureDictionary[mainFeatures[i].featureType].featureName;
                         mainFeatures[i].featureLogo = featureDictionary[mainFeatures[i].featureType].featureLogo;
                     }
-                    console.log(mainFeatures);
+                    
                 }
             })
         },

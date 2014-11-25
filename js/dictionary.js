@@ -9,7 +9,6 @@ featureDictionary['poll'] = { featureLogo: './img/poll.png', featureName: 'סק�
 featureDictionary['meme'] = { featureLogo: './img/meme.png', featureName: 'ממים' };
 featureDictionary['event'] = { featureLogo: './img/calendar.png', featureName: 'אירועים' };
 
-console.log(featureDictionary);
 
 var shareDetailes = [];
 shareDetailes['main-menu'] = {message:'רוצים להצטרף לאחליקציה של בנט?'};
@@ -30,4 +29,3 @@ errorMessages.generalError = 'אירעה שגיאה, בדוק חיבור לאי�
 errorMessages.unConfirmed = 'לא אישרת הצטרפות לאפליקציה במייל';
 errorMessages.shortPassword = 'הסיסמה צריכה להיות באורך שישה תווים לפחות';
 errorMessages.mailNotFound = 'המייל שהזנת אינו קיים במערכת';
-errorMessages.wrongPassword = 'הסיסמה שהקשת שגויה';
