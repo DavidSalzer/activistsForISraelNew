@@ -70,7 +70,7 @@
         <div class="user-profile-address user-profile-item" data-ng-show="myProfile">
             <div class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
             <div class="user-item-text" class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
-            <div data-ng-hide="editAddress" placeholder="כתובת">{{profile().address}}</div>
+            <div class="user-item-text" data-ng-hide="editAddress" placeholder="כתובת">{{profile().address}}</div>
             <div class="user-edit-icon-v" data-ng-show="editAddress" data-ng-click="updateUserDetails('address')"></div>
             <input type="text" data-ng-model="editProfile.address" data-ng-show="editAddress" value="{{profile().address}}">
             <div class="user-edit-icon-x" data-ng-show="editAddress" data-ng-click="editItem('address')"></div>

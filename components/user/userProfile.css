@@ -165,6 +165,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .user-item-text {
+    width: 90%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

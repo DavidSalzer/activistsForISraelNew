@@ -67,10 +67,10 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
     return {
 
         setFeature: function (fd) {
-            console.log(featureDetails);
+            
             featureDetails = fd;
 
-            console.log(featureDetails);
+            
         },
 
         getFeature: function () {
@@ -83,17 +83,17 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
 
         setUser: function (user) {
             userDetails = user;
-            console.log(userDetails);
+            
             if (userDetails.img == undefined) {
-                console.log(userDetails);
+                
             }
             else if (userDetails.img.RelativePosition) {
                 userDetails.userImg = domain + userDetails.img.url;
-                console.log(userDetails);
+                
             }
             else {
                 userDetails.userImg = userDetails.img.url;
-                console.log(userDetails);
+                
             }
 
             if (userDetails.gender == 'male') {
@@ -139,7 +139,7 @@ socialGroupApp.factory('generalParameters', ['$rootScope', '$stateParams', '$q',
 
         setBackIcon: function (BI) {
             backIcon = BI;
-            console.log(backIcon);
+            
         },
 
         getOptionsPieChart: function () {
