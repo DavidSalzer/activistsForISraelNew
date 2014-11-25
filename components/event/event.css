@@ -125,8 +125,16 @@ tbody .btn.btn-default.btn-sm {
     text-indent: 10px;
     font-size: 10px;
     text-align: left;
+   
 }
 
+tbody .btn.btn-default.btn-sm.benet-event{
+    background-image: url(../../img/calendar_benet.png);
+background-position: 9px 12px;
+background-size: 20px 20px;
+background-repeat: no-repeat;
+background-color: rgb(178, 200, 221);
+}
 /*tbody .btn.btn-default.btn-sm.btn-info {
     padding: 4px;
     border: 1px solid #004a8e;

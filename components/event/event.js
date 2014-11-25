@@ -120,6 +120,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
 			        $scope.monthArray = newValue; //save month for get back from week display
 			        $scope.togglecaendarArrow(0); //make sore the arrow is to up 
 			        $scope.backgroundDateColor($scope.monthArray);
+			        $scope.l(false);
 			    }
 
 			}, true);
@@ -177,7 +178,10 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
                 }
             }
         }
-
+        var test = $scope.dt;
+        $scope.dt = "";
+        $scope.dt = new Date();
+        //$scope.toggleWeekDisplay();
         // $scope.$apply();
     };
 
@@ -215,19 +219,20 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
 
                                 if (d.getDate() == monthArray[j][k].date.getDate() && d.getMonth() == monthArray[j][k].date.getMonth() && d.getFullYear() == monthArray[j][k].date.getFullYear()) {
                                     var myNode = document.querySelectorAll('.calendar-area td button');
-                                    myNode[j * 7 + k].style.background = "#B2C8DD";
+
 
                                     if (data.data[i]._author.local.role == 'staff') {
-                                        myNode[j * 7 + k].style.backgroundImage = "url('../img/calendar_benet.png')";
+                                        //myNode[j * 7 + k].style.backgroundImage = "url('../img/calendar_benet.png')";
                                         //myNode[j * 7 + k].style.backgroundPosition = "9px 12px";
                                         //myNode[j * 7 + k].style.backgroundSize = "20px 20px";
-                                        myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
-                                         myNode[j * 7 + k].style.setProperty('background-size', '20px 20px');
-                                        myNode[j * 7 + k].style.setProperty('background-position', '9px 12px');
-                                        myNode[j * 7 + k].style.setProperty('opacity', '0.5');
-
-                                         
-                                    };
+                                        //myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
+                                        if (myNode[j * 7 + k].className.indexOf("benet-event") == -1) {
+                                            myNode[j * 7 + k].className = myNode[j * 7 + k].className + " benet-event";
+                                        }
+                                    }
+                                    else {
+                                        myNode[j * 7 + k].style.background = "#B2C8DD";
+                                    }
                                 }
                             }
                         }
@@ -236,17 +241,20 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
 
                             if (d.getDate() == monthArray[j].date.getDate() && d.getMonth() == monthArray[j].date.getMonth() && d.getFullYear() == monthArray[j].date.getFullYear()) {
                                 var myNode = document.querySelectorAll('.calendar-area td button');
-                                myNode[j].style.background = "#B2C8DD";
+
 
                                 if (data.data[i]._author.local.role == 'staff') {
-                                    myNode[j].style.backgroundImage = "url('../img/calendar_benet.png')";
-                                     //myNode[j * 7 + k].style.backgroundPosition = "9px 12px";
-                                        //myNode[j * 7 + k].style.backgroundSize = "20px 20px";
-                                        myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
-                                         myNode[j * 7 + k].style.setProperty('background-size', '20px 20px');
-                                        myNode[j * 7 + k].style.setProperty('background-position', '9px 12px');
-                                        myNode[j * 7 + k].style.setProperty('opacity', '0.5');
-                                };
+                                    if ((myNode[j]) && (myNode[j].className.indexOf("benet-event") == -1)) {
+                                        myNode[j].className = myNode[j].className + " benet-event";
+                                    }
+                                    //myNode[j * 7 + k].style.backgroundImage = "url('../img/calendar_benet.png')";
+                                    //  myNode[j * 7 + k].style.backgroundPosition = "9px 12px";
+                                    //  myNode[j * 7 + k].style.backgroundSize = "20px 20px";
+                                    //  myNode[j * 7 + k].style.backgroundRepeat = "no-repeat";
+                                }
+                                else {
+                                    myNode[j].style.background = "#B2C8DD";
+                                }
                             }
 
                         }
