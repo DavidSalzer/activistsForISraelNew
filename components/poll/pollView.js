@@ -175,6 +175,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
         }
 
         
+    }
 
     $scope.getIsSelected = function (index) {
         return ($scope.choosenOption[index]);
