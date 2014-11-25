@@ -58,13 +58,13 @@
 		<!-- post main text area-->
 		<div style="position:relative;border-radius: 10px;">
 			
-			<textarea  data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text" data-ng-class='{"requieredError":showContentError}' placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
+			<textarea  data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text"  data-ng-class='{"requieredError":showContentError}' placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
-			<span data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' style='color: #bcccce;position: absolute;bottom: 1px;left: 1px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;'>[{{postData.post.content.length}}/{{max}}]</span>
+			<span data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' style='color: #bcccce;position: absolute;bottom: 1px;left: 1px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;' >[{{postData.post.content.length}}/{{max}}]</span>
 			
-			<textarea  data-ng-show='postType=="article" || postType=="event"' class="article-text input-article-text" data-ng-class='{"requieredError":showContentError}' placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
+			<textarea  data-ng-show='postType=="article" || postType=="event"' class="article-text input-article-text" data-ng-class='{"requieredError":showContentError,"withoutBottom":showContentError}' placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
-			<span data-ng-show='postType=="article" || postType=="event"' class="input-article-span">[{{postData.post.content.length}} תוים]
+			<span data-ng-show='postType=="article" || postType=="event"' class="input-article-span" data-ng-class='{"requieredError":showContentError}' >[{{postData.post.content.length}} תוים]
 			</span>
 			<textarea  data-ng-if="postType=='poll'" class="article-text" data-ng-class='{"requieredError":showpollDescriptionerror}' placeholder="תיאור" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >

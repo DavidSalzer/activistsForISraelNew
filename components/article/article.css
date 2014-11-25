@@ -129,37 +129,35 @@ box-sizing: border-box;*/
 
 
 .article-text::-webkit-input-placeholder {
-   color: #818181;
-   
+    color: #818181;
 }
 
 .article-text:-moz-placeholder { /* Firefox 18- */
-  color: #818181;
+    color: #818181;
 }
 
-.article-text::-moz-placeholder {  /* Firefox 19+ */
- color: #818181;
+.article-text::-moz-placeholder { /* Firefox 19+ */
+    color: #818181;
 }
 
-.article-text:-ms-input-placeholder {  
-  color: #818181;
+.article-text:-ms-input-placeholder {
+    color: #818181;
 }
 
 .title-field::-webkit-input-placeholder {
-   color: #818181;
-   
+    color: #818181;
 }
 
 .title-field:-moz-placeholder { /* Firefox 18- */
-  color: #818181;
+    color: #818181;
 }
 
-.title-field::-moz-placeholder {  /* Firefox 19+ */
- color: #818181;
+.title-field::-moz-placeholder { /* Firefox 19+ */
+    color: #818181;
 }
 
-.title-field:-ms-input-placeholder {  
-  color: #818181;
+.title-field:-ms-input-placeholder {
+    color: #818181;
 }
 
 
@@ -448,12 +446,17 @@ div.post-main-text {
     background-image: url("../../img/clock.png");
 }
 
-.title-field.requieredError, .article-text.requieredError {
+.title-field.requieredError, .article-text.requieredError ,.input-article-span.requieredError{
     border: 1px solid hsl(0, 100%, 50%);
 }
 
+.article-text.requieredError.withoutBottom {
+    border-bottom: none;
+}
 
-
+.input-article-span.requieredError {
+    border-top: none;
+}
 /*pop up calendar*/
 
 .input-group-btn {
@@ -627,20 +630,19 @@ input.go-out-time.needsclick {
 
 
 .main-content-wrap.wirte-post-wrapper {
-     padding: 46px 14px 0px 14px;
-     background-color: #d4deec;
+    padding: 46px 14px 0px 14px;
+    background-color: #d4deec;
 }
 
 .confirm-and-clean {
     width: 214px;
-    
     display: block;
     margin: auto;
     /* height: 58px; */
 }
 
 .confirm-and-clean div {
-    margin:0px;
+    margin: 0px;
     display: inline-block;
 }
 

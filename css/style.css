@@ -1435,3 +1435,18 @@ img.brother-types-img {
     margin-bottom: 16px;
     margin-top: 9px;
 }
+
+.glyphicon{
+    background-image: url(../img/arrow_calendar.png);
+width: 26px;
+height: 13px;
+background-size: 100%;
+}
+
+.glyphicon-chevron-up:before,.glyphicon-chevron-down:before{
+    content: " ";
+}
+
+.glyphicon-chevron-down{
+    -webkit-transform: rotateZ(180deg);
+}
