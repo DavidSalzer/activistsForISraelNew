@@ -246,7 +246,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //            controller: "chat"
         //        }
         //    }
-        //})})
+        //})
+        })
 
 /**** Ajax Service ****/
 .factory('classAjax', ['$http', '$q', function ($http, $q) {
