@@ -115,7 +115,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     $scope.userClicked = function (userId) {
         $scope.movePage = true;
         setTimeout(function () {
-            $scope.$apply(function () {
+            $scope.$apply(function () {//sdsd
                 $state.transitionTo('user-profile', { userId: userId });
             })
         }
