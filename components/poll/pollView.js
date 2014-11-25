@@ -1,6 +1,6 @@
 ﻿google.load('visualization', '1.0', { 'packages': ['corechart'] });
 socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '$state', '$http', 'PostService', 'generalParameters', 'classAjax', function ($rootScope, $stateParams, $scope, $state, $http, PostService, generalParameters, classAjax) {
-    console.log($stateParams);
+   
     $scope.domain = domain;
     $scope.currentPoll = $stateParams.postId;
     $scope.choosenOption = [];
@@ -26,23 +26,23 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
 
     generalParameters.setFeature($scope.featureDetails);
     $scope.options = generalParameters.getOptionsPieChart();
-    console.log($scope.options);
+    
     //$scope.polls = PostService.getPosts();
     PostService.getPostById($scope.currentPoll);
 
     $scope.user = generalParameters.getUser();
-    console.log($scope.user);
+    
 
     $scope.maxSelect = 1;
     $scope.minSelect = 1;
 
     //$scope.currentPollObj = $scope.polls[$scope.currentPoll];
     queryString = 'post/' + $scope.currentPoll;
-    console.log(queryString);
+    
     classAjax.getdata('get', queryString, {})
     .then(function (data) {
         $scope.currentPollObj = data.data;
-        console.log($scope.currentPollObj);
+        
         $scope.closedPoll = $scope.currentPollObj.poll.status == "inactive";
 
         for (var i in $scope.currentPollObj.activity) {
@@ -65,7 +65,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
 
         $scope.optionsForVote = $scope.currentPollObj.poll.options;
         $scope.currentPollResults = $scope.currentPollObj.poll.options;
-        console.log($scope.currentPollResults);
+        
 
         $scope.legend = [];
         for (var i = 0; i < $scope.currentPollResults.length; i++) {
@@ -76,13 +76,12 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
             $scope.temp = [];
             for (var i = 0; i < $scope.currentPollResults.length; i++) {
                 percent = (($scope.currentPollResults[i].count / $scope.currentPollObj.poll.countVote) * 100).toFixed(1);
-                console.log(percent);
+                
                 $scope.temp.push({ name: $scope.currentPollResults[i].answer, votes: parseInt(percent), color: $scope.options.colors[i], percent: percent + "%" });
             }
             $scope.currentPollResults = $scope.temp;
         }
-        console.log($scope.currentPollResults);
-        console.log($scope.legend);
+        
 
     })
 
@@ -109,12 +108,12 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                 }
             }
 
-            console.log($scope.voteDetails);
+            
             $scope.json = JSON.stringify({ votes: $scope.voteDetails });
-            console.log($scope.json);
+            
 
             queryString = 'poll/vote/' + $scope.currentPollObj._id;
-            console.log(queryString);
+            
             //$http.post(domain + 'vote/', $scope.json)
             //.success(function (data) {
             $rootScope.$broadcast('showLoader', { showLoader: true });
@@ -128,7 +127,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                             $scope.temp = [];
                             for (var i = 0; i < $scope.currentPollResults.length; i++) {
                                 percent = (($scope.currentPollResults[i].count / $scope.currentPollObj.poll.countVote) * 100).toFixed(1);
-                                console.log(percent);
+                                
                                 $scope.temp.push({ name: $scope.currentPollResults[i].answer, votes: $scope.currentPollResults[i].count, color: $scope.options.colors[i], percent: percent + "%" });
                             }
                             $scope.currentPollResults = $scope.temp;
@@ -141,7 +140,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                         generalParameters.setBackIcon(false);
                         $scope.thankDetails.featureState = 'poll';
                         $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
-                        console.log(data);
+                        
                     }
                 }
                 else {
@@ -175,9 +174,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
             $scope.choosenCount++;
         }
 
-        console.log($scope.choosenOption);
-        console.log('count: ' + $scope.choosenCount);
-    }
+        
 
     $scope.getIsSelected = function (index) {
         return ($scope.choosenOption[index]);

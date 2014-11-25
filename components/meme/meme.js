@@ -1,5 +1,5 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
-    alert('width: '+window.innerWidth+' height: '+window.innerHeight )
+    
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
 
@@ -31,6 +31,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     $scope.posts = PostService.getPosts; //ask service for posts
 
     $scope.getPostsByAll = function () {
+        request.startTimestamp = '';
         request.endTimestamp = '';
         request.orderBy = '-timestamp';
         request.offset = 0;
@@ -38,6 +39,12 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     }
 
     $scope.getPostsByFavorite = function () {
+        var dateObj = new Date();
+        var timeNow = dateObj.getTime();
+        var timeSubstruct = timeNow - (1000 * 60 * 60 * 24 * 30); //substruct 30 days from today- for use in likes and comments
+        
+        //for - last 30 days
+        request.startTimestamp = timeSubstruct;
         request.orderBy = '-likesCount';
         request.endTimestamp = '';
         request.offset = 0;
@@ -49,7 +56,6 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         var timeNow = dateObj.getTime();
         var timeSubstruct = timeNow - (1000 * 60 * 60 * 24 * 30); //substruct 30 days from today- for use in likes and comments
 
-        $scope.currentTab = 'article';
         //for - last 30 days
         request.startTimestamp = timeSubstruct;
         request.endTimestamp = '';
