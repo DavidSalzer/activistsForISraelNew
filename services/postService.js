@@ -150,6 +150,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             else {
                 queryString = 'post';
             }
+            $rootScope.$broadcast('showLoader', { showLoader: true });
             $http.post(domain + queryString, json)
 			.success(function (data) {
 			    $rootScope.$broadcast('showLoader', { showLoader: false });

@@ -9,13 +9,6 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.showSpiner = PostService.getSpiner;
     $scope.showChangePassword = false;
     $scope.movePage = false;
-    $scope.featureDetails = {
-        featureName: null,
-        featureLogo: "./img/profile_small.png",
-        //infoImg: './img/whatsup.png',
-        featureColor: '#004a8e'
-    };
-
     $scope.featuresList = [
 
         {
@@ -56,6 +49,18 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     }
 
     ];
+
+    $scope.featureDetails = {
+        featureName: null,
+        featureLogo: "./img/profile_small.png",
+        featureWhatsUpLogo: "./img/profile_info.png",
+        featureColor: '#818181',
+        infoHaeder: "פרופיל משתמש",
+        infoMainText: 'עמוד פרטי המשתמש בו תוכל לראות את פרטיו, פעולותיו האחרונות ולפנק בניקוד.<br>בעמוד המשתמש שלך תוכל לערוך את פרטיך.',
+        infoSubText: "עוד לא הצטרפת לאחליקציה?"
+    };
+
+    generalParameters.setFeature($scope.featureDetails);
 
     $scope.showAuthorImage = false;
     $scope.showAuthorName = false;
@@ -266,7 +271,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
         queryString = 'profile/update';
         $rootScope.$broadcast('showLoader', { showLoader: true });
         classAjax.getdata('put', queryString, request).then(function (data) {
-            if (data.status.statusCode == 0) {
+            if (data.status && data.status.statusCode == 0) {
                 generalParameters.setUser(data.data.user);
             }
             $scope.editItem(field);
@@ -275,6 +280,10 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     }
 
     $scope.givingScore = function () {
+        if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
+            $rootScope.$broadcast('showInfoPopup', { showInfo: true });
+            return;
+        }
         if (!$scope.userLike) {
 
             queryString = 'addPostActivity';

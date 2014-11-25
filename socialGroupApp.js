@@ -218,7 +218,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                  }
              }
          })
-
         .state('single-event', {
             url: "/single-event/:postId",
             views: {
@@ -248,7 +247,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //        }
         //    }
         //})
-})
+        })
 
 /**** Ajax Service ****/
 .factory('classAjax', ['$http', '$q', function ($http, $q) {
@@ -289,7 +288,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var pollTemplate = 'pollTemplate.html';
             var voteToPollTemplate = 'voteToPollTemplate.html';
 
-            //console.log(scope);
+            
             switch (scope.post.postType) {
                 case 'talkback':
                     template = talkbackTemplate;
@@ -327,7 +326,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
            }
 
            el.on('click', function (e) {
-                console.log(scope.post);
+                
                 if(attrs.postType == 'author'){
                     $rootScope.$broadcast('postClicked', { authorId: scope.post._id, postType: 'author' });
                 }
@@ -356,10 +355,10 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         replace: 'true',
         link: function (scope, el, attrs) {
             el.on('click', function () {
-                console.log(scope);
+                
                 //PostService.updateCommentsCount();
                 // $scope.$emit('handleEmit', {showInput: false}); 
-                console.log(scope.post._id);
+                
 				var user = generalParameters.getUser();
 				if (user.firstName == 'הצטרף לאפליקציה') {
 					
@@ -387,6 +386,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 			
 				var user = generalParameters.getUser();
 				if (user.firstName == 'הצטרף לאפליקציה') {
+					
 					$rootScope.$broadcast('showInfoPopup', { showInfo: true });
 				}
                 else {
@@ -419,7 +419,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         //replace: true
         link: function (scope, el, attrs) {
             el.on('click', function () {
-                console.log(scope);
+                
                 $state.transitionTo('user-profile', { userId: scope.post._author._id });
             });
         }
@@ -518,7 +518,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 $scope.$watch($attr.data, function (value) {
                     
  
-                    console.log(generalParameters);
+                    
                     var options;
 				 
                     //render the desired chart based on the type attribute provided
@@ -550,7 +550,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 								angular.forEach(value, function (row) {
 									data.addRow(["", row.votes, row.color, row.percent]);
 								});
-								console.log(data);
+								
 							var view = new google.visualization.DataView(data);
 							view.setColumns([0, 1,
 											   2,
@@ -600,7 +600,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             elem.bind('scroll', function () {
                 
                 if ((rawElement.scrollTop + rawElement.offsetHeight + 5) >= rawElement.scrollHeight) {
-                    console.log(elem);
+                    
                     scope.$apply(scope.loadingMethod);
                 }
             });
@@ -620,8 +620,10 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
                 var count = ($element.val()).match(/\n/g); //count the "/n", to know number of lines
                 // Once the limit has been met or exceeded, prevent all keypresses from working
-                if (count) { console.log(count.length, maxLine) }
-                console.log($element.val().length, maxchar)
+                if (count) {
+                     //console.log(count.length, maxLine)
+                      }
+                //console.log($element.val().length, maxchar)
                 if (($element.val().length >= maxchar) || (maxLine && count && (count.length > maxLine))) {
                     // Except backspace
 
@@ -643,8 +645,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             el.bind('change', function (event) {
 				
                 var file = event.target.files[0];
-                console.log(file);  
-				console.log(attrs);
+                
 				
 				if((attrs.upload=='img') && (file.type.match('image/*'))) {
 					
@@ -661,7 +662,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 
 						return function (e) {
 
-							console.log(e.target.result); //base64 img
+							
 							scope.imgFileText = file.name;
 							scope.postImg = e.target.result;
 							scope.imgObj = file;
@@ -684,7 +685,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 						return;
 					}
 					
-					console.log(file.type);
+					
 					scope.textFileText = file.name;
 					scope.fileObj = file;
 					scope.$apply();
@@ -742,8 +743,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 		},
 		
 		"DATETIME_FORMATS":{
-			"MONTH":["ינואר","פבואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
-			"SHORTMONTH":["ינואר","פבואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
+			"MONTH":["ינואר","פברואב","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
+			"SHORTMONTH":["ינואר","פברואב","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
 			"DAY":["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"],
 			"SHORTDAY":["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"],
 			"AMPMS":["בבוקר","בצהרים"],

@@ -12,7 +12,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
-        console.log(data);
+        
         if (data.data.user != undefined) {
             generalParameters.setUser(data.data.user);
         }
@@ -236,7 +236,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     }
 
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-        console.log(toState);
+        
         if (shareDetailes[toState.name] != undefined) {
             $scope.showShareBtn = true;
         }
