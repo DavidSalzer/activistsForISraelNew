@@ -152,7 +152,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    
 			    if (data.data._id == undefined) { deferred.resolve(data); return deferred.promise; } //fail to create post!
-			    if (isBase64) {
+			    if (isBase64&&imgFile) {
 			        //imgFile is base64 string
 			        self.attachBase64(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });//, callbackFunc - nominated for cancelation
 			    }
