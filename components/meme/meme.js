@@ -1,5 +1,5 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
-    alert('width: '+window.innerWidth+' height: '+window.innerHeight )
+    alert('width: ' + window.innerWidth + ' height: ' + window.innerHeight)
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
 
@@ -13,6 +13,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         infoMainText: 'עוד לא הכנתם מם? כאן תוכלו ליצור מם משלכם בעזרת מחולל הממים המיוחד ולשתף עם חברים. *יש לשמור על זכויות יוצרים',
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
+    $scope.showendloader = false;
     generalParameters.setFeature($scope.featureDetails);
     generalParameters.setBackIcon(false); //tester
     request = {
@@ -44,6 +45,18 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         PostService.getPostsBatch(request);
     }
 
+
+     $scope.$on('EndLoadMore', function (event, args) {
+        switch (args.showLoad) {
+            case true:
+                 $scope.showendloader = false;
+                break;
+            case false:
+                $scope.showendloader = true;
+                break;
+        }
+    });
+
     $scope.getPostsByViews = function () {
         var dateObj = new Date();
         var timeNow = dateObj.getTime();
@@ -59,6 +72,9 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     }
 
     $scope.loadMore = function () {
+         if ($scope.showendloader) {
+            return;
+        }
         console.log('load more');
         request.offset += 12;
         post = PostService.getPosts();

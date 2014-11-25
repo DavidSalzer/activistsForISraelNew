@@ -15,7 +15,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         infoMainText: 'לוח האירועים של האחליקציה. כאן תוכלו לראות את האירועים הקיימים ולפרסם אירועים/חוגי בית ושאר מפגשים שתרצו לשתף בהם את החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
-
+     $scope.showendloader = false;
     generalParameters.setFeature($scope.featureDetails);
     $scope.user = generalParameters.getUser();
     generalParameters.setBackIcon(false); //tester
@@ -48,8 +48,22 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         //   $scope.$apply();
     }
 
-    $scope.loadMore = function () {
 
+     $scope.$on('EndLoadMore', function (event, args) {
+        switch (args.showLoad) {
+            case true:
+                 $scope.showendloader = false;
+                break;
+            case false:
+                $scope.showendloader = true;
+                break;
+        }
+    });
+
+    $scope.loadMore = function () {
+        if ($scope.showendloader) {
+            return;
+        }
         console.log('load more');
         request.offset += 8;
         post = PostService.getPosts();

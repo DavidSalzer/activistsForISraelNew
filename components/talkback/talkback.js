@@ -7,6 +7,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     $scope.showSpiner = PostService.getSpiner;
     $scope.domain = domain;
     generalParameters.setBackIcon(false);
+    $scope.showendloader = false;
 
     var dateObj = new Date();
     var timeNow = dateObj.getTime();
@@ -62,6 +63,17 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     });
 
 
+
+    $scope.$on('EndLoadMore', function (event, args) {
+        switch (args.showLoad) {
+            case true:
+                 $scope.showendloader = false;
+                break;
+            case false:
+                $scope.showendloader = true;
+                break;
+        }
+    });
     $scope.getPostsByAll = function () {
         request.startTimestamp = '';
         request.endTimestamp = '';
@@ -89,6 +101,9 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
 
     //load more post on scroll down
     $scope.loadMore = function () {
+        if ($scope.showendloader) {
+            return;
+        }
         console.log('load more');
         request.offset += 20;
         post = PostService.getPosts();

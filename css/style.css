@@ -1435,3 +1435,30 @@ img.brother-types-img {
     margin-bottom: 16px;
     margin-top: 9px;
 }
+
+/*********************load more*******************************/
+
+.end-load-more {
+    height: 25px;
+    position: relative;
+}
+
+.end-load-more img {
+    display: block;
+    height: 25px;
+    width: 25px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.loadmore-endline {
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    background-color: gray;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    z-index: 0;
+}

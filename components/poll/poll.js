@@ -4,6 +4,7 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
     $scope.currentPoll = null;
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
+    $scope.showendloader = false;
 
     $scope.featureDetails = {
         featureName: null,
@@ -67,7 +68,23 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
         //console.log($scope.polls);
     }
 
+
+    $scope.$on('EndLoadMore', function (event, args) {
+        switch (args.showLoad) {
+            case true:
+                $scope.showendloader = false;
+                break;
+            case false:
+                $scope.showendloader = true;
+                break;
+        }
+    });
+
+
     $scope.loadMore = function () {
+        if ($scope.showendloader) {
+            return;
+        }
         console.log('load more');
         request.offset += 20;
         post = PostService.getPosts();
