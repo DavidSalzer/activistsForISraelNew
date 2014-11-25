@@ -1,7 +1,7 @@
 socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classAjax', 'generalParameters', 'PostService', function ($rootScope, $scope, $state, classAjax, generalParameters, PostService) {
 
     var exitFlag = false;
-
+     
     generalParameters.setBackIcon(false);
     $scope.originUrl = window.location.origin + window.location.pathname + '#/';
     console.log($scope.originUrl);
@@ -55,6 +55,7 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
                 break;
         }
     }
+
 
     $scope.goToFeature = function (featureUrl, postId) {
         console.log('featureUrl: ' + featureUrl);

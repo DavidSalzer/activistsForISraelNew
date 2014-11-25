@@ -8,7 +8,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
     $scope.showChangePassword = false;
-
+    $scope.movePage = false;
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/profile_small.png",
@@ -62,7 +62,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.userLike = false;
 
     generalParameters.setFeature($scope.featureDetails);
-    
+
 
 
 
@@ -80,30 +80,30 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     else {
         $http.get(domain + 'profile/' + $stateParams.userId, { withCredentials: true, async: true })
             .success(function (data) {
-                
+
                 $scope.otherUser = data.data.user;
 
                 var parmas = { "activity": { "receivedUser": $stateParams.userId, "type": "userLike"} };
 
                 var json = JSON.stringify(parmas);
-                
+
 
                 $http.post(domain + 'isActivityFound', json)
 			.success(function (data) {
-			    
+
 			    if (data.data == null) {
 			        $scope.userLike = false;
-			        
+
 			    }
 			    else if (data.data.type == 'userLike') {
 			        $scope.userLike = true;
-			        
+
 			    }
 
 			})
 			.error(function (data) {
 
-			    
+
 
 			});
 
@@ -165,9 +165,9 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.editGender = false;
 
     $scope.editItem = function (field) {
-        
+
         $scope.editProfile = angular.copy($scope.profile());
-        
+
         switch (field) {
             case 'name':
                 if ($scope.editName) {
@@ -251,7 +251,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 request = { phone: $scope.editProfile.phone };
                 break;
             case 'gender':
-                
+
                 if ($scope.editProfile.gender == 'זכר') {
                     gender = 'male';
                 }
@@ -262,7 +262,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 break;
         }
 
-        
+
         queryString = 'profile/update';
         $rootScope.$broadcast('showLoader', { showLoader: true });
         classAjax.getdata('put', queryString, request).then(function (data) {
@@ -293,7 +293,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 })
         }
         else {
-            
+
             queryString = 'deletePostActivity';
             request = {
                 activity: {
@@ -302,18 +302,18 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 }
             }
             var json = JSON.stringify(request);
-            
+
             $http({ url: domain + 'deletePostActivity', method: "delete", headers: { 'Content-Type': 'application/json' }, data: json })
 
 			.success(function (data) {
 			    if (data.status.statusCode == 0) {
 			        $scope.userLike = false;
 			    }
-			    
+
 			})
 			.error(function (data) {
 
-			    
+
 			});
 
             //classAjax.getdata('delete', queryString, request)
@@ -329,7 +329,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.setOtherUsersActivity = function () {
         queryString = 'getActivitiesByParams?receivedUser=' + $stateParams.userId + '&orderBy=-timestamp';
         classAjax.getdata('get', queryString, {}).then(function (data) {
-            
+
             $scope.otherUsersActivity = data.data;
         })
     }
@@ -339,7 +339,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     }
 
     $scope.textForView = function (activity) {
-        
+
         if (activity.type == 'userLike') {
             activity.textView = 'פינק בניקוד את ' + $scope.profile().firstName + ' ' + $scope.profile().lastName;
         }
@@ -365,25 +365,37 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":                    
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                    
-                //    break;                    
+                //case "author":                      
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                      
+                //    break;                      
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":                    
-                //    $state.transitionTo('single-event', { postId: args.postId });                    
-                //    break;                    
-                //case "voteToPoll":                    
-                //    $state.transitionTo('poll-view', { postId: args.postId });                    
-                //    break;                    
+                //case "event":                      
+                //    $state.transitionTo('single-event', { postId: args.postId });                      
+                //    break;                      
+                //case "voteToPoll":                      
+                //    $state.transitionTo('poll-view', { postId: args.postId });                      
+                //    break;                      
             }
         }
         else {
+            if (activity.user._id != $stateParams.userId){
+                     $scope.movePage = true; 
+                }
+            //    setTimeout(function () {
+            //    $scope.$apply(function () {
+            //        $state.transitionTo('user-profile', { userId: activity.user._id });
+            //    })
+            //}
+            //, 1);
+             setTimeout(function () {
+                 $scope.$apply(function () {
             $state.transitionTo('user-profile', { userId: activity.user._id });
+             })},40);
         }
     }
 
@@ -417,10 +429,10 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     }
 
     $scope.$on('postClicked', function (event, args) {
-        
+
         $scope.postId = args.postId;
         $scope.authorId = args.authorId;
-        
+
         switch (args.postType) {
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
@@ -449,7 +461,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
 
 
         var meme = $scope.posts()[$index];
-        
+
 
         if (meme.isLiked == true) {//UNLIKE!
 
@@ -471,7 +483,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
         $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.get(domain + 'logout/', { withCredentials: true, async: true })
         .success(function (data) {
-            
+
             generalParameters.setUser({ firstName: 'הצטרף לאפליקציה', userImg: './img/user.png' });
             if (document.location.protocol != 'http:' && document.location.protocol != 'https:') {
                 window.cookies.clear(function () {
@@ -486,14 +498,14 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
 
     //send base64 string to server to be converted to jpg, then save image to current user details. 
     $scope.uploadBase64Image = function () {
-        
+
         // $scope.json = JSON.stringify($scope.userImg);
         var userId = generalParameters.getUser();
-        
+
         $http.post(domain + 'Base64FileUpload?ref=user&_id=' + userId._id,
             { "base64": $scope.userImg })
             .success(function (data) {
-                
+
                 generalParameters.setUser(data.data);
                 //generalParameters.setUser(data.data.user);
             });
@@ -515,7 +527,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             var reader = new FileReader();
             reader.onload = (function () {
                 return function (e) {
-                    
+
                     $scope.userimg = e.target.result;
                     $scope.editImg = true;
                     $scope.$apply();
@@ -536,7 +548,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     }
 
     $scope.$on('editDone', function (e, d) {
-        
+
         $scope.userImg = d.data;
         if ($scope.userImg != '') {
             $scope.uploadBase64Image();
@@ -574,14 +586,14 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
 
         }
 
-        
+
         $scope.json = JSON.stringify($scope.newPasswordDetails);
-        
+
 
         $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.put(domain + 'changePassword', $scope.json)
         .success(function (data) {
-            
+
             if (data.status.statusCode == 0) {
                 $scope.showLogin = false;
                 generalParameters.setShowLogin(false);

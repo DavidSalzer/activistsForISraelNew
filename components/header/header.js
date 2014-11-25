@@ -8,7 +8,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     var current = $location.$$url;
     //$scope.active = -1;
     $scope.showLoader = false;
-
+  
 
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
