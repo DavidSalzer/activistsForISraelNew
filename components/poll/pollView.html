@@ -11,7 +11,7 @@
 
 <div class="pollView-container" >
 	<div class="pollView-title">
-		{{currentPollObj.title}}
+		{{currentPollObj.title | limitTo:55}}<span data-ng-if="55 < currentPollObj.title.length" class='event-3points'>...</span>
 	</div>
 	<!--<div class="imageView-background">
 		<div class="legend-image" style="background-image: url({{domain}}{{currentPollObj.img}})">
@@ -28,7 +28,7 @@
     <div class="legend-wraper">
 	 <div ng-repeat="line in legend" class="legend-container" data-ng-hide = "pollIsActive()">
 		<div class="legend-color" data-ng-style="{'background-color': '{{line.color}}'}"></div><!---->
-		<div class="legend-content" >{{line.title}}</div><!--data-ng-style="{'color': '#ffffff'}"-->
+		<div class="legend-content" >{{line.title | limitTo:65}}<span data-ng-if="65 < line.title.length" class='event-3points'>...</span></div><!--data-ng-style="{'color': '#ffffff'}"-->
 		<!--<div class="legend-image" data-ng-show='{{"line.image"}}' data-ng-style="{'background-image': 'url({{line.image}})'}">
 			
 		</div>-->
@@ -38,8 +38,10 @@
 		<!--<div class="optionToVote-image" data-ng-show ='{{"item.imageUrl"}}' style="background-image: url({{domain}}{{item.imageUrl}})">-->
 			<!--<img ng-src="{{item.imageUrl}}" >-->
 		<!--</div>-->
-		<div class="optionToVote-container" data-ng-show = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#ffffff', 'background-color': '#565c63'}"><div style="display: table;width: 100%;height: 100%;"> <div style="display: table-cell; vertical-align: middle">{{item.answer}}</div></div> </div>
-		<div class="optionToVote-container" data-ng-hide = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#000000', 'background-color': '#ffffff'}"><div style="display: table;width: 100%;height: 100%;"> <div style="display: table-cell; vertical-align: middle">{{item.answer}}</div></div> </div>
+		<div class="optionToVote-container" data-ng-show = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#ffffff', 'background-color': '#565c63'}"><div style="display: table;width: 100%;height: 100%;"> <div style="display: table-cell; vertical-align: middle">
+            {{item.answer | limitTo:65}}<span data-ng-if="65 < item.answer.length" class='event-3points'>...</span></div></div> </div>
+		<div class="optionToVote-container" data-ng-hide = "getIsSelected($index);" ng-click="selectOption($index);" data-ng-style="{'color': '#000000', 'background-color': '#ffffff'}"><div style="display: table;width: 100%;height: 100%;"> <div style="display: table-cell; vertical-align: middle">
+            {{item.answer | limitTo:65}}<span data-ng-if="65 < item.answer.length" class='event-3points'>...</span></div></div> </div>
 	</div>
     <div class="vote-error" data-ng-if = "showVoteError">* מספר השדות שבחרת אינו תקין.</div>
     <div class="vote-error" data-ng-if = "showServerVoteError">* {{voteErrorMsg}}</div>

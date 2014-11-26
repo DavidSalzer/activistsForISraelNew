@@ -32,7 +32,7 @@ socialGroupApp.controller('thankYou', ['$rootScope', '$scope', '$state', 'classA
         $scope.showThankPage = args.showThankPage;
         //$scope.$apply();
         generalParameters.setShowLogin($scope.showThankPage);
-        console.log(args)
+        
     });
 
     $scope.openSendConfirm = function () {
