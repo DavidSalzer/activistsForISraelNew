@@ -9,7 +9,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.isSiteHeader = true;
     $scope.timeDisplay = {};
 
-   
+
 
     $scope.timeDisplay.time = 'dfhfgm';
     var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'poll': '#da4f00', 'event': '#004a8e' };
@@ -203,17 +203,42 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
         $scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '') && $scope.postType == 'event';
         $scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '') && $scope.postType == 'event';
         $scope.showLocationError = ($scope.postData.post.location == undefined || $scope.postData.post.location == '') && $scope.postType == 'event';
+        $scope.showMailError = $scope.validateEmails($scope.postData.post.email);
+        $scope.showPhoneError = $scope.validatePhone($scope.postData.post.phone);
         if ($scope.postType == 'poll') {
             $scope.showPollQuestionError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'poll');
             $scope.showpollDescriptionerror = ($scope.postData.post.content == undefined || $scope.postData.post.content == '') && ($scope.postType == 'poll');
             $scope.showPollAnsError = ($scope.postData.post.poll.options == undefined || $scope.postData.post.poll.options.length < 2) && $scope.postType == 'poll';
         }
 
-        return (!($scope.showTitleError || $scope.showContentError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || $scope.showPollQuestionError || $scope.showpollDescriptionerror || $scope.showPollAnsError || false));
+        return (!($scope.showTitleError || $scope.showContentError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || $scope.showPollQuestionError || $scope.showpollDescriptionerror || $scope.showPollAnsError || $scope.showMailError || $scope.showPhoneError || false));
 
 
     }
 
+
+    $scope.validateEmails = function (email) {
+        if ($scope.postType != 'event') return false;
+        if ((email != "") && (email != undefined)) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (!re.test(email)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    $scope.validatePhone = function (phone) {
+        if ($scope.postType != 'event') return false;
+        if ((phone != "") && (phone != undefined)) {
+            return !(/^\d+$/.test(phone));
+        }
+        return false;
+
+    }
     //*****************date area**************// 
 
 
