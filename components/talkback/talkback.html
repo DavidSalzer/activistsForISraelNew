@@ -22,23 +22,28 @@
     <div class="spiner-zone" data-ng-show="showSpiner()">
         <div class="loader"></div>
     </div>
-
+    <div class="end-load-more" data-ng-if="showendloader == true">
+        <img alt="end" src="./img/end_feed.png" />
+        <div class="loadmore-endline"></div>
+    </div>
 </div>
 
-
+<div class="inner-big-loader" data-ng-show="movePage">
+    <div></div>
+</div>
 <!--<div>{{postId}}</div>-->
     <!--<div class="write-comment-zone" data-ng-show="showInput">
-        <input type="text" class="write-comment-box" placeholder="הזן טקסט כאן" data-ng-model="commentText">
-        <input type="button" class="write-comment-btn" value="שלח &#9664;" data-ng-click="sendComment()">
-    </div>
-    <div class="comment-balloon" data-ng-show="showInput==false">
-        <span class="balloon-handler"></span>
-        <textarea class="text-balloon">
-        </textarea>
+            <input type="text" class="write-comment-box" placeholder="הזן טקסט כאן" data-ng-model="commentText">
+            <input type="button" class="write-comment-btn" value="שלח &#9664;" data-ng-click="sendComment()">
+        </div>
+        <div class="comment-balloon" data-ng-show="showInput==false">
+            <span class="balloon-handler"></span>
+            <textarea class="text-balloon">
+            </textarea>
     
-        <p><span class="plus" data-ng-click="updatePosts()">+</span> צרף תמונה</p>
+            <p><span class="plus" data-ng-click="updatePosts()">+</span> צרף תמונה</p>
     
-    </div>-->
+        </div>-->
 <div class="sub-header special-sub-header" id="feature-header" data-ng-click="writePost()">
     <div class="inner-special-header" data-ng-style="{'background-color':featureDetails.featureColor}">
     כתוב פוסט

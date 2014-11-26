@@ -12,7 +12,7 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
     $scope.offset = 20;
-
+    $scope.movePage = false;
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
@@ -42,6 +42,11 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
         var tel = $scope.post().phone;
         window.location.href = 'tel:' + tel;
     };
+
+
+    $scope.$on('ggg', function (event, args) {
+        $scope.movePage = true;
+    });
 
     $scope.mail = function () {
 

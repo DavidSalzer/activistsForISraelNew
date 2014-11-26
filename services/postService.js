@@ -36,6 +36,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             showSpiner = true;
             if (request.offset == 0) {
                 posts = [];
+                $rootScope.$broadcast('EndLoadMore', { showLoad: true });
             }
             classAjax.getdata('get', queryString, request).then(function (data) {
                 
@@ -43,6 +44,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 //    posts = [];
                 //}
                 //else {
+                if (data.data.length == 0){
+                    $rootScope.$broadcast('EndLoadMore', { showLoad: false });
+                }
                 
                 showSpiner = false;
                 for (var i = 0; i < data.data.length; i++) {

@@ -8,7 +8,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
     $scope.showChangePassword = false;
-
+    $scope.movePage = false;
     $scope.featuresList = [
 
         {
@@ -392,7 +392,19 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             }
         }
         else {
+            if (activity.user._id != $stateParams.userId){
+                     $scope.movePage = true; 
+                }
+            //    setTimeout(function () {
+            //    $scope.$apply(function () {
+            //        $state.transitionTo('user-profile', { userId: activity.user._id });
+            //    })
+            //}
+            //, 1);
+             setTimeout(function () {
+                 $scope.$apply(function () {
             $state.transitionTo('user-profile', { userId: activity.user._id });
+             })},40);
         }
     }
 

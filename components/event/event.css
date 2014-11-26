@@ -21,6 +21,12 @@ button:focus, input:focus {
     padding: 58px 0px 10px 0px;
 }
 
+
+.end-load-more {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 /*.calendar:after {
     position: absolute;
     content: "";
