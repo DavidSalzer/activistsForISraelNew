@@ -656,3 +656,11 @@ input.go-out-time.needsclick {
     font-weight: bold;
     margin-bottom: 20px;
 }
+
+.quickdate-text-inputs{
+    display: none;
+}
+
+.quickdate-calendar-header{
+    margin-top: 20px;
+}

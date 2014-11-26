@@ -35,7 +35,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
-
+    
 
     $scope.l = function (flager) {
         console.log(flager);
@@ -156,7 +156,6 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
 
 
     $scope.toggleWeekDisplay = function () {
-
         //now in single week display? -> open and return
         if ($scope.$$childHead.$$childHead.rows.length == 1) {
 

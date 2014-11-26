@@ -38,7 +38,7 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
     };
 
     $scope.call = function () {
-
+        console.log($scope.post());
         var tel = $scope.post().phone;
         window.location.href = 'tel:' + tel;
     };
