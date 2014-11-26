@@ -4,7 +4,7 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
 
     generalParameters.setBackIcon(false);
     $scope.originUrl = window.location.origin + window.location.pathname + '#/';
-    console.log($scope.originUrl);
+    
 
     $scope.demandes = [
     {
@@ -41,7 +41,7 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
                 }
                 else {
                     $rootScope.$broadcast('showLoginPopup', { showLogin: true });
-                    console.log('sign in');
+                    
                 }
                 break;
             case 'pointes':
@@ -57,7 +57,7 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
     }
 
     $scope.goToFeature = function (featureUrl, postId) {
-        console.log('featureUrl: ' + featureUrl);
+        
         $state.transitionTo(featureUrl, { postId: postId });
     }
 
