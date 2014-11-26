@@ -9,7 +9,6 @@ featureDictionary['poll'] = { featureLogo: './img/poll.png', featureName: 'סק�
 featureDictionary['meme'] = { featureLogo: './img/meme.png', featureName: 'ממים' };
 featureDictionary['event'] = { featureLogo: './img/calendar.png', featureName: 'אירועים' };
 
-console.log(featureDictionary);
 
 var shareDetailes = [];
 shareDetailes['main-menu'] = {message:'רוצים להצטרף לאחליקציה של בנט?'};

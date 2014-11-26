@@ -23,7 +23,7 @@
 	</div>
 
 	<!--Div that will hold the pie chart-->
-	<div google-chart data="currentPollResults" type={{currentPollObj.poll.pollType}} data-ng-hide = "pollIsActive()"></div>
+	<div google-chart data="currentPollResults" type={{currentPollObj.poll.pollType}} data-ng-hide = "pollIsActive()" style="overflow: hidden"></div>
 	<!--<div class="gray-line" data-ng-hide = "pollIsActive()"></div>-->
     <div class="legend-wraper">
 	 <div ng-repeat="line in legend" class="legend-container" data-ng-hide = "pollIsActive()">

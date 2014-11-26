@@ -13,6 +13,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         infoMainText: 'עוד לא הכנתם מם? כאן תוכלו ליצור מם משלכם בעזרת מחולל הממים המיוחד ולשתף עם חברים. *יש לשמור על זכויות יוצרים',
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
+    $scope.showendloader = false;
     generalParameters.setFeature($scope.featureDetails);
     generalParameters.setBackIcon(false); //tester
     request = {
@@ -31,6 +32,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     $scope.posts = PostService.getPosts; //ask service for posts
 
     $scope.getPostsByAll = function () {
+        request.startTimestamp = '';
         request.endTimestamp = '';
         request.orderBy = '-timestamp';
         request.offset = 0;
@@ -38,18 +40,35 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     }
 
     $scope.getPostsByFavorite = function () {
+        var dateObj = new Date();
+        var timeNow = dateObj.getTime();
+        var timeSubstruct = timeNow - (1000 * 60 * 60 * 24 * 30); //substruct 30 days from today- for use in likes and comments
+        
+        //for - last 30 days
+        request.startTimestamp = timeSubstruct;
         request.orderBy = '-likesCount';
         request.endTimestamp = '';
         request.offset = 0;
         PostService.getPostsBatch(request);
     }
 
+
+     $scope.$on('EndLoadMore', function (event, args) {
+        switch (args.showLoad) {
+            case true:
+                 $scope.showendloader = false;
+                break;
+            case false:
+                $scope.showendloader = true;
+                break;
+        }
+    });
+
     $scope.getPostsByViews = function () {
         var dateObj = new Date();
         var timeNow = dateObj.getTime();
         var timeSubstruct = timeNow - (1000 * 60 * 60 * 24 * 30); //substruct 30 days from today- for use in likes and comments
 
-        $scope.currentTab = 'article';
         //for - last 30 days
         request.startTimestamp = timeSubstruct;
         request.endTimestamp = '';
@@ -59,6 +78,9 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     }
 
     $scope.loadMore = function () {
+         if ($scope.showendloader) {
+            return;
+        }
         console.log('load more');
         request.offset += 12;
         post = PostService.getPosts();

@@ -1,6 +1,12 @@
 socialGroupApp.controller('thankYou', ['$rootScope', '$scope', '$state', 'classAjax', 'generalParameters', function ($rootScope, $scope, $state, classAjax, generalParameters) {
 
     $scope.showThankPage = false;
+
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        $scope.showThankPage = false;
+        
+    });
+
     $scope.backToApp = function (state) {
         $scope.showThankPage = false;
         generalParameters.setShowLogin(false);
@@ -28,5 +34,10 @@ socialGroupApp.controller('thankYou', ['$rootScope', '$scope', '$state', 'classA
         generalParameters.setShowLogin($scope.showThankPage);
         console.log(args)
     });
+
+    $scope.openSendConfirm = function () {
+        $scope.showThankPage = false;
+        $rootScope.$broadcast('showSignInPopup', { showSignIn: true, showSendConfirm: true });
+    }
 
 } ])

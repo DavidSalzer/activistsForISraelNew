@@ -8,6 +8,10 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.imgFileText = 'צרף תמונה';
     $scope.isSiteHeader = true;
     $scope.timeDisplay = {};
+
+   
+
+    $scope.timeDisplay.time = 'dfhfgm';
     var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'poll': '#da4f00', 'event': '#004a8e' };
     $scope.isPostPending = false;
 
@@ -165,7 +169,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 		        }
 		        $scope.isPostPending = false;
 		    });
-            }
+        }
     };
 
     $scope.editPost = function () {
@@ -296,7 +300,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
             // imageData is your base64-encoded image
             // update some ng-src directive
             $scope.imgFileText = imageData.fileText;
-            $scope.imgObj = imageData.imgData;//"data:image/jpeg;base64," +
+            $scope.imgObj = imageData.imgData; //"data:image/jpeg;base64," +
         });
     };
 } ]);

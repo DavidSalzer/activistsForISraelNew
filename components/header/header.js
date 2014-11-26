@@ -8,11 +8,11 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     var current = $location.$$url;
     //$scope.active = -1;
     $scope.showLoader = false;
-
+  
 
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
-        console.log(data);
+        
         if (data.data.user != undefined) {
             generalParameters.setUser(data.data.user);
         }
@@ -170,14 +170,14 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         if ($scope.showInfo == true) {
             $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
             $rootScope.$broadcast('showLoginPopup', { showLogin: false });
-            $rootScope.$broadcast('showThankPage', { showThankPage: false });
+            //$rootScope.$broadcast('showThankPage', { showThankPage: false });
             $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
             $rootScope.$broadcast('showInfoPopup', { showInfo: false });
             generalParameters.setShowLogin(false);
         } else {
             $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
             $rootScope.$broadcast('showLoginPopup', { showLogin: false });
-            $rootScope.$broadcast('showThankPage', { showThankPage: false });
+            //$rootScope.$broadcast('showThankPage', { showThankPage: false });
             $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
             generalParameters.setShowLogin(true);
@@ -236,7 +236,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     }
 
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-        console.log(toState);
+        
         if (shareDetailes[toState.name] != undefined) {
             $scope.showShareBtn = true;
         }
@@ -248,7 +248,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     $scope.closePopups = function () {
         $rootScope.$broadcast('showSignInPopup', { showSignIn: false });
         $rootScope.$broadcast('showLoginPopup', { showLogin: false });
-        $rootScope.$broadcast('showThankPage', { showThankPage: false });
+        //$rootScope.$broadcast('showThankPage', { showThankPage: false });
         $rootScope.$broadcast('showErrorPopup', { showErrorPopup: false });
         $rootScope.$broadcast('showInfoPopup', { showInfo: false });
         generalParameters.setShowLogin(false);

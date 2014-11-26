@@ -12,7 +12,7 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
     $scope.offset = 20;
-
+    $scope.movePage = false;
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
@@ -43,6 +43,11 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
         window.location.href = 'tel:' + tel;
     };
 
+
+    $scope.$on('ggg', function (event, args) {
+        $scope.movePage = true;
+    });
+
     $scope.mail = function () {
 
         var email = $scope.post().email;
@@ -54,18 +59,16 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
     };
 
     $scope.participate = function () {
-
+        $scope.showPartiPop = true;
+        //alert("לחצת על השתתף ");
         var startDate = new Date($scope.post().DestinationTime); // beware: month 0 = january, 11 = december
         var endDate = new Date($scope.post().DestinationTime);
         var title = $scope.post().title;
         var location = $scope.post().location;
         var notes = $scope.post().content;
-        //var success = function (message) { //need to uncomment - function needed.
-        $scope.showPartiPop = true;
-
-        //var showPartiPop = $scope.showPartiPop;
-        //showPartiPop = true;
-        //};
+        var success = function (message) {
+            $scope.showPartiPop = true;
+        };
         var error = function (message) {
             navigator.notification.alert("הוספת האירוע ליומן נכשלה. שגיאה: " + message + "אנא נסה שנית", null, '', 'אשר'); //phonegap native notifications- messge,callback,title,button label
         };

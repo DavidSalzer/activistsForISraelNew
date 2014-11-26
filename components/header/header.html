@@ -1,6 +1,6 @@
 <header class="navbar navbar-app navbar-absolute-top" data-ng-controller="headerCtrl">
     <div class="info-popup" ng-show="showInfo">
-        <section data-ng-hide="featureDetails().featureName=='mainMenu'">
+        <section >
             <span class="info info-close" data-ng-click="showInpoPopUp()"></span>
             <span class="arrow-up"></span>
             <img ng-src="{{featureDetails().featureWhatsUpLogo}}" class="info-img">
@@ -15,7 +15,7 @@
             </div>
             <!--<figure class="devider-line bottom-devider"></figure>-->
         </section>
-        <section class="point-section" data-ng-show="featureDetails().featureName=='mainMenu'">
+        <section class="point-section" data-ng-hide="true">
             <span class="info info-close" data-ng-click="showInpoPopUp()"></span>
             <div id="point-header-text">{{featureDetails().infoHaeder}}</div>
             <!--<figure class="devider-line point-devider-line"></figure>-->

@@ -3,6 +3,12 @@
 <link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/meme/meme.css" />
 <link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/user/userProfile.css" />
 
+
+<div class="inner-big-loader" data-ng-show="movePage">
+    <div></div>
+</div>
+
+
 <section id="user-profile">
     <div class="user-profile-avatar-zone">
         <div class="user-profile-avatar-wrapper">
@@ -27,11 +33,16 @@
             <input type="text" data-ng-model="editProfile.firstName" data-ng-show="editName" value="{{ profile().firstName }}">
             <input type="text" data-ng-model="editProfile.lastName" data-ng-show="editName" value="{{ profile().lastName }}">
             <div class="user-edit-icon-x" data-ng-show="editName" data-ng-click="editItem('name')"></div>
-            <img data-ng-src="./img/sidebar-menu-icon.png" alt="side-profile" class="profile-item-circle" />
+            <img data-ng-src="./img/sidebar-menu-icon.png" alt="side-profile" class="profile-item-circle" data-ng-hide="editName" />
+        </div>
+
+        <div class="user-profile-give-score user-profile-item" data-ng-show="!myProfile">
+            <div>פנק אותו בניקוד</div>
+            <div class="user-giving-score" data-ng-click="givingScore()" data-ng-class="{'user-giving-score-done': userLike}"></div>
         </div>
 
           <div class="pazam-item user-profile-item">
-            <div>פז"ם: 200 ימים</div>
+            <div>פז"ם: {{profile().registrationTime}} ימים</div>
         </div>
 
         <!--<div class="user-profile-registration-date user-profile-item">
@@ -39,12 +50,12 @@
         </div>-->
 
         <div class="user-profile-scoring user-profile-item">
-            <div class="user-giving-score" data-ng-class="{'user-giving-score-done': userLike}" data-ng-hide="myProfile" data-ng-click="givingScore()"></div>
+            <!--<div class="user-giving-score" data-ng-class="{'user-giving-score-done': userLike}" data-ng-hide="myProfile" data-ng-click="givingScore()"></div>-->
             <div>ניקוד מצטבר: {{profile().point.count+0}}</div>
         </div>
         <div class="user-profile-gender user-profile-item" data-ng-show="myProfile">
             <div class="user-edit-icon" data-ng-hide="editGender" data-ng-click="editItem('gender')"></div>
-            <div data-ng-hide="editGender" placeholder="כתובת">{{profile().gender}}</div>
+            <div data-ng-hide="editGender">{{profile().gender}}</div>
             <div class="user-edit-icon-v" data-ng-show="editGender" data-ng-click="updateUserDetails('gender')"></div>
             <!--<input type="text" data-ng-model="profile().gender" data-ng-show="editGender" value="{{profile().gender}}">-->
             <select data-ng-show="editGender" data-ng-model="editProfile.gender">
@@ -65,7 +76,7 @@
         <div class="user-profile-address user-profile-item" data-ng-show="myProfile">
             <div class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
             <div class="user-item-text" class="user-edit-icon" data-ng-hide="editAddress" data-ng-click="editItem('address')"></div>
-            <div data-ng-hide="editAddress" placeholder="כתובת">{{profile().address}}</div>
+            <div class="user-item-text" data-ng-hide="editAddress" placeholder="כתובת">{{profile().address}}</div>
             <div class="user-edit-icon-v" data-ng-show="editAddress" data-ng-click="updateUserDetails('address')"></div>
             <input type="text" data-ng-model="editProfile.address" data-ng-show="editAddress" value="{{profile().address}}">
             <div class="user-edit-icon-x" data-ng-show="editAddress" data-ng-click="editItem('address')"></div>
@@ -79,6 +90,11 @@
             <div class="user-edit-icon-x" data-ng-show="editPhone" data-ng-click="editItem('phone')"></div>
         </div>
 
+        <div class="user-profile-phone user-profile-item" data-ng-show="myProfile">
+            <div class="user-edit-icon" data-ng-click="editItem('password')"></div>
+            <div>שינוי סיסמה</div>
+        </div>
+
         <div class="user-profile-other-user-zone" data-ng-hide="getOtherUsersActivity().length == 0 || getOtherUsersActivity().length == undefined">
             <div class="user-profile-other-user-wrapper" style="width: {{getOtherUsersActivity().length*140}}px">
                 <div data-ng-repeat="activity in getOtherUsersActivity()" class="user-profile-other-user-activity" data-ng-click="goToSinglePage(activity, activity.type != 'userLike')">
@@ -88,7 +104,7 @@
                             <div class="author-rank-image" data-ng-class="{'author-rank-image-0': activity.user.data.point.level == 0, 'author-rank-image-1': activity.user.data.point.level == 1, 'author-rank-image-2': activity.user.data.point.level == 2, 'author-rank-image-3': activity.user.data.point.level == 3, 'author-rank-image-4': activity.user.data.point.level == 4}"></div>
                         </div>
                     </figure>
-                    <div class="user-profile-other-user-symbol" data-ng-class="{'other-user-symbol-like': activity.type == 'like', 'other-user-symbol-userLike': activity.type == 'userLike', 'other-user-symbol-comment': activity.type == 'comment'}"></div>
+                    <div class="user-profile-other-user-symbol" data-ng-class="{'other-user-symbol-like': activity.type == 'like', 'other-user-symbol-like': activity.type == 'userLike', 'other-user-symbol-comment': activity.type == 'comment'}"></div>
                     <span class="author-name" data-author="{{post._author}}">{{activity.user.data.firstName}} {{activity.user.data.lastName}}</span>
                     <div class="user-profile-other-user-content" data-ng-init="textForView(activity)">{{activity.textView}}</div>
                     <!--<div class="user-profile-other-user-content" data-ng-show="activity.type == 'userLike'">העריך אותך</div>-->
@@ -97,7 +113,6 @@
             </div>
         </div>
 
-        <!--<div class="color-line color-fixed-top"></div>-->
 
 
         <div class="user-recent-activity-title">הפעולות האחרונות</div>
@@ -144,11 +159,12 @@
 <div class="sign-in-popup change-pass-popup" data-ng-show="showChangePassword">
     <div class="close-sign-in" data-ng-click="showChangePassword = !showChangePassword"></div>
     <div class="password-recovery-title">שינוי סיסמה:</div>
-    <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError}" placeholder="הזן סיסמה נוכחית" data-ng-model="oldPass">
+    <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showOldPassError}" placeholder="הזן סיסמה נוכחית" data-ng-model="oldPass">
     <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError || showPassAuthenticationError}" placeholder="הזן סיסמה חדשה" data-ng-model="newPass">
     <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: !showPassError && showPassAuthenticationError}" placeholder="אמת סיסמה חדשה" data-ng-model="passAuthentication">
+    <div class="login-error" data-ng-show="showOldPassError">* יש להזין סיסמה נוכחית</div>
     <div class="login-error" data-ng-show="showPassError">* יש להזין סיסמה בת 6 תווים לפחות</div>
     <div class="login-error" data-ng-show="!showPassError && showPassAuthenticationError">* אימות הסיסמה שונה מהסיסמה שבחרת</div>
     <div class="login-error" data-ng-show="passErrorInServer">* {{passErrorMessage}}</div>
-    <input type="button" class="sign-in-btn" value="אשר" data-ng-click="setNewPassword()">
+    <input type="button" class="sign-in-btn" value="אשר" data-ng-click="sendNewPassword()">
 </div>

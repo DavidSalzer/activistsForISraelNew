@@ -1,7 +1,7 @@
 socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classAjax', 'generalParameters', 'PostService', function ($rootScope, $scope, $state, classAjax, generalParameters, PostService) {
 
     var exitFlag = false;
-
+     
     generalParameters.setBackIcon(false);
     $scope.originUrl = window.location.origin + window.location.pathname + '#/';
     console.log($scope.originUrl);
@@ -56,6 +56,7 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
         }
     }
 
+
     $scope.goToFeature = function (featureUrl, postId) {
         console.log('featureUrl: ' + featureUrl);
         $state.transitionTo(featureUrl, { postId: postId });
@@ -64,7 +65,8 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
     $scope.featureDetails = {
         featureName: 'mainMenu',
         featureLogo: "./img/sidebar-menu-icon.png",
-        featureColor: 'gray',
+        featureWhatsUpLogo: "./img/sgin_thankyou.png",
+        featureColor: '#00aeef',
         infoHaeder: "מדרג קבלת הניקוד",
         infoMainText: 'ברוכים הבאים לאחליקציה! הצטרפו אלינו ותוכלו לצפות, לכתוב, לפרסם ולהגיב. לחצו על האייקון משמאל לצפייה בתפריט המלא.',
         infoSubText: "עוד לא הצטרפת לאחליקציה?"
