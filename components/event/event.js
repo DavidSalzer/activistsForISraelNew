@@ -15,7 +15,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         infoMainText: 'לוח האירועים של האחליקציה. כאן תוכלו לראות את האירועים הקיימים ולפרסם אירועים/חוגי בית ושאר מפגשים שתרצו לשתף בהם את החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
-     $scope.showendloader = false;
+    $scope.showendloader = false;
     generalParameters.setFeature($scope.featureDetails);
     $scope.user = generalParameters.getUser();
     generalParameters.setBackIcon(false); //tester
@@ -24,7 +24,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
-        limit: 0,
+        limit: 20,
         orderBy: 'DestinationTime', //'-timestamp',
         postType: 'event',
         userID: $scope.user._id,
@@ -35,7 +35,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
-
+    
 
     $scope.l = function (flager) {
         console.log(flager);
@@ -49,10 +49,10 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     }
 
 
-     $scope.$on('EndLoadMore', function (event, args) {
+    $scope.$on('EndLoadMore', function (event, args) {
         switch (args.showLoad) {
             case true:
-                 $scope.showendloader = false;
+                $scope.showendloader = false;
                 break;
             case false:
                 $scope.showendloader = true;
@@ -110,7 +110,7 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
         $scope.monthArray = $scope.$$childHead.$$childHead.rows;
         $scope.backgroundDateColor($scope.monthArray);
         $scope.$$childHead.toggleMode = null; //prevent select month / year
-
+        $scope.arrowClicked = false;
         $scope.$watch(//reset calendar arrow when paging month
 
 			function () { return $scope.$$childHead.$$childHead.rows; },
@@ -121,18 +121,30 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
 			        $scope.togglecaendarArrow(0); //make sore the arrow is to up 
 			        $scope.backgroundDateColor($scope.monthArray);
 			        $scope.l(false);
+			        //if (!$scope.firstTimeRun) {
+			        //    var month = newValue[3][3].date.getMonth()+1;
+			        //    var year = newValue[3][3].date.getFullYear()
+			        //    var day = new Date($scope.dt).getDate();
+			        //    $scope.dt = new Date(year, month, day);
+			        //}
+			        //         $scope.firstTimeRun = false;
 			    }
 
 			}, true);
 
         $scope.$watch('dt', function () {
-            $scope.monthArray = $scope.$$childHead.$$childHead.rows;
+            // $scope.monthArray = $scope.$$childHead.$$childHead.rows;
             $scope.backgroundDateColor($scope.monthArray);
             console.log($scope.monthArray);
             console.log('$scope.dt: ');
             console.log($scope.dt);
             $scope.updateFeed($scope.dt);
             $scope.hedt = (new HeDate($scope.dt)).toString();
+            if ($scope.arrowClicked) {
+                $scope.toggleWeekDisplay();
+                $scope.arrowClicked = false;
+            }
+
         });
 
     });
@@ -144,7 +156,6 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
 
 
     $scope.toggleWeekDisplay = function () {
-
         //now in single week display? -> open and return
         if ($scope.$$childHead.$$childHead.rows.length == 1) {
 
@@ -180,7 +191,8 @@ socialGroupApp.controller('DatepickerDemoCtrl', ['$scope', '$http', 'PostService
         }
         var test = $scope.dt;
         $scope.dt = "";
-        $scope.dt = new Date();
+        $scope.dt = new Date(test);
+        $scope.arrowClicked = true;
         //$scope.toggleWeekDisplay();
         // $scope.$apply();
     };

@@ -12,7 +12,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
-        
+
         if (data.data.user != undefined) {
             generalParameters.setUser(data.data.user);
         }
@@ -46,21 +46,21 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureUrl: 'main-menu',
             featureName: 'עמוד הבית',
             featureLogo: "./img/sidebar-menu-icon.png",
-            featureStyleName : 'menu',
+            featureStyleName: 'menu',
             featureColor: '#00aeef'
         },
         {
             featureUrl: 'talkback',
             featureName: 'הפורום',
             featureLogo: "./img/sidebar-talk-back-icon.png",
-            featureStyleName : 'talkback',
+            featureStyleName: 'talkback',
             featureColor: "#993ca7"
         },
         {
             featureUrl: 'meme',
             featureName: 'ממים',
             featureLogo: "./img/sidebar-meme-icon.png",
-            featureStyleName : 'meme',
+            featureStyleName: 'meme',
             featureColor: "#ffd427"
         },
     //{
@@ -73,56 +73,56 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         featureUrl: 'event',
         featureName: 'אירועים',
         featureLogo: "./img/sidebar-event-icon.png",
-        featureStyleName : 'event',
+        featureStyleName: 'event',
         featureColor: "#004a8e"
     },
         {
             featureUrl: 'poll',
             featureName: 'סקרים',
             featureLogo: "./img/sidebar-poll-icon.png",
-            featureStyleName : 'poll',
+            featureStyleName: 'poll',
             featureColor: "#f55c06"
         },
         {
             featureUrl: 'chat',
             featureName: "צ'אט חי",
             featureLogo: "./img/sidebar-chat-icon.png",
-             featureStyleName : 'chat',
+            featureStyleName: 'chat',
             featureColor: "#01a3d4"
         },
         {
             featureUrl: 'tv',
             featureName: "לייב tv",
             featureLogo: "./img/sidebar-tv-icon.png",
-            featureStyleName : 'tv',
+            featureStyleName: 'tv',
             featureColor: "#9e0b0f"
         },
         {
             featureUrl: 'channel',
             featureName: 'ערוץ יוטיוב',
             featureLogo: "./img/sidebar-youtube-icon.png",
-            featureStyleName : 'channel',
+            featureStyleName: 'channel',
             featureColor: "#fa0001"
         },
         {
             featureUrl: 'facebookBennet/NaftaliBennett',
             featureName: 'פייסבוק נפתלי',
             featureLogo: "./img/sidebar-facebook-icon.png",
-            featureStyleName : 'facebooknaf',
+            featureStyleName: 'facebooknaf',
             featureColor: "#004a8e"
         },
         {
             featureUrl: 'breakingnews',
             featureName: 'מבזקים',
             featureLogo: "./img/sidebar-flash-icon.png",
-            featureStyleName : 'flash',
+            featureStyleName: 'flash',
             featureColor: "#00aeff"
         },
         {
             featureUrl: 'points',
             featureName: 'הניקוד שלי',
             featureLogo: "./img/sidebar-score-icon.png",
-            featureStyleName : 'points',
+            featureStyleName: 'points',
             featureColor: "#00be9c"
         },
     //{
@@ -135,7 +135,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         featureUrl: 'contact',
         featureName: 'צור קשר',
         featureLogo: "./img/sidebar-contact-icon.png",
-        featureStyleName : 'contact',
+        featureStyleName: 'contact',
         featureColor: "#009933"
     }
 
@@ -151,7 +151,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         }
         else {
             $rootScope.$broadcast('showLoginPopup', { showLogin: true });
-            console.log('sign in');
+
         }
     };
 
@@ -236,7 +236,8 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     }
 
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-        
+        $scope.closePopups();
+        $rootScope.$broadcast('showThankPage', { showThankPage: false });
         if (shareDetailes[toState.name] != undefined) {
             $scope.showShareBtn = true;
         }
