@@ -8,7 +8,7 @@ body {
 }
 
 :focus {
-    outline: none;
+outline: none;
 }
 
 .app {
@@ -78,7 +78,7 @@ i.fa.fa-reply {
 }
 
 header i.fa.share {
-    background: url(../img/share.png);
+    background: url(../img/share.png) ;
     height: 29px;
     width: 29px;
     background-size: 100% 100%;
@@ -310,19 +310,19 @@ figure.author-image {
     margin: auto;
 }
 
-.author-rank-image-1 {
+.author-image .author-rank-image-1 {
     background-image: url("../img/rank2.png");
 }
 
-.author-rank-image-2 {
-    background-image: url("../img/rank3.png");
+.author-image .author-rank-image-2 {
+     background-image: url("../img/rank3.png");
 }
 
-.author-rank-image-3 {
+.author-image .author-rank-image-3 {
     background-image: url("../img/rank4.png");
 }
 
-.author-rank-image-4 {
+.author-image .author-rank-image-4 {
     background-image: url("../img/rank5.png");
 }
 
@@ -816,6 +816,7 @@ div.scrollable-content.overthrow {
     -webkit-overflow-scrolling: touch;
     position: absolute;
     top: 0px;
+    right: 0px;
     padding-top: 46px;
     box-sizing: border-box;
     overflow-x: visible;
@@ -837,10 +838,13 @@ div.scrollable-content.overthrow {
     height: 100%;
     overflow: auto;
     padding: 0px 4px;
+    position: relative;
+    top: 0px;
 }
 
 .channel-list .list-tube {
     box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.4);
+    top: 0px;
 }
 
 .player-contener {
@@ -862,6 +866,7 @@ iframe.player-contener {
     /* padding: 5px 5px 0 5px; */
     box-sizing: border-box;
     position: relative;
+    top: 0px;
 }
 
 .channel-play-button {
@@ -883,6 +888,8 @@ iframe.player-contener {
     background-color: #565c63;
     padding: 9px 5px;
     height: 47px;
+    position: relative;
+    top: 0px;
 }
 
 .player-text h2 {
@@ -1326,7 +1333,7 @@ button {
     display: inline-block;
 }
 
-.side-roller.full, .mid-roller.full {
+.side-roller.full,.mid-roller.full{
     background-color: #12426F;
 }
 
@@ -1436,70 +1443,17 @@ img.brother-types-img {
     margin-top: 9px;
 }
 
-.glyphicon {
+.glyphicon{
     background-image: url(../img/arrow_calendar.png);
-    width: 26px;
-    height: 13px;
-    background-size: 100%;
+width: 26px;
+height: 13px;
+background-size: 100%;
 }
 
-.glyphicon-chevron-up:before, .glyphicon-chevron-down:before {
+.glyphicon-chevron-up:before,.glyphicon-chevron-down:before{
     content: " ";
 }
 
-.glyphicon-chevron-down {
+.glyphicon-chevron-down{
     -webkit-transform: rotateZ(180deg);
-}
-
-/*********************load more*******************************/
-
-.end-load-more {
-    height: 25px;
-    position: relative;
-}
-
-.end-load-more img {
-    display: block;
-    height: 25px;
-    width: 25px;
-    margin: auto;
-    position: relative;
-    z-index: 2;
-}
-
-.loadmore-endline {
-    width: 100%;
-    position: absolute;
-    height: 2px;
-    background-color: gray;
-    top: 0px;
-    bottom: 0px;
-    margin: auto;
-    z-index: 0;
-}
-
-
-/*******************loader in page*************************/
-.inner-big-loader {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
-    top: 0px;
-    z-index: 3;
-}
-
-.inner-big-loader div {
-    position: absolute;
-    margin: auto;
-    height: 320px;
-    width: 320px;
-    top: 0px;
-    display: block;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
-    z-index: 15;
-    background-image: url('../img/loading.gif');
-    background-size: 100% 100%;
 }

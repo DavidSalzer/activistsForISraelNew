@@ -3,12 +3,6 @@
 <link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/meme/meme.css" />
 <link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/user/userProfile.css" />
 
-
-<div class="inner-big-loader" data-ng-show="movePage">
-    <div></div>
-</div>
-
-
 <section id="user-profile">
     <div class="user-profile-avatar-zone">
         <div class="user-profile-avatar-wrapper">
@@ -33,7 +27,7 @@
             <input type="text" data-ng-model="editProfile.firstName" data-ng-show="editName" value="{{ profile().firstName }}">
             <input type="text" data-ng-model="editProfile.lastName" data-ng-show="editName" value="{{ profile().lastName }}">
             <div class="user-edit-icon-x" data-ng-show="editName" data-ng-click="editItem('name')"></div>
-            <img data-ng-src="./img/sidebar-menu-icon.png" alt="side-profile" class="profile-item-circle" data-ng-hide="editName" />
+            <div class="profile-item-circle" data-ng-class="{'rank-image-0': profile().point.level == 0, 'rank-image-1': profile().point.level == 1, 'rank-image-2': profile().point.level == 2, 'rank-image-3': profile().point.level == 3, 'rank-image-4': profile().point.level == 4}" data-ng-hide="editName"></div>
         </div>
 
         <div class="user-profile-give-score user-profile-item" data-ng-show="!myProfile">
