@@ -1,6 +1,5 @@
 
-socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
-
+socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', 'filePicker', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, filePicker) {
     /*init variables*/
     generalParameters.setBackIcon(true);
     $scope.user = generalParameters.getUser();

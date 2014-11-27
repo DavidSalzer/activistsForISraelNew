@@ -21,7 +21,7 @@
     </div>
     <div class="buttons-wrap">
         <div  data-ng-show="!showTransitionButton" class="button" data-ng-click="publishMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">פרסם</div>
-        <div  data-ng-show="!showTransitionButton" class="button" data-ng-click="saveMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">שמור</div>
+        <!--<div  data-ng-show="!showTransitionButton" class="button" data-ng-click="saveMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">שמור</div>-->
         <div data-ng-show="showTransitionButton" class="button transition" data-ng-click="transitioToMainMemes()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">חזרה לעמוד ממים ראשי</div>
     </div>
     <div class="login-error" data-ng-if="showSendPostError">* {{sendPostError}}</div>
