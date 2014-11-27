@@ -101,8 +101,8 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
                     $scope.headerText = 'עריכת אירוע';
                     $scope.postData.post = PostService.getSinglePost();
-                    $scope.timeDisplay.date = $filter('date')($scope.postData.post.DestinationTime, "dd/MM/yy");
-                    $scope.timeDisplay.time = $filter('date')($scope.postData.post.DestinationTime, "HH:mm");
+                    $scope.timeDisplay.date = new Date($scope.postData.post.DestinationTime);//$filter('date')($scope.postData.post.DestinationTime, "dd/MM/yy");
+                    $scope.timeDisplay.time = new Date($scope.postData.post.DestinationTime);//$filter('date')($scope.postData.post.DestinationTime, "HH:mm");
 
                     if ($scope.postData.post.img) {
 
@@ -193,7 +193,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.convertDate = function () {
 
         var date = new Date(($scope.timeDisplay.date).getFullYear(), ($scope.timeDisplay.date).getMonth(), ($scope.timeDisplay.date).getDate());
-        date.setHours(($scope.timeDisplay.date).getHours(), ($scope.timeDisplay.date).getMinutes());
+        date.setHours(($scope.timeDisplay.time).getHours(), ($scope.timeDisplay.time).getMinutes());
         $scope.postData.post.DestinationTime = date.getTime();
     }
 
@@ -328,4 +328,29 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
             $scope.imgObj = imageData.imgData; //"data:image/jpeg;base64," +
         });
     };
+
+    //$scope.openTime = function ($event) {
+    //    $scope.showTimePicker = !$scope.showTimePicker
+    //    $event.preventDefault();
+    //    return false;
+
+
+    //}
+    //$scope.timepickerClicked = false;
+    //$scope.toggleTime = function (show) {
+    //    if (isFinite(show)) {
+    //        return $scope.showTimePicker = show;
+    //    } else {
+    //        return $scope.showTimePicker = !$scope.showTimePicker;
+    //        $scope.timepickerClicked =  $scope.showTimePicker;
+    //    }
+    //};
+
+    //window.document.addEventListener('click', function (event) {
+    //    if ($scope.showTimePicker && ! $scope.showTimePicker) {
+    //        $scope.toggleTime(false);
+    //        $scope.$apply();
+    //    }
+    //    return $scope.showTimePicker=false;
+    //});
 } ]);

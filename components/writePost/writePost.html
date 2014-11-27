@@ -24,7 +24,7 @@
 
 		<!--event time-->
 		<div data-ng-show="postType=='event'" class="my-big-datewrap">
-         <quick-datepicker ng-model="timeDisplay.date" date-format='dd/MM/yy' disable-timepicker='true' class="date-picker-wrapper my-own-date"></quick-datepicker>
+         <quick-datepicker ng-model="timeDisplay.date" date-format='dd/MM/yy' disable-timepicker='true' class="date-picker-wrapper my-own-date" data-ng-click="closeTime"></quick-datepicker>
          <div class="show-timepick" data-ng-click="showTimePicker = !showTimePicker"></div>
          <div data-ng-show="showTimePicker" class="my-big-timepick" >                                        					
             <timepicker ng-model="timeDisplay.time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
