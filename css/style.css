@@ -8,7 +8,7 @@ body {
 }
 
 :focus {
-outline: none;
+    outline: none;
 }
 
 .app {
@@ -78,7 +78,7 @@ i.fa.fa-reply {
 }
 
 header i.fa.share {
-    background: url(../img/share.png) ;
+    background: url(../img/share.png);
     height: 29px;
     width: 29px;
     background-size: 100% 100%;
@@ -315,7 +315,7 @@ figure.author-image {
 }
 
 .author-image .author-rank-image-2 {
-     background-image: url("../img/rank3.png");
+    background-image: url("../img/rank3.png");
 }
 
 .author-image .author-rank-image-3 {
@@ -1333,7 +1333,7 @@ button {
     display: inline-block;
 }
 
-.side-roller.full,.mid-roller.full{
+.side-roller.full, .mid-roller.full {
     background-color: #12426F;
 }
 
@@ -1443,17 +1443,44 @@ img.brother-types-img {
     margin-top: 9px;
 }
 
-.glyphicon{
+.glyphicon {
     background-image: url(../img/arrow_calendar.png);
-width: 26px;
-height: 13px;
-background-size: 100%;
+    width: 26px;
+    height: 13px;
+    background-size: 100%;
 }
 
-.glyphicon-chevron-up:before,.glyphicon-chevron-down:before{
+.glyphicon-chevron-up:before, .glyphicon-chevron-down:before {
     content: " ";
 }
 
-.glyphicon-chevron-down{
+.glyphicon-chevron-down {
     -webkit-transform: rotateZ(180deg);
+}
+
+.end-load-more {
+    height: 25px;
+    position: relative;
+    margin-right: 7px;
+margin-left: 7px;
+}
+
+.end-load-more img {
+    display: block;
+    height: 25px;
+    width: 25px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.loadmore-endline {
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    background-color: gray;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    z-index: 0;
 }
