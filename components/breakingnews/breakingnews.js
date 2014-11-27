@@ -3,13 +3,11 @@ socialGroupApp.controller('breakingnews', ['$rootScope', '$stateParams', '$scope
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/sidebar-flash-icon.png",
-        featureWhatsUpLogo: "./img/sidebar-flash-icon.png",
-        featureColor: '#00aeff',
-        infoHaeder: "אירועים",
-        infoMainText: 'לוח האירועים של האחליקציה. כאן תוכלו לראות את האירועים הקיימים ולפרסם אירועים/חוגי בית ושאר מפגשים שתרצו לשתף בהם את החברים',
-        infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
+        featureWhatsUpLogo: "./img/sgin_thankyou.png",
+        featureColor: '#00aeff'
     };
-      generalParameters.setFeature($scope.featureDetails);
+    
+	generalParameters.setFeature($scope.featureDetails);
 
 
 
