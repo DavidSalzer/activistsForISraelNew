@@ -446,7 +446,7 @@ div.post-main-text {
     background-image: url("../../img/clock.png");
 }
 
-.title-field.requieredError, .article-text.requieredError ,.input-article-span.requieredError{
+.title-field.requieredError, .article-text.requieredError, .input-article-span.requieredError {
     border: 1px solid hsl(0, 100%, 50%);
 }
 
@@ -648,4 +648,19 @@ input.go-out-time.needsclick {
 
 .confirm-and-clean div:first-child {
     margin-left: 3px;
+}
+
+.text-for-delete{
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.quickdate-text-inputs{
+    display: none;
+}
+
+.quickdate-calendar-header{
+    margin-top: 20px;
 }

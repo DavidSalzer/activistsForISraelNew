@@ -396,6 +396,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 //if (data.status.statusCode == 8) { window.history.back(); }//go back if the post not exist.
                 self.getIsLike(data.data);
                 singlePost = data.data;
+                singlePost.hebrewDate = self.hebrewDate(singlePost.DestinationTime);
                 posts = [];
                 self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
             })

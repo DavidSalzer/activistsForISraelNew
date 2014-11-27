@@ -93,8 +93,8 @@
 		  
 		<div data-ng-if='postType=="event"'>
 
-			<input  style='margin-top:12px;' type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.email" />
-			<input style='margin-top:12px;' type="text" class="title-field" placeholder="טלפון ליצירת קשר (לא חובה)" data-ng-model="postData.post.phone" />
+			<input  style='margin-top:12px;' type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.email" data-ng-class='{"requieredError":showMailError}'/>
+			<input style='margin-top:12px;' type="text" class="title-field" placeholder="טלפון ליצירת קשר (לא חובה)" data-ng-model="postData.post.phone" data-ng-class='{"requieredError":showPhoneError}'/>
 		</div>	
 
         <input data-ng-if='postType=="poll"' style='margin-top:14px;' type="text" data-ng-class='{"title-field":true}' placeholder="תשובה א'" data-ng-model="voteOptions[0].answer" />
@@ -112,6 +112,8 @@
             <div class="login-error" data-ng-if="showPollQuestionError">* שדה שאלת סקר לא הוזן כראוי</div>
             <div class="login-error" data-ng-if="showpollDescriptionerror">* שדה תיאור לא הוזן כראוי</div>
             <div class="login-error" data-ng-if="showPollAnsError">* יש להזין לפחות שתי תשובות אפשריות</div>
+            <div class="login-error" data-ng-if="showMailError">* שדה מייל לא הוזן כראוי</div>
+            <div class="login-error" data-ng-if="showPhoneError">* שדה טלפון לא הוזן כראוי</div>
 
             <div class="login-error" data-ng-if="showSendPostError">* {{sendPostError}}</div>
 		</div>
@@ -129,6 +131,7 @@
 			
 			 <div data-ng-if='postId != 0' class="button" data-ng-click="editPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">עדכן
 			</div>
+             <div data-ng-if='postId != 0' class="text-for-delete">למחיקת הארוע צור קשר</div>
 		</div>	
 			
 		
