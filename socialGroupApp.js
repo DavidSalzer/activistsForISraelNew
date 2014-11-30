@@ -599,7 +599,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             
             elem.bind('scroll', function () {
                 
-                if ((rawElement.scrollTop + rawElement.offsetHeight + 5) >= rawElement.scrollHeight) {
+                if ((rawElement.scrollTop + rawElement.offsetHeight + 100) >= rawElement.scrollHeight) {
                     
                     scope.$apply(scope.loadingMethod);
                 }
