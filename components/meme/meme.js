@@ -1,5 +1,5 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
-    
+ //   alert('width: '+window.innerWidth+' height: '+window.innerHeight )
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
 
