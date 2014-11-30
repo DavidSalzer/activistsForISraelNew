@@ -179,6 +179,7 @@ a.list-group-item.active, a.list-group-item.active:focus, a.list-group-item.acti
 .out-list-group.list-group {
     padding-left: 0px;
     padding-right: 0px;
+    margin-bottom: 0;
 }
 
 .inner-list-group {
