@@ -1,4 +1,4 @@
-socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
+socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope',  '$http','classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, $http, classAjax, $state, PostService, generalParameters) {
 
     $scope.featureDetails = {
         featureName: null,
@@ -6,10 +6,10 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope', 'cl
         featureWhatsUpLogo: "./img/sidebar-score-icon.png",
         featureColor: '#00be9c',
         infoHaeder: "אירועים",
-        infoMainText: 'לוח האירועים של האחליקציה. כאן תוכלו לראות את האירועים הקיימים ולפרסם אירועים/חוגי בית ושאר מפגשים שתרצו לשתף בהם את החברים',
-        infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
+        infoMainText: 'בוא תהיה אח! כאן תוכל לראות איך לצבור נקודות ולטפס בסולם הדירוג.',
+        infoSubText: "עוד לא הצטרפת לאחליקציה?"
     };
-     generalParameters.setFeature($scope.featureDetails);
+    generalParameters.setFeature($scope.featureDetails);
 
     $scope.staus = 'התחבר על מנת להתחיל';
     $scope.score = 0;
@@ -19,18 +19,27 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope', 'cl
     $scope.myScoreBord = false;
     $scope.myScoreNow = true;
     $scope.notLogin = true;
-    
+
+    $http.get(domain + 'pointsToNextLevel', { withCredentials: true, async: true })
+        .success(function (data) {
+            $scope.next =data.data.pointsToNextLevel;
+        });
+
     //set page when user is login
     $scope.userLogin = function () {
         $scope.staus = $scope.user.rank;
-        $scope.score = $scope.user.point.count;
-        $scope.next = "לא מבוצע";
+        $scope.score = $scope.user.point.count;        
         $scope.level = $scope.user.point.level;
 
         $scope.notLogin = false;
+
+        $http.get(domain + 'pointsToNextLevel', { withCredentials: true, async: true })
+        .success(function (data) {
+            $scope.next =data.data.pointsToNextLevel;
+        });
     }
 
-     $scope.user = generalParameters.getUser();
+    $scope.user = generalParameters.getUser();
     //if login
     if ($scope.user.firstName != "הצטרף לאפליקציה") {
         $scope.userLogin();
@@ -162,7 +171,7 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope', 'cl
         }
     }
 
-    $scope.goToLogin = function () {       
+    $scope.goToLogin = function () {
         $rootScope.$broadcast('showLoginPopup', { showLogin: true });
     }
 

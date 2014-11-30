@@ -6,7 +6,25 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'classAjax', 'Post
     //  $scope.posts = PostService.getPosts;
     $scope.showInput = false;
     $scope.isSiteHeader = true;
+    
+	$scope.links = {
 
+        'FB': {
+			'he':'https://www.facebook.com/NaftaliBennett',
+			'en':'https://www.facebook.com/bennettnaftalienglish',
+			'ru':'https://www.facebook.com/NaftaliBennettRussian',
+			'ar':'https://www.facebook.com/NaftaliBennettArabic',
+			'fr':'https://www.facebook.com/NaftaliBennettFrancais'
+		},
+		'Twitter':{
+			'he':'https://twitter.com/naftalibennett',
+			'en':'https://twitter.com/Naftali_Bennett',
+			'ru':'https://twitter.com/NaftalyBennet',
+			'ar':'https://twitter.com/BennetArabic',
+			'fr':'https://twitter.com/naftali_fr'
+		},
+		'NewsLtr':{'he':'http://my-t.co.il/view/Cms.aspx?i=1022'}
+	};
 
     $scope.featureDetails = {
         featureName: null,
@@ -57,6 +75,14 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'classAjax', 'Post
         //    console.log("contact success: " + data);
 
         //})
+		
+		
+	
+    }
+	
+	 $scope.contact = function (channel, language) {
+		
+		$scope.ref = window.open($scope.links[channel][language], '_blank', 'location='+(isAndroid?'yes':'no'));
     }
 }
 ]);

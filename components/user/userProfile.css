@@ -91,19 +91,19 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .rank-image-1 {
-    background-position-x: -25px;
+    background-position-x: -45px;
 }
 
 .rank-image-2 {
-    background-position-x: -50px;
+    background-position-x: -87px;
 }
 
 .rank-image-3 {
-    background-position-x: -75px;
+    background-position-x: -132px;
 }
 
 .rank-image-4 {
-    background-position-x: -100px;
+    background-position-x: -175px;
 }
 
 .rank-text-1 {
@@ -249,7 +249,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
     position: relative;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
     padding-right: 5px;
     direction: ltr;
     background-color: #ecf8ff;
@@ -584,8 +584,12 @@ canvas {
     left: 0px;
     height: 35px;
     width: 35px;
-    border: 1px solid gray;
-    border-radius: 30px;
+    /*border: 1px solid gray;
+    border-radius: 30px;*/
+    background-image: url('../../img/rank_sprite.png');
+    background-repeat: no-repeat;
+    background-size: 210px 35px;
+    
 }
 .sign-in-popup.change-pass-popup {
     top: 20px;

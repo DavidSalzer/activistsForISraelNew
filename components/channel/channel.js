@@ -40,25 +40,24 @@ socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', fu
                 + $scope.key + '&order=' + $scope.order
             }).
             success(function (data, status, headers, config) {
-            // this callback will be called asynchronously
-            // when the response is available
-            //console.log(data);
-            console.log('list:');
-            $scope.list = data;
-            $scope.pageToken = data.nextPageToken;
-            $scope.loadMoreFlag = true;
-            console.log($scope.list);
+                // this callback will be called asynchronously
+                // when the response is available
+                
+                $scope.list = data;
+                $scope.pageToken = data.nextPageToken;
+                $scope.loadMoreFlag = true;
+                
 
-            $scope.items.push.apply($scope.items, $scope.list.items);
-            $scope.getViewCountOfVideos($scope.items, $scope.indexVideo);
+                $scope.items.push.apply($scope.items, $scope.list.items);
+                $scope.getViewCountOfVideos($scope.items, $scope.indexVideo);
 
 
-            $scope.$apply();
-            $scope.showSpiner = false;
+                $scope.$apply();
+                $scope.showSpiner = false;
             }).
             error(function (data, status, headers, config) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
             });
         }
         else {
@@ -69,28 +68,29 @@ socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', fu
     $scope.getViewCountOfVideos = function (videosArr, index) {
         $http({ method: 'GET', url: 'https://www.googleapis.com/youtube/v3/videos?id=' + videosArr[index].id.videoId + '&key=' + $scope.key + '&part=statistics' }).
                     success(function (data, status, headers, config) {
-                        console.log(data);
+                        
                         $scope.laodyoutube(videosArr[index].id.videoId, index);
 
                         //$scope.viewCounts.push(data.items[0].statistics.viewCount);
-                        $scope.items[index].statistics = data.items[0].statistics;
+                        if (data.items[0] && data.items[0].statistics) {
+                            $scope.items[index].statistics = data.items[0].statistics;
+                        }
 
-                        //console.log($scope.viewCounts);
-                        //console.log(videosArr);
+                        
                         if (index + 1 < videosArr.length) {
                             $scope.indexVideo++;
                             $scope.getViewCountOfVideos(videosArr, $scope.indexVideo);
                         }
                     }).
                     error(function (data, status, headers, config) {
-                        console.log(data);
+                        
                         // called asynchronously if an error occurs
                         // or server returns response with an error status.
                     });
     }
 
     $scope.laodyoutube = function (vid, loc) {
-        console.log(window.outerWidth);
+        
         if (window.outerWidth < 900) {
             channelWidth = 300;
             channelHeight = 200;
