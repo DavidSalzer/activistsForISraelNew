@@ -213,8 +213,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              url: "/breakingnews",
              views: {
                  "main": {
-                     templateUrl: "./components/breakingnews/breakingnews.html",
-                     controller: "breakingnews"
+                     templateUrl: "./components/breakingnews/breakingnewsPromo.html",
+                     controller: "breakingnewsPromo"
                  }
              }
          })
