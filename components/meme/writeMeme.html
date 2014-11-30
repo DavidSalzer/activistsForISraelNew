@@ -53,9 +53,8 @@
         </div>
     </div>
     <div style="position: relative">
-        <input type="file" data-upload='img' data-ng-show="showSuggestedImages" style='position: absolute; width: 100%'  accept="image/x-png, image/gif, image/jpeg"/>
+                <div class="add-file" data-ng-click="takePicture()" data-ng-show="showSuggestedImages" > 
 			    
-            <div class="add-file"  data-ng-show="showSuggestedImages">
            <div class="plus" style='position: absolute;top: 0;cursor: pointer;z-index: 100;'>
 			
 			
@@ -63,6 +62,7 @@
 		    <div class='add-file-text' >{{imgFileText}}</div>
 		    <div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
         </div>
+
 
     </div>
      
