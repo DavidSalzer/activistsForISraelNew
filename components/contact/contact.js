@@ -81,8 +81,7 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'classAjax', 'Post
     }
 	
 	 $scope.contact = function (channel, language) {
-		alert('isAndroid: '+isAndroid);
-        //alert($scope.links[channel][language]);
+		
 		$scope.ref = window.open($scope.links[channel][language], '_blank', 'location='+(isAndroid?'yes':'no'));
     }
 }
