@@ -144,6 +144,9 @@ box-sizing: border-box;*/
     color: #818181;
 }
 
+.title-field .placeholder{
+    color: #818181;
+}
 .title-field::-webkit-input-placeholder {
     color: #818181;
 }
@@ -574,6 +577,7 @@ div.post-main-text {
     opacity: 0 !important;
     width: 100%;
     height: 100%;
+    background-color: red !important;
 }
 
 .my-own-date {

@@ -1,5 +1,5 @@
 
-socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', 'filePicker', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, filePicker) {
+socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
     /*init variables*/
     generalParameters.setBackIcon(true);
     $scope.user = generalParameters.getUser();
@@ -104,7 +104,40 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         })
         //$scope.sendPost();
     }
+    $scope.saveMeme = function () {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
+    }
 
+
+    function fileSystemSuccess(fileSystem) {
+        var directoryEntry = fileSystem.root; // to get root path to directory
+        directoryEntry.getDirectory("<folder_name>", { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail);
+        var rootdir = fileSystem.root;
+        var fp = rootdir.fullPath;
+        fp = fp + "/<folder_name>/image_name.png";
+        var fileTransfer = new FileTransfer();
+        fileTransfer.download("<url_to_download>", fp,
+        function (entry) {
+            alert("download complete: " + entry.fullPath);
+        },
+    	function (error) {
+    	    alert("download error source " + error.source);
+    	    alert("download error target " + error.target);
+    	    alert("upload error code" + error.code);
+    	}
+    );
+    }
+    function onDirectorySuccess(parent) {
+        console.log(parent);
+    }
+
+    function onDirectoryFail(error) {
+        alert("Unable to create new directory: " + error.code);
+    }
+
+    function fileSystemFail(evt) {
+        console.log(evt.target.error.code);
+    }
     $scope.sendPost = function () {
 
         //show the loader
