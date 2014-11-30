@@ -107,10 +107,11 @@ h3 {
 
 .features-title {
     text-align: right;
-    padding-right: 14px;
-    height: 100%;
-    display: table;
-    padding-left: 14px;
+padding-right: 14px;
+height: 100%;
+display: table;
+padding-left: 14px;
+margin-right: 90px;
 }
 
 .inner-features-title {
@@ -165,9 +166,13 @@ h3 {
 }
 
 .current-feature-components img {
-    width: 90px;
-    height: 100%;
-    float: right!important;
+   width: 90px;
+height: auto;
+float: right!important;
+position: absolute;
+top: 0;
+bottom: 0;
+margin: auto;
 }
 
 
