@@ -111,10 +111,10 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
 
     function fileSystemSuccess(fileSystem) {
         var directoryEntry = fileSystem.root; // to get root path to directory
-        directoryEntry.getDirectory("<folder_name>", { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail);
+        directoryEntry.getDirectory("memes", { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail);
         var rootdir = fileSystem.root;
         var fp = rootdir.fullPath;
-        fp = fp + "/<folder_name>/image_name.png";
+        fp = fp + "/memes/meme.jepg";
         var fileTransfer = new FileTransfer();
         fileTransfer.download("<url_to_download>", fp,
         function (entry) {
