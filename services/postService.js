@@ -478,11 +478,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             })
         },
 
-        loadMainFeatures: function () {
+        loadMainFeatures: function (request) {
             queryString = 'mainfeatures';
             
-
-            classAjax.getdata('get', queryString).then(function (data) {
+			console.log(request);
+            classAjax.getdata('get', queryString,request).then(function (data) {
                 
                 if (data.status.statusCode == 0) {
                     mainFeatures = data.data;

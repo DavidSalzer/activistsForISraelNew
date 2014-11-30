@@ -3,7 +3,7 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
     var exitFlag = false;
      
     generalParameters.setBackIcon(false);
-    $scope.originUrl = window.location.origin + window.location.pathname + '#/';
+    /* $scope.originUrl = window.location.origin + window.location.pathname + '#/'; */
     
 
     $scope.demandes = [
@@ -27,9 +27,13 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
         featureIcon: './img/sidebar-talk-back-icon.png',
         featureSendInClick: 'talkback'
     }];
+	
+	request = {
+        offset: 0,
+        limit: 2,
+    };
 
-
-    PostService.loadMainFeatures();
+    PostService.loadMainFeatures(request);
     $scope.features = PostService.getMainFeatures;
 
     $scope.goToFromeDemand = function (frome) {
@@ -55,11 +59,17 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
                 break;
         }
     }
-
-
-    $scope.goToFeature = function (featureUrl, postId) {
-        
-        $state.transitionTo(featureUrl, { postId: postId });
+	
+	$scope.goToFeature = function (featureUrl, postId) {
+		console.log(featureUrl)
+        if(featureUrl.indexOf('http')>-1){//external link? open by inapp browser!
+			$scope.ref = window.open(featureUrl, '_blank', 'location='+(isAndroid?'yes':'no'));
+		}
+		else{//internal link? go to relevant page
+		
+			link = featureUrl.split(/\/([^.]+)$/);// split the state & post_ID
+			$state.transitionTo(link[0], { postId: link[1]});
+		}			
     }
 
     $scope.featureDetails = {
@@ -74,7 +84,22 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
     };
 
     generalParameters.setFeature($scope.featureDetails);
+	
+	
+	$scope.loadMore = function () {
+        
+		request.offset += request.limit;
+        
+		PostService.loadMainFeatures(request);
+    }
 
-} ])
+}])
+
+
+
+    /* $scope.goToFeature = function (featureUrl, postId) {
+        
+        $state.transitionTo(featureUrl, { postId: postId });
+    } */
 
 
