@@ -41,7 +41,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
             {
                 $scope.headerText = 'כתיבת טקסט';
                 $scope.max = 140;
-                $scope.maxLine = 3;
+                //$scope.maxLine = 3;
                 $scope.postData.post.postType = 'talkback';
                 break;
             }
@@ -50,7 +50,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
             {
                 $scope.headerText = 'הצע סקר';
                 $scope.max = 140;
-                $scope.maxLine = 3;
+                //$scope.maxLine = 3;
                 $scope.postData.post.postType = 'poll';
                 $scope.postData.post.title = '';
                 $scope.postData.post.poll = {};
@@ -200,6 +200,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.validateInputs = function () {
         $scope.showTitleError = ($scope.postData.post.title == undefined || $scope.postData.post.title == '') && ($scope.postType == 'event' || $scope.postType == 'article');
         $scope.showContentError = ($scope.postData.post.content == undefined || $scope.postData.post.content == '') && ($scope.postType == 'event' || $scope.postType == 'talkback');
+        $scope.showContentLongError = (($scope.postData.post.content.length > $scope.max) && ($scope.postType == 'talkback'));
         $scope.showDDMMYYError = ($scope.timeDisplay.date == undefined || $scope.timeDisplay.date == '') && $scope.postType == 'event';
         $scope.showHHMMError = ($scope.timeDisplay.time == undefined || $scope.timeDisplay.time == '') && $scope.postType == 'event';
         $scope.showLocationError = ($scope.postData.post.location == undefined || $scope.postData.post.location == '') && $scope.postType == 'event';
@@ -211,7 +212,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
             $scope.showPollAnsError = ($scope.postData.post.poll.options == undefined || $scope.postData.post.poll.options.length < 2) && $scope.postType == 'poll';
         }
 
-        return (!($scope.showTitleError || $scope.showContentError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || $scope.showPollQuestionError || $scope.showpollDescriptionerror || $scope.showPollAnsError || $scope.showMailError || $scope.showPhoneError || false));
+        return (!($scope.showTitleError || $scope.showContentError || $scope.showContentLongError|| $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || $scope.showPollQuestionError || $scope.showpollDescriptionerror || $scope.showPollAnsError || $scope.showMailError || $scope.showPhoneError || false));
 
 
     }
@@ -345,6 +346,6 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
     }, false);
 
-   
+
 
 } ]);

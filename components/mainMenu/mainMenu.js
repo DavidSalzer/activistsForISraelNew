@@ -15,7 +15,7 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
     {
         featureColor: '#00BD9B',
         featureIcon: './img/sidebar-score-icon.png',
-        featureSendInClick: 'pointes'
+        featureSendInClick: 'points'
     },
     {
         featureColor: '#01A2D2',
@@ -25,7 +25,7 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
     {
         featureColor: '#9D0B0F',
         featureIcon: './img/sidebar-talk-back-icon.png',
-        featureSendInClick: 'video'
+        featureSendInClick: 'talkback'
     }];
 
 
@@ -44,13 +44,13 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
                     
                 }
                 break;
-            case 'pointes':
-                $state.transitionTo('talkback');
+            case 'points':
+                $state.transitionTo('points');
                 break;
             case 'chat':
-                $state.transitionTo('talkback');
+                $state.transitionTo('chat');
                 break;
-            case 'video':
+            case 'talkback':
                 $state.transitionTo('talkback');
                 break;
         }

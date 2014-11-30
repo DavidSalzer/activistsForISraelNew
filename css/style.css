@@ -11,6 +11,11 @@ body {
     outline: none;
 }
 
+
+textarea{
+    resize: none;
+}
+
 .app {
     height: 100%;
     padding-top: 43px;
@@ -611,6 +616,7 @@ div#mainSidebar {
 
 .app-name + .scrollable {
     padding-top: 98px;
+    background-color: #ffffff;
 }
 
 div.list-group {
@@ -1310,6 +1316,9 @@ button {
 .brother-types-text {
 }
 
+.my-score-bord-not-login{
+    padding-bottom: 80px;
+}
 .points-wrapper {
     padding: 14px 14px 0px 14px;
     position: relative;
