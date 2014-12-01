@@ -308,13 +308,14 @@ figure.author-image {
     width: 14px;
     background-repeat: no-repeat;
     background-size: contain;
-    position: absolute;
+    
     background-image: url("../img/rank1.png");
+    /*position: absolute;
     bottom: 0px;
     left: 0px;
     right: 0px;
     top: 0px;
-    margin: auto;
+    margin: auto;*/
 }
 
 .author-image .author-rank-image.author-rank-image-1 {
