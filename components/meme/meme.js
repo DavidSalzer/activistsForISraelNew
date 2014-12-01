@@ -9,8 +9,8 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         featureLogo: "./img/sidebar-meme-icon.png",
         featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
-        infoHaeder: "פיצ'ר הממים",
-        infoMainText: 'עוד לא הכנתם מם? כאן תוכלו ליצור מם משלכם בעזרת מחולל הממים המיוחד ולשתף עם חברים. *יש לשמור על זכויות יוצרים',
+        infoHaeder: "ממים",
+        infoMainText: 'עוד לא הכנתם מם?<br> כאן תוכלו ליצור מם משלכם בעזרת מחולל הממים המיוחד ולשתף עם חברים.<br> *יש לשמור על זכויות יוצרים',
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
     $scope.showendloader = false;

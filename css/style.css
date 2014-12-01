@@ -11,6 +11,11 @@ body {
     outline: none;
 }
 
+
+textarea{
+    resize: none;
+}
+
 .app {
     height: 100%;
     padding-top: 43px;
@@ -24,9 +29,9 @@ body {
 }
 
 .loader {
-    height: 100px;
-    width: 137px;
-    background-image: url('../img/loading.gif');
+    height: 165px;
+    width: 250px;
+    background-image: url('../img/loading_blue.gif');
     background-size: 100% 100%;
     margin: auto;
 }
@@ -121,7 +126,7 @@ select {
     height: 100%;
     text-indent: 20px;
     -webkit-appearance: none;
-    background-image: url('../../img/arrow_user.png');
+    background-image: url('../img/arrow_user.png');
     background-repeat: no-repeat;
     background-size: 20px 20px;
     background-position-x: 10px;
@@ -148,16 +153,18 @@ select {
 }
 
 .post-buttons {
-    position: absolute;
+    position: relative;
+    width: 49%;
+    display: inline-block;
 }
 
-.post-likes {
+/*.post-likes {
     left: 0px;
 }
 
 .post-comment {
     right: 0px;
-}
+}*/
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
     color: #fff;
@@ -190,16 +197,16 @@ select {
 
 
 .post-buttons {
-    position: absolute;
+    /*position: absolute;*/
 }
 
 .post-likes {
-    left: 0px;
+    /*left: 0px;*/
     cursor: pointer;
 }
 
 .post-comment {
-    right: -1px;
+    /*right: -1px;*/
     cursor: pointer;
 }
 
@@ -301,13 +308,14 @@ figure.author-image {
     width: 14px;
     background-repeat: no-repeat;
     background-size: contain;
-    position: absolute;
+    
     background-image: url("../img/rank1.png");
+    /*position: absolute;
     bottom: 0px;
     left: 0px;
     right: 0px;
     top: 0px;
-    margin: auto;
+    margin: auto;*/
 }
 
 .author-image .author-rank-image.author-rank-image-1 {
@@ -425,7 +433,7 @@ div.post-main-text {
 }
 
 .respond-post .icon {
-    background-image: url('../img/pencil.png');
+    background-image: url('../img/pencil_talkback.png');
     background-size: 17px 14px;
     background-position-x: initial;
     background-position-y: 2px;
@@ -444,7 +452,7 @@ div.post-main-text {
 }
 
 span.respond-post, span.like-post {
-    width: 62px;
+    width: 49%;
     background-color: #565c63;
     display: inline-block;
     float: right;
@@ -460,14 +468,12 @@ span.is-liked {
 
 .post-footer {
     position: relative;
-    width: 260px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
 }
 
 span.respond-count, span.like-count {
     display: inline-block;
-    width: 62px;
+    width: 49%;
     background-color: #d4deec;
     color: black;
     text-align: center;
@@ -554,7 +560,7 @@ span.respond-count, span.like-count {
 
 /**********************side-bar**************************8*/
 
-span.sidbar-text.ng-binding {
+span.sidbar-text{
     display: inline-block;
     width: 89px;
     position: relative;
@@ -611,6 +617,7 @@ div#mainSidebar {
 
 .app-name + .scrollable {
     padding-top: 98px;
+    background-color: #ffffff;
 }
 
 div.list-group {
@@ -904,7 +911,8 @@ iframe.player-contener {
 }
 
 .player-text p {
-    padding: 0px 5px;
+	display: inline-block;
+   /*  padding: 0px 5px; */
     font-size: 10px;
     color: #fff;
 }
@@ -931,7 +939,7 @@ button {
 }
 
 .text-box {
-    height: 104px;
+    height: 110px;
     LINE-HEIGHT: 13px;
     padding-right: 14px;
     padding-left: 14px;
@@ -955,7 +963,7 @@ button {
     height: 172px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100% 100%;
+    background-size: 100% auto;
     margin: auto;
 }
 
@@ -1115,6 +1123,7 @@ button {
     display: inline-block;
     position: relative;
     top: 2px;
+    vertical-align: top;
 }
 
 .legend-content {
@@ -1143,7 +1152,7 @@ button {
 .optionToVote-container {
     width: 263px;
     height: 45px;
-    line-height: 20px;
+    line-height: 21px;
     margin-top: 7px;
     margin-right: auto;
     margin-left: auto;
@@ -1154,6 +1163,7 @@ button {
     -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
     -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
     box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 
 .vote-error {
@@ -1310,6 +1320,9 @@ button {
 .brother-types-text {
 }
 
+.my-score-bord-not-login{
+    padding-bottom: 80px;
+}
 .points-wrapper {
     padding: 14px 14px 0px 14px;
     position: relative;
@@ -1458,6 +1471,7 @@ img.brother-types-img {
     -webkit-transform: rotateZ(180deg);
 }
 
+
 .end-load-more {
     height: 25px;
     position: relative;
@@ -1483,4 +1497,177 @@ margin-left: 7px;
     bottom: 0px;
     margin: auto;
     z-index: 0;
+}
+
+
+
+/**************************loader********************/
+
+#floatingCirclesG{
+position:relative;
+width:128px;
+height:128px;
+-moz-transform:scale(0.6);
+-webkit-transform:scale(0.6);
+-ms-transform:scale(0.6);
+-o-transform:scale(0.6);
+transform:scale(0.6);
+margin: auto;
+}
+
+.f_circleG{
+position:absolute;
+background-color:#124270;
+height:23px;
+width:23px;
+-moz-border-radius:12px;
+-moz-animation-name:f_fadeG;
+-moz-animation-duration:1.04s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:linear;
+-webkit-border-radius:12px;
+-webkit-animation-name:f_fadeG;
+-webkit-animation-duration:1.04s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-direction:linear;
+-ms-border-radius:12px;
+-ms-animation-name:f_fadeG;
+-ms-animation-duration:1.04s;
+-ms-animation-iteration-count:infinite;
+-ms-animation-direction:linear;
+-o-border-radius:12px;
+-o-animation-name:f_fadeG;
+-o-animation-duration:1.04s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:linear;
+border-radius:12px;
+animation-name:f_fadeG;
+animation-duration:1.04s;
+animation-iteration-count:infinite;
+animation-direction:linear;
+}
+
+#frotateG_01{
+left:0;
+top:52px;
+-moz-animation-delay:0.39s;
+-webkit-animation-delay:0.39s;
+-ms-animation-delay:0.39s;
+-o-animation-delay:0.39s;
+animation-delay:0.39s;
+}
+
+#frotateG_02{
+left:15px;
+top:15px;
+-moz-animation-delay:0.52s;
+-webkit-animation-delay:0.52s;
+-ms-animation-delay:0.52s;
+-o-animation-delay:0.52s;
+animation-delay:0.52s;
+}
+
+#frotateG_03{
+left:52px;
+top:0;
+-moz-animation-delay:0.65s;
+-webkit-animation-delay:0.65s;
+-ms-animation-delay:0.65s;
+-o-animation-delay:0.65s;
+animation-delay:0.65s;
+}
+
+#frotateG_04{
+right:15px;
+top:15px;
+-moz-animation-delay:0.78s;
+-webkit-animation-delay:0.78s;
+-ms-animation-delay:0.78s;
+-o-animation-delay:0.78s;
+animation-delay:0.78s;
+}
+
+#frotateG_05{
+right:0;
+top:52px;
+-moz-animation-delay:0.91s;
+-webkit-animation-delay:0.91s;
+-ms-animation-delay:0.91s;
+-o-animation-delay:0.91s;
+animation-delay:0.91s;
+}
+
+#frotateG_06{
+right:15px;
+bottom:15px;
+-moz-animation-delay:1.04s;
+-webkit-animation-delay:1.04s;
+-ms-animation-delay:1.04s;
+-o-animation-delay:1.04s;
+animation-delay:1.04s;
+}
+
+#frotateG_07{
+left:52px;
+bottom:0;
+-moz-animation-delay:1.17s;
+-webkit-animation-delay:1.17s;
+-ms-animation-delay:1.17s;
+-o-animation-delay:1.17s;
+animation-delay:1.17s;
+}
+
+#frotateG_08{
+left:15px;
+bottom:15px;
+-moz-animation-delay:1.3s;
+-webkit-animation-delay:1.3s;
+-ms-animation-delay:1.3s;
+-o-animation-delay:1.3s;
+animation-delay:1.3s;
+}
+
+@-moz-keyframes f_fadeG{
+0%{
+background-color:#FFFFFF}
+
+100%{
+background-color:#124270}
+
+}
+
+@-webkit-keyframes f_fadeG{
+0%{
+background-color:#FFFFFF}
+
+100%{
+background-color:#124270}
+
+}
+
+@-ms-keyframes f_fadeG{
+0%{
+background-color:#FFFFFF}
+
+100%{
+background-color:#124270}
+
+}
+
+@-o-keyframes f_fadeG{
+0%{
+background-color:#FFFFFF}
+
+100%{
+background-color:#124270}
+
+}
+
+@keyframes f_fadeG{
+0%{
+background-color:#FFFFFF}
+
+100%{
+background-color:#124270}
+
 }

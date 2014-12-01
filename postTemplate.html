@@ -1,19 +1,19 @@
-<div class="post-tab" data-post="{{post._id}}" data-post-type="{{post.postType}}" data-ng-class="{'staff': post._author.local.role == 'staff'}">
+<div class="post-tab" data-post="{{post._id}}" data-post-type="{{post.postType}}" data-once-class="{'staff': post._author.local.role == 'staff'}">
     <delete-post data-ng-if="isAdmin"></delete-post>
     <figure class="author-image" data-ng-show="showAuthorImage!=false" data-ng-click="userClicked(post._author._id);$event.stopPropagation();">
-		<div class="author-background-image" style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
+		<div class="author-background-image" data-once-style="{'background-image':'url('+(post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url)+')'}"></div>
         <div class="author-rank-image-zone">
-            <div class="author-rank-image" data-ng-class="{'author-rank-image-0': post._author.data.point.level == 0, 'author-rank-image-1': post._author.data.point.level == 1, 'author-rank-image-2': post._author.data.point.level == 2, 'author-rank-image-3': post._author.data.point.level == 3, 'author-rank-image-4': post._author.data.point.level == 4}"></div>
+            <div class="author-rank-image" data-once-class="{'author-rank-image-0': post._author.data.point.level == 0, 'author-rank-image-1': post._author.data.point.level == 1, 'author-rank-image-2': post._author.data.point.level == 2, 'author-rank-image-3': post._author.data.point.level == 3, 'author-rank-image-4': post._author.data.point.level == 4}"></div>
         </div>
     </figure>
-    <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post._author}}" data-ng-click="userClicked(post._author._id);$event.stopPropagation();">{{post._author.data.firstName}} {{post._author.data.lastName}}</span>
-    <span class="author-date" data-ng-show="showCommentDate!=false">{{post.timestamp | date : 'dd.MM.yyyy HH:MM'}}</span>
+    <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post._author}}" data-ng-click="userClicked(post._author._id);$event.stopPropagation();" once-text="(post._author.data.firstName)+' '+(post._author.data.lastName)"><!-- {{post._author.data.firstName}} {{post._author.data.lastName}} --></span>
+    <span class="author-date" data-ng-show="showCommentDate!=false" data-once-text="(post.timestamp | date : 'dd.MM.yyyy HH:MM')"><!-- {{post.timestamp | date : 'dd.MM.yyyy HH:MM'}} --></span>
 
-    <div class="post-title" data-ng-show="showCommentTitle==true">{{post.title}}</div>
+    <div class="post-title" data-ng-show="showCommentTitle==true" data-once-text="post.title"><!-- {{post.title}} --></div>
 
     <div class="post-main-text">
-        <img data-ng-src="{{domain}}{{post.img}}" alt="post-pic" data-ng-show="post.img!=='' && post.img!==undefined">
-        {{post.content}}
+        <img data-once-src="domain+post.img" alt="post-pic" data-ng-show="post.img!=='' && post.img!==undefined" data-once-text="post.content">
+       <!--  {{post.content}} -->
     </div>
 
     <div data-ng-if="post.commentsCount>0" class="read-the-comments">קרא תגובות</div>

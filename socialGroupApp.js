@@ -1,7 +1,7 @@
 var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
 var siteOrigin = '../../../';
 
-var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap', 'ngQuickDate'])
+var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap', 'ngQuickDate', 'ngImgCrop', 'once'])
 
 /**** UI Router ****/
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -213,8 +213,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              url: "/breakingnews",
              views: {
                  "main": {
-                     templateUrl: "./components/breakingnews/breakingnews.html",
-                     controller: "breakingnews"
+                     templateUrl: "./components/breakingnews/breakingnewsPromo.html",
+                     controller: "breakingnewsPromo"
                  }
              }
          })
@@ -599,7 +599,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             
             elem.bind('scroll', function () {
                 
-                if ((rawElement.scrollTop + rawElement.offsetHeight + 5) >= rawElement.scrollHeight) {
+                if ((rawElement.scrollTop + rawElement.offsetHeight + 100) >= rawElement.scrollHeight) {
                     
                     scope.$apply(scope.loadingMethod);
                 }

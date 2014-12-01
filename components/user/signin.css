@@ -359,9 +359,9 @@ canvas#c {
     border: 0px solid #42484e;
 }
 
-canvas {
+/*canvas {
     visibility: hidden;
-}
+}*/
 
 #instruction-for-image {
     width: 100%;
@@ -464,4 +464,12 @@ canvas {
 
 span.underline-benet-terms {
     text-decoration: underline;
+}
+
+.cropArea {
+    /*background: #E4E4E4;*/
+    overflow: hidden;
+    width: 200px;
+    height: 150px;
+    margin: auto;
 }

@@ -1,5 +1,5 @@
 
-socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
+socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', 'filePicker', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, filePicker) {
 
     $scope.domain = domain;
     /*init variables*/
@@ -172,6 +172,22 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         }
 
     }, false);
-
+	
+    $scope.takePicture = function () {
+        filePicker.getPicture()
+        .then(function (imageData) {
+            // imageData is your base64-encoded image
+            // update some ng-src directive
+            $scope.imgFileText = imageData.fileText;
+            $scope.showSuggestedImages = false;
+            try {
+                $scope.postImg = imageData.imgData;//"data:image/jpeg;base64," +
+                $scope.$apply()
+            }
+            catch (e) {
+                alert('error on imageClick: ' + e.Message);
+            }
+        });
+    };
 } ]);
 

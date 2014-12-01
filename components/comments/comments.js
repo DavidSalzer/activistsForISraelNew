@@ -3,7 +3,7 @@ socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'Post
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/whatsup.png",
+        featureLogo: "./img/sidebar-talk-back-icon.png",
         featureWhatsUpLogo: "./img/hosting_info.png",
         featureColor: '#993ca7',
         infoHaeder: "הפורום",
@@ -12,7 +12,7 @@ socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'Post
     };
 
     generalParameters.setFeature($scope.featureDetails);
-
+     generalParameters.setBackIcon(true);
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
     $scope.offset = 20;

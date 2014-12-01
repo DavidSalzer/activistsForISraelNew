@@ -16,6 +16,9 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
                     var file = fileInput.files[0];
                     var reader = new FileReader();
                     reader.readAsDataURL(file);
+                    if (((file.length - 814) / 1.37) > 3000000) {
+                            alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
+                        }
                     reader.onloadend = function () {
                         $rootScope.$apply(function () {
                             console.log(file.name);
@@ -34,12 +37,12 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
 
                 // set some default options
                 var defaultOptions = {
+                    quality : 40,
                     sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
                     destinationType: Camera.DestinationType.DATA_URL,
                     mediaType: Camera.MediaType.PICTURE,
                     correctOrientation: false,
-                    targetWidth: 200,
-                    targetHeight: 200
+                    encodingType: Camera.EncodingType.JPEG
                 };
 
                 // allow overriding the default options
@@ -48,8 +51,14 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
                 // success callback
                 var success = function (imageData) {
                     $rootScope.$apply(function () {
+                        console.log(imageData);
+                        
                         var encodedData = {};
-                        encodedData.imgData = imageData;
+                        encodedData.imgData = "data:image/jpeg;base64," + imageData;
+                        console.log(((encodedData.imgData.length - 814) / 1.37));
+                        if (((encodedData.imgData.length - 814) / 1.37) > 4000000) {
+                            alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
+                        }
                         encodedData.fileText = 'file successfully added';
                         deferred.resolve(encodedData);
                     });
