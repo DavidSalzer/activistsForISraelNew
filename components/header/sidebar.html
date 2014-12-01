@@ -10,8 +10,8 @@
         <div class="list-group out-list-group" data-ng-click="closePopups()" data-toggle="off" data-bubble data-target="mainSidebar">
             <a data-ng-repeat="feature in featuresList" data-ng-class="{'list-group-item':true,'{{feature.featureStyleName}}':true}" href="#/{{feature.featureUrl}}">
                 <div class="inner-list-group">
-                    <span class="sidbar-text">
-                                {{feature.featureName}}
+                    <span class="sidbar-text" once-text="feature.featureName">
+                                <!-- {{feature.featureName}} -->
                     </span>
                 </div>
                 <img class="sidebar-logo" data-ng-src="{{feature.featureLogo}}" alt="alt">

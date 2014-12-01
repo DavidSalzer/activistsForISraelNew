@@ -99,8 +99,8 @@
                         </div>
                     </figure>
                     <div class="user-profile-other-user-symbol" data-ng-class="{'other-user-symbol-like': activity.type == 'like', 'other-user-symbol-like': activity.type == 'userLike', 'other-user-symbol-comment': activity.type == 'comment'}"></div>
-                    <span class="author-name" data-author="{{post._author}}">{{activity.user.data.firstName}} {{activity.user.data.lastName}}</span>
-                    <div class="user-profile-other-user-content" data-ng-init="textForView(activity)">{{activity.textView}}</div>
+                    <span class="author-name" data-author="{{post._author}}" once-text="(activity.user.data.firstName)+' '+(activity.user.data.lastName)"><!-- {{activity.user.data.firstName}} {{activity.user.data.lastName}} --></span>
+                    <div class="user-profile-other-user-content" data-ng-init="textForView(activity)" once-text="activity.textView"><!-- {{activity.textView}} --></div>
                     <!--<div class="user-profile-other-user-content" data-ng-show="activity.type == 'userLike'">העריך אותך</div>-->
                 </div>
 
