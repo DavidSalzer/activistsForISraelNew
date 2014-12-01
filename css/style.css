@@ -153,16 +153,18 @@ select {
 }
 
 .post-buttons {
-    position: absolute;
+    position: relative;
+    width: 49%;
+    display: inline-block;
 }
 
-.post-likes {
+/*.post-likes {
     left: 0px;
 }
 
 .post-comment {
     right: 0px;
-}
+}*/
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
     color: #fff;
@@ -195,16 +197,16 @@ select {
 
 
 .post-buttons {
-    position: absolute;
+    /*position: absolute;*/
 }
 
 .post-likes {
-    left: 0px;
+    /*left: 0px;*/
     cursor: pointer;
 }
 
 .post-comment {
-    right: -1px;
+    /*right: -1px;*/
     cursor: pointer;
 }
 
@@ -430,7 +432,7 @@ div.post-main-text {
 }
 
 .respond-post .icon {
-    background-image: url('../img/pencil.png');
+    background-image: url('../img/pencil_talkback.png');
     background-size: 17px 14px;
     background-position-x: initial;
     background-position-y: 2px;
@@ -449,7 +451,7 @@ div.post-main-text {
 }
 
 span.respond-post, span.like-post {
-    width: 62px;
+    width: 49%;
     background-color: #565c63;
     display: inline-block;
     float: right;
@@ -465,14 +467,12 @@ span.is-liked {
 
 .post-footer {
     position: relative;
-    width: 260px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
 }
 
 span.respond-count, span.like-count {
     display: inline-block;
-    width: 62px;
+    width: 49%;
     background-color: #d4deec;
     color: black;
     text-align: center;
@@ -938,7 +938,7 @@ button {
 }
 
 .text-box {
-    height: 104px;
+    height: 110px;
     LINE-HEIGHT: 13px;
     padding-right: 14px;
     padding-left: 14px;
@@ -962,7 +962,7 @@ button {
     height: 172px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100% 100%;
+    background-size: 100% auto;
     margin: auto;
 }
 
@@ -1122,6 +1122,7 @@ button {
     display: inline-block;
     position: relative;
     top: 2px;
+    vertical-align: top;
 }
 
 .legend-content {
@@ -1150,7 +1151,7 @@ button {
 .optionToVote-container {
     width: 263px;
     height: 45px;
-    line-height: 20px;
+    line-height: 21px;
     margin-top: 7px;
     margin-right: auto;
     margin-left: auto;
@@ -1161,6 +1162,7 @@ button {
     -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
     -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
     box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 
 .vote-error {
