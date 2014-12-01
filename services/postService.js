@@ -151,10 +151,11 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 queryString = 'post';
             }
             $rootScope.$broadcast('showLoader', { showLoader: true });
-            $http.post(domain + queryString, json)
+            
+			$http.post(domain + queryString, json)
+			
 			.success(function (data) {
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
-			    
 			    if (data.data._id == undefined) { deferred.resolve(data); return deferred.promise; } //fail to create post!
 			    if (isBase64&&imgFile) {
 			        //imgFile is base64 string
