@@ -12,7 +12,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         featureWhatsUpLogo: "./img/calendar_info.png",
         featureColor: '#004a8e',
         infoHaeder: "אירועים",
-        infoMainText: 'לוח האירועים של האחליקציה. כאן תוכלו לראות את האירועים הקיימים ולפרסם אירועים/חוגי בית ושאר מפגשים שתרצו לשתף בהם את החברים',
+        infoMainText: 'לוח האירועים של האחליקציה. <br>כאן תוכלו לראות את האירועים הקיימים ולפרסם אירועים/חוגי בית ושאר מפגשים שתרצו לשתף בהם את החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
     $scope.showendloader = false;
@@ -35,7 +35,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
-    
+
 
     $scope.l = function (flager) {
         console.log(flager);
@@ -65,7 +65,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
             return;
         }
         console.log('load more');
-        request.offset += 8;
+        request.offset += 20;
         post = PostService.getPosts();
         request.endTimestamp = post[0].timestamp;
 
@@ -94,6 +94,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
 
         date.setHours(0, 0);
         request.DestinationTime = date.getTime();
+        request.offset = 0;
         //alert(request.DestinationTime);
         PostService.getPostsBatch(request);
     }
