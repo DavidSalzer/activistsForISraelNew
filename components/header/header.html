@@ -21,9 +21,9 @@
             <!--<figure class="devider-line point-devider-line"></figure>-->
             <div id="main-point-wrapper">
                 <div class="point-wrapper score-one"data-ng-class="{'point-wrapper-left': $index%2==0, 'point-wrapper-right': $index%2==1}" data-ng-repeat="scoreCategory in receiveScoringRanks track by $index">
-                    <div class="score-image" style="background-color: {{scoreCategory.color}}"><div class="point-plus">+</div><div class="score-height">{{scoreCategory.score}}</div></div>
+                    <div class="score-image" style="background-color: {{scoreCategory.color}}"><div class="point-plus">+</div><div class="score-height" once-text="scoreCategory.score"><!-- {{scoreCategory.score}} --></div></div>
                     <div class="inner-point-wrapper">
-                        <div data-ng-repeat="item in scoreCategory.activities" class="quality-scores quality-scores-left" style="background-image:url({{item.img}})">{{item.text}}</div>
+                        <div data-ng-repeat="item in scoreCategory.activities" class="quality-scores quality-scores-left" style="background-image:url({{item.img}})" once-text="item.text"><!-- {{item.text}} --></div>
                         <!--<div class="quality-scores quality-scores-left" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
                         <div class="quality-scores quality-scores-left" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>-->
                     </div>

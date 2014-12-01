@@ -529,9 +529,13 @@ canvas#c1 {
     border: 1px solid #42484e;
 }
 
-canvas {
-    visibility: hidden;
+.editImg.profileEditImg {
+    background: #828282;
 }
+
+/*canvas {
+    visibility: hidden;
+}*/
 
 #instruction-for-image {
     width: 100%;

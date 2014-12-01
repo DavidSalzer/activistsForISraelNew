@@ -33,11 +33,11 @@
         <div class="suggested-images-wrap" >
             <div class="images-window"  >  
 			    <div  class='suggested-images-up' >
-				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  data-ng-if="$even" class="meme-element2"  style="background-image:url('{{image.url}}')"></span>
+				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  data-ng-if="$even" class="meme-element2"  data-once-style="{'background-image':'url('+image.url+')'}"></span>
 				    
                 </div>
 			    <div  class='suggested-images-down'>
-				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  data-ng-if="$odd" class="meme-element2"  style="background-image:url('{{image.url}}')" >
+				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  data-ng-if="$odd" class="meme-element2"   data-once-style="{'background-image':'url('+image.url+')'}">
 				    </span>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                 
             </div>
             <div class="color-picker-palette" data-ng-show="showPaletteTop">
-                <div class="col" data-ng-repeat="color in paletteColors" data-ng-style="{'background-color':color.color}" data-ng-click="setColor('top',color.color);$event.stopPropagation();"></div>
+                <div class="col" data-ng-repeat="color in paletteColors" data-once-style="{'background-color':color.color}" data-ng-click="setColor('top',color.color);$event.stopPropagation();"></div>
             </div>
           <div class="file-text"><input placeholder="טקסט עליון"  data-ng-model="topText" data-ng-change="textChange('top')"/></div>
             
@@ -100,7 +100,7 @@
                 
             </div>
              <div class="color-picker-palette" data-ng-show="showPaletteBottom">
-                <div class="col" data-ng-repeat="color in paletteColors" data-ng-style="{'background-color':color.color}" data-ng-click="setColor('bottom',color.color);$event.stopPropagation();"></div>
+                <div class="col" data-ng-repeat="color in paletteColors" data-once-style="{'background-color':color.color}" data-ng-click="setColor('bottom',color.color);$event.stopPropagation();"></div>
             </div>
           <div class="file-text"><input placeholder="טקסט תחתון" data-ng-model="bottomText"/></div>
             
@@ -109,7 +109,7 @@
     
 
     </div>
-    <div class="button shadow-buttons" data-ng-click="createMeme()" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">צור מם</div>
+    <div class="button shadow-buttons" data-ng-click="createMeme()" data-once-style="{'background-color': featureDetails.featureColor}">צור מם</div>
     <!--<div style="width: 320px;height: 320px">
         <img width="" height="" src="" id="img" />
     </div>-->

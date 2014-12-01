@@ -910,7 +910,8 @@ iframe.player-contener {
 }
 
 .player-text p {
-    padding: 0px 5px;
+	display: inline-block;
+   /*  padding: 0px 5px; */
     font-size: 10px;
     color: #fff;
 }

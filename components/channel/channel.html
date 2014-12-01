@@ -16,8 +16,9 @@
                 <!--<div class="channel-play-button"></div>-->
             </div>
             <div class="player-text" ng-click="alert();">
-                <h2>{{list.snippet.title}}</h2>
-                <p>{{list.statistics.viewCount}} צפיות</p>
+                <h2  once-text="list.snippet.title"><!-- {{list.snippet.title}} --></h2>
+                <p  style="padding-right:5px;" once-text="list.statistics.viewCount"><!-- {{list.statistics.viewCount}} --> <!-- צפיות --></p>
+                <p>צפיות</p>
             </div>
         </div>
         <div class="spiner-zone" data-ng-show="showSpiner">
