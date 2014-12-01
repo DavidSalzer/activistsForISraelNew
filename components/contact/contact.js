@@ -28,8 +28,10 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'classAjax', 'Post
 
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/contact.png",
+        featureLogo: "./img/sidebar-contact-icon.png",
+        featureWhatsUpLogo: "./img/contact_info.png",
         featureColor: '#009933',
+        infoHaeder: "צור קשר",
         infoMainText: "כאן תוכלו לפנות אלינו.",
         infoSubText: "עוד לא הצטרפת לאחליקציה?"
     };

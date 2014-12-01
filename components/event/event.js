@@ -12,7 +12,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         featureWhatsUpLogo: "./img/calendar_info.png",
         featureColor: '#004a8e',
         infoHaeder: "אירועים",
-        infoMainText: 'לוח האירועים של האחליקציה. כאן תוכלו לראות את האירועים הקיימים ולפרסם אירועים/חוגי בית ושאר מפגשים שתרצו לשתף בהם את החברים',
+        infoMainText: 'לוח האירועים של האחליקציה. <br>כאן תוכלו לראות את האירועים הקיימים ולפרסם אירועים/חוגי בית ושאר מפגשים שתרצו לשתף בהם את החברים',
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
     $scope.showendloader = false;

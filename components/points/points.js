@@ -6,7 +6,7 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope',  '$
         featureWhatsUpLogo: "./img/sidebar-score-icon.png",
         featureColor: '#00be9c',
         infoHaeder: "הניקוד שלי",
-        infoMainText: 'בוא תהיה אח! כאן תוכל לראות איך לצבור נקודות ולטפס בסולם הדירוג.',
+        infoMainText: 'בוא תהיה אח! <br>כאן תוכל לראות איך לצבור נקודות ולטפס בסולם הדירוג.',
         infoSubText: "עוד לא הצטרפת לאחליקציה?"
     };
     generalParameters.setFeature($scope.featureDetails);
@@ -125,7 +125,7 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope',  '$
                 },
                 {
                     text: 'יצירת אירוע',
-                    logo: './img/sidebar-menu-icon.png'
+                    logo: './img/sidebar-event-icon.png'
                 }
             ]
         },
