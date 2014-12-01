@@ -1,7 +1,7 @@
 <div data-ng-class="{'post-tab':!singleEvent}" data-post="{{post._id}}" data-post-type="event">
   <delete-post data-ng-if="isAdmin"></delete-post>
   <div class="post-details">  
-	   <div class="event-title" style='color:{{featureDetails.featureColor}};' once-text="post.title+' ב'+post.location" ><!-- {{post.title}} ב{{post.location}} --></div>
+	   <div class="event-title" data-once-style="{'color':featureDetails.featureColor}" data-once-text="post.title+' ב'+post.location" ><!-- {{post.title}} ב{{post.location}} --></div>
       <div data-ng-if="singleEvent" class="the-single-title top-single-title" once-text="'יום '+(post.DestinationTime | date : 'EEEE')+' '+(post.DestinationTime | date : 'dd.MM.yyyy')+' '+(post.hebrewDate)+' שעה '+(post.DestinationTime | date : 'H:mm')">
        <!--  יום {{post.DestinationTime | date : 'EEEE'}} {{post.DestinationTime | date : 'dd.MM.yyyy'}} {{post.hebrewDate}} שעה {{post.DestinationTime | date : 'H:mm'}} -->
     </div>
@@ -15,15 +15,15 @@
   </div>
 	
   <div class="post-main-text event-main-text" >
-	<img data-ng-if="singleEvent && post.img!='' && post.img!=undefined" data-ng-src="{{domain+post.img}}" alt="post-pic" >
-	<div data-ng-if="!singleEvent" once-text="post.content | limitTo:85">
+	<img data-ng-if="singleEvent && post.img!='' && post.img!=undefined" data-once-src="domain+post.img" alt="post-pic" >
+	<div data-ng-if="!singleEvent" data-once-text="post.content | limitTo:85">
 		<!-- {{post.content | limitTo:85 }} --><div data-ng-if="85 < post.content.length" class='event-3points'>...</div>
 	</div>
 	<div data-ng-if="!singleEvent && 85 < post.content.length" class="read-more-event">
         <div class="inner-readmore-event">קרא עוד...</div>
     </div>
 	
-  <div data-ng-if="singleEvent" class='singleEvent-text'  once-text="post.content"><!-- {{post.content}} --></div>
+  <div data-ng-if="singleEvent" class='singleEvent-text'  data-once-text="post.content"><!-- {{post.content}} --></div>
   
   </div>
    

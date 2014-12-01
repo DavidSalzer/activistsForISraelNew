@@ -12,7 +12,7 @@
     <div class="channel-list" scroller loading-method="getVideos()">
         <div ng-repeat="list in items" class="list-tube">
             <div id="player{{$index}}" class="player-contener" data-ng-click="laodyoutube(list.id.videoId,$index);">
-                <img ng-src="{{list.snippet.thumbnails.high.url}}">
+                <img data-once-src="list.snippet.thumbnails.high.url">
                 <!--<div class="channel-play-button"></div>-->
             </div>
             <div class="player-text" ng-click="alert();">

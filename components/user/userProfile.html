@@ -92,7 +92,7 @@
             <div class="user-profile-other-user-wrapper" style="width: {{getOtherUsersActivity().length*140}}px">
                 <div data-ng-repeat="activity in getOtherUsersActivity()" class="user-profile-other-user-activity" data-ng-click="goToSinglePage(activity, activity.type != 'userLike')">
                     <figure class="author-image" data-ng-click="goToSinglePage(activity, false);$event.stopPropagation();">
-                        <div class="author-background-image" style="background-image:url('{{activity.user.data.img.RelativePosition? domain+activity.user.data.img.url : activity.user.data.img.url}}')"></div>
+                        <div class="author-background-image" data-once-style="{'background-image':'url('+(activity.user.data.img.RelativePosition? domain+activity.user.data.img.url : activity.user.data.img.url)+')'}"></div>
                         <div class="author-rank-image-zone">
                             <div class="author-rank-image" data-ng-class="{'author-rank-image-0': activity.user.data.point.level == 0, 'author-rank-image-1': activity.user.data.point.level == 1, 'author-rank-image-2': activity.user.data.point.level == 2, 'author-rank-image-3': activity.user.data.point.level == 3, 'author-rank-image-4': activity.user.data.point.level == 4}"></div>
                         </div>
@@ -112,7 +112,7 @@
         <div class="user-recent-activity-zone">
             <div data-ng-repeat="feature in featuresList track by $index">
                 <div class="user-recent-activity" data-ng-click="openRecentActivity(feature.postType)">
-                    <div class="user-recent-activity-logo" style="background-image: url({{feature.featureLogo}})"></div>
+                    <div class="user-recent-activity-logo" data-once-style="{'background-image': 'url('+feature.featureLogo+')'}"></div>
                     <div class="user-recent-activity-arrow" data-ng-class="{'user-recent-activity-arrow-up': currentPost == feature.postType}"></div>
                     {{feature.featureName}}
                 </div>

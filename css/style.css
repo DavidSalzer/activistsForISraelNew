@@ -579,7 +579,7 @@ span.respond-count, span.like-count {
 
 /**********************side-bar**************************8*/
 
-span.sidbar-text.ng-binding {
+span.sidbar-text{
     display: inline-block;
     width: 89px;
     position: relative;
