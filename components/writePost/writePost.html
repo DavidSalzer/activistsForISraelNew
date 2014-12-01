@@ -64,7 +64,7 @@
 		<!-- post main text area-->
 		<div style="position:relative;border-radius: 10px;">
 			
-			<textarea  data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' char-limit='{{max}}'  line-limit='{{maxLine}}'  class="article-text"  data-ng-class='{"requieredError":showContentError}' placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
+			<textarea  data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' char-limit='{{max}}' class="article-text"  data-ng-class='{"requieredError":(showContentError||showContentLongError)}' placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
 			</textarea >
 			<span data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' style='color: #bcccce;position: absolute;bottom: 1px;left: 1px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;' >[{{postData.post.content.length}}/{{max}}]</span>
 			
@@ -112,6 +112,7 @@
 		<div style='margin-top:12px;'>
 			<div class="login-error" data-ng-if="showTitleError">* שדה כותרת לא הוזן כראוי</div>
             <div class="login-error" data-ng-if="showContentError">* שדה טקסט לא הוזן כראוי</div>
+            <div class="login-error" data-ng-if="showContentLongError">* חרגת ממספר התווים המירבי</div>
 			<div class="login-error" data-ng-if="showDDMMYYError">* שדה תאריך לא הוזן כראוי</div>
 			<div class="login-error" data-ng-if="showHHMMError">* שדה שעה לא הוזן כראוי</div>
 			<div class="login-error" data-ng-if="showLocationError">* שדה מקום לא הוזן כראוי</div>

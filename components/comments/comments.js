@@ -12,7 +12,7 @@ socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'Post
     };
 
     generalParameters.setFeature($scope.featureDetails);
-
+     generalParameters.setBackIcon(true);
     $scope.domain = domain;
     $scope.showSpiner = PostService.getSpiner;
     $scope.offset = 20;

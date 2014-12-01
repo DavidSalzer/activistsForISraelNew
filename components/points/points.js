@@ -5,7 +5,7 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope',  '$
         featureLogo: "./img/sidebar-score-icon.png",
         featureWhatsUpLogo: "./img/sidebar-score-icon.png",
         featureColor: '#00be9c',
-        infoHaeder: "אירועים",
+        infoHaeder: "הניקוד שלי",
         infoMainText: 'בוא תהיה אח! כאן תוכל לראות איך לצבור נקודות ולטפס בסולם הדירוג.',
         infoSubText: "עוד לא הצטרפת לאחליקציה?"
     };
@@ -13,18 +13,14 @@ socialGroupApp.controller('points', ['$rootScope', '$stateParams', '$scope',  '$
 
     $scope.staus = 'התחבר על מנת להתחיל';
     $scope.score = 0;
-    $scope.next = "לא מבוצע";
+    $scope.next = 50;
     $scope.marg = (window.innerWidth - 36 * 5 - 28 - 12) / 4;
     $scope.margTwo = (window.innerWidth - 28 - 44 - 5 * 5) / 4;
     $scope.myScoreBord = false;
     $scope.myScoreNow = true;
     $scope.notLogin = true;
 
-    $http.get(domain + 'pointsToNextLevel', { withCredentials: true, async: true })
-        .success(function (data) {
-            $scope.next =data.data.pointsToNextLevel;
-        });
-
+   
     //set page when user is login
     $scope.userLogin = function () {
         $scope.staus = $scope.user.rank;
