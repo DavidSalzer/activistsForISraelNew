@@ -1,11 +1,11 @@
 div.user-profile-gender.user-profile-item { /*temp for submission 0307*/
-   
 }
 
 div.user-profile-item:last-child { /*temp for submission 0307*/
     border: none;
- width: 100%; 
- height: 54px;}
+    width: 100%;
+    height: 54px;
+}
 
 
 
@@ -226,7 +226,6 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 35px;
     line-height: 35px;
     float: none;
-    
 }
 
 .user-profile-item input[type=text] {
@@ -353,6 +352,12 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     padding-top: 0px;
 }
 
+.none-activity {
+ width: 90%;
+border: none;
+margin-top: 5px;
+}
+
 .user-recent-activity {
     width: 90%;
     height: 50px;
@@ -390,16 +395,16 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     top: 15px;
     left: 15px;
     transform: rotate(0deg);
-    -webkit-transform:rotate(0deg);
-    -moz-transform:rotate(0deg); 
-    -o-transform:rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
 }
 
 .user-recent-activity-arrow-up {
     transform: rotate(180deg);
-    -webkit-transform:rotate(180deg);
-    -moz-transform:rotate(180deg); 
-    -o-transform:rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
 }
 
 .user-recent-activity-zone .post-tab {
@@ -407,13 +412,13 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     width: 90%;
 }
 
-.user-recent-activity-zone .post-footer {
+/*.user-recent-activity-zone .post-footer {
     width: 235px;
 }
 
 .user-recent-activity-zone span.respond-post, .user-recent-activity-zone span.like-post, .user-recent-activity-zone span.respond-count, .user-recent-activity-zone span.like-count{
     width: 57px;
-}
+}*/
 
 .post-title {
     color: rgb(0, 109, 190);
@@ -577,13 +582,11 @@ canvas#c1 {
 
 .user-profile-logout-btn.needsclick {
     height: 32px;
-    
     line-height: 29px;
 }
 
 .profile-item-circle {
     position: absolute;
-    
     top: 13px;
     left: 0px;
     height: 35px;
@@ -593,8 +596,10 @@ canvas#c1 {
     background-image: url('../../img/rank_sprite.png');
     background-repeat: no-repeat;
     background-size: 210px 35px;
-    
+    border-radius: 50px;
+    border: solid 1px #000000;
 }
+
 .sign-in-popup.change-pass-popup {
     top: 20px;
 }

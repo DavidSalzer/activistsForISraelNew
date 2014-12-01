@@ -18,6 +18,13 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             featureColor: "talkback",
             postType: "talkback"
         },
+         {
+             featureUrl: 'event',
+             featureName: 'אירועים',
+             featureLogo: "./img/calendar.png",
+             featureColor: "event",
+             postType: "event"
+         },
     //{
     //    featureUrl: 'article',
     //    featureName: 'מאמרים',
@@ -39,14 +46,8 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             featureLogo: "./img/poll.png",
             featureColor: "#da4f00",
             postType: "voteToPoll"
-        },
-    {
-        featureUrl: 'event',
-        featureName: 'אירועים',
-        featureLogo: "./img/calendar.png",
-        featureColor: "event",
-        postType: "event"
-    }
+        }
+
 
     ];
 
@@ -61,12 +62,12 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     };
 
     generalParameters.setFeature($scope.featureDetails);
-
+    generalParameters.setBackIcon(false);
     $scope.showAuthorImage = false;
     $scope.showAuthorName = false;
     $scope.userLike = false;
 
-    generalParameters.setFeature($scope.featureDetails);
+    //generalParameters.setFeature($scope.featureDetails);
 
 
 
@@ -374,21 +375,21 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":                       
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                       
-                //    break;                       
+                //case "author":                        
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                        
+                //    break;                        
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":                       
-                //    $state.transitionTo('single-event', { postId: args.postId });                       
-                //    break;                       
-                //case "voteToPoll":                       
-                //    $state.transitionTo('poll-view', { postId: args.postId });                       
-                //    break;                       
+                //case "event":                        
+                //    $state.transitionTo('single-event', { postId: args.postId });                        
+                //    break;                        
+                //case "voteToPoll":                        
+                //    $state.transitionTo('poll-view', { postId: args.postId });                        
+                //    break;                        
             }
         }
         else {

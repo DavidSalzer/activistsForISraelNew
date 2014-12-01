@@ -3,7 +3,7 @@
 <!--<author-header data-ng-show="{{post.postType=='article'}}"></author-header>-->
 <div class="comment-container" scroller loading-method="loadMore()">
     <section class="comment-main-post">
-        <post data-post-type="talkback" data-ng-repeat="post in [post()]"></post>
+        <post data-post-type="talkback" data-ng-repeat="post in [post()]" data-ng-init="showReadMoreButton=false"></post>
     </section>
     <div class="between-border-comments"></div>
     <section class="comments">
