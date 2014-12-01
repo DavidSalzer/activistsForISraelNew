@@ -1,4 +1,4 @@
-socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax', 'generalParameters', 'imgCrop', function ($rootScope, $scope, $http, classAjax, generalParameters, imgCrop) {
+socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalParameters', 'filePicker', function ($rootScope, $scope, $http, generalParameters, filePicker) {
 
     $scope.showSignIn = false;
     $scope.showFnameError = false;
@@ -115,7 +115,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
                 //if was uploaded
                 
                 if ($scope.userImg != '') {
-                    $scope.uploadBase64Image();
+                    $scope.uploadBase64Image(data.data.user._id);
                 }
                 //$http.post(domain + 'Base64FileUpload?ref=user&_id=data.data.user /',
                 // $scope.json)
@@ -155,73 +155,93 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'classAjax
     }
 
     //send base64 string to server to be converted to jpg, then save image to current user details. 
-    $scope.uploadBase64Image = function () {
+    $scope.uploadBase64Image = function (userId) {
         
         // $scope.json = JSON.stringify($scope.userImg);
-        var userId = generalParameters.getUser();
+        //var userId = generalParameters.getUser();
         
-        $http.post(domain + 'Base64FileUpload?ref=user&_id=' + userId._id,
+        $http.post(domain + 'Base64FileUpload?ref=user&_id=' + userId,
             { "base64": $scope.userImg })
             .success(function (data) {
                 
-                generalParameters.setUser(data.data);
                 //generalParameters.setUser(data.data.user);
             });
 
     }
 
-    document.getElementById('userImg').addEventListener('change', function (e) {
-        $scope.fileEdit(e);
-    }, false);
+    //document.getElementById('userImg').addEventListener('change', function (e) {
+    //    $scope.fileEdit(e);
+    //}, false);
 
-    $scope.fileEdit = function (e) {
-        //file reader to show the img
-        var file = e.target.files[0];
+    //$scope.fileEdit = function (e) {
+    //    //file reader to show the img
+    //    var file = e.target.files[0];
 
-        //file reader
-        var reader = new FileReader();
+    //    //file reader
+    //    var reader = new FileReader();
 
-        if (file.type.match('image/*')) {
-            var reader = new FileReader();
-            reader.onload = (function () {
-                return function (e) {
-                    
-                    
-                    $scope.userimg = e.target.result;
-                    $scope.editImg = true;
-                    $scope.$apply();
-                    $scope.croping();
-                };
-            })(file);
-            reader.readAsDataURL(file);
-        }
-    }
+    //    if (file.type.match('image/*')) {
+    //        var reader = new FileReader();
+    //        reader.onload = (function () {
+    //            return function (e) {
+    //                
+    //                
+    //                $scope.userimg = e.target.result;
+    //                $scope.editImg = true;
+    //                $scope.$apply();
+    //                $scope.croping();
+    //            };
+    //        })(file);
+    //        reader.readAsDataURL(file);
+    //    }
+    //}
+
+    // can be a button click or anything else
+    $scope.takePicture = function () {
+        filePicker.getPicture()
+        .then(function (imageData) {
+            // imageData is your base64-encoded image
+            // update some ng-src directive
+            $scope.imgFileText = imageData.fileText;
+            $scope.userimg = imageData.imgData; //"data:image/jpeg;base64," +
+            $scope.myCroppedImage='';
+            $scope.editImg = true;
+            $scope.$apply();
+        });
+    };
 
 
     //user image crop
-    $scope.croping = function () {
-        
-        imgCrop.obj = {};
-        $('#cropDiv img').off('load');
-        $('#cropDiv img').on('load', function () {
-            imgCrop.crop('c', 'button_ok', 'cropDiv'); //canvasid  ,btn-approve, container Id
-        });
-    }
+    //$scope.croping = function () {
+    //    
+    //    imgCrop.obj = {};
+    //    $('#cropDiv img').off('load');
+    //    $('#cropDiv img').on('load', function () {
+    //        imgCrop.crop('c', 'button_ok', 'cropDiv'); //canvasid  ,btn-approve, container Id
+    //    });
+    //}
 
-    $scope.$on('editDone', function (e, d) {
-        
-        $scope.userImg = d.data;
-        $scope.editImg = false;
-        $scope.$apply();
-        //$('#userImg').val("");
-        $scope.userimg = '';
-        imgCrop.destroy();
-    });
+    //$scope.$on('editDone', function (e, d) {
+    //    
+    //    $scope.userImg = d.data;
+    //    $scope.editImg = false;
+    //    $scope.$apply();
+    //    //$('#userImg').val("");
+    //    $scope.userimg = '';
+    //    imgCrop.destroy();
+    //});
 
     $scope.editCancel = function () {
         $scope.editImg = false;
         $scope.userimg = '';
-        imgCrop.destroy();
+        //imgCrop.destroy();
+    }
+
+    $scope.editDone = function () {
+        $scope.userImg = $scope.myCroppedImage;
+        $scope.editImg = false;
+        //$scope.$apply();
+        $scope.userimg = '';
     }
 
     $scope.sendConfirmMail = function () {
