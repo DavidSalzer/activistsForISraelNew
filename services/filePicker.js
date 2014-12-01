@@ -14,18 +14,17 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
 
                 fileInput.onchange = function () {
                     var file = fileInput.files[0];
-                    if (file.size > 4000000) {
-                        alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
-                    }
                     var reader = new FileReader();
                     reader.readAsDataURL(file);
+                    if (((file.length - 814) / 1.37) > 3000000) {
+                            alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
+                        }
                     reader.onloadend = function () {
                         $rootScope.$apply(function () {
                             console.log(file.name);
                             // strip beginning from string
                             var encodedData = {};
                             encodedData.imgData = reader.result; //.replace(/data:image\/jpeg;base64,/, '');
-                            console.log((reader.result.length - 814) / 1.37);
                             encodedData.fileText = file.name;
                             deferred.resolve(encodedData);
                         });
@@ -38,39 +37,31 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
 
                 // set some default options
                 var defaultOptions = {
+                    quality : 40,
                     sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                    destinationType: Camera.DestinationType.FILE_URI,
+                    destinationType: Camera.DestinationType.DATA_URL,
                     mediaType: Camera.MediaType.PICTURE,
                     correctOrientation: false,
-                    encodingType: Camera.EncodingType.JPEG,
-                    targetWidth: 200,
-                    targetHeight: 200
+                    encodingType: Camera.EncodingType.JPEG
                 };
 
                 // allow overriding the default options
                 options = angular.extend(defaultOptions, options);
 
                 // success callback
-                var success = function (imageUri) {
-                    resolveLocalFileSystemURI(imageUri, function(fileEntry) {
-                        fileEntry.file(function(fileObj) {
-                            console.log("Size = " + fileObj.size);
-                        });
-                        var reader = new FileReader()
-                        reader.readAsDataURL(fileObject)
-                        var imageData = reader.result;
-                        $rootScope.$apply(function () {
-                            console.log(imageData);
-                            if (((imageData.length - 814) / 1.37) > 4000000) {
-                                alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
-                            }
-                            var encodedData = {};
-                            encodedData.imgData = "data:image/jpeg;base64," + imageData;
-                            encodedData.fileText = 'file successfully added';
-                            deferred.resolve(encodedData);
-                        });
-                    });                   
-                    
+                var success = function (imageData) {
+                    $rootScope.$apply(function () {
+                        console.log(imageData);
+                        
+                        var encodedData = {};
+                        encodedData.imgData = "data:image/jpeg;base64," + imageData;
+                        console.log(((encodedData.imgData.length - 814) / 1.37));
+                        if (((encodedData.imgData.length - 814) / 1.37) > 4000000) {
+                            alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
+                        }
+                        encodedData.fileText = 'file successfully added';
+                        deferred.resolve(encodedData);
+                    });
                 };
 
                 // fail callback
