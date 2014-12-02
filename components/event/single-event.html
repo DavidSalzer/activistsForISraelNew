@@ -35,14 +35,14 @@
                 <div class="event-participation">
                     <div class="button join-button event-join-button shadow-buttons" data-ng-click="participate()" style="background-color:{{featureDetails.featureColor}};">השתתף</div>
                     <div>
-                        <div class="detail-wrapper-enent shadow-buttons" data-ng-click="call()"  data-ng-show="post().phone!=''" >
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-click="call()"  data-ng-show="post().phone" >
                             <div class="icon phone-icon participation-option-cell"></div>
                             <div class="participation-option-cell">
                                 <div>צור קשר</div>
                                 <div>{{post()._author.data.firstName}} {{post()._author.data.lastName}} {{post().phone}}</div>
                             </div>
                         </div>
-                        <div class="detail-wrapper-enent shadow-buttons" data-ng-show="post().email!=''" data-ng-click="mail()">
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-show="post().email" data-ng-click="mail()">
                             <div class="icon mail-icon participation-option-cell"></div>
                             <div class="participation-option-cell">
                                 <div>מייל</div>
