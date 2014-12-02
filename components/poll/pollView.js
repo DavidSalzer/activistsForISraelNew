@@ -1,6 +1,6 @@
 ﻿google.load('visualization', '1.0', { 'packages': ['corechart'] });
 socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '$state', '$http', 'PostService', 'generalParameters', 'classAjax', function ($rootScope, $stateParams, $scope, $state, $http, PostService, generalParameters, classAjax) {
-   
+
     $scope.domain = domain;
     $scope.currentPoll = $stateParams.postId;
     $scope.choosenOption = [];
@@ -13,12 +13,12 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
         infoMainText: "בואו להשפיע!<br>כאן מופיעים סקרים בנושאים שונים.<br>ניתן להשתתף בסקר קיים<br>או להציע סקר חדש.",
         infoSubText: "ההצבעה באיזור זה מותנית בהצטרפות לאחליקציה"
     };
-
+    generalParameters.setBackIcon(true);
     $scope.thankDetails = {
         featureColor: '#da4f00',
         thankText: 'הצבעתך התקבלה. המערכת תעבד את נתוני ההצבעה והתוצאות יפורסמו בהקדם. ',
         btnText: 'חזרה לעמוד הסקרים',
-        headerText: 'סקר פעיל',
+        headerText: 'תודה על השתתפותך',
         featureState: 'poll'
     };
 
@@ -26,30 +26,30 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
 
     generalParameters.setFeature($scope.featureDetails);
     $scope.options = generalParameters.getOptionsPieChart();
-    
+
     //$scope.polls = PostService.getPosts();
     PostService.getPostById($scope.currentPoll);
 
     $scope.user = generalParameters.getUser();
-    
+
 
     $scope.maxSelect = 1;
     $scope.minSelect = 1;
 
     //$scope.currentPollObj = $scope.polls[$scope.currentPoll];
     queryString = 'post/' + $scope.currentPoll;
-    
+    $scope.dataReturn = false;
     classAjax.getdata('get', queryString, {})
     .then(function (data) {
         $scope.currentPollObj = data.data;
-        
+
         $scope.closedPoll = $scope.currentPollObj.poll.status == "inactive";
 
         for (var i in $scope.currentPollObj.activity) {
             if ($scope.currentPollObj.activity[i].type == 'vote') {
                 $scope.currentPollObj.poll.status = "inactive";
                 if ($scope.currentPollObj.poll.countVote < 10) {
-                    generalParameters.setBackIcon(false);
+                    //generalParameters.setBackIcon(false);
                     $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
                 }
             }
@@ -65,7 +65,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
 
         $scope.optionsForVote = $scope.currentPollObj.poll.options;
         $scope.currentPollResults = $scope.currentPollObj.poll.options;
-        
+
 
         $scope.legend = [];
         for (var i = 0; i < $scope.currentPollResults.length; i++) {
@@ -76,13 +76,13 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
             $scope.temp = [];
             for (var i = 0; i < $scope.currentPollResults.length; i++) {
                 percent = (($scope.currentPollResults[i].count / $scope.currentPollObj.poll.countVote) * 100).toFixed(1);
-                
+
                 $scope.temp.push({ name: $scope.currentPollResults[i].answer, votes: parseInt(percent), color: $scope.options.colors[i], percent: percent + "%" });
             }
             $scope.currentPollResults = $scope.temp;
         }
-        
 
+        $scope.dataReturn = true;
     })
 
     $scope.pollIsActive = function () {
@@ -108,12 +108,12 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                 }
             }
 
-            
+
             $scope.json = JSON.stringify({ votes: $scope.voteDetails });
-            
+
 
             queryString = 'poll/vote/' + $scope.currentPollObj._id;
-            
+
             //$http.post(domain + 'vote/', $scope.json)
             //.success(function (data) {
             $rootScope.$broadcast('showLoader', { showLoader: true });
@@ -127,7 +127,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                             $scope.temp = [];
                             for (var i = 0; i < $scope.currentPollResults.length; i++) {
                                 percent = (($scope.currentPollResults[i].count / $scope.currentPollObj.poll.countVote) * 100).toFixed(1);
-                                
+
                                 $scope.temp.push({ name: $scope.currentPollResults[i].answer, votes: $scope.currentPollResults[i].count, color: $scope.options.colors[i], percent: percent + "%" });
                             }
                             $scope.currentPollResults = $scope.temp;
@@ -140,7 +140,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
                         generalParameters.setBackIcon(false);
                         $scope.thankDetails.featureState = 'poll';
                         $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
-                        
+
                     }
                 }
                 else {
@@ -174,7 +174,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
             $scope.choosenCount++;
         }
 
-        
+
     }
 
     $scope.getIsSelected = function (index) {

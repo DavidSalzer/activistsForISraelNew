@@ -8,7 +8,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     var current = $location.$$url;
     //$scope.active = -1;
     $scope.showLoader = false;
-  
+
 
     $http.get(domain + 'profile/', { withCredentials: true, async: true })
     .success(function (data) {
@@ -20,7 +20,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             generalParameters.setUser({ firstName: 'הצטרף לאפליקציה', userImg: './img/user.png' });
         }
 
-    })
+    });
 
     $scope.$on('postClicked', function (event, args) {
         generalParameters.setBackIcon(true);
