@@ -19,41 +19,48 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         //get posts by parameters from server and set in posts array.
         getPostsBatch: function (request) {
-            self = this;
+            
+			self = this;
             
             if (request.orderBy != '-timestamp') {
                 request.endTimestamp = '';
             }
-
+			
+			
+			//create queryString according to the request 
             queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&_parentID=' + request._parentID;
-            if (request.pollStatus != undefined) {
+            
+			if (request.pollStatus != undefined) {
                 queryString = queryString + '&pollStatus=' + request.pollStatus;
             }
-            if (request.DestinationTime != undefined) {
+            
+			if (request.DestinationTime != undefined) {
                 queryString = queryString + '&startDestinationTime=' + request.DestinationTime;
             }
             
             showSpiner = true;
-            if (request.offset == 0) {
+			
+            if (request.offset == 0) {//first time (no load more)
                 posts = [];
-                $rootScope.$broadcast('EndLoadMore', { showLoad: true });
+				$rootScope.$broadcast('EndLoadMore', { showLoad: true }); //enable load more
             }
-            classAjax.getdata('get', queryString, request).then(function (data) {
+            
+			//server request
+			classAjax.getdata('get', queryString, request).then(function (data) {
                 
-                //if (request.offset == 0) {
-                //    posts = [];
-                //}
-                //else {
-                if (data.data.length == 0){
+				console.log(data.data.length+" posts");
+                if (data.data.length < request.limit){//end of all posts? (or no posts at all?) disable Load more
                     $rootScope.$broadcast('EndLoadMore', { showLoad: false });
                 }
-                
+				
                 showSpiner = false;
+				
+				//populate posts array
                 for (var i = 0; i < data.data.length; i++) {
-                    //posts.push(data.data[i]);
 
                     flag = true;
-                    for (var j = 0; j < posts.length & flag; j++) {
+                    
+					for (var j = 0; j < posts.length & flag; j++) {
 
                         if (data.data[i]._id == posts[j]._id) {
 
@@ -63,25 +70,15 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                     if (flag) {
                         self.getIsLike(data.data[i]);
                         posts.push(data.data[i]);
-
                     }
                 }
-
+				
+				//add Hebrew date to event type
                 if (request.postType == 'event') {
                     for (var j = 0; j < posts.length; j++) {
                         posts[j].hebrewDate = self.hebrewDate(posts[j].DestinationTime);
                     }
                 }
-
-
-                //for (var k = 0; k < posts.length; k++) {
-
-                //    self.getIsLike(posts[k]);
-                //}
-
-
-                
-                //}
             })
         },
 

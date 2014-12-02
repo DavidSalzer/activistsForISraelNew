@@ -366,7 +366,6 @@ div.post-main-text {
     padding-bottom: 1px;
     color: #000000;
 }
-
 .post-main-text img {
     width: 80%;
     margin: 5px auto 10px auto;
@@ -374,6 +373,20 @@ div.post-main-text {
     border: 0px solid #565c63;
     border-radius: 2px;
 }
+.post-main-text p {
+    clear: both;
+    /*height: 33px;*/
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 14px;
+    text-align: justify;
+    word-wrap: break-word;
+    padding-bottom: 1px;
+    color: #000000;
+}
+
+
 /* comment, like buttons*/
 .write-comment-zone {
     position: absolute;

@@ -12,11 +12,12 @@
     <div class="post-title" data-ng-show="showCommentTitle==true" data-once-text="post.title"><!-- {{post.title}} --></div>
 
     <div class="post-main-text">
-        <img data-once-src="domain+post.img" alt="post-pic" data-ng-show="post.img!=='' && post.img!==undefined" data-once-text="post.content">
+        <img data-once-src="domain+post.img" alt="post-pic" data-ng-show="post.img!=='' && post.img!==undefined">
+		<p data-once-text="post.content"></p>
        <!--  {{post.content}} -->
     </div>
 
-    <div data-ng-if="post.commentsCount>0" data-ng-show="{{showReadMoreButton!=false}}" class="read-the-comments">קרא תגובות</div>
+    <div data-ng-if="post.commentsCount>0" data-once-show="showReadMoreButton!=false" class="read-the-comments">קרא תגובות</div>
 
     <div class="post-footer">
         <div class="post-feedback">

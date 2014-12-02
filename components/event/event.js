@@ -48,7 +48,6 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         //   $scope.$apply();
     }
 
-
     $scope.$on('EndLoadMore', function (event, args) {
         switch (args.showLoad) {
             case true:

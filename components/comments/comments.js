@@ -22,8 +22,23 @@ socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'Post
     PostService.getPostById($scope.postId);
     $scope.post = PostService.getSinglePost;
     $scope.comments = PostService.getPosts;
-
+	
+	$scope.$on('EndLoadMore', function (event, args) {
+        switch (args.showLoad) {
+            case true:
+                $scope.showendloader = false;
+                break;
+            case false:
+                $scope.showendloader = true;
+                break;
+        }
+    });
+	
     $scope.loadMore = function () {
+		
+		if ($scope.showendloader) {
+            return;
+        }
         posts = PostService.getPosts();
         self.getPostsBatch({ startTimestamp: '', endTimestamp: posts[0].timestamp, offset: $scope.offset, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
         $scope.offset += 20;
