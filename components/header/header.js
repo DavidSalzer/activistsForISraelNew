@@ -206,9 +206,9 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
         //phonegap sharing plugin
         //message = 'קראתי מאמר באחליקציה, כנסו לקרוא..';
-        subject = 'האחליקציה של בנט ';
+        subject = 'משהו מעניין קורה באחליקציה של בנט. בואו תראו! ';
         img = null;
-        link = 'http://www.cambium-team.com/bennet/core/' + window.location.hash;
+        link = siteOrigin + '#/' + window.location.hash;
 
         currentState = $state.$current;
 
@@ -258,79 +258,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     PostService.loadMainFeatures();
     $scope.features = PostService.getMainFeatures;
 
-    $scope.receiveScoringRanks = [
-        {
-            score: 1,
-            color: '#01a3d4',
-            activities: [
-                {
-                    text: 'השתתפות בסקר',
-                    img: './img/poll_info.png'
-                }
-            ]
-        },
-        {
-            score: 2,
-            color: '#f6ba55',
-            activities: [
-                {
-                    text: 'כתיבה בפורום',
-                    img: './img/hosting_info.png'
-                },
-                {
-                    text: 'שיתוף מתוך האפליקציה',
-                    img: './img/poalim-logo.png'
-                }
-            ]
-        },
-        {
-            score: 3,
-            color: '#da4f00',
-            activities: [
-                {
-                    text: 'השתתפות באירוע',
-                    img: './img/calendar_info.png'
-                },
-                {
-                    text: 'העלאת מם',
-                    img: './img/meme_info.png'
-                }
-            ]
-        },
-        {
-            score: 4,
-            color: '#8ec531',
-            activities: [
-                {
-                    text: 'הערכת חבר',
-                    img: './img/appreciate.png'
-                },
-                {
-                    text: 'שליחת שאלה לסקר',
-                    img: './img/poll_info.png'
-                },
-                {
-                    text: 'דרגה חדשה',
-                    img: './img/poalim-logo.png'
-                }
-            ]
-        },
-        {
-            score: 5,
-            color: '#006dbe',
-            activities: [
-                {
-                    text: 'הרשמה',
-                    img: './img/poalim-logo.png'
-                },
-                {
-                    text: 'יצירת אירוע',
-                    img: './img/calendar_info.png'
-                }
-            ]
-        }
-    ];
-
+    
 } ]);
 
 

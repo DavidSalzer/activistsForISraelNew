@@ -162,22 +162,23 @@
             function onLoad() {
                 document.addEventListener("deviceready", onDeviceReady, false);
             }
-            
+
             // device APIs are available
             function onDeviceReady() {
                 // Now safe to use device APIs
                 //splash
                 navigator.splashscreen.hide();
                 //exit button
-                document.addEventListener("backbutton", function () { 
-                if (window.location.hash == '#/main-menu') {
-                    exitAppPopup();
-                } 
-                else {
-                    history.back();
-                }}, false);
+                document.addEventListener("backbutton", function () {
+                    if (window.location.hash == '#/main-menu') {
+                        exitAppPopup();
+                    }
+                    else {
+                        history.back();
+                    } 
+                }, false);
             }
-            
+
             function exitAppPopup() {
                 navigator.notification.confirm(
                 'האם ברצונך לצאת מהאפליקציה?',
@@ -193,8 +194,8 @@
                 ['בטל', 'יציאה']
                 );
                 return false;
-            }  
-            
+            }
+
             /*detect environment*/
             var agent = navigator.userAgent;
             var isWebkit = (agent.indexOf("AppleWebKit") > 0);
@@ -207,8 +208,16 @@
             var isSmallScreen = (screen.width < 767 || (isAndroid && screen.width < 1000));
             var isUnknownMobile = (isWebkit && isSmallScreen);
             var isMobile = (isIOS || isAndroid || isNewBlackBerry || isWebOS || isWindowsMobile || isUnknownMobile);
-            var isTablet = (isIPad || (isMobile && !isSmallScreen));  
-            var isBrowser = document.URL.indexOf( 'http://' ) !== -1 || document.URL.indexOf( 'https://' ) !== -1;
+            var isTablet = (isIPad || (isMobile && !isSmallScreen));
+            var isBrowser = document.URL.indexOf('http://') !== -1 || document.URL.indexOf('https://') !== -1;
+            var isDevelopment = document.URL.indexOf('localhost:') !== -1;
+
+            if (isBrowser && isMobile && !isDevelopment) {
+                thisUrl = window.location.href;
+                var localUrl = thisUrl.replace(siteOrigin, '');
+                localUrl = localUrl.replace('#/', '');
+                window.location.replace(siteOrigin + 'land.html?url=' + localUrl);
+            }
         </script>
 
     </body>
