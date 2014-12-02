@@ -243,7 +243,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 151px;
     /*border-top: 2px solid gray;*/
     margin: auto;
-    padding-bottom: 5px;
+    /*padding-bottom: 5px;*/
     padding-top: 10px;
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
@@ -593,7 +593,7 @@ canvas#c1 {
     width: 35px;
     /*border: 1px solid gray;
     border-radius: 30px;*/
-    background-image: url('../../img/rank_sprite.png');
+    background-image: url('../../img/rank.png');
     background-repeat: no-repeat;
     background-size: 210px 35px;
     border-radius: 50px;
