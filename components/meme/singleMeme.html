@@ -3,7 +3,7 @@
 <div class="single-meme" data-ng-if="buildPage"><!--buildPage is a hack for faster page transition-->
     <author-header data-ng-repeat="post in [post()]"></author-header>
     <delete-post data-ng-if="isAdmin"></delete-post>
-    <img class="single" data-ng-src="{{domain+post().img}}" loaded/>
+    <img class="single" data-ng-src="{{domain+post().img}}" sb-load="loaded($event)"/>
 
     <div class="like-section">
         

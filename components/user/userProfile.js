@@ -11,7 +11,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.showSpiner = PostService.getSpiner;
     $scope.showChangePassword = false;
     $scope.movePage = false;
- 
+
     $scope.featuresList = [
 
         {
@@ -378,21 +378,21 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":                            
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                            
-                //    break;                            
+                //case "author":                             
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                             
+                //    break;                             
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":                            
-                //    $state.transitionTo('single-event', { postId: args.postId });                            
-                //    break;                            
-                //case "voteToPoll":                            
-                //    $state.transitionTo('poll-view', { postId: args.postId });                            
-                //    break;                            
+                //case "event":                             
+                //    $state.transitionTo('single-event', { postId: args.postId });                             
+                //    break;                             
+                //case "voteToPoll":                             
+                //    $state.transitionTo('poll-view', { postId: args.postId });                             
+                //    break;                             
             }
         }
         else {
@@ -658,6 +658,11 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             $scope.passErrorMessage = errorMessages.generalError;
             $rootScope.$broadcast('showLoader', { showLoader: false });
         });
+    }
+
+    $scope.loaded = function () {
+        $rootScope.$broadcast('showLoader', { showLoader: false });
+        angular.element(event.target).remove(); 
     }
 
 

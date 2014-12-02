@@ -1,5 +1,5 @@
 var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
-var siteOrigin = '../../../';
+var siteOrigin = 'http://www.cambium-team.com/bennetSite/';
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap', 'ngQuickDate', 'ngImgCrop', 'once'])
 
@@ -696,16 +696,21 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     }
 })
 
-.directive('loaded', function ($rootScope) {       
+ .directive('sbLoad', ['$parse', function ($parse) {
     return {
-        link: function(scope, element, attrs) {   
-            element.bind("load" , function(e){ 
-                $rootScope.$broadcast('showLoader', { showLoader: false });
-            });
-        }
+		restrict: 'A',
+		link: function (scope, elem, attrs) {
+			var fn = $parse(attrs.sbLoad);
+			
+			elem.on('load', function (event) {
+				scope.$apply(function() {
+					fn(scope, { $event: event });
+				});
+			});
+		}
     }
-})
-
+}])
+ 
  .filter('trustHtml', ['$sce', function ($sce) {
     return function (val) {
         if (val != null) {

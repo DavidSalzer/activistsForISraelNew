@@ -1,10 +1,14 @@
-<div class="meme-wrap meme-container"  data-ng-click="memeClick(post._id);$event.stopPropagation();" data-ng-class="{ 'large' : $index % 12  == 0 || $index % 12  == 6,  'q6' :  $index % 12  == 6  }"><!--data-ng-class="{ 'large' : $index % 3 == 2, 'small' : $index % 3 == 1, 'small' : $index % 3 == 0}"-->
-    <delete-post data-ng-if="isAdmin"></delete-post>
+<div class="meme-wrap meme-container"  data-ng-click="memeClick(post._id);$event.stopPropagation();" data-once-class="{ 'large' : $index % 12  == 0 || $index % 12  == 6,  'q6' :  $index % 12  == 6  }"><!--data-ng-class="{ 'large' : $index % 3 == 2, 'small' : $index % 3 == 1, 'small' : $index % 3 == 0}"-->
+    <delete-post data-once-if="isAdmin"></delete-post>
     <div class="meme-dummy" id="dummy"></div>
-    <div class="meme-element"  data-once-style="{'background-image': 'url('+domain+post.img+')'}" id="element">
-        
-    </div>
-    <div class="meme-like" data-ng-click='like($index);$event.stopPropagation();'>
+	
+	<!-- this element 1.show grey background 2.request the img from server 3. disappear( kill itself)-->
+	<img class="meme-element-back"  data-once-src="domain+post.img" sb-load="kill($event)">
+	
+	<!-- this element is the real meme-->
+	<div class="meme-element"  data-once-style="{'background-image': 'url('+domain+post.img+')'}" id="element"></div>
+    
+	<div class="meme-like" data-ng-click='like($index);$event.stopPropagation();'>
         <div class="opacity"></div>
         <div class="icon" data-ng-class="{'meme-like-icon-isLike':post.isLiked==true}"></div>
         <div class="num"> {{post.likesCount}} </div>
