@@ -95,6 +95,11 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         PostService.getPostsBatch(request);
     }
 
+	$scope.kill = function (event) {
+		
+      angular.element(event.target).remove(); 
+    }
+
     $scope.writeMeme = function () {
         $scope.user = generalParameters.getUser();
         if ($scope.user.firstName == 'הצטרף לאפליקציה') {

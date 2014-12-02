@@ -710,6 +710,30 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
      }
  })
  
+ /* .directive('disappear', function ($rootScope) {       
+    return function(scope, element, attrs) {   
+            element.bind("load" , function(e){
+			   //angular.element(element).addClass('hide'); 
+			   angular.element(element).remove(); 
+            });
+        }
+    }) */
+
+ .directive('sbLoad', ['$parse', function ($parse) {
+    return {
+		restrict: 'A',
+		link: function (scope, elem, attrs) {
+			var fn = $parse(attrs.sbLoad);
+			
+			elem.on('load', function (event) {
+				scope.$apply(function() {
+					fn(scope, { $event: event });
+				});
+			});
+		}
+    }
+}])
+ 
  .filter('trustHtml', ['$sce', function ($sce) {
     return function (val) {
         if (val != null) {

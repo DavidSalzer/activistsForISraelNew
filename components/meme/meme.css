@@ -77,9 +77,15 @@
     bottom: 0;
     left: 0;
     right: 0;
-	background-color:#D4DEEC;
+	/* background-color:#D4DEEC; */
+	background-image: url('../../img/sgin_thankyou.png');
+	background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     height: 100%;
     width: 100%;
+	opacity: 0.3;
 }
 
 .meme-container.large {
