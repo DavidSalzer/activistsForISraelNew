@@ -85,14 +85,12 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
 
     generalParameters.setFeature($scope.featureDetails);
 	
-	
 	$scope.loadMore = function () {
         
 		request.offset += request.limit;
         
 		PostService.loadMainFeatures(request);
     }
-
 }])
 
 
