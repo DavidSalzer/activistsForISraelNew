@@ -3,9 +3,10 @@
 
 
 <div class="channel-title-zone sub-header" data-ng-class="{'site-sub-header':isSiteHeader==true}">
-    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "pollIsActive()">סקר פעיל</div>
-    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "!pollIsActive() && !closedPoll">תודה על השתתפותך</div>
-    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "closedPoll">סקר סגור</div>
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "!dataReturn"></div>
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "pollIsActive()&&dataReturn">סקר פעיל</div>
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "!pollIsActive() && !closedPoll&&dataReturn">תודה על השתתפותך</div>
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "closedPoll&&dataReturn">סקר סגור</div>
     <div class="white-line"></div>
 </div>
 

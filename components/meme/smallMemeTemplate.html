@@ -7,6 +7,6 @@
     <div class="meme-like" data-ng-click='like($index);$event.stopPropagation();'>
         <div class="opacity"></div>
         <div class="icon" data-ng-class="{'meme-like-icon-isLike':post.isLiked==true}"></div>
-        <div class="num" once-text="post.likesCount"><!-- {{post.likesCount}} --></div>
+        <div class="num"> {{post.likesCount}} </div>
     </div>
 </div>
