@@ -39,15 +39,16 @@ textarea {
 .general-loader {
     position: absolute;
     margin: auto;
-    height: 55px;
-    width: 55px;
+    height: 220px;
+    width: 310px;
     top: 0px;
     display: block;
     bottom: 0px;
     right: 0px;
     left: 0px;
     z-index: 15;
-    background-image: url('../img/loading.gif');
+    background-image: url('../img/loading_blue.gif');
+    background-size: 100% 100%;
 }
 
 .fa-spinner:before {
@@ -565,7 +566,7 @@ span.respond-count, span.like-count {
 
 /**********************side-bar**************************8*/
 
-span.sidbar-text{
+span.sidbar-text {
     display: inline-block;
     width: 89px;
     position: relative;
