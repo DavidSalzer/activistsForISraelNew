@@ -26,6 +26,13 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             featureColor: "talkback",
             postType: "talkback"
         },
+         {
+             featureUrl: 'event',
+             featureName: 'אירועים',
+             featureLogo: "./img/calendar.png",
+             featureColor: "event",
+             postType: "event"
+         },
     //{
     //    featureUrl: 'article',
     //    featureName: 'מאמרים',
@@ -47,14 +54,8 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             featureLogo: "./img/poll.png",
             featureColor: "#da4f00",
             postType: "voteToPoll"
-        },
-    {
-        featureUrl: 'event',
-        featureName: 'אירועים',
-        featureLogo: "./img/calendar.png",
-        featureColor: "event",
-        postType: "event"
-    }
+        }
+
 
     ];
 
@@ -69,12 +70,12 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     };
 
     generalParameters.setFeature($scope.featureDetails);
-
+    generalParameters.setBackIcon(false);
     $scope.showAuthorImage = false;
     $scope.showAuthorName = false;
     $scope.userLike = false;
 
-    generalParameters.setFeature($scope.featureDetails);
+    //generalParameters.setFeature($scope.featureDetails);
 
 
 

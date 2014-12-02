@@ -16,7 +16,7 @@
        <!--  {{post.content}} -->
     </div>
 
-    <div data-ng-if="post.commentsCount>0" class="read-the-comments">קרא תגובות</div>
+    <div data-ng-if="post.commentsCount>0" data-ng-show="{{showReadMoreButton!=false}}" class="read-the-comments">קרא תגובות</div>
 
     <div class="post-footer">
         <div class="post-feedback">

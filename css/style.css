@@ -308,7 +308,7 @@ figure.author-image {
     height: 14px;
     width: 14px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
     background-image: url("../img/rank1.png");
     /*position: absolute;
     bottom: 0px;
@@ -351,6 +351,10 @@ span.author-date {
     font-size: 13px;
 }
 
+.user-recent-activity-zone span.author-date{
+    float: right;
+line-height: 25px;
+}
 div.post-main-text {
     clear: both;
     /*height: 33px;*/
@@ -416,9 +420,25 @@ div.post-main-text {
 .respond-count {
 }
 
+.icon {
+    background-image: url('../../img/heart_meme.png');
+    background-repeat: no-repeat;
+    background-size: 34px 15px;
+    background-position-x: -17px;
+    background-position-y: 1px;
+    height: 15px;
+    width: 17px;
+    display: block;
+    margin: auto;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin-top: 1px;
+}
+
 .post-feedback .icon {
     background-repeat: no-repeat;
-    background-position-x: -23px;
+    background-position-x: -16px;
     background-position-y: 1px;
     height: 17px;
     width: 19px;
@@ -440,7 +460,7 @@ div.post-main-text {
 }
 
 .like-post.is-liked .icon {
-    background-position-x: 0px;
+    background-position-x: 1px;
 }
 
 
@@ -858,7 +878,7 @@ div.scrollable-content.overthrow {
     cursor: pointer;
     position: relative;
     padding: 5px;
-    background: #2d3238;
+    background: #ffffff;
 }
 
 .player-contener img {
@@ -892,7 +912,7 @@ iframe.player-contener {
 }
 
 .player-text {
-    background-color: #565c63;
+    background-color: #ffffff;
     padding: 9px 5px;
     height: 47px;
     position: relative;
@@ -901,24 +921,25 @@ iframe.player-contener {
 
 .player-text h2 {
     padding: 0px 5px;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     font-size: 13px;
-    color: #bcccce;
+    color: #000000;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 90%;
     white-space: nowrap;
+    font-weight: bold;
 }
 
 .player-text p {
     display: inline-block;
     /*  padding: 0px 5px; */
-    font-size: 10px;
-    color: #fff;
+    font-size: 11px;
+    color:#000000;
 }
 
 .list-tube {
-    background: #2d3238;
+    background: #ffffff;
     margin: 15px 0;
     position: relative;
 }
