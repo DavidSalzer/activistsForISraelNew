@@ -1,5 +1,5 @@
 var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
-var siteOrigin = '../../../';
+var siteOrigin = 'http://www.cambium-team.com/bennetSite/';
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap', 'ngQuickDate', 'ngImgCrop', 'once'])
 
