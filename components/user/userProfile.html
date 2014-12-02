@@ -2,10 +2,10 @@
 <link rel="stylesheet" type="text/css" href="./components/event/event.css" />
 <link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/meme/meme.css" />
 <link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/user/userProfile.css" />
-<!--<div class="spiner-zone" data-ng-show="showSpiner()">
-    <div class="loader"></div>
-</div>-->
-<section id="user-profile" data-ng-if="build">
+
+<!--<div class="loader"></div>-->
+
+<section id="user-profile" data-ng-if="buildPage">
     <div class="user-profile-avatar-zone">
         <div class="user-profile-avatar-wrapper">
             <div class="color-circle">
@@ -14,9 +14,9 @@
                 </div>
             </div>
                             <!--<div class="user-profile-rank">
-                                                                <div class="user-profile-rank-image" data-ng-class="{'rank-image-0': profile().point.level == 0, 'rank-image-1': profile().point.level == 1, 'rank-image-2': profile().point.level == 2, 'rank-image-3': profile().point.level == 3, 'rank-image-4': profile().point.level == 4}"></div>
-                                                                <div class="user-profile-rank-text" data-ng-class="{'rank-text-0': profile().point.level == 0, 'rank-text-1': profile().point.level == 1, 'rank-text-2': profile().point.level == 2, 'rank-text-3': profile().point.level == 3, 'rank-text-4': profile().point.level == 4}">{{profile().rank}}</div>
-                                                            </div>-->
+                                                                                <div class="user-profile-rank-image" data-ng-class="{'rank-image-0': profile().point.level == 0, 'rank-image-1': profile().point.level == 1, 'rank-image-2': profile().point.level == 2, 'rank-image-3': profile().point.level == 3, 'rank-image-4': profile().point.level == 4}"></div>
+                                                                                <div class="user-profile-rank-text" data-ng-class="{'rank-text-0': profile().point.level == 0, 'rank-text-1': profile().point.level == 1, 'rank-text-2': profile().point.level == 2, 'rank-text-3': profile().point.level == 3, 'rank-text-4': profile().point.level == 4}">{{profile().rank}}</div>
+                                                                            </div>-->
         </div>
     </div>
     <!--<div class="color-line color-fixed-top"></div>-->
@@ -42,8 +42,8 @@
         </div>
 
                     <!--<div class="user-profile-registration-date user-profile-item">
-                                                <div>תאריך הרשמה: {{profile().registrationDate| date : 'dd.MM.yyyy'}}</div>
-                                            </div>-->
+                                                            <div>תאריך הרשמה: {{profile().registrationDate| date : 'dd.MM.yyyy'}}</div>
+                                                        </div>-->
         <div class="user-profile-scoring user-profile-item">
             <!--<div class="user-giving-score" data-ng-class="{'user-giving-score-done': userLike}" data-ng-hide="myProfile" data-ng-click="givingScore()"></div>-->
             <div>ניקוד מצטבר: {{profile().point.count+0}}</div>
@@ -64,8 +64,8 @@
             <!--<div class="user-edit-icon" data-ng-hide="editEmail" data-ng-click="editItem('email')"></div>-->
             <div class="user-item-text" data-ng-hide="editEmail">{{profile().email}}</div>
                             <!--<div class="user-edit-icon-v" data-ng-show="editEmail"></div>
-                                                                                                                                                                            <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
-                                                                                                                                                                            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
+                                                                                                                                                                                            <input type="text" data-ng-model="profile().email" data-ng-show="editEmail" value="{{profile().email}}">
+                                                                                                                                                                                            <div class="user-edit-icon-x" data-ng-show="editEmail" data-ng-click="editItem('email')"></div>-->
         </div>
 
         <div class="user-profile-address user-profile-item" data-ng-show="myProfile">
@@ -137,8 +137,8 @@
         </div>
         <div id="instruction-for-image">הזז, הגדל והקטן למיקוד התמונה</div>
                     <!--<div id="cropDiv1">
-                                                <img data-ng-src="{{userimg}}">
-                                            </div>-->
+                                                            <img data-ng-src="{{userimg}}">
+                                                        </div>-->
         <div class="cropArea">
             <img-crop image="userimg" result-image="myCroppedImage"></img-crop>
         </div>
@@ -165,4 +165,5 @@
     <div class="login-error" data-ng-show="!showPassError && showPassAuthenticationError">* אימות הסיסמה שונה מהסיסמה שבחרת</div>
     <div class="login-error" data-ng-show="passErrorInServer">* {{passErrorMessage}}</div>
     <input type="button" class="sign-in-btn" value="אשר" data-ng-click="sendNewPassword()">
+    <img src="http://www.galim.org.il/pools/files/GalimGifs/GalimGifPicture/12888.jpg" loaded style="display: none;" />
 </div>

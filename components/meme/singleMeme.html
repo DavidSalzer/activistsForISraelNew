@@ -1,9 +1,9 @@
 <link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
 <link rel="stylesheet"  media='screen and (min-width: 900px)' type="text/css" href="{{siteOrigin}}components/meme/meme.css" />
-<div class="single-meme">
+<div class="single-meme" data-ng-if="buildPage"><!--buildPage is a hack for faster page transition-->
     <author-header data-ng-repeat="post in [post()]"></author-header>
     <delete-post data-ng-if="isAdmin"></delete-post>
-    <img class="single" data-ng-src="{{domain+post().img}}" />
+    <img class="single" data-ng-src="{{domain+post().img}}" loaded/>
 
     <div class="like-section">
         
@@ -11,13 +11,4 @@
         <div class="like-section-num"> {{post().likesCount}} </div>
 		
     </div>
-
-   <!-- <div class="author-wrap">
-        <figure class="author-image">
-	    <div style="background-image:url('{{post._author.data.img.RelativePosition? domain+post._author.data.img.url : post._author.data.img.url}}')"></div>
-          
-        </figure>
-        <span class="author-name" data-author="{{post._author}}" data-ng-click="PostService.userClicked();$event.stopPropagation();">הועלה על ידי {{post._author.data.firstName}} {{post._author.data.lastName}} </span>
-        
-    </div>-->
 </div>

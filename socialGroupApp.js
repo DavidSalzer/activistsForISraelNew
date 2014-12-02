@@ -696,20 +696,16 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     }
 })
 
-//repeat end load dom
- .directive('onFinishRender', function ($timeout) {
-     return {
-         restrict: 'A',
-         link: function (scope, element, attr) {
-             if (scope.$last === true) {
-                 $timeout(function () {
-                     scope.$emit(attr.onFinishRender);
-                 });
-             }
-         }
-     }
- })
- 
+.directive('loaded', function ($rootScope) {       
+    return {
+        link: function(scope, element, attrs) {   
+            element.bind("load" , function(e){ 
+                $rootScope.$broadcast('showLoader', { showLoader: false });
+            });
+        }
+    }
+})
+
  .filter('trustHtml', ['$sce', function ($sce) {
     return function (val) {
         if (val != null) {
