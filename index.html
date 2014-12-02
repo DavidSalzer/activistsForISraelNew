@@ -210,7 +210,7 @@
             var isMobile = (isIOS || isAndroid || isNewBlackBerry || isWebOS || isWindowsMobile || isUnknownMobile);
             var isTablet = (isIPad || (isMobile && !isSmallScreen));
             var isBrowser = document.URL.indexOf('http://') !== -1 || document.URL.indexOf('https://') !== -1;
-            var isDevelopment = document.URL.indexOf('localhost:') !== -1;
+            var isDevelopment = document.URL.indexOf('localhost') !== -1;
 
             if (isBrowser && isMobile && !isDevelopment) {
                 thisUrl = window.location.href;
