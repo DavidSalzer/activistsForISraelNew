@@ -102,17 +102,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        //.state('facebookPoalim', {
-        //    url: "/facebookPoalim/:channelId",
-        //    //url: "/facebookPoalim",
-        //    views: {
-        //        "main": {
-        //            templateUrl: "./components/facebook/facebookPoalim.html",
-        //            controller: "facebookPoalim"
-        //        }
-        //    }
-        //})
-
 		.state('poll-view', {
 		    url: "/poll-view/:postId",
 		    views: {

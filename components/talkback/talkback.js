@@ -5,7 +5,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     $scope.currentFilter = 'all';
     //$scope.currentPost = null;
     $scope.showSpiner = PostService.getSpiner;
-    $scope.domain = domain;
+    $scope.domain = domain + 'small/';
     generalParameters.setBackIcon(false);
     $scope.showendloader = false;
     $scope.movePage = false;
@@ -40,7 +40,6 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         _parentID: ''
     };
     PostService.getPostsBatch(request); //tell service to refresh posts
-    console.log("3333333333333333333333333333333333333333333");
     $scope.posts = PostService.getPosts; //ask service for posts
     $scope.isLiked = PostService.getIsLike;
 
