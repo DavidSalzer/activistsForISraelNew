@@ -2,7 +2,7 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
 
 
     $scope.currentPoll = null;
-    $scope.domain = domain;
+    $scope.domain = domain + 'small/';
     $scope.showSpiner = PostService.getSpiner;
     $scope.showendloader = false;
 

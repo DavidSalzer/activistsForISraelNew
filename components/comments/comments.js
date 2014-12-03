@@ -1,10 +1,4 @@
-socialGroupApp.controller('comments', ['$scope', '$rootScope', '$state', '$stateParams', 'PostService', 'generalParameters', function ($scope, $rootScope, $state, $stateParams, PostService, generalParameters) {
-
-
-    /*delay dom building until transition is done*/
-    $scope.buildPage = false;
-    $rootScope.$broadcast('showLoader', { showLoader: true });
-    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'PostService', 'generalParameters', function ($scope, $state, $stateParams, PostService, generalParameters) {
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -18,8 +12,8 @@ socialGroupApp.controller('comments', ['$scope', '$rootScope', '$state', '$state
     };
 
     generalParameters.setFeature($scope.featureDetails);
-    generalParameters.setBackIcon(true);
-    $scope.domain = domain;
+     generalParameters.setBackIcon(true);
+    $scope.domain = domain + 'medium/';
     $scope.showSpiner = PostService.getSpiner;
     $scope.offset = 20;
     console.log('postId: ' + $stateParams.postId);
@@ -28,8 +22,8 @@ socialGroupApp.controller('comments', ['$scope', '$rootScope', '$state', '$state
     PostService.getPostById($scope.postId);
     $scope.post = PostService.getSinglePost;
     $scope.comments = PostService.getPosts;
-
-    $scope.$on('EndLoadMore', function (event, args) {
+	
+	$scope.$on('EndLoadMore', function (event, args) {
         switch (args.showLoad) {
             case true:
                 $scope.showendloader = false;
@@ -39,10 +33,10 @@ socialGroupApp.controller('comments', ['$scope', '$rootScope', '$state', '$state
                 break;
         }
     });
-
+	
     $scope.loadMore = function () {
-
-        if ($scope.showendloader) {
+		
+		if ($scope.showendloader) {
             return;
         }
         posts = PostService.getPosts();
@@ -53,9 +47,5 @@ socialGroupApp.controller('comments', ['$scope', '$rootScope', '$state', '$state
     $scope.userClicked = function (userId) {
         $state.transitionTo('user-profile', { userId: userId });
     };
-
-    $scope.loaded = function () {
-        $rootScope.$broadcast('showLoader', { showLoader: false });
-    }
 
 } ]);

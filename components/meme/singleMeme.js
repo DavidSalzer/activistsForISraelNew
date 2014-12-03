@@ -1,11 +1,7 @@
 
 socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
 
-
-    $scope.buildPage = false;
-    $rootScope.$broadcast('showLoader', { showLoader: true });
-    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
-    $scope.domain = domain;
+    $scope.domain = domain + 'medium/';
     /*init variables*/
     generalParameters.setBackIcon(true);
     $scope.user = generalParameters.getUser();
@@ -55,10 +51,6 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
 
             return;
         }
-    }
-
-    $scope.loaded = function () {
-        $rootScope.$broadcast('showLoader', { showLoader: false });
     }
 
 } ]);

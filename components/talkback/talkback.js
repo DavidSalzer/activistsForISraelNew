@@ -5,7 +5,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
     $scope.currentFilter = 'all';
     //$scope.currentPost = null;
     $scope.showSpiner = PostService.getSpiner;
-    $scope.domain = domain;
+    $scope.domain = domain + 'small/';
     generalParameters.setBackIcon(false);
     $scope.showendloader = false;
     $scope.movePage = false;
