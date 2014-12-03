@@ -288,8 +288,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
 			.success(function (data) {
 			    if (data.status.statusCode == 0) {
-			        post.likesCount--;
-			        post.isLiked = false;
+			        //post.likesCount--;
+			        //post.isLiked = false;
 			        
 			    }
 			    
@@ -312,8 +312,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             $http.post(domain + 'addPostActivity', json)
 			.success(function (data) {
 			    if (data.status.statusCode == 0) {
-			        post.isLiked = true;
-			        post.likesCount++;
+			        //post.isLiked = true;
+			        //post.likesCount++;
 			        
 			    }
 			    
