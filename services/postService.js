@@ -12,55 +12,72 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
     var showSpiner = false;
     var previeMemeBase64 = "";
     var mainFeatures = [];
+    var getPostsAjaxCall;
+    var loadMoreNow = false;
+    var callAjaxPosts;
 
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        posts = undefined;
+        posts = [];
+        loadMoreNow = false;
+        if(callAjaxPosts) callAjaxPosts.resolve();
+    });
 
     return {
         //methodes
 
         //get posts by parameters from server and set in posts array.
         getPostsBatch: function (request) {
-            
-			self = this;
-            
+
+            self = this;
+
             if (request.orderBy != '-timestamp') {
                 request.endTimestamp = '';
             }
-			
-			
-			//create queryString according to the request 
+
+
+            //create queryString according to the request 
             queryString = 'post?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType + '&_parentID=' + request._parentID;
-            
-			if (request.pollStatus != undefined) {
+
+            if (request.pollStatus != undefined) {
                 queryString = queryString + '&pollStatus=' + request.pollStatus;
             }
-            
-			if (request.DestinationTime != undefined) {
+
+            if (request.DestinationTime != undefined) {
                 queryString = queryString + '&startDestinationTime=' + request.DestinationTime;
             }
-            
+
             showSpiner = true;
-			
+
             if (request.offset == 0) {//first time (no load more)
                 posts = [];
-				$rootScope.$broadcast('EndLoadMore', { showLoad: true }); //enable load more
+                $rootScope.$broadcast('EndLoadMore', { showLoad: true }); //enable load more
             }
-            
-			//server request
-			classAjax.getdata('get', queryString, request).then(function (data) {
-                
-				console.log(data.data.length+" posts");
-                if (data.data.length < request.limit){//end of all posts? (or no posts at all?) disable Load more
+
+            if(callAjaxPosts) callAjaxPosts.resolve();
+            callAjaxPosts = $q.defer();
+           
+             $http({
+                url: domain + queryString,
+                //url: URL,
+                method: 'get', // temp cancel for local json calls
+                data: request,
+                timeout: callAjaxPosts.promise
+            }).
+            success(function (data, status, header, config) {
+                console.log(data.data.length + " posts");
+                if (data.data.length < request.limit) {//end of all posts? (or no posts at all?) disable Load more
                     $rootScope.$broadcast('EndLoadMore', { showLoad: false });
                 }
-				
+
                 showSpiner = false;
-				
-				//populate posts array
+
+                //populate posts array
                 for (var i = 0; i < data.data.length; i++) {
 
                     flag = true;
-                    
-					for (var j = 0; j < posts.length & flag; j++) {
+
+                    for (var j = 0; j < posts.length & flag; j++) {
 
                         if (data.data[i]._id == posts[j]._id) {
 
@@ -72,14 +89,61 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                         posts.push(data.data[i]);
                     }
                 }
-				
-				//add Hebrew date to event type
+
+                //add Hebrew date to event type
                 if (request.postType == 'event') {
                     for (var j = 0; j < posts.length; j++) {
                         posts[j].hebrewDate = self.hebrewDate(posts[j].DestinationTime);
                     }
                 }
+
+                loadMoreNow = false;
+                callAjaxPosts.resolve(data);
+            }).
+            error(function (data, status, header, config) {
+                callAjaxPosts.reject(data);
             })
+
+            return callAjaxPosts.promise;
+
+
+            ////server request
+            //classAjax.getdata('get', queryString, request).then(function (data) {
+
+            //    console.log(data.data.length + " posts");
+            //    if (data.data.length < request.limit) {//end of all posts? (or no posts at all?) disable Load more
+            //        $rootScope.$broadcast('EndLoadMore', { showLoad: false });
+            //    }
+
+            //    showSpiner = false;
+
+            //    //populate posts array
+            //    for (var i = 0; i < data.data.length; i++) {
+
+            //        flag = true;
+
+            //        for (var j = 0; j < posts.length & flag; j++) {
+
+            //            if (data.data[i]._id == posts[j]._id) {
+
+            //                flag = false;
+            //            }
+            //        }
+            //        if (flag) {
+            //            self.getIsLike(data.data[i]);
+            //            posts.push(data.data[i]);
+            //        }
+            //    }
+
+            //    //add Hebrew date to event type
+            //    if (request.postType == 'event') {
+            //        for (var j = 0; j < posts.length; j++) {
+            //            posts[j].hebrewDate = self.hebrewDate(posts[j].DestinationTime);
+            //        }
+            //    }
+
+            //    loadMoreNow = false;
+            //})
         },
 
 
@@ -105,14 +169,14 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             var deferred = $q.defer();
             //alert(postData.post.DestinationTime)
             var post = { 'post': postData.post };
-            
+
             var json = JSON.stringify(post);
-            
+
 
             $http.put(domain + 'post/' + postData.post._id, json)
 			.success(function (data) {
 
-			    
+
 			    if (textfile || imgFile) {
 			        if (textfile)
 			            self.attach(textfile, data.data._id);
@@ -138,9 +202,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             var self = this;
             var deferred = $q.defer();
 
-            
+
             var json = JSON.stringify(postData);
-            
+
             if (postData.post.postType == 'suggestPoll' || postData.post.postType == 'contact') {
                 queryString = 'sendmail';
             }
@@ -148,15 +212,15 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 queryString = 'post';
             }
             $rootScope.$broadcast('showLoader', { showLoader: true });
-            
-			$http.post(domain + queryString, json)
-			
+
+            $http.post(domain + queryString, json)
+
 			.success(function (data) {
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    if (data.data._id == undefined) { deferred.resolve(data); return deferred.promise; } //fail to create post!
-			    if (isBase64&&imgFile) {
+			    if (isBase64 && imgFile) {
 			        //imgFile is base64 string
-			        self.attachBase64(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });//, callbackFunc - nominated for cancelation
+			        self.attachBase64(imgFile, data.data._id).then(function (data) { deferred.resolve(data) }); //, callbackFunc - nominated for cancelation
 			    }
 			    else if (textfile || imgFile) {
 			        if (textfile)
@@ -186,7 +250,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             $rootScope.$broadcast('showLoader', { showLoader: true });
             var deferred = $q.defer();
             var $file = file;
-            
+
             var upload = $upload.upload({
 
                 url: domain + 'FileUpload?ref=post&_id=' + postId,
@@ -200,14 +264,14 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             }).success(function (data, status, headers, config) {
                 // file is uploaded successfully
-                
+
                 $rootScope.$broadcast('showLoader', { showLoader: false });
                 deferred.resolve(data);
 
             }).error(function (data, status, headers, config) {
                 // file failed to upload
                 $rootScope.$broadcast('showLoader', { showLoader: false });
-                
+
                 deferred.resolve(data);
 
             });
@@ -217,31 +281,31 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         attachBase64: function (base64, userId) {//, callbackFunc- nominated to cancelation
 
             var deferred = $q.defer();
-            
+
             postData = {
 
                 base64: base64
             }
             var json = JSON.stringify(postData);
-            
+
             $rootScope.$broadcast('showLoader', { showLoader: true });
-            
+
             $http.post(domain + 'Base64FileUpload?ref=post&_id=' + userId, json)
 			.success(function (data) {
 
-			    
+
 			    //hide the loader
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    //show the thank page only after the post created
-                //if(callbackFunc){
-                //    callbackFunc();
-                //}
-			    
+			    //if(callbackFunc){
+			    //    callbackFunc();
+			    //}
+
 			    deferred.resolve(data);
 			})
 			.error(function (data) {
 
-			    
+
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
 			    deferred.resolve(data);
 			});
@@ -271,12 +335,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         unLike: function (pid, post) {
 
-            
+
 
             var parmas = { "activity": { "post": pid, "type": "like"} };
 
             var json = JSON.stringify(parmas);
-            
+
 
             $http({ url: domain + 'deletePostActivity', method: "delete", headers: { 'Content-Type': 'application/json' }, data: json })
 
@@ -284,13 +348,13 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    if (data.status.statusCode == 0) {
 			        post.likesCount--;
 			        post.isLiked = false;
-			        
+
 			    }
-			    
+
 			})
 			.error(function (data) {
 
-			    
+
 			});
 
 
@@ -301,20 +365,20 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             var parmas = { "activity": { "post": pid, "type": "like"} };
 
             var json = JSON.stringify(parmas);
-            
+
 
             $http.post(domain + 'addPostActivity', json)
 			.success(function (data) {
 			    if (data.status.statusCode == 0) {
 			        post.isLiked = true;
 			        post.likesCount++;
-			        
+
 			    }
-			    
+
 			})
 			.error(function (data) {
 
-			    
+
 			});
 
 
@@ -324,17 +388,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             queryString = "meme/template";
 
 
-            
+
 
             //meme/template
 
             classAjax.getdata('get', queryString, request).then(function (data) {
-                
+
                 if (request.endTimestamp == '') {
                     memeImages = data.data;
                 }
                 else {
-                    
+
                     for (var i = 0; i < data.data.length; i++) {
                         memeImages.push(data[i]);
                     }
@@ -345,9 +409,9 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         //getters & setters
         setShowInput: function (state) {
-            
+
             showInput = state;
-            
+
         },
 
         setUser: function (userDetails) {
@@ -361,12 +425,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         getShowInput: function () {
-            
+
             return showInput;
         },
 
         setPosts: function (state) {
-            
+
             //showInput = state;
         },
 
@@ -387,10 +451,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             self = this;
             singlePost = null;
             queryString = 'post/' + postid;
-            
+
             classAjax.getdata('get', queryString, {})
             .then(function (data) {
-                
+
                 //if (data.status.statusCode == 8) { window.history.back(); }//go back if the post not exist.
                 self.getIsLike(data.data);
                 singlePost = data.data;
@@ -413,10 +477,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         //get authors that create posts in the posttype requested.
         getAuthorsByPostType: function (request) {
             queryString = 'authors?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType;
-            
+
 
             classAjax.getdata('get', queryString, request).then(function (data) {
-                
+
 
                 if (request.offset == 0) {
                     posts = [];
@@ -436,7 +500,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                     }
 
                 }
-                
+
             })
         },
 
@@ -444,15 +508,15 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         getPostsByAuthor: function (request) {
             var self = this;
             queryString = 'post/author/' + request.authorId + '?startTimestamp=' + request.startTimestamp + '&endTimestamp=' + request.endTimestamp + '&offset=' + request.offset + '&limit=' + request.limit + '&orderBy=' + request.orderBy + '&postType=' + request.postType;
-            
+
             showSpiner = true;
             classAjax.getdata('get', queryString, request).then(function (data) {
-                
+
                 if (request.endTimestamp == '') {
                     posts = [];
                 }
                 //else {
-                
+
                 showSpiner = false;
                 for (var i = 0; i < data.data.length; i++) {
                     //posts.push(data.data[i]);
@@ -478,17 +542,17 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         loadMainFeatures: function (request) {
             queryString = 'mainfeatures';
-            
-			console.log(request);
-            classAjax.getdata('get', queryString,request).then(function (data) {
-                
+
+            console.log(request);
+            classAjax.getdata('get', queryString, request).then(function (data) {
+
                 if (data.status.statusCode == 0) {
                     mainFeatures = data.data;
                     for (var i in mainFeatures) {
                         mainFeatures[i].featureName = featureDictionary[mainFeatures[i].featureType].featureName;
                         mainFeatures[i].featureLogo = featureDictionary[mainFeatures[i].featureType].featureLogo;
                     }
-                    
+
                 }
             })
         },
@@ -510,7 +574,14 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         getMainFeatures: function () {
             return mainFeatures;
-        }
+        },
 
+        getLoadMoreNow: function () {
+            return loadMoreNow;
+        },
+
+        setLoadMoreNow: function (flag) {
+            loadMoreNow = flag;
+        }
     }
 } ]);
