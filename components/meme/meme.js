@@ -1,6 +1,15 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
     //   alert('width: '+window.innerWidth+' height: '+window.innerHeight )
-    $scope.domain = domain + 'small/';
+    
+	$scope.buildPage = false;
+    $rootScope.$broadcast('showLoader', { showLoader: false });
+    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+	
+	$scope.loaded = function () {
+        //$rootScope.$broadcast('showLoader', { showLoader: false });
+    }
+	
+	$scope.domain = domain + 'small/';
     $scope.showSpiner = PostService.getSpiner;
 
     /*init controller details*/
@@ -138,6 +147,12 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 			}
 		}
     }
+	
+	$scope.kill = function (event) {
+		
+      angular.element(event.target).remove(); 
+    }
+
 
     //when comeback from login - refresh the feed
 
