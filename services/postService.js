@@ -156,7 +156,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			    if (data.data._id == undefined) { deferred.resolve(data); return deferred.promise; } //fail to create post!
 			    if (isBase64&&imgFile) {
 			        //imgFile is base64 string
-			        self.attachBase64(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });//, callbackFunc - nominated for cancelation
+			        self.attachBase64(imgFile, data.data._id, false).then(function (data) { deferred.resolve(data) });//, callbackFunc - nominated for cancelation
 			    }
 			    else if (textfile || imgFile) {
 			        if (textfile)
@@ -214,7 +214,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             //if(file){self.attach(file);}
             return deferred.promise;
         },
-        attachBase64: function (base64, userId) {//, callbackFunc- nominated to cancelation
+        attachBase64: function (base64, userId, onlySave) {//, callbackFunc- nominated to cancelation
 
             var deferred = $q.defer();
             
@@ -225,8 +225,14 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             var json = JSON.stringify(postData);
             
             $rootScope.$broadcast('showLoader', { showLoader: true });
-            
-            $http.post(domain + 'Base64FileUpload?ref=post&_id=' + userId, json)
+            var req;
+            if(!onlySave){
+                req = 'Base64FileUpload?ref=post&_id=';
+            }
+            else {
+                req = 'Base64FileUpload?ref=meme&_id=';
+            }
+            $http.post(domain + req + userId, json)
 			.success(function (data) {
 
 			    
@@ -319,7 +325,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
 
         },
-
+        
         getMemesImages: function (request) {
             queryString = "meme/template";
 
