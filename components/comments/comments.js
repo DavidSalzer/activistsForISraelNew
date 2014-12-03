@@ -18,7 +18,7 @@ socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'Post
     };
 
     generalParameters.setFeature($scope.featureDetails);
-     generalParameters.setBackIcon(true);
+    generalParameters.setBackIcon(true);
     $scope.domain = domain + 'medium/';
     $scope.showSpiner = PostService.getSpiner;
     $scope.offset = 20;
@@ -29,8 +29,8 @@ socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'Post
     PostService.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
     $scope.post = PostService.getSinglePost;
     $scope.comments = PostService.getPosts;
-	
-	$scope.$on('EndLoadMore', function (event, args) {
+
+    $scope.$on('EndLoadMore', function (event, args) {
         switch (args.showLoad) {
             case true:
                 $scope.showendloader = false;
@@ -40,15 +40,17 @@ socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'Post
                 break;
         }
     });
-	
+
     $scope.loadMore = function () {
-		
-		if ($scope.showendloader) {
-            return;
+        if (!PostService.getLoadMoreNow()) {
+            if ($scope.showendloader) {
+                return;
+            }
+            PostService.setLoadMoreNow(true);
+            posts = PostService.getPosts();
+            self.getPostsBatch({ startTimestamp: '', endTimestamp: posts[0].timestamp, offset: $scope.offset, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
+            $scope.offset += 20;
         }
-        posts = PostService.getPosts();
-        self.getPostsBatch({ startTimestamp: '', endTimestamp: posts[0].timestamp, offset: $scope.offset, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
-        $scope.offset += 20;
     };
 
     $scope.userClicked = function (userId) {

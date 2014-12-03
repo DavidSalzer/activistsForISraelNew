@@ -33,7 +33,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
-        limit: 20,
+        limit: 50,
         orderBy: '-timestamp',
         postType: 'talkback',
         //userID: $scope.user._id,
@@ -108,7 +108,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
             }
             PostService.setLoadMoreNow(true);
             console.log('load more');
-            request.offset += 20;
+            request.offset += 50;
             post = PostService.getPosts();
             request.endTimestamp = post[0].timestamp;
             PostService.getPostsBatch(request);
