@@ -3,7 +3,7 @@ socialGroupApp.controller('comments', ['$scope', '$rootScope', '$state', '$state
 
     /*delay dom building until transition is done*/
     $scope.buildPage = false;
-    $rootScope.$broadcast('showLoader', { showLoader: true });
+    //$rootScope.$broadcast('showLoader', { showLoader: true });
     setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
 
     /*init controller details*/
@@ -26,6 +26,7 @@ socialGroupApp.controller('comments', ['$scope', '$rootScope', '$state', '$state
     $scope.postId = $stateParams.postId;
     $scope.showCommentDate = true;
     PostService.getPostById($scope.postId);
+    PostService.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
     $scope.post = PostService.getSinglePost;
     $scope.comments = PostService.getPosts;
 

@@ -27,9 +27,9 @@ textarea {
 }
 
 .loader {
-    height: 70px;
-    width: 70px;
-    background-image: url('../img/loading_blue.gif');
+    height: 27px;
+width: 196px;
+    background-image: url('../img/loader_text_new.png');
     background-size: 100% 100%;
     margin: auto;
 }
@@ -37,15 +37,15 @@ textarea {
 .general-loader {
     position: absolute;
     margin: auto;
-    height: 70px;
-    width: 70px;
+    height: 27px;
+width: 196px;
     top: 0px;
     display: block;
     bottom: 0px;
     right: 0px;
     left: 0px;
     z-index: 15;
-    background-image: url('../img/loading_blue.gif');
+    background-image: url('../img/loader_text_new.png');
     background-size: 100% 100%;
 }
 

@@ -40,6 +40,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         _parentID: ''
     };
     PostService.getPostsBatch(request); //tell service to refresh posts
+    console.log("3333333333333333333333333333333333333333333");
     $scope.posts = PostService.getPosts; //ask service for posts
     $scope.isLiked = PostService.getIsLike;
 

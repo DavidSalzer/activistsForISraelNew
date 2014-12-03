@@ -21,6 +21,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         posts = [];
         loadMoreNow = false;
         if(callAjaxPosts) callAjaxPosts.resolve();
+        $rootScope.$broadcast('showLoader', { showLoader: false });
     });
 
     return {
@@ -56,8 +57,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             if(callAjaxPosts) callAjaxPosts.resolve();
             callAjaxPosts = $q.defer();
-           
-             $http({
+
+            $http({
                 url: domain + queryString,
                 //url: URL,
                 method: 'get', // temp cancel for local json calls
@@ -66,6 +67,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             }).
             success(function (data, status, header, config) {
                 console.log(data.data.length + " posts");
+                console.log(data);
+                console.log(queryString);
                 if (data.data.length < request.limit) {//end of all posts? (or no posts at all?) disable Load more
                     $rootScope.$broadcast('EndLoadMore', { showLoad: false });
                 }
@@ -460,7 +463,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 singlePost = data.data;
                 singlePost.hebrewDate = self.hebrewDate(singlePost.DestinationTime);
                 posts = [];
-                self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
+                //$rootScope.$broadcast('showLoader', { showLoader: true });
+                //self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
             })
 
         },

@@ -8,7 +8,7 @@
     <section class="comments">
         <post data-ng-repeat="post in comments()" data-post-type="comment" data-ng-init="showCommentButton=false"></post>
         <div class="spiner-zone" data-ng-show="showSpiner()">
-            <div class="loader"></div>
+            <div class="loader" data-ng-class="{'general-loader':!post()}" ></div>
         </div>
 		<div class="end-load-more" data-ng-if="showendloader == true">
 			<img alt="end" src="./img/end_feed.png" sb-load="loaded($event)"/>
