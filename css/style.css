@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
-
 body {
     direction: rtl;
     height: 100%;
@@ -10,7 +9,6 @@ body {
 :focus {
     outline: none;
 }
-
 
 textarea {
     resize: none;
@@ -29,8 +27,8 @@ textarea {
 }
 
 .loader {
-    height: 165px;
-    width: 250px;
+    height: 70px;
+    width: 70px;
     background-image: url('../img/loading_blue.gif');
     background-size: 100% 100%;
     margin: auto;
@@ -39,8 +37,8 @@ textarea {
 .general-loader {
     position: absolute;
     margin: auto;
-    height: 220px;
-    width: 310px;
+    height: 70px;
+    width: 70px;
     top: 0px;
     display: block;
     bottom: 0px;
@@ -433,7 +431,21 @@ div.post-main-text {
 .respond-count {
 }
 
-
+.icon {
+background-image: url('../../img/heart_meme.png');
+background-repeat: no-repeat;
+background-size: 34px 15px;
+background-position-x: -17px;
+background-position-y: 1px;
+height: 15px;
+width: 17px;
+display: block;
+margin: auto;
+position: relative;
+right: 0;
+left: 0;
+margin-top: 1px;
+}
 
 .post-feedback .icon {
     background-repeat: no-repeat;

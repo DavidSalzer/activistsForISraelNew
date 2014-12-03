@@ -1,8 +1,10 @@
 socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'filePicker', function ($rootScope, $scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, filePicker) {
 
+    /*delay dom building until transition is done*/
     $scope.buildPage = false;
     $rootScope.$broadcast('showLoader', { showLoader: true });
     setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+
     $scope.d = 'disabled';
     $scope.datacrop = {};
     $scope.userImg = '';
