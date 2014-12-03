@@ -36,11 +36,11 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
 
-	$scope.showAll = function (e) {
-		
-		$scope.showAll = true;
+    $scope.showAll = function (e) {
+
+        $scope.showAll = true;
     }
-	
+
     $scope.l = function (flager) {
         console.log(flager);
         if (flager) {
@@ -64,15 +64,18 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     });
 
     $scope.loadMore = function () {
-        if ($scope.showendloader) {
-            return;
-        }
-        console.log('load more');
-        request.offset += 20;
-        post = PostService.getPosts();
-        request.endTimestamp = post[0].timestamp;
+        if (!PostService.getLoadMoreNow()) {
+            if ($scope.showendloader) {
+                return;
+            }
+            console.log('load more');
+            request.offset += 20;
+            PostService.setLoadMoreNow(true);
+            post = PostService.getPosts();
+            request.endTimestamp = post[0].timestamp;
 
-        PostService.getPostsBatch(request);
+            PostService.getPostsBatch(request);
+        }
     }
 
     $scope.writeEvent = function () {

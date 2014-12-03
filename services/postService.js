@@ -21,13 +21,15 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         posts = [];
         loadMoreNow = false;
         if (callAjaxPosts) callAjaxPosts.resolve();
-        console.log("11111111111111111111111111111");
         $rootScope.$broadcast('showLoader', { showLoader: false });
+        console.log("changeeeeeeeeeeeee");
     });
 
     return {
         //methodes
-
+        killAjax: function () {
+            if (callAjaxPosts) callAjaxPosts.resolve();
+        },
         //get posts by parameters from server and set in posts array.
         getPostsBatch: function (request) {
 
@@ -56,7 +58,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 $rootScope.$broadcast('EndLoadMore', { showLoad: true }); //enable load more
             }
 
-            if (callAjaxPosts) callAjaxPosts.resolve();
+            if (callAjaxPosts) {
+                callAjaxPosts.resolve();
+                 console.log("killlllllllllllllllll");
+            }
             callAjaxPosts = $q.defer();
 
             $http({
@@ -100,7 +105,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                         posts[j].hebrewDate = self.hebrewDate(posts[j].DestinationTime);
                     }
                 }
-
+                console.log("33333333333333333333333333333333333333");
                 loadMoreNow = false;
                 callAjaxPosts.resolve(data);
             }).
@@ -109,63 +114,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             })
 
             return callAjaxPosts.promise;
-
-
-            ////server request
-            //classAjax.getdata('get', queryString, request).then(function (data) {
-
-            //    console.log(data.data.length + " posts");
-            //    if (data.data.length < request.limit) {//end of all posts? (or no posts at all?) disable Load more
-            //        $rootScope.$broadcast('EndLoadMore', { showLoad: false });
-            //    }
-
-            //    showSpiner = false;
-
-            //    //populate posts array
-            //    for (var i = 0; i < data.data.length; i++) {
-
-            //        flag = true;
-
-            //        for (var j = 0; j < posts.length & flag; j++) {
-
-            //            if (data.data[i]._id == posts[j]._id) {
-
-            //                flag = false;
-            //            }
-            //        }
-            //        if (flag) {
-            //            self.getIsLike(data.data[i]);
-            //            posts.push(data.data[i]);
-            //        }
-            //    }
-
-            //    //add Hebrew date to event type
-            //    if (request.postType == 'event') {
-            //        for (var j = 0; j < posts.length; j++) {
-            //            posts[j].hebrewDate = self.hebrewDate(posts[j].DestinationTime);
-            //        }
-            //    }
-
-            //    loadMoreNow = false;
-            //})
         },
-
-
-        /*  updatePost: function (data) {
-        var postId = data.postId
-
-        console.log(postId);
-        for (var post in posts) {
-        console.log('from for: ' + postId);
-        if (posts[post].postId == postId) {
-        console.log('from for: ' + postId);
-        posts[post] = data;
-        console.log('posts[post]: ' + posts[post]);
-        return;
-        }
-        }
-        posts.unshift(data);
-        }, */
 
         updatePost: function (postData, textfile, imgFile, isBase64) {
 

@@ -34,8 +34,9 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
     };
 
     /*init controller data*/
+    PostService.killAjax();
     PostService.getPostsBatch(request); //tell service to refresh posts
-    console.log("222222222222222222222222222222222222222");
+    console.log("get polllllllllllll");
     $scope.polls = PostService.getPosts; //ask service for polls
 
     $scope.userClicked = function (pollIndex) {
@@ -83,14 +84,17 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
 
 
     $scope.loadMore = function () {
-        if ($scope.showendloader) {
-            return;
+        if (!PostService.getLoadMoreNow()) {
+            if ($scope.showendloader) {
+                return;
+            }
+            console.log('load more');
+            request.offset += 20;
+            PostService.setLoadMoreNow(true);
+            post = PostService.getPosts();
+            request.endTimestamp = post[0].timestamp;
+            PostService.getPostsBatch(request);
         }
-        console.log('load more');
-        request.offset += 20;
-        post = PostService.getPosts();
-        request.endTimestamp = post[0].timestamp;
-        PostService.getPostsBatch(request);
     }
 
     $scope.SuggestPoll = function () {

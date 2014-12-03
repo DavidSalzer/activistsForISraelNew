@@ -1,5 +1,5 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
- //   alert('width: '+window.innerWidth+' height: '+window.innerHeight )
+    //   alert('width: '+window.innerWidth+' height: '+window.innerHeight )
     $scope.domain = domain + 'small/';
     $scope.showSpiner = PostService.getSpiner;
 
@@ -13,14 +13,14 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         infoMainText: 'עוד לא הכנתם מם?<br> כאן תוכלו ליצור מם משלכם בעזרת מחולל הממים המיוחד ולשתף עם חברים.<br> *יש לשמור על זכויות יוצרים',
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
-    
-	$scope.showendloader = false;
-    
-	generalParameters.setFeature($scope.featureDetails);
-   
-   generalParameters.setBackIcon(false); //tester
-    
-	request = {
+
+    $scope.showendloader = false;
+
+    generalParameters.setFeature($scope.featureDetails);
+
+    generalParameters.setBackIcon(false); //tester
+
+    request = {
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
@@ -33,7 +33,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
-    
+
     $scope.posts = PostService.getPosts; //ask service for posts
 
     $scope.getPostsByAll = function () {
@@ -48,7 +48,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         var dateObj = new Date();
         var timeNow = dateObj.getTime();
         var timeSubstruct = timeNow - (1000 * 60 * 60 * 24 * 30); //substruct 30 days from today- for use in likes and comments
-        
+
         //for - last 30 days
         request.startTimestamp = timeSubstruct;
         request.orderBy = '-likesCount';
@@ -69,27 +69,30 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         request.offset = 0;
         PostService.getPostsBatch(request);
     }
-	
-	$scope.$on('EndLoadMore', function (event, args) {
-		switch (args.showLoad) {
-			case true:
-				$scope.showendloader = false;
-				break;
-			case false:
-				$scope.showendloader = true;
-				break;
-		}
-	});
-	
-    $scope.loadMore = function () {
-         if ($scope.showendloader) {
-            return;
+
+    $scope.$on('EndLoadMore', function (event, args) {
+        switch (args.showLoad) {
+            case true:
+                $scope.showendloader = false;
+                break;
+            case false:
+                $scope.showendloader = true;
+                break;
         }
-        console.log('load more');
-        request.offset += 12;
-        post = PostService.getPosts();
-        request.endTimestamp = post[0].timestamp;
-        PostService.getPostsBatch(request);
+    });
+
+    $scope.loadMore = function () {
+        if (!PostService.getLoadMoreNow()) {
+            if ($scope.showendloader) {
+                return;
+            }
+            console.log('load more');
+            request.offset += 12;
+            PostService.setLoadMoreNow(true);
+            post = PostService.getPosts();
+            request.endTimestamp = post[0].timestamp;
+            PostService.getPostsBatch(request);
+        }
     }
 
     $scope.getPosts = function () {
