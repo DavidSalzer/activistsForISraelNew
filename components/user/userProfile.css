@@ -91,19 +91,23 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .rank-image-1 {
+	background-position-y: -1px;
     background-position-x: -45px;
 }
 
 .rank-image-2 {
-    background-position-x: -87px;
+    background-position-y: -1px;
+	background-position-x: -133px;
 }
 
 .rank-image-3 {
-    background-position-x: -132px;
+	background-position-y: -1px;
+    background-position-x: -89px;
 }
 
 .rank-image-4 {
-    background-position-x: -175px;
+	background-position-y: -1px;
+    background-position-x: -176px;
 }
 
 .rank-text-1 {

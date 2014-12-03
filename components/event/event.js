@@ -36,7 +36,11 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     PostService.getPostsBatch(request); //tell service to refresh posts
     $scope.posts = PostService.getPosts; //ask service for posts
 
-
+	$scope.showAll = function (e) {
+		
+		$scope.showAll = true;
+    }
+	
     $scope.l = function (flager) {
         console.log(flager);
         if (flager) {
