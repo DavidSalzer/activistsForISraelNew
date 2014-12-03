@@ -10,14 +10,14 @@
     <div class="tab-pane" toggleable active-class="active" default="active" id="Tab1" exclusion-group="myTabs"></div>
     <div class="tab-pane" toggleable active-class="active" id="Tab2" exclusion-group="myTabs"></div>
 </div>
-<div style="height: 100%;top: -41px;padding-top: 41px;overflow-y: scroll;position: relative;z-index: 1;">
+<div style="height: 100%;top: -41px;padding-top: 41px;overflow-y: scroll;position: relative;z-index: 1; -webkit-overflow-scrolling: touch;">
     <div data-ng-show="myScoreNow">
         <div class="points-wrapper">
             <div class="points-icons">
                 <div data-ng-repeat="feature in featuresList" class="brother-types" style="margin-left: {{marg}}px;">
-                    <img class="brother-types-img" data-ng-src="{{feature.featureLogo}}" alt="alt">
-                    <span class="brother-types-text">
-                    {{feature.featureName}}
+                    <img class="brother-types-img" data-once-src="feature.featureLogo" alt="alt">
+                    <span class="brother-types-text" data-once-text="feature.featureName">
+                   <!--  {{feature.featureName}} -->
                     </span>
                 </div>
             </div>
@@ -43,10 +43,10 @@
         <div class="points-wrapper">
              <div class="how-get-points">כיצד מקבלים ניקוד</div>
             <div data-ng-repeat="feature in scoredetailes" class="big-score-wrap" style="">
-                <div class="increase-num">{{feature.num}}+</div>
+                <div class="increase-num" data-once-text="feature.num+'+'"><!-- {{feature.num}}+ --></div>
                 <div data-ng-repeat="tell in feature.items" class="small-score-wrap">
-                    <img class="brother-types-img" class="score-image" data-ng-src="{{tell.logo}}" alt="alt">
-                    <div class="score-text">{{tell.text}}</div>
+                    <img class="brother-types-img" class="score-image" data-once-src="tell.logo" alt="alt">
+                    <div class="score-text" data-once-text="tell.text"><!-- {{tell.text}} --></div>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
 </div>
 
 <div class="sub-header  special-sub-header" id="feature-header" data-ng-show="notLogin" style="height: 84px;">
-    <div data-ng-style="{'color':featureDetails.featureColor}">על מנת לצבור ניקוד הצטרף לאחליקציה</div>
+    <div data-once-style="{'color':featureDetails.featureColor}">על מנת לצבור ניקוד הצטרף לאחליקציה</div>
     <div class="inner-special-header" data-ng-style="{'background-color':featureDetails.featureColor}" data-ng-click="goToLogin()">
    הצטרף
     </div>

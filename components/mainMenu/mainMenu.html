@@ -4,7 +4,7 @@
     <div class="current-feature main-menu-shadow" data-ng-click="goToFeature(features()[0].link)">
         <div class="">
             <img src="{{features()[0].image}}" alt="main-img" class="main-img">
-            <img src="./img/play_button.png" data-ng-if="features()[0].link.indexOf('http')>-1" class="main-img-play">
+            <img src="./img/play_button.png" data-ng-if="features()[0].isVideo == true" class="main-img-play">
             <div class="current-feature-title">
                 <h3>{{features()[0].title}}</h3>
             </div>
@@ -21,7 +21,7 @@
             <div class="current-feature-components main-menu-shadow">
                 <img ng-src="{{feature.image}}" alt="...">
                 <div class="features-title">
-                    <h3 class="inner-features-title">{{feature.title}}</h3>
+                    <h3 class="inner-features-title" once-text="feature.title"><!--{{feature.title}} --></h3>
                 </div>
             </div>
         </div>

@@ -9,14 +9,18 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         featureLogo: "./img/sidebar-meme-icon.png",
         featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
-        infoHaeder: "פיצ'ר הממים",
-        infoMainText: 'עוד לא הכנתם מם? כאן תוכלו ליצור מם משלכם בעזרת מחולל הממים המיוחד ולשתף עם חברים. *יש לשמור על זכויות יוצרים',
+        infoHaeder: "ממים",
+        infoMainText: 'עוד לא הכנתם מם?<br> כאן תוכלו ליצור מם משלכם בעזרת מחולל הממים המיוחד ולשתף עם חברים.<br> *יש לשמור על זכויות יוצרים',
         infoSubText: "יצירת תכנים באיזור זה מותנת בהרשמה לאחליקציה"
     };
-    $scope.showendloader = false;
-    generalParameters.setFeature($scope.featureDetails);
-    generalParameters.setBackIcon(false); //tester
-    request = {
+    
+	$scope.showendloader = false;
+    
+	generalParameters.setFeature($scope.featureDetails);
+   
+   generalParameters.setBackIcon(false); //tester
+    
+	request = {
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
@@ -52,18 +56,6 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         PostService.getPostsBatch(request);
     }
 
-
-     $scope.$on('EndLoadMore', function (event, args) {
-        switch (args.showLoad) {
-            case true:
-                 $scope.showendloader = false;
-                break;
-            case false:
-                $scope.showendloader = true;
-                break;
-        }
-    });
-
     $scope.getPostsByViews = function () {
         var dateObj = new Date();
         var timeNow = dateObj.getTime();
@@ -76,7 +68,18 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         request.offset = 0;
         PostService.getPostsBatch(request);
     }
-
+	
+	$scope.$on('EndLoadMore', function (event, args) {
+		switch (args.showLoad) {
+			case true:
+				$scope.showendloader = false;
+				break;
+			case false:
+				$scope.showendloader = true;
+				break;
+		}
+	});
+	
     $scope.loadMore = function () {
          if ($scope.showendloader) {
             return;
@@ -90,6 +93,11 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 
     $scope.getPosts = function () {
         PostService.getPostsBatch(request);
+    }
+
+	$scope.kill = function (event) {
+		
+      angular.element(event.target).remove(); 
     }
 
     $scope.writeMeme = function () {

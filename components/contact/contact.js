@@ -1,12 +1,15 @@
 socialGroupApp.controller('contact', ['$scope', '$rootScope', 'PostService', 'generalParameters', function ($scope, $rootScope, PostService, generalParameters) {
 
+    $scope.showAll = false;
     $scope.showInput = false;
     $scope.isSiteHeader = true;
 
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/contact.png",
+        featureLogo: "./img/sidebar-contact-icon.png",
+        featureWhatsUpLogo: "./img/contact_info.png",
         featureColor: '#009933',
+        infoHaeder: "צור קשר",
         infoMainText: "כאן תוכלו לפנות אלינו.",
         infoSubText: "עוד לא הצטרפת לאחליקציה?"
     };
@@ -43,9 +46,15 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'PostService', 'ge
 		
 		'NewsLtr':{'he':'http://my-t.co.il/view/Cms.aspx?i=1022'}
 	};
-
+	
+	$scope.showAll = function (e) {
+		
+		$scope.showAll = true;
+    }
+	
     $scope.sendContact = function () {
 		
+		$scope.showContactError = false;
 		//validate inputs
 		$scope.showNameError = $scope.name == undefined || $scope.name == '';
         $scope.showEmailError = $scope.mail == undefined || $scope.mail == '';
@@ -68,15 +77,17 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'PostService', 'ge
         $scope.postData.post.title = 'יצירת קשר';
 		
 		//send msg
-        PostService.sendPost($scope.postData)
-
-		.then(function (data) {
+        PostService.sendPost($scope.postData).then(function (data) {
 
 		    console.log(data);
-		    generalParameters.setBackIcon(false);
-
-		    //others - show thank page
-		    $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+			if(data.status.statusCode == 0){
+				generalParameters.setBackIcon(false);
+				$rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+			}
+			else{//contact error
+				$scope.showContactError = true;
+                $scope.ContactErrorMessage = "שליחת המסר נכשלה. אנא נסו שנית";
+			}
 		});
     }
 	

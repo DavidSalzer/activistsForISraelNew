@@ -212,7 +212,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
             $scope.showPollAnsError = ($scope.postData.post.poll.options == undefined || $scope.postData.post.poll.options.length < 2) && $scope.postType == 'poll';
         }
 
-        return (!($scope.showTitleError || $scope.showContentError || $scope.showContentLongError|| $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || $scope.showPollQuestionError || $scope.showpollDescriptionerror || $scope.showPollAnsError || $scope.showMailError || $scope.showPhoneError || false));
+        return (!($scope.showTitleError || $scope.showContentError || $scope.showContentLongError || $scope.showDDMMYYError || $scope.showHHMMError || $scope.showLocationError || $scope.showPollQuestionError || $scope.showpollDescriptionerror || $scope.showPollAnsError || $scope.showMailError || $scope.showPhoneError || false));
 
 
     }
@@ -319,14 +319,13 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
         $scope.mytime = null;
     };
 
-    // can be a button click or anything else
     $scope.takePicture = function () {
         filePicker.getPicture()
         .then(function (imageData) {
-            // imageData is your base64-encoded image
-            // update some ng-src directive
+            // imageData is base64-encoded image
             $scope.imgFileText = imageData.fileText;
-            $scope.imgObj = imageData.imgData; //"data:image/jpeg;base64," +
+            $scope.imgObj = imageData.imgData;
+            $scope.postImg = imageData.imgData;//for preview
         });
     };
 
@@ -342,8 +341,6 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     document.getElementById('my-big-timepick').addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation()
-
-
     }, false);
 
 

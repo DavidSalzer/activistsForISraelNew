@@ -4,23 +4,23 @@ a:link, a:active, a:hover, a:visited, a:focus {
 }
 
 .contact-content-wrap input::-webkit-input-placeholder {
-    color: #000000;
+    color: #808080;
 }
 
 .contact-content-wrap input:-moz-placeholder { /* Firefox 18- */
-    color: #000000;
+     color: #808080;
 }
 
 .contact-content-wrap input::-moz-placeholder { /* Firefox 19+ */
-    color: #000000;
+     color: #808080;
 }
 
 .contact-content-wrap input:-ms-input-placeholder {
-    color: #000000;
+    color: #808080;
 }
 
 .contact-content-wrap textarea::-webkit-input-placeholder {
-    color: #000000;
+     color: #808080;
 }
 
 .contact-content-wrap textarea:-moz-placeholder { /* Firefox 18- */
@@ -28,11 +28,11 @@ a:link, a:active, a:hover, a:visited, a:focus {
 }
 
 .contact-content-wrap textarea::-moz-placeholder { /* Firefox 19+ */
-    color: #000000;
+    color: #808080;
 }
 
 .contact-content-wrap textarea:-ms-input-placeholder {
-    color: #000000;
+    color: #808080;
 }
 
 
@@ -104,7 +104,6 @@ a:link, a:active, a:hover, a:visited, a:focus {
     padding-top: 9px;
     margin: 0px 0px 14px 0px;
 }
-
 .contact-content-wrap input[type="tel"] {
     border: none;
     box-shadow: none;

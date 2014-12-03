@@ -1,5 +1,9 @@
-socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'imgCrop', function ($rootScope, $scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, imgCrop) {
+socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'filePicker', function ($rootScope, $scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, filePicker) {
 
+    /*delay dom building until transition is done*/
+    $scope.buildPage = false;
+    $rootScope.$broadcast('showLoader', { showLoader: true });
+    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
 
     $scope.d = 'disabled';
     $scope.datacrop = {};
@@ -9,6 +13,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.showSpiner = PostService.getSpiner;
     $scope.showChangePassword = false;
     $scope.movePage = false;
+
     $scope.featuresList = [
 
         {
@@ -18,6 +23,13 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             featureColor: "talkback",
             postType: "talkback"
         },
+         {
+             featureUrl: 'event',
+             featureName: 'אירועים',
+             featureLogo: "./img/calendar.png",
+             featureColor: "event",
+             postType: "event"
+         },
     //{
     //    featureUrl: 'article',
     //    featureName: 'מאמרים',
@@ -39,14 +51,8 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             featureLogo: "./img/poll.png",
             featureColor: "#da4f00",
             postType: "voteToPoll"
-        },
-    {
-        featureUrl: 'event',
-        featureName: 'אירועים',
-        featureLogo: "./img/calendar.png",
-        featureColor: "event",
-        postType: "event"
-    }
+        }
+
 
     ];
 
@@ -61,12 +67,12 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     };
 
     generalParameters.setFeature($scope.featureDetails);
-
+    generalParameters.setBackIcon(false);
     $scope.showAuthorImage = false;
     $scope.showAuthorName = false;
     $scope.userLike = false;
 
-    generalParameters.setFeature($scope.featureDetails);
+    //generalParameters.setFeature($scope.featureDetails);
 
 
 
@@ -374,37 +380,38 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":                      
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                      
-                //    break;                      
+                //case "author":                             
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                             
+                //    break;                             
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":                      
-                //    $state.transitionTo('single-event', { postId: args.postId });                      
-                //    break;                      
-                //case "voteToPoll":                      
-                //    $state.transitionTo('poll-view', { postId: args.postId });                      
-                //    break;                      
+                //case "event":                             
+                //    $state.transitionTo('single-event', { postId: args.postId });                             
+                //    break;                             
+                //case "voteToPoll":                             
+                //    $state.transitionTo('poll-view', { postId: args.postId });                             
+                //    break;                             
             }
         }
         else {
-            if (activity.user._id != $stateParams.userId){
-                     $scope.movePage = true; 
-                }
+            if (activity.user._id != $stateParams.userId) {
+                $scope.movePage = true;
+            }
             //    setTimeout(function () {
             //    $scope.$apply(function () {
             //        $state.transitionTo('user-profile', { userId: activity.user._id });
             //    })
             //}
             //, 1);
-             setTimeout(function () {
-                 $scope.$apply(function () {
-            $state.transitionTo('user-profile', { userId: activity.user._id });
-             })},40);
+            setTimeout(function () {
+                $scope.$apply(function () {
+                    $state.transitionTo('user-profile', { userId: activity.user._id });
+                })
+            }, 40);
         }
     }
 
@@ -515,63 +522,89 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             { "base64": $scope.userImg })
             .success(function (data) {
 
-                generalParameters.setUser(data.data);
+                generalParameters.setUser(data.data.user);
                 //generalParameters.setUser(data.data.user);
             });
 
     }
 
-    document.getElementById('userImg1').addEventListener('change', function (e) {
-        $scope.fileEdit(e);
-    }, false);
+    //document.getElementById('userImg1').addEventListener('change', function (e) {
+    //    $scope.fileEdit(e);
+    //}, false);
 
-    $scope.fileEdit = function (e) {
-        //file reader to show the img
-        var file = e.target.files[0];
+    //$scope.fileEdit = function (e) {
+    //    //file reader to show the img
+    //    var file = e.target.files[0];
 
-        //file reader
-        var reader = new FileReader();
+    //    //file reader
+    //    var reader = new FileReader();
 
-        if (file.type.match('image/*')) {
-            var reader = new FileReader();
-            reader.onload = (function () {
-                return function (e) {
+    //    if (file.type.match('image/*')) {
+    //        var reader = new FileReader();
+    //        reader.onload = (function () {
+    //            return function (e) {
 
-                    $scope.userimg = e.target.result;
-                    $scope.editImg = true;
-                    $scope.$apply();
-                    $scope.croping();
-                };
-            })(file);
-            reader.readAsDataURL(file);
-        }
-    }
+    //                $scope.userimg = e.target.result;
+    //                $scope.editImg = true;
+    //                $scope.$apply();
+    //                $scope.croping();
+    //            };
+    //        })(file);
+    //        reader.readAsDataURL(file);
+    //    }
+    //}
+
+    // can be a button click or anything else
+    $scope.takePicture = function () {
+        if (!$scope.myProfile) { return; }
+        filePicker.getPicture()
+        .then(function (imageData) {
+            // imageData is your base64-encoded image
+            // update some ng-src directive
+            $scope.imgFileText = imageData.fileText;
+            $scope.userimg = imageData.imgData; //"data:image/jpeg;base64," +
+            $scope.myCroppedImage = '';
+            $scope.editImg = true;
+            $scope.$apply();
+            //$scope.croping();
+        });
+    };
 
 
     //user image crop
-    $scope.croping = function () {
-        imgCrop.obj = {};
-        $('#cropDiv1 img').on('load', function () {
-            imgCrop.crop('c1', 'button_ok1', 'cropDiv1'); //canvasid  ,btn-approve, container Id
-        });
-    }
+    //$scope.croping = function () {
+    //    imgCrop.obj = {};
+    //    $('#cropDiv1 img').on('load', function () {
+    //        imgCrop.crop('c1', 'button_ok1', 'cropDiv1'); //canvasid  ,btn-approve, container Id
+    //    });
+    //}
 
-    $scope.$on('editDone', function (e, d) {
+    //$scope.$on('editDone', function (e, d) {
 
-        $scope.userImg = d.data;
-        if ($scope.userImg != '') {
-            $scope.uploadBase64Image();
-        }
-        $scope.editImg = false;
-        $scope.$apply();
-        $scope.userimg = '';
-        imgCrop.destroy();
-    });
+    //    $scope.userImg = d.data;
+    //    if ($scope.userImg != '') {
+    //        $scope.uploadBase64Image();
+    //    }
+    //    $scope.editImg = false;
+    //    $scope.$apply();
+    //    $scope.userimg = '';
+    //    imgCrop.destroy();
+    //});
 
     $scope.editCancel = function () {
         $scope.editImg = false;
         $scope.userimg = '';
-        imgCrop.destroy();
+        //imgCrop.destroy();
+    }
+
+    $scope.editDone = function () {
+        $scope.userImg = $scope.myCroppedImage;
+        if ($scope.userImg != '') {
+            $scope.uploadBase64Image();
+        }
+        $scope.editImg = false;
+
+        $scope.userimg = '';
     }
 
     //change password popup
@@ -627,6 +660,11 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             $scope.passErrorMessage = errorMessages.generalError;
             $rootScope.$broadcast('showLoader', { showLoader: false });
         });
+    }
+
+    $scope.loaded = function () {
+        $rootScope.$broadcast('showLoader', { showLoader: false });
+        angular.element(event.target).remove(); 
     }
 
 

@@ -77,14 +77,13 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
         featureLogo: "./img/sidebar-menu-icon.png",
         featureWhatsUpLogo: "./img/sgin_thankyou.png",
         featureColor: '#00aeef',
-        infoHaeder: "מדרג קבלת הניקוד",
-        infoMainText: 'ברוכים הבאים לאחליקציה! הצטרפו אלינו ותוכלו לצפות, לכתוב, לפרסם ולהגיב. לחצו על האייקון משמאל לצפייה בתפריט המלא.',
+        infoHaeder: "אחליקציה",
+        infoMainText: 'ברוכים הבאים לאחליקציה!<br> הצטרפו אלינו ותוכלו לצפות, לכתוב, לפרסם ולהגיב. לחצו על האייקון משמאל לצפייה בתפריט המלא.',
         infoSubText: "עוד לא הצטרפת לאחליקציה?"
 
     };
 
     generalParameters.setFeature($scope.featureDetails);
-	
 	
 	$scope.loadMore = function () {
         
@@ -92,7 +91,6 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
         
 		PostService.loadMainFeatures(request);
     }
-
 }])
 
 

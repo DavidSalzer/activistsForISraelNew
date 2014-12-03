@@ -95,7 +95,6 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         PostService.getPostsBatch(request);
     }
 
-    
     $scope.getAuthors = function () {
         $scope.currentTab = 'author';
         request.orderBy = '-timestamp';
@@ -103,7 +102,6 @@ socialGroupApp.controller('article', ['$rootScope', '$stateParams', '$scope', 'c
         request.offset = 0;
         PostService.getAuthorsByPostType(request);
     }
-
 
     $scope.getPostsByViews = function () {
         $scope.currentTab = 'article';

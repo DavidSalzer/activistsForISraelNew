@@ -1,6 +1,7 @@
 #main-menu {
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 #features-list {

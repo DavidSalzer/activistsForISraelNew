@@ -1,9 +1,7 @@
 var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
-//var domain = 'http://localhost:3003/';
+var siteOrigin = 'http://www.cambium-team.com/bennetSite/';
 
-var siteOrigin = '../../../';
-
-var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap', 'ngQuickDate'])
+var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap', 'ngQuickDate', 'ngImgCrop', 'once'])
 
 /**** UI Router ****/
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -282,7 +280,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         
         link: function (scope, el, attrs) {
             scope.getContentUrl = function() {
-                var talkbackTemplate = 'postTemplate.html';
+            var talkbackTemplate = 'postTemplate.html';
             var articleTemplate = 'articleTemplate.html';
             var authorsTemplate = 'authorsTemplate.html';
             var memesTemplate = 'components/meme/smallMemeTemplate.html';
@@ -698,19 +696,20 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
     }
 })
 
-//repeat end load dom
- .directive('onFinishRender', function ($timeout) {
-     return {
-         restrict: 'A',
-         link: function (scope, element, attr) {
-             if (scope.$last === true) {
-                 $timeout(function () {
-                     scope.$emit(attr.onFinishRender);
-                 });
-             }
-         }
-     }
- })
+ .directive('sbLoad', ['$parse', function ($parse) {
+    return {
+		restrict: 'A',
+		link: function (scope, elem, attrs) {
+			var fn = $parse(attrs.sbLoad);
+			
+			elem.on('load', function (event) {
+				scope.$apply(function() {
+					fn(scope, { $event: event });
+				});
+			});
+		}
+    }
+}])
  
  .filter('trustHtml', ['$sce', function ($sce) {
     return function (val) {

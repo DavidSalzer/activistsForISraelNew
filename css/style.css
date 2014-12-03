@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
-
 body {
     direction: rtl;
     height: 100%;
@@ -11,8 +10,7 @@ body {
     outline: none;
 }
 
-
-textarea{
+textarea {
     resize: none;
 }
 
@@ -29,8 +27,8 @@ textarea{
 }
 
 .loader {
-    height: 165px;
-    width: 250px;
+    height: 70px;
+    width: 70px;
     background-image: url('../img/loading_blue.gif');
     background-size: 100% 100%;
     margin: auto;
@@ -39,15 +37,16 @@ textarea{
 .general-loader {
     position: absolute;
     margin: auto;
-    height: 55px;
-    width: 55px;
+    height: 70px;
+    width: 70px;
     top: 0px;
     display: block;
     bottom: 0px;
     right: 0px;
     left: 0px;
     z-index: 15;
-    background-image: url('../img/loading.gif');
+    background-image: url('../img/loading_blue.gif');
+    background-size: 100% 100%;
 }
 
 .fa-spinner:before {
@@ -153,16 +152,18 @@ select {
 }
 
 .post-buttons {
-    position: absolute;
+    position: relative;
+    width: 49%;
+    display: inline-block;
 }
 
-.post-likes {
+/*.post-likes {
     left: 0px;
 }
 
 .post-comment {
     right: 0px;
-}
+}*/
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
     color: #fff;
@@ -195,16 +196,16 @@ select {
 
 
 .post-buttons {
-    position: absolute;
+    /*position: absolute;*/
 }
 
 .post-likes {
-    left: 0px;
+    /*left: 0px;*/
     cursor: pointer;
 }
 
 .post-comment {
-    right: -1px;
+    /*right: -1px;*/
     cursor: pointer;
 }
 
@@ -305,14 +306,14 @@ figure.author-image {
     height: 14px;
     width: 14px;
     background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
+    background-size: 100%;
     background-image: url("../img/rank1.png");
+    /*position: absolute;
     bottom: 0px;
     left: 0px;
     right: 0px;
     top: 0px;
-    margin: auto;
+    margin: auto;*/
 }
 
 .author-image .author-rank-image.author-rank-image-1 {
@@ -348,6 +349,10 @@ span.author-date {
     font-size: 13px;
 }
 
+.user-recent-activity-zone span.author-date{
+    float: right;
+line-height: 25px;
+}
 div.post-main-text {
     clear: both;
     /*height: 33px;*/
@@ -360,7 +365,6 @@ div.post-main-text {
     padding-bottom: 1px;
     color: #000000;
 }
-
 .post-main-text img {
     width: 80%;
     margin: 5px auto 10px auto;
@@ -368,6 +372,20 @@ div.post-main-text {
     border: 0px solid #565c63;
     border-radius: 2px;
 }
+.post-main-text p {
+    clear: both;
+    /*height: 33px;*/
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 14px;
+    text-align: justify;
+    word-wrap: break-word;
+    padding-bottom: 1px;
+    color: #000000;
+}
+
+
 /* comment, like buttons*/
 .write-comment-zone {
     position: absolute;
@@ -413,9 +431,25 @@ div.post-main-text {
 .respond-count {
 }
 
+.icon {
+background-image: url('../../img/heart_meme.png');
+background-repeat: no-repeat;
+background-size: 34px 15px;
+background-position-x: -17px;
+background-position-y: 1px;
+height: 15px;
+width: 17px;
+display: block;
+margin: auto;
+position: relative;
+right: 0;
+left: 0;
+margin-top: 1px;
+}
+
 .post-feedback .icon {
     background-repeat: no-repeat;
-    background-position-x: -23px;
+    background-position-x: -16px;
     background-position-y: 1px;
     height: 17px;
     width: 19px;
@@ -430,14 +464,14 @@ div.post-main-text {
 }
 
 .respond-post .icon {
-    background-image: url('../img/pencil.png');
+    background-image: url('../img/pencil_talkback.png');
     background-size: 17px 14px;
     background-position-x: initial;
     background-position-y: 2px;
 }
 
 .like-post.is-liked .icon {
-    background-position-x: 0px;
+    background-position-x: 1px;
 }
 
 
@@ -449,7 +483,7 @@ div.post-main-text {
 }
 
 span.respond-post, span.like-post {
-    width: 62px;
+    width: 49%;
     background-color: #565c63;
     display: inline-block;
     float: right;
@@ -465,14 +499,12 @@ span.is-liked {
 
 .post-footer {
     position: relative;
-    width: 260px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
 }
 
 span.respond-count, span.like-count {
     display: inline-block;
-    width: 62px;
+    width: 49%;
     background-color: #d4deec;
     color: black;
     text-align: center;
@@ -559,7 +591,7 @@ span.respond-count, span.like-count {
 
 /**********************side-bar**************************8*/
 
-span.sidbar-text.ng-binding {
+span.sidbar-text {
     display: inline-block;
     width: 89px;
     position: relative;
@@ -857,7 +889,7 @@ div.scrollable-content.overthrow {
     cursor: pointer;
     position: relative;
     padding: 5px;
-    background: #2d3238;
+    background: #ffffff;
 }
 
 .player-contener img {
@@ -891,7 +923,7 @@ iframe.player-contener {
 }
 
 .player-text {
-    background-color: #565c63;
+    background-color: #ffffff;
     padding: 9px 5px;
     height: 47px;
     position: relative;
@@ -900,23 +932,25 @@ iframe.player-contener {
 
 .player-text h2 {
     padding: 0px 5px;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     font-size: 13px;
-    color: #bcccce;
+    color: #000000;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 90%;
     white-space: nowrap;
+    font-weight: bold;
 }
 
 .player-text p {
-    padding: 0px 5px;
-    font-size: 10px;
-    color: #fff;
+    display: inline-block;
+    /*  padding: 0px 5px; */
+    font-size: 11px;
+    color:#000000;
 }
 
 .list-tube {
-    background: #2d3238;
+    background: #ffffff;
     margin: 15px 0;
     position: relative;
 }
@@ -937,7 +971,7 @@ button {
 }
 
 .text-box {
-    height: 104px;
+    height: 110px;
     LINE-HEIGHT: 13px;
     padding-right: 14px;
     padding-left: 14px;
@@ -961,7 +995,7 @@ button {
     height: 172px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100% 100%;
+    background-size: 100% auto;
     margin: auto;
 }
 
@@ -1121,6 +1155,7 @@ button {
     display: inline-block;
     position: relative;
     top: 2px;
+    vertical-align: top;
 }
 
 .legend-content {
@@ -1149,7 +1184,7 @@ button {
 .optionToVote-container {
     width: 263px;
     height: 45px;
-    line-height: 20px;
+    line-height: 21px;
     margin-top: 7px;
     margin-right: auto;
     margin-left: auto;
@@ -1160,6 +1195,7 @@ button {
     -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
     -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
     box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 
 .vote-error {
@@ -1316,9 +1352,10 @@ button {
 .brother-types-text {
 }
 
-.my-score-bord-not-login{
+.my-score-bord-not-login {
     padding-bottom: 80px;
 }
+
 .points-wrapper {
     padding: 14px 14px 0px 14px;
     position: relative;
@@ -1472,7 +1509,7 @@ img.brother-types-img {
     height: 25px;
     position: relative;
     margin-right: 7px;
-margin-left: 7px;
+    margin-left: 7px;
 }
 
 .end-load-more img {
@@ -1499,155 +1536,158 @@ margin-left: 7px;
 
 /**************************loader********************/
 
-#floatingCirclesG{
-position:relative;
-width:128px;
-height:128px;
--moz-transform:scale(0.6);
--webkit-transform:scale(0.6);
--ms-transform:scale(0.6);
--o-transform:scale(0.6);
-transform:scale(0.6);
-margin: auto;
+#floatingCirclesG {
+    position: relative;
+    width: 128px;
+    height: 128px;
+    -moz-transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    -o-transform: scale(0.6);
+    transform: scale(0.6);
+    margin: auto;
 }
 
-.f_circleG{
-position:absolute;
-background-color:#124270;
-height:23px;
-width:23px;
--moz-border-radius:12px;
--moz-animation-name:f_fadeG;
--moz-animation-duration:1.04s;
--moz-animation-iteration-count:infinite;
--moz-animation-direction:linear;
--webkit-border-radius:12px;
--webkit-animation-name:f_fadeG;
--webkit-animation-duration:1.04s;
--webkit-animation-iteration-count:infinite;
--webkit-animation-direction:linear;
--ms-border-radius:12px;
--ms-animation-name:f_fadeG;
--ms-animation-duration:1.04s;
--ms-animation-iteration-count:infinite;
--ms-animation-direction:linear;
--o-border-radius:12px;
--o-animation-name:f_fadeG;
--o-animation-duration:1.04s;
--o-animation-iteration-count:infinite;
--o-animation-direction:linear;
-border-radius:12px;
-animation-name:f_fadeG;
-animation-duration:1.04s;
-animation-iteration-count:infinite;
-animation-direction:linear;
+.f_circleG {
+    position: absolute;
+    background-color: #124270;
+    height: 23px;
+    width: 23px;
+    -moz-border-radius: 12px;
+    -moz-animation-name: f_fadeG;
+    -moz-animation-duration: 1.04s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: linear;
+    -webkit-border-radius: 12px;
+    -webkit-animation-name: f_fadeG;
+    -webkit-animation-duration: 1.04s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: linear;
+    -ms-border-radius: 12px;
+    -ms-animation-name: f_fadeG;
+    -ms-animation-duration: 1.04s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-direction: linear;
+    -o-border-radius: 12px;
+    -o-animation-name: f_fadeG;
+    -o-animation-duration: 1.04s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-direction: linear;
+    border-radius: 12px;
+    animation-name: f_fadeG;
+    animation-duration: 1.04s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
 }
 
-#frotateG_01{
-left:0;
-top:52px;
--moz-animation-delay:0.39s;
--webkit-animation-delay:0.39s;
--ms-animation-delay:0.39s;
--o-animation-delay:0.39s;
-animation-delay:0.39s;
+#frotateG_01 {
+    left: 0;
+    top: 52px;
+    -moz-animation-delay: 0.39s;
+    -webkit-animation-delay: 0.39s;
+    -ms-animation-delay: 0.39s;
+    -o-animation-delay: 0.39s;
+    animation-delay: 0.39s;
 }
 
-#frotateG_02{
-left:15px;
-top:15px;
--moz-animation-delay:0.52s;
--webkit-animation-delay:0.52s;
--ms-animation-delay:0.52s;
--o-animation-delay:0.52s;
-animation-delay:0.52s;
+#frotateG_02 {
+    left: 15px;
+    top: 15px;
+    -moz-animation-delay: 0.52s;
+    -webkit-animation-delay: 0.52s;
+    -ms-animation-delay: 0.52s;
+    -o-animation-delay: 0.52s;
+    animation-delay: 0.52s;
 }
 
-#frotateG_03{
-left:52px;
-top:0;
--moz-animation-delay:0.65s;
--webkit-animation-delay:0.65s;
--ms-animation-delay:0.65s;
--o-animation-delay:0.65s;
-animation-delay:0.65s;
+#frotateG_03 {
+    left: 52px;
+    top: 0;
+    -moz-animation-delay: 0.65s;
+    -webkit-animation-delay: 0.65s;
+    -ms-animation-delay: 0.65s;
+    -o-animation-delay: 0.65s;
+    animation-delay: 0.65s;
 }
 
-#frotateG_04{
-right:15px;
-top:15px;
--moz-animation-delay:0.78s;
--webkit-animation-delay:0.78s;
--ms-animation-delay:0.78s;
--o-animation-delay:0.78s;
-animation-delay:0.78s;
+#frotateG_04 {
+    right: 15px;
+    top: 15px;
+    -moz-animation-delay: 0.78s;
+    -webkit-animation-delay: 0.78s;
+    -ms-animation-delay: 0.78s;
+    -o-animation-delay: 0.78s;
+    animation-delay: 0.78s;
 }
 
-#frotateG_05{
-right:0;
-top:52px;
--moz-animation-delay:0.91s;
--webkit-animation-delay:0.91s;
--ms-animation-delay:0.91s;
--o-animation-delay:0.91s;
-animation-delay:0.91s;
+#frotateG_05 {
+    right: 0;
+    top: 52px;
+    -moz-animation-delay: 0.91s;
+    -webkit-animation-delay: 0.91s;
+    -ms-animation-delay: 0.91s;
+    -o-animation-delay: 0.91s;
+    animation-delay: 0.91s;
 }
 
-#frotateG_06{
-right:15px;
-bottom:15px;
--moz-animation-delay:1.04s;
--webkit-animation-delay:1.04s;
--ms-animation-delay:1.04s;
--o-animation-delay:1.04s;
-animation-delay:1.04s;
+#frotateG_06 {
+    right: 15px;
+    bottom: 15px;
+    -moz-animation-delay: 1.04s;
+    -webkit-animation-delay: 1.04s;
+    -ms-animation-delay: 1.04s;
+    -o-animation-delay: 1.04s;
+    animation-delay: 1.04s;
 }
 
-#frotateG_07{
-left:52px;
-bottom:0;
--moz-animation-delay:1.17s;
--webkit-animation-delay:1.17s;
--ms-animation-delay:1.17s;
--o-animation-delay:1.17s;
-animation-delay:1.17s;
+#frotateG_07 {
+    left: 52px;
+    bottom: 0;
+    -moz-animation-delay: 1.17s;
+    -webkit-animation-delay: 1.17s;
+    -ms-animation-delay: 1.17s;
+    -o-animation-delay: 1.17s;
+    animation-delay: 1.17s;
 }
 
-#frotateG_08{
-left:15px;
-bottom:15px;
--moz-animation-delay:1.3s;
--webkit-animation-delay:1.3s;
--ms-animation-delay:1.3s;
--o-animation-delay:1.3s;
-animation-delay:1.3s;
+#frotateG_08 {
+    left: 15px;
+    bottom: 15px;
+    -moz-animation-delay: 1.3s;
+    -webkit-animation-delay: 1.3s;
+    -ms-animation-delay: 1.3s;
+    -o-animation-delay: 1.3s;
+    animation-delay: 1.3s;
 }
 
-@-moz-keyframes f_fadeG{
-0%{
-background-color:#FFFFFF}
+@-moz-keyframes f_fadeG {
+    0% {
+        background-color: #FFFFFF;
+    }
 
-100%{
-background-color:#124270}
-
+    100% {
+        background-color: #124270;
+    }
 }
 
-@-webkit-keyframes f_fadeG{
-0%{
-background-color:#FFFFFF}
+@-webkit-keyframes f_fadeG {
+    0% {
+        background-color: #FFFFFF;
+    }
 
-100%{
-background-color:#124270}
-
+    100% {
+        background-color: #124270;
+    }
 }
 
-@-ms-keyframes f_fadeG{
-0%{
-background-color:#FFFFFF}
+@-ms-keyframes f_fadeG {
+    0% {
+        background-color: #FFFFFF;
+    }
 
-100%{
-background-color:#124270}
-
+    100% {
+        background-color: #124270;
+    }
 }
 
 @-o-keyframes f_fadeG{
@@ -1659,11 +1699,12 @@ background-color:#124270}
 
 }
 
-@keyframes f_fadeG{
-0%{
-background-color:#FFFFFF}
+@keyframes f_fadeG {
+    0% {
+        background-color: #FFFFFF;
+    }
 
-100%{
-background-color:#124270}
-
+    100% {
+        background-color: #124270;
+    }
 }

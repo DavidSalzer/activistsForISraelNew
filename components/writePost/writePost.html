@@ -80,20 +80,13 @@
 		<!-- post add img-->
 		
 		 <div class="add-file" style='height: 30px;' data-ng-hide='postType=="poll"' data-ng-click="takePicture()">         
-				<div class="plus" style='position: absolute;top: 0;cursor: pointer;'>
-					
-                    
-					<!--<input data-ng-if="!androidIs442" type="file" data-upload='img' style='position: absolute;top: 0;'></input>
-					<plugin data-ng-if="androidIs442"></plugin>-->
-					
-					
-				</div>
+				<div class="plus" style='position: absolute;top: 0;cursor: pointer;'></div>
 				<div class='add-file-text' >{{imgFileText}}</div>
 				<div  data-ng-show="toLargImage==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
             </div>
 		
 		<!-- post add img preview-->
-		<img  data-ng-show="toLargImage==false && postType!='poll'" ng-src="{{postImg}}" style='margin: 20px auto 20px auto;display: block'  >
+		<img  data-ng-show="toLargImage==false && postType!='poll'" data-ng-src="{{postImg}}" style='margin: 20px auto 20px auto;display: block'  >
 		
 	
 		  

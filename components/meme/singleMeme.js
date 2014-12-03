@@ -1,6 +1,10 @@
 
 socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
 
+
+    $scope.buildPage = false;
+    $rootScope.$broadcast('showLoader', { showLoader: true });
+    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
     $scope.domain = domain;
     /*init variables*/
     generalParameters.setBackIcon(true);
@@ -9,7 +13,7 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
-        featureLogo: "./img/meme.png",
+        featureLogo: "./img/sidebar-meme-icon.png",
         featureWhatsUpLogo: "./img/meme_info.png",
         featureColor: '#ffd427',
         infoHaeder: "פיצ'ר הממים",
@@ -51,6 +55,10 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
 
             return;
         }
+    }
+
+    $scope.loaded = function () {
+        $rootScope.$broadcast('showLoader', { showLoader: false });
     }
 
 } ]);

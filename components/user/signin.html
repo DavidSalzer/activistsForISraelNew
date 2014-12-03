@@ -11,7 +11,7 @@
                 <select class="sign-in-field sign-in-gender" data-ng-class="{'loginErrorActive': showGenderError, 'placeholder-color': gender == undefined}" data-ng-model="gender" data-ng-options="gender for gender in ['נקבה', 'זכר']">
                     <option value="">* מין</option>
                                             <!--<option value="נקבה">נקבה</option>
-                                                            <option value="זכר">זכר</option>-->
+                                                                                    <option value="זכר">זכר</option>-->
                 </select>
                 <!--</div>-->
                 <input type="email" class="sign-in-field sign-in-mail" data-ng-class="{loginErrorActive: showEmailError}" placeholder="* מייל" data-ng-model="mail">
@@ -19,17 +19,17 @@
                 <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: !showPassError && showPassAuthenticationError}" placeholder="* אימות סיסמא" data-ng-model="passAuthentication">
                 <input type="tel" class="sign-in-field sign-in-phone" data-ng-class="{loginErrorActive: showPhoneError}" placeholder="* טלפון" data-ng-show="askPhoneAndAddress" data-ng-model="phone">
                 <input type="text" class="sign-in-field sign-in-address" data-ng-class="{loginErrorActive: showAddressError}" placeholder="* יישוב" data-ng-show="askPhoneAndAddress" data-ng-model="address">
-                <div class="sign-in-upload-image-zone">
+                <div class="sign-in-upload-image-zone" data-ng-click="takePicture()">
 
                     <div class="sign-in-upload-image">
                 +
-                        <input type="file" id="userImg">
+                        <!--<input type="file" id="userImg">-->
                     </div>
                     <div class="sign-in-image-name">צרף תמונה</div>
                     <img ng-src="{{userImg}}" class="userImg" data-ng-show="userImg">
                 </div>
                 <div class="sign-in-picture"></div>
-                
+
 
                 <div class="confirm-terms-benetwrapper">
                     <div class="term-benet-box" data-ng-click="showTermsVee = !showTermsVee">
@@ -61,7 +61,7 @@
                 <input type="email" class="sign-in-field sign-in-mail" data-ng-class="{loginErrorActive: showEmailError}" placeholder="הזן מייל" data-ng-model="mail">
                 <input type="button" class="sign-in-btn shadow-buttons" value="אשר" data-ng-click="sendConfirmMail()">
                 <div class="login-error" data-ng-show="showEmailError">* שדה מייל לא הוזן כראוי</div>
-                <div class="login-error" data-ng-show="showSendConfirmError">* {{sendConfirmErrorMessage}}</div>
+                <div class="login-error" data-ng-show="showSendConfirmError">* {{signupErrorMessage}}</div>
             </div>
 
         </div>
@@ -74,11 +74,15 @@
                 <div class="close-sign-in close" data-ng-click="editCancel()"></div>
             </div>
             <div id="instruction-for-image">הזז, הגדל והקטן למיקום התמונה</div>
-            <div id="cropDiv">
-                <img data-ng-src="{{userimg}}">
+                            <!--<div id="cropDiv">
+                                <img data-ng-src="{{userimg}}">
+                            </div>-->
+            <div class="cropArea">
+                <img-crop image="userimg" result-image="myCroppedImage"></img-crop>
             </div>
+            <!--<div><img ng-src="{{myCroppedImage}}" /></div>-->
             <div class="button-side-img">
-                <button id="button_ok" class="shadow-buttons cat-Approve background-button-img">אשר</button>
+                <button id="button_ok" class="shadow-buttons cat-Approve background-button-img" data-ng-click="editDone()">אשר</button>
             </div>
             <div class="button-side-img">
                 <button id="button_cancel" class="shadow-buttons cat-cancel background-button-img" data-ng-click="editCancel()">בטל</button>

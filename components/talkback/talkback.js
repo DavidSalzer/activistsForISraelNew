@@ -63,8 +63,6 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         $state.transitionTo('comments', { postId: $scope.postId });
     });
 
-
-
     $scope.$on('EndLoadMore', function (event, args) {
         switch (args.showLoad) {
             case true:
@@ -75,6 +73,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
                 break;
         }
     });
+	
     $scope.getPostsByAll = function () {
         request.startTimestamp = '';
         request.endTimestamp = '';

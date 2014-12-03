@@ -3,11 +3,9 @@
     z-index: 11;
     top: 50px;
     width: 93%;
-    margin: auto;
+    margin: 6px 13px 16px 13px;
     height: 88%;
     position: absolute;
-    margin-right: auto;
-    margin-left: auto;
     right: 0px;
     left: 0px;
     overflow-y: scroll;
@@ -140,10 +138,10 @@
 
 
 .sign-in-upload-image-zone {
-    margin: auto;
-    width: 90%;
+    width: 262px;
     min-height: 42px;
     position: relative;
+    margin: 5px auto 13px auto;
 }
 
 input#userImg {
@@ -167,11 +165,11 @@ input#userImg {
 
 .sign-in-image-name {
     display: inline-block;
-    width: 222px;
+    width: 220px;
     height: 33px;
     background-color: #ffffff;
     border-radius: 10px;
-    margin-right: 3%;
+    margin-right: 6px;
     line-height: 32px;
     color: #A9A9A9;
     padding-right: 10px;
@@ -282,8 +280,8 @@ span#signinButton {
     background-position: center;
     background-size: 100% 100%;
     display: inline-block;
-    width: 11px;
-    height: 9px;
+    width: 21px;
+    height: 19px;
     line-height: 15px;
     text-align: center;
     border-radius: 10px;
@@ -359,9 +357,9 @@ canvas#c {
     border: 0px solid #42484e;
 }
 
-canvas {
+/*canvas {
     visibility: hidden;
-}
+}*/
 
 #instruction-for-image {
     width: 100%;
@@ -424,9 +422,10 @@ canvas {
 }
 
 .confirm-terms-benetwrapper {
-    padding: 0px 14px;
-    vertical-align: top;
-    margin-bottom: 10px;
+    width: 262px;
+    min-height: 42px;
+    position: relative;
+    margin: 5px auto 13px auto;
 }
 
 .term-benet-box {
@@ -464,4 +463,12 @@ canvas {
 
 span.underline-benet-terms {
     text-decoration: underline;
+}
+
+.cropArea {
+    /*background: #E4E4E4;*/
+    overflow: hidden;
+    width: 200px;
+    height: 150px;
+    margin: auto;
 }
