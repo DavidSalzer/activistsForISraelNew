@@ -22,13 +22,13 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         loadMoreNow = false;
         if (callAjaxPosts) callAjaxPosts.resolve();
         $rootScope.$broadcast('showLoader', { showLoader: false });
-        console.log("changeeeeeeeeeeeee");
+        console.log("changeeeeeeeeeeeee" + callAjaxPosts);
     });
 
     return {
         //methodes
         killAjax: function () {
-            if (callAjaxPosts) callAjaxPosts.resolve();
+           // if (callAjaxPosts) callAjaxPosts.resolve();
         },
         //get posts by parameters from server and set in posts array.
         getPostsBatch: function (request) {
@@ -60,7 +60,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             if (callAjaxPosts) {
                 callAjaxPosts.resolve();
-                 console.log("killlllllllllllllllll");
+                 console.log("killlllllllllllllllll" + callAjaxPosts);
             }
             callAjaxPosts = $q.defer();
 
@@ -69,7 +69,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 //url: URL,
                 method: 'get', // temp cancel for local json calls
                 data: request,
-                timeout: callAjaxPosts.promise
+                timeout:callAjaxPosts.promise
             }).
             success(function (data, status, header, config) {
                 console.log(data.data.length + " posts");

@@ -91,7 +91,7 @@
             <div class="color-picker-palette" data-ng-show="showPaletteTop">
                 <div class="col" data-ng-repeat="color in paletteColors" data-once-style="{'background-color':color.color}" data-ng-click="setColor('top',color.color);$event.stopPropagation();"></div>
             </div>
-          <div class="file-text"><input placeholder="טקסט עליון"  data-ng-model="topText" data-ng-change="textChange('top')"/></div>
+          <div class="file-text"><input placeholder="טקסט עליון"  data-ng-model="topText" data-ng-focus="textChange()"/></div>
             
         </div>
         <div class="text-wrap">
@@ -102,7 +102,7 @@
              <div class="color-picker-palette" data-ng-show="showPaletteBottom">
                 <div class="col" data-ng-repeat="color in paletteColors" data-once-style="{'background-color':color.color}" data-ng-click="setColor('bottom',color.color);$event.stopPropagation();"></div>
             </div>
-          <div class="file-text"><input placeholder="טקסט תחתון" data-ng-model="bottomText"/></div>
+          <div class="file-text"><input placeholder="טקסט תחתון" data-ng-model="bottomText" data-ng-focus="textChange()"/></div>
             
         </div>
         

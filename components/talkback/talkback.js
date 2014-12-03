@@ -1,4 +1,4 @@
-socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $scope, classAjax, $state, PostService, generalParameters) {
+socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$state','$http', 'PostService', 'generalParameters','$q',function ($rootScope, $scope, classAjax, $state, $http,PostService, generalParameters,$q) {
 
     /*init variables*/
     $scope.showInput = false;
@@ -98,6 +98,11 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         PostService.getPostsBatch(request);
     }
 
+    //$scope.callAjaxPosts = $q.defer();
+
+    //$http({
+    //    url: "http://www.ynet.co.il/home/0,7340,L-8,00.html"
+    //}).success(function () { });
 
     //load more post on scroll down
     $scope.loadMore = function () {
