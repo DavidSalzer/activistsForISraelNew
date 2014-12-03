@@ -11,6 +11,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     $scope.postImg = "";
     $scope.isSiteHeader = true;
     $scope.showTransitionButton = false;
+    $scope.directoryEntry = "";
 
     /*init controller details*/
     $scope.featureDetails = {
@@ -91,7 +92,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
 
     }
     $scope.publishMeme = function () {
-
+        $scope.thankDetails.thankText = 'המם התקבל ויפורסם בהתאם לכללי האחליקציה';
         html2canvas(document.getElementById('html2canvas'), {
             onrendered: function (canvas) {
                 $scope.previewBase64 = canvas.toDataURL("image/png");
@@ -104,40 +105,28 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
         })
         //$scope.sendPost();
     }
+
     $scope.saveMeme = function () {
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
+        html2canvas(document.getElementById('html2canvas'), {
+            onrendered: function (canvas) {
+                window.canvas2ImagePlugin.saveImageDataToLibrary(
+                function (msg) {
+                    console.log(msg);
+                },
+                function (err) {
+                    console.log(err);
+                },
+                canvas
+            );               
+            }
+        });
+        $scope.thankDetails.thankText = 'המם נשמר בהצלחה על מכשירך';
+        // show thank page
+        $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+        //change the publish button to "חזור לעמוד ממים"
+        $scope.showTransitionButton = true;
     }
 
-
-    function fileSystemSuccess(fileSystem) {
-        var directoryEntry = fileSystem.root; // to get root path to directory
-        directoryEntry.getDirectory("memes", { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail);
-        var rootdir = fileSystem.root;
-        var fp = rootdir.fullPath;
-        fp = fp + "/memes/meme.jepg";
-        var fileTransfer = new FileTransfer();
-        fileTransfer.download("<url_to_download>", fp,
-        function (entry) {
-            alert("download complete: " + entry.fullPath);
-        },
-    	function (error) {
-    	    alert("download error source " + error.source);
-    	    alert("download error target " + error.target);
-    	    alert("upload error code" + error.code);
-    	}
-    );
-    }
-    function onDirectorySuccess(parent) {
-        console.log(parent);
-    }
-
-    function onDirectoryFail(error) {
-        alert("Unable to create new directory: " + error.code);
-    }
-
-    function fileSystemFail(evt) {
-        console.log(evt.target.error.code);
-    }
     $scope.sendPost = function () {
 
         //show the loader
@@ -173,7 +162,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
 
     }
 
-    $scope.transitioToMainMemes = function(){
+    $scope.transitioToMainMemes = function () {
         $state.transitionTo('meme');
     }
 } ]);
