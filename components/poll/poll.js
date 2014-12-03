@@ -2,7 +2,7 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
 
 
     $scope.currentPoll = null;
-    $scope.domain = domain;
+    $scope.domain = domain + 'small/';
     $scope.showSpiner = PostService.getSpiner;
     $scope.showendloader = false;
 
@@ -35,6 +35,7 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
 
     /*init controller data*/
     PostService.getPostsBatch(request); //tell service to refresh posts
+    console.log("222222222222222222222222222222222222222");
     $scope.polls = PostService.getPosts; //ask service for polls
 
     $scope.userClicked = function (pollIndex) {
