@@ -70,13 +70,9 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     generalParameters.setBackIcon(false);
     $scope.showAuthorImage = false;
     $scope.showAuthorName = false;
-    $scope.userLike = false;
+    $scope.userLike = null;
 
     //generalParameters.setFeature($scope.featureDetails);
-
-
-
-
     if ($stateParams.userId == generalParameters.getUser()._id) {
         $scope.myProfile = true;
     }
@@ -448,7 +444,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
 
         $scope.postId = args.postId;
         $scope.authorId = args.authorId;
-
+		alert(args.postType)
         switch (args.postType) {
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });

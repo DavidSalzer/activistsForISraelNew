@@ -61,7 +61,7 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
     }
 	
 	$scope.goToFeature = function (featureUrl, postId) {
-		console.log(featureUrl)
+		
         if(featureUrl.indexOf('http')>-1){//external link? open by inapp browser!
 			$scope.ref = window.open(featureUrl, '_blank', 'location='+(isAndroid?'yes':'no'));
 		}
@@ -92,12 +92,4 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
 		PostService.loadMainFeatures(request);
     }
 }])
-
-
-
-    /* $scope.goToFeature = function (featureUrl, postId) {
-        
-        $state.transitionTo(featureUrl, { postId: postId });
-    } */
-
 

@@ -286,7 +286,8 @@ a.list-group-item.tv {
     }
 
     #whatsup-bottom .join-button {
-        margin: 5px auto 0px auto;
+        /* margin: 5px auto 0px auto; */
+		margin:5px auto 12px auto;
         width: 103px;
         height: 32px;
         line-height: 30px;

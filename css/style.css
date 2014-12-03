@@ -639,6 +639,7 @@ span.sidbar-text {
     height: 60px;
     width: 60px;
     margin: 10px auto 5px auto;
+	border: 2px solid #000;
 }
 
 div#mainSidebar {

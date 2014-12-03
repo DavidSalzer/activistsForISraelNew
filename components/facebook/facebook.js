@@ -1,5 +1,14 @@
-socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', '$state', 'classAjax', 'PostService', 'generalParameters', function ($scope, $stateParams, $state, classAjax, PostService, generalParameters) {
-    $scope.featureDetails = {
+socialGroupApp.controller('facebookBennet', ['$scope', '$state', function ($scope, $state) {
+    
+	if (isAndroid) {
+        $scope.ref = window.open('https://www.facebook.com/NaftaliBennett', '_blank', 'location=yes');
+    }
+    else {
+        $scope.ref = window.open('https://www.facebook.com/NaftaliBennett', '_blank', 'location=no');
+    }
+	$state.transitionTo('main-menu');
+	
+	/* $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/sidebar-facebook-icon.png",
         featureWhatsUpLogo: "./img/facebook_benet_info.png",
@@ -7,25 +16,17 @@ socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', '$state',
         infoHaeder: "עמוד פייסבוק",
         infoMainText: "עמוד הפייסבוק של נפתלי בנט.",
         infoSubText: "עוד לא הצטרפת לאחליקציה?"
-    };
+    }; */
 
+    //generalParameters.setFeature($scope.featureDetails);
 
-    generalParameters.setFeature($scope.featureDetails);
-
-    if (isAndroid) {
-        $scope.ref = window.open('https://www.facebook.com/NaftaliBennett', '_blank', 'location=yes');
-    }
-    else {
-        $scope.ref = window.open('https://www.facebook.com/NaftaliBennett', '_blank', 'location=no');
-    }
-
-    $scope.backToMainMenu = function () {
+    /* $scope.backToMainMenu = function () {
         $state.transitionTo('main-menu');
-    }
-    $scope.ref.addEventListener('exit', $scope.backToMainMenu);
+    } */
+    //$scope.ref.addEventListener('exit', $scope.backToMainMenu);
 
 
-} ]);
+}]);
 
 
 //socialGroupApp.controller('facebookBennet', ['$scope', '$stateParams', 'classAjax', 'PostService', 'generalParameters', function ($scope, $stateParams, classAjax, PostService, generalParameters) {

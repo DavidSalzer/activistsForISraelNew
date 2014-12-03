@@ -9,11 +9,11 @@
     <div class="bottom-white-color"></div>
 </div>
 
-  <div class="contact-content-wrap main-content-wrap" data-ng-if="showAll==true">
+  <div class="contact-content-wrap main-content-wrap" data-ng-show="showAll==true">
         
-        <input type="text" class="sign-in-field sign-in-first-name"  data-ng-class="{loginErrorActive: showNameError}" placeholder="שם ושם משפחה" data-ng-model="name">
-        <input type="email" class="sign-in-field sign-in-mail" data-ng-class="{loginErrorActive: showEmailError}" placeholder="מייל" data-ng-model="mail">
-        <textarea class="contact-text" data-ng-class="{loginErrorActive: showTextError}" placeholder="כתוב טקסט כאן..." data-ng-model="text"></textarea>
+        <input type="text" class="sign-in-field" placeholder="שם ושם משפחה" data-ng-model="name" data-ng-class="{loginErrorActive: showNameError}">
+        <input type="email" class="sign-in-field" placeholder="מייל" data-ng-model="mail" data-ng-class="{loginErrorActive: showEmailError}">
+        <textarea class="contact-text" placeholder="כתוב טקסט כאן..." data-ng-model="text" data-ng-class="{loginErrorActive: showTextError}"></textarea>
         
 		<div class="login-error" data-ng-show="showNameError">* שדה שם הינו חובה</div>
 		<div class="login-error" data-ng-show="showEmailError">* שדה מייל לא הוזן כראוי</div>
