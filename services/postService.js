@@ -22,13 +22,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         loadMoreNow = false;
         if (callAjaxPosts) callAjaxPosts.resolve();
         $rootScope.$broadcast('showLoader', { showLoader: false });
-        console.log("changeeeeeeeeeeeee" + callAjaxPosts);
     });
 
     return {
         //methodes
         killAjax: function () {
-           // if (callAjaxPosts) callAjaxPosts.resolve();
+            // if (callAjaxPosts) callAjaxPosts.resolve();
         },
         //get posts by parameters from server and set in posts array.
         getPostsBatch: function (request) {
@@ -60,7 +59,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             if (callAjaxPosts) {
                 callAjaxPosts.resolve();
-                 console.log("killlllllllllllllllll" + callAjaxPosts);
+                console.log("killlllllllllllllllll" + callAjaxPosts);
             }
             callAjaxPosts = $q.defer();
 
@@ -69,7 +68,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 //url: URL,
                 method: 'get', // temp cancel for local json calls
                 data: request,
-                timeout:callAjaxPosts.promise
+                timeout: callAjaxPosts.promise
             }).
             success(function (data, status, header, config) {
                 console.log(data.data.length + " posts");
@@ -128,9 +127,12 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             $http.put(domain + 'post/' + postData.post._id, json)
 			.success(function (data) {
+			    if (isBase64 && imgFile) {
+			        //imgFile is base64 string
+			        self.attachBase64(imgFile, data.data._id, false).then(function (data) { deferred.resolve(data) }); //, callbackFunc - nominated for cancelation
+			    }
 
-
-			    if (textfile || imgFile) {
+			    else if (textfile || imgFile) {
 			        if (textfile)
 			            self.attach(textfile, data.data._id);
 			        if (imgFile)
@@ -179,7 +181,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			        if (textfile)
 			            self.attach(textfile, data.data._id);
 			        if (imgFile)
-			            //self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
+			        //self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
 			            self.attachFileUri(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
 			    }
 			    else {
@@ -194,10 +196,6 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             return deferred.promise;
         },
-
-        //sendContact: function () {
-
-        //},
 
         attach: function (file, postId) {
 
@@ -267,35 +265,35 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         attachFileUri: function (fileUri, postId) {
             var options = new FileUploadOptions();
 
-                options.fileKey = "pic";
-                options.fileName = "";
-                options.chunkedMode = false;
-                var params = new Object();
+            options.fileKey = "pic";
+            options.fileName = "";
+            options.chunkedMode = false;
+            var params = new Object();
 
-                params.text = "";
+            params.text = "";
 
-                options.params = params;
+            options.params = params;
 
-                // Transfer picture to server
-                var ft = new FileTransfer();
-                var uploadUrl = domain + 'FileUpload?ref=post&_id=' + postId;
-                var uploadcomplete = 0;
-                var progress = 0;
+            // Transfer picture to server
+            var ft = new FileTransfer();
+            var uploadUrl = domain + 'FileUpload?ref=post&_id=' + postId;
+            var uploadcomplete = 0;
+            var progress = 0;
 
-                function win(information_back) {
-                    //alert( JSON.stringify(information_back));
-                    $rootScope.$broadcast('showLoader', { showLoader: false });
-                    deferred.resolve(information_back);
-                }
+            function win(information_back) {
+                //alert( JSON.stringify(information_back));
+                $rootScope.$broadcast('showLoader', { showLoader: false });
+                deferred.resolve(information_back);
+            }
 
-                function fail(message) {
-                     $rootScope.$broadcast('showLoader', { showLoader: false });
-			           deferred.resolve(data);
-                }
-                 $scope.showLoader = true;
-                ft.upload(fileUri, uploadUrl, win, fail, options);
-                return deferred.promise;
-            },
+            function fail(message) {
+                $rootScope.$broadcast('showLoader', { showLoader: false });
+                deferred.resolve(data);
+            }
+            $scope.showLoader = true;
+            ft.upload(fileUri, uploadUrl, win, fail, options);
+            return deferred.promise;
+        },
         //check if post, posts or user isLiked by the connected user and add field isLiked to object.
         getIsLike: function (post) {
             var isLiked = false;

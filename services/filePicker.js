@@ -16,19 +16,21 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
                     var file = fileInput.files[0];
                     var reader = new FileReader();
                     reader.readAsDataURL(file);
-                    if (((file.length - 814) / 1.37) > 4000000) {
+                    if (file.size > 4000000) {
                         alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
                     }
-                    reader.onloadend = function () {
-                        $rootScope.$apply(function () {
-                            console.log(file.name);
-                            // strip beginning from string
-                            var encodedData = {};
-                            encodedData.imgData = reader.result; //.replace(/data:image\/jpeg;base64,/, '');
-                            encodedData.fileText = file.name;
-                            deferred.resolve(encodedData);
-                        });
-                    };
+                    else {
+                        reader.onloadend = function () {
+                            $rootScope.$apply(function () {
+                                console.log(file.name);
+                                // strip beginning from string
+                                var encodedData = {};
+                                encodedData.imgData = reader.result; //.replace(/data:image\/jpeg;base64,/, '');
+                                encodedData.fileText = file.name;
+                                deferred.resolve(encodedData);
+                            });
+                        };
+                    }
                 };
 
                 fileInput.click();
@@ -52,17 +54,20 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
                 var gotFileEntry = function (fileEntry) {
                     console.log("got image file entry: " + fileEntry.fullPath);
                     var encodedData = {};
-                    
+
                     encodedData.imgData = fileEntry.toURL();
-                     encodedData.fileText = 'file successfully added';
-                     deferred.resolve(encodedData);
-                     fileEntry.file(function(fileEntry) {
+                    encodedData.fileText = 'file successfully added';
+
+                    fileEntry.file(function (fileEntry) {
                         console.log("Size = " + fileEntry.size);
                         if (fileEntry.size > 4000000) {
                             alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
                         }
+                        else{
+                            deferred.resolve(encodedData);
+                        }
                     });
-                    
+
                 };
 
 
@@ -71,13 +76,13 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
                     $rootScope.$apply(function () {
                         console.log(imageURI);
                         var photo_split = imageURI.split("%3A");
-				    if (imageURI.substring(0, 21) == "content://com.android") {
-				        var photo_split = imageURI.split("%3A");
-				        imageURI = "content://media/external/images/media/" + photo_split[1];
-				    }
-				    else {
-				        //uri = uri;
-				    }
+                        if (imageURI.substring(0, 21) == "content://com.android") {
+                            var photo_split = imageURI.split("%3A");
+                            imageURI = "content://media/external/images/media/" + photo_split[1];
+                        }
+                        else {
+                            //uri = uri;
+                        }
                         window.resolveLocalFileSystemURI(imageURI, gotFileEntry, failSystem);
 
                     });
@@ -86,7 +91,6 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
                 // fail callback
                 var fail = function (message) {
                     $rootScope.$apply(function () {
-                        alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
                         deferred.reject(message);
                     });
                 };
