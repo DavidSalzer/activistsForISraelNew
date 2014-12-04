@@ -162,7 +162,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 			        if (textfile)
 			            self.attach(textfile, data.data._id);
 			        if (imgFile)
-			            self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
+			            //self.attach(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
+			            self.attachFileUri(imgFile, data.data._id).then(function (data) { deferred.resolve(data) });
 			    }
 			    else {
 			        deferred.resolve(data);
@@ -214,7 +215,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             //if(file){self.attach(file);}
             return deferred.promise;
         },
-        attachBase64: function (base64, userId, onlySave) {//, callbackFunc- nominated to cancelation
+        attachBase64: function (base64, userId) {//, callbackFunc- nominated to cancelation
 
             var deferred = $q.defer();
             
@@ -225,16 +226,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
             var json = JSON.stringify(postData);
             
             $rootScope.$broadcast('showLoader', { showLoader: true });
-            var req;
-            if(!onlySave){
-                req = 'Base64FileUpload?ref=post&_id=';
-            }
-            else {
-                req = 'Base64FileUpload?ref=meme&_id=';
-            }
-            $http.post(domain + req + userId, json)
+            $http.post(domain + 'Base64FileUpload?ref=post&_id=' + userId, json)
 			.success(function (data) {
-
 			    
 			    //hide the loader
 			    $rootScope.$broadcast('showLoader', { showLoader: false });
@@ -254,7 +247,38 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             return deferred.promise;
         },
+        attachFileUri: function (fileUri, postId) {
+            var options = new FileUploadOptions();
 
+                options.fileKey = "pic";
+                options.fileName = "";
+                options.chunkedMode = false;
+                var params = new Object();
+
+                params.text = "";
+
+                options.params = params;
+
+                // Transfer picture to server
+                var ft = new FileTransfer();
+                var uploadUrl = domain + 'FileUpload?ref=post&_id=' + postId;
+                var uploadcomplete = 0;
+                var progress = 0;
+
+                function win(information_back) {
+                    //alert( JSON.stringify(information_back));
+                    $rootScope.$broadcast('showLoader', { showLoader: false });
+                    deferred.resolve(information_back);
+                }
+
+                function fail(message) {
+                     $rootScope.$broadcast('showLoader', { showLoader: false });
+			           deferred.resolve(data);
+                }
+                 $scope.showLoader = true;
+                ft.upload(fileUri, uploadUrl, win, fail, options);
+                return deferred.promise;
+            },
         //check if post, posts or user isLiked by the connected user and add field isLiked to object.
         getIsLike: function (post) {
             var isLiked = false;

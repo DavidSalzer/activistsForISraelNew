@@ -16,9 +16,9 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
                     var file = fileInput.files[0];
                     var reader = new FileReader();
                     reader.readAsDataURL(file);
-                    if (((file.length - 814) / 1.37) > 3000000) {
-                            alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
-                        }
+                    if (((file.length - 814) / 1.37) > 4000000) {
+                        alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
+                    }
                     reader.onloadend = function () {
                         $rootScope.$apply(function () {
                             console.log(file.name);
@@ -37,9 +37,9 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
 
                 // set some default options
                 var defaultOptions = {
-                    quality : 40,
+                    quality: 100,
                     sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                    destinationType: Camera.DestinationType.DATA_URL,
+                    destinationType: Camera.DestinationType.FILE_URI,
                     mediaType: Camera.MediaType.PICTURE,
                     correctOrientation: false,
                     encodingType: Camera.EncodingType.JPEG
@@ -47,26 +47,46 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
 
                 // allow overriding the default options
                 options = angular.extend(defaultOptions, options);
-
-                // success callback
-                var success = function (imageData) {
-                    $rootScope.$apply(function () {
-                        console.log(imageData);
-                        
-                        var encodedData = {};
-                        encodedData.imgData = "data:image/jpeg;base64," + imageData;
-                        console.log(((encodedData.imgData.length - 814) / 1.37));
-                        if (((encodedData.imgData.length - 814) / 1.37) > 4000000) {
+                var failFile = function (e) { alert("error failFile"); };
+                var failSystem = function (e) { alert("error failSystem"); };
+                var gotFileEntry = function (fileEntry) {
+                    console.log("got image file entry: " + fileEntry.fullPath);
+                    var encodedData = {};
+                    
+                    encodedData.imgData = fileEntry.toURL();
+                     encodedData.fileText = 'file successfully added';
+                     deferred.resolve(encodedData);
+                     fileEntry.file(function(fileEntry) {
+                        console.log("Size = " + fileEntry.size);
+                        if (fileEntry.size > 4000000) {
                             alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
                         }
-                        encodedData.fileText = 'file successfully added';
-                        deferred.resolve(encodedData);
+                    });
+                    
+                };
+
+
+                // success callback
+                var success = function (imageURI) {
+                    $rootScope.$apply(function () {
+                        console.log(imageURI);
+                        var photo_split = imageURI.split("%3A");
+				    if (imageURI.substring(0, 21) == "content://com.android") {
+				        var photo_split = imageURI.split("%3A");
+				        imageURI = "content://media/external/images/media/" + photo_split[1];
+				    }
+				    else {
+				        //uri = uri;
+				    }
+                        window.resolveLocalFileSystemURI(imageURI, gotFileEntry, failSystem);
+
                     });
                 };
 
                 // fail callback
                 var fail = function (message) {
                     $rootScope.$apply(function () {
+                        alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
                         deferred.reject(message);
                     });
                 };

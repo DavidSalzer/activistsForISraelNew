@@ -148,27 +148,33 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                 $scope.convertDate();
             }
             $scope.isPostPending = true;
-            PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj, true)
-		    .then(function (data) {
+            html2canvas(document.getElementById('html2canvas'), {
+                onrendered: function (canvas) {
+                    $scope.imgObj = canvas.toDataURL("image/png");
+                    PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj, true)
+                    //PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj, false)
+		            .then(function (data) {
 
-		        console.log(data);
-		        if (data.status.statusCode == 0) {
-		            generalParameters.setBackIcon(false);
+		                console.log(data);
+		                if (data.status.statusCode == 0) {
+		                    generalParameters.setBackIcon(false);
 
-		            if ($scope.postType == 'talkback') {
+		                    if ($scope.postType == 'talkback') {
 
-		                $state.transitionTo($scope.parentPostType); return;
-		            }
-		            $scope.showSendPostError = false; ;
-		            //others - show thank page
-		            $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
-		        }
-		        else {
-		            $scope.showSendPostError = true;
-		            $scope.sendPostError = errorMessages.generalError;
-		        }
-		        $scope.isPostPending = false;
-		    });
+		                        $state.transitionTo($scope.parentPostType); return;
+		                    }
+		                    $scope.showSendPostError = false; ;
+		                    //others - show thank page
+		                    $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true });
+		                }
+		                else {
+		                    $scope.showSendPostError = true;
+		                    $scope.sendPostError = errorMessages.generalError;
+		                }
+		                $scope.isPostPending = false;
+		            });
+                }
+            })
         }
     };
 
@@ -325,7 +331,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
             // imageData is base64-encoded image
             $scope.imgFileText = imageData.fileText;
             $scope.imgObj = imageData.imgData;
-            $scope.postImg = imageData.imgData;//for preview
+            $scope.postImg = imageData.imgData; //for preview
         });
     };
 
