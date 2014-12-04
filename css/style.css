@@ -66,7 +66,7 @@ header.navbar.navbar-app.navbar-absolute-top {
 img.title-img {
     top: -11px;
 	border-radius: 100%;
-border: 2px solid #FFF;
+	background-color: #FFF;
 }
 
 header .btn.btn-navbar.info {
@@ -642,7 +642,7 @@ span.sidbar-text {
     height: 60px;
     width: 60px;
     margin: 10px auto 5px auto;
-	border: 2px solid #000;
+	background-color: #000;
 	left: 0;
 }
 
@@ -1308,7 +1308,7 @@ button {
     position: absolute;
     width: 100%;
     bottom: 0px;
-    z-index: 2;
+    z-index: 6;
     height: 44px;
     background-color: #ffffff;
     -webkit-box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.75);
