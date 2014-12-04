@@ -1012,7 +1012,7 @@ button {
 
 .ellipsis {
     overflow: hidden;
-    height: 47px;
+    height: 52px;
     font-size: 12px;
     LINE-HEIGHT: 17px;
     text-align: justify;
@@ -1074,8 +1074,8 @@ button {
     padding-top: 20px;
     padding-bottom: 10px;
     padding-left: 10px;
-    padding-right: 40px;
-    LINE-HEIGHT: 20px;
+    padding-right: 20px;
+    line-height: 20px;
     background-color: #ffffff;
     color: #da4f00;
     font-weight: bold;
@@ -1083,7 +1083,7 @@ button {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-line-clamp: 2;
 }
 
 .imageView-container {

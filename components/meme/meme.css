@@ -15,9 +15,10 @@
     padding-bottom: 160px;
 }
 
-/*.end-load-more {
-    top: -98px;
-}*/
+.memes .end-load-more {
+    float: left;
+    width: 100%;
+}
 
 .meme-container {
     position: relative;
@@ -82,7 +83,7 @@
 
 .single-element-back {
     height: 100%;
-    background-image: url('../../img/pj.png');
+    background-image: url('../../img/pj.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

@@ -7,8 +7,6 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 54px;
 }
 
-
-
 #user-profile {
     width: 100%;
     height: 100%;
@@ -91,22 +89,22 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .rank-image-1 {
-	background-position-y: -1px;
+    background-position-y: -1px;
     background-position-x: -45px;
 }
 
 .rank-image-2 {
     background-position-y: -1px;
-	background-position-x: -133px;
+    background-position-x: -133px;
 }
 
 .rank-image-3 {
-	background-position-y: -1px;
+    background-position-y: -1px;
     background-position-x: -89px;
 }
 
 .rank-image-4 {
-	background-position-y: -1px;
+    background-position-y: -1px;
     background-position-x: -176px;
 }
 
@@ -138,7 +136,6 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 .user-profile-items {
     background-color: white;
     width: 100%;
-    /*height: 100%;*/
 }
 
 .user-profile-item {
@@ -150,12 +147,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     color: #2f343b;
     padding-right: 55px;
     line-height: 62px;
-    font-weight: bold;
 }
-/* .user-profile-items :nth-child(4).user-profile-scoring.user-profile-item{
-	 border-bottom:none;
-} */
-
 
 .user-edit-icon {
     height: 35px;
@@ -173,7 +165,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .user-item-text {
-    width:  84%;
+    width: 84%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -213,7 +205,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 45px;
     width: 38px;
     line-height: 62px;
-	background-image: url('../../img/profile_heart.png');
+    background-image: url('../../img/profile_heart.png');
     background-position-x: -37px;
     background-repeat: no-repeat;
     background-size: 70px 35px;
@@ -242,9 +234,8 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .user-profile-name.user-profile-item {
-    /*background-color: White;
-    color: Black;*/
     border-top: 1px solid gray;
+    font-weight: bold;
 }
 
 .user-profile-other-user-zone {
@@ -362,9 +353,9 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .none-activity {
- width: 90%;
-border: none;
-margin-top: 5px;
+    width: 90%;
+    border: none;
+    margin-top: 5px;
 }
 
 .user-recent-activity {
@@ -374,7 +365,6 @@ margin-top: 5px;
     margin-top: 13px;
     box-shadow: 0px 0px 4px rgba(50, 50, 50, 0.75);
     color: #2f343b;
-    font-weight: bold;
     position: relative;
     padding-right: 50px;
     line-height: 50px;

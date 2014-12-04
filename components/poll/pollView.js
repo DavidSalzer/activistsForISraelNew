@@ -8,7 +8,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
     $scope.featureDetails = {
         featureName: null,
         featureLogo: "./img/poll.png",
-        featureColor: '#da4f00',
+        featureColor: '#f55c06',
         infoHaeder: "סקרים",
         infoMainText: "בואו להשפיע!<br>כאן מופיעים סקרים בנושאים שונים.<br>ניתן להשתתף בסקר קיים<br>או להציע סקר חדש.",
         infoSubText: "ההצבעה באיזור זה מותנית בהצטרפות לאחליקציה"

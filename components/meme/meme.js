@@ -33,7 +33,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
-        limit: 30,
+        limit: 50,
         orderBy: '-timestamp',
         postType: 'meme',
         _parentID: ''
