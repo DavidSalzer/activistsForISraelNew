@@ -257,9 +257,8 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
     PostService.loadMainFeatures();
     $scope.features = PostService.getMainFeatures;
-
-    
-} ]);
+ 
+}]);
 
 
 

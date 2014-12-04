@@ -194,6 +194,7 @@ a:link, a:active, a:hover, a:visited, a:focus {
 	height: 24px;
 	font-size: 10px;
 	margin-bottom: 4px;
+	cursor: pointer;
 }
 
 .contact-twitter {
@@ -206,6 +207,7 @@ a:link, a:active, a:hover, a:visited, a:focus {
 	height: 24px;
 	font-size: 10px;
 	margin-bottom: 4px;
+	cursor: pointer;
 }
 
 .contact-newsLetter {
@@ -218,6 +220,7 @@ a:link, a:active, a:hover, a:visited, a:focus {
 	height: 24px;
 	font-size: 10px;
 	margin-bottom: 4px;
+	cursor: pointer;
 }
 
 .contact-version {

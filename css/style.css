@@ -65,6 +65,8 @@ header.navbar.navbar-app.navbar-absolute-top {
 
 img.title-img {
     top: -11px;
+	border-radius: 100%;
+border: 2px solid #FFF;
 }
 
 header .btn.btn-navbar.info {
@@ -640,6 +642,8 @@ span.sidbar-text {
     height: 60px;
     width: 60px;
     margin: 10px auto 5px auto;
+	border: 2px solid #000;
+	left: 0;
 }
 
 div#mainSidebar {

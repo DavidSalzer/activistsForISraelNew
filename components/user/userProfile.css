@@ -152,6 +152,10 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     line-height: 62px;
     font-weight: bold;
 }
+/* .user-profile-items :nth-child(4).user-profile-scoring.user-profile-item{
+	 border-bottom:none;
+} */
+
 
 .user-edit-icon {
     height: 35px;
@@ -169,7 +173,7 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .user-item-text {
-    width: 90%;
+    width:  84%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -209,9 +213,9 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
     height: 45px;
     width: 38px;
     line-height: 62px;
-    background-image: url('../../img/profile_heart.png');
+	background-image: url('../../img/profile_heart.png');
+    background-position-x: -37px;
     background-repeat: no-repeat;
-    /*background-position: center;*/
     background-size: 70px 35px;
     position: absolute;
     top: 13px;
@@ -221,8 +225,9 @@ div.user-profile-item:last-child { /*temp for submission 0307*/
 }
 
 .user-giving-score-done {
-    background-position-x: -37px;
+    background-position-x: 0px;
 }
+
 
 .user-profile-item input, .user-profile-item select {
     border: 0;

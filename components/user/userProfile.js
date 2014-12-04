@@ -70,13 +70,9 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     generalParameters.setBackIcon(false);
     $scope.showAuthorImage = false;
     $scope.showAuthorName = false;
-    $scope.userLike = false;
+    $scope.userLike = null;
 
     //generalParameters.setFeature($scope.featureDetails);
-
-
-
-
     if ($stateParams.userId == generalParameters.getUser()._id) {
         $scope.myProfile = true;
     }
@@ -286,12 +282,14 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     }
 
     $scope.givingScore = function () {
-        if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
+        
+		if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
             return;
         }
+		
         if (!$scope.userLike) {
-
+			$scope.userLike = true;
             queryString = 'addPostActivity';
             request = {
                 activity: {
@@ -302,13 +300,13 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             classAjax.getdata('post', queryString, request)
                 .then(function (data) {
 
-                    if (data.status.statusCode == 0) {
-                        $scope.userLike = true;
-                    }
+                    /*if (data.status.statusCode == 0) {
+                       $scope.userLike = true; 
+                    } */
                 })
         }
         else {
-
+			$scope.userLike = false;
             queryString = 'deletePostActivity';
             request = {
                 activity: {
@@ -321,9 +319,9 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             $http({ url: domain + 'deletePostActivity', method: "delete", headers: { 'Content-Type': 'application/json' }, data: json })
 
 			.success(function (data) {
-			    if (data.status.statusCode == 0) {
+			    /* if (data.status.statusCode == 0) {
 			        $scope.userLike = false;
-			    }
+			    } */
 
 			})
 			.error(function (data) {
@@ -448,7 +446,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
 
         $scope.postId = args.postId;
         $scope.authorId = args.authorId;
-
+		alert(args.postType)
         switch (args.postType) {
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });

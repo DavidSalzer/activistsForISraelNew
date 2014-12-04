@@ -1,6 +1,15 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
     //   alert('width: '+window.innerWidth+' height: '+window.innerHeight )
-    $scope.domain = domain + 'small/';
+    
+	$scope.buildPage = false;
+    $rootScope.$broadcast('showLoader', { showLoader: false });
+    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+	
+	$scope.loaded = function () {
+        //$rootScope.$broadcast('showLoader', { showLoader: false });
+    }
+	
+	$scope.domain = domain + 'small/';
     $scope.showSpiner = PostService.getSpiner;
 
     /*init controller details*/
@@ -115,34 +124,35 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 
     $scope.like = function ($index) {
 
+       if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
+			
+			$rootScope.$broadcast('showInfoPopup', { showInfo: true });return;
+		}
+		else {
+			var meme = $scope.post();
+			meme.isLiked = !meme.isLiked;
+		
+			if (meme.isLiked == true) {//LIKE!
+				
+				meme.likesCount++;
+				PostService.sendLike(meme._id, meme);return;
 
-        var meme = $scope.posts()[$index];
-        console.log(meme)
+			}
+			else {//UNLIKE!
+				meme.likesCount--;
+				$scope.$apply();
+				PostService.unLike(meme._id, meme);return;
+				
 
-        if (meme.isLiked == true) {//UNLIKE!
-
-            PostService.unLike(meme._id, meme);
-            //meme.likesCount--;
-            //meme.isLiked = false;
-            return;
-        }
-        else {//LIKE!
-
-            //send the like- only if the user login
-            $scope.user = generalParameters.getUser();
-            if ($scope.user.firstName == 'הצטרף לאפליקציה') {
-                $rootScope.$broadcast('showInfoPopup', { showInfo: true });
-            }
-            else {
-                PostService.sendLike(meme._id, meme);
-            }
-
-
-            //meme.likesCount++;
-            //meme.isLiked = true;
-            return;
-        }
+			}
+		}
     }
+	
+	$scope.kill = function (event) {
+		
+      angular.element(event.target).remove(); 
+    }
+
 
     //when comeback from login - refresh the feed
 

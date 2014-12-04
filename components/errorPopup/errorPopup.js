@@ -11,7 +11,6 @@ socialGroupApp.controller('errorPopup', ['$rootScope', '$scope', '$state', 'clas
         $scope.showErrorPopup = args.showErrorPopup;
         $scope.errorMsg = args.errorMsg;
         generalParameters.setShowLogin($scope.showErrorPopup);
-        console.log(args)
     });
 
 } ])
