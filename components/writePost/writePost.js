@@ -20,6 +20,12 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.postId = $stateParams.postId;
     $scope.user = generalParameters.getUser();
 
+      $scope.showAll = function (e) {
+
+        $scope.showAll = true;
+    }
+
+
     $scope.postData = {
         //user: { _id: $scope.user._id },
         post: { _parentID: null, attachment: "", content: "" }

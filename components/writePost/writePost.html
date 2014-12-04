@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="./components/article/article.css" />
-<link rel="stylesheet"  media='screen and (min-width: 900px)' type="text/css" href="{{siteOrigin}}components/article/article.css" />
+<link rel="stylesheet" type="text/css" href="./components/article/article.css"   sb-load="showAll($event)" />
+<!--<link rel="stylesheet"  media='screen and (min-width: 900px)' type="text/css" href="{{siteOrigin}}components/article/article.css" />-->
  <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">-->
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 <!-- sub header: כתיבת טקסט,סקר -->
@@ -11,7 +11,7 @@
 		<div class="white-line"></div>
 	</div>
 
-<div class="article-content-wrap main-content-wrap wirte-post-wrapper" data-ng-class="calendarType" >
+<div class="article-content-wrap main-content-wrap wirte-post-wrapper" data-ng-class="calendarType" data-ng-show="showAll==true">
     
 	
     <div class="article-content">
