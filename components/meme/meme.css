@@ -89,6 +89,16 @@
 	z-index: 4;
 }
 
+.single-element-back {
+
+background-image: url('../../img/pj.png');
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+z-index: 4;
+}
+
 .meme-container.large {
     width: 186px;
 }

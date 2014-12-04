@@ -1,6 +1,10 @@
-
 socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
-
+	
+	$scope.load = function (event) {
+		
+    
+    }
+	
     $scope.domain = domain + 'medium/';
     /*init variables*/
     generalParameters.setBackIcon(true);
@@ -54,6 +58,5 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
 			}
 		} 
     }
-
-} ]);
+}]);
 
