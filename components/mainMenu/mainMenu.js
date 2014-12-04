@@ -61,7 +61,7 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
     }
 	
 	$scope.goToFeature = function (featureUrl, postId) {
-		console.log(featureUrl)
+		
         if(featureUrl.indexOf('http')>-1){//external link? open by inapp browser!
 			$scope.ref = window.open(featureUrl, '_blank', 'location='+(isAndroid?'yes':'no'));
 		}
@@ -76,9 +76,9 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
         featureName: 'mainMenu',
         featureLogo: "./img/sidebar-menu-icon.png",
         featureWhatsUpLogo: "./img/sgin_thankyou.png",
-        featureColor: '#00aeef',
-        infoHaeder: "אחליקציה",
-        infoMainText: 'ברוכים הבאים לאחליקציה!<br> הצטרפו אלינו ותוכלו לצפות, לכתוב, לפרסם ולהגיב. לחצו על האייקון משמאל לצפייה בתפריט המלא.',
+        featureColor: '#12426F',
+        infoHaeder: "האחליקציה",
+        infoMainText: 'ברוכים הבאים לאחליקציה!<br>הצטרפו אלינו ותוכלו<br>לצפות, לכתוב, לפרסם ולהגיב.<br>לחצו על האייקון משמאל<br>לצפייה בתפריט המלא',
         infoSubText: "עוד לא הצטרפת לאחליקציה?"
 
     };
@@ -92,12 +92,4 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
 		PostService.loadMainFeatures(request);
     }
 }])
-
-
-
-    /* $scope.goToFeature = function (featureUrl, postId) {
-        
-        $state.transitionTo(featureUrl, { postId: postId });
-    } */
-
 

@@ -19,7 +19,7 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'PostService', 'ge
     $scope.thankDetails = {
 
         featureColor: '#009933',
-        thankText: 'פנייתך התקבלה וטופל בהקדם',
+        thankText: 'פנייתך התקבלה ותטופל בהקדם',
         btnText: 'חזרה לעמוד הראשי',
         headerText: 'צור קשר',
         featureState: 'main-menu'
@@ -54,7 +54,6 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'PostService', 'ge
 	
     $scope.sendContact = function () {
 		
-		$scope.showContactError = false;
 		//validate inputs
 		$scope.showNameError = $scope.name == undefined || $scope.name == '';
         $scope.showEmailError = $scope.mail == undefined || $scope.mail == '';
@@ -63,7 +62,7 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'PostService', 'ge
 		if ($scope.showNameError ||  $scope.showTextError || $scope.showEmailError) {
             return;
         }
-		
+		$scope.showContactError = false;
 		$scope.showNameError = false;
         $scope.showTextError = false;
 		$scope.showEmailError = false;

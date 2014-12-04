@@ -105,7 +105,8 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureColor: "#fa0001"
         },
         {
-            featureUrl: 'facebookBennet/NaftaliBennett',
+           /*  featureUrl: 'facebookBennet/NaftaliBennett', */
+            featureUrl: 'facebookBennet',
             featureName: 'פייסבוק נפתלי',
             featureLogo: "./img/sidebar-facebook-icon.png",
             featureStyleName: 'facebooknaf',
@@ -257,9 +258,8 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
     PostService.loadMainFeatures();
     $scope.features = PostService.getMainFeatures;
-
-    
-} ]);
+ 
+}]);
 
 
 

@@ -1,9 +1,9 @@
-socialGroupApp.controller('comments', ['$scope', '$rootScope', '$state', '$stateParams', 'PostService', 'generalParameters', function ($scope, $rootScope, $state, $stateParams, PostService, generalParameters) {
+socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'PostService', 'generalParameters', function ($scope, $state, $stateParams, PostService, generalParameters) {
 
 
     /*delay dom building until transition is done*/
     $scope.buildPage = false;
-    $rootScope.$broadcast('showLoader', { showLoader: true });
+    //$rootScope.$broadcast('showLoader', { showLoader: true });
     setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
 
     /*init controller details*/
@@ -19,13 +19,14 @@ socialGroupApp.controller('comments', ['$scope', '$rootScope', '$state', '$state
 
     generalParameters.setFeature($scope.featureDetails);
     generalParameters.setBackIcon(true);
-    $scope.domain = domain;
+    $scope.domain = domain + 'medium/';
     $scope.showSpiner = PostService.getSpiner;
     $scope.offset = 20;
     console.log('postId: ' + $stateParams.postId);
     $scope.postId = $stateParams.postId;
     $scope.showCommentDate = true;
     PostService.getPostById($scope.postId);
+    PostService.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
     $scope.post = PostService.getSinglePost;
     $scope.comments = PostService.getPosts;
 
@@ -41,21 +42,19 @@ socialGroupApp.controller('comments', ['$scope', '$rootScope', '$state', '$state
     });
 
     $scope.loadMore = function () {
-
-        if ($scope.showendloader) {
-            return;
+        if (!PostService.getLoadMoreNow()) {
+            if ($scope.showendloader) {
+                return;
+            }
+            PostService.setLoadMoreNow(true);
+            posts = PostService.getPosts();
+            self.getPostsBatch({ startTimestamp: '', endTimestamp: posts[0].timestamp, offset: $scope.offset, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
+            $scope.offset += 20;
         }
-        posts = PostService.getPosts();
-        self.getPostsBatch({ startTimestamp: '', endTimestamp: posts[0].timestamp, offset: $scope.offset, limit: 20, _parentID: $scope.postId, postType: 'talkback', orderBy: '-timestamp' });
-        $scope.offset += 20;
     };
 
     $scope.userClicked = function (userId) {
         $state.transitionTo('user-profile', { userId: userId });
     };
-
-    $scope.loaded = function () {
-        $rootScope.$broadcast('showLoader', { showLoader: false });
-    }
 
 } ]);

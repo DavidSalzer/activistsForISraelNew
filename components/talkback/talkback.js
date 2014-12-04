@@ -1,11 +1,11 @@
-socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $scope, classAjax, $state, PostService, generalParameters) {
+socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$state','$http', 'PostService', 'generalParameters','$q',function ($rootScope, $scope, classAjax, $state, $http,PostService, generalParameters,$q) {
 
     /*init variables*/
     $scope.showInput = false;
     $scope.currentFilter = 'all';
     //$scope.currentPost = null;
     $scope.showSpiner = PostService.getSpiner;
-    $scope.domain = domain;
+    $scope.domain = domain + 'small/';
     generalParameters.setBackIcon(false);
     $scope.showendloader = false;
     $scope.movePage = false;
@@ -33,7 +33,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
-        limit: 20,
+        limit: 50,
         orderBy: '-timestamp',
         postType: 'talkback',
         //userID: $scope.user._id,
@@ -73,7 +73,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
                 break;
         }
     });
-	
+
     $scope.getPostsByAll = function () {
         request.startTimestamp = '';
         request.endTimestamp = '';
@@ -98,17 +98,26 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         PostService.getPostsBatch(request);
     }
 
+    //$scope.callAjaxPosts = $q.defer();
+
+    //$http({
+    //    url: "http://www.ynet.co.il/home/0,7340,L-8,00.html"
+    //}).success(function () { });
 
     //load more post on scroll down
     $scope.loadMore = function () {
-        if ($scope.showendloader) {
-            return;
+        //if not loading now
+        if (!PostService.getLoadMoreNow()) {
+            if ($scope.showendloader) {
+                return;
+            }
+            PostService.setLoadMoreNow(true);
+            console.log('load more');
+            request.offset += 50;
+            post = PostService.getPosts();
+            request.endTimestamp = post[0].timestamp;
+            PostService.getPostsBatch(request);
         }
-        console.log('load more');
-        request.offset += 20;
-        post = PostService.getPosts();
-        request.endTimestamp = post[0].timestamp;
-        PostService.getPostsBatch(request);
     }
 
     $scope.userClicked = function (userId) {

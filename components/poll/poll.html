@@ -7,47 +7,26 @@
         <li style="width: 50%"><a href="#Tab2" toggle="on" parent-active-class="active" data-ng-click="getInActivePoll()">סקרים סגורים</a></li>
     </ul>
 
-    <div class="tab-content"><!--ignore this section- do not delete-->
+    <div class="tab-content" data-ng-hide="true"><!--ignore this section- do not delete-->
         <div class="tab-pane" toggleable active-class="active" default="active" id="Tab1" exclusion-group="myTabs"></div>
         <div class="tab-pane" toggleable active-class="active" id="Tab2" exclusion-group="myTabs"></div>
     </div>
 </div>
 
-
-
-<div class="polls-layout channel-con" data-ng-init="getActivePoll()">
-    <div class="posts-list" scroller loading-method="loadMore()">
-        <post ng-repeat="post in polls()" data-post-type="poll"></post>
-                    <!--<div class="list-tube">
-                        <div class="polls-container" ng-click="userClicked($index);">
-                            <div class="image-container" >
-                                <div class="polls-image" style="background-image: url('{{list.img}}')"></div>
-                            </div>		
-                        </div>			
-                        <div class="text-box player-text" ng-click="userClicked($index);">
-                            <h1 class="padd" data-ng-style="{'color': '{{featureDetails.featureColor}}', 'font-weight': 'bold'}">{{list.title}}</h1>
-                            <h1 class="ellipsis" data-ng-style="{'color': '#ffffff'}">{{list.content}} </h1>
-                        </div>
-                            </div>-->
-        <div class="end-load-more" data-ng-if="showendloader == true">
-            <img alt="end" src="./img/end_feed.png" />
-            <div class="loadmore-endline"></div>
-        </div>
+<div class="polls-layout posts-list" scroller loading-method="loadMore()">
+    <post ng-repeat="post in polls()" data-post-type="poll"></post>
+    <div class="end-load-more" data-ng-if="showendloader == true">
+        <img alt="end" src="./img/end_feed.png" />
+        <div class="loadmore-endline"></div>
     </div>
-
     <div class="spiner-zone" data-ng-show="showSpiner()">
-        <div class="loader fa fa-spinner fa-spin"></div>
+        <div class="loader" data-ng-class="{'general-loader':polls().length==0}"></div>
     </div>
-
-
 </div>
-<!--<button type="button" ng-click='getVideos()'> הצג עוד...</button >-->
+
 </div>
 <div class="sub-header  special-sub-header" id="feature-header" data-ng-click="SuggestPoll()">
     <div class="inner-special-header" data-ng-style="{'background-color':featureDetails.featureColor}">
    הצע סקר
     </div>
 </div>
-
-    <!--<div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-click="SuggestPoll()">הצע סקר</div>
-        <div class="color-line"></div>-->

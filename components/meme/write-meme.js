@@ -19,6 +19,11 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.postImg = "";
     $scope.isSiteHeader = true;
 
+    $scope.showAll = function (e) {
+
+        $scope.showAll = true;
+    }
+
     $scope.localMemeImages = [{ url: 'img/memes/84688.jpg' }, { url: 'img/memes/1904595.jpg' }, { url: 'img/memes/3291562.jpg' }, { url: 'img/memes/4669763.jpg' }, { url: 'img/memes/5169527.jpg' },
     { url: 'img/memes/224723908.jpg' }, { url: 'img/memes/232041342.jpg' }, { url: 'img/memes/16.jpg' },
     { url: 'img/memes/19.jpg' }, { url: 'img/memes/22.jpg' }, { url: 'img/memes/49.jpg' }
@@ -172,7 +177,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         }
 
     }, false);
-	
+
     $scope.takePicture = function () {
         filePicker.getPicture()
         .then(function (imageData) {
@@ -181,7 +186,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
             $scope.imgFileText = imageData.fileText;
             $scope.showSuggestedImages = false;
             try {
-                $scope.postImg = imageData.imgData;//"data:image/jpeg;base64," +
+                $scope.postImg = imageData.imgData; //"data:image/jpeg;base64," +
                 $scope.$apply()
             }
             catch (e) {
@@ -189,5 +194,10 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
             }
         });
     };
+
+    $scope.textChange = function () {
+        var objDiv = document.getElementById("write-meme-wrap");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
 } ]);
 

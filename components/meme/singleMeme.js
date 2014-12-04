@@ -1,15 +1,19 @@
-
 socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
-
-
-    $scope.buildPage = false;
-    $rootScope.$broadcast('showLoader', { showLoader: true });
-    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
-    $scope.domain = domain;
+	
+	$scope.load = function (event) {
+		
+    
+    }
+	
+    $scope.domain = domain + 'medium/';
     /*init variables*/
     generalParameters.setBackIcon(true);
     $scope.user = generalParameters.getUser();
     $scope.memeUrl;
+    /*delay dom building until transition is done*/
+    $scope.buildPage = false;
+    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,
@@ -30,36 +34,29 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
     // $scope.memeUrl = $scope.memeImages[$stateParams.index].url;
 
     $scope.like = function ($event, $index) {
+		
+		if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
+			
+			$rootScope.$broadcast('showInfoPopup', { showInfo: true });return;
+		}
+		else {
+			var meme = $scope.post();
+			meme.isLiked = !meme.isLiked;
+		
+			if (meme.isLiked == true) {//LIKE!
+				
+				meme.likesCount++;
+				PostService.sendLike(meme._id, meme);return;
 
+			}
+			else {//UNLIKE!
+				meme.likesCount--;
+				$scope.$apply();
+				PostService.unLike(meme._id, meme);return;
+				
 
-        var meme = $scope.post();
-        console.log(meme)
-
-        if (meme.isLiked == true) {//UNLIKE!
-
-            PostService.unLike(meme._id, meme);
-            //meme.likesCount--;
-            //meme.isLiked = false;
-            return;
-        }
-        else {//LIKE!
-            //send the like- only if the user login
-            $scope.user = generalParameters.getUser();
-            if ($scope.user.firstName == 'הצטרף לאפליקציה') {
-                $rootScope.$broadcast('showInfoPopup', { showInfo: true });
-            }
-            else {
-                PostService.sendLike(meme._id, meme);
-            }
-
-
-            return;
-        }
+			}
+		} 
     }
-
-    $scope.loaded = function () {
-        $rootScope.$broadcast('showLoader', { showLoader: false });
-    }
-
-} ]);
+}]);
 

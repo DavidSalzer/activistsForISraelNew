@@ -16,13 +16,13 @@
     /*width: 320px;*/
 }
 
-.posts-list.memes .spiner-zone {
+/*.posts-list.memes .spiner-zone {
     z-index: 2;
     position: fixed;
     bottom: 41px;
     left: 0;
     right: 0;
-}
+}*/
 
 .end-load-more {
     top: -98px;
@@ -77,15 +77,26 @@
     bottom: 0;
     left: 0;
     right: 0;
-	/* background-color:#D4DEEC; */
-	background-image: url('../../img/sgin_thankyou.png');
+	/* background-color:#D4DEEC;  */
+	/* background-color:#84888C;  */
+	background-image: url('../../img/pj.jpg'); 
 	background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 100%;
     width: 100%;
-	opacity: 0.3;
+	z-index: 4;
+}
+
+.single-element-back {
+
+background-image: url('../../img/pj.png');
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+z-index: 4;
 }
 
 .meme-container.large {

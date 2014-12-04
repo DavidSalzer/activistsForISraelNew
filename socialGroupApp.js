@@ -102,17 +102,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        //.state('facebookPoalim', {
-        //    url: "/facebookPoalim/:channelId",
-        //    //url: "/facebookPoalim",
-        //    views: {
-        //        "main": {
-        //            templateUrl: "./components/facebook/facebookPoalim.html",
-        //            controller: "facebookPoalim"
-        //        }
-        //    }
-        //})
-
 		.state('poll-view', {
 		    url: "/poll-view/:postId",
 		    views: {
@@ -380,28 +369,28 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
         restrict: 'E',
         template: '<div class="post-likes post-buttons" data-ng-click="$event.stopPropagation();"><span data-ng-class="{' + "'is-liked':post.isLiked==true ,'like-post':true}" + '">' +
                     '<span class="icon"></span><span>אהבתי</span></span>' +
-                '<span class="like-count">{{post.likesCount+0}}</span></div>',
+                '<span class="like-count">{{post.likesCount || 0}}</span></div>',
         link: function (scope, el, attrs) {
             el.on('click', function () {
 			
-				var user = generalParameters.getUser();
-				if (user.firstName == 'הצטרף לאפליקציה') {
+				if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
 					
 					$rootScope.$broadcast('showInfoPopup', { showInfo: true });
 				}
                 else {
-                    //scope.post.isLiked = !scope.post.isLiked;
+                    scope.post.isLiked = !scope.post.isLiked;
 
                     if (scope.post.isLiked == true) {//LIKE!
-
-                        //scope.post.likesCount++;
-					    PostService.unLike(scope.post._id, scope.post); 
+						
+                        scope.post.likesCount++;
+					     PostService.sendLike(scope.post._id, scope.post); 
 
                     }
                     else {//UNLIKE!
-                        //scope.post.likesCount--;
+                        scope.post.likesCount--;
                         scope.$apply();
-					    PostService.sendLike(scope.post._id, scope.post); 
+						PostService.unLike(scope.post._id, scope.post); 
+					   
 
                     }
                 } 

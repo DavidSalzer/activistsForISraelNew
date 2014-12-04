@@ -9,7 +9,7 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
     //$scope.currentPostType = 'event';
     //$scope.showCommentDate = false;
     //$scope.showCommentTitle = false;
-    $scope.domain = domain;
+    $scope.domain = domain + 'medium/';
     $scope.showSpiner = PostService.getSpiner;
     $scope.offset = 20;
     $scope.movePage = false;

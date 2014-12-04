@@ -8,7 +8,7 @@
 <div class="scrollable" style="background-color: ">
     <div class="scrollable-content">
         <div class="list-group out-list-group" data-ng-click="closePopups()" data-toggle="off" data-bubble data-target="mainSidebar">
-            <a data-ng-repeat="feature in featuresList" data-ng-class="{'list-group-item':true,'{{feature.featureStyleName}}':true}" data-once-href="'#/'+feature.featureUrl">
+            <a data-ng-repeat="feature in featuresList" data-ng-class="{'list-group-item':true,'{{feature.featureStyleName}}':true}" data-ui-sref="{{feature.featureUrl}}">
                 <div class="inner-list-group">
                     <span class="sidbar-text"  data-once-text="feature.featureName" >
                             <!-- {{feature.featureName}} -->

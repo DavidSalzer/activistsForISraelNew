@@ -22,7 +22,7 @@ h3 {
     height: auto;
     width: 100%;
     position: relative;
-    padding-top: 4px;
+    /* padding-top: 4px; */
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -233,8 +233,8 @@ margin: auto;
     display: inline-block;
     margin-right: 11px;
     margin-top: 9px;
-    border: 1px solid #ffffff;
-    background-size: 100% 100%;
+    border: 2px solid #ffffff;
+    background-size: contain;
 }
 
 .demanded-title {
@@ -256,7 +256,7 @@ margin: auto;
 	top: 0;
 	left: 0;
 	right: 0;
-	bottom: 0;
+	bottom: 25%;
 	margin: auto;
 }
 

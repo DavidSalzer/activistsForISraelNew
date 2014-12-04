@@ -24,7 +24,7 @@
 
         <!-- facebook sdk end -->
         <div class="app">
-
+            <div id="launchmyapp" data-ng-controller="launcher"></div>
 
             <div data-ng-controller="headerCtrl" class="popups-mask" data-ng-show="showMask()"></div>
 
@@ -102,16 +102,19 @@
         <script src="js/jquery.2.min.js"></script>
         <script src="js/jquery.Jcrop.min.js"></script>
 
-        <script src="js/initPushwoosh.js"></script>
+        
 		<script src="./js/once.js"></script>
 
         <script src="socialGroupApp.js"></script>
+        <script src="./js/launcher.js"></script>
         <script>
             function handleOpenURL(url) {
                 //alert('handleOpenURL');
                 setTimeout(function () {
+                    //page = url.replace('bennet://', '');
+                    //window.location.replace(window.location.pathname + '#/' + page);
                     page = url.replace('bennet://', '');
-                    window.location.replace(window.location.pathname + '#/' + page);
+                    angular.element($("#launchmyapp")).scope().launchMyAppHere(page);
                 }, 0);
             
             }
@@ -125,6 +128,7 @@
         <script src="./services/facebookLogin.js"></script>
         <script src="./services/googleLogin.js" type="text/javascript"></script>
 
+        
         <script src="./components/header/header.js"></script>
         <script src="./components/mainMenu/mainMenu.js"></script>
         <script src="./components/user/userProfile.js"></script>
@@ -152,6 +156,7 @@
         <script src="components/breakingnews/breakingnewsPromo.js"></script>
         <script src="components/breakingnews/breakingnews.js"></script>
 
+        <script src="js/initPushwoosh.js"></script>
         <script src="cmsCtrl/adminCtrl.js"></script>
 
         <script src="plugins/html2canvas.js"></script>

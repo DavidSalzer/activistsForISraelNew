@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
+<link rel="stylesheet" type="text/css" href="./components/meme/meme.css"  sb-load="loaded($event)"/>
 <link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/meme/meme.css" />
 
 
@@ -8,60 +8,28 @@
     <li style=""><a href="#Tab3" toggle="on" parent-active-class="active" data-ng-click="getPostsByFavorite()">האהובים</a></li>
 </ul>
 
-<div class="tab-content" scroller loading-method="loadMore()"><!--ignore this section- do not delete-->
-    <div class="tab-pane" toggleable active-class="active" default="active" id="Tab1" exclusion-group="myTabs">
+<div class="tab-content" data-ng-hide="true"><!--ignore this section- do not delete-->
+    <div class="tab-pane" toggleable active-class="active" default="active" id="Tab1" exclusion-group="myTabs"></div>
+    <div class="tab-pane" toggleable active-class="active" id="Tab2" exclusion-group="myTabs"></div>
+    <div class="tab-pane" toggleable active-class="active" id="Tab3" exclusion-group="myTabs"></div>
+</div>
 
-        <div class="posts-list memes"><!--scroller loading-method="loadMore()"-->
-            <post data-ng-repeat="post in posts()" data-post-type="meme"></post>
-            <div class="spiner-zone" data-ng-show="showSpiner()">
-                    <div class="loader"></div>
-            </div>
-           
-        </div>
-         <div class="end-load-more" data-ng-if="showendloader == true">
-                <img alt="end" src="./img/end_feed.png" />
-                <div class="loadmore-endline"></div>
-            </div>
+<div class="posts-list memes" scroller loading-method="loadMore()" data-ng-if="buildPage">
+    <post data-ng-repeat="post in posts() " data-post-type="meme"></post>
+    <div class="spiner-zone" data-ng-show="showSpiner()">
+        <div class="loader" data-ng-class="{'general-loader':posts().length==0}" ></div>
+         
     </div>
-
-
-    <div class="tab-pane" toggleable active-class="active" id="Tab2" exclusion-group="myTabs">
-        <div class="posts-list memes" scroller loading-method="loadMore()">
-            <post data-ng-repeat="post in posts()" data-post-type="meme"></post>
-            <div class="spiner-zone" data-ng-show="showSpiner()">
-                    <div class="loader"></div>
-            </div>
-             
-        </div>
-        <div class="end-load-more" data-ng-if="showendloader == true">
-                <img alt="end" src="./img/end_feed.png" />
-                <div class="loadmore-endline"></div>
-            </div>
-    </div>
-    <div class="tab-pane" toggleable active-class="active" id="Tab3" exclusion-group="myTabs">
-        <div class="posts-list memes" scroller loading-method="loadMore()">
-            <post data-ng-repeat="post in posts()" data-post-type="meme"></post>
-            <div class="spiner-zone" data-ng-show="showSpiner()">
-                    <div class="loader"></div>
-               
-
-            </div>
-            
-        </div>
-         <div class="end-load-more" data-ng-if="showendloader == true">
-                <img alt="end" src="./img/end_feed.png" />
-                <div class="loadmore-endline"></div>
-            </div>
+    <div class="end-load-more" data-ng-if="showendloader == true">
+        <img alt="end" src="./img/end_feed.png" />
+        <div class="loadmore-endline"></div>
     </div>
 </div>
 
-    <!--<div class="posts-list" scroller loading-method="loadMore()">
-                    <post data-ng-repeat="post in posts()" data-post-type="article" data-ng-show="post.postType='article'"></post>
-                    <post data-ng-repeat="post in posts()" data-post-type="author" data-ng-show="post.postType='author'"></post>
-                    <div class="spiner-zone" data-ng-show="showSpiner">
-                        <div class="fa fa-spinner fa-spin"></div>
-                    </div>
-                </div>-->
+
+
+
+
 <<div class="sub-header special-sub-header" id="feature-header" data-ng-click="writeMeme()">
     <div class="inner-special-header" data-ng-style="{'background-color':featureDetails.featureColor}">
     צור מם
