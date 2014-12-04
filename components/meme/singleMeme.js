@@ -6,6 +6,10 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
     generalParameters.setBackIcon(true);
     $scope.user = generalParameters.getUser();
     $scope.memeUrl;
+    /*delay dom building until transition is done*/
+    $scope.buildPage = false;
+    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+
     /*init controller details*/
     $scope.featureDetails = {
         featureName: null,

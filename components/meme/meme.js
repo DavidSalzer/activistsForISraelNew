@@ -150,7 +150,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 	
 	$scope.kill = function (event) {
 		
-      //angular.element(event.target).remove(); 
+      angular.element(event.target).remove(); 
     }
 
 
