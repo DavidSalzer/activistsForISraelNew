@@ -76,9 +76,9 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
         featureName: 'mainMenu',
         featureLogo: "./img/sidebar-menu-icon.png",
         featureWhatsUpLogo: "./img/sgin_thankyou.png",
-        featureColor: '#00aeef',
-        infoHaeder: "אחליקציה",
-        infoMainText: 'ברוכים הבאים לאחליקציה!<br> הצטרפו אלינו ותוכלו לצפות, לכתוב, לפרסם ולהגיב. לחצו על האייקון משמאל לצפייה בתפריט המלא.',
+        featureColor: '#12426F',
+        infoHaeder: "האחליקציה",
+        infoMainText: 'ברוכים הבאים לאחליקציה!<br>הצטרפו אלינו ותוכלו<br>לצפות, לכתוב, לפרסם ולהגיב.<br>לחצו על האייקון משמאל<br>לצפייה בתפריט המלא',
         infoSubText: "עוד לא הצטרפת לאחליקציה?"
 
     };

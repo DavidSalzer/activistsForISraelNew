@@ -6,7 +6,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
     setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
 	
 	$scope.loaded = function () {
-        //$rootScope.$broadcast('showLoader', { showLoader: false });
+        
     }
 	
 	$scope.domain = domain + 'small/';
@@ -150,7 +150,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 	
 	$scope.kill = function (event) {
 		
-      //angular.element(event.target).remove(); 
+      angular.element(event.target).remove(); 
     }
 
 
