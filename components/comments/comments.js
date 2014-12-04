@@ -4,7 +4,7 @@ socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'Post
     /*delay dom building until transition is done*/
     $scope.buildPage = false;
     //$rootScope.$broadcast('showLoader', { showLoader: true });
-    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 200);
 
     /*init controller details*/
     $scope.featureDetails = {

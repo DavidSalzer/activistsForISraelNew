@@ -440,7 +440,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 self.getIsLike(data.data);
                 singlePost = data.data;
                 singlePost.hebrewDate = self.hebrewDate(singlePost.DestinationTime);
-                posts = [];
+               // posts = [];
                 //$rootScope.$broadcast('showLoader', { showLoader: true });
                 //self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
             })
