@@ -189,5 +189,10 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
             }
         });
     };
+
+    $scope.textChange=function(){
+        var objDiv = document.getElementById("write-meme-wrap");
+objDiv.scrollTop = objDiv.scrollHeight;
+    }
 } ]);
 
