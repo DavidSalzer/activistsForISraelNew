@@ -78,15 +78,14 @@
     left: 0;
     right: 0;
 	/* background-color:#D4DEEC;  */
-	background-color:#84888C; 
-	/* background-image: url('../../img/pj.png'); */
+	/* background-color:#84888C;  */
+	background-image: url('../../img/pj.png'); 
 	background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 100%;
     width: 100%;
-	/* opacity: 0.3; */
 	z-index: 4;
 }
 
