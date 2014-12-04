@@ -129,7 +129,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 			$rootScope.$broadcast('showInfoPopup', { showInfo: true });return;
 		}
 		else {
-			var meme = $scope.post();
+			var meme = $scope.posts()[$index];
 			meme.isLiked = !meme.isLiked;
 		
 			if (meme.isLiked == true) {//LIKE!

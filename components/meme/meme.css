@@ -12,21 +12,12 @@
     height: 100%;
     width: 297px;
     margin: auto;
-    padding-bottom: 100px;
-    /*width: 320px;*/
+    padding-bottom: 160px;
 }
 
-/*.posts-list.memes .spiner-zone {
-    z-index: 2;
-    position: fixed;
-    bottom: 41px;
-    left: 0;
-    right: 0;
-}*/
-
-.end-load-more {
+/*.end-load-more {
     top: -98px;
-}
+}*/
 
 .meme-container {
     position: relative;
