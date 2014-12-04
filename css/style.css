@@ -28,7 +28,7 @@ textarea {
 
 .loader {
     height: 27px;
-width: 196px;
+    width: 196px;
     background-image: url('../img/loader_text_new.png');
     background-size: 100% 100%;
     margin: auto;
@@ -38,7 +38,7 @@ width: 196px;
     position: absolute;
     margin: auto;
     height: 27px;
-width: 196px;
+    width: 196px;
     top: 0px;
     display: block;
     bottom: 0px;
@@ -65,8 +65,8 @@ header.navbar.navbar-app.navbar-absolute-top {
 
 img.title-img {
     top: -11px;
-	border-radius: 100%;
-	background-color: #FFF;
+    border-radius: 100%;
+    background-color: #FFF;
 }
 
 header .btn.btn-navbar.info {
@@ -80,7 +80,7 @@ header i.fa {
 }
 
 i.fa.fa-reply {
-    left: 0px;     
+    left: 0px;
 }
 
 header i.fa.share {
@@ -351,10 +351,11 @@ span.author-date {
     font-size: 13px;
 }
 
-.user-recent-activity-zone span.author-date{
+.user-recent-activity-zone span.author-date {
     float: right;
-line-height: 25px;
+    line-height: 25px;
 }
+
 div.post-main-text {
     clear: both;
     /*height: 33px;*/
@@ -367,6 +368,7 @@ div.post-main-text {
     padding-bottom: 1px;
     color: #000000;
 }
+
 .post-main-text img {
     width: 80%;
     margin: 5px auto 10px auto;
@@ -374,6 +376,7 @@ div.post-main-text {
     border: 0px solid #565c63;
     border-radius: 2px;
 }
+
 .post-main-text p {
     clear: both;
     /*height: 33px;*/
@@ -642,8 +645,8 @@ span.sidbar-text {
     height: 60px;
     width: 60px;
     margin: 10px auto 5px auto;
-	background-color: #000;
-	left: 0;
+    background-color: #000;
+    left: 0;
 }
 
 div#mainSidebar {
@@ -845,6 +848,21 @@ div.scrollable-content.overthrow {
     font-weight: bold;
 }
 
+.channel-con {
+    padding: 0px 10px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding-top: 46px;
+    box-sizing: border-box;
+    overflow-x: visible;
+}
+
+
 .polls-layout {
     padding-left: 15px;
     padding-right: 15px;
@@ -860,7 +878,7 @@ div.scrollable-content.overthrow {
 
 .channel-list {
     height: 100%;
-    overflow: auto;
+    /*overflow: auto;*/
     padding: 0px 4px;
     position: relative;
     top: 0px;
@@ -930,7 +948,7 @@ iframe.player-contener {
     display: inline-block;
     /*  padding: 0px 5px; */
     font-size: 11px;
-    color:#000000;
+    color: #000000;
 }
 
 .list-tube {
