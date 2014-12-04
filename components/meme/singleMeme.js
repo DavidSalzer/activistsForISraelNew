@@ -1,10 +1,10 @@
 socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
-	
-	$scope.load = function (event) {
-		
-    
+
+    $scope.wait = true;
+    $scope.kill = function (event) {
+        $scope.wait = false;
     }
-	
+
     $scope.domain = domain + 'medium/';
     /*init variables*/
     generalParameters.setBackIcon(true);
@@ -34,29 +34,29 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
     // $scope.memeUrl = $scope.memeImages[$stateParams.index].url;
 
     $scope.like = function ($event, $index) {
-		
-		if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
-			
-			$rootScope.$broadcast('showInfoPopup', { showInfo: true });return;
-		}
-		else {
-			var meme = $scope.post();
-			meme.isLiked = !meme.isLiked;
-		
-			if (meme.isLiked == true) {//LIKE!
-				
-				meme.likesCount++;
-				PostService.sendLike(meme._id, meme);return;
 
-			}
-			else {//UNLIKE!
-				meme.likesCount--;
-				$scope.$apply();
-				PostService.unLike(meme._id, meme);return;
-				
+        if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
 
-			}
-		} 
+            $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return;
+        }
+        else {
+            var meme = $scope.post();
+            meme.isLiked = !meme.isLiked;
+
+            if (meme.isLiked == true) {//LIKE!
+
+                meme.likesCount++;
+                PostService.sendLike(meme._id, meme); return;
+
+            }
+            else {//UNLIKE!
+                meme.likesCount--;
+                $scope.$apply();
+                PostService.unLike(meme._id, meme); return;
+
+
+            }
+        }
     }
-}]);
+} ]);
 

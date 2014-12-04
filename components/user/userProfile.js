@@ -449,7 +449,6 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
 
         $scope.postId = args.postId;
         $scope.authorId = args.authorId;
-        alert(args.postType)
         switch (args.postType) {
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
