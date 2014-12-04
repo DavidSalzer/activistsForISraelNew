@@ -149,7 +149,7 @@
 
 <!-- popup- change password -->
 <div class="sign-in-popup change-pass-popup" data-ng-show="showChangePassword">
-    <div class="close-sign-in" data-ng-click="showChangePassword = !showChangePassword"></div>
+    <div class="close-sign-in" data-ng-click="closeChangePassword()"></div>
     <div class="password-recovery-title">שינוי סיסמה:</div>
     <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showOldPassError}" placeholder="הזן סיסמה נוכחית" data-ng-model="oldPass">
     <input type="password" class="sign-in-field sign-in-password" data-ng-class="{loginErrorActive: showPassError || showPassAuthenticationError}" placeholder="הזן סיסמה חדשה" data-ng-model="newPass">
