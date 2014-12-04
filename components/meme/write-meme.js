@@ -20,8 +20,8 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     $scope.isSiteHeader = true;
 
     $scope.showAll = function (e) {
-
         $scope.showAll = true;
+        angular.element(event.target).remove();
     }
 
     $scope.localMemeImages = [{ url: 'img/memes/84688.jpg' }, { url: 'img/memes/1904595.jpg' }, { url: 'img/memes/3291562.jpg' }, { url: 'img/memes/4669763.jpg' }, { url: 'img/memes/5169527.jpg' },

@@ -48,9 +48,9 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'PostService', 'ge
     };
 
     $scope.showAll = function (e) {
-
         $scope.showAll = true;
         $scope.$apply();
+        angular.element(event.target).remove();
     }
 
 

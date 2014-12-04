@@ -4,11 +4,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 	$scope.buildPage = false;
     $rootScope.$broadcast('showLoader', { showLoader: false });
     setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
-	
-	$scope.loaded = function () {
-        
-    }
-	
+		
 	$scope.domain = domain + 'small/';
     $scope.showSpiner = PostService.getSpiner;
 

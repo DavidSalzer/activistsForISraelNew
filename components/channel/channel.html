@@ -4,12 +4,12 @@
     <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}">ערוץ יוטיוב</div>
     <div class="white-line"></div>
 </div>
-<div class="channel-con" data-ng-init="getVideos()">
+<div class="channel-con" data-ng-init="getVideos()" scroller loading-method="getVideos()">
     <div data-ng-show="loginYoutube">
  This application requires access to your YouTube account.
       Please <button id="login-link" data-ng-click="login()">authorize</button> to continue
     </div>
-    <div class="channel-list" scroller loading-method="getVideos()">
+    <div class="channel-list">
         <div ng-repeat="list in items" class="list-tube">
             <div id="player{{$index}}" class="player-contener" data-ng-click="laodyoutube(list.id.videoId,$index);">
                 <img data-once-src="list.snippet.thumbnails.high.url">

@@ -12,7 +12,7 @@
         <!--<img id="previewImg" data-ng-src="{{previewBase64}}" />-->
 
         <div class="chosenImg top-part"  data-ng-show="postImg != ''">
-         <div class="meme-wrap meme-container"  id="html2canvas" >
+         <div class="meme-wrap meme-container"  id="html2canvasmeme" >
              <img id="chosenImg" class=""   src="{{postImg}}" />
             <div class="immulate-text top"  data-ng-class="{'size1':topText.length <=11, 'size2':(topText.length >11 && topText.length <=20),'size3':topText.length >20}"  data-ng-style="{'color':getColor('top'),'font-family':font}">{{topText}}</div>
              <div class="immulate-text bottom"   data-ng-class="{'size1':bottomText.length <=11, 'size2':(bottomText.length >11 && bottomText.length <=20),'size3':bottomText.length >20}"  data-ng-style="{'color':getColor('bottom'),'font-family':font}">{{bottomText}}</div>

@@ -37,8 +37,8 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     $scope.posts = PostService.getPosts; //ask service for posts
 
     $scope.showAll = function (e) {
-
         $scope.showAll = true;
+        angular.element(event.target).remove();
     }
 
     $scope.l = function (flager) {

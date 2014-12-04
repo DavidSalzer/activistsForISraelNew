@@ -1,117 +1,93 @@
-<link rel="stylesheet" type="text/css" href="./components/meme/meme.css"  sb-load="showAll($event)" />
-<!--<link rel="stylesheet"  media='screen and (min-width: 900px)' type="text/css" href="{{siteOrigin}}components/meme/meme.css" />-->
- 
+<link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
+
 <div class="sub-header" id="feature-header" data-ng-class="{'site-sub-header':isSiteHeader==true}" data-ng-click="writeMeme()">
-    <div  style="background-color: #ffd427;">
+    <div style="background-color: #ffd427;">
     המם שלי
     </div>
     <div class="white-line"></div>
 </div>
 
-<div id="write-meme-wrap" class="posts-list"  data-ng-show="showAll==true">
-    <!--<script src="./plugins/color-picker/jscolor.js"></script>-->
+<div id="write-meme-wrap" class="posts-list" data-ng-show="showAll==true">
 
-    <div class="top-part" style="position: relative;"  data-ng-show="postImg == ''">
-        <!--<div class="instruction" >בחר תמונה</div>-->
-   
-        <!--suggested images by server DONT DELETE-->
-        <!--<div class="suggested-images-wrap">
-            <div class="images-window">  
-			    <div  class='suggested-images-up'>
-				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in memeImages()"  ng-if="$even" class="meme-element2"  style="background-image:url('{{domain+image.url}}')" >
-				    </span>
+    <div class="top-part" style="position: relative;" data-ng-show="postImg == ''">
+
+        <div class="suggested-images-wrap">
+            <div class="images-window">
+                <div class="suggested-images-up">
+                    <span data-ng-click="imageClick($index)" data-ng-repeat="image in localMemeImages" data-ng-if="$even" class="meme-element2" data-once-style="{'background-image':'url('+image.url+')'}"></span>
+
                 </div>
-			    <div  class='suggested-images-down'>
-				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in memeImages()"  ng-if="$odd" class="meme-element2"  style="background-image: url('{{domain+image.url}}');" >
-				    </span>
-                </div>
-            </div>
-        </div>-->
-         <!--END suggested images by server DONT DELETE-->
-         
-        
-        <div class="suggested-images-wrap" >
-            <div class="images-window"  >  
-			    <div  class='suggested-images-up' >
-				    <span data-ng-click="imageClick($index)"   data-ng-repeat="image in localMemeImages"  data-ng-if="$even" class="meme-element2"  data-once-style="{'background-image':'url('+image.url+')'}"></span>
-				    
-                </div>
-			    <div  class='suggested-images-down'>
-				    <span data-ng-click="imageClick($index)"  data-ng-repeat="image in localMemeImages"  data-ng-if="$odd" class="meme-element2"   data-once-style="{'background-image':'url('+image.url+')'}">
-				    </span>
+                <div class="suggested-images-down">
+                    <span data-ng-click="imageClick($index)" data-ng-repeat="image in localMemeImages" data-ng-if="$odd" class="meme-element2" data-once-style="{'background-image':'url('+image.url+')'}">
+                    </span>
                 </div>
             </div>
         </div>
 
     </div>
-    
-    <div class="chosenImg top-part"  data-ng-show="postImg != ''">
-         <div class="write-meme-wrap"   >
-             <img id="chosenImg" src="{{postImg}}" />
-              <div class="immulate-text top"  data-ng-class="{'size1':topText.length <=11, 'size2':(topText.length >11 && topText.length <=20),'size3':topText.length >20}"  data-ng-style="{'color':getColor('top'),'font-family':font}">{{topText}}</div>
-             <div class="immulate-text bottom"   data-ng-class="{'size1':bottomText.length <=11, 'size2':(bottomText.length >11 && bottomText.length <=20),'size3':bottomText.length >20}"  data-ng-style="{'color':getColor('bottom'),'font-family':font}">{{bottomText}}</div>
+
+    <div class="chosenImg top-part" data-ng-show="postImg != ''">
+        <div class="write-meme-wrap">
+            <img id="chosenImg" data-ng-src="{{postImg}}" />
+            <div class="immulate-text top" data-ng-class="{'size1':topText.length <=11, 'size2':(topText.length >11 && topText.length <=20),'size3':topText.length >20}" data-ng-style="{'color':getColor('top'),'font-family':font}">{{topText}}</div>
+            <div class="immulate-text bottom" data-ng-class="{'size1':bottomText.length <=11, 'size2':(bottomText.length >11 && bottomText.length <=20),'size3':bottomText.length >20}" data-ng-style="{'color':getColor('bottom'),'font-family':font}">{{bottomText}}</div>
         </div>
     </div>
     <div style="position: relative">
-                <div class="add-file" data-ng-click="takePicture()" data-ng-show="showSuggestedImages" > 
-			    
-           <div class="plus" style='position: absolute;top: 0;cursor: pointer;z-index: 100;'>
-			
-			
-		    </div>
-		    <div class='add-file-text' >{{imgFileText}}</div>
-		    <div  data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+        <div class="add-file" data-ng-click="takePicture()" data-ng-show="showSuggestedImages">
+
+            <div class="plus" style="position: absolute;top: 0;cursor: pointer;z-index: 100;">
+
+
+            </div>
+            <div class="add-file-text">{{imgFileText}}</div>
+            <div data-ng-show="toLargTextFile==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div>
         </div>
 
 
     </div>
-     
-    <div class="edit-text-wrap"  data-ng-show="true">
+
+    <div class="edit-text-wrap" data-ng-show="true">
         <div class="font">
-             <div class="plus rtl" data-ng-show="false" data-ng-class="{'rtl-active':rtl == true}" data-ng-click="setDirection('rtl')">
-			
-			
-		    </div>
-           <div class="plus ltr" data-ng-show="false" data-ng-class="{'ltr-active':ltr == true}" data-ng-click="setDirection('ltr')">
-			
-			
-		    </div>
+            <div class="plus rtl" data-ng-show="false" data-ng-class="{'rtl-active':rtl == true}" data-ng-click="setDirection('rtl')">
+
+
+            </div>
+            <div class="plus ltr" data-ng-show="false" data-ng-class="{'ltr-active':ltr == true}" data-ng-click="setDirection('ltr')">
+
+
+            </div>
             <div class="file-text" style="margin-right: 0px !important;">
-                <select data-ng-model="font" data-ng-options="font for font in fontOptions" >
-                  <option value="">בחר גופן</option>
+                <select data-ng-model="font" data-ng-options="font for font in fontOptions">
+                    <option value="">בחר גופן</option>
                 </select>
             </div>
         </div>
 
         <div class="text-wrap">
-             <div class="colorpicker-wrap">
-                <div class="square" id="squareTop" data-ng-click="showPaletteTop=!showPaletteTop"  data-ng-style="{'background-color':getColor('top')}"></div>
-                
+            <div class="colorpicker-wrap">
+                <div class="square" id="squareTop" data-ng-click="showPaletteTop=!showPaletteTop" data-ng-style="{'background-color':getColor('top')}"></div>
+
             </div>
             <div class="color-picker-palette" data-ng-show="showPaletteTop">
                 <div class="col" data-ng-repeat="color in paletteColors" data-once-style="{'background-color':color.color}" data-ng-click="setColor('top',color.color);$event.stopPropagation();"></div>
             </div>
-          <div class="file-text"><input placeholder="טקסט עליון"  data-ng-model="topText" data-ng-click="textChange()"/></div>
-            
+            <div class="file-text"><input placeholder="טקסט עליון" data-ng-model="topText" data-ng-click="textChange()" /></div>
+
         </div>
         <div class="text-wrap">
             <div class="colorpicker-wrap">
                 <div class="square" id="squareBottom" data-ng-click="showPaletteBottom=!showPaletteBottom" data-ng-style="{'background-color':getColor('bottom')}"></div>
-                
             </div>
-             <div class="color-picker-palette" data-ng-show="showPaletteBottom">
+            <div class="color-picker-palette" data-ng-show="showPaletteBottom">
                 <div class="col" data-ng-repeat="color in paletteColors" data-once-style="{'background-color':color.color}" data-ng-click="setColor('bottom',color.color);$event.stopPropagation();"></div>
             </div>
-          <div class="file-text"><input placeholder="טקסט תחתון" data-ng-model="bottomText" data-ng-click="textChange()"/></div>
-            
-        </div>
-        
-    
+            <div class="file-text"><input placeholder="טקסט תחתון" data-ng-model="bottomText" data-ng-click="textChange()" /></div>
 
+        </div>
     </div>
     <div class="button shadow-buttons" data-ng-click="createMeme()" data-once-style="{'background-color': featureDetails.featureColor}">צור מם</div>
-    <!--<div style="width: 320px;height: 320px">
-        <img width="" height="" src="" id="img" />
-    </div>-->
-    
+
 </div>
+
+<img src="http://www.galim.org.il/pools/files/GalimGifs/GalimGifPicture/12888.jpg" sb-load="showAll($event)" style="display: none;" /><!--hack- for triggering event of dom loaded-->

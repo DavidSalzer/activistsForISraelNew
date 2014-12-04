@@ -23,8 +23,8 @@ button:focus, input:focus {
 
 
 .end-load-more {
-   margin-top: 20px;
-margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /*.calendar:after {
@@ -125,15 +125,14 @@ tbody .btn.btn-default.btn-sm {
     text-indent: 10px;
     font-size: 10px;
     text-align: left;
-   
 }
 
-tbody .btn.btn-default.btn-sm.benet-event{
+tbody .btn.btn-default.btn-sm.benet-event {
     background-image: url(../../img/calendar_benet.png);
-background-position: 9px 11px;
-background-size: 20px 20px;
-background-repeat: no-repeat;
-background-color: rgb(178, 200, 221);
+    background-position: 9px 11px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-color: rgb(178, 200, 221);
 }
 /*tbody .btn.btn-default.btn-sm.btn-info {
     padding: 4px;
@@ -160,8 +159,7 @@ tbody .btn.btn-default.btn-sm.btn-info:before {
     cursor: pointer;
     position: absolute;
     left: 3px;
-	top: 4px;
-
+    top: 4px;
     width: 20px;
     height: 16px;
     /*-webkit-transform: rotate(-90deg);
@@ -468,8 +466,8 @@ span#displayedDate {
 }
 
 .inner-readmore-event {
-   font-size: 11px;
-font-weight: bold;
+    font-size: 11px;
+    font-weight: bold;
 }
 
 .participation-option-cell.nav-to {
@@ -497,13 +495,14 @@ font-weight: bold;
 
 /*----------event-popup----------*/
 
+
 .event-popup-wrapper {
     z-index: 3;
-    position: fixed;
-    top: 44px;
+    position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .single-event-popup {

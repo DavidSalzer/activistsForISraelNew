@@ -21,8 +21,8 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.user = generalParameters.getUser();
 
     $scope.showAll = function (e) {
-
         $scope.showAll = true;
+        angular.element(event.target).remove();
     }
 
 
@@ -154,7 +154,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                 $scope.convertDate();
             }
             $scope.isPostPending = true;
-            html2canvas(document.getElementById('html2canvas'), {
+            html2canvas(document.getElementById('html2canvaswrite'), {
                 onrendered: function (canvas) {
                     if ($scope.postImg) { $scope.imgObj = canvas.toDataURL("image/png"); }
                     PostService.sendPost($scope.postData, $scope.fileObj, $scope.imgObj, true)

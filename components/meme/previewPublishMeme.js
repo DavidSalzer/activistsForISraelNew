@@ -93,7 +93,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     }
     $scope.publishMeme = function () {
         $scope.thankDetails.thankText = 'המם התקבל ויפורסם בהתאם לכללי האחליקציה';
-        html2canvas(document.getElementById('html2canvas'), {
+        html2canvas(document.getElementById('html2canvasmeme'), {
             onrendered: function (canvas) {
                 $scope.previewBase64 = canvas.toDataURL("image/png");
                 $scope.sendPost();
@@ -107,7 +107,7 @@ socialGroupApp.controller('previewPubMeme', ['$scope', '$rootScope', '$statePara
     }
 
     $scope.saveMeme = function () {
-        html2canvas(document.getElementById('html2canvas'), {
+        html2canvas(document.getElementById('html2canvasmeme'), {
             onrendered: function (canvas) {
                 window.canvas2ImagePlugin.saveImageDataToLibrary(
                 function (msg) {

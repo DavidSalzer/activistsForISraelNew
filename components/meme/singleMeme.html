@@ -5,7 +5,7 @@
     <delete-post data-ng-if="isAdmin"></delete-post>
 
     <div class="single single-element-back" data-ng-if="wait"></div><!-- hack- this element 1.show grey background 2. disappear( kill itself)-->
-    <img class="single" data-ng-src="{{domain+post().img}}" data-ng-hide="wait" sb-load="kill($event)" /><!--this is the real meme-->
+    <img class="single" data-ng-src="{{domain+post().img}}" data-ng-hide="wait"/><!--this is the real meme-->
     <div class="like-section">
         <div class="like-section-icon" data-ng-click="like($index)" data-ng-class="{'like-section-icon-isLike':post().isLiked==true}"></div>
         <div class="like-section-num">
@@ -14,3 +14,5 @@
 
     </div>
 </div>
+<img src="http://www.galim.org.il/pools/files/GalimGifs/GalimGifPicture/12888.jpg" sb-load="kill($event)" style="display: none;" /><!--hack- for triggering event of dom loaded-->
+

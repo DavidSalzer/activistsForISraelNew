@@ -600,12 +600,19 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     $scope.editDone = function () {
         $scope.userImg = $scope.myCroppedImage;
         if ($scope.userImg != '') {
+            html2canvas(document.getElementById('html2canvasprofile'), {
+                onrendered: function (canvas) {
+                    $scope.userImg = canvas.toDataURL("image/png");
+                }
+            });
             $scope.uploadBase64Image();
         }
         $scope.editImg = false;
 
         $scope.userimg = '';
     }
+
+
 
     //change password popup
     $scope.sendNewPassword = function () {

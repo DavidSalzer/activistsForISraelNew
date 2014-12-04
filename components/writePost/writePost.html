@@ -1,8 +1,5 @@
-<link rel="stylesheet" type="text/css" href="./components/article/article.css"   sb-load="showAll($event)" />
-<!--<link rel="stylesheet"  media='screen and (min-width: 900px)' type="text/css" href="{{siteOrigin}}components/article/article.css" />-->
- <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">-->
+<link rel="stylesheet" type="text/css" href="./components/article/article.css"/>
 <link rel="stylesheet" href="./css/bootstrap.min.css">
-<!-- sub header: כתיבת טקסט,סקר -->
 
 <div class="sub-header" data-ng-class="{'site-sub-header':isSiteHeader==true}">
 		<div data-ng-style="{'background-color': '{{featureColor}}'}">
@@ -86,7 +83,7 @@
             </div>
 		
 		<!-- post add img preview-->
-        <div id="html2canvas" >
+        <div id="html2canvaswrite" >
 		<img  data-ng-show="toLargImage==false && postType!='poll'" data-ng-src="{{postImg}}" style='margin: 20px auto 20px auto;display: block'  >
 		</div>
 	
@@ -144,3 +141,4 @@
 
 </div>
 
+<img src="http://www.galim.org.il/pools/files/GalimGifs/GalimGifPicture/12888.jpg" sb-load="showAll($event)" style="display: none;" /><!--hack- for triggering event of dom loaded-->

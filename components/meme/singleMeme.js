@@ -3,6 +3,7 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
     $scope.wait = true;
     $scope.kill = function (event) {
         $scope.wait = false;
+        angular.element(event.target).remove();
     }
 
     $scope.domain = domain + 'medium/';

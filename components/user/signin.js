@@ -145,10 +145,18 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalPa
                 $rootScope.$broadcast('showLoader', { showLoader: false });
             }
         })
-        .error(function (data) {
-            $scope.showSignupError = true;
-            $scope.signupErrorMessage = errorMessages.generalError;
-            $rootScope.$broadcast('showLoader', { showLoader: false });
+
+        .error(function (data, status, headers, config, statusText) {
+            if (status == 409) {
+                $scope.showSignupError = true;
+                $scope.signupErrorMessage = 'המייל שהזנת כבר קיים במערכת';
+                $rootScope.$broadcast('showLoader', { showLoader: false });
+            }
+            else {
+                $scope.showSignupError = true;
+                $scope.signupErrorMessage = errorMessages.generalError;
+                $rootScope.$broadcast('showLoader', { showLoader: false });
+            }
         });
 
         
@@ -159,7 +167,13 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalPa
         
         // $scope.json = JSON.stringify($scope.userImg);
         //var userId = generalParameters.getUser();
-        
+        if ($scope.userImg != '') {
+            html2canvas(document.getElementById('html2canvassignin'), {
+                onrendered: function (canvas) {
+                    $scope.userImg = canvas.toDataURL("image/png");
+                }
+            });
+        }
         $http.post(domain + 'Base64FileUpload?ref=user&_id=' + userId,
             { "base64": $scope.userImg })
             .success(function (data) {
