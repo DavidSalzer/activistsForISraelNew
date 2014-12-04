@@ -239,6 +239,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 break;
             case 'password':
                 $scope.showChangePassword = true;
+                generalParameters.setShowLogin(true);
                 break;
         }
 
@@ -282,14 +283,14 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
     }
 
     $scope.givingScore = function () {
-        
-		if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
+
+        if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
             $rootScope.$broadcast('showInfoPopup', { showInfo: true });
             return;
         }
-		
+
         if (!$scope.userLike) {
-			$scope.userLike = true;
+            $scope.userLike = true;
             queryString = 'addPostActivity';
             request = {
                 activity: {
@@ -301,12 +302,12 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 .then(function (data) {
 
                     /*if (data.status.statusCode == 0) {
-                       $scope.userLike = true; 
+                    $scope.userLike = true; 
                     } */
                 })
         }
         else {
-			$scope.userLike = false;
+            $scope.userLike = false;
             queryString = 'deletePostActivity';
             request = {
                 activity: {
@@ -320,7 +321,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
 
 			.success(function (data) {
 			    /* if (data.status.statusCode == 0) {
-			        $scope.userLike = false;
+			    $scope.userLike = false;
 			    } */
 
 			})
@@ -378,21 +379,21 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":                             
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                             
-                //    break;                             
+                //case "author":                               
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                               
+                //    break;                               
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":                             
-                //    $state.transitionTo('single-event', { postId: args.postId });                             
-                //    break;                             
-                //case "voteToPoll":                             
-                //    $state.transitionTo('poll-view', { postId: args.postId });                             
-                //    break;                             
+                //case "event":                               
+                //    $state.transitionTo('single-event', { postId: args.postId });                               
+                //    break;                               
+                //case "voteToPoll":                               
+                //    $state.transitionTo('poll-view', { postId: args.postId });                               
+                //    break;                               
             }
         }
         else {
@@ -446,7 +447,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
 
         $scope.postId = args.postId;
         $scope.authorId = args.authorId;
-		alert(args.postType)
+        alert(args.postType)
         switch (args.postType) {
             case "article":
                 $state.transitionTo('single-article', { postId: $scope.postId });
@@ -662,8 +663,11 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
 
     $scope.loaded = function () {
         $rootScope.$broadcast('showLoader', { showLoader: false });
-        angular.element(event.target).remove(); 
+        angular.element(event.target).remove();
     }
 
-
+    $scope.closeChangePassword = function () {
+        $scope.showChangePassword = !$scope.showChangePassword;
+        generalParameters.setShowLogin(false);
+    }
 } ])

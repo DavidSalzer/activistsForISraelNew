@@ -24,7 +24,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
-        limit: 20,
+        limit: 50,
         orderBy: 'DestinationTime', //'-timestamp',
         postType: 'event',
         userID: $scope.user._id,
@@ -69,7 +69,7 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
                 return;
             }
             console.log('load more');
-            request.offset += 20;
+            request.offset += 50;
             PostService.setLoadMoreNow(true);
             post = PostService.getPosts();
             request.endTimestamp = post[0].timestamp;
