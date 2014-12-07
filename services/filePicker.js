@@ -27,6 +27,7 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
                                 var encodedData = {};
                                 encodedData.imgData = reader.result; //.replace(/data:image\/jpeg;base64,/, '');
                                 encodedData.fileText = file.name;
+                                encodedData.fileType = file.type;
                                 deferred.resolve(encodedData);
                             });
                         };
@@ -56,8 +57,8 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
                     var encodedData = {};
 
                     encodedData.imgData = fileEntry.toURL();
-                    encodedData.fileText = 'file successfully added';
-
+                    encodedData.fileText = fileEntry.name;
+                    encodedData.fileType = fileEntry.type;
                     fileEntry.file(function (fileEntry) {
                         console.log("Size = " + fileEntry.size);
                         if (fileEntry.size > 4000000) {

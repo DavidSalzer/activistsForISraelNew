@@ -1,9 +1,13 @@
 socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
 
+    /*delay dom building until transition is done*/
+    $scope.buildPage = false;
+    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+
     $scope.wait = true;
     $scope.kill = function (event) {
         $scope.wait = false;
-        angular.element(event.target).remove();
+        //angular.element(event.target).remove();
     }
 
     $scope.domain = domain + 'medium/';
@@ -11,9 +15,7 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
     generalParameters.setBackIcon(true);
     $scope.user = generalParameters.getUser();
     $scope.memeUrl;
-    /*delay dom building until transition is done*/
-    $scope.buildPage = false;
-    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+
 
     /*init controller details*/
     $scope.featureDetails = {
