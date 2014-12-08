@@ -525,7 +525,6 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         loadMainFeatures: function (request) {
             queryString = 'mainfeatures';
 
-            console.log(request);
             classAjax.getdata('get', queryString, request).then(function (data) {
 
                 if (data.status.statusCode == 0) {

@@ -1,4 +1,4 @@
-socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$state', '$http', 'generalParameters', 'PostService', function ($rootScope, $scope, $location, $state, $http, generalParameters, PostService) {
+socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$state', '$http', 'generalParameters', 'PostService', '$timeout', function ($rootScope, $scope, $location, $state, $http, generalParameters, PostService, $timeout) {
 
     $rootScope.siteOrigin = siteOrigin; //origin url of site.
     $rootScope.isAdmin = false;
@@ -105,7 +105,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureColor: "#fa0001"
         },
         {
-           /*  featureUrl: 'facebookBennet/NaftaliBennett', */
+            /*  featureUrl: 'facebookBennet/NaftaliBennett', */
             featureUrl: 'facebookBennet',
             featureName: 'פייסבוק נפתלי',
             featureLogo: "./img/sidebar-facebook-icon.png",
@@ -186,14 +186,20 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
     }
 
     $scope.$on('showInfoPopup', function (event, args) {
-        $scope.showInfo = args.showInfo;
-        generalParameters.setShowLogin($scope.showInfo);
-        $scope.$apply();
+        //$scope.showInfo = args.showInfo;
+        //generalParameters.setShowLogin($scope.showInfo);
+        $timeout(function () {
+            $scope.showInfo = args.showInfo;
+            generalParameters.setShowLogin($scope.showInfo);
+        }, 0);
     });
 
     $scope.$on('showLoader', function (event, args) {
-        $scope.showLoader = args.showLoader;
-        $scope.$apply();
+        //$scope.showLoader = args.showLoader;
+        //$scope.$apply();
+        $timeout(function () {
+            $scope.showLoader = args.showLoader;
+        }, 0);
     });
 
     $scope.share = function () {
@@ -258,8 +264,8 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
 
     PostService.loadMainFeatures();
     $scope.features = PostService.getMainFeatures;
- 
-}]);
+
+} ]);
 
 
 

@@ -1,4 +1,4 @@
-socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', 'generalParameters', function ($rootScope, $scope, $state, $http, generalParameters) {
+socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', 'generalParameters', '$timeout', function ($rootScope, $scope, $state, $http, generalParameters, $timeout) {
     $scope.domain = domain;
     $scope.returnTo = document.URL;
     $scope.showEmailError = false;
@@ -9,7 +9,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     $scope.recoveryCodeServerError = false;
 
     if (localStorage.getItem('user')) {
-        
+
         $state.transitionTo('main-menu');
     }
 
@@ -18,13 +18,19 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     $scope.errorMsg = '';
 
     $scope.$on('showLoginPopup', function (event, args) {
-        $scope.showLogin = args.showLogin;
-        generalParameters.setShowLogin($scope.showLogin);
-        $scope.isForgotPassword = false;
-        $scope.isNewPasswordPage = false;
-        $scope.successPasswordRecovery = false;
-        $scope.$apply();
-        
+        //$scope.showLogin = args.showLogin;
+        //generalParameters.setShowLogin($scope.showLogin);
+        //$scope.isForgotPassword = false;
+        //$scope.isNewPasswordPage = false;
+        //$scope.successPasswordRecovery = false;
+        $timeout(function () {
+            $scope.showLogin = args.showLogin;
+            generalParameters.setShowLogin($scope.showLogin);
+            $scope.isForgotPassword = false;
+            $scope.isNewPasswordPage = false;
+            $scope.successPasswordRecovery = false;
+        }, 0);
+
     });
 
     $scope.closeLoginPopup = function () {
@@ -54,9 +60,9 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
 
         }
 
-        
+
         $scope.json = JSON.stringify($scope.loginDetails);
-        
+
 
         $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.post(domain + 'login/', $scope.json)
@@ -66,7 +72,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             generalParameters.setUser(data.data.user);
             $scope.mail = '';
             $scope.pass = '';
-            
+
             $scope.showLoginError = false;
             //if the current state is "meme" - refresh the feed
             if ($state.is("meme")) {
@@ -76,7 +82,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
             $rootScope.$broadcast('showLoader', { showLoader: false });
         })
         .error(function (data, status, headers, config, statusText) {
-            
+
             if (status == 401 || status == 404) {
                 $scope.loginErrorMessage = 'שם משתמש או סיסמה שגויים';
             }
@@ -93,7 +99,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
 
         //$scope.showLogin = false;
 
-        
+
     }
 
     $scope.facebooklogin = function () {
@@ -108,7 +114,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
     }
 
     $scope.googlelogin = function () {
-        
+
         if (document.location.protocol != 'http:' && document.location.protocol != 'https:') {
             $scope.ref = window.open(domain + 'auth/google', '_blank', 'location=yes');
 
@@ -124,7 +130,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         if (event.url.search('/profile') != -1) {
             $http.get(domain + 'profile/', { withCredentials: true, async: true })
                 .success(function (data) {
-                    
+
                     if (data.data.user != undefined) {
                         generalParameters.setUser(data.data.user);
                     }
@@ -166,7 +172,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
         $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.get(domain + 'forgotPassword/' + $scope.mail)
         .success(function (data) {
-            
+
             if (data.status.statusCode == 0) {
                 $scope.successPasswordRecovery = true;
                 $scope.showForgotPasswordError = false;
@@ -204,14 +210,14 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
 
         }
 
-        
+
         $scope.json = JSON.stringify($scope.newPasswordDetails);
-        
+
 
         $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.post(domain + 'verifyPassCode', $scope.json)
         .success(function (data) {
-            
+
             if (data.status.statusCode == 0) {
                 $scope.isNewPasswordPage = true;
                 $scope.recoveryCodeServerError = false;
@@ -253,14 +259,14 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
 
         }
 
-        
+
         $scope.json = JSON.stringify($scope.newPasswordDetails);
-        
+
 
         $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.put(domain + 'setPassword', $scope.json)
         .success(function (data) {
-            
+
             if (data.status.statusCode == 0) {
                 $scope.showLogin = false;
                 generalParameters.setShowLogin(false);
@@ -268,9 +274,9 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
                 $scope.mail = '';
                 $scope.pass = '';
                 $scope.passErrorInServer = false;
-                
+
             }
-            else{
+            else {
                 $scope.passErrorInServer = true;
                 $scope.passErrorMessage = errorMessages.generalError;
             }
@@ -289,7 +295,7 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
 
 function signinCallback(authResult) {
     if (authResult['status']['signed_in']) {
-        
+
         // Update the app to reflect a signed in user
         // Hide the sign-in button now that the user is authorized, for example:
         document.getElementById('signinButton').setAttribute('style', 'display: none');
@@ -301,7 +307,7 @@ function signinCallback(authResult) {
         //   "user_signed_out" - User is signed-out
         //   "access_denied" - User denied access to your app
         //   "immediate_failed" - Could not automatically log in the user
-        
+
         localStorage.clear('user');
     }
 }
@@ -309,7 +315,7 @@ function signinCallback(authResult) {
 var user;
 
 function getClientData(accessToken) {
-    
+
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET',
