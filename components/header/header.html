@@ -1,6 +1,6 @@
 <header class="navbar navbar-app navbar-absolute-top" data-ng-controller="headerCtrl">
     <div class="info-popup" ng-show="showInfo">
-        <section >
+        <section>
             <span class="info info-close" data-ng-click="showInpoPopUp()"></span>
             <span class="arrow-up"></span>
             <img ng-src="{{featureDetails().featureWhatsUpLogo}}" class="info-img">
@@ -8,50 +8,21 @@
                             {{featureDetails().infoHaeder}}
             </div>
             <p class="main-text" data-ng-bind-html="featureDetails().infoMainText|trustHtml"></p>
-            <!--<figure class="devider-line top-diveder"></figure>-->
             <div id="whatsup-bottom" data-ng-show="user().firstName=='הצטרף לאפליקציה'">
                 <p class="main-text">{{featureDetails().infoSubText}}</p>
                 <div class="join-button" data-ng-click="goToLogin()" style="background:{{featureDetails().featureColor}};">הצטרף</div>
             </div>
-            <!--<figure class="devider-line bottom-devider"></figure>-->
         </section>
         <section class="point-section" data-ng-hide="true">
             <span class="info info-close" data-ng-click="showInpoPopUp()"></span>
             <div id="point-header-text">{{featureDetails().infoHaeder}}</div>
-            <!--<figure class="devider-line point-devider-line"></figure>-->
             <div id="main-point-wrapper">
-                <div class="point-wrapper score-one"data-ng-class="{'point-wrapper-left': $index%2==0, 'point-wrapper-right': $index%2==1}" data-ng-repeat="scoreCategory in receiveScoringRanks track by $index">
+                <div class="point-wrapper score-one" data-ng-class="{'point-wrapper-left': $index%2==0, 'point-wrapper-right': $index%2==1}" data-ng-repeat="scoreCategory in receiveScoringRanks track by $index">
                     <div class="score-image" style="background-color: {{scoreCategory.color}}"><div class="point-plus">+</div><div class="score-height" once-text="scoreCategory.score"><!-- {{scoreCategory.score}} --></div></div>
                     <div class="inner-point-wrapper">
                         <div data-ng-repeat="item in scoreCategory.activities" class="quality-scores quality-scores-left" style="background-image:url({{item.img}})" once-text="item.text"><!-- {{item.text}} --></div>
-                        <!--<div class="quality-scores quality-scores-left" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
-                        <div class="quality-scores quality-scores-left" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>-->
                     </div>
                 </div>
-                <!--<div class="point-wrapper point-wrapper-right score-two">
-                    <div class="score-image"><div class="score-height">1</div><div class="point-plus"></div></div>
-                    <div class="inner-point-wrapper">
-                        <div class="quality-scores quality-scores-right" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
-                        <div class="quality-scores quality-scores-right" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
-                        <div class="quality-scores quality-scores-right" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
-                    </div>
-                </div>
-                <div class="point-wrapper point-wrapper-left score-three">
-                    <div class="score-image"><div class="score-height">1</div><div class="point-plus"></div></div>
-                    <div class="inner-point-wrapper">
-                        <div class="quality-scores quality-scores-left" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
-                        <div class="quality-scores quality-scores-left" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
-                        <div class="quality-scores quality-scores-left" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
-                    </div>
-                </div>
-                <div class="point-wrapper point-wrapper-right score-four">
-                    <div class="score-image"><div class="score-height">1</div><div class="point-plus"></div></div>
-                    <div class="inner-point-wrapper">
-                        <div class="quality-scores quality-scores-right" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
-                        <div class="quality-scores quality-scores-right" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
-                        <div class="quality-scores quality-scores-right" style="background-image:url('../../img/point-icon.jpg')">see youself live</div>
-                    </div>
-                </div>-->
             </div>
         </section>
     </div>
@@ -62,10 +33,10 @@
 
 
     <div class="btn btn-group pull-left" data-ng-hide="backIcon()" data-ng-click="toggle('mainSidebar');closePopups()">
-        <div class ="btn btn-navbar sidebar-toggle">
+        <div class="btn btn-navbar sidebar-toggle">
             <i class="fa fa-bars"></i>
+        </div>
     </div>
-                </div>
     <div class="btn btn-group pull-left" data-ng-show="backIcon()" data-ng-click="back();closePopups()" style="min-width: 57px;">
         <div class="btn-navbar sidebar-toggle">
             <i class="fa fa-reply"></i>
@@ -78,17 +49,4 @@
     <div data-ng-if="showShareBtn" class="btn-group pull-right" data-ng-click="share();">
         <i class="fa share"></i>
     </div>
-
-            <!--<div data-content-for="navbarAction">
-                                                                    <div class="btn btn-navbar">
-                                                                        <div class="btn-group pull-right toggleable-dropdown" active-class="open" id="myDropdown" toggleable>
-                                                                            <button type="button" class="btn btn-default dropdown-toggle" toggle target="myDropdown">
-                                                                                <i class="fa share"></i>
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>-->
-            <!--<div class="loader-zone" data-ng-show="true">
-                                                <div class="fa fa-spinner fa-spin"></div>
-                                            </div>-->
 </header>

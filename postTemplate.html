@@ -7,7 +7,7 @@
         </div>
     </figure>
     <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post._author}}" data-ng-click="userClicked(post._author._id);$event.stopPropagation();" once-text="(post._author.data.firstName)+' '+(post._author.data.lastName)"><!-- {{post._author.data.firstName}} {{post._author.data.lastName}} --></span>
-    <span class="author-date" data-ng-show="showCommentDate!=false" data-once-text="(post.timestamp | date : 'dd.MM.yyyy HH:MM')"><!-- {{post.timestamp | date : 'dd.MM.yyyy HH:MM'}} --></span>
+    <span class="author-date" data-ng-show="showCommentDate!=false" data-once-text="(post.timestamp | date : 'dd.MM.yyyy HH:mm')"><!-- {{post.timestamp | date : 'dd.MM.yyyy HH:MM'}} --></span>
 
     <div class="post-title" data-ng-show="showCommentTitle==true" data-once-text="post.title"><!-- {{post.title}} --></div>
 
