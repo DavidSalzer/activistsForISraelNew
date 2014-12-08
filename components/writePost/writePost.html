@@ -1,113 +1,111 @@
-<link rel="stylesheet" type="text/css" href="./components/article/article.css"/>
+<link rel="stylesheet" type="text/css" href="./components/article/article.css" />
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 
 <div class="sub-header" data-ng-class="{'site-sub-header':isSiteHeader==true}">
-		<div data-ng-style="{'background-color': '{{featureColor}}'}">
+    <div data-ng-style="{'background-color': '{{featureColor}}'}">
 			{{headerText}}
-		</div>
-		<div class="white-line"></div>
-	</div>
+    </div>
+    <div class="white-line"></div>
+</div>
 
 <div class="article-content-wrap main-content-wrap wirte-post-wrapper" data-ng-class="calendarType" data-ng-show="showAll==true">
-    
-	
+
+
     <div class="article-content">
-		
-		<!-- article +event title-->
-        <input data-ng-if='postType=="article" || postType=="event"' type="text" data-ng-class='{"title-field":true,"requieredError":showTitleError}' placeholder="כותרת" data-ng-model="postData.post.title"/>
+
+        <!-- article +event title-->
+        <input data-ng-if="postType=="article" || postType=="event"" type="text" data-ng-class="{"title-field":true,"requieredError":showTitleError}" placeholder="כותרת" data-ng-model="postData.post.title" />
         <!-- poll question-->
-		<input data-ng-if='postType=="poll"' type="text" data-ng-class='{"title-field":true,"requieredError":showPollQuestionError}' placeholder="כתוב שאלה כאן..." data-ng-model="postData.post.title" />
+        <input data-ng-if="postType=="poll"" type="text" data-ng-class="{"title-field":true,"requieredError":showPollQuestionError}" placeholder="כתוב שאלה כאן..." data-ng-model="postData.post.title" />
 
 
-		<!--event time-->
-		<div data-ng-show="postType=='event'" class="my-big-datewrap">
-         <quick-datepicker ng-model="timeDisplay.date" date-format='dd/MM/yy' disable-timepicker='true' class="date-picker-wrapper my-own-date" data-ng-click="closeTime"></quick-datepicker>
-         <div class="show-timepick" id="show-timepick" data-ng-click="showTimePicker = !showTimePicker"></div>
-         <div data-ng-show="showTimePicker" class="my-big-timepick" id="my-big-timepick" >                                        					
-            <timepicker ng-model="timeDisplay.time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
-            <input type="button" class="go-out-time" value="close" data-ng-click="showTimePicker = false">
-            <div class="row" style="text-align: center; color: #000000; display: none;"> 
-            <div class="col-xs-6">
+        <!--event time-->
+        <div data-ng-show="postType=='event'" class="my-big-datewrap">
+            <quick-datepicker ng-model="timeDisplay.date" date-format="dd/MM/yy" disable-timepicker="true" class="date-picker-wrapper my-own-date" data-ng-click="closeTime"></quick-datepicker>
+            <div class="show-timepick" id="show-timepick" data-ng-click="showTimePicker = !showTimePicker"></div>
+            <div data-ng-show="showTimePicker" class="my-big-timepick" id="my-big-timepick">
+                <timepicker ng-model="timeDisplay.time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                <input type="button" class="go-out-time" value="close" data-ng-click="showTimePicker = false">
+                <div class="row" style="text-align: center; color: #000000; display: none;">
+                    <div class="col-xs-6">
                 שינוי שעות:
-                <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
-            </div>
-            <div class="col-xs-6">
+                        <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
+                    </div>
+                    <div class="col-xs-6">
                 שינוי דקות:
-                <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+                        <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+                    </div>
+                </div>
             </div>
-        </div>
-         </div>
-			<div class="small-input-wrap top-input-wrap datepicker-popup-calendar">
+            <div class="small-input-wrap top-input-wrap datepicker-popup-calendar">
                 <p class="side-small-input side-small-input-one">תאריך:</p>
                 <!--<input type="text" placeholder="dd/mm/yy" class="form-control title-field" ng-click="open($event)"  datepicker-popup="{{format}}" ng-model="timeDisplay.date" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />-->
-                 
-                <div data-ng-class='{"title-field":true,"requieredError":showDDMMYYError}' style="color: black;padding-top: 5px;">
+                <div data-ng-class="{"title-field":true,"requieredError":showDDMMYYError}" style="color: black;padding-top: 5px;">
                     {{timeDisplay.date|date : 'dd/MM/yy'}}
                     <div class="placeholder" data-ng-show="!timeDisplay.date">dd/mm/yy</div>
                 </div>
-				<!--<input type="text" placeholder="dd/mm/yy" data-ng-class='{"title-field":true,"requieredError":showDDMMYYError}' value="{{timeDisplay.date|date : 'dd/MM/yy'}}"  />--><!--data-ng-model="timeDisplay.date"-->
-			</div>
-			<div class="small-input-wrap bottom-input-wrap">
+                <!--<input type="text" placeholder="dd/mm/yy" data-ng-class='{"title-field":true,"requieredError":showDDMMYYError}' value="{{timeDisplay.date|date : 'dd/MM/yy'}}"  />--><!--data-ng-model="timeDisplay.date"-->
+            </div>
+            <div class="small-input-wrap bottom-input-wrap">
                 <p class="side-small-input side-small-input-tow">שעה:</p>
-				<div data-ng-class='{"title-field":true,"requieredError":showHHMMError}' style="color: black;padding-top: 5px;">
+                <div data-ng-class="{"title-field":true,"requieredError":showHHMMError}" style="color: black;padding-top: 5px;">
                     {{timeDisplay.time|date : 'shortTime'}}
                     <div class="placeholder" data-ng-show="!timeDisplay.time">hh:mm</div>
                 </div>
-				<!--<input type="text" placeholder="hh:mm" data-ng-class='{"title-field":true,"requieredError":showHHMMError}' value="{{timeDisplay.time|date : 'shortTime'}}" disabled />--><!--data-ng-model="timeDisplay.time"-->
-			</div>
-			<input  type="text" data-ng-class='{"title-field":true,"requieredError":showLocationError}' placeholder="מקום" data-ng-model="postData.post.location" />
-        </div>
-		
-		<!-- post main text area-->
-		<div style="position:relative;border-radius: 10px;">
-			
-			<textarea  data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' char-limit='{{max}}' class="article-text"  data-ng-class='{"requieredError":(showContentError||showContentLongError)}' placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
-			</textarea >
-			<span data-ng-hide='postType=="article" || postType=="event" || postType=="poll"' style='color: #bcccce;position: absolute;bottom: 1px;left: 1px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;' >[{{postData.post.content.length}}/{{max}}]</span>
-			
-			<textarea  data-ng-show='postType=="article" || postType=="event"' class="article-text input-article-text" data-ng-class='{"requieredError":showContentError,"withoutBottom":showContentError}' placeholder="כתוב טקסט" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
-			</textarea >
-			<span data-ng-show='postType=="article" || postType=="event"' class="input-article-span" data-ng-class='{"requieredError":showContentError}' >[{{postData.post.content.length}} תוים]
-			</span>
-			<textarea  data-ng-if="postType=='poll'" class="article-text" data-ng-class='{"requieredError":showpollDescriptionerror}' placeholder="תיאור" data-ng-model="postData.post.content" style='padding: 10px 10px 25px 10px;'>
-			</textarea >
-			
-		</div>
-		
-		<!-- post add img-->
-		
-		 <div class="add-file" style='height: 30px;' data-ng-hide='postType=="poll"' data-ng-click="takePicture()">         
-				<div class="plus" style='position: absolute;top: 0;cursor: pointer;'></div>
-				<div class='add-file-text' >{{imgFileText}}</div>
-				<div  data-ng-show="toLargImage==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div> 
+                <!--<input type="text" placeholder="hh:mm" data-ng-class='{"title-field":true,"requieredError":showHHMMError}' value="{{timeDisplay.time|date : 'shortTime'}}" disabled />--><!--data-ng-model="timeDisplay.time"-->
             </div>
-		
-		<!-- post add img preview-->
-        <div id="html2canvaswrite" >
-		<img  data-ng-show="toLargImage==false && postType!='poll'" data-ng-src="{{postImg}}" style='margin: 20px auto 20px auto;display: block'  >
-        <canvas id="myCanvas" width="canvasLength" height="canvasWidth" style="display: none;">
-		</div>
-	
-		  
-		<div data-ng-if='postType=="event"'>
+            <input type="text" data-ng-class="{"title-field":true,"requieredError":showLocationError}" placeholder="מקום" data-ng-model="postData.post.location" />
+        </div>
 
-			<input  style='margin-top:12px;' type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.email" data-ng-class='{"requieredError":showMailError}'/>
-			<input style='margin-top:12px;' type="text" class="title-field" placeholder="טלפון ליצירת קשר (לא חובה)" data-ng-model="postData.post.phone" data-ng-class='{"requieredError":showPhoneError}'/>
-		</div>	
+        <!-- post main text area-->
+        <div style="position:relative;border-radius: 10px;">
 
-        <input data-ng-if='postType=="poll"' style='margin-top:14px;' type="text" data-ng-class='{"title-field":true}' placeholder="תשובה א'" data-ng-model="voteOptions[0].answer" />
-        <input data-ng-if='postType=="poll"' style='margin-top:14px;' type="text" data-ng-class='{"title-field":true}' placeholder="תשובה ב'" data-ng-model="voteOptions[1].answer" />
-        <input data-ng-if='postType=="poll"' style='margin-top:14px;' type="text" data-ng-class='{"title-field":true}' placeholder="תשובה ג'" data-ng-model="voteOptions[2].answer" />
-        <input data-ng-if='postType=="poll"' style='margin-top:14px;' type="text" data-ng-class='{"title-field":true}' placeholder="תשובה ד'" data-ng-model="voteOptions[3].answer" />
-		
-		<!-- validation msges-->
-		<div style='margin-top:12px;'>
-			<div class="login-error" data-ng-if="showTitleError">* שדה כותרת לא הוזן כראוי</div>
+            <textarea data-ng-hide="postType=="article" || postType=="event" || postType=="poll"" char-limit="{{max}}" class="article-text" data-ng-class="{"requieredError":(showContentError||showContentLongError)}" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style="padding: 10px 10px 25px 10px;">
+            </textarea>
+            <span data-ng-hide="postType=="article" || postType=="event" || postType=="poll"" style="color: #bcccce;position: absolute;bottom: 1px;left: 1px;padding-left: 10px;width: 99%;height: 24px;text-align: left;background-color: hsl(0, 100%, 100%);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">[{{postData.post.content.length}}/{{max}}]</span>
+
+            <textarea data-ng-show="postType=="article" || postType=="event"" class="article-text input-article-text" data-ng-class="{"requieredError":showContentError,"withoutBottom":showContentError}" placeholder="כתוב טקסט" data-ng-model="postData.post.content" style="padding: 10px 10px 25px 10px;">
+            </textarea>
+            <span data-ng-show="postType=="article" || postType=="event"" class="input-article-span" data-ng-class="{"requieredError":showContentError}">[{{postData.post.content.length}} תוים]
+            </span>
+            <textarea data-ng-if="postType=='poll'" class="article-text" data-ng-class="{"requieredError":showpollDescriptionerror}" placeholder="תיאור" data-ng-model="postData.post.content" style="padding: 10px 10px 25px 10px;">
+            </textarea>
+
+        </div>
+
+        <!-- post add img-->
+        <div class="add-file" style="height: 30px;" data-ng-hide="postType=="poll"" data-ng-click="takePicture()">
+            <div class="plus" style="position: absolute;top: 0;cursor: pointer;"></div>
+            <div class="add-file-text">{{imgFileText}}</div>
+            <div data-ng-show="toLargImage==true" class="add-file-error">הודעת שגיאה: הקובץ חייב להיות קטן מ {{imageMax}}MB</div>
+        </div>
+
+        <!-- post add img preview-->
+        <div id="html2canvaswrite">
+            <img data-ng-show="toLargImage==false && postType!='poll'" data-ng-src="{{postImg}}" style="margin: 20px auto 20px auto;display: block">
+            <canvas id="myCanvas" width="canvasLength" height="canvasWidth" style="display: none;">
+        </div>
+
+
+        <div data-ng-if="postType=="event"">
+
+            <input style="margin-top:12px;" type="text" class="title-field" placeholder="מייל ליצירת קשר (לא חובה)" data-ng-model="postData.post.email" data-ng-class="{"requieredError":showMailError}" />
+            <input style="margin-top:12px;" type="text" class="title-field" placeholder="טלפון ליצירת קשר (לא חובה)" data-ng-model="postData.post.phone" data-ng-class="{"requieredError":showPhoneError}" />
+        </div>
+
+        <input data-ng-if="postType=="poll"" style="margin-top:14px;" type="text" data-ng-class="{"title-field":true}" placeholder="תשובה א'" data-ng-model="voteOptions[0].answer" />
+        <input data-ng-if="postType=="poll"" style="margin-top:14px;" type="text" data-ng-class="{"title-field":true}" placeholder="תשובה ב'" data-ng-model="voteOptions[1].answer" />
+        <input data-ng-if="postType=="poll"" style="margin-top:14px;" type="text" data-ng-class="{"title-field":true}" placeholder="תשובה ג'" data-ng-model="voteOptions[2].answer" />
+        <input data-ng-if="postType=="poll"" style="margin-top:14px;" type="text" data-ng-class="{"title-field":true}" placeholder="תשובה ד'" data-ng-model="voteOptions[3].answer" />
+
+        <!-- validation msges-->
+        <div style="margin-top:12px;">
+            <div class="login-error" data-ng-if="showTitleError">* שדה כותרת לא הוזן כראוי</div>
             <div class="login-error" data-ng-if="showContentError">* שדה טקסט לא הוזן כראוי</div>
             <div class="login-error" data-ng-if="showContentLongError">* חרגת ממספר התווים המירבי</div>
-			<div class="login-error" data-ng-if="showDDMMYYError">* שדה תאריך לא הוזן כראוי</div>
-			<div class="login-error" data-ng-if="showHHMMError">* שדה שעה לא הוזן כראוי</div>
-			<div class="login-error" data-ng-if="showLocationError">* שדה מקום לא הוזן כראוי</div>
+            <div class="login-error" data-ng-if="showDDMMYYError">* שדה תאריך לא הוזן כראוי</div>
+            <div class="login-error" data-ng-if="showHHMMError">* שדה שעה לא הוזן כראוי</div>
+            <div class="login-error" data-ng-if="showLocationError">* שדה מקום לא הוזן כראוי</div>
             <div class="login-error" data-ng-if="showPollQuestionError">* שדה שאלת סקר לא הוזן כראוי</div>
             <div class="login-error" data-ng-if="showpollDescriptionerror">* שדה תיאור לא הוזן כראוי</div>
             <div class="login-error" data-ng-if="showPollAnsError">* יש להזין לפחות שתי תשובות אפשריות</div>
@@ -115,30 +113,30 @@
             <div class="login-error" data-ng-if="showPhoneError">* שדה טלפון לא הוזן כראוי</div>
 
             <div class="login-error" data-ng-if="showSendPostError">* {{sendPostError}}</div>
-		</div>
-		<!-- buttons-->
-		<div data-ng-if='postType=="event"' style="height: 76px;">
-   
+        </div>
+        <!-- buttons-->
+        <div data-ng-if="postType=="event"" style="height: 76px;">
 
-			<div data-ng-if='postId == 0' class="confirm-and-clean"> 
-				
-				<div class="button shadow-buttons"  data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">אשר
-				</div>
-				<div class="button shadow-buttons" data-ng-click="cleanDetails()"  data-ng-style="{'background-color': '{{featureColor}}'}">נקה
-				</div>
-			</div>
-			
-			 <div data-ng-if='postId != 0' class="button" data-ng-click="editPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">עדכן
-			</div>
-             <div data-ng-if='postId != 0' class="text-for-delete">למחיקת הארוע צור קשר</div>
-		</div>	
-			
-		
-		
-		<!-- post send button-->
-        <div data-ng-if='postType != "event"' class="button" data-ng-click="sendPost()"  data-ng-style="{'background-color': '{{featureColor}}'}">שלח
-		</div>
-   </div>
+
+            <div data-ng-if="postId == 0" class="confirm-and-clean">
+
+                <div class="button shadow-buttons" data-ng-click="sendPost()" data-ng-style="{'background-color': '{{featureColor}}'}">אשר
+                </div>
+                <div class="button shadow-buttons" data-ng-click="cleanDetails()" data-ng-style="{'background-color': '{{featureColor}}'}">נקה
+                </div>
+            </div>
+
+            <div data-ng-if="postId != 0" class="button" data-ng-click="editPost()" data-ng-style="{'background-color': '{{featureColor}}'}">עדכן
+            </div>
+            <div data-ng-if="postId != 0" class="text-for-delete">למחיקת הארוע צור קשר</div>
+        </div>
+
+
+
+        <!-- post send button-->
+        <div data-ng-if="postType != "event"" class="button" data-ng-click="sendPost()" data-ng-style="{'background-color': '{{featureColor}}'}">שלח
+        </div>
+    </div>
 
 </div>
 

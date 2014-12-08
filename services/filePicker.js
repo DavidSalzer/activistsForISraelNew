@@ -58,13 +58,37 @@ socialGroupApp.factory('filePicker', ['$rootScope', '$q', function ($rootScope, 
 
                     encodedData.imgData = fileEntry.toURL();
                     encodedData.fileText = fileEntry.name;
-                    encodedData.fileType = fileEntry.type;
+
+                    //get file type from name string and return MIME type
+                    var regExp = /(?:\.([^.]+))?$/;
+                    var type = regExp.exec(fileEntry.name)[1];
+                    switch (type) {
+                        case 'png':
+                            encodedData.fileType = "image/png";
+                            break;
+                        case 'jpg':
+                            encodedData.fileType = "image/jpg";
+                            break;
+                        case 'jpeg':
+                            encodedData.fileType = "image/jpeg";
+                            break;
+                        case 'bmp':
+                            encodedData.fileType = "image/bmp";
+                            break;
+                        case 'gif':
+                            encodedData.fileType = "image/gif";
+                            break;
+                        default:
+                            encodedData.fileType = "image/png";
+                    }
+
+
                     fileEntry.file(function (fileEntry) {
                         console.log("Size = " + fileEntry.size);
                         if (fileEntry.size > 4000000) {
                             alert('בחרת תמונה גדולה מידי. עליך לבחור תמונה עד 4MB');
                         }
-                        else{
+                        else {
                             deferred.resolve(encodedData);
                         }
                     });
