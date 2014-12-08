@@ -8,7 +8,8 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.imgFileText = 'צרף תמונה';
     $scope.isSiteHeader = true;
     $scope.timeDisplay = {};
-
+    $scope.canvasWidth = 0; $scope.canvasLength = 0;
+    $scope.canvasReady = false;
     $scope.calendarShown = true;
 
     $scope.timeDisplay.time = 'dfhfgm';
@@ -341,14 +342,27 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
             $scope.imgObj = imageData.imgData;
             $scope.postImg = imageData.imgData; //for preview
             $scope.fileType = imageData.fileType;
-            html2canvas(document.getElementById('html2canvaswrite'), {
-                onrendered: function (canvas) {
-                    if ($scope.postImg) {
-                        $scope.imgObj = canvas.toDataURL($scope.fileType);
-                        $scope.postImg = canvas.toDataURL($scope.fileType); //for preview
-                    }
-                }
-            });
+            if ($scope.postImg) {
+             ////   $scope.canvasWidth = document.getElementById('html2canvaswrite').childNodes[1].height;
+             //   $scope.canvasLength = document.getElementById('html2canvaswrite').childNodes[1].width;
+                var myCanvas = document.getElementById("myCanvas");
+                var canvas = myCanvas.getContext("2d");
+                var img = document.getElementById("html2canvaswrite");
+                canvas.drawImage(img, 0, 0);
+                $scope.imgObj = canvas.toDataURL($scope.fileType);
+                $scope.postImg = canvas.toDataURL($scope.fileType); //for preview
+            }
+
+
+
+            //html2canvas(document.getElementById('html2canvaswrite'), {
+            //    onrendered: function (canvas) {
+            //        if ($scope.postImg) {
+            //            $scope.imgObj = canvas.toDataURL($scope.fileType);
+            //            $scope.postImg = canvas.toDataURL($scope.fileType); //for preview
+            //        }
+            //    }
+            //});
         });
     };
 
