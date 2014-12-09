@@ -1339,26 +1339,122 @@ button {
 
 /************************chat************************/
 
+.sub-header.special-sub-header.chat-sub-header {
+    height: 84px;
+    color: #01a3d4;
+}
 
-.bob:after {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: -15px;
-    border-style: solid;
-    border-width: 11px 15px 11px 0;
-    border-color: transparent #ADB400;
-    display: block;
-    width: 0;
+.chat-sub-header div {
+    color: #ffffff;
+}
+
+.top-side-wrapper {
+    height: 121px;
+    border-bottom: 3px solid #ffffff;
+    overflow: auto;
+    background-color: #d4deec;    
     z-index: 1;
 }
-.bob:before {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    border-radius: 10px;
+
+.chat-background-wrapper {
+    height: 100%;
+    background-color: #d4deec;
+    overflow: auto;
+    padding-bottom: 42px;
+}
+
+.write-comment {
+    color: #01a3d4;
+    font-size: 10px;
+    position: relative;
+    top: 2px;
+}
+
+.bubble-left .bubble-icon {
+    width: 41px;
+    height: 41px;
+    float: left;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("../img/pencil.png");
+}
+
+.bubble-right .bubble-icon {
+    width: 41px;
+    height: 41px;
+    float: right;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("../img/pencil.png");
+}
+
+.bubble-wrapper {
+    position: relative;
+    padding: 0px 12px 0px 12px;
+    margin: 10px 0px 10px 0px;
+}
+
+
+
+.bubble {
+    position: relative;
+    height: auto;
+    min-height: 39px;
+    padding: 13px 12px 12px 12px;
+    background-color: #01a3d4;
+    border-radius: 17px;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+.bubble-left .bubble {
+    margin-left: 61px;
+    border-radius: 17px;
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 15px;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.5);
+}
+
+.bubble-right .bubble {
+    margin-right: 61px;
+    border-radius: 17px;
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 15px;
     background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.5);
+}
+
+.bubble-right .bubble:after {
     content: "";
+    position: absolute;
+    top: 11px;
+    right: -13px;
+    display: block;
+    width: 15px;
+    height: 11px;
+    z-index: 1;
+    background-size: 100% 100%;
+    background-image: url("../img/right-bubble.png");
+    background-repeat:;
+}
+
+.bubble-left .bubble:after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: -13px;
+    display: block;
+    width: 15px;
+    height: 11px;
+    z-index: 1;
+    background-size: 100% 100%;
+    background-image: url("../img/left-bubble.png");
+    background-repeat:;
 }
 
 
