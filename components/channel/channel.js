@@ -1,4 +1,4 @@
-socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', function ($scope, $http, generalParameters) {
+socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', '$timeout', function ($scope, $http, generalParameters, $timeout) {
     $scope.myyou = 'test';
     $scope.player = [];
     //$scope.list='';
@@ -42,18 +42,32 @@ socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', fu
             success(function (data, status, headers, config) {
                 // this callback will be called asynchronously
                 // when the response is available
-                
-                $scope.list = data;
-                $scope.pageToken = data.nextPageToken;
-                $scope.loadMoreFlag = true;
-                
 
-                $scope.items.push.apply($scope.items, $scope.list.items);
-                $scope.getViewCountOfVideos($scope.items, $scope.indexVideo);
+                //$scope.list = data;
+                //$scope.pageToken = data.nextPageToken;
+                //$scope.loadMoreFlag = true;
 
 
-                $scope.$apply();
-                $scope.showSpiner = false;
+                //$scope.items.push.apply($scope.items, $scope.list.items);
+                //$scope.getViewCountOfVideos($scope.items, $scope.indexVideo);
+
+
+                ////if (!$scope.$$phase) {
+                ////    $scope.$apply();
+                ////}
+                //$scope.showSpiner = false;
+
+                $timeout(function () {
+                    $scope.list = data;
+                    $scope.pageToken = data.nextPageToken;
+                    $scope.loadMoreFlag = true;
+
+
+                    $scope.items.push.apply($scope.items, $scope.list.items);
+                    $scope.getViewCountOfVideos($scope.items, $scope.indexVideo);
+
+                    $scope.showSpiner = false;
+                }, 0);
             }).
             error(function (data, status, headers, config) {
                 // called asynchronously if an error occurs
@@ -68,7 +82,7 @@ socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', fu
     $scope.getViewCountOfVideos = function (videosArr, index) {
         $http({ method: 'GET', url: 'https://www.googleapis.com/youtube/v3/videos?id=' + videosArr[index].id.videoId + '&key=' + $scope.key + '&part=statistics' }).
                     success(function (data, status, headers, config) {
-                        
+
                         $scope.laodyoutube(videosArr[index].id.videoId, index);
 
                         //$scope.viewCounts.push(data.items[0].statistics.viewCount);
@@ -76,21 +90,21 @@ socialGroupApp.controller('channel', ['$scope', '$http', 'generalParameters', fu
                             $scope.items[index].statistics = data.items[0].statistics;
                         }
 
-                        
+
                         if (index + 1 < videosArr.length) {
                             $scope.indexVideo++;
                             $scope.getViewCountOfVideos(videosArr, $scope.indexVideo);
                         }
                     }).
                     error(function (data, status, headers, config) {
-                        
+
                         // called asynchronously if an error occurs
                         // or server returns response with an error status.
                     });
     }
 
     $scope.laodyoutube = function (vid, loc) {
-        
+
         if (window.outerWidth < 900) {
             channelWidth = 300;
             channelHeight = 200;

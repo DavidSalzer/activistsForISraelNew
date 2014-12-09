@@ -1,4 +1,4 @@
-socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$state','$http', 'PostService', 'generalParameters','$q',function ($rootScope, $scope, classAjax, $state, $http,PostService, generalParameters,$q) {
+socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$state','$http', 'PostService', 'generalParameters','$q', '$timeout',function ($rootScope, $scope, classAjax, $state, $http,PostService, generalParameters,$q,$timeout) {
 
     /*init variables*/
     $scope.showInput = false;
@@ -122,10 +122,10 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
 
     $scope.userClicked = function (userId) {
         $scope.movePage = true;
-        setTimeout(function () {
-            $scope.$apply(function () {//sdsd
+        $timeout(function () {
+            //$scope.$apply(function () {//sdsd
                 $state.transitionTo('user-profile', { userId: userId });
-            })
+            //})
         }
         , 40);
 

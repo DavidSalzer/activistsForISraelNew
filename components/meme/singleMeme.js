@@ -1,8 +1,8 @@
-socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state) {
+socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', '$timeout', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, $timeout) {
 
     /*delay dom building until transition is done*/
     $scope.buildPage = false;
-    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+    $timeout(function () {  $scope.buildPage = true; }, 0);
 
     $scope.wait = true;
     $scope.kill = function (event) {
@@ -54,7 +54,7 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
             }
             else {//UNLIKE!
                 meme.likesCount--;
-                $scope.$apply();
+                //$scope.$apply();
                 PostService.unLike(meme._id, meme); return;
 
 

@@ -1,9 +1,9 @@
-socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
+socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', '$timeout', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters, $timeout) {
     //   alert('width: '+window.innerWidth+' height: '+window.innerHeight )
     
 	$scope.buildPage = false;
     $rootScope.$broadcast('showLoader', { showLoader: false });
-    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+    $timeout(function () {  $scope.buildPage = true; }, 0);
 		
 	$scope.domain = domain + 'small/';
     $scope.showSpiner = PostService.getSpiner;
@@ -136,7 +136,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 			}
 			else {//UNLIKE!
 				meme.likesCount--;
-				$scope.$apply();
+				//$scope.$apply();
 				PostService.unLike(meme._id, meme);return;
 				
 

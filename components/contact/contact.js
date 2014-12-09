@@ -47,9 +47,9 @@ socialGroupApp.controller('contact', ['$scope', '$rootScope', 'PostService', 'ge
         'NewsLtr': { 'he': 'http://my-t.co.il/view/Cms.aspx?i=1022' }
     };
 
-    $scope.showAll = function (e) {
+    $scope.togglShowAll = function (e) {
         $scope.showAll = true;
-        $scope.$apply();
+        //$scope.$apply();
         angular.element(event.target).remove();
     }
 

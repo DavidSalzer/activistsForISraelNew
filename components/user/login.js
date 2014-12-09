@@ -140,10 +140,16 @@ socialGroupApp.controller('login', ['$rootScope', '$scope', '$state', '$http', '
 
                 })
 
-            $scope.ref.close();
-            $scope.showLogin = false;
-            generalParameters.setShowLogin(false);
-            $scope.$apply();
+            //$scope.ref.close();
+            //$scope.showLogin = false;
+            //generalParameters.setShowLogin(false);
+            //$scope.$apply();
+
+            $timeout(function () {
+                $scope.ref.close();
+                $scope.showLogin = false;
+                generalParameters.setShowLogin(false);
+            }, 0);
 
         }
     }
