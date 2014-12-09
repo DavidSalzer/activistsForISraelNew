@@ -1,10 +1,10 @@
-socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'PostService', 'generalParameters', function ($scope, $state, $stateParams, PostService, generalParameters) {
+socialGroupApp.controller('comments', ['$scope', '$state', '$stateParams', 'PostService', 'generalParameters', '$timeout', function ($scope, $state, $stateParams, PostService, generalParameters, $timeout) {
 
 
     /*delay dom building until transition is done*/
     $scope.buildPage = false;
     //$rootScope.$broadcast('showLoader', { showLoader: true });
-    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 200);
+    $timeout(function () {  $scope.buildPage = true; }, 200);
 
     /*init controller details*/
     $scope.featureDetails = {

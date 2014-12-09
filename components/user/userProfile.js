@@ -1,9 +1,9 @@
-socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'filePicker', function ($rootScope, $scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, filePicker) {
+socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$stateParams', '$http', 'classAjax', 'generalParameters', 'PostService', 'filePicker', '$timeout', function ($rootScope, $scope, $state, $stateParams, $http, classAjax, generalParameters, PostService, filePicker, $timeout) {
 
     /*delay dom building until transition is done*/
     $scope.buildPage = false;
     $rootScope.$broadcast('showLoader', { showLoader: true });
-    setTimeout(function () { $scope.$apply(function () { $scope.buildPage = true; }) }, 0);
+    $timeout(function () { $scope.buildPage = true; }, 0);
 
     $scope.d = 'disabled';
     $scope.datacrop = {};
@@ -381,21 +381,21 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":                                 
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                                 
-                //    break;                                 
+                //case "author":                                  
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                                  
+                //    break;                                  
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":                                 
-                //    $state.transitionTo('single-event', { postId: args.postId });                                 
-                //    break;                                 
-                //case "voteToPoll":                                 
-                //    $state.transitionTo('poll-view', { postId: args.postId });                                 
-                //    break;                                 
+                //case "event":                                  
+                //    $state.transitionTo('single-event', { postId: args.postId });                                  
+                //    break;                                  
+                //case "voteToPoll":                                  
+                //    $state.transitionTo('poll-view', { postId: args.postId });                                  
+                //    break;                                  
             }
         }
         else {
@@ -408,10 +408,10 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             //    })
             //}
             //, 1);
-            setTimeout(function () {
-                $scope.$apply(function () {
-                    $state.transitionTo('user-profile', { userId: activity.user._id });
-                })
+            $timeout(function () {
+                //$scope.$apply(function () {
+                $state.transitionTo('user-profile', { userId: activity.user._id });
+                //})
             }, 40);
         }
     }
@@ -561,12 +561,18 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
         .then(function (imageData) {
             // imageData is your base64-encoded image
             // update some ng-src directive
-            $scope.imgFileText = imageData.fileText;
-            $scope.userimg = imageData.imgData; //"data:image/jpeg;base64," +
-            $scope.myCroppedImage = '';
-            $scope.editImg = true;
-            $scope.$apply();
-            //$scope.croping();
+            //$scope.imgFileText = imageData.fileText;
+            //$scope.userimg = imageData.imgData; //"data:image/jpeg;base64," +
+            //$scope.myCroppedImage = '';
+            //$scope.editImg = true;
+            //$scope.$apply();
+
+            $timeout(function () {
+                $scope.imgFileText = imageData.fileText;
+                $scope.userimg = imageData.imgData; //"data:image/jpeg;base64," +
+                $scope.myCroppedImage = '';
+                $scope.editImg = true;
+            }, 0);
         });
     };
 

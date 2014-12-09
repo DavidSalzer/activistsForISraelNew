@@ -1,4 +1,4 @@
-socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalParameters', 'filePicker', function ($rootScope, $scope, $http, generalParameters, filePicker) {
+socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalParameters', 'filePicker', '$timeout', function ($rootScope, $scope, $http, generalParameters, filePicker, $timeout) {
 
     $scope.showSignIn = false;
     $scope.showFnameError = false;
@@ -42,16 +42,16 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalPa
 
     $scope.$on('showSignInPopup', function (event, args) {
         $scope.showSignIn = args.showSignIn;
-        if(args.showSendConfirm){
+        if (args.showSendConfirm) {
             $scope.showSendConfirmMail = true;
         }
         //$scope.$apply();
         generalParameters.setShowLogin($scope.showSignIn);
-        
+
     });
 
     $scope.sendSignIn = function () {
-        
+
         $scope.showFnameError = $scope.fName == undefined || $scope.fName == '';
         $scope.showLnameError = $scope.lName == undefined || $scope.lName == '';
         $scope.didConfirmTerms = !$scope.showTermsVee;
@@ -100,9 +100,9 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalPa
         //    $scope.signinDetails.address = "כתובת";
         //}
 
-        
+
         $scope.json = JSON.stringify($scope.signinDetails);
-        
+
 
         $rootScope.$broadcast('showLoader', { showLoader: true });
         $http.post(domain + 'signup/', $scope.json)
@@ -113,7 +113,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalPa
 
                 //send image string to be saved at server
                 //if was uploaded
-                
+
                 if ($scope.userImg != '') {
                     $scope.uploadBase64Image(data.data.user._id);
                 }
@@ -131,7 +131,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalPa
                 $scope.phone = '';
                 $scope.address = '';
                 $scope.userImg = '';
-                
+
                 $scope.showSignupError = false;
             }
             else if (data.status.statusCode == 409) {
@@ -159,12 +159,12 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalPa
             }
         });
 
-        
+
     }
 
     //send base64 string to server to be converted to jpg, then save image to current user details. 
     $scope.uploadBase64Image = function (userId) {
-        
+
         // $scope.json = JSON.stringify($scope.userImg);
         //var userId = generalParameters.getUser();
         if ($scope.userImg != '') {
@@ -177,7 +177,7 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalPa
         $http.post(domain + 'Base64FileUpload?ref=user&_id=' + userId,
             { "base64": $scope.userImg })
             .success(function (data) {
-                
+
                 //generalParameters.setUser(data.data.user);
             });
 
@@ -216,11 +216,18 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalPa
         .then(function (imageData) {
             // imageData is your base64-encoded image
             // update some ng-src directive
-            $scope.imgFileText = imageData.fileText;
-            $scope.userimg = imageData.imgData; //"data:image/jpeg;base64," +
-            $scope.myCroppedImage='';
-            $scope.editImg = true;
-            $scope.$apply();
+            //$scope.imgFileText = imageData.fileText;
+            //$scope.userimg = imageData.imgData; //"data:image/jpeg;base64," +
+            //$scope.myCroppedImage = '';
+            //$scope.editImg = true;
+            //$scope.$apply();
+
+            $timeout(function () {
+                $scope.imgFileText = imageData.fileText;
+                $scope.userimg = imageData.imgData; //"data:image/jpeg;base64," +
+                $scope.myCroppedImage = '';
+                $scope.editImg = true;
+            }, 0);
         });
     };
 
@@ -275,11 +282,11 @@ socialGroupApp.controller('signin', ['$rootScope', '$scope', '$http', 'generalPa
                 $scope.showSendConfirmError = false;
                 $rootScope.$broadcast('showThankPage', { thankDetails: $scope.thankDetails, showThankPage: true, isSignin: true });
             }
-            else if(data.status.statusCode == 404){
+            else if (data.status.statusCode == 404) {
                 $scope.showSendConfirmError = true;
                 $scope.sendConfirmErrorMessage = errorMessages.mailNotFound;
             }
-            else if(data.status.statusCode == 2){
+            else if (data.status.statusCode == 2) {
                 $scope.showSendConfirmError = true;
                 $scope.sendConfirmErrorMessage = 'כבר אישרת הצטרפות במייל';
             }
