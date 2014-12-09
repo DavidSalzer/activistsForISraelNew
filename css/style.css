@@ -1339,17 +1339,60 @@ button {
 
 /************************chat************************/
 
+
 .main-chat-header {
     background-color: #01a3d4;
     line-height: 41px;
     border-bottom: 3px solid #ffffff;
-    margin-bottom: 17px;
 }
 
 .right-side-nextchat {
-    padding: 0px 23px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    display: inline-block;
+    margin-left: 108px;
 }
 
+.next-chat-image {
+    width: 96px;
+    height: 82px;
+    background-color: #01a3d4;
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    left: 15px;
+}
+
+.next-chat-image div {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url("../img/chat-later-logo.png");
+    width: 34px;
+    height: 30px;
+    position: absolute;
+    top:  0px;
+    bottom: 0px;
+    right: 0px;
+    left: -10px;
+    margin: auto;
+}
+
+.top-side-nextchat {
+    position: relative;
+    padding: 17px 23px 17px 15px;
+    font-family: 'Open Sans Hebrew';
+}
+
+.next-chat-title {
+    font-size: 13px;
+    color: #01a3d4;
+    line-height: 14px;
+}
+
+.next-chat-text {
+    font-size: 10px;
+    margin-top: 9px;
+    line-height: 11px;
+}
 /************************chat-promo*************************/
 .chat-page {
     width: 100%;
