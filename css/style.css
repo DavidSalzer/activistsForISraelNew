@@ -1340,6 +1340,73 @@ button {
 /************************chat************************/
 
 
+.bob:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -15px;
+    border-style: solid;
+    border-width: 11px 15px 11px 0;
+    border-color: transparent #ADB400;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+.bob:before {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 10px;
+    background-color: #ffffff;
+    content: "";
+}
+
+
+.archive-component-title {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #01a3d4;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.archive-component-text {
+    font-size: 10px;
+}
+
+.archive-component-date {
+    position: absolute;
+    font-size: 8px;
+    bottom: 3px;
+    left: 3px;
+    padding: 2px 4px 2px 4px;
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+}
+
+.archive-title {
+    height: 36px;
+    line-height: 36px;
+    font-size: 15px;
+    color: #004a8e;
+    font-weight: bold;
+    padding-right: 24px;
+}
+
+.archive-component {
+    padding: 12px 12px 12px 106px;
+    margin: 0px 12px 12px 12px;
+    background-repeat: no-repeat;
+    background-image: url("../img/zilber.png");
+    height: 88px;
+    background-color: #ffffff;
+    background-position: 3px 3px;
+    background-size: 96px 82px;
+    position: relative;
+}
+
 .main-chat-header {
     background-color: #01a3d4;
     line-height: 41px;
@@ -1369,7 +1436,7 @@ button {
     width: 34px;
     height: 30px;
     position: absolute;
-    top:  0px;
+    top: 0px;
     bottom: 0px;
     right: 0px;
     left: -10px;
@@ -1380,6 +1447,8 @@ button {
     position: relative;
     padding: 17px 23px 17px 15px;
     font-family: 'Open Sans Hebrew';
+    background-color: #ecf8ff;
+    border-bottom: 3px solid #ffffff;
 }
 
 .next-chat-title {
