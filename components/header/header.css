@@ -39,13 +39,13 @@
 .info-close {
     background-image: url(../../img/information-x.png);
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center;
+    background-size: 50% 50%;
+    background-position: right 1px;
     /*color: #fff;
     background-color: #000000;*/
     display: block;
-    width: 25px;
-    height: 25px;
+    width: 50px;
+    height:50px;
     line-height: 17px;
     text-align: center;
     border-radius: 20px;

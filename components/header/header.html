@@ -32,7 +32,7 @@
     </div>
 
 
-    <div class="btn btn-group pull-left" data-ng-hide="backIcon()" data-ng-click="toggle('mainSidebar');closePopups()">
+    <div class="btn btn-group pull-left" data-ng-hide="backIcon()" data-ng-click="toggleMenu($event);closePopups();$event.stopPropagation();">
         <div class="btn btn-navbar sidebar-toggle">
             <i class="fa fa-bars"></i>
         </div>
