@@ -388,7 +388,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     }
                     else {//UNLIKE!
                         scope.post.likesCount--;
-                        scope.$apply();
+                        //scope.$apply();
 						PostService.unLike(scope.post._id, scope.post); 
 					   
 
@@ -429,9 +429,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     if ($scope.longPress) {
                         // If the touchend event hasn't fired,
                         // apply the function given in on the element's on-long-press attribute
-                        $scope.$apply(function () {
+                        //$scope.$apply(function () {
                             $scope.$eval($attrs.onLongPress)
-                        });
+                        //});
                     }
                 }, 600);
             });
@@ -442,9 +442,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 $scope.longPress = false;
                 // If there is an on-touch-end function attached to this element, apply it
                 if ($attrs.onTouchEnd) {
-                    $scope.$apply(function () {
+                    //$scope.$apply(function () {
                         $scope.$eval($attrs.onTouchEnd)
-                    });
+                    //});
                 }
             });
         }

@@ -1,5 +1,5 @@
 
-socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', 'filePicker', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, filePicker) {
+socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', 'filePicker', '$timeout', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, filePicker, $timeout) {
 
     $scope.domain = domain;
     /*init variables*/
@@ -102,8 +102,12 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
         console.log(index);
         // $scope.suggestedMemes =
         try {
-            $scope.postImg = $scope.localMemeImages[index].url;
-            $scope.$apply()
+            //$scope.postImg = $scope.localMemeImages[index].url;
+            //$scope.$apply()
+
+            $timeout(function () {
+                $scope.postImg = $scope.localMemeImages[index].url;
+            }, 0);
         }
         catch (e) {
             alert('error on imageClick: ' + e.Message);
@@ -126,7 +130,7 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
 
     $scope.createMeme = function () {
         if ($scope.postImg.length > 0) {
-            $scope.$apply();
+            //$scope.$apply();
             $rootScope.$broadcast('showLoader', { showLoader: true });
             PostService.setPreviewMeme({ img: $scope.postImg, top: $scope.topText, bottom: $scope.bottomText, rgbTop: $scope.topRgb, rgbBottom: $scope.bottomRgb, font: $scope.font });
             $state.transitionTo('meme-preview');
@@ -171,9 +175,14 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
     document.getElementById('write-meme-wrap').addEventListener('click', function (e) {
         //if the click was NOT on the color picker- close the color pickers
         if (e.target.id != "squareTop" && e.target.id != "squareBottom") {
-            $scope.showPaletteTop = false;
-            $scope.showPaletteBottom = false;
-            $scope.$apply()
+            //$scope.showPaletteTop = false;
+            //$scope.showPaletteBottom = false;
+            //$scope.$apply()
+
+            $timeout(function () {
+                $scope.showPaletteTop = false;
+                $scope.showPaletteBottom = false;
+            }, 0);
         }
 
     }, false);
@@ -186,8 +195,12 @@ socialGroupApp.controller('writeMeme', ['$scope', '$rootScope', '$stateParams', 
             $scope.imgFileText = imageData.fileText;
             $scope.showSuggestedImages = false;
             try {
-                $scope.postImg = imageData.imgData; //"data:image/jpeg;base64," +
-                $scope.$apply()
+                //$scope.postImg = imageData.imgData; //"data:image/jpeg;base64," +
+                //$scope.$apply()
+
+                $timeout(function () {
+                    $scope.postImg = imageData.imgData; //"data:image/jpeg;base64," +
+                }, 0);
             }
             catch (e) {
                 alert('error on imageClick: ' + e.Message);

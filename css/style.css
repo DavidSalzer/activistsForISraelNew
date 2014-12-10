@@ -1336,6 +1336,347 @@ button {
 }
 
 
+
+/************************chat************************/
+
+.sub-header.special-sub-header.chat-sub-header {
+    height: 84px;
+    color: #01a3d4;
+}
+
+.chat-sub-header div {
+    color: #ffffff;
+}
+
+.top-side-wrapper {
+    height: 121px;
+    border-bottom: 3px solid #ffffff;
+    overflow: auto;
+    background-color: #d4deec;    
+    z-index: 1;
+}
+
+.chat-background-wrapper {
+    height: 100%;
+    background-color: #d4deec;
+    overflow: auto;
+    padding-bottom: 42px;
+}
+
+.write-comment {
+    color: #01a3d4;
+    font-size: 10px;
+    position: relative;
+    top: 2px;
+}
+
+.bubble-left .bubble-icon {
+    width: 41px;
+    height: 41px;
+    float: left;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("../img/pencil.png");
+}
+
+.bubble-right .bubble-icon {
+    width: 41px;
+    height: 41px;
+    float: right;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("../img/pencil.png");
+}
+
+.bubble-wrapper {
+    position: relative;
+    padding: 0px 12px 0px 12px;
+    margin: 10px 0px 10px 0px;
+}
+
+
+
+.bubble {
+    position: relative;
+    height: auto;
+    min-height: 39px;
+    padding: 13px 12px 12px 12px;
+    background-color: #01a3d4;
+    border-radius: 17px;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+.bubble-left .bubble {
+    margin-left: 61px;
+    border-radius: 17px;
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 15px;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.5);
+}
+
+.bubble-right .bubble {
+    margin-right: 61px;
+    border-radius: 17px;
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 15px;
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.5);
+}
+
+.bubble-right .bubble:after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    right: -13px;
+    display: block;
+    width: 15px;
+    height: 11px;
+    z-index: 1;
+    background-size: 100% 100%;
+    background-image: url("../img/right-bubble.png");
+    background-repeat:;
+}
+
+.bubble-left .bubble:after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: -13px;
+    display: block;
+    width: 15px;
+    height: 11px;
+    z-index: 1;
+    background-size: 100% 100%;
+    background-image: url("../img/left-bubble.png");
+    background-repeat:;
+}
+
+
+.archive-component-title {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #01a3d4;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.archive-component-text {
+    font-size: 10px;
+}
+
+.archive-component-date {
+    position: absolute;
+    font-size: 8px;
+    bottom: 3px;
+    left: 3px;
+    padding: 2px 4px 2px 4px;
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+}
+
+.archive-title {
+    height: 36px;
+    line-height: 36px;
+    font-size: 15px;
+    color: #004a8e;
+    font-weight: bold;
+    padding-right: 24px;
+}
+
+.archive-component {
+    padding: 12px 12px 12px 106px;
+    margin: 0px 12px 12px 12px;
+    background-repeat: no-repeat;
+    background-image: url("../img/zilber.png");
+    height: 88px;
+    background-color: #ffffff;
+    background-position: 3px 3px;
+    background-size: 96px 82px;
+    position: relative;
+}
+
+.main-chat-header {
+    background-color: #01a3d4;
+    line-height: 41px;
+    border-bottom: 3px solid #ffffff;
+}
+
+.right-side-nextchat {
+    padding: 0px 0px 0px 0px;
+    display: inline-block;
+    margin-left: 108px;
+}
+
+.next-chat-image {
+    width: 96px;
+    height: 82px;
+    background-color: #01a3d4;
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    left: 15px;
+}
+
+.next-chat-image div {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url("../img/chat-later-logo.png");
+    width: 34px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: -10px;
+    margin: auto;
+}
+
+.top-side-nextchat {
+    position: relative;
+    padding: 17px 23px 17px 15px;
+    font-family: 'Open Sans Hebrew';
+    background-color: #ecf8ff;
+    border-bottom: 3px solid #ffffff;
+}
+
+.next-chat-title {
+    font-size: 13px;
+    color: #01a3d4;
+    line-height: 14px;
+}
+
+.next-chat-text {
+    font-size: 10px;
+    margin-top: 9px;
+    line-height: 11px;
+}
+/************************chat-promo*************************/
+.chat-page {
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    position: relative;
+}
+
+.chat-header {
+    width: 100%;
+    height: 50px;
+    background-color: #ffd800;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+}
+
+.chat-external-background {
+    background-color: #ecf8ff;
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box;
+    padding: 18px 18px 18px 18px;
+    /*z-index: 2;
+        position: absolute;
+        top: 95px;*/
+    position: relative;
+}
+
+.chat-background {
+    background-color: white;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+.chat-title {
+    text-align: center;
+    font-size: 70px;
+    color: #2f343b;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.chat-details {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    font-size: 25px;
+    margin-bottom: 1px;
+}
+
+.chat-image {
+    margin: auto;
+    background-image: url('../img/sgin_thankyou.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 112px;
+    height: 112px;
+    margin-top: 22px;
+}
+
+
+
+.chat-return-btn {
+    background-color: #42484e;
+    height: 50px;
+    width: 252px;
+    margin: 25px auto 0px auto;
+    border-radius: 10px;
+    display: block;
+    color: white;
+    border: 0;
+    font-size: 30px;
+}
+
+
+.center-text-wrapper {
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    /* margin: auto; */
+    -webkit-box-sizing: border-box;
+    width: 100%;
+}
+
+@media only screen and ( max-width: 479px ) {
+    .chat-title {
+        font-size: 50px;
+    }
+
+    .chat-details {
+        font-size: 14px;
+    }
+
+    .center-text-wrapper {
+        height: 352px;
+    }
+
+    .chat-return-btn {
+        height: 32px;
+        font-size: 15px;
+    }
+}
+
+
+
+
+
+
+
 /********************************points******************************/
 
 .brother-types {

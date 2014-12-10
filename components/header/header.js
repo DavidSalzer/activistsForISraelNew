@@ -262,6 +262,23 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         generalParameters.setShowLogin(false);
     }
 
+    $scope.toggleMenu = function ($event) {
+        $("body").toggleClass("sidebar-left-in");
+        $event.preventDefault();
+        $event.stopPropagation();
+        return false;
+
+    }
+    $("body").on("click", function ($event) {
+        if ($("body").hasClass("sidebar-left-in")) {
+            $("body").removeClass("sidebar-left-in")
+        }
+        $event.preventDefault();
+        $event.stopPropagation();
+        return false;
+    });
+
+
     PostService.loadMainFeatures();
     $scope.features = PostService.getMainFeatures;
 

@@ -47,21 +47,21 @@
 }
 
 .close-sign-in {
-    background-image: url(../../img/information-x.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
-    display: block;
-    width: 22px;
-    height: 22px;
-    line-height: 15px;
-    text-align: center;
-    border-radius: 10px;
-    font-weight: 500;
-    font-size: 1.2em;
-    cursor: pointer;
-    margin: 10px 7px 0px 0px;
-    opacity: 1 !important;
+   background-image: url(../../img/information-x.png);
+background-repeat: no-repeat;
+background-position: right 1px;
+background-size: 50% 50%;
+display: block;
+width: 44px;
+height: 44px;
+line-height: 15px;
+text-align: center;
+border-radius: 10px;
+font-weight: 500;
+font-size: 1.2em;
+cursor: pointer;
+margin: 10px 7px 0px 0px;
+opacity: 1 !important;
 }
 
 .close-sign-in.close:hover {

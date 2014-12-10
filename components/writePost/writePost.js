@@ -1,4 +1,4 @@
-socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', '$window', '$filter', 'filePicker', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, $window, $filter, filePicker) {
+socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 'PostService', 'generalParameters', '$state', '$window', '$filter', 'filePicker', '$timeout', function ($scope, $rootScope, $stateParams, PostService, generalParameters, $state, $window, $filter, filePicker, $timeout) {
 
     /*init variables*/
     generalParameters.setBackIcon(true);
@@ -357,8 +357,12 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
 
     document.getElementById('main-view').addEventListener('click', function (e) {
         if (e.target.id != "show-timepick") {
-            $scope.showTimePicker = false;
-            $scope.$apply()
+            //$scope.showTimePicker = false;
+            //$scope.$apply()
+
+            $timeout(function () {
+                $scope.showTimePicker = false;
+            }, 0);
         }
 
     });
