@@ -3,10 +3,10 @@
     <div class="meme-dummy" id="dummy"></div>
 	
 	<!-- this element 1.show grey background 2.request the img from server 3. disappear( kill itself)-->
-	<img class="meme-element-back"  data-once-src="domain+post.img" sb-load="kill($event)">
+	<img class="meme-element-back" data-once-src="domain+post.img" sb-load="kill($event)">
 	
 	<!-- this element is the real meme-->
-	<div class="meme-element"  data-once-style="{'background-image': 'url('+domain+post.img+')'}" id="element"   data-ng-click="memeClick(post._id);$event.stopPropagation();" ></div>
+	<div class="meme-element"  data-once-style="{'background-image': 'url('+domain+post.img+')'}" id="element" data-ng-click="memeClick(post._id);$event.stopPropagation();" ></div>
     
 	<div class="meme-like" data-ng-click='like($index);$event.stopPropagation();'>
         <div class="opacity"></div>
