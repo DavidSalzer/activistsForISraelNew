@@ -84,7 +84,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureColor: "#f55c06"
         },
         {
-            featureUrl: 'chat',
+            featureUrl: 'chatPromo',
             featureName: "צ'אט חי",
             featureLogo: "./img/sidebar-chat-icon.png",
             featureStyleName: 'chat',

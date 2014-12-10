@@ -222,8 +222,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        .state('chat', {
-            url: "/chat",
+        .state('chatPromo', {
+            url: "/chatPromo",
             views: {
                 "main": {
                     templateUrl: "./components/chat/chatPromo.html",
