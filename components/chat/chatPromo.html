@@ -1,0 +1,129 @@
+<div class="chat-page">
+    <div class="white-line chat-white sub-header"></div>
+    <div class="chat-external-background">
+        <div class="chat-background">
+            <div class="center-text-wrapper">
+                <div class="chat-image"></div>
+                <input type="button" class="chat-return-btn" value="צ'אט חי" style="cursor: default;" data-ng-style="{'background-color': featureDetails.featureColor}">
+                <div class="chat-title" data-ng-style="{'color': featureDetails.featureColor}">בקרוב!</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+        .chat-page {
+        width: 100%;
+        height: 100%;
+        z-index: 4;
+        position: relative;
+    }
+    
+    .chat-header {
+        width: 100%;
+        height: 50px;
+        background-color: #ffd800;
+        line-height: 50px;
+        text-align: center;
+        color: white;
+    }
+    
+    .chat-external-background {
+        background-color: #ecf8ff;
+        width: 100%;
+        height: 100%;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box; /* Firefox, other Gecko */
+        box-sizing: border-box;
+        padding: 18px 18px 18px 18px;
+        /*z-index: 2;
+        position: absolute;
+        top: 95px;*/
+        position: relative;
+    }
+    
+    .chat-background {
+        background-color: white;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+    }
+    
+    .chat-title {
+        text-align: center;
+        font-size: 70px;
+        color: #2f343b;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    
+    .chat-details {
+        text-align: center;
+        width: 50%;
+        margin: auto;
+        font-size: 25px;
+        margin-bottom: 1px;
+    }
+    
+    .chat-image {
+        margin: auto;
+        background-image: url('./img/sgin_thankyou.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 112px;
+        height: 112px;
+        margin-top: 22px;
+    }
+    
+    
+    
+    .chat-return-btn {
+        background-color: #42484e;
+        height: 50px;
+        width: 252px;
+        margin: 25px auto 0px auto;
+        border-radius: 10px;
+        display: block;
+        color: white;
+        border: 0;
+        font-size: 30px;
+    }
+    
+    
+    .center-text-wrapper {
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        /* margin: auto; */
+        -webkit-box-sizing: border-box;
+        width: 100%;
+    }
+    
+    @media only screen and ( max-width: 479px ) {
+        .chat-title {
+            font-size: 50px;
+        }
+    
+        .chat-details {
+            font-size: 14px;
+        }
+    
+        .center-text-wrapper {
+            height: 352px;
+        }
+    
+        .chat-return-btn {
+            height: 32px;
+            font-size: 15px;
+        }
+    }
+    
+    
+    
+</style>
