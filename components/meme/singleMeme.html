@@ -1,15 +1,14 @@
 <link rel="stylesheet" type="text/css" href="./components/meme/meme.css" />
 <link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/meme/meme.css" />
 <div class="single-meme" data-ng-if="buildPage"><!--buildPage is a hack for faster page transition-->
-    <author-header data-ng-repeat="post in [post()]"></author-header>
-    <delete-post data-ng-if="isAdmin"></delete-post>
+    <author-header data-ng-repeat="post in [post]"></author-header>
 
     <div class="single single-element-back" data-ng-if="wait"></div><!-- hack- this element 1.show grey background 2. disappear( kill itself)-->
-    <img class="single" data-ng-src="{{domain+post().img}}" data-ng-hide="wait" sb-load="kill($event)" /><!--this is the real meme-->
+    <img class="single" data-ng-src="{{domain+post.img}}" data-ng-hide="wait" sb-load="kill($event)" /><!--this is the real meme-->
     <div class="like-section">
-        <div class="like-section-icon" data-ng-click="like($index)" data-ng-class="{'like-section-icon-isLike':post().isLiked==true}"></div>
+        <div class="like-section-icon" data-ng-click="like($index)" data-ng-class="{'like-section-icon-isLike':post.isLiked==true}"></div>
         <div class="like-section-num">
- {{post().likesCount || 0}}
+ {{post.likesCount || 0}}
         </div>
 
     </div>

@@ -277,7 +277,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var pollTemplate = 'pollTemplate.html';
             var voteToPollTemplate = 'voteToPollTemplate.html';
 
-            
+            if(scope.post){
             switch (scope.post.postType) {
                 case 'talkback':
                     template = talkbackTemplate;
@@ -308,6 +308,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 case undefined:
                     template = authorsTemplate;
                     break;
+            }
             }
 
             return template;

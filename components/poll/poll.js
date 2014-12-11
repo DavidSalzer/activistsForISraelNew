@@ -1,4 +1,4 @@
-socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'PostService', 'generalParameters', function ($rootScope, $scope, $http, $state, PostService, generalParameters) {
+socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'PostService', 'generalParameters', '$timeout', function ($rootScope, $scope, $http, $state, PostService, generalParameters, $timeout) {
 
 
     $scope.currentPoll = null;
@@ -35,9 +35,14 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
 
     /*init controller data*/
    // PostService.killAjax();
-    PostService.getPostsBatch(request); //tell service to refresh posts
-    console.log("get polllllllllllll");
-    $scope.polls = PostService.getPosts; //ask service for polls
+   PostService.getPostsBatch(request)
+    .then(function (data) {
+        $timeout(function () {
+            $scope.polls = PostService.getPosts();
+        }
+        , 0);
+    })
+    
 
     $scope.userClicked = function (pollIndex) {
         console.log(pollIndex);
@@ -56,7 +61,13 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
         request.endTimestamp = '';
         request.offset = 0;
         request.pollStatus = 'active';
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request)
+        .then(function (data) {
+            $timeout(function () {
+                $scope.polls = PostService.getPosts();
+            }
+            , 0);
+        })
         //$scope.polls = PostService.getPosts;
         //console.log($scope.polls);
     }
@@ -65,7 +76,13 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
         request.endTimestamp = '';
         request.offset = 0;
         request.pollStatus = 'inactive';
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request)
+        .then(function (data) {
+            $timeout(function () {
+                $scope.polls = PostService.getPosts();
+            }
+            , 0);
+        })
         //$scope.polls = PostService.getPosts;
         //console.log($scope.polls);
     }
@@ -93,7 +110,13 @@ socialGroupApp.controller('poll', ['$rootScope', '$scope', '$http', '$state', 'P
             PostService.setLoadMoreNow(true);
             post = PostService.getPosts();
             request.endTimestamp = post[0].timestamp;
-            PostService.getPostsBatch(request);
+            PostService.getPostsBatch(request)
+            .then(function (data) {
+                $timeout(function () {
+                    $scope.polls = PostService.getPosts();
+                }
+                , 0);
+            })
         }
     }
 

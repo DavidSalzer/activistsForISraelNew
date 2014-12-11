@@ -14,7 +14,7 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
     /*init variables*/
     generalParameters.setBackIcon(true);
     $scope.user = generalParameters.getUser();
-    $scope.memeUrl;
+    //$scope.memeUrl;
 
 
     /*init controller details*/
@@ -30,9 +30,14 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
     generalParameters.setFeature($scope.featureDetails);
 
     //PostService.getMemesImages(request);
-    PostService.getPostById($stateParams.postId);
-    $scope.post = PostService.getSinglePost;
-    $scope.memeUrl = $scope.post.img;
+    PostService.getPostById($stateParams.postId)
+    .then(function (data) {
+        $timeout(function () {
+            $scope.post = PostService.getSinglePost();
+        }
+        , 0);
+    });
+    //$scope.memeUrl = $scope.post.img;
     //  console.log($stateParams.index);
     // $scope.memeUrl = $scope.memeImages[$stateParams.index].url;
 
@@ -43,7 +48,7 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
             $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return;
         }
         else {
-            var meme = $scope.post();
+            var meme = $scope.post;
             meme.isLiked = !meme.isLiked;
 
             if (meme.isLiked == true) {//LIKE!

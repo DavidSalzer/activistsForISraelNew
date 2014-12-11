@@ -1,4 +1,4 @@
-socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$state','$http', 'PostService', 'generalParameters','$q', '$timeout',function ($rootScope, $scope, classAjax, $state, $http,PostService, generalParameters,$q,$timeout) {
+socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$state', '$http', 'PostService', 'generalParameters', '$q', '$timeout', function ($rootScope, $scope, classAjax, $state, $http, PostService, generalParameters, $q, $timeout) {
 
     /*init variables*/
     $scope.showInput = false;
@@ -39,8 +39,13 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         //userID: $scope.user._id,
         _parentID: ''
     };
-    PostService.getPostsBatch(request); //tell service to refresh posts
-    $scope.posts = PostService.getPosts; //ask service for posts
+    PostService.getPostsBatch(request)
+    .then(function (data) {
+        $timeout(function () {
+            $scope.posts = PostService.getPosts();
+        }
+        , 0);
+    })
     $scope.isLiked = PostService.getIsLike;
 
 
@@ -79,7 +84,13 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         request.endTimestamp = '';
         request.orderBy = '-timestamp';
         request.offset = 0;
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request)
+        .then(function (data) {
+            $timeout(function () {
+                $scope.posts = PostService.getPosts();
+            }
+        , 0);
+        });
     }
 
     $scope.getPostsByFavorite = function () {
@@ -87,7 +98,13 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         request.startTimestamp = timeSubstruct;
         request.endTimestamp = '';
         request.offset = 0;
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request)
+        .then(function (data) {
+            $timeout(function () {
+                $scope.posts = PostService.getPosts();
+            }
+        , 0);
+        });
     }
 
     $scope.getPostsByComments = function () {
@@ -95,7 +112,13 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         request.startTimestamp = timeSubstruct;
         request.endTimestamp = '';
         request.offset = 0;
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request)
+        .then(function (data) {
+            $timeout(function () {
+                $scope.posts = PostService.getPosts();
+            }
+        , 0);
+        }); ;
     }
 
     //$scope.callAjaxPosts = $q.defer();
@@ -116,7 +139,13 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
             request.offset += 50;
             post = PostService.getPosts();
             request.endTimestamp = post[0].timestamp;
-            PostService.getPostsBatch(request);
+            PostService.getPostsBatch(request)
+            .then(function (data) {
+                $timeout(function () {
+                    $scope.posts = PostService.getPosts();
+                }
+                , 0);
+            }); ;
         }
     }
 
@@ -124,7 +153,7 @@ socialGroupApp.controller('talkback', ['$rootScope', '$scope', 'classAjax', '$st
         $scope.movePage = true;
         $timeout(function () {
             //$scope.$apply(function () {//sdsd
-                $state.transitionTo('user-profile', { userId: userId });
+            $state.transitionTo('user-profile', { userId: userId });
             //})
         }
         , 40);
