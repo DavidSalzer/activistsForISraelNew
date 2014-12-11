@@ -1,4 +1,4 @@
-socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classAjax', 'generalParameters', 'PostService', function ($rootScope, $scope, $state, classAjax, generalParameters, PostService) {
+socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classAjax', 'generalParameters', 'PostService', '$timeout', function ($rootScope, $scope, $state, classAjax, generalParameters, PostService, $timeout) {
 
     var exitFlag = false;
      
@@ -33,8 +33,14 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
         limit: 2,
     };
 
-    PostService.loadMainFeatures(request);
-    $scope.features = PostService.getMainFeatures;
+    PostService.loadMainFeatures(request)
+    .then(function (data) {
+        $timeout(function () {
+            $scope.features = PostService.getMainFeatures();
+        }
+        , 0);
+    })
+    
 
     $scope.goToFromeDemand = function (frome) {
         userProfile = generalParameters.getUser;

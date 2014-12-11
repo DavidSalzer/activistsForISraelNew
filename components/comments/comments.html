@@ -2,13 +2,13 @@
 
 <div class="comment-container" scroller loading-method="loadMore()" data-ng-if="buildPage">
     <section class="comment-main-post">
-        <post data-post-type="talkback" data-ng-repeat="post in [post()]" data-ng-init="showReadMoreButton=false"></post>
+        <post data-post-type="talkback" data-ng-repeat="post in [post]" data-ng-init="showReadMoreButton=false"></post>
     </section>
     <div class="between-border-comments"></div>
     <section class="comments">
-        <post data-ng-repeat="post in comments()" data-post-type="comment" data-ng-init="showCommentButton=false"></post>
+        <post data-ng-repeat="post in comments" data-post-type="comment" data-ng-init="showCommentButton=false"></post>
         <div class="spiner-zone" data-ng-show="showSpiner()">
-            <div class="loader" data-ng-class="{'general-loader':!post()}" ></div>
+            <div class="loader" data-ng-class="{'general-loader':!post}" ></div>
         </div>
 		<div class="end-load-more" data-ng-if="showendloader == true">
 			<img alt="end" src="./img/end_feed.png"/>

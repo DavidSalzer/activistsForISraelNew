@@ -32,6 +32,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         //get posts by parameters from server and set in posts array.
         getPostsBatch: function (request) {
 
+            //var deferred = $q.defer();
+
             self = this;
 
             if (request.orderBy != '-timestamp') {
@@ -59,7 +61,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
             if (callAjaxPosts) {
                 callAjaxPosts.resolve();
-                console.log("killlllllllllllllllll" + callAjaxPosts);
+                //console.log("killlllllllllllllllll" + callAjaxPosts);
             }
             callAjaxPosts = $q.defer();
 
@@ -104,7 +106,8 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                         posts[j].hebrewDate = self.hebrewDate(posts[j].DestinationTime);
                     }
                 }
-                console.log("33333333333333333333333333333333333333");
+                //deferred.resolve(posts);
+                
                 loadMoreNow = false;
                 callAjaxPosts.resolve(data);
             }).
@@ -429,6 +432,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
 
         //get post from server by id of the post.
         getPostById: function (postid) {
+            var deferred = $q.defer();
             self = this;
             singlePost = null;
             queryString = 'post/' + postid;
@@ -440,11 +444,13 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 self.getIsLike(data.data);
                 singlePost = data.data;
                 singlePost.hebrewDate = self.hebrewDate(singlePost.DestinationTime);
+
+                deferred.resolve(singlePost);
                // posts = [];
                 //$rootScope.$broadcast('showLoader', { showLoader: true });
                 //self.getPostsBatch({ startTimestamp: '', endTimestamp: '', offset: 0, limit: 20, _parentID: postid, postType: 'talkback', orderBy: '-timestamp' });
             })
-
+            return deferred.promise;
         },
 
         getSinglePost: function () {
@@ -523,6 +529,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
         },
 
         loadMainFeatures: function (request) {
+            var deferred = $q.defer();
             queryString = 'mainfeatures';
 
             classAjax.getdata('get', queryString, request).then(function (data) {
@@ -533,9 +540,10 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                         mainFeatures[i].featureName = featureDictionary[mainFeatures[i].featureType].featureName;
                         mainFeatures[i].featureLogo = featureDictionary[mainFeatures[i].featureType].featureLogo;
                     }
-
+                    deferred.resolve(mainFeatures);
                 }
             })
+            return deferred.promise;
         },
 
         getSpiner: function () {

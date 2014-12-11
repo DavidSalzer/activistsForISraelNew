@@ -1,5 +1,5 @@
 ﻿google.load('visualization', '1.0', { 'packages': ['corechart'] });
-socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '$state', '$http', 'PostService', 'generalParameters', 'classAjax', function ($rootScope, $stateParams, $scope, $state, $http, PostService, generalParameters, classAjax) {
+socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '$state', '$http', 'PostService', 'generalParameters', 'classAjax', '$timeout', function ($rootScope, $stateParams, $scope, $state, $http, PostService, generalParameters, classAjax, $timeout) {
 
     $scope.domain = domain;
     $scope.currentPoll = $stateParams.postId;
@@ -28,7 +28,7 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
     $scope.options = generalParameters.getOptionsPieChart();
 
     //$scope.polls = PostService.getPosts();
-    PostService.getPostById($scope.currentPoll);
+    //PostService.getPostById($scope.currentPoll);
 
     $scope.user = generalParameters.getUser();
 
@@ -83,13 +83,19 @@ socialGroupApp.controller('pollView', ['$rootScope', '$stateParams', '$scope', '
         }
 
         $scope.dataReturn = true;
+
+        $timeout(function () {
+            $scope.pollIsActive = $scope.currentPollObj.poll.status == "active";
+        }
+        , 0);
+
     })
 
-    $scope.pollIsActive = function () {
-        if ($scope.currentPollObj != undefined) {
-            return ($scope.currentPollObj.poll.status == "active");
-        }
-    };
+    //$scope.pollIsActive = function () {
+    //    if ($scope.currentPollObj != undefined) {
+    //        return ($scope.currentPollObj.poll.status == "active");
+    //    }
+    //};
 
 
     $scope.addVote = function () {

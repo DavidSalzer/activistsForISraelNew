@@ -1,11 +1,11 @@
 socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', '$timeout', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters, $timeout) {
     //   alert('width: '+window.innerWidth+' height: '+window.innerHeight )
-    
-	$scope.buildPage = false;
+
+    $scope.buildPage = false;
     $rootScope.$broadcast('showLoader', { showLoader: false });
-    $timeout(function () {  $scope.buildPage = true; }, 0);
-		
-	$scope.domain = domain + 'small/';
+    $timeout(function () { $scope.buildPage = true; }, 0);
+
+    $scope.domain = domain + 'small/';
     $scope.showSpiner = PostService.getSpiner;
 
     /*init controller details*/
@@ -37,16 +37,26 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 
 
     /*init controller data*/
-    PostService.getPostsBatch(request); //tell service to refresh posts
-
-    $scope.posts = PostService.getPosts; //ask service for posts
+    PostService.getPostsBatch(request)
+    .then(function (data) {
+        $timeout(function () {
+            $scope.posts = PostService.getPosts();
+        }
+        , 0);
+    })
 
     $scope.getPostsByAll = function () {
         request.startTimestamp = '';
         request.endTimestamp = '';
         request.orderBy = '-timestamp';
         request.offset = 0;
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request)
+        .then(function (data) {
+            $timeout(function () {
+                $scope.posts = PostService.getPosts();
+            }
+            , 0);
+    })
     }
 
     $scope.getPostsByFavorite = function () {
@@ -59,7 +69,13 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         request.orderBy = '-likesCount';
         request.endTimestamp = '';
         request.offset = 0;
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request)
+        .then(function (data) {
+            $timeout(function () {
+                $scope.posts = PostService.getPosts();
+            }
+            , 0);
+        })
     }
 
     $scope.getPostsByViews = function () {
@@ -72,7 +88,13 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         request.endTimestamp = '';
         request.orderBy = '-viewsCount';
         request.offset = 0;
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request)
+        .then(function (data) {
+            $timeout(function () {
+                $scope.posts = PostService.getPosts();
+            }
+            , 0);
+        })
     }
 
     $scope.$on('EndLoadMore', function (event, args) {
@@ -96,7 +118,13 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
             PostService.setLoadMoreNow(true);
             post = PostService.getPosts();
             request.endTimestamp = post[0].timestamp;
-            PostService.getPostsBatch(request);
+            PostService.getPostsBatch(request)
+            .then(function (data) {
+                $timeout(function () {
+                    $scope.posts = PostService.getPosts();
+                }
+                , 0);
+            })
         }
     }
 
@@ -120,39 +148,45 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
 
     $scope.like = function ($index) {
 
-       if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
-			
-			$rootScope.$broadcast('showInfoPopup', { showInfo: true });return;
-		}
-		else {
-			var meme = $scope.posts()[$index];
-			meme.isLiked = !meme.isLiked;
-		
-			if (meme.isLiked == true) {//LIKE!
-				
-				meme.likesCount++;
-				PostService.sendLike(meme._id, meme);return;
+        if (generalParameters.getUser().firstName == 'הצטרף לאפליקציה') {
 
-			}
-			else {//UNLIKE!
-				meme.likesCount--;
-				//$scope.$apply();
-				PostService.unLike(meme._id, meme);return;
-				
+            $rootScope.$broadcast('showInfoPopup', { showInfo: true }); return;
+        }
+        else {
+            var meme = $scope.posts[$index];
+            meme.isLiked = !meme.isLiked;
 
-			}
-		}
+            if (meme.isLiked == true) {//LIKE!
+
+                meme.likesCount++;
+                PostService.sendLike(meme._id, meme); return;
+
+            }
+            else {//UNLIKE!
+                meme.likesCount--;
+                //$scope.$apply();
+                PostService.unLike(meme._id, meme); return;
+
+
+            }
+        }
     }
-	
-	$scope.kill = function (event) {
-		
-      angular.element(event.target).remove(); 
+
+    $scope.kill = function (event) {
+
+        angular.element(event.target).remove();
     }
 
 
     //when comeback from login - refresh the feed
 
     $scope.$on('refreshMemesFeed', function (event, args) {
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request)
+            .then(function (data) {
+                $timeout(function () {
+                    $scope.posts = PostService.getPosts();
+                }
+                , 0);
+            })
     });
 } ]);
