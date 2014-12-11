@@ -55,17 +55,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        //.state('single-article', {
-        //    url: "/single-article/:postId",
-        //    //url: "/lesson",
-        //    views: {
-        //        "main": {
-        //            templateUrl: "./components/article/single-article.html",
-        //            controller: "single-article"
-        //        }
-        //    }
-        //})
-
         .state('channel', {
             url: "/channel",
             views: {
@@ -75,26 +64,6 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                 }
             }
         })
-
-        //.state('author-page', {
-        //    url: "/author-page/:authorId",
-        //    views: {
-        //        "main": {
-        //            templateUrl: "./components/authorPage/authorPage.html",
-        //            controller: "authorPage"
-        //        }
-        //    }
-        //})
-
-        //.state('article', {
-        //    url: "/article",
-        //    views: {
-        //        "main": {
-        //            templateUrl: "./components/article/article.html",
-        //            controller: "article"
-        //        }
-        //    }
-        //})
 
         .state('facebookBennet', {
             url: "/facebookBennet/:channelId",
@@ -729,15 +698,19 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var containerwidth = elem[0].offsetWidth;
 			var width = elem.children()[0].offsetWidth;
             right = containerwidth;
-	
+	        var timer;
             function tick() {
                  if(--right < -(elem.children()[0].offsetWidth)){
                         right = containerwidth;
                  }
                  elem.children().css("margin-right", right + "px");
-                 $timeout(tick, 30);
+                 timer=$timeout(tick, 30);
             }
-            tick();     
+            tick();
+            
+            elem.on('$destroy', function() {
+                $timeout.cancel(timer);
+            });     
 		}
     }
 })
