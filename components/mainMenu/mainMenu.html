@@ -1,6 +1,13 @@
 <!--<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/mainMenu/mainMenu.css" />-->
-
 <section id="main-menu" data-role="page">
+    <div ticker class="ticker-container main-menu-shadow">
+        <div class="ticker-text">
+            <span data-ng-repeat="newspost in news" style="display: inline-block;" data-ng-click="readNews(newspost._id)">
+                <span>&nbsp;&nbsp;&nbsp;</span> {{ newspost.timestamp | date : ' hh:mm dd.MM.yyyy'}} {{ newspost.title}}
+            </span>
+        </div>
+    </div>
+
     <div class="current-feature main-menu-shadow" data-ng-click="goToFeature(features[0].link)">
         <div>
             <img src="{{features[0].image}}" alt="main-img" class="main-img">
@@ -13,7 +20,7 @@
 
     <div id="demanded-area" class="main-menu-shadow">
         <h3 class="demanded-title">מבוקשים</h3>
-         <div data-ng-repeat="feature in demandes" class="demand-circle" data-ng-click="goToFromeDemand(feature.featureSendInClick)" style="background-image: url('{{feature.featureIcon}}'); background-color: {{feature.featureColor}}; "></div>
+        <div data-ng-repeat="feature in demandes" class="demand-circle" data-ng-click="goToFromeDemand(feature.featureSendInClick)" style="background-image: url('{{feature.featureIcon}}'); background-color: {{feature.featureColor}}; "></div>
     </div>
 
     <div id="features-list" class="caption" scroller loading-method="loadMore()">

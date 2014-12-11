@@ -1,10 +1,10 @@
 //production
-var domain = 'http://www.naftalibennett.org/';
-var siteOrigin = 'http://www.naftalibennett.org/';
+//var domain = 'http://www.naftalibennett.org/';
+//var siteOrigin = 'http://www.naftalibennett.org/';
 
 //qa
-//var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
-//var siteOrigin = 'http://www.cambium-team.com/bennetSite/';
+var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
+var siteOrigin = 'http://www.cambium-team.com/bennetSite/';
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap', 'ngQuickDate', 'ngImgCrop', 'once'])
 
@@ -203,15 +203,26 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
              }
          })
 
-         .state('breakingnews', {
+          .state('breakingnews', {
              url: "/breakingnews",
              views: {
                  "main": {
-                     templateUrl: "./components/breakingnews/breakingnewsPromo.html",
-                     controller: "breakingnewsPromo"
+                     templateUrl: "./components/breakingnews/breakingnews.html",
+                     controller: "breakingnews"
                  }
              }
          })
+
+         .state('single-breakingnews', {
+            url: "/single-breakingnews/:postId",
+            views: {
+                "main": {
+                    templateUrl: "./components/breakingnews/single-breakingnews.html",
+                    controller: "single-breakingnews"
+                }
+            }
+        })
+
         .state('single-event', {
             url: "/single-event/:postId",
             views: {
@@ -281,6 +292,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 			var eventTemplate = 'eventTemplate.html';
             var pollTemplate = 'pollTemplate.html';
             var voteToPollTemplate = 'voteToPollTemplate.html';
+            var breakingnewsTemplate = 'breakingnewsTemplate.html';
 
             if(scope.post){
             switch (scope.post.postType) {
@@ -310,8 +322,12 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 				case 'event':
                     template = eventTemplate;
                     break;
-                case undefined:
-                    template = authorsTemplate;
+                //case undefined:
+                //    template = authorsTemplate;
+                //    break;
+                    
+                case 'breakingnews':
+                    template = breakingnewsTemplate;
                     break;
             }
             }
@@ -705,6 +721,26 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
 		}
     }
 }])
+
+ .directive('ticker', function ($timeout) {
+    return {
+		restrict: 'A',
+		link: function (scope, elem, attrs) {
+            var containerwidth = elem[0].offsetWidth;
+			var width = elem.children()[0].offsetWidth;
+            right = containerwidth;
+	
+            function tick() {
+                 if(--right < -(elem.children()[0].offsetWidth)){
+                        right = containerwidth;
+                 }
+                 elem.children().css("margin-right", right + "px");
+                 $timeout(tick, 30);
+            }
+            tick();     
+		}
+    }
+})
  
  .filter('trustHtml', ['$sce', function ($sce) {
     return function (val) {

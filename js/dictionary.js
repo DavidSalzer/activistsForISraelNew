@@ -22,7 +22,9 @@ shareDetailes['event'] = {message:'בואו תראו מה קורה באחליק�
 shareDetailes['single-event'] = {message:'אירוע חשוב - בואו הצטרפו!', hasTitle: true};
 shareDetailes['channel'] = {message:'צפו בסרטונים באחליקציה של בנט'};
 shareDetailes['facebookBennet'] = {message:'צפו בדף פייסבוק של בנט דרך האחליקציה'};
-//shareDetailes['user-profile'] = {message:''};
+shareDetailes['breakingnews'] = {message:'הכנסו למבזקים באחליקציה של בנט'};
+shareDetailes['single-breakingnews'] = {message:'הכנסו למבזק באחליקציה של בנט', hasTitle: true};
+
 
 var errorMessages = {};
 errorMessages.generalError = 'אירעה שגיאה, בדוק חיבור לאינטרנט או נסה שנית';

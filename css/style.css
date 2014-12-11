@@ -1298,9 +1298,9 @@ button {
     color: #999;
 }
 
-.preview-img{
+.preview-img {
     margin: 20px auto 20px auto;
-    display: block
+    display: block;
 }
 /*******************sub-header*************************/
 
@@ -1355,7 +1355,7 @@ button {
     height: 121px;
     border-bottom: 3px solid #ffffff;
     overflow: auto;
-    background-color: #d4deec;    
+    background-color: #d4deec;
     z-index: 1;
 }
 
@@ -2054,3 +2054,60 @@ background-color:#124270}
         background-color: #124270;
     }
 }
+
+
+/****breakingnews***/
+.ticker-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    background-color: white;
+}
+
+.ticker-text {
+    height: 150%;
+    white-space: nowrap;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    font-family: 'Open Sans Hebrew';
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+
+.post-title.breakingnews-post-title {
+    padding-right: 0px;
+    width: 100%;
+}
+
+.breakingnews-date {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.post-tab.breakingnews-post-tab {
+    margin: 20px 10px 22px 10px;
+    padding: 0px 12px 25px 12px;
+}
+
+.inner-readmore-breakingnews {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 5px;
+    float: left; 
+    color: rgb(0, 109, 190);
+}
+
+.single-breakingnews {
+    padding: 10px;
+    background-color: white;
+    height: 100%;
+    overflow: auto;
+}
+

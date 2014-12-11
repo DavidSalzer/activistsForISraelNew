@@ -97,5 +97,33 @@ socialGroupApp.controller('mainMenu', ['$rootScope', '$scope', '$state', 'classA
         
 		PostService.loadMainFeatures(request);
     }
+
+    
+    var dateObj = new Date();
+    var timeNow = dateObj.getTime();
+    var timeSubstruct = timeNow - (1000 * 60 * 60 * 24 * 14); //substruct 14 days from today- for use in likes and comments
+
+
+    var requestNews = {
+        startTimestamp: timeSubstruct, //tbd - two weeks back
+        endTimestamp: '',
+        offset: 0,
+        limit: 7,
+        orderBy: '-timestamp',
+        postType: 'breakingnews',
+        _parentID: ''
+    };
+    PostService.getPostsBatch(requestNews)
+    .then(function (data) {
+        $timeout(function () {
+            $scope.news = PostService.getPosts();
+            console.log($scope.news);
+        }
+        , 0);
+    })
+
+    $scope.readNews=function(newsId){
+        $state.transitionTo('single-breakingnews', { postId: newsId });
+    }
 }])
 
