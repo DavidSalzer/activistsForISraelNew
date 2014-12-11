@@ -83,8 +83,8 @@
             </div>
 		
 		<!-- post add img preview-->
-        <div id="html2canvaswrite" >
-		<img  data-ng-show="toLargImage==false && postType!='poll'" data-ng-src="{{postImg}}" style='margin: 20px auto 20px auto;display: block'  >
+        <div id="html2canvaswrite" data-ng-show="postImg">
+		<img  data-ng-show="toLargImage==false && postType!='poll'" data-ng-src="{{postImg}}" data-ng-class="{'preview-img':postImg}">
         <canvas id="myCanvas" width="canvasLength" height="canvasWidth" style="display: none;">
 		</div>
 	

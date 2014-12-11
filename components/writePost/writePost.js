@@ -132,7 +132,20 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
         $scope.postData.post.phone = "";
         $scope.imgFileText = 'צרף תמונה';
         $scope.postImg = "";
-    };
+
+        $scope.showTitleError = false;
+        $scope.showContentError = false;
+        $scope.showContentLongError = false;
+        $scope.showDDMMYYError = false;
+        $scope.showHHMMError = false;
+        $scope.showLocationError = false;
+        $scope.showMailError = false;
+        $scope.showPhoneError = false;
+
+        $scope.showPollQuestionError = false;
+        $scope.showpollDescriptionerror = false;
+        $scope.showPollAnsError = false;
+    }
 
     $scope.sendPost = function () {
         if (!$scope.isPostPending) {
