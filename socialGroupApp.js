@@ -1,10 +1,10 @@
 //production
-//var domain = 'http://www.naftalibennett.org/';
-//var siteOrigin = 'http://www.naftalibennett.org/';
+var domain = 'http://www.naftalibennett.org/';
+var siteOrigin = 'http://www.naftalibennett.org/';
 
 //qa
-var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
-var siteOrigin = 'http://www.cambium-team.com/bennetSite/';
+//var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
+//var siteOrigin = 'http://www.cambium-team.com/bennetSite/';
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap', 'ngQuickDate', 'ngImgCrop', 'once'])
 

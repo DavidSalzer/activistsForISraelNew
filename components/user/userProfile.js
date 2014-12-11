@@ -254,6 +254,12 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
             case 'email':
 
             case 'phone':
+                var isnum = /^\d+$/.test($scope.editProfile.phone);
+                if (!isnum) {
+                    $scope.editItem(field);
+                    $rootScope.$broadcast('showLoader', { showLoader: false });
+                    return;
+                }
                 request = { phone: $scope.editProfile.phone };
                 break;
             case 'gender':
@@ -379,21 +385,21 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
                 case "article":
                     $state.transitionTo('single-article', { postId: activity.post._id });
                     break;
-                //case "author":                                  
-                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                                  
-                //    break;                                  
+                //case "author":                                   
+                //    $state.transitionTo('author-page', { authorId: $scope.authorId, postType: 'article' });                                   
+                //    break;                                   
                 case "talkback":
                     $state.transitionTo('comments', { postId: activity.post._id });
                     break;
                 case "meme":
                     $state.transitionTo('single-meme', { postId: activity.post._id });
                     break;
-                //case "event":                                  
-                //    $state.transitionTo('single-event', { postId: args.postId });                                  
-                //    break;                                  
-                //case "voteToPoll":                                  
-                //    $state.transitionTo('poll-view', { postId: args.postId });                                  
-                //    break;                                  
+                //case "event":                                   
+                //    $state.transitionTo('single-event', { postId: args.postId });                                   
+                //    break;                                   
+                //case "voteToPoll":                                   
+                //    $state.transitionTo('poll-view', { postId: args.postId });                                   
+                //    break;                                   
             }
         }
         else {
@@ -605,9 +611,9 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
         $scope.userImg = $scope.myCroppedImage;
         if ($scope.userImg != '') {
             /*html2canvas(document.getElementById('html2canvasprofile'), {
-                onrendered: function (canvas) {
-                    $scope.userImg = canvas.toDataURL("image/png");
-                }
+            onrendered: function (canvas) {
+            $scope.userImg = canvas.toDataURL("image/png");
+            }
             });*/
             $scope.uploadBase64Image();
         }
