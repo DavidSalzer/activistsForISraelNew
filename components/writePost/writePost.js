@@ -357,11 +357,20 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
             $scope.fileType = imageData.fileType;
             if ($scope.postImg) {
                 var myCanvas = document.getElementById("myCanvas");
-                var canvas = myCanvas.getContext("2d");
-                var img = document.getElementById("html2canvaswrite").childNodes[1];
-                canvas.drawImage(img, 0, 0);
-                $scope.imgObj = canvas.toDataURL($scope.fileType);
-                $scope.postImg = canvas.toDataURL($scope.fileType); //for preview
+                var img = document.getElementById("image");
+                img.onload = function () {
+                canvasWidth = 200;
+                canvasLength = canvasWidth * img.height / img.width;
+                myCanvas.height = canvasLength;
+                myCanvas.width = canvasWidth;
+                    var canvas = myCanvas.getContext("2d");
+                    canvas.clearRect(0, 0, img.width, img.height);
+                    alert("height: " + img.height + " width: " + img.width);
+                    canvas.drawImage(img, 0, 0, canvasWidth, canvasLength);
+                    $scope.imgObj = myCanvas.toDataURL($scope.fileType);
+                    
+                };
+                img.src = imageData.imgData;
             }
 
         });
