@@ -84,7 +84,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
             featureColor: "#f55c06"
         },
         {
-            featureUrl: 'chat',
+            featureUrl: 'chatPromo',
             featureName: "צ'אט חי",
             featureLogo: "./img/sidebar-chat-icon.png",
             featureStyleName: 'chat',
@@ -215,8 +215,12 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         //message = 'קראתי מאמר באחליקציה, כנסו לקרוא..';
         subject = 'משהו מעניין קורה באחליקציה של בנט. בואו תראו! ';
         img = null;
-        link = siteOrigin + '#/' + window.location.hash;
-
+        if (isIOS||isIPad) {
+            link = siteOrigin + window.location.hash;
+        }
+        else {
+            link = siteOrigin + '#/' + window.location.hash;
+        }
         currentState = $state.$current;
 
         message = shareDetailes[currentState].message;
@@ -261,6 +265,23 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         $rootScope.$broadcast('showInfoPopup', { showInfo: false });
         generalParameters.setShowLogin(false);
     }
+
+    $scope.toggleMenu = function ($event) {
+        $("body").toggleClass("sidebar-left-in");
+        $event.preventDefault();
+        $event.stopPropagation();
+        return false;
+
+    }
+    $("body").on("click", function ($event) {
+        if ($("body").hasClass("sidebar-left-in")) {
+            $("body").removeClass("sidebar-left-in")
+        }
+        $event.preventDefault();
+        $event.stopPropagation();
+        return false;
+    });
+
 
     PostService.loadMainFeatures();
     $scope.features = PostService.getMainFeatures;

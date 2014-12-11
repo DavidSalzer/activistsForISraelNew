@@ -110,8 +110,6 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
 			})
 			.error(function (data) {
 
-
-
 			});
 
                 $scope.profile = function () {
@@ -675,7 +673,7 @@ socialGroupApp.controller('userProfile', ['$rootScope', '$scope', '$state', '$st
         });
     }
 
-    $scope.loaded = function () {
+    $scope.kill = function () {
         $rootScope.$broadcast('showLoader', { showLoader: false });
         angular.element(event.target).remove();
     }

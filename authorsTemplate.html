@@ -3,7 +3,7 @@
         <figure class="author-image" data-ng-show="true" data-ng-click="userClicked(post._id);$event.stopPropagation();">
             <div class="author-background-image" style="background-image:url('{{post.data.img.RelativePosition? domain+post.data.img.url : post.data.img.url}}')"></div>
             <div class="author-rank-image-zone">
-                <div class="author-rank-image" data-ng-class="{'author-rank-image-0': post.data.point.level == 0, 'author-rank-image-1': post.data.point.level == 1, 'author-rank-image-2': post.data.point.level == 2, 'author-rank-image-3': post.data.point.level == 3, 'author-rank-image-4': post.data.point.level == 4}"></div>
+                <div class="author-rank-image" data-once-class="{'author-rank-image-0': post.data.point.level == 0, 'author-rank-image-1': post.data.point.level == 1, 'author-rank-image-2': post.data.point.level == 2, 'author-rank-image-3': post.data.point.level == 3, 'author-rank-image-4': post.data.point.level == 4}"></div>
             </div>
         </figure>
         <span class="author-name" data-ng-show="showAuthorName!=false" data-author="{{post.data}}">{{post.data.firstName}} {{post.data.lastName}}</span>

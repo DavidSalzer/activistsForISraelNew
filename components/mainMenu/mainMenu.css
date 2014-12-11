@@ -38,7 +38,7 @@ h3 {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
     height: 100%;
 }
 
@@ -142,6 +142,7 @@ margin-right: 90px;
     margin-top: 4px;
     position: relative;
     display: block;
+    overflow: hidden;
 }
 
 /*.menu-item-feature:before {

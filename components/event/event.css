@@ -564,11 +564,11 @@ author-header #author-header figure.author-image {
 
 
 
-author-header #author-header .author-image div {
+/*author-header #author-header .author-image div {
     width: 35px;
     height: 35px;
     border-radius: 28px;
-}
+}*/
 
 author-header #author-header .author-image .author-rank-image-zone {
     background-color: white;
