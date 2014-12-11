@@ -365,7 +365,6 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                 myCanvas.width = canvasWidth;
                     var canvas = myCanvas.getContext("2d");
                     canvas.clearRect(0, 0, img.width, img.height);
-                    alert("height: " + img.height + " width: " + img.width);
                     canvas.drawImage(img, 0, 0, canvasWidth, canvasLength);
                     $scope.imgObj = myCanvas.toDataURL($scope.fileType);
                     
