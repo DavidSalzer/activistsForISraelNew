@@ -215,12 +215,7 @@ socialGroupApp.controller('headerCtrl', ['$rootScope', '$scope', '$location', '$
         //message = 'קראתי מאמר באחליקציה, כנסו לקרוא..';
         subject = 'משהו מעניין קורה באחליקציה של בנט. בואו תראו! ';
         img = null;
-        if (isIOS||isIPad) {
-            link = siteOrigin + window.location.hash;
-        }
-        else {
-            link = siteOrigin + '#/' + window.location.hash;
-        }
+        link = siteOrigin + window.location.hash;
         currentState = $state.$current;
 
         message = shareDetailes[currentState].message;

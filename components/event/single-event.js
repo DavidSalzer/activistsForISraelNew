@@ -68,7 +68,7 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
         $scope.showPartiPop = true;
         //alert("לחצת על השתתף ");
         var startDate = new Date($scope.post.DestinationTime); // beware: month 0 = january, 11 = december
-        var endDate = new Date($scope.post.DestinationTime);
+        var endDate = new Date($scope.post.DestinationTime+(1000*60*60));// add one hour to end time
         var title = $scope.post.title;
         var location = $scope.post.location;
         var notes = $scope.post.content;
