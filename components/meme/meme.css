@@ -682,3 +682,11 @@ width: 100%;
 select:not([size]):not([multiple]), select[size="0"], select[size="1"] {
     background-color: white;
 }
+
+.loader{
+    position: absolute;
+bottom: 52px;
+left: 0;
+right: 0;
+margin: auto;
+}

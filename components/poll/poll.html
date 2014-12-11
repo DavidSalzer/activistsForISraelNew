@@ -14,18 +14,18 @@
 </div>
 
 <div class="polls-layout posts-list" scroller loading-method="loadMore()">
-    <post ng-repeat="post in polls()" data-post-type="poll"></post>
+    <post ng-repeat="post in polls" data-post-type="poll"></post>
     <div class="end-load-more" data-ng-if="showendloader == true">
         <img alt="end" src="./img/end_feed.png" />
         <div class="loadmore-endline"></div>
     </div>
     <div class="spiner-zone" data-ng-show="showSpiner()">
-        <div class="loader" data-ng-class="{'general-loader':polls().length==0}"></div>
+        <div class="loader" data-ng-class="{'general-loader':polls.length==0}"></div>
     </div>
 </div>
 
 </div>
-<div class="sub-header special-sub-header" id="feature-header" data-ng-click="SuggestPoll()">
+<div class="sub-header  special-sub-header" id="feature-header" data-ng-click="SuggestPoll()">
     <div class="inner-special-header" data-ng-style="{'background-color':featureDetails.featureColor}">
    הצע סקר
     </div>

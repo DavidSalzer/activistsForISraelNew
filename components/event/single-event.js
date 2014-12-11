@@ -1,4 +1,4 @@
-socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
+socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', '$timeout', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters, $timeout) {
     $scope.showPartiPop = false;
     /*init variables*/
     //$scope.showInput = false;
@@ -29,9 +29,14 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
     $scope.user = generalParameters.getUser();
 
     $scope.articleId = $stateParams.postId;
-    console.log('postId: ' + $stateParams.postId);
-    PostService.getPostById($scope.articleId);
-    $scope.post = PostService.getSinglePost;
+    
+    PostService.getPostById($stateParams.postId)
+    .then(function (data) {
+        $timeout(function () {
+            $scope.post = PostService.getSinglePost();
+        }
+        , 0);
+    });
 
     $scope.editEvent = function ($event) {
 
@@ -39,8 +44,8 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
     };
 
     $scope.call = function () {
-        console.log($scope.post());
-        var tel = $scope.post().phone;
+        
+        var tel = $scope.post.phone;
         window.location.href = 'tel:' + tel;
     };
 
@@ -51,9 +56,9 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
 
     $scope.mail = function () {
 
-        var email = $scope.post().email;
-        var subject = "פועלים למען ישראל:" + $scope.post().title + " ב" + $scope.post().location;
-        var body = "שלום " + $scope.post()._author.data.firstName + " " + $scope.post()._author.data.lastName;
+        var email = $scope.post.email;
+        var subject = "פועלים למען ישראל:" + $scope.post.title + " ב" + $scope.post.location;
+        var body = "שלום " + $scope.post._author.data.firstName + " " + $scope.post._author.data.lastName;
         console.log(email, subject, body);
 
         window.location.href = "mailto:" + email + "?subject=" + subject + "&body=" + body;
@@ -62,11 +67,11 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
     $scope.participate = function () {
         $scope.showPartiPop = true;
         //alert("לחצת על השתתף ");
-        var startDate = new Date($scope.post().DestinationTime); // beware: month 0 = january, 11 = december
-        var endDate = new Date($scope.post().DestinationTime+(1000*60*60));// add one hour to end time
-        var title = $scope.post().title;
-        var location = $scope.post().location;
-        var notes = $scope.post().content;
+        var startDate = new Date($scope.post.DestinationTime); // beware: month 0 = january, 11 = december
+        var endDate = new Date($scope.post.DestinationTime+(1000*60*60));// add one hour to end time
+        var title = $scope.post.title;
+        var location = $scope.post.location;
+        var notes = $scope.post.content;
         var success = function (message) {
             $scope.showPartiPop = true;
         };
@@ -84,7 +89,7 @@ socialGroupApp.controller('single-event', ['$rootScope', '$stateParams', '$scope
 
     $scope.nav = function () {
 
-        var location = $scope.post().location;
+        var location = $scope.post.location;
         //replace spaces with '+', replace ',' with "%2C"
         var addressString = location.replace(/ /g, '+').replace(/[ ]*,[ ]*|[ ]+/g, '%2C');
 

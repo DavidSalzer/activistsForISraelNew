@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="./components/event/event.css" />
-<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/event/event.css" />
+<!--<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/event/event.css" />-->
 
 
 
@@ -14,7 +14,7 @@
             <div id="evet-x-pop" data-ng-click="closeEventPop()"></div>
             <img data-ng-src="" class="info-img" src="./img/calendar_info.png">
             <div class="event-txt-pop">האירוע:</div>
-            <div class="event-bold-pop">{{post().title}} ב{{post().location}}</div>
+            <div class="event-bold-pop">{{post.title}} ב{{post.location}}</div>
             <div class="event-txt-pop">נשמר ביומנך האישי</div>
         </div>
     </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="event-container">
 
-            <post data-post-type="event" class="single-event" data-ng-repeat="post in [post()]">
+            <post data-post-type="event" class="single-event" data-ng-repeat="post in [post]">
 
             </post>
 
@@ -32,31 +32,31 @@
                 <div class="event-participation">
                     <div class="button join-button event-join-button shadow-buttons" data-ng-click="participate()" style="background-color:{{featureDetails.featureColor}};">השתתף</div>
                     <div>
-                        <div class="detail-wrapper-enent shadow-buttons" data-ng-click="call()" data-ng-show="post().phone">
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-click="call()" data-ng-show="post.phone">
                             <div class="icon phone-icon participation-option-cell"></div>
                             <div class="participation-option-cell">
                                 <div>צור קשר</div>
-                                <div>{{post()._author.data.firstName}} {{post()._author.data.lastName}} {{post().phone}}</div>
+                                <div>{{post._author.data.firstName}} {{post._author.data.lastName}} {{post.phone}}</div>
                             </div>
                         </div>
-                        <div class="detail-wrapper-enent shadow-buttons" data-ng-show="post().email" data-ng-click="mail()">
+                        <div class="detail-wrapper-enent shadow-buttons" data-ng-show="post.email" data-ng-click="mail()">
                             <div class="icon mail-icon participation-option-cell"></div>
                             <div class="participation-option-cell">
                                 <div>מייל</div>
-                                <div>{{post().email}}</div>
+                                <div>{{post.email}}</div>
                             </div>
                         </div>
                         <div class="detail-wrapper-enent shadow-buttons" data-ng-click="nav()">
                             <div class="icon navigate-icon participation-option-cell"></div>
-                            <div class="participation-option-cell nav-to">נווט לכתובת: {{post().location}}</div>
+                            <div class="participation-option-cell nav-to">נווט לכתובת: {{post.location}}</div>
                         </div>
                     </div>
                 </div>
                 <!--  show author // show edit button-->
-                <div data-ng-if="post()._author._id != user._id" class="owner-wrapper-detailes">
-                    <author-header data-ng-repeat="post in [post()]"></author-header>
+                <div data-ng-if="post._author._id != user._id" class="owner-wrapper-detailes">
+                    <author-header data-ng-repeat="post in [post]"></author-header>
                 </div>
-                <div data-ng-if="post()._author._id == user._id" class="single-event-header" style="height: 50px;">
+                <div data-ng-if="post._author._id == user._id" class="single-event-header" style="height: 50px;">
                     <div class="button" data-ng-click="editEvent()" style="margin-bottom: 0px; background-color:{{featureDetails.featureColor}}; margin-top: initial;">עדכן</div>
                 </div>
             </div>

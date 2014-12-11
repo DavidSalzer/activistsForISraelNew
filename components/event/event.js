@@ -1,4 +1,4 @@
-socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters) {
+socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'classAjax', '$state', 'PostService', 'generalParameters', '$timeout', function ($rootScope, $stateParams, $scope, classAjax, $state, PostService, generalParameters, $timeout) {
 
     /*init controller details*/
 
@@ -33,8 +33,13 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
     };
 
     /*init controller data*/
-   // PostService.getPostsBatch(request); //tell service to refresh posts
-    $scope.posts = PostService.getPosts; //ask service for posts
+   PostService.getPostsBatch(request)
+    .then(function (data) {
+        $timeout(function () {
+            $scope.posts = PostService.getPosts();
+        }
+        , 0);
+    })
 
     $scope.showAll = function (e) {
         $scope.showAll = true;
@@ -74,7 +79,13 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
             post = PostService.getPosts();
             request.endTimestamp = post[0].timestamp;
 
-            PostService.getPostsBatch(request);
+            PostService.getPostsBatch(request)
+            .then(function (data) {
+                $timeout(function () {
+                    $scope.posts = PostService.getPosts();
+                }
+                , 0);
+            })
         }
     }
 
@@ -102,7 +113,13 @@ socialGroupApp.controller('event', ['$rootScope', '$stateParams', '$scope', 'cla
         request.DestinationTime = date.getTime();
         request.offset = 0;
         //alert(request.DestinationTime);
-        PostService.getPostsBatch(request);
+        PostService.getPostsBatch(request)
+        .then(function (data) {
+            $timeout(function () {
+                $scope.posts = PostService.getPosts();
+            }
+            , 0);
+        })
     }
 
 } ]);

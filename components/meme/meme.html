@@ -13,10 +13,10 @@
 </div>
 
 <div class="posts-list memes" scroller loading-method="loadMore()" data-ng-if="buildPage">
-    <post data-ng-repeat="post in posts() " data-post-type="meme"></post>
+    <post data-ng-repeat="post in posts" data-post-type="meme"></post>
 
     <div class="spiner-zone" data-ng-show="showSpiner()">
-        <div class="loader" data-ng-class="{'general-loader':posts().length==0}"></div>
+        <div class="loader" data-ng-class="{'general-loader':posts.length==0}"></div>
 
     </div>
     <div class="end-load-more" data-ng-if="showendloader == true">

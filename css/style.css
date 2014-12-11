@@ -301,7 +301,7 @@ figure.author-image {
     bottom: -1px;
     border-radius: 50px;
     margin: auto;
-    border: solid 1px #000000;
+    border: solid 1px #565c63;
 }
 
 .author-image .author-rank-image {
@@ -1298,7 +1298,10 @@ button {
     color: #999;
 }
 
-
+.preview-img{
+    margin: 20px auto 20px auto;
+    display: block
+}
 /*******************sub-header*************************/
 
 .sub-header.special-sub-header {

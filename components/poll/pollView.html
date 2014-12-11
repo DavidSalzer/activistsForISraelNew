@@ -1,11 +1,11 @@
 <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
-<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/poll/poll.css" />
+<!--<link rel="stylesheet" media="screen and (min-width: 900px)" type="text/css" href="{{siteOrigin}}components/poll/poll.css" />-->
 
 
 <div class="channel-title-zone sub-header" data-ng-class="{'site-sub-header':isSiteHeader==true}">
     <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "!dataReturn"></div>
-    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "pollIsActive()&&dataReturn">סקר פעיל</div>
-    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "!pollIsActive() && !closedPoll&&dataReturn">תודה על השתתפותך</div>
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "pollIsActive&&dataReturn">סקר פעיל</div>
+    <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "!pollIsActive && !closedPoll&&dataReturn">תודה על השתתפותך</div>
     <div class="channel-title" data-ng-style="{'background-color': '{{featureDetails.featureColor}}'}" data-ng-if = "closedPoll&&dataReturn">סקר סגור</div>
     <div class="white-line"></div>
 </div>
@@ -24,10 +24,10 @@
 	</div>
 
 	<!--Div that will hold the pie chart-->
-	<div google-chart data="currentPollResults" type={{currentPollObj.poll.pollType}} data-ng-hide = "pollIsActive()" style="overflow: hidden"></div>
-	<!--<div class="gray-line" data-ng-hide = "pollIsActive()"></div>-->
+	<div google-chart data="currentPollResults" type={{currentPollObj.poll.pollType}} data-ng-hide = "pollIsActive" style="overflow: hidden"></div>
+	<!--<div class="gray-line" data-ng-hide = "pollIsActive"></div>-->
     <div class="legend-wraper">
-	 <div ng-repeat="line in legend" class="legend-container" data-ng-hide = "pollIsActive()">
+	 <div ng-repeat="line in legend" class="legend-container" data-ng-hide = "pollIsActive">
 		<div class="legend-color" data-once-style="{'background-color': line.color}"></div><!---->
 		<div class="legend-content" data-once-text="(line.title | limitTo:65)"><!-- {{line.title | limitTo:65}} --><span data-ng-if="65 < line.title.length" class='event-3points'>...</span></div><!--data-ng-style="{'color': '#ffffff'}"-->
 		<!--<div class="legend-image" data-ng-show='{{"line.image"}}' data-ng-style="{'background-image': 'url({{line.image}})'}">
@@ -35,7 +35,7 @@
 		</div>-->
 	</div>
 	</div>
-	 <div ng-repeat="item in optionsForVote" data-ng-show = "pollIsActive()" class="picking-items" data-ng-style="{'padding-top':'10px'}"> 
+	 <div ng-repeat="item in optionsForVote" data-ng-show = "pollIsActive" class="picking-items" data-ng-style="{'padding-top':'10px'}"> 
 		<!--<div class="optionToVote-image" data-ng-show ='{{"item.imageUrl"}}' style="background-image: url({{domain}}{{item.imageUrl}})">-->
 			<!--<img ng-src="{{item.imageUrl}}" >-->
 		<!--</div>-->
@@ -46,7 +46,7 @@
 	</div>
     <div class="vote-error" data-ng-if = "showVoteError">* מספר השדות שבחרת אינו תקין.</div>
     <div class="vote-error" data-ng-if = "showServerVoteError">* {{voteErrorMsg}}</div>
-	<div data-ng-show = "pollIsActive()" class="button" data-ng-click="addVote()" data-ng-style="{'background-color': '#da4f00', 'color': '#ffffff'}" > הצבע</div>
+	<div data-ng-show = "pollIsActive" class="button" data-ng-click="addVote()" data-ng-style="{'background-color': '#da4f00', 'color': '#ffffff'}" > הצבע</div>
 </div>			
 
 
