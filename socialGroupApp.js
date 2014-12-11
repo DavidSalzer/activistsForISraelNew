@@ -1,5 +1,10 @@
-var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
-var siteOrigin = 'http://www.cambium-team.com/bennetSite/';
+//production
+var domain = 'http://www.naftalibennett.org/';
+var siteOrigin = 'http://www.naftalibennett.org/';
+
+//qa
+//var domain = 'http://ec2-23-23-240-76.compute-1.amazonaws.com:3003/';
+//var siteOrigin = 'http://www.cambium-team.com/bennetSite/';
 
 var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angular-ui', 'angularFileUpload','ui.bootstrap', 'ngQuickDate', 'ngImgCrop', 'once'])
 
@@ -217,8 +222,8 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        .state('chat', {
-            url: "/chat",
+        .state('chatPromo', {
+            url: "/chatPromo",
             views: {
                 "main": {
                     templateUrl: "./components/chat/chatPromo.html",

@@ -61,8 +61,6 @@ socialGroupApp.controller('singleMeme', ['$scope', '$rootScope', '$stateParams',
                 meme.likesCount--;
                 //$scope.$apply();
                 PostService.unLike(meme._id, meme); return;
-
-
             }
         }
     }

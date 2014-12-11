@@ -29,7 +29,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
         startTimestamp: '',
         endTimestamp: '',
         offset: 0,
-        limit: 50,
+        limit: 54,
         orderBy: '-timestamp',
         postType: 'meme',
         _parentID: ''
@@ -114,7 +114,7 @@ socialGroupApp.controller('meme', ['$rootScope', '$stateParams', '$scope', 'clas
                 return;
             }
             console.log('load more');
-            request.offset += 30;
+            request.offset += 27;
             PostService.setLoadMoreNow(true);
             post = PostService.getPosts();
             request.endTimestamp = post[0].timestamp;
