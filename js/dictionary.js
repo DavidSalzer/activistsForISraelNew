@@ -8,7 +8,7 @@ featureDictionary['facebookPoalim'] = { featureLogo: './img/actionforisrael.png'
 featureDictionary['poll'] = { featureLogo: './img/poll.png', featureName: 'סקרים' };
 featureDictionary['meme'] = { featureLogo: './img/meme.png', featureName: 'ממים' };
 featureDictionary['event'] = { featureLogo: './img/calendar.png', featureName: 'אירועים' };
-
+featureDictionary['chat'] = { featureLogo: './img/calendar.png', featureName: "צ'אט חי" };
 
 var shareDetailes = [];
 shareDetailes['main-menu'] = {message:'רוצים להצטרף לאחליקציה של בנט?'};
@@ -24,7 +24,7 @@ shareDetailes['channel'] = {message:'צפו בסרטונים באחליקציה 
 shareDetailes['facebookBennet'] = {message:'צפו בדף פייסבוק של בנט דרך האחליקציה'};
 shareDetailes['breakingnews'] = {message:'הכנסו למבזקים באחליקציה של בנט'};
 shareDetailes['single-breakingnews'] = {message:'הכנסו למבזק באחליקציה של בנט', hasTitle: true};
-
+shareDetailes['chat'] = {message:"כנסו עכשיו לצ'אט חי באחליקציה של בנט"};
 
 var errorMessages = {};
 errorMessages.generalError = 'אירעה שגיאה, בדוק חיבור לאינטרנט או נסה שנית';
