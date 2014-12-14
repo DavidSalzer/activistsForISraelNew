@@ -1,5 +1,6 @@
 //production
-var domain = 'http://www.naftalibennett.org/';
+//var domain = 'http://www.naftalibennett.org/';
+var domain = 'http://localhost:3003/';
 var siteOrigin = 'http://www.naftalibennett.org/';
 
 //qa
@@ -212,15 +213,15 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             }
         })
 
-        //.state('chat', {
-        //    url: "/chat",
-        //    views: {
-        //        "main": {
-        //            templateUrl: "./components/chat/chat.html",
-        //            controller: "chat"
-        //        }
-        //    }
-        //})
+        .state('chat', {
+            url: "/chat",
+            views: {
+                "main": {
+                    templateUrl: "./components/chat/chat.html",
+                    controller: "chat"
+                }
+            }
+        })
         })
 
 /**** Ajax Service ****/
@@ -262,6 +263,7 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
             var pollTemplate = 'pollTemplate.html';
             var voteToPollTemplate = 'voteToPollTemplate.html';
             var breakingnewsTemplate = 'breakingnewsTemplate.html';
+            var chatTemplate = 'chatTemplate.html';
 
             if(scope.post){
             switch (scope.post.postType) {
@@ -297,6 +299,9 @@ var socialGroupApp = angular.module('socialGroupApp', ['ui.router', 'mobile-angu
                     
                 case 'breakingnews':
                     template = breakingnewsTemplate;
+                    break;
+                case 'chatMessage':
+                    template = chatTemplate;
                     break;
             }
             }

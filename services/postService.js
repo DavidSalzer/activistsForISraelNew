@@ -15,6 +15,7 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
     var getPostsAjaxCall;
     var loadMoreNow = false;
     var callAjaxPosts;
+    var activeChatRoom;
 
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
         posts = undefined;
@@ -406,6 +407,29 @@ socialGroupApp.factory('PostService', ['$rootScope', 'classAjax', '$http', '$upl
                 userDetails.phone = 'מספר טלפון';
             }
             user = userDetails;
+        },
+
+        chatConnect: function () {
+            var deferred = $q.defer();
+            
+            $http.get(domain + 'chat')
+			.success(function (data) {
+			    console.log("you are connected");
+			    if (data.data) {
+			        activeChatRoom = data.data._id;
+			        console.log("Active caht:" + data.data._id);
+			    } else console.log("we haven't active chat");
+			    deferred.resolve(data);
+			})
+			.error(function (data) {
+			    console.log("the connect failed");
+			    deferred.resolve(data);
+			});
+            return deferred.promise;
+        },
+
+        getActiveChatRoom: function () {
+            return activeChatRoom;
         },
 
         getShowInput: function () {

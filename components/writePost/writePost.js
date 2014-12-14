@@ -13,7 +13,7 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     $scope.calendarShown = true;
 
     $scope.timeDisplay.time = 'dfhfgm';
-    var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'poll': '#da4f00', 'event': '#004a8e' };
+    var colors = { 'article': '#006dbe', 'talkback': '#993ca7', 'poll': '#da4f00', 'event': '#004a8e', 'chatMessage': '#01a3d4' };
     $scope.isPostPending = false;
 
     $scope.parentPostType = $stateParams.postType;
@@ -34,7 +34,9 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
     };
 
     $scope.featureColor = colors[$scope.postType];
-    if (($scope.postId != 0) && ($scope.postType != 'event')) {//if comment
+    if ($scope.postType != 'chatMessage') {
+    }
+    else if (($scope.postId != 0) && ($scope.postType != 'event')) {//if comment
 
         $scope.featureColor = colors[$scope.parentPostType];
         $scope.postType = 'talkback'
@@ -120,6 +122,15 @@ socialGroupApp.controller('writePost', ['$scope', '$rootScope', '$stateParams', 
                 }
                 break;
             }
+         case "chatMessage":
+            {
+                $scope.headerText = 'כתיבת טקסט';
+                $scope.max = 140;
+                //$scope.maxLine = 3;
+                $scope.postData.post.postType = 'chatMessage';
+                break;
+            }
+
     }
 
     $scope.cleanDetails = function () {//event
