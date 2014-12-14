@@ -1353,10 +1353,10 @@ button {
 
 .top-side-wrapper {
     height: 121px;
-    border-bottom: 3px solid #ffffff;
+    border-bottom: 3px solid #12426F;
     overflow: auto;
-    background-color: #d4deec;
-    z-index: 1;
+    background-color: #d4deec;    
+    position: relative;    
 }
 
 .chat-background-wrapper {
@@ -1462,7 +1462,7 @@ button {
 
 
 .archive-component-title {
-    font-size: 15px;
+    font-size: 14px;
     margin-bottom: 10px;
     color: #01a3d4;
     font-weight: 600;
@@ -1473,6 +1473,8 @@ button {
 
 .archive-component-text {
     font-size: 10px;
+    max-height: 41px;
+    overflow: hidden;
 }
 
 .archive-component-date {
@@ -1504,6 +1506,9 @@ button {
     background-position: 3px 3px;
     background-size: 96px 82px;
     position: relative;
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.25);  
+    -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.25);  
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.25);
 }
 
 .main-chat-header {
@@ -1551,9 +1556,10 @@ button {
 }
 
 .next-chat-title {
-    font-size: 13px;
+    font-size: 14px;
     color: #01a3d4;
-    line-height: 14px;
+    line-height: 15px;
+    font-weight: bold;
 }
 
 .next-chat-text {
